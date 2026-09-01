@@ -12,6 +12,8 @@
     <title>FAYAD — Modern Web Learning Platform</title>
 
     <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/main_auth.js" defer></script>
   </head>
 
   <body>
@@ -42,6 +44,15 @@
       <!-- NAV ACTIONS -->
 
       <div class="nav-actions">
+        <!-- مكان زرار تسجيل الدخول / الحساب -->
+<div id="auth-container" style="display: inline-block; margin-right: 8px;">
+    <a href="login.html" class="auth-btn">Sign In</a>
+</div>
+
+<!-- مكان ظهور بيانات الحساب وزر الخروج بعد تسجيل الدخول -->
+<div id="user-profile" style="display: none; margin-right: 8px;">
+    <!-- سيتم تعبئته تلقائياً بالـ JavaScript -->
+</div>
         <!-- LANGUAGE BUTTON -->
 
         <button
@@ -52,6 +63,7 @@
           aria-pressed="false">
           <span id="languageLabel">AR</span>
         </button>
+        
 
         <!-- MENU BUTTON -->
 

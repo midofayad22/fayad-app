@@ -1780,3 +1780,39 @@ body::-webkit-scrollbar {
   width: 0;
   height: 0;
 }
+/* ستايل زرار تسجيل الدخول ليتناسب مع تصميم النافبار */
+.auth-btn-custom {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.auth-btn-custom:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+}
+
+/* ستايل زر تسجيل الخروج لو المستخدم مسجل */
+.logout-btn-custom {
+    background-color: transparent;
+    border: 1px solid #ff4d4d;
+    color: #ff4d4d;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logout-btn-custom:hover {
+    background-color: #ff4d4d;
+    color: #fff;
+}
