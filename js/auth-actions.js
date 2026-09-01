@@ -1,68 +1,100 @@
-(function() {
-  const SUPABASE_URL = 'https://vsrysitexadvmmikcmfs.supabase.co';
-  const SUPABASE_ANON_KEY = 'sb_publishable_qo4ZB-vWkWThCQpoGtSRSw_2oaStgyp';
+// بيانات الاتصال بقاعدة بيانات Supabase
+const SUPABASE_URL = 'https://vsrysitexadvmmikcmfs.supabase.co'
+const SUPABASE_ANON_KEY = 'sb_publishable_qo4ZB-vWkWThCQpoGtSRSw_2oaStgyp'
 
-  if (!window.supabase) return;
+// تهيئة عميل Supabase باستخدام الكلاس المتاح من الـ CDN
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+// 1. التحقق من حالة الدخول وتحديث الهيدر في الصفحة الرئيسية (index.html)
+async function checkAuthState() {
+  const { data: { session } } = await supabase.auth.getSession();
+  const signinBtn = document.getElementById('user-account-section') || document.querySelector('.btn-signin');
+  
+  if (session && signinBtn) {
+    const user = session.user;
+    const userInitial = user.email ? user.email.charAt(0).toUpperCase() : 'F';
+    
+    // تحويل زر الـ Sign In لدائرة البروفايل البرتقالية الفخمة مع زر الخروج
+    signinBtn.href = "#";
+    signinBtn.innerHTML = `
+      <div style="display: flex; align-items: center; gap: 8px; justify-content: center;">
+        <div style="width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #f97316, #ea580c); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px; box-shadow: 0 3px 10px rgba(249, 115, 22, 0.4);">
+          ${userInitial}
+        </div>
+        <span style="font-size: 13px; color: #ef4444; font-weight: 600;">Logout</span>
+      </div>
+    `;
 
+    // تفعيل وظيفة تسجيل الخروج عند الضغط عليه
+    signinBtn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      await supabase.auth.signOut();
+      window.location.reload();
+    });
+  }
+}
+
+// 2. معالجة عمليات الـ Sign In والـ Sign Up
+async function handleAuthAction(isSignUp) {
   const emailInput = document.getElementById('email');
   const passwordInput = document.getElementById('password');
-  const loginBtn = document.getElementById('login-btn');
-  const signupBtn = document.getElementById('signup-btn');
   const errorMsg = document.getElementById('error-msg');
 
-  // 1. زرار إنشاء حساب جديد (مع حفظه في جدول user_progress)
-  if (signupBtn) {
-    signupBtn.addEventListener('click', async () => {
-      const email = emailInput.value;
-      const password = passwordInput.value;
+  if (!emailInput || !passwordInput) return;
 
-      // الخطوة أ: إنشاء الحساب في نظام الـ Auth
-      const { data, error } = await supabase.auth.signUp({
-        email: email,
-        password: password,
-      });
+  const email = emailInput.value.trim();
+  const password = passwordInput.value.trim();
 
-      if (error) {
-        errorMsg.textContent = error.message;
-        return;
+  if (!email || !password) {
+    if (errorMsg) errorMsg.innerText = 'الرجاء إدخال البريد الإلكتروني وكلمة المرور.';
+    return;
+  }
+
+  try {
+    let response;
+    if (isSignUp) {
+      response = await supabase.auth.signUp({ email, password });
+    } else {
+      response = await supabase.auth.signInWithPassword({ email, password });
+    }
+
+    if (response.error) throw response.error;
+
+    // نجاح العملية: التحويل الفوري للصفحة الرئيسية
+    window.location.href = 'index.html';
+  } catch (err) {
+    if (errorMsg) {
+      let friendlyMessage = 'حدث خطأ أثناء العملية.';
+      if (err.message.includes('Invalid login credentials')) {
+        friendlyMessage = 'البريد الإلكتروني أو كلمة المرور غير صحيحة.';
+      } else if (err.message.includes('User already registered')) {
+        friendlyMessage = 'هذا البريد مسجل مسبقاً، قم بتسجيل الدخول.';
+      } else if (err.message.includes('Password should be at least')) {
+        friendlyMessage = 'كلمة المرور يجب أن تكون 6 أحرف على الأقل.';
       }
+      errorMsg.innerText = friendlyMessage;
+    }
+  }
+}
 
-      // الخطوة ب: لو التسجيل نجح، نسجل أول سجل ليه في جدول user_progress
-      if (data.user) {
-        const { error: dbError } = await supabase
-          .from('user_progress')
-          .insert([
-            { user_id: data.user.id, completed_courses: 'Started Platform' }
-          ]);
+// 3. التشغيل التلقائي فور تحميل الصفحة
+document.addEventListener('DOMContentLoaded', () => {
+  checkAuthState();
 
-        if (dbError) {
-          console.error("Error saving progress:", dbError.message);
-        }
-      }
+  const signinButton = document.getElementById('signin-btn');
+  const signupButton = document.getElementById('signup-btn');
 
-      alert('Account created successfully! You can now sign in.');
+  if (signinButton) {
+    signinButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      handleAuthAction(false); // تسجيل دخول
     });
   }
 
-  // 2. زرار تسجيل الدخول (Sign In)
-  if (loginBtn) {
-    loginBtn.addEventListener('click', async () => {
-      const email = emailInput.value;
-      const password = passwordInput.value;
-
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: email,
-        password: password,
-      });
-
-      if (error) {
-        errorMsg.textContent = error.message;
-      } else {
-        alert('Welcome back to FAYAD Platform!');
-        window.location.href = 'index.html'; // يرجعك للرئيسية ومسجل دخول
-      }
+  if (signupButton) {
+    signupButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      handleAuthAction(true); // إنشاء حساب جديد
     });
   }
-})();
+});

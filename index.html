@@ -476,5 +476,37 @@
   ========================== -->
 
     <script src="js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+    const SUPABASE_URL = 'https://your-project.supabase.co';
+    const SUPABASE_ANON_KEY = 'your-anon-key';
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        const { data: { session } } = await supabaseClient.auth.getSession();
+        const signinBtn = document.getElementById('user-account-section') || document.querySelector('.btn-signin');
+        
+        if (session && signinBtn) {
+            const user = session.user;
+            const initial = user.email ? user.email.charAt(0).toUpperCase() : 'F';
+            
+            signinBtn.href = "#";
+            signinBtn.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 8px; justify-content: center;">
+                    <div style="width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #f97316, #ea580c); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px; box-shadow: 0 3px 10px rgba(249, 115, 22, 0.4);">
+                        ${initial}
+                    </div>
+                    <span style="font-size: 13px; color: #ef4444; font-weight: 600;">Logout</span>
+                </div>
+            `;
+
+            signinBtn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                await supabaseClient.auth.signOut();
+                window.location.reload();
+            });
+        }
+    });
+</script>
   </body>
 </html>

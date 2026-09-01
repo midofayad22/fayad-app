@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In - FAYAD Platform</title>
+    <!-- مكتبة Supabase الرسمية من CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link rel="stylesheet" href="css/style.css">
     <style>
@@ -37,7 +38,6 @@
         .auth-card input {
             width: 100%;
             padding: 12px 15px;
-            margin-bottom: 15px;
             background: rgba(11, 15, 25, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.15);
             color: #fff;
@@ -51,6 +51,11 @@
             outline: none;
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
         }
+        .input-group {
+            position: relative;
+            width: 100%;
+            margin-bottom: 15px;
+        }
         .auth-card button {
             width: 100%;
             padding: 12px;
@@ -62,11 +67,11 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        #login-btn {
+        #signin-btn {
             background: linear-gradient(135deg, #2563eb, #1d4ed8);
             color: #fff;
         }
-        #login-btn:hover {
+        #signin-btn:hover {
             background: linear-gradient(135deg, #1d4ed8, #1e40af);
             transform: translateY(-1px);
         }
@@ -103,14 +108,20 @@
     <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
-
     <div class="auth-card">
         <h2>Welcome to FAYAD</h2>
         
-        <input type="email" id="email" placeholder="Email Address">
-        <input type="password" id="password" placeholder="Password">
+        <div class="input-group">
+            <input type="email" id="email" placeholder="Email Address">
+        </div>
+
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Password" style="padding-left: 15px; padding-right: 45px;">
+            <span id="toggle-password" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #888; font-size: 16px; user-select: none;">👁️</span>
+        </div>
         
-        <button id="login-btn">Sign In</button>
+        <!-- شلنا type="button" وخليناه زرار عادي مباشر عشان يستجيب للـ Click فوري -->
+        <button id="signin-btn">Sign In</button>
         <button id="signup-btn">Sign Up</button>
         
         <p id="error-msg"></p>
@@ -118,6 +129,72 @@
         <a href="index.html" class="back-link">← Back to Home</a>
     </div>
 
-    <script src="js/auth-actions.js"></script>
+    <!-- كود إظهار/إخفاء الباسورد -->
+    <script>
+        const togglePassword = document.getElementById('toggle-password');
+        const passwordInput = document.getElementById('password');
+
+        if (togglePassword && passwordInput) {
+            togglePassword.addEventListener('click', () => {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                togglePassword.textContent = type === 'password' ? '👁️' : '👁️‍🗨️';
+            });
+        }
+    </script>
+
+    <!-- كود الـ JavaScript المباشر لتشغيل الـ Supabase والتحكم في الأزرار -->
+    <script>
+        // ضع هنا بيانات الـ Supabase الحقيقية الخاصة بك
+        const SUPABASE_URL = 'https://vsrysitexadvmmikcmfs.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_qo4ZB-vWkWThCQpoGtSRSw_2oaStgyp';
+
+        // التأكد من تحميل المكتبة وبدء الاتصال
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        async function handleAuth(isSignUp) {
+            const emailField = document.getElementById('email');
+            const passwordField = document.getElementById('password');
+            const errorElement = document.getElementById('error-msg');
+
+            const email = emailField.value.trim();
+            const password = passwordField.value.trim();
+
+            if (!email || !password) {
+                errorElement.innerText = 'الرجاء إدخال البريد الإلكتروني وكلمة المرور.';
+                return;
+            }
+
+            errorElement.innerText = 'جاري تنفيذ الطلب...';
+
+            try {
+                let response;
+                if (isSignUp) {
+                    response = await supabaseClient.auth.signUp({ email, password });
+                } else {
+                    response = await supabaseClient.auth.signInWithPassword({ email, password });
+                }
+
+                if (response.error) {
+                    throw response.error;
+                }
+
+                // لو العملية نجحت، يحولك فوري على الصفحة الرئيسية
+                window.location.href = 'index.html';
+
+            } catch (err) {
+                errorElement.innerText = 'خطأ: ' + err.message;
+            }
+        }
+
+        // ربط الأحداث بالأزرار فور فتح الصفحة
+        document.getElementById('signin-btn').addEventListener('click', () => {
+            handleAuth(false); // تسجيل دخول
+        });
+
+        document.getElementById('signup-btn').addEventListener('click', () => {
+            handleAuth(true); // إنشا حساب جديد
+        });
+    </script>
 </body>
 </html>
