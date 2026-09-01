@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Basics | Fayyad App</title>
+    <!-- ربط ملف الـ CSS الخاص بصفحة البرمجة -->
+    <link rel="stylesheet" href="prg.css">
+    <!-- FontAwesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- الهيدر العلوي -->
+    <header class="app-header">
+        <div class="header-content">
+            <a href="../../index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to App</a>
+            <h1><i class="fa-solid fa-code"></i> Programming Basics & History</h1>
+            <p>Understand how human logic translates into machine execution through programming languages.</p>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="container">
+        
+        <!-- قسم تعريف البرمجة -->
+        <section class="card">
+            <div class="card-icon"><i class="fa-solid fa-terminal"></i></div>
+            <h2>1. What is Programming?</h2>
+            <p>Programming is the process of creating a set of instructions that tell a computer how to perform a specific task. Think of it as writing a recipe: step-by-step instructions that the computer follows meticulously to achieve a desired outcome.</p>
+        </section>
+
+        <!-- قسم تاريخ وتطور لغات البرمجة -->
+        <section class="card" id="prg-history-section">
+            <div class="card-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            <h2>2. Evolution of Programming Languages</h2>
+            <p>Programming languages have evolved significantly over decades, moving closer to human language and abstract thinking:</p>
+            <div class="timeline-box">
+                <div class="timeline-item">
+                    <span class="t-year">1843</span>
+                    <p>Ada Lovelace writes the first algorithm for Babbage's mechanical computer, becoming history's first programmer.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="t-year">1950s</span>
+                    <p>Introduction of Assembly language and high-level languages like Fortran and Lisp.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="t-year">1970s</span>
+                    <p>Dennis Ritchie creates **C** at Bell Labs, revolutionizing operating systems and software engineering.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="t-year">1990s-Present</span>
+                    <p>Rise of Web technologies (HTML, CSS, JavaScript) and modern object-oriented/dynamic languages (Python, React, etc.).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم المفاهيم الأساسية (Core Concepts) -->
+        <section class="card">
+            <div class="card-icon"><i class="fa-solid fa-cubes"></i></div>
+            <h2>3. Core Programming Concepts</h2>
+            <p>Almost every programming language shares fundamental building blocks:</p>
+            <div class="concepts-grid">
+                <div class="concept-box">
+                    <h3>Variables</h3>
+                    <p>Containers for storing data values (like text, numbers, or booleans).</p>
+                </div>
+                <div class="concept-box">
+                    <h3>Control Flow</h3>
+                    <p>Conditions (`if/else`) and loops (`for/while`) that direct how code executes.</p>
+                </div>
+                <div class="concept-box">
+                    <h3>Functions</h3>
+                    <p>Reusable blocks of code designed to perform a particular task.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم محاكي الأكواد التفاعلي -->
+        <section class="card interactive-compiler">
+            <div class="card-icon"><i class="fa-solid fa-play"></i></div>
+            <h2>4. Interactive JS Code Simulator</h2>
+            <p>Test a basic JavaScript snippet right here in your browser simulator!</p>
+            <div class="code-editor-box">
+                <pre><code>let developer = "Abdullhamid";
+let level = "Junior Frontend";
+console.log(developer + " is a " + level + " developer!");</code></pre>
+                <button id="run-code-btn" class="action-btn"><i class="fa-solid fa-bolt"></i> Run Code</button>
+                <div id="console-output" class="console-box">Console Output will appear here...</div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- الفوتر -->
+    <footer>
+        <p>&copy; 2026 Fayyad App - Designed by Abdullhamid Fayad</p>
+    </footer>
+
+    <!-- ربط ملف الـ JS -->
+    <script src="prg.js"></script>
+</body>
+</html>
