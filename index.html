@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="FAYAD — A modern interactive platform for learning Front-End development through interactive lessons, practice, coding challenges, and real projects." />
+
+    <title>FAYAD — Modern Web Learning Platform</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- =========================
+     NAVBAR
+  ========================== -->
+
+    <header class="navbar">
+      <!-- FAYAD BRAND -->
+      <a href="index.html" class="logo" aria-label="FAYAD Home">
+        
+
+        <span class="logo-text">FAYAD</span>
+      </a>
+
+      <!-- NAVIGATION -->
+
+      <nav class="nav-links">
+        <a href="#home" data-i18n="nav.home"> Home </a>
+
+        <a href="#tracks" data-i18n="nav.tracks"> Tracks </a>
+
+        <a href="#practice" data-i18n="nav.practice"> Practice </a>
+
+        <a href="#projects" data-i18n="nav.projects"> Projects </a>
+      </nav>
+
+      <!-- NAV ACTIONS -->
+
+      <div class="nav-actions">
+        <!-- LANGUAGE BUTTON -->
+
+        <button
+          class="language-btn"
+          id="languageToggle"
+          type="button"
+          aria-label="Change language"
+          aria-pressed="false">
+          <span id="languageLabel">AR</span>
+        </button>
+
+        <!-- MENU BUTTON -->
+
+        <button class="menu-btn" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
+    </header>
+
+    <!-- =========================
+     SIDE / DROPDOWN MENU
+  ========================== -->
+
+    <aside class="site-menu" id="siteMenu" aria-hidden="true">
+      <div class="site-menu-header">
+        <div>
+          <span class="menu-eyebrow" data-i18n="menu.label"> FAYAD </span>
+
+          <h2 data-i18n="menu.title">Explore</h2>
+        </div>
+
+        <button class="menu-close" id="menuClose" type="button" aria-label="Close menu">×</button>
+      </div>
+
+      <div class="site-menu-content">
+        <!-- =========================
+         LEARNING
+      ========================== -->
+
+        <div class="menu-section">
+          <span class="menu-section-label" data-i18n="menu.learning"> Learning </span>
+
+          <a href="#tracks" class="menu-link">
+            <strong data-i18n="menu.webFundamentals"> Web Fundamentals </strong>
+
+            <small data-i18n="menu.webFundamentalsDesc"> HTML, CSS, JavaScript </small>
+          </a>
+
+          <a href="#tracks" class="menu-link">
+            <strong data-i18n="menu.frameworks"> Front-End Frameworks </strong>
+
+            <small data-i18n="menu.frameworksDesc"> React, Angular, Vue </small>
+          </a>
+        </div>
+
+        <!-- =========================
+         TECHNOLOGIES
+      ========================== -->
+
+        <div class="menu-section">
+          <span class="menu-section-label" data-i18n="menu.technologies"> Technologies </span>
+
+          <a href="html-learning/html-learning.html" class="menu-link">
+            <strong> HTML </strong>
+
+            <small data-i18n="menu.htmlDesc"> Structure of the Web </small>
+          </a>
+
+          <a href="css-learning/css-learning.html" class="menu-link">
+            <strong> CSS </strong>
+
+            <small data-i18n="menu.cssDesc"> Design & Styling </small>
+          </a>
+
+          <a href="javascript-learning/javascript-learning.html" class="menu-link">
+            <strong> JavaScript </strong>
+
+            <small data-i18n="menu.javascriptDesc"> Logic & Interaction </small>
+          </a>
+        </div>
+
+        <!-- =========================
+         FRAMEWORKS
+      ========================== -->
+
+        <div class="menu-section">
+          <span class="menu-section-label" data-i18n="menu.frameworksSection"> Frameworks </span>
+
+          <a href="react-learning/react-learning.html" class="menu-link">
+            <strong> React </strong>
+
+            <small data-i18n="menu.reactDesc"> Component-based UI </small>
+          </a>
+
+          <a href="angular-learning/angular-learning.html" class="menu-link">
+            <strong> Angular </strong>
+
+            <small data-i18n="menu.angularDesc"> Structured applications </small>
+          </a>
+
+          <a href="vue-learning/vue-learning.html" class="menu-link">
+            <strong> Vue </strong>
+
+            <small data-i18n="menu.vueDesc"> Progressive UI framework </small>
+          </a>
+        </div>
+
+        <!-- =========================
+         COMPUTER & PROGRAMMING
+      ========================== -->
+
+        <div class="menu-section">
+          <span class="menu-section-label" data-i18n="menu.fundamentals"> Fundamentals </span>
+
+          <a href="#" class="menu-link">
+            <strong data-i18n="menu.computerBasics"> Computer Basics </strong>
+
+            <small data-i18n="menu.computerBasicsDesc"> Computer concepts & history </small>
+          </a>
+
+          <a href="#" class="menu-link">
+            <strong data-i18n="menu.programmingBasics"> Programming Basics </strong>
+
+            <small data-i18n="menu.programmingBasicsDesc"> Programming concepts & history </small>
+          </a>
+        </div>
+
+        <!-- =========================
+         ABOUT FAYAD
+      ========================== -->
+
+        <div class="menu-section menu-about">
+          <span class="menu-section-label" data-i18n="menu.about"> About </span>
+
+          <a href="#" class="menu-link">
+            <strong data-i18n="menu.aboutFayad"> About Abdullhamid Fayad </strong>
+
+            <small data-i18n="menu.aboutFayadDesc"> Learn more about the creator </small>
+          </a>
+        </div>
+
+        <!-- =========================
+         SOCIAL / CONTACT
+      ========================== -->
+
+        <div class="menu-contact">
+          <span class="menu-section-label" data-i18n="menu.connect"> Connect </span>
+
+          <div class="menu-socials">
+            <!-- GitHub -->
+            <a href="https://github.com/midofayad22" target="_blank" rel="noopener noreferrer"> GitHub </a>
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/abdullhamid-f-800bb5379" target="_blank" rel="noopener noreferrer">
+              LinkedIn
+            </a>
+
+            <!-- Facebook -->
+            <a
+              href="https://www.facebook.com/share/1D2SmWfCnX/?mibextid=wwXIfr"
+              target="_blank"
+              rel="noopener noreferrer">
+              Facebook
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/abdullhamid_fayad22" target="_blank" rel="noopener noreferrer">
+              Instagram
+            </a>
+          </div>
+
+          <!-- PHONE -->
+
+          <a href="tel:+201091573063" class="menu-phone">
+            <span data-i18n="menu.phone"> Phone </span>
+
+            <span> +20 109 157 3063 </span>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MENU OVERLAY -->
+
+    <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
+
+    <!-- =========================
+     MAIN
+  ========================== -->
+
+    <main>
+      <!-- =========================
+       HERO
+    ========================== -->
+
+      <section id="home" class="hero">
+        <div class="hero-content">
+          <!-- BRAND INTRO -->
+
+          <div class="hero-brand">
+            <span class="hero-brand-name"> FAYAD </span>
+
+            <span class="hero-brand-line"> Modern Web Learning Platform </span>
+          </div>
+
+          <!-- EYEBROW -->
+
+          <p class="eyebrow" data-i18n="hero.eyebrow">LEARN WEB DEVELOPMENT THE RIGHT WAY</p>
+
+          <!-- MAIN TITLE -->
+
+          <h1>
+            <span data-i18n="hero.learn"> Learn. </span>
+
+            <span data-i18n="hero.build"> Build. </span>
+
+            <span data-i18n="hero.become"> Become. </span>
+          </h1>
+
+          <!-- BRAND DESCRIPTION -->
+
+          <p class="hero-description" data-i18n="hero.description">
+            FAYAD is a modern interactive platform designed to help you learn Front-End development through structured
+            lessons, hands-on practice, coding challenges, and real projects.
+          </p>
+
+          <!-- HERO ACTIONS -->
+
+          <div class="hero-actions">
+            <a href="#tracks" class="btn btn-primary" data-i18n="hero.startLearning"> Start Learning </a>
+
+            <a href="#practice" class="btn btn-secondary" data-i18n="hero.explorePractice"> Explore Practice </a>
+          </div>
+        </div>
+
+        <!-- PROFILE -->
+
+        <div class="hero-profile">
+          <div class="profile-glow"></div>
+
+          <img src="assets/images/profile.webp" alt="Abdullhamid Fayad" data-i18n-alt="hero.profileAlt" />
+        </div>
+      </section>
+
+      <!-- =========================
+       LEARNING PATHS
+    ========================== -->
+
+      <section id="tracks" class="section">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="tracks.eyebrow">LEARNING PATHS</p>
+
+          <h2 data-i18n="tracks.title">Choose your path.</h2>
+
+          <p data-i18n="tracks.description">Start with the fundamentals, then move into modern Front-End frameworks.</p>
+        </div>
+
+        <!-- WEB FUNDAMENTALS -->
+
+        <div class="learning-group">
+          <div class="group-heading">
+            <span> 01 </span>
+
+            <h3 data-i18n="tracks.webFundamentals">Web Fundamentals</h3>
+
+            <p data-i18n="tracks.webFundamentalsDesc">Master the core technologies of the web.</p>
+          </div>
+
+          <div class="tracks-grid">
+            <!-- HTML -->
+
+            <article class="track-card" data-track="HTML">
+              <span> 01 </span>
+
+              <h3>HTML</h3>
+
+              <p data-i18n="tracks.htmlDesc">Build the structure and meaning of modern websites.</p>
+
+              <a href="html-learning/html-learning.html" class="track-btn" data-i18n="tracks.startLearning">
+                Start Learning →
+              </a>
+            </article>
+
+            <!-- CSS -->
+
+            <article class="track-card" data-track="CSS">
+              <span> 02 </span>
+
+              <h3>CSS</h3>
+
+              <p data-i18n="tracks.cssDesc">Design responsive and beautiful user interfaces.</p>
+
+              <a href="css-learning/css-learning.html" class="track-btn" data-i18n="tracks.startLearning">
+                Start Learning →
+              </a>
+            </article>
+
+            <!-- JAVASCRIPT -->
+
+            <article class="track-card" data-track="JavaScript">
+              <span> 03 </span>
+
+              <h3>JavaScript</h3>
+
+              <p data-i18n="tracks.javascriptDesc">Add logic, behavior, and interaction to your websites.</p>
+
+              <a href="javascript-learning/javascript-learning.html" class="track-btn" data-i18n="tracks.startLearning">
+                Start Learning →
+              </a>
+            </article>
+          </div>
+        </div>
+
+        <!-- FRONT-END FRAMEWORKS -->
+
+        <div class="learning-group">
+          <div class="group-heading">
+            <span> 02 </span>
+
+            <h3 data-i18n="tracks.frontendFrameworks">Front-End Frameworks</h3>
+
+            <p data-i18n="tracks.frontendFrameworksDesc">Build scalable and modern web applications.</p>
+          </div>
+
+          <div class="tracks-grid">
+            <!-- REACT -->
+
+            <article class="track-card" data-track="React">
+              <span> 01 </span>
+
+              <h3>React</h3>
+
+              <p data-i18n="tracks.reactDesc">Build modern component-based user interfaces.</p>
+
+              <a href="react-learning/react-learning.html" class="track-btn" data-i18n="tracks.exploreReact">
+                Explore React →
+              </a>
+            </article>
+
+            <!-- ANGULAR -->
+
+            <article class="track-card" data-track="Angular">
+              <span> 02 </span>
+
+              <h3>Angular</h3>
+
+              <p data-i18n="tracks.angularDesc">Learn structured development for large-scale applications.</p>
+
+              <a href="angular-learning/angular-learning.html" class="track-btn" data-i18n="tracks.exploreAngular">
+                Explore Angular →
+              </a>
+            </article>
+
+            <!-- VUE -->
+
+            <article class="track-card" data-track="Vue">
+              <span> 03 </span>
+
+              <h3>Vue</h3>
+
+              <p data-i18n="tracks.vueDesc">Build flexible and progressive user interfaces.</p>
+
+              <a href="vue-learning/vue-learning.html" class="track-btn" data-i18n="tracks.exploreVue">
+                Explore Vue →
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+       PRACTICE
+    ========================== -->
+
+      <section id="practice" class="section practice-section">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="practice.eyebrow">PRACTICE</p>
+
+          <h2>
+            <span data-i18n="practice.title"> Don't just learn. </span>
+
+            <span data-i18n="practice.highlight"> Practice. </span>
+          </h2>
+
+          <p data-i18n="practice.description">Write code, see the result, solve challenges, and test your knowledge.</p>
+        </div>
+      </section>
+
+      <!-- =========================
+       PROJECTS
+    ========================== -->
+
+      <section id="projects" class="section">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="projects.eyebrow">REAL PROJECTS</p>
+
+          <h2 data-i18n="projects.title">Build something real.</h2>
+
+          <p data-i18n="projects.description">
+            Turn what you learn into projects you can actually put in your portfolio.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- =========================
+     FOOTER
+  ========================== -->
+
+    <footer class="footer">
+      <p data-i18n="footer">© 2026 FAYAD. Built by Abdullhamid Fayad.</p>
+    </footer>
+
+    <!-- =========================
+     JAVASCRIPT
+  ========================== -->
+
+    <script src="js/app.js"></script>
+  </body>
+</html>

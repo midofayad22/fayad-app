@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="FAYAD React Learning Path — Learn React through structured lessons, examples, challenges and practice." />
+
+    <title>FAYAD — React Learning</title>
+
+    <link rel="stylesheet" href="react-learning.css" />
+  </head>
+
+  <body>
+    <!-- =========================
+         TOP NAVBAR
+    ========================== -->
+
+    <header class="learning-navbar">
+      <a href="../index.html" class="learning-logo">F</a>
+
+      <div class="learning-title">
+        <span>FAYAD</span>
+        <strong>React Learning Path</strong>
+      </div>
+
+      <div class="learning-actions">
+        <a href="../index.html" class="back-btn">Back</a>
+      </div>
+    </header>
+
+    <!-- =========================
+         MAIN LEARNING LAYOUT
+    ========================== -->
+
+    <main class="learning-layout">
+      <!-- =========================
+           SIDEBAR
+      ========================== -->
+
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <p>LEARNING PATH</p>
+          <h2>React</h2>
+        </div>
+
+        <!-- REACT FUNDAMENTALS -->
+
+        <div class="topic-group">
+          <h3>REACT FUNDAMENTALS</h3>
+
+          <a href="#lesson-1" class="lesson active">
+            <span class="lesson-status current">01</span>
+            <span class="lesson-name">Introduction to React</span>
+          </a>
+
+          <a href="#lesson-2" class="lesson">
+            <span class="lesson-status">02</span>
+            <span class="lesson-name">Why React?</span>
+          </a>
+
+          <a href="#lesson-3" class="lesson">
+            <span class="lesson-status">03</span>
+            <span class="lesson-name">Components</span>
+          </a>
+
+          <a href="#lesson-4" class="lesson">
+            <span class="lesson-status">04</span>
+            <span class="lesson-name">JSX</span>
+          </a>
+
+          <a href="#lesson-5" class="lesson">
+            <span class="lesson-status">05</span>
+            <span class="lesson-name">Props</span>
+          </a>
+
+          <a href="#lesson-6" class="lesson">
+            <span class="lesson-status">06</span>
+            <span class="lesson-name">State</span>
+          </a>
+        </div>
+
+        <!-- CORE REACT -->
+
+        <div class="topic-group">
+          <h3>CORE REACT</h3>
+
+          <a href="#lesson-7" class="lesson">
+            <span class="lesson-status">07</span>
+            <span class="lesson-name">Events</span>
+          </a>
+
+          <a href="#lesson-8" class="lesson">
+            <span class="lesson-status">08</span>
+            <span class="lesson-name">Conditional Rendering</span>
+          </a>
+
+          <a href="#lesson-9" class="lesson">
+            <span class="lesson-status">09</span>
+            <span class="lesson-name">Lists & Keys</span>
+          </a>
+
+          <a href="#lesson-10" class="lesson">
+            <span class="lesson-status">10</span>
+            <span class="lesson-name">Forms</span>
+          </a>
+
+          <a href="#lesson-11" class="lesson">
+            <span class="lesson-status">11</span>
+            <span class="lesson-name">Component Composition</span>
+          </a>
+
+          <a href="#lesson-12" class="lesson">
+            <span class="lesson-status">12</span>
+            <span class="lesson-name">Hooks Introduction</span>
+          </a>
+        </div>
+
+        <!-- REACT HOOKS -->
+
+        <div class="topic-group">
+          <h3>REACT HOOKS</h3>
+
+          <a href="#lesson-13" class="lesson">
+            <span class="lesson-status">13</span>
+            <span class="lesson-name">useState</span>
+          </a>
+
+          <a href="#lesson-14" class="lesson">
+            <span class="lesson-status">14</span>
+            <span class="lesson-name">useEffect</span>
+          </a>
+
+          <a href="#lesson-15" class="lesson">
+            <span class="lesson-status">15</span>
+            <span class="lesson-name">useRef</span>
+          </a>
+
+          <a href="#lesson-16" class="lesson">
+            <span class="lesson-status">16</span>
+            <span class="lesson-name">useContext</span>
+          </a>
+
+          <a href="#lesson-17" class="lesson">
+            <span class="lesson-status">17</span>
+            <span class="lesson-name">Custom Hooks</span>
+          </a>
+        </div>
+
+        <!-- ADVANCED REACT -->
+
+        <div class="topic-group">
+          <h3>ADVANCED REACT</h3>
+
+          <a href="#lesson-18" class="lesson">
+            <span class="lesson-status">18</span>
+            <span class="lesson-name">React Router</span>
+          </a>
+
+          <a href="#lesson-19" class="lesson">
+            <span class="lesson-status">19</span>
+            <span class="lesson-name">API Requests</span>
+          </a>
+
+          <a href="#lesson-20" class="lesson">
+            <span class="lesson-status">20</span>
+            <span class="lesson-name">Loading & Error States</span>
+          </a>
+
+          <a href="#lesson-21" class="lesson">
+            <span class="lesson-status">21</span>
+            <span class="lesson-name">Performance</span>
+          </a>
+
+          <a href="#lesson-22" class="lesson">
+            <span class="lesson-status">22</span>
+            <span class="lesson-name">React.memo</span>
+          </a>
+
+          <a href="#lesson-23" class="lesson">
+            <span class="lesson-status">23</span>
+            <span class="lesson-name">useMemo & useCallback</span>
+          </a>
+
+          <a href="#lesson-24" class="lesson">
+            <span class="lesson-status">24</span>
+            <span class="lesson-name">State Management</span>
+          </a>
+        </div>
+
+        <!-- MODERN REACT -->
+
+        <div class="topic-group">
+          <h3>MODERN REACT</h3>
+
+          <a href="#lesson-25" class="lesson">
+            <span class="lesson-status">25</span>
+            <span class="lesson-name">React Architecture</span>
+          </a>
+
+          <a href="#lesson-26" class="lesson">
+            <span class="lesson-status">26</span>
+            <span class="lesson-name">Reusable Components</span>
+          </a>
+
+          <a href="#lesson-27" class="lesson">
+            <span class="lesson-status">27</span>
+            <span class="lesson-name">Project Structure</span>
+          </a>
+
+          <a href="#lesson-28" class="lesson">
+            <span class="lesson-status">28</span>
+            <span class="lesson-name">Best Practices</span>
+          </a>
+
+          <a href="#lesson-29" class="lesson">
+            <span class="lesson-status">29</span>
+            <span class="lesson-name">React + APIs</span>
+          </a>
+
+          <a href="#lesson-30" class="lesson">
+            <span class="lesson-status">30</span>
+            <span class="lesson-name">Final React Project</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- =========================
+           LESSON CONTENT
+      ========================== -->
+
+      <section class="lesson-content">
+        <!-- PROGRESS -->
+
+        <div class="progress-area">
+          <div class="progress-info">
+            <span>React Progress</span>
+            <strong id="progressText">3%</strong>
+          </div>
+
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </div>
+
+        <!-- LESSON HEADER -->
+
+        <div class="lesson-header" id="lesson-1">
+          <span class="lesson-number" id="lessonNumber"> LESSON 01 </span>
+
+          <h1 id="lessonTitle">Introduction to React</h1>
+
+          <p id="lessonDescription">
+            Learn what React is, why developers use it, and how React helps build modern user interfaces.
+          </p>
+        </div>
+
+        <!-- WHAT IS REACT -->
+
+        <article class="content-card">
+          <h2>What is React?</h2>
+
+          <p>React is a JavaScript library used to build user interfaces.</p>
+
+          <p>It helps developers create reusable UI components and build interactive web applications.</p>
+
+          <p>React was designed around the idea of building a user interface from small, reusable components.</p>
+        </article>
+
+        <!-- KEY IDEA -->
+
+        <article class="content-card highlight-card">
+          <div class="info-label">KEY IDEA</div>
+
+          <h2>React is built around components</h2>
+
+          <p>
+            Instead of building an entire page as one large piece of code, React allows you to divide the interface into
+            smaller reusable components.
+          </p>
+        </article>
+
+        <!-- CODE EXAMPLE -->
+
+        <article class="example-card">
+          <div class="example-header">
+            <div>
+              <span>CODE EXAMPLE</span>
+
+              <h2>Your first React component</h2>
+            </div>
+
+            <button class="copy-btn" id="copyButton" type="button">Copy</button>
+          </div>
+
+          <pre><code id="exampleCode"></code></pre>
+        </article>
+
+        <!-- RESULT -->
+
+        <article class="result-card">
+          <div class="result-header">
+            <span>RESULT</span>
+          </div>
+
+          <div class="result-preview">
+            <div id="reactResult">Hello FAYAD</div>
+          </div>
+        </article>
+
+        <!-- EXPLANATION -->
+
+        <article class="content-card">
+          <h2>Understanding the code</h2>
+
+          <p><code>function</code> creates a JavaScript function.</p>
+
+          <p><code>App</code> is the name of our React component.</p>
+
+          <p><code>return</code> specifies what the component should display.</p>
+
+          <p>JSX allows us to write HTML-like syntax inside JavaScript.</p>
+        </article>
+
+        <!-- PRACTICE -->
+
+        <article class="practice-card">
+          <div class="practice-header">
+            <div>
+              <span>TRY IT YOURSELF</span>
+
+              <h2>Write React</h2>
+            </div>
+          </div>
+
+          <p class="practice-description">Change the component below and run your code to see the result.</p>
+
+          <textarea id="codeEditor" spellcheck="false">
+function App() {
+  return &lt;h1&gt;Hello FAYAD&lt;/h1&gt;;
+}</textarea
+          >
+
+          <div class="practice-actions">
+            <button class="run-btn" id="runCode" type="button">Run Code</button>
+
+            <button class="reset-btn" id="resetCode" type="button">Reset</button>
+          </div>
+
+          <div class="practice-output">
+            <span>OUTPUT</span>
+
+            <div id="output">Your result will appear here.</div>
+          </div>
+        </article>
+
+        <!-- QUICK CHECK -->
+
+        <article class="check-card">
+          <span>QUICK CHECK</span>
+
+          <h2>What is React mainly used for?</h2>
+
+          <p>Choose the best answer.</p>
+
+          <div class="answer-options">
+            <button type="button" data-answer="correct">Building user interfaces</button>
+
+            <button type="button" data-answer="wrong">Managing databases only</button>
+
+            <button type="button" data-answer="wrong">Styling pages without JavaScript</button>
+          </div>
+
+          <div class="check-feedback" id="checkFeedback"></div>
+        </article>
+
+        <!-- NAVIGATION -->
+
+        <div class="lesson-navigation">
+          <button class="nav-btn previous" id="previousButton" type="button">
+            <span>←</span>
+
+            <div>
+              <small>Previous</small>
+              <strong>JavaScript Learning</strong>
+            </div>
+          </button>
+
+          <button class="nav-btn next" id="nextButton" type="button">
+            <div>
+              <small>Next Lesson</small>
+              <strong>Why React?</strong>
+            </div>
+
+            <span>→</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script src="react-learning.js"></script>
+  </body>
+</html>

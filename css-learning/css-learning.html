@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="FAYAD CSS Learning Path — Learn CSS through structured lessons, examples, challenges, and practice." />
+
+    <title>FAYAD — CSS Learning</title>
+
+    <link rel="stylesheet" href="css-learning.css" />
+  </head>
+
+  <body>
+    <!-- =========================
+       TOP NAVBAR
+  ========================== -->
+
+    <header class="learning-navbar">
+      <a href="../index.html" class="learning-logo"> F </a>
+
+      <div class="learning-title">
+        <span>FAYAD</span>
+        <strong id="learningPathTitle"> CSS Learning Path </strong>
+      </div>
+
+      <div class="learning-actions">
+        <a href="../index.html" class="back-btn" id="backButton"> ← Back </a>
+      </div>
+    </header>
+
+    <!-- =========================
+       MAIN LAYOUT
+  ========================== -->
+
+    <main class="learning-layout">
+      <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <p id="learningPathLabel">LEARNING PATH</p>
+
+          <h2>CSS</h2>
+        </div>
+
+        <!-- =========================
+           CSS BASICS
+      ========================== -->
+
+        <div class="topic-group">
+          <h3 id="groupBasics">CSS BASICS</h3>
+
+          <button class="lesson active" data-lesson="0">
+            <span class="lesson-status current">01</span>
+            <span class="lesson-name"> Introduction to CSS </span>
+          </button>
+
+          <button class="lesson" data-lesson="1">
+            <span class="lesson-status">02</span>
+            <span class="lesson-name"> CSS Syntax </span>
+          </button>
+
+          <button class="lesson" data-lesson="2">
+            <span class="lesson-status">03</span>
+            <span class="lesson-name"> Selectors </span>
+          </button>
+
+          <button class="lesson" data-lesson="3">
+            <span class="lesson-status">04</span>
+            <span class="lesson-name"> Colors </span>
+          </button>
+
+          <button class="lesson" data-lesson="4">
+            <span class="lesson-status">05</span>
+            <span class="lesson-name"> Backgrounds </span>
+          </button>
+
+          <button class="lesson" data-lesson="5">
+            <span class="lesson-status">06</span>
+            <span class="lesson-name"> Borders </span>
+          </button>
+        </div>
+
+        <!-- =========================
+           BOX MODEL
+      ========================== -->
+
+        <div class="topic-group">
+          <h3 id="groupBoxModel">BOX MODEL</h3>
+
+          <button class="lesson" data-lesson="6">
+            <span class="lesson-status">07</span>
+            <span class="lesson-name"> Width & Height </span>
+          </button>
+
+          <button class="lesson" data-lesson="7">
+            <span class="lesson-status">08</span>
+            <span class="lesson-name"> Margin </span>
+          </button>
+
+          <button class="lesson" data-lesson="8">
+            <span class="lesson-status">09</span>
+            <span class="lesson-name"> Padding </span>
+          </button>
+
+          <button class="lesson" data-lesson="9">
+            <span class="lesson-status">10</span>
+            <span class="lesson-name"> Box Model </span>
+          </button>
+
+          <button class="lesson" data-lesson="10">
+            <span class="lesson-status">11</span>
+            <span class="lesson-name"> Box Sizing </span>
+          </button>
+        </div>
+
+        <!-- =========================
+           TEXT & FONTS
+      ========================== -->
+
+        <div class="topic-group">
+          <h3 id="groupTextFonts">TEXT & FONTS</h3>
+
+          <button class="lesson" data-lesson="11">
+            <span class="lesson-status">12</span>
+            <span class="lesson-name"> Text Styling </span>
+          </button>
+
+          <button class="lesson" data-lesson="12">
+            <span class="lesson-status">13</span>
+            <span class="lesson-name"> Fonts </span>
+          </button>
+
+          <button class="lesson" data-lesson="13">
+            <span class="lesson-status">14</span>
+            <span class="lesson-name"> Line Height </span>
+          </button>
+
+          <button class="lesson" data-lesson="14">
+            <span class="lesson-status">15</span>
+            <span class="lesson-name"> Text Alignment </span>
+          </button>
+        </div>
+
+        <!-- =========================
+           LAYOUT
+      ========================== -->
+
+        <div class="topic-group">
+          <h3 id="groupLayout">LAYOUT</h3>
+
+          <button class="lesson" data-lesson="15">
+            <span class="lesson-status">16</span>
+            <span class="lesson-name"> Display </span>
+          </button>
+
+          <button class="lesson" data-lesson="16">
+            <span class="lesson-status">17</span>
+            <span class="lesson-name"> Position </span>
+          </button>
+
+          <button class="lesson" data-lesson="17">
+            <span class="lesson-status">18</span>
+            <span class="lesson-name"> Flexbox </span>
+          </button>
+
+          <button class="lesson" data-lesson="18">
+            <span class="lesson-status">19</span>
+            <span class="lesson-name"> CSS Grid </span>
+          </button>
+
+          <button class="lesson" data-lesson="19">
+            <span class="lesson-status">20</span>
+            <span class="lesson-name"> Responsive Design </span>
+          </button>
+        </div>
+
+        <!-- =========================
+           MODERN CSS
+      ========================== -->
+
+        <div class="topic-group">
+          <h3 id="groupModern">MODERN CSS</h3>
+
+          <button class="lesson" data-lesson="20">
+            <span class="lesson-status">21</span>
+            <span class="lesson-name"> Pseudo-classes </span>
+          </button>
+
+          <button class="lesson" data-lesson="21">
+            <span class="lesson-status">22</span>
+            <span class="lesson-name"> Pseudo-elements </span>
+          </button>
+
+          <button class="lesson" data-lesson="22">
+            <span class="lesson-status">23</span>
+            <span class="lesson-name"> Transitions </span>
+          </button>
+
+          <button class="lesson" data-lesson="23">
+            <span class="lesson-status">24</span>
+            <span class="lesson-name"> Transforms </span>
+          </button>
+
+          <button class="lesson" data-lesson="24">
+            <span class="lesson-status">25</span>
+            <span class="lesson-name"> Animations </span>
+          </button>
+        </div>
+
+        <!-- =========================
+           ADVANCED CSS
+      ========================== -->
+
+        <div class="topic-group">
+          <h3 id="groupAdvanced">ADVANCED CSS</h3>
+
+          <button class="lesson" data-lesson="25">
+            <span class="lesson-status">26</span>
+            <span class="lesson-name"> CSS Variables </span>
+          </button>
+
+          <button class="lesson" data-lesson="26">
+            <span class="lesson-status">27</span>
+            <span class="lesson-name"> Specificity </span>
+          </button>
+
+          <button class="lesson" data-lesson="27">
+            <span class="lesson-status">28</span>
+            <span class="lesson-name"> Media Queries </span>
+          </button>
+
+          <button class="lesson" data-lesson="28">
+            <span class="lesson-status">29</span>
+            <span class="lesson-name"> Advanced Selectors </span>
+          </button>
+
+          <button class="lesson" data-lesson="29">
+            <span class="lesson-status">30</span>
+            <span class="lesson-name"> CSS Best Practices </span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- =========================
+         LESSON CONTENT
+    ========================== -->
+
+      <section class="lesson-content">
+        <!-- PROGRESS -->
+
+        <div class="progress-area">
+          <div class="progress-info">
+            <span id="progressLabel"> CSS Progress </span>
+
+            <strong id="progressText"> 3% </strong>
+          </div>
+
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </div>
+
+        <!-- LESSON HEADER -->
+
+        <div class="lesson-header">
+          <span class="lesson-number" id="lessonNumber"> LESSON 01 </span>
+
+          <h1 id="lessonTitle">Introduction to CSS</h1>
+
+          <p id="lessonDescription">
+            Learn what CSS is, why we use it, and how it controls the appearance of HTML elements.
+          </p>
+        </div>
+
+        <!-- WHAT IS CSS -->
+
+        <article class="content-card">
+          <h2 id="whatIsCssTitle">What is CSS?</h2>
+
+          <p id="whatIsCssP1">
+            CSS stands for
+            <strong>Cascading Style Sheets</strong>.
+          </p>
+
+          <p id="whatIsCssP2">CSS is used to control the visual appearance of HTML elements.</p>
+
+          <p id="whatIsCssP3">
+            With CSS, you can change colors, sizes, spacing, layouts, fonts, animations, and much more.
+          </p>
+        </article>
+
+        <!-- KEY IDEA -->
+
+        <article class="content-card">
+          <div class="info-label" id="keyIdeaLabel">KEY IDEA</div>
+
+          <h2 id="keyIdeaTitle">HTML creates the structure. CSS creates the design.</h2>
+
+          <p id="keyIdeaText">
+            Think about a house. HTML is the structure of the house, while CSS controls the colors, size, spacing, and
+            overall appearance.
+          </p>
+        </article>
+
+        <!-- CODE EXAMPLE -->
+
+        <article class="example-card">
+          <div class="example-header">
+            <div>
+              <span id="codeExampleLabel"> CODE EXAMPLE </span>
+
+              <h2 id="codeExampleTitle">Your first CSS code</h2>
+            </div>
+
+            <button class="copy-btn" id="copyButton" type="button">Copy</button>
+          </div>
+
+          <pre><code id="exampleCode">h1 {
+  color: #0f807a;
+  font-size: 40px;
+}
+
+p {
+  color: #536777;
+}</code></pre>
+        </article>
+
+        <!-- RESULT -->
+
+        <article class="result-card">
+          <div class="result-header">
+            <span id="resultLabel"> RESULT </span>
+          </div>
+
+          <div class="result-preview" id="resultPreview">
+            <h1>Hello CSS</h1>
+
+            <p>CSS changes the appearance of HTML.</p>
+          </div>
+        </article>
+
+        <!-- PLAYGROUND -->
+
+        <article class="playground-card">
+          <div class="playground-header">
+            <div>
+              <span id="tryItLabel"> TRY IT YOURSELF </span>
+
+              <h2 id="tryItTitle">Write CSS and see the result</h2>
+            </div>
+
+            <button class="run-button" id="runButton" type="button">Run CSS</button>
+          </div>
+
+          <div class="playground">
+            <!-- EDITOR -->
+
+            <div class="editor-panel">
+              <div class="editor-label" id="cssEditorLabel">CSS EDITOR</div>
+
+              <textarea id="cssEditor" spellcheck="false">
+h1 {
+  color: #0f807a;
+  font-size: 40px;
+}
+
+p {
+  color: #536777;
+}</textarea
+              >
+            </div>
+
+            <!-- PREVIEW -->
+
+            <div class="preview-panel">
+              <div class="editor-label" id="livePreviewLabel">LIVE PREVIEW</div>
+
+              <div class="live-preview" id="livePreview">
+                <h1>Hello CSS</h1>
+
+                <p id="livePreviewText">
+                  Change the CSS and click
+                  <strong>Run CSS</strong>.
+                </p>
+
+                <button id="exampleButton">Example Button</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- EXPLANATION -->
+
+        <article class="content-card">
+          <h2 id="syntaxTitle">Understanding CSS Syntax</h2>
+
+          <p id="syntaxP1">
+            A CSS rule contains a
+            <strong>selector</strong>
+            and a group of
+            <strong>declarations</strong>.
+          </p>
+
+          <p id="syntaxP2">The selector chooses the HTML element you want to style.</p>
+
+          <p id="syntaxP3">Each declaration contains a property and a value.</p>
+        </article>
+
+        <!-- QUICK CHECK -->
+
+        <article class="check-card">
+          <span id="quickCheckLabel"> QUICK CHECK </span>
+
+          <h2 id="questionTitle">What is CSS mainly used for?</h2>
+
+          <p id="questionInstruction">Choose the correct answer.</p>
+
+          <div class="answer-options">
+            <button type="button" data-answer="correct">Styling the appearance of web pages</button>
+
+            <button type="button" data-answer="wrong">Creating database tables</button>
+
+            <button type="button" data-answer="wrong">Running server-side code</button>
+          </div>
+
+          <div class="answer-feedback" id="answerFeedback"></div>
+        </article>
+
+        <!-- NAVIGATION -->
+
+        <div class="lesson-navigation">
+          <button class="nav-btn previous" id="previousButton" type="button">
+            <span id="previousArrow"> ← </span>
+
+            <div>
+              <small id="previousLabel"> Previous </small>
+
+              <strong id="previousLessonText"> Previous Lesson </strong>
+            </div>
+          </button>
+
+          <button class="nav-btn next" id="nextButton" type="button">
+            <div>
+              <small id="nextLabel"> Next Lesson </small>
+
+              <strong id="nextLessonText"> CSS Syntax </strong>
+            </div>
+
+            <span id="nextArrow"> → </span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script src="css-learning.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1386 @@
+/* =========================================================
+   FAYAD — CSS LEARNING PAGE
+   ========================================================= */
+
+/* =========================================================
+   1. VARIABLES
+   ========================================================= */
+
+:root {
+  --bg-main: #eaf3f8;
+  --bg-soft: #f4f9fc;
+  --bg-card: #ffffff;
+
+  --blue-dark: #063b66;
+  --blue: #0b5d91;
+  --blue-light: #1684b8;
+
+  --teal: #0f4f80;
+  --teal-light: #227daa;
+
+  --gold: #b18b43;
+
+  --text-primary: #102f43;
+  --text-secondary: #526b7c;
+  --text-muted: #7890a0;
+
+  --border: rgba(7, 58, 91, 0.12);
+
+  --shadow: 0 12px 35px rgba(8, 55, 84, 0.1);
+
+  --shadow-hover: 0 18px 45px rgba(8, 55, 84, 0.15);
+
+  --code-bg: #082c47;
+
+  --sidebar-width: 290px;
+
+  --radius: 16px;
+
+  --transition: 0.3s ease;
+}
+
+/* =========================================================
+   2. RESET
+   ========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: var(--text-primary);
+
+  background:
+    radial-gradient(circle at 10% 10%, rgba(22, 132, 184, 0.1), transparent 28%),
+    radial-gradient(circle at 90% 20%, rgba(15, 128, 122, 0.08), transparent 30%),
+    linear-gradient(135deg, var(--bg-main), var(--bg-soft));
+
+  min-height: 100vh;
+
+  line-height: 1.6;
+}
+
+button,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =========================================================
+   3. NAVBAR
+   ========================================================= */
+
+.learning-navbar {
+  height: 76px;
+
+  position: sticky;
+
+  top: 0;
+
+  z-index: 1000;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 0 4%;
+
+  background: rgba(255, 255, 255, 0.88);
+
+  backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid var(--border);
+
+  box-shadow: 0 5px 25px rgba(5, 53, 82, 0.05);
+}
+
+/* LOGO */
+
+.learning-logo {
+  width: 43px;
+
+  height: 43px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, #0a4389, #0b6ec4);
+
+  color: white;
+
+  font-size: 21px;
+
+  font-weight: 800;
+
+  box-shadow: 0 8px 24px rgba(15, 128, 122, 0.2);
+
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.learning-logo:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 12px 30px rgba(15, 128, 122, 0.28);
+}
+
+/* TITLE */
+
+.learning-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+}
+
+.learning-title span {
+  color: var(--teal);
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.learning-title strong {
+  font-size: 15px;
+
+  color: var(--text-primary);
+}
+
+/* ACTIONS */
+
+.learning-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.language-btn,
+.back-btn {
+  min-height: 40px;
+
+  padding: 0 15px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.75);
+
+  color: var(--text-primary);
+
+  border: 1px solid var(--border);
+
+  transition:
+    background var(--transition),
+    transform var(--transition),
+    border-color var(--transition);
+}
+
+.language-btn:hover,
+.back-btn:hover {
+  background: rgba(15, 128, 122, 0.08);
+
+  border-color: rgba(15, 128, 122, 0.25);
+
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   4. MAIN LAYOUT
+   ========================================================= */
+
+.learning-layout {
+  display: grid;
+
+  grid-template-columns:
+    var(--sidebar-width)
+    1fr;
+
+  min-height: calc(100vh - 76px);
+}
+
+/* =========================================================
+   5. SIDEBAR
+   ========================================================= */
+
+.sidebar {
+  position: sticky;
+
+  top: 76px;
+
+  height: calc(100vh - 76px);
+
+  overflow-y: auto;
+
+  padding: 30px 16px;
+
+  background: rgba(238, 247, 251, 0.88);
+
+  border-right: 1px solid var(--border);
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(7, 70, 104, 0.18);
+
+  border-radius: 10px;
+}
+
+/* SIDEBAR HEADER */
+
+.sidebar-header {
+  padding: 0 12px 26px;
+}
+
+.sidebar-header p {
+  color: var(--teal);
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 5px;
+}
+
+.sidebar-header h2 {
+  font-size: 29px;
+
+  color: var(--blue-dark);
+
+  letter-spacing: -1px;
+}
+
+/* TOPIC */
+
+.topic-group {
+  margin-bottom: 27px;
+}
+
+.topic-group h3 {
+  padding: 0 12px;
+
+  margin-bottom: 9px;
+
+  color: var(--text-muted);
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.4px;
+}
+
+/* LESSON */
+
+.lesson {
+  width: 100%;
+
+  min-height: 46px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 8px 10px;
+
+  margin-bottom: 4px;
+
+  border-radius: 10px;
+
+  background: transparent;
+
+  color: var(--text-secondary);
+
+  text-align: left;
+
+  transition:
+    background var(--transition),
+    color var(--transition),
+    transform var(--transition);
+}
+
+.lesson:hover {
+  background: rgba(255, 255, 255, 0.75);
+
+  color: var(--blue-dark);
+
+  transform: translateX(2px);
+}
+
+.lesson.active {
+  background: linear-gradient(135deg, rgba(15, 128, 122, 0.14), rgba(11, 93, 145, 0.1));
+
+  color: var(--blue-dark);
+
+  box-shadow: inset 3px 0 0 var(--teal);
+}
+
+/* LESSON STATUS */
+
+.lesson-status {
+  width: 28px;
+
+  height: 28px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.8);
+
+  border: 1px solid var(--border);
+
+  color: var(--text-muted);
+
+  font-size: 10px;
+
+  font-weight: 800;
+}
+
+.lesson-status.current {
+  background: linear-gradient(135deg, var(--teal), var(--blue));
+
+  border-color: transparent;
+
+  color: white;
+
+  box-shadow: 0 6px 18px rgba(15, 128, 122, 0.2);
+}
+
+.lesson-name {
+  line-height: 1.3;
+
+  font-size: 13px;
+}
+
+/* =========================================================
+   6. CONTENT AREA
+   ========================================================= */
+
+.lesson-content {
+  width: 100%;
+
+  max-width: 1000px;
+
+  margin: 0 auto;
+
+  padding: 55px 6% 100px;
+}
+
+/* =========================================================
+   7. PROGRESS
+   ========================================================= */
+
+.progress-area {
+  margin-bottom: 55px;
+}
+
+.progress-info {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin-bottom: 9px;
+
+  color: var(--text-secondary);
+
+  font-size: 12px;
+}
+
+.progress-info strong {
+  color: var(--teal);
+
+  font-size: 12px;
+}
+
+.progress-bar {
+  width: 100%;
+
+  height: 7px;
+
+  overflow: hidden;
+
+  border-radius: 20px;
+
+  background: rgba(8, 59, 91, 0.08);
+}
+
+.progress-fill {
+  width: 3.33%;
+
+  height: 100%;
+
+  border-radius: inherit;
+
+  background: linear-gradient(90deg, var(--teal), var(--blue-light));
+
+  transition: width 0.4s ease;
+}
+
+/* =========================================================
+   8. LESSON HEADER
+   ========================================================= */
+
+.lesson-header {
+  margin-bottom: 45px;
+}
+
+.lesson-number {
+  color: var(--gold);
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.lesson-header h1 {
+  margin: 10px 0 18px;
+
+  font-size: clamp(38px, 5vw, 64px);
+
+  line-height: 1;
+
+  letter-spacing: -2px;
+
+  color: var(--blue-dark);
+}
+
+.lesson-header p {
+  max-width: 700px;
+
+  color: var(--text-secondary);
+
+  font-size: 17px;
+
+  line-height: 1.8;
+}
+
+/* =========================================================
+   9. CONTENT CARDS
+   ========================================================= */
+
+.content-card {
+  margin-bottom: 25px;
+
+  padding: 32px;
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius);
+
+  background: rgba(255, 255, 255, 0.78);
+
+  box-shadow: var(--shadow);
+
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.content-card:hover {
+  transform: translateY(-2px);
+
+  box-shadow: var(--shadow-hover);
+}
+
+.content-card h2 {
+  margin-bottom: 17px;
+
+  font-size: 25px;
+
+  color: var(--blue-dark);
+}
+
+.content-card p {
+  margin-bottom: 14px;
+
+  color: var(--text-secondary);
+
+  font-size: 15px;
+
+  line-height: 1.8;
+}
+
+.content-card p:last-child {
+  margin-bottom: 0;
+}
+
+.content-card strong {
+  color: var(--blue-dark);
+}
+
+.content-card code {
+  padding: 3px 7px;
+
+  border-radius: 6px;
+
+  background: rgba(15, 128, 122, 0.1);
+
+  color: var(--teal);
+}
+
+/* =========================================================
+   10. KEY IDEA
+   ========================================================= */
+
+.info-label {
+  display: inline-block;
+
+  margin-bottom: 14px;
+
+  padding: 5px 9px;
+
+  border-radius: 6px;
+
+  background: rgba(177, 139, 67, 0.12);
+
+  color: var(--gold);
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+}
+
+/* =========================================================
+   11. CODE EXAMPLE
+   ========================================================= */
+
+.example-card {
+  margin-bottom: 25px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(4, 44, 70, 0.18);
+
+  border-radius: var(--radius);
+
+  background: var(--code-bg);
+
+  box-shadow: var(--shadow);
+}
+
+.example-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 20px 25px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.example-header span {
+  color: #51c7c0;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+}
+
+.example-header h2 {
+  margin-top: 5px;
+
+  color: white;
+
+  font-size: 18px;
+}
+
+.copy-btn {
+  padding: 8px 14px;
+
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  color: #d6e5ee;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  font-size: 11px;
+
+  transition: background var(--transition);
+}
+
+.copy-btn:hover {
+  background: rgba(34, 170, 162, 0.22);
+}
+
+.example-card pre {
+  padding: 28px;
+
+  overflow-x: auto;
+}
+
+.example-card code {
+  color: #dcebf2;
+
+  font-family: Consolas, "Courier New", monospace;
+
+  font-size: 14px;
+
+  line-height: 1.9;
+}
+
+/* =========================================================
+   12. RESULT
+   ========================================================= */
+
+.result-card {
+  margin-bottom: 25px;
+
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius);
+
+  background: white;
+
+  box-shadow: var(--shadow);
+}
+
+.result-header {
+  padding: 17px 25px;
+
+  background: #f3f8fb;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.result-header span {
+  color: var(--teal);
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+}
+
+.result-preview {
+  min-height: 190px;
+
+  padding: 35px;
+
+  background: white;
+
+  color: #102030;
+}
+
+.result-preview h1 {
+  margin-bottom: 10px;
+
+  font-size: 32px;
+}
+
+.result-preview p {
+  font-size: 16px;
+}
+
+/* =========================================================
+   13. PLAYGROUND
+   ========================================================= */
+
+.playground-card {
+  margin-bottom: 30px;
+
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius);
+
+  background: white;
+
+  box-shadow: var(--shadow);
+}
+
+.playground-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 22px 25px;
+
+  background: linear-gradient(135deg, #f5fafc, #eaf5f8);
+
+  border-bottom: 1px solid var(--border);
+}
+
+.playground-header span {
+  color: var(--teal);
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+}
+
+.playground-header h2 {
+  margin-top: 5px;
+
+  color: var(--blue-dark);
+
+  font-size: 19px;
+}
+
+.run-button {
+  min-height: 42px;
+
+  padding: 0 18px;
+
+  border-radius: 9px;
+
+  background: linear-gradient(135deg, var(--teal), var(--blue));
+
+  color: white;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  box-shadow: 0 8px 22px rgba(15, 128, 122, 0.18);
+
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.run-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 12px 28px rgba(15, 128, 122, 0.25);
+}
+
+.playground {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  min-height: 350px;
+}
+
+.editor-panel {
+  background: #082c47;
+
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.preview-panel {
+  background: #f8fbfd;
+}
+
+.editor-label {
+  padding: 12px 17px;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+
+  color: var(--text-muted);
+
+  border-bottom: 1px solid var(--border);
+}
+
+.editor-panel .editor-label {
+  color: #8baabd;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#cssEditor {
+  width: 100%;
+
+  min-height: 300px;
+
+  padding: 22px;
+
+  resize: vertical;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color: #e0edf4;
+
+  font-family: Consolas, "Courier New", monospace;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+}
+
+.live-preview {
+  min-height: 300px;
+
+  padding: 25px;
+
+  background: white;
+
+  color: #142b3b;
+}
+
+.live-preview h1 {
+  margin-bottom: 12px;
+}
+
+.live-preview p {
+  margin-bottom: 18px;
+}
+
+.live-preview button {
+  padding: 10px 16px;
+
+  border-radius: 8px;
+
+  background: #0b5d91;
+
+  color: white;
+}
+
+/* =========================================================
+   14. QUICK CHECK
+   ========================================================= */
+
+.check-card {
+  margin-top: 35px;
+
+  padding: 32px;
+
+  border: 1px solid rgba(15, 128, 122, 0.2);
+
+  border-radius: var(--radius);
+
+  background: linear-gradient(135deg, rgba(15, 128, 122, 0.07), rgba(11, 93, 145, 0.05));
+
+  box-shadow: var(--shadow);
+}
+
+.check-card > span {
+  color: var(--teal);
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+}
+
+.check-card h2 {
+  margin: 10px 0;
+
+  font-size: 25px;
+
+  color: var(--blue-dark);
+}
+
+.check-card > p {
+  color: var(--text-secondary);
+
+  margin-bottom: 20px;
+}
+
+.answer-options {
+  display: grid;
+
+  gap: 10px;
+}
+
+.answer-options button {
+  padding: 14px 17px;
+
+  text-align: left;
+
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.78);
+
+  border: 1px solid var(--border);
+
+  color: var(--text-secondary);
+
+  transition:
+    background var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+}
+
+.answer-options button:hover {
+  background: white;
+
+  border-color: rgba(15, 128, 122, 0.3);
+
+  transform: translateX(3px);
+}
+
+.answer-feedback {
+  margin-top: 15px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+/* =========================================================
+   15. LESSON NAVIGATION
+   ========================================================= */
+
+.lesson-navigation {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-top: 55px;
+}
+
+.nav-btn {
+  min-height: 70px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 12px 18px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.72);
+
+  color: var(--text-primary);
+
+  box-shadow: 0 8px 25px rgba(5, 53, 82, 0.06);
+
+  transition:
+    transform var(--transition),
+    background var(--transition),
+    box-shadow var(--transition);
+}
+
+.nav-btn:hover {
+  transform: translateY(-3px);
+
+  background: white;
+
+  box-shadow: var(--shadow);
+}
+
+.nav-btn span {
+  font-size: 22px;
+
+  color: var(--teal);
+}
+
+.nav-btn div {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.nav-btn small {
+  color: var(--text-muted);
+
+  font-size: 10px;
+}
+
+.nav-btn strong {
+  color: var(--blue-dark);
+
+  font-size: 13px;
+}
+
+.next {
+  text-align: right;
+}
+
+.nav-btn:disabled {
+  opacity: 0.45;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+/* =========================================================
+   16. RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .learning-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+
+    height: auto;
+
+    max-height: none;
+
+    border-right: none;
+
+    border-bottom: 1px solid var(--border);
+  }
+
+  .lesson {
+    display: inline-flex;
+
+    width: calc(50% - 6px);
+
+    margin-right: 4px;
+  }
+
+  .lesson-content {
+    max-width: 100%;
+  }
+
+  .playground {
+    grid-template-columns: 1fr;
+  }
+
+  .editor-panel {
+    border-right: none;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+@media (max-width: 600px) {
+  .learning-navbar {
+    padding: 0 5%;
+  }
+
+  .learning-title span {
+    display: none;
+  }
+
+  .learning-title strong {
+    font-size: 13px;
+  }
+
+  .back-btn {
+    display: none;
+  }
+
+  .sidebar {
+    padding: 25px 12px;
+  }
+
+  .lesson {
+    width: 100%;
+  }
+
+  .lesson-content {
+    padding: 40px 5% 70px;
+  }
+
+  .lesson-header h1 {
+    font-size: 42px;
+  }
+
+  .content-card,
+  .check-card {
+    padding: 24px;
+  }
+
+  .example-header,
+  .playground-header {
+    padding: 18px;
+  }
+
+  .example-card pre {
+    padding: 22px;
+  }
+
+  .lesson-navigation {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .nav-btn {
+    width: 100%;
+  }
+
+  .playground-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .run-button {
+    width: 100%;
+  }
+}
+/* =========================================================
+   FAYAD — CSS LANGUAGE / RTL SUPPORT
+========================================================= */
+
+/* =========================
+   LANGUAGE BUTTON
+========================= */
+
+.language-btn {
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.language-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* =========================
+   RTL BASE
+========================= */
+
+html[dir="rtl"] body {
+  direction: rtl;
+}
+
+/* =========================
+   NAVBAR RTL
+========================= */
+
+html[dir="rtl"] .learning-navbar {
+  direction: rtl;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+
+html[dir="rtl"] .learning-actions {
+  direction: ltr;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+html[dir="rtl"] .sidebar {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] .sidebar-header {
+  text-align: right;
+}
+
+html[dir="rtl"] .topic-group h3 {
+  text-align: right;
+}
+
+/* =========================
+   LESSON BUTTON
+========================= */
+
+html[dir="rtl"] .lesson {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] .lesson-name {
+  text-align: right;
+}
+
+html[dir="rtl"] .lesson-status {
+  order: 2;
+}
+
+html[dir="rtl"] .lesson-name {
+  order: 1;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+html[dir="rtl"] .lesson-content {
+  direction: rtl;
+  text-align: right;
+}
+
+/* =========================
+   LESSON HEADER
+========================= */
+
+html[dir="rtl"] .lesson-header {
+  text-align: right;
+}
+
+/* =========================
+   CONTENT CARDS
+========================= */
+
+html[dir="rtl"] .content-card,
+html[dir="rtl"] .check-card {
+  text-align: right;
+}
+
+/* =========================
+   CODE
+========================= */
+
+html[dir="rtl"] pre,
+html[dir="rtl"] code,
+html[dir="rtl"] textarea {
+  direction: ltr;
+  text-align: left;
+}
+
+/* =========================
+   EXAMPLE HEADER
+========================= */
+
+html[dir="rtl"] .example-header {
+  direction: rtl;
+}
+
+/* =========================
+   PLAYGROUND
+========================= */
+
+html[dir="rtl"] .playground-header {
+  direction: rtl;
+}
+
+html[dir="rtl"] .playground {
+  direction: ltr;
+}
+
+/* =========================
+   ANSWERS
+========================= */
+
+html[dir="rtl"] .answer-options {
+  direction: rtl;
+}
+
+html[dir="rtl"] .answer-options button {
+  text-align: right;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+html[dir="rtl"] .lesson-navigation {
+  direction: rtl;
+}
+
+/* =========================
+   ARROWS
+========================= */
+
+html[dir="rtl"] #previousArrow {
+  transform: scaleX(-1);
+}
+
+html[dir="rtl"] #nextArrow {
+  transform: scaleX(-1);
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+html[dir="rtl"] .progress-info {
+  direction: rtl;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+  html[dir="rtl"] .learning-navbar {
+    direction: rtl;
+  }
+
+  html[dir="rtl"] .learning-actions {
+    direction: ltr;
+  }
+
+  html[dir="rtl"] .lesson {
+    direction: rtl;
+  }
+
+  html[dir="rtl"] .lesson-content {
+    text-align: right;
+  }
+}

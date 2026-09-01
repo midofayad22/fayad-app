@@ -1,0 +1,1782 @@
+/* =========================================================
+   FAYAD — HOME PAGE DESIGN SYSTEM
+   Blue Edition — Clean / Premium / Human
+   RTL + LTR Ready
+   ========================================================= */
+
+/* =========================================================
+   1. CSS VARIABLES
+   ========================================================= */
+
+:root {
+  --bg-main: #07183a;
+  --bg-deep: #04162e;
+  --bg-secondary: #0a1f5f;
+
+  --bg-surface: rgba(255, 255, 255, 0.055);
+  --bg-surface-hover: rgba(255, 255, 255, 0.085);
+
+  --blue: #0b2d82;
+  --blue-bright: #1d44ae;
+  --blue-light: #7899ed;
+  --blue-soft: #4d74c8;
+
+  --gold: #c7a45d;
+  --gold-light: #e0c27b;
+
+  --white: #f7f9fc;
+  --text-primary: #edf3fb;
+  --text-secondary: #a9b9cd;
+  --text-muted: #71849b;
+
+  --border: rgba(255, 255, 255, 0.11);
+  --border-light: rgba(255, 255, 255, 0.17);
+
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+
+  --radius: 20px;
+  --transition: 0.3s ease;
+}
+
+/* =========================================================
+   2. RESET
+   ========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+
+  background:
+    radial-gradient(circle at 8% 8%, rgba(55, 112, 190, 0.22), transparent 28%),
+    radial-gradient(circle at 92% 20%, rgba(34, 89, 157, 0.16), transparent 30%),
+    linear-gradient(145deg, var(--bg-main) 0%, var(--bg-deep) 52%, #071d39 100%);
+
+  color: var(--text-primary);
+
+  min-height: 100vh;
+
+  line-height: 1.6;
+
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(199, 164, 93, 0.35);
+  color: white;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* =========================================================
+   3. ARABIC / RTL SUPPORT
+   ========================================================= */
+
+html[dir="rtl"] body {
+  font-family: "Noto Sans Arabic", "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+html[dir="rtl"] {
+  direction: rtl;
+}
+
+html[dir="rtl"] .hero,
+html[dir="rtl"] .section,
+html[dir="rtl"] .learning-group {
+  direction: rtl;
+}
+
+html[dir="rtl"] .hero-content,
+html[dir="rtl"] .section-heading,
+html[dir="rtl"] .group-heading {
+  text-align: right;
+}
+
+html[dir="rtl"] .hero-actions {
+  justify-content: flex-start;
+}
+
+html[dir="rtl"] .track-card {
+  align-items: flex-start;
+}
+
+html[dir="rtl"] .track-btn:hover {
+  transform: translateX(-4px);
+}
+
+html[dir="rtl"] .nav-links {
+  direction: rtl;
+}
+
+/* =========================================================
+   4. NAVBAR
+   ========================================================= */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 16px 6%;
+
+  background: rgba(3, 12, 37, 0.88);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid var(--border);
+}
+
+/* =========================================================
+   5. LOGO
+   ========================================================= */
+
+.logo {
+  width: 46px;
+  height: 46px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  background: linear-gradient(145deg, #173491, #0b2261);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  color: var(--white);
+
+  font-size: 22px;
+  font-weight: 800;
+
+  box-shadow:
+    0 10px 30px rgba(5, 30, 68, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.logo:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(199, 164, 93, 0.55);
+
+  box-shadow:
+    0 14px 35px rgba(5, 30, 68, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* =========================================================
+   6. NAVIGATION LINKS
+   ========================================================= */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+
+  gap: 34px;
+}
+
+.nav-links a {
+  position: relative;
+
+  color: var(--text-secondary);
+
+  font-size: 14px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  transition: color var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--white);
+}
+
+.nav-links a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -8px;
+
+  width: 0;
+  height: 2px;
+
+  border-radius: 999px;
+
+  background: var(--gold);
+
+  transition: width var(--transition);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* =========================================================
+   7. NAV ACTIONS
+   ========================================================= */
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.language-btn,
+.menu-btn {
+  width: 43px;
+  height: 43px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.045);
+
+  color: var(--text-primary);
+
+  border: 1px solid var(--border);
+
+  transition:
+    background var(--transition),
+    border-color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.language-btn {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.menu-btn {
+  font-size: 21px;
+  line-height: 1;
+}
+
+.language-btn:hover,
+.menu-btn:hover {
+  background: rgba(29, 95, 174, 0.18);
+
+  border-color: rgba(120, 169, 237, 0.35);
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.language-btn:active,
+.menu-btn:active {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   8. HERO
+   ========================================================= */
+
+.hero {
+  min-height: calc(100vh - 78px);
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.15fr)
+    minmax(300px, 0.85fr);
+
+  align-items: center;
+
+  gap: 70px;
+
+  padding: 85px 8% 100px;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   9. HERO DECORATION
+   ========================================================= */
+
+.hero::after {
+  content: "";
+
+  position: absolute;
+
+  width: 520px;
+  height: 520px;
+
+  right: -250px;
+  top: -180px;
+
+  border: 1px solid rgba(120, 169, 237, 0.08);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.hero::before {
+  content: "";
+
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  left: -260px;
+  top: 15%;
+
+  background: rgba(38, 99, 171, 0.14);
+
+  border-radius: 50%;
+
+  filter: blur(90px);
+
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 720px;
+}
+
+/* =========================================================
+   10. EYEBROW
+   ========================================================= */
+
+.eyebrow {
+  color: var(--gold);
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 2.8px;
+
+  margin-bottom: 20px;
+}
+
+/* =========================================================
+   11. HERO TITLE
+   ========================================================= */
+
+.hero h1 {
+  max-width: 800px;
+
+  font-size: clamp(54px, 7vw, 94px);
+
+  line-height: 0.94;
+
+  letter-spacing: -5px;
+
+  margin-bottom: 30px;
+
+  font-weight: 800;
+}
+
+.hero h1 span {
+  color: var(--blue-light);
+
+  background: linear-gradient(100deg, #78a9ed, #b3ccf0);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+/* =========================================================
+   12. HERO DESCRIPTION
+   ========================================================= */
+
+.hero-description {
+  max-width: 610px;
+
+  color: var(--text-secondary);
+
+  font-size: 17px;
+
+  line-height: 1.85;
+
+  margin-bottom: 36px;
+}
+
+/* =========================================================
+   13. BUTTONS
+   ========================================================= */
+
+.hero-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  flex-wrap: wrap;
+}
+
+.btn {
+  min-height: 51px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 25px;
+
+  border-radius: 12px;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    background var(--transition),
+    border-color var(--transition);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #174f91, #0b3b78);
+
+  color: white;
+
+  border: 1px solid rgba(120, 169, 237, 0.25);
+
+  box-shadow: 0 14px 35px rgba(4, 31, 67, 0.45);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #1d5fae, #0d4387);
+
+  box-shadow: 0 18px 45px rgba(9, 57, 111, 0.5);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.045);
+
+  color: var(--text-primary);
+
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+
+  border-color: var(--border-light);
+}
+
+/* =========================================================
+   14. PROFILE AREA
+   ========================================================= */
+
+.hero-profile {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 470px;
+
+  z-index: 1;
+}
+
+/* =========================================================
+   15. PROFILE GLOW
+   ========================================================= */
+
+.profile-glow {
+  position: absolute;
+
+  width: 260px;
+  height: 260px;
+
+  background: rgba(45, 103, 177, 0.2);
+
+  filter: blur(85px);
+
+  border-radius: 50%;
+
+  z-index: 0;
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   16. SINGLE PROFILE FRAME
+   IMPORTANT:
+   ONLY ONE FRAME AROUND THE IMAGE
+   ========================================================= */
+
+.hero-profile::before {
+  content: "";
+
+  position: absolute;
+
+  width: 326px;
+  height: 410px;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  border: 1px solid rgba(120, 169, 237, 0.22);
+
+  border-radius: 28px;
+
+  background: rgba(255, 255, 255, 0.015);
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.12),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.025);
+
+  z-index: 0;
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   17. GOLD DETAIL
+   ========================================================= */
+
+.hero-profile::after {
+  content: "";
+
+  position: absolute;
+
+  width: 58px;
+  height: 3px;
+
+  left: 50%;
+
+  transform: translateX(96px);
+
+  bottom: calc(50% - 232px);
+
+  background: var(--gold);
+
+  border-radius: 999px;
+
+  opacity: 0.85;
+
+  z-index: 3;
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   18. PROFILE IMAGE
+   CLEAN — NO EXTRA OUTER RING
+   ========================================================= */
+
+.hero-profile img {
+  width: 290px;
+
+  height: 363px;
+
+  object-fit: cover;
+
+  object-position: center top;
+
+  border-radius: 22px;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  background: #0a2341;
+
+  box-shadow: 0 28px 65px rgba(0, 0, 0, 0.38);
+
+  position: relative;
+
+  z-index: 2;
+
+  transition:
+    transform 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+.hero-profile img:hover {
+  transform: translateY(-6px);
+
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.45);
+}
+
+/* =========================================================
+   19. SECTIONS
+   ========================================================= */
+
+.section {
+  padding: 115px 8%;
+}
+
+.section-heading {
+  max-width: 720px;
+
+  margin-bottom: 55px;
+}
+
+.section-heading h2 {
+  font-size: clamp(38px, 5vw, 60px);
+
+  line-height: 1;
+
+  letter-spacing: -3px;
+
+  margin-bottom: 20px;
+}
+
+.section-heading h2 span {
+  color: var(--blue-light);
+}
+
+.section-heading > p:last-child {
+  color: var(--text-secondary);
+
+  font-size: 16px;
+
+  line-height: 1.8;
+}
+
+/* =========================================================
+   20. LEARNING GROUPS
+   ========================================================= */
+
+.learning-group {
+  margin-top: 78px;
+}
+
+.group-heading {
+  margin-bottom: 28px;
+
+  padding-left: 2px;
+}
+
+.group-heading span {
+  color: var(--gold);
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.group-heading h3 {
+  margin-top: 8px;
+
+  font-size: 31px;
+
+  letter-spacing: -1px;
+}
+
+.group-heading p {
+  margin-top: 7px;
+
+  color: var(--text-secondary);
+
+  font-size: 14px;
+}
+
+/* =========================================================
+   21. TRACK GRID
+   ========================================================= */
+
+.tracks-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 20px;
+}
+
+/* =========================================================
+   22. TRACK CARD
+   ========================================================= */
+
+.track-card {
+  min-height: 280px;
+
+  padding: 30px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.025));
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius);
+
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.18);
+
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    background var(--transition),
+    box-shadow var(--transition);
+}
+
+.track-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 30px;
+
+  width: 45px;
+  height: 3px;
+
+  border-radius: 0 0 4px 4px;
+
+  background: var(--card-accent, var(--blue-light));
+}
+
+.track-card:hover {
+  transform: translateY(-8px);
+
+  border-color: var(--card-border, rgba(120, 169, 237, 0.35));
+
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.035));
+
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.28);
+}
+
+.track-card span {
+  color: var(--card-accent, var(--gold));
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+}
+
+.track-card h3 {
+  color: var(--white);
+
+  font-size: 27px;
+
+  margin: 25px 0 10px;
+
+  letter-spacing: -0.8px;
+}
+
+.track-card p {
+  color: var(--text-secondary);
+
+  font-size: 14px;
+
+  line-height: 1.75;
+
+  max-width: 330px;
+}
+
+/* =========================================================
+   23. TECHNOLOGY IDENTITIES
+   ========================================================= */
+
+.track-card[data-track="HTML"] {
+  --card-accent: #e76f3c;
+  --card-border: rgba(231, 111, 60, 0.35);
+}
+
+.track-card[data-track="HTML"]::after {
+  content: "</>";
+
+  position: absolute;
+
+  right: 22px;
+  bottom: 15px;
+
+  font-size: 64px;
+
+  font-weight: 900;
+
+  color: rgba(231, 111, 60, 0.055);
+
+  pointer-events: none;
+}
+
+.track-card[data-track="CSS"] {
+  --card-accent: #4c9bea;
+  --card-border: rgba(76, 155, 234, 0.38);
+}
+
+.track-card[data-track="CSS"]::after {
+  content: "#";
+
+  position: absolute;
+
+  right: 28px;
+  bottom: 5px;
+
+  font-size: 82px;
+
+  font-weight: 900;
+
+  color: rgba(76, 155, 234, 0.055);
+
+  pointer-events: none;
+}
+
+.track-card[data-track="JavaScript"] {
+  --card-accent: #e4bd35;
+  --card-border: rgba(228, 189, 53, 0.35);
+}
+
+.track-card[data-track="JavaScript"]::after {
+  content: "JS";
+
+  position: absolute;
+
+  right: 20px;
+  bottom: 14px;
+
+  font-size: 54px;
+
+  font-weight: 900;
+
+  color: rgba(228, 189, 53, 0.055);
+
+  pointer-events: none;
+}
+
+.track-card[data-track="React"] {
+  --card-accent: #61dafb;
+  --card-border: rgba(97, 218, 251, 0.34);
+}
+
+.track-card[data-track="React"]::after {
+  content: "◉";
+
+  position: absolute;
+
+  right: 22px;
+  bottom: 12px;
+
+  font-size: 70px;
+
+  font-weight: 900;
+
+  color: rgba(97, 218, 251, 0.055);
+
+  pointer-events: none;
+}
+
+.track-card[data-track="Angular"] {
+  --card-accent: #e85b68;
+  --card-border: rgba(232, 91, 104, 0.35);
+}
+
+.track-card[data-track="Angular"]::after {
+  content: "A";
+
+  position: absolute;
+
+  right: 27px;
+  bottom: 3px;
+
+  font-size: 78px;
+
+  font-weight: 900;
+
+  color: rgba(232, 91, 104, 0.055);
+
+  pointer-events: none;
+}
+
+.track-card[data-track="Vue"] {
+  --card-accent: #42b883;
+  --card-border: rgba(66, 184, 131, 0.36);
+}
+
+.track-card[data-track="Vue"]::after {
+  content: "V";
+
+  position: absolute;
+
+  right: 25px;
+  bottom: 5px;
+
+  font-size: 78px;
+
+  font-weight: 900;
+
+  color: rgba(66, 184, 131, 0.055);
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   24. TRACK BUTTON
+   ========================================================= */
+
+.track-btn {
+  margin-top: auto;
+
+  padding: 10px 17px;
+
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.045);
+
+  color: var(--text-primary);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  position: relative;
+
+  z-index: 2;
+
+  transition:
+    background var(--transition),
+    border-color var(--transition),
+    transform var(--transition),
+    color var(--transition);
+}
+
+.track-btn:hover {
+  background: var(--card-accent, var(--blue-bright));
+
+  border-color: var(--card-accent, var(--blue-bright));
+
+  color: white;
+
+  transform: translateX(4px);
+}
+
+/* =========================================================
+   25. PRACTICE
+   ========================================================= */
+
+.practice-section {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.015),
+    rgba(255, 255, 255, 0.035),
+    rgba(255, 255, 255, 0.015)
+  );
+
+  border-top: 1px solid rgba(255, 255, 255, 0.035);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.035);
+}
+
+/* =========================================================
+   26. FOOTER
+   ========================================================= */
+
+.footer {
+  padding: 42px 8%;
+
+  border-top: 1px solid var(--border);
+
+  color: var(--text-muted);
+
+  text-align: center;
+
+  font-size: 13px;
+
+  background: rgba(2, 12, 26, 0.45);
+}
+
+/* =========================================================
+   27. RTL — PROFILE / HERO
+   ========================================================= */
+
+html[dir="rtl"] .hero-profile::after {
+  transform: translateX(-96px);
+}
+
+html[dir="rtl"] .track-card::before {
+  left: auto;
+  right: 30px;
+}
+
+html[dir="rtl"] .track-card[data-track]::after {
+  right: auto;
+  left: 22px;
+}
+
+html[dir="rtl"] .track-card[data-track="CSS"]::after {
+  left: 28px;
+}
+
+html[dir="rtl"] .track-card[data-track="JavaScript"]::after {
+  left: 20px;
+}
+
+html[dir="rtl"] .track-card[data-track="Angular"]::after {
+  left: 27px;
+}
+
+html[dir="rtl"] .track-card[data-track="Vue"]::after {
+  left: 25px;
+}
+
+/* =========================================================
+   28. RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+  .navbar {
+    padding: 16px 5%;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+
+    text-align: center;
+
+    padding: 75px 7% 90px;
+
+    gap: 45px;
+  }
+
+  .hero-content {
+    margin: auto;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-profile {
+    min-height: 430px;
+
+    margin-top: 0;
+  }
+
+  .tracks-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  html[dir="rtl"] .hero-content,
+  html[dir="rtl"] .section-heading,
+  html[dir="rtl"] .group-heading {
+    text-align: center;
+  }
+
+  html[dir="rtl"] .hero-actions {
+    justify-content: center;
+  }
+}
+
+/* =========================================================
+   29. RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .navbar {
+    padding: 14px 5%;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    min-height: auto;
+
+    padding: 70px 5% 90px;
+
+    gap: 30px;
+  }
+
+  .hero h1 {
+    font-size: 56px;
+
+    letter-spacing: -3.5px;
+  }
+
+  .hero-description {
+    font-size: 16px;
+  }
+
+  .hero-profile {
+    min-height: 390px;
+  }
+
+  .hero-profile::before {
+    width: 275px;
+    height: 345px;
+
+    border-radius: 24px;
+  }
+
+  .hero-profile img {
+    width: 250px;
+    height: 313px;
+  }
+
+  .hero-profile::after {
+    width: 45px;
+
+    transform: translateX(78px);
+
+    bottom: calc(50% - 200px);
+  }
+
+  .section {
+    padding: 85px 5%;
+  }
+
+  .section-heading {
+    margin-bottom: 42px;
+  }
+
+  .section-heading h2 {
+    font-size: 42px;
+
+    letter-spacing: -2px;
+  }
+
+  .learning-group {
+    margin-top: 60px;
+  }
+
+  .group-heading h3 {
+    font-size: 28px;
+  }
+
+  .tracks-grid {
+    grid-template-columns: 1fr;
+
+    gap: 16px;
+  }
+
+  .track-card {
+    min-height: 255px;
+
+    padding: 27px;
+  }
+
+  html[dir="rtl"] .hero-profile::after {
+    transform: translateX(-78px);
+  }
+
+  html[dir="rtl"] .track-card::before {
+    right: 27px;
+  }
+}
+
+/* =========================================================
+   30. SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 430px) {
+  .navbar {
+    padding: 13px 4%;
+  }
+
+  .logo {
+    width: 43px;
+    height: 43px;
+  }
+
+  .language-btn,
+  .menu-btn {
+    width: 41px;
+    height: 41px;
+  }
+
+  .hero {
+    padding: 65px 5% 75px;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+
+    letter-spacing: -3px;
+  }
+
+  .hero-description {
+    font-size: 15px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .hero-profile {
+    min-height: 350px;
+  }
+
+  .hero-profile img {
+    width: 220px;
+    height: 275px;
+
+    border-radius: 20px;
+  }
+
+  .hero-profile::before {
+    width: 245px;
+    height: 305px;
+
+    border-radius: 22px;
+  }
+
+  .hero-profile::after {
+    width: 40px;
+
+    transform: translateX(66px);
+
+    bottom: calc(50% - 180px);
+  }
+
+  .section {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  .section-heading h2 {
+    font-size: 38px;
+  }
+
+  .group-heading h3 {
+    font-size: 25px;
+  }
+
+  .track-card {
+    padding: 24px;
+
+    min-height: 240px;
+  }
+
+  html[dir="rtl"] .hero-profile::after {
+    transform: translateX(-66px);
+  }
+}
+
+/* =========================================================
+   31. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+/* =========================================================
+   26. SIDE / DROPDOWN MENU
+   ========================================================= */
+
+.site-menu {
+  position: fixed;
+
+  top: 0;
+  right: 0;
+
+  width: min(430px, 92vw);
+  height: 100vh;
+
+  z-index: 2000;
+
+  background:
+    radial-gradient(circle at 85% 10%, rgba(55, 112, 190, 0.16), transparent 32%),
+    linear-gradient(160deg, rgba(5, 20, 48, 0.98), rgba(3, 14, 35, 0.99));
+
+  border-left: 1px solid var(--border);
+
+  box-shadow: -25px 0 70px rgba(0, 0, 0, 0.35);
+
+  transform: translateX(110%);
+
+  transition:
+    transform 0.4s ease,
+    visibility 0.4s ease;
+
+  visibility: hidden;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.site-menu.active {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+/* =========================================================
+   MENU HEADER
+   ========================================================= */
+
+.site-menu-header {
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 30px 30px 25px;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.menu-eyebrow {
+  display: block;
+
+  color: var(--gold);
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 2.5px;
+
+  margin-bottom: 7px;
+}
+
+.site-menu-header h2 {
+  color: var(--white);
+
+  font-size: 34px;
+
+  line-height: 1;
+
+  letter-spacing: -1.5px;
+}
+
+.menu-close {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.045);
+
+  color: var(--text-primary);
+
+  border: 1px solid var(--border);
+
+  font-size: 25px;
+
+  line-height: 1;
+
+  transition:
+    background var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+}
+
+.menu-close:hover {
+  background: rgba(255, 255, 255, 0.08);
+
+  border-color: var(--border-light);
+
+  transform: rotate(90deg);
+}
+
+/* =========================================================
+   MENU CONTENT
+   ========================================================= */
+
+.site-menu-content {
+  padding: 28px 30px 40px;
+}
+
+/* =========================================================
+   MENU SECTIONS
+   ========================================================= */
+
+.menu-section {
+  margin-bottom: 32px;
+}
+
+.menu-section-label {
+  display: block;
+
+  color: var(--gold);
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+
+  margin-bottom: 12px;
+}
+
+/* =========================================================
+   MENU LINKS
+   ========================================================= */
+
+.menu-link {
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+
+  padding: 15px 16px;
+
+  margin-bottom: 8px;
+
+  border-radius: 13px;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  border: 1px solid transparent;
+
+  transition:
+    background var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+}
+
+.menu-link:hover {
+  background: rgba(255, 255, 255, 0.06);
+
+  border-color: rgba(120, 169, 237, 0.18);
+
+  transform: translateX(-4px);
+}
+
+.menu-link strong {
+  color: var(--text-primary);
+
+  font-size: 15px;
+
+  font-weight: 700;
+}
+
+.menu-link small {
+  color: var(--text-muted);
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+.menu-about {
+  padding-top: 5px;
+}
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.menu-contact {
+  padding-top: 8px;
+
+  border-top: 1px solid var(--border);
+}
+
+.menu-socials {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-bottom: 18px;
+}
+
+.menu-socials a {
+  padding: 8px 12px;
+
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  border: 1px solid var(--border);
+
+  color: var(--text-secondary);
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  transition:
+    background var(--transition),
+    border-color var(--transition),
+    color var(--transition),
+    transform var(--transition);
+}
+
+.menu-socials a:hover {
+  background: rgba(255, 255, 255, 0.08);
+
+  border-color: var(--border-light);
+
+  color: var(--white);
+
+  transform: translateY(-2px);
+}
+
+.menu-phone {
+  display: inline-flex;
+
+  align-items: center;
+
+  color: var(--text-secondary);
+
+  font-size: 13px;
+
+  transition: color var(--transition);
+}
+
+.menu-phone:hover {
+  color: var(--white);
+}
+
+/* =========================================================
+   MENU OVERLAY
+   ========================================================= */
+
+.menu-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 1500;
+
+  background: rgba(0, 0, 0, 0.48);
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+
+  visibility: visible;
+
+  pointer-events: auto;
+}
+
+/* =========================================================
+   MENU OPEN STATE
+   ========================================================= */
+
+body.menu-open {
+  overflow: hidden;
+}
+
+/* =========================================================
+   RTL MENU
+   ========================================================= */
+
+html[dir="rtl"] .site-menu {
+  right: auto;
+
+  left: 0;
+
+  transform: translateX(-110%);
+
+  border-left: none;
+
+  border-right: 1px solid var(--border);
+
+  box-shadow: 25px 0 70px rgba(0, 0, 0, 0.35);
+}
+
+html[dir="rtl"] .site-menu.active {
+  transform: translateX(0);
+}
+
+html[dir="rtl"] .menu-link:hover {
+  transform: translateX(4px);
+}
+
+html[dir="rtl"] .site-menu-header,
+html[dir="rtl"] .site-menu-content {
+  direction: rtl;
+}
+
+html[dir="rtl"] .site-menu-header {
+  text-align: right;
+}
+
+/* =========================================================
+   MENU MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .site-menu {
+    width: min(390px, 94vw);
+  }
+
+  .site-menu-header {
+    padding: 25px 22px 22px;
+  }
+
+  .site-menu-content {
+    padding: 24px 22px 35px;
+  }
+
+  .site-menu-header h2 {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 430px) {
+  .site-menu {
+    width: 100%;
+  }
+
+  .site-menu-header {
+    padding: 22px 18px 20px;
+  }
+
+  .site-menu-content {
+    padding: 22px 18px 30px;
+  }
+
+  .menu-link {
+    padding: 14px;
+  }
+}
+/* =========================================================
+   HIDE SCROLLBARS — FAYAD MENU
+========================================================= */
+
+/* Hide scrollbar while keeping scrolling enabled */
+.site-menu {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.site-menu::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Hide page scrollbar as well */
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Keep body scrollable */
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}

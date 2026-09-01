@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Fayad — Angular Learning</title>
+
+    <link rel="stylesheet" href="angular-learning.css" />
+
+    <!-- Small layout correction for the shared learning navbar -->
+    <style>
+      .learning-navbar {
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        z-index: 100;
+      }
+
+      .learning-layout {
+        position: relative;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- =====================================================
+       NAVBAR
+       ===================================================== -->
+
+    <header class="learning-navbar">
+      <a href="../index.html" class="learning-brand" aria-label="Fayad Home">
+        <div class="learning-logo">
+          <span>F</span>
+        </div>
+
+        <div class="learning-title">
+          <span>FAYAD</span>
+          <strong id="navbarCourseTitle">Angular Learning</strong>
+        </div>
+      </a>
+
+      <div class="learning-actions">
+        <a href="../index.html" class="back-btn">
+          <span>←</span>
+          <span id="backText">Back</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- =====================================================
+       MAIN LAYOUT
+       ===================================================== -->
+
+    <div class="learning-layout">
+      <!-- ===================================================
+         SIDEBAR
+         =================================================== -->
+
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <p id="frameworkLabel">FRAMEWORK</p>
+
+          <h2>Angular</h2>
+
+          <div class="course-meta">
+            <span id="lessonCount">30 Lessons</span>
+            <span>•</span>
+            <span id="levelText">Beginner → Advanced</span>
+          </div>
+        </div>
+
+        <!-- =================================================
+           FUNDAMENTALS
+           ================================================= -->
+
+        <div class="topic-group">
+          <h3 id="fundamentalsTitle">FUNDAMENTALS</h3>
+
+          <button class="lesson active" type="button">
+            <span class="lesson-status current">01</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">02</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">03</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">04</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">05</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">06</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">07</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">08</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">09</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">10</span>
+            <span class="lesson-name"></span>
+          </button>
+        </div>
+
+        <!-- =================================================
+           CORE ANGULAR
+           ================================================= -->
+
+        <div class="topic-group">
+          <h3 id="coreAngularTitle">CORE ANGULAR</h3>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">11</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">12</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">13</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">14</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">15</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">16</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">17</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">18</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">19</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">20</span>
+            <span class="lesson-name"></span>
+          </button>
+        </div>
+
+        <!-- =================================================
+           ADVANCED
+           ================================================= -->
+
+        <div class="topic-group">
+          <h3 id="advancedTitle">ADVANCED</h3>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">21</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">22</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">23</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">24</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">25</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">26</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">27</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">28</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">29</span>
+            <span class="lesson-name"></span>
+          </button>
+
+          <button class="lesson" type="button">
+            <span class="lesson-status">30</span>
+            <span class="lesson-name"></span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- ===================================================
+         LESSON CONTENT
+         =================================================== -->
+
+      <main class="lesson-content">
+        <!-- PROGRESS -->
+
+        <section class="progress-area">
+          <div class="progress-info">
+            <span>
+              <span id="lessonWord">Lesson</span>
+              <strong id="currentLessonNumber">01</strong>
+              <span id="ofWord">of</span>
+              <strong id="totalLessons">30</strong>
+            </span>
+
+            <strong id="progressText">3%</strong>
+          </div>
+
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </section>
+
+        <!-- LESSON HEADER -->
+
+        <header class="lesson-header">
+          <span class="lesson-number" id="lessonNumber"> LESSON 01 </span>
+
+          <h1 id="lessonTitle">Introduction to Angular</h1>
+
+          <p id="lessonDescription">
+            Learn what Angular is, why developers use it, and how it helps build modern web applications.
+          </p>
+        </header>
+
+        <!-- WHAT YOU WILL LEARN -->
+
+        <section class="content-card highlight-card">
+          <span class="info-label" id="whatYouLearnLabel"> WHAT YOU WILL LEARN </span>
+
+          <h2 id="learnHeading">Understanding Angular</h2>
+
+          <p id="lessonExplanation">Angular is a framework for building scalable web applications.</p>
+        </section>
+
+        <!-- EXAMPLE -->
+
+        <section class="example-card">
+          <div class="example-header">
+            <div>
+              <span id="exampleLabel"> ANGULAR EXAMPLE </span>
+
+              <h2 id="codeExampleTitle">Code Example</h2>
+            </div>
+
+            <button class="copy-btn" id="copyButton" type="button">Copy</button>
+          </div>
+
+          <pre><code id="exampleCode"></code></pre>
+        </section>
+
+        <!-- RESULT -->
+
+        <section class="result-card">
+          <div class="result-header" id="liveResultLabel">LIVE RESULT</div>
+
+          <div class="result-preview">
+            <div id="angularResult">Hello, Angular!</div>
+          </div>
+        </section>
+
+        <!-- PRACTICE -->
+
+        <section class="practice-card">
+          <div class="practice-header">
+            <span id="practiceLabel"> PRACTICE </span>
+
+            <h2 id="tryItTitle">Try It Yourself</h2>
+          </div>
+
+          <p class="practice-description" id="practiceDescription">
+            Modify the example below and run your code to see the result.
+          </p>
+
+          <textarea id="codeEditor" spellcheck="false" aria-label="Angular code editor"> </textarea>
+
+          <div class="practice-actions">
+            <button class="run-btn" id="runButton" type="button">▶ Run</button>
+
+            <button class="reset-btn" id="resetButton" type="button">Reset</button>
+          </div>
+
+          <div class="practice-output">
+            <span id="outputLabel"> OUTPUT </span>
+
+            <div id="output">Ready to run your Angular example.</div>
+          </div>
+        </section>
+
+        <!-- QUICK CHECK -->
+
+        <section class="check-card">
+          <span id="quickCheckLabel"> QUICK CHECK </span>
+
+          <h2 id="questionText">What is Angular mainly used for?</h2>
+
+          <p id="chooseAnswerText">Choose the best answer.</p>
+
+          <div class="answer-options" id="answerOptions">
+            <button type="button"></button>
+            <button type="button"></button>
+            <button type="button"></button>
+          </div>
+
+          <div class="check-feedback" id="answerFeedback" aria-live="polite"></div>
+        </section>
+
+        <!-- NAVIGATION -->
+
+        <nav class="lesson-navigation">
+          <button class="nav-btn previous" id="previousButton" type="button">
+            <span>←</span>
+
+            <div>
+              <small id="previousLabel"> PREVIOUS </small>
+
+              <strong id="previousLessonText"> Previous Lesson </strong>
+            </div>
+          </button>
+
+          <button class="nav-btn next" id="nextButton" type="button">
+            <div>
+              <small id="nextLabel"> NEXT LESSON </small>
+
+              <strong id="nextLessonText"> Angular CLI </strong>
+            </div>
+
+            <span>→</span>
+          </button>
+        </nav>
+      </main>
+    </div>
+
+    <script src="angular-learning.js"></script>
+  </body>
+</html>
