@@ -1,6 +1,6 @@
 (function() {
-  const SUPABASE_URL = 'حط_هنا_الـ_Project_URL';
-  const SUPABASE_ANON_KEY = 'حط_هنا_الـ_Anon_Key';
+  const SUPABASE_URL = 'https://vsrysitexadvmmikcmfs.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_qo4ZB-vWkWThCQpoGtSRSw_2oaStgyp';
 
   if (!window.supabase) return;
 
