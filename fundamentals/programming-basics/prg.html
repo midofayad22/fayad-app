@@ -1,103 +1,475 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programming Basics | Fayyad App</title>
-    <!-- ربط ملف الـ CSS الخاص بصفحة البرمجة -->
-    <link rel="stylesheet" href="prg.css">
-    <!-- FontAwesome للأيقونات -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
 
-    <!-- الهيدر العلوي -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="مسار أساسيات البرمجة من FAYAD — تعلّم التفكير البرمجي والخوارزميات والمفاهيم الأساسية للبرمجة." />
+
+    <title>أساسيات البرمجة | FAYAD</title>
+
+    <!-- FAYAD / Programming Fundamentals -->
+    <link rel="stylesheet" href="prg.css" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+
+  <body>
+    <!-- =====================================================
+         BACKGROUND EFFECTS
+    ====================================================== -->
+
+    <div class="background-grid"></div>
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
     <header class="app-header">
-        <div class="header-content">
-            <a href="../../index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to App</a>
-            <h1><i class="fa-solid fa-code"></i> Programming Basics & History</h1>
-            <p>Understand how human logic translates into machine execution through programming languages.</p>
+      <div class="header-content">
+        <a href="../../index.html" class="back-btn">
+          <i class="fa-solid fa-arrow-right"></i>
+          العودة إلى FAYAD
+        </a>
+
+        <div class="course-icon">
+          <i class="fa-solid fa-code"></i>
         </div>
+
+        <span class="course-label"> FAYAD FOUNDATION TRACK </span>
+
+        <h1>أساسيات البرمجة</h1>
+
+        <p class="hero-description">
+          تعلّم كيف يفكر المبرمج، وكيف تتحول الأفكار والخوارزميات إلى تعليمات يستطيع الكمبيوتر تنفيذها.
+        </p>
+
+        <!-- COURSE STATS -->
+
+        <div class="course-stats">
+          <div class="stat-card">
+            <strong>20</strong>
+            <span>درسًا</span>
+          </div>
+
+          <div class="stat-card">
+            <strong>20+</strong>
+            <span>اختبارًا</span>
+          </div>
+
+          <div class="stat-card">
+            <strong>10+</strong>
+            <span>تحديات</span>
+          </div>
+
+          <div class="stat-card">
+            <strong>1</strong>
+            <span>اختبار نهائي</span>
+          </div>
+        </div>
+      </div>
     </header>
 
-    <!-- المحتوى الرئيسي -->
-    <main class="container">
-        
-        <!-- قسم تعريف البرمجة -->
-        <section class="card">
-            <div class="card-icon"><i class="fa-solid fa-terminal"></i></div>
-            <h2>1. What is Programming?</h2>
-            <p>Programming is the process of creating a set of instructions that tell a computer how to perform a specific task. Think of it as writing a recipe: step-by-step instructions that the computer follows meticulously to achieve a desired outcome.</p>
-        </section>
+    <!-- =====================================================
+         MAIN LEARNING AREA
+    ====================================================== -->
 
-        <!-- قسم تاريخ وتطور لغات البرمجة -->
-        <section class="card" id="prg-history-section">
-            <div class="card-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
-            <h2>2. Evolution of Programming Languages</h2>
-            <p>Programming languages have evolved significantly over decades, moving closer to human language and abstract thinking:</p>
-            <div class="timeline-box">
-                <div class="timeline-item">
-                    <span class="t-year">1843</span>
-                    <p>Ada Lovelace writes the first algorithm for Babbage's mechanical computer, becoming history's first programmer.</p>
-                </div>
-                <div class="timeline-item">
-                    <span class="t-year">1950s</span>
-                    <p>Introduction of Assembly language and high-level languages like Fortran and Lisp.</p>
-                </div>
-                <div class="timeline-item">
-                    <span class="t-year">1970s</span>
-                    <p>Dennis Ritchie creates **C** at Bell Labs, revolutionizing operating systems and software engineering.</p>
-                </div>
-                <div class="timeline-item">
-                    <span class="t-year">1990s-Present</span>
-                    <p>Rise of Web technologies (HTML, CSS, JavaScript) and modern object-oriented/dynamic languages (Python, React, etc.).</p>
-                </div>
+    <main class="learning-layout">
+      <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div>
+            <span>مسار التعلم</span>
+            <h2>أساسيات البرمجة</h2>
+          </div>
+
+          <i class="fa-solid fa-code"></i>
+        </div>
+
+        <!-- PROGRESS -->
+
+        <div class="progress-container">
+          <div class="progress-info">
+            <span> تقدمك </span>
+
+            <strong id="progress-percent"> 0% </strong>
+          </div>
+
+          <div class="progress-bar">
+            <div id="progress-fill"></div>
+          </div>
+
+          <small id="progress-text"> لم تبدأ بعد — هيا نبدأ 🚀 </small>
+        </div>
+
+        <!-- LESSON NAVIGATION -->
+
+        <nav class="lesson-nav" id="lesson-nav">
+          <button class="lesson-item active" data-lesson="1">
+            <span class="lesson-number">01</span>
+            <span>ما هي البرمجة؟</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="2">
+            <span class="lesson-number">02</span>
+            <span>كيف يعمل الكود؟</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="3">
+            <span class="lesson-number">03</span>
+            <span>التفكير البرمجي</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="4">
+            <span class="lesson-number">04</span>
+            <span>الخوارزميات</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="5">
+            <span class="lesson-number">05</span>
+            <span>لغات البرمجة</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="6">
+            <span class="lesson-number">06</span>
+            <span>Syntax</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="7">
+            <span class="lesson-number">07</span>
+            <span>المتغيرات</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="8">
+            <span class="lesson-number">08</span>
+            <span>أنواع البيانات</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="9">
+            <span class="lesson-number">09</span>
+            <span>Operators</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="10">
+            <span class="lesson-number">10</span>
+            <span>الشروط</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="11">
+            <span class="lesson-number">11</span>
+            <span>Loops</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="12">
+            <span class="lesson-number">12</span>
+            <span>Functions</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="13">
+            <span class="lesson-number">13</span>
+            <span>Parameters</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="14">
+            <span class="lesson-number">14</span>
+            <span>Scope</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="15">
+            <span class="lesson-number">15</span>
+            <span>Arrays</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="16">
+            <span class="lesson-number">16</span>
+            <span>Objects</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="17">
+            <span class="lesson-number">17</span>
+            <span>الأخطاء وتصحيحها</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="18">
+            <span class="lesson-number">18</span>
+            <span>حل المشكلات</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="19">
+            <span class="lesson-number">19</span>
+            <span>Git ومفاهيمه</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="20">
+            <span class="lesson-number">20</span>
+            <span>مراجعة شاملة</span>
+          </button>
+
+          <button class="lesson-item final-item" data-lesson="final">
+            <span class="lesson-number">
+              <i class="fa-solid fa-trophy"></i>
+            </span>
+
+            <span> الاختبار النهائي </span>
+          </button>
+        </nav>
+      </aside>
+
+      <!-- =================================================
+             LESSON CONTENT
+        ================================================== -->
+
+      <section class="lesson-area">
+        <!-- TOP BAR -->
+
+        <div class="lesson-top">
+          <div>
+            <span class="lesson-counter" id="lesson-counter"> الدرس 01 من 20 </span>
+
+            <h2 id="lesson-title">ما هي البرمجة؟</h2>
+          </div>
+
+          <div class="lesson-status" id="lesson-status">غير مكتمل</div>
+        </div>
+
+        <!-- =================================================
+                 LESSON CARD
+            ================================================== -->
+
+        <article class="lesson-card">
+          <div class="lesson-icon">
+            <i class="fa-solid fa-terminal" id="lesson-icon"></i>
+          </div>
+
+          <span class="lesson-level" id="lesson-level"> FOUNDATION </span>
+
+          <h1 id="lesson-heading">ابدأ بفهم الفكرة قبل كتابة الكود</h1>
+
+          <!-- DYNAMIC CONTENT -->
+
+          <div id="lesson-content" class="lesson-content"></div>
+
+          <!-- KEY CONCEPT -->
+
+          <div class="key-concept">
+            <div class="key-icon">
+              <i class="fa-solid fa-lightbulb"></i>
             </div>
-        </section>
 
-        <!-- قسم المفاهيم الأساسية (Core Concepts) -->
-        <section class="card">
-            <div class="card-icon"><i class="fa-solid fa-cubes"></i></div>
-            <h2>3. Core Programming Concepts</h2>
-            <p>Almost every programming language shares fundamental building blocks:</p>
-            <div class="concepts-grid">
-                <div class="concept-box">
-                    <h3>Variables</h3>
-                    <p>Containers for storing data values (like text, numbers, or booleans).</p>
-                </div>
-                <div class="concept-box">
-                    <h3>Control Flow</h3>
-                    <p>Conditions (`if/else`) and loops (`for/while`) that direct how code executes.</p>
-                </div>
-                <div class="concept-box">
-                    <h3>Functions</h3>
-                    <p>Reusable blocks of code designed to perform a particular task.</p>
-                </div>
+            <div>
+              <strong> الفكرة الأساسية </strong>
+
+              <p id="key-description">البرمجة ليست حفظ أوامر، بل طريقة منظمة لتحويل المشكلة إلى خطوات قابلة للتنفيذ.</p>
             </div>
-        </section>
+          </div>
 
-        <!-- قسم محاكي الأكواد التفاعلي -->
-        <section class="card interactive-compiler">
-            <div class="card-icon"><i class="fa-solid fa-play"></i></div>
-            <h2>4. Interactive JS Code Simulator</h2>
-            <p>Test a basic JavaScript snippet right here in your browser simulator!</p>
-            <div class="code-editor-box">
-                <pre><code>let developer = "Abdullhamid";
-let level = "Junior Frontend";
-console.log(developer + " is a " + level + " developer!");</code></pre>
-                <button id="run-code-btn" class="action-btn"><i class="fa-solid fa-bolt"></i> Run Code</button>
-                <div id="console-output" class="console-box">Console Output will appear here...</div>
+          <!-- EXAMPLE -->
+
+          <div class="example-section">
+            <div class="section-heading">
+              <div class="section-heading-icon">
+                <i class="fa-solid fa-code"></i>
+              </div>
+
+              <div>
+                <span>مثال عملي</span>
+                <h3>شاهد الفكرة في كود</h3>
+              </div>
             </div>
-        </section>
 
+            <div class="code-block">
+              <div class="code-header">
+                <span> JavaScript </span>
+
+                <button id="copy-example" class="copy-btn" type="button">
+                  <i class="fa-regular fa-copy"></i>
+                  نسخ
+                </button>
+              </div>
+
+              <pre><code id="example-code"></code></pre>
+            </div>
+          </div>
+
+          <!-- KNOWLEDGE CHECK -->
+
+          <div class="knowledge-check">
+            <div class="section-heading">
+              <div class="section-heading-icon">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+
+              <div>
+                <span>اختبر فهمك</span>
+                <h3>سؤال سريع</h3>
+              </div>
+            </div>
+
+            <p id="quiz-question" class="quiz-question"></p>
+
+            <div id="quiz-options" class="quiz-options"></div>
+
+            <p id="quiz-result" class="quiz-result"></p>
+          </div>
+
+          <!-- PRACTICE -->
+
+          <div class="practice-box">
+            <div class="section-heading">
+              <div class="section-heading-icon">
+                <i class="fa-solid fa-dumbbell"></i>
+              </div>
+
+              <div>
+                <span>تطبيق</span>
+                <h3>تحدَّ نفسك</h3>
+              </div>
+            </div>
+
+            <p id="practice-text">حاول تطبيق الفكرة بنفسك قبل الانتقال إلى الدرس التالي.</p>
+
+            <div class="challenge-box">
+              <span> CHALLENGE </span>
+
+              <p id="challenge-text">اكتب مثالًا بسيطًا يطبق المفهوم الذي تعلمته.</p>
+            </div>
+          </div>
+
+          <!-- INTERACTIVE PLAYGROUND -->
+
+          <div class="playground-section" id="playground-section">
+            <div class="section-heading">
+              <div class="section-heading-icon playground-icon">
+                <i class="fa-solid fa-bolt"></i>
+              </div>
+
+              <div>
+                <span>FAYAD PLAYGROUND</span>
+                <h3>جرّب الكود بنفسك</h3>
+              </div>
+            </div>
+
+            <div class="editor-wrapper">
+              <div class="editor-toolbar">
+                <span>
+                  <i class="fa-brands fa-js"></i>
+                  JavaScript
+                </span>
+
+                <div class="editor-actions">
+                  <button id="run-code-btn" class="editor-btn run" type="button">
+                    <i class="fa-solid fa-play"></i>
+                    تشغيل
+                  </button>
+
+                  <button id="reset-code-btn" class="editor-btn" type="button">
+                    <i class="fa-solid fa-rotate-left"></i>
+                    إعادة
+                  </button>
+                </div>
+              </div>
+
+              <textarea id="code-editor" spellcheck="false" aria-label="محرر JavaScript"></textarea>
+
+              <div class="console-header">
+                <span>
+                  <i class="fa-solid fa-terminal"></i>
+                  Console
+                </span>
+              </div>
+
+              <div id="console-output" class="console-output">
+                <span class="console-placeholder"> نتيجة الكود ستظهر هنا... </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- COMPLETE BUTTON -->
+
+          <div class="lesson-actions">
+            <button id="complete-btn" class="complete-btn" type="button">
+              <i class="fa-solid fa-check"></i>
+              إتمام الدرس
+            </button>
+          </div>
+        </article>
+
+        <!-- =================================================
+                 NAVIGATION
+            ================================================== -->
+
+        <div class="lesson-navigation">
+          <button id="prev-btn" class="nav-btn" type="button">
+            <i class="fa-solid fa-arrow-right"></i>
+            الدرس السابق
+          </button>
+
+          <button id="next-btn" class="nav-btn primary" type="button">
+            الدرس التالي
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+        </div>
+      </section>
     </main>
 
-    <!-- الفوتر -->
+    <!-- =====================================================
+         FINAL QUIZ MODAL
+    ====================================================== -->
+
+    <div id="final-quiz-modal" class="modal hidden">
+      <div class="modal-overlay"></div>
+
+      <div class="final-quiz">
+        <button id="close-final-quiz" class="close-modal" type="button" aria-label="إغلاق">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="final-icon">
+          <i class="fa-solid fa-trophy"></i>
+        </div>
+
+        <span> FAYAD FINAL ASSESSMENT </span>
+
+        <h2>الاختبار النهائي</h2>
+
+        <p>أثبت أنك فهمت أساسيات البرمجة قبل الانتقال إلى Web Fundamentals.</p>
+
+        <div id="final-question-area" class="final-question-area"></div>
+
+        <div class="final-progress">
+          <div id="final-progress-fill"></div>
+        </div>
+
+        <div class="final-actions">
+          <button id="final-next-btn" class="complete-btn" type="button">السؤال التالي</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
     <footer>
-        <p>&copy; 2026 Fayyad App - Designed by Abdullhamid Fayad</p>
+      <div class="footer-brand">
+        <span>FAYAD</span>
+        <small>Learn. Build. Become.</small>
+      </div>
+
+      <p>© 2026 FAYAD — جميع الحقوق محفوظة</p>
+
+      <p class="footer-credit">Built by Abdullhamid Fayad</p>
     </footer>
 
-    <!-- ربط ملف الـ JS -->
     <script src="prg.js"></script>
-</body>
+  </body>
 </html>

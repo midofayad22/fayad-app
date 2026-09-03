@@ -1,11 +1,12 @@
 /* =========================================================
    FAYAD — HTML LEARNING
    HTML-Specific Design System
-   ========================================================= */
+   Arabic / RTL Learning Experience
+========================================================= */
 
 /* =========================================================
    1. DESIGN TOKENS
-   ========================================================= */
+========================================================= */
 
 :root {
   /* ---------- FAYAD Foundation ---------- */
@@ -40,11 +41,10 @@
   --html-glow: rgba(227, 79, 38, 0.18);
   --html-glow-strong: rgba(227, 79, 38, 0.28);
 
-  /* ---------- HTML Supporting Colors ---------- */
+  /* ---------- Supporting Colors ---------- */
 
   --html-yellow: #f7df1e;
   --html-red: #ef4444;
-
   --html-success: #38c98a;
 
   /* ---------- HTML Surfaces ---------- */
@@ -62,7 +62,7 @@
 
 /* =========================================================
    2. RESET
-   ========================================================= */
+========================================================= */
 
 * {
   margin: 0;
@@ -79,14 +79,16 @@ body {
 
   color: var(--text-primary);
 
-  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-family: Inter, "Segoe UI", Tahoma, Arial, Helvetica, sans-serif;
 
-  line-height: 1.6;
+  line-height: 1.7;
 
   background:
     radial-gradient(circle at 8% 5%, rgba(227, 79, 38, 0.1), transparent 28%),
     radial-gradient(circle at 92% 8%, rgba(240, 101, 41, 0.07), transparent 25%),
     linear-gradient(135deg, var(--fayad-bg), var(--html-bg));
+
+  direction: rtl;
 }
 
 button,
@@ -108,7 +110,7 @@ a {
 
 /* =========================================================
    3. GLOBAL SELECTION
-   ========================================================= */
+========================================================= */
 
 ::selection {
   background: rgba(227, 79, 38, 0.3);
@@ -117,7 +119,7 @@ a {
 
 /* =========================================================
    4. NAVBAR
-   ========================================================= */
+========================================================= */
 
 .learning-navbar {
   position: sticky;
@@ -126,7 +128,7 @@ a {
 
   z-index: 1000;
 
-  height: 76px;
+  min-height: 76px;
 
   display: flex;
 
@@ -134,7 +136,9 @@ a {
 
   justify-content: space-between;
 
-  padding: 0 4%;
+  gap: 20px;
+
+  padding: 12px 4%;
 
   background: rgba(8, 11, 16, 0.9);
 
@@ -184,11 +188,17 @@ a {
 /* ---------- Navbar Title ---------- */
 
 .learning-title {
+  flex: 1;
+
   display: flex;
 
   align-items: center;
 
+  justify-content: center;
+
   gap: 14px;
+
+  text-align: center;
 }
 
 .learning-title span {
@@ -217,18 +227,22 @@ a {
   align-items: center;
 
   gap: 10px;
+
+  flex-shrink: 0;
 }
 
-.language-btn,
+/* ---------- Back Button ---------- */
+
 .back-btn {
   min-height: 40px;
 
   display: flex;
 
   align-items: center;
+
   justify-content: center;
 
-  padding: 0 15px;
+  padding: 0 16px;
 
   border-radius: var(--radius-sm);
 
@@ -238,24 +252,32 @@ a {
 
   color: var(--text-primary);
 
+  font-size: 13px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+
   transition:
     background var(--transition),
     border-color var(--transition),
-    transform var(--transition);
+    transform var(--transition),
+    color var(--transition);
 }
 
-.language-btn:hover,
 .back-btn:hover {
   background: rgba(227, 79, 38, 0.12);
 
   border-color: rgba(227, 79, 38, 0.35);
+
+  color: #ffffff;
 
   transform: translateY(-2px);
 }
 
 /* =========================================================
    5. MAIN LAYOUT
-   ========================================================= */
+========================================================= */
 
 .learning-layout {
   display: grid;
@@ -269,7 +291,7 @@ a {
 
 /* =========================================================
    6. SIDEBAR
-   ========================================================= */
+========================================================= */
 
 .sidebar {
   position: sticky;
@@ -284,7 +306,7 @@ a {
 
   background: rgba(10, 13, 17, 0.7);
 
-  border-right: 1px solid var(--border);
+  border-left: 1px solid var(--border);
 }
 
 .sidebar::-webkit-scrollbar {
@@ -295,6 +317,14 @@ a {
   background: rgba(227, 79, 38, 0.35);
 
   border-radius: 20px;
+}
+
+/* Firefox */
+
+.sidebar {
+  scrollbar-width: thin;
+
+  scrollbar-color: rgba(227, 79, 38, 0.35) transparent;
 }
 
 /* ---------- Sidebar Header ---------- */
@@ -325,7 +355,7 @@ a {
 
 /* =========================================================
    7. TOPIC GROUP
-   ========================================================= */
+========================================================= */
 
 .topic-group {
   margin-bottom: 28px;
@@ -349,9 +379,11 @@ a {
 
 /* =========================================================
    8. LESSON ITEM
-   ========================================================= */
+========================================================= */
 
 .lesson {
+  width: 100%;
+
   min-height: 48px;
 
   display: flex;
@@ -372,6 +404,8 @@ a {
 
   font-size: 13px;
 
+  text-align: right;
+
   transition:
     background var(--transition),
     color var(--transition),
@@ -384,24 +418,24 @@ a {
 
   color: var(--text-primary);
 
-  transform: translateX(3px);
+  transform: translateX(-3px);
 }
 
-/* ---------- Active HTML Lesson ---------- */
+/* ---------- Active Lesson ---------- */
 
 .lesson.active {
-  background: linear-gradient(90deg, rgba(227, 79, 38, 0.18), rgba(227, 79, 38, 0.04));
+  background: linear-gradient(270deg, rgba(227, 79, 38, 0.18), rgba(227, 79, 38, 0.04));
 
   border-color: rgba(227, 79, 38, 0.28);
 
   color: #ffffff;
 
-  box-shadow: inset 3px 0 0 var(--html-orange);
+  box-shadow: inset -3px 0 0 var(--html-orange);
 }
 
 /* =========================================================
    9. LESSON STATUS
-   ========================================================= */
+========================================================= */
 
 .lesson-status {
   width: 28px;
@@ -446,12 +480,14 @@ a {
 }
 
 .lesson-name {
-  line-height: 1.3;
+  min-width: 0;
+
+  line-height: 1.4;
 }
 
 /* =========================================================
    10. LESSON CONTENT
-   ========================================================= */
+========================================================= */
 
 .lesson-content {
   width: 100%;
@@ -465,7 +501,7 @@ a {
 
 /* =========================================================
    11. PROGRESS
-   ========================================================= */
+========================================================= */
 
 .progress-area {
   margin-bottom: 55px;
@@ -474,7 +510,11 @@ a {
 .progress-info {
   display: flex;
 
+  align-items: center;
+
   justify-content: space-between;
+
+  gap: 15px;
 
   margin-bottom: 9px;
 
@@ -485,6 +525,8 @@ a {
 
 .progress-info strong {
   color: var(--html-orange-light);
+
+  font-size: 13px;
 }
 
 .progress-bar {
@@ -515,7 +557,7 @@ a {
 
 /* =========================================================
    12. LESSON HEADER
-   ========================================================= */
+========================================================= */
 
 .lesson-header {
   margin-bottom: 45px;
@@ -538,7 +580,7 @@ a {
 
   font-size: clamp(38px, 5vw, 64px);
 
-  line-height: 1;
+  line-height: 1.1;
 
   letter-spacing: -2.5px;
 }
@@ -550,12 +592,12 @@ a {
 
   font-size: 17px;
 
-  line-height: 1.8;
+  line-height: 1.9;
 }
 
 /* =========================================================
    13. CONTENT CARD
-   ========================================================= */
+========================================================= */
 
 .content-card {
   margin-bottom: 28px;
@@ -583,6 +625,8 @@ a {
   margin-bottom: 17px;
 
   font-size: 25px;
+
+  line-height: 1.4;
 }
 
 .content-card p {
@@ -592,7 +636,7 @@ a {
 
   font-size: 15px;
 
-  line-height: 1.85;
+  line-height: 1.95;
 }
 
 .content-card p:last-child {
@@ -613,11 +657,15 @@ a {
   color: var(--html-orange-soft);
 
   font-family: Consolas, "Courier New", monospace;
+
+  direction: ltr;
+
+  unicode-bidi: isolate;
 }
 
 /* =========================================================
    14. INFO LABEL
-   ========================================================= */
+========================================================= */
 
 .info-label {
   display: inline-block;
@@ -643,7 +691,7 @@ a {
 
 /* =========================================================
    15. CODE EXAMPLE
-   ========================================================= */
+========================================================= */
 
 .example-card {
   margin-bottom: 28px;
@@ -706,6 +754,8 @@ a {
 
   font-size: 11px;
 
+  white-space: nowrap;
+
   transition:
     background var(--transition),
     border-color var(--transition),
@@ -724,6 +774,10 @@ a {
   padding: 28px;
 
   overflow-x: auto;
+
+  direction: ltr;
+
+  text-align: left;
 }
 
 .example-card code {
@@ -738,7 +792,7 @@ a {
 
 /* =========================================================
    16. RESULT
-   ========================================================= */
+========================================================= */
 
 .result-card {
   margin-bottom: 28px;
@@ -778,6 +832,10 @@ a {
   background: #f8fafc;
 
   color: #142333;
+
+  direction: ltr;
+
+  text-align: left;
 }
 
 .result-preview h1 {
@@ -790,9 +848,10 @@ a {
   font-size: 16px;
 }
 
+
 /* =========================================================
-   17. QUICK CHECK
-   ========================================================= */
+   17. QUICK CHECK / QUIZ
+========================================================= */
 
 .check-card {
   margin-top: 35px;
@@ -806,7 +865,49 @@ a {
   border-radius: var(--radius-lg);
 
   background: linear-gradient(145deg, rgba(227, 79, 38, 0.1), rgba(227, 79, 38, 0.025));
+
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
 }
+/* =========================================================
+   16.5 CODE EXPLANATION
+========================================================= */
+
+.explanation-card {
+  margin-bottom: 28px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.explanation-card h3 {
+  margin: 0;
+  padding: 18px 25px;
+  border-bottom: 1px solid var(--border);
+  color: var(--html-orange-light);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.explanation-card #exampleExplanation {
+  padding: 22px 25px;
+  color: var(--text);
+  line-height: 1.9;
+}
+
+.explanation-card #exampleExplanation p {
+  margin: 0 0 12px;
+}
+
+.explanation-card #exampleExplanation p:last-child {
+  margin-bottom: 0;
+}
+
+.explanation-card #exampleExplanation strong {
+  color: var(--html-orange-light);
+}
+
+/* ---------- Quiz Label ---------- */
 
 .check-card > span {
   color: var(--html-orange-light);
@@ -820,28 +921,78 @@ a {
   text-transform: uppercase;
 }
 
+/* ---------- Quiz Progress ---------- */
+
+.quiz-progress {
+  width: fit-content;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  margin-top: 14px;
+
+  margin-bottom: 12px;
+
+  padding: 6px 11px;
+
+  border-radius: 8px;
+
+  background: rgba(227, 79, 38, 0.08);
+
+  border: 1px solid rgba(227, 79, 38, 0.15);
+
+  color: var(--html-orange-light);
+
+  font-size: 12px;
+
+  font-weight: 800;
+}
+
+#quizTotalQuestions {
+  color: var(--text-secondary);
+}
+
+/* ---------- Question ---------- */
+
 .check-card h2 {
-  margin: 10px 0;
+  margin: 8px 0 10px;
 
   font-size: 25px;
+
+  line-height: 1.6;
 }
 
 .check-card > p {
   margin-bottom: 22px;
 
   color: var(--text-secondary);
+
+  font-size: 14px;
 }
+
+/* =========================================================
+   18. ANSWER OPTIONS
+========================================================= */
 
 .answer-options {
   display: grid;
 
-  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 11px;
 }
 
 .answer-options button {
+  width: 100%;
+
+  min-height: 58px;
+
   padding: 14px 17px;
 
-  text-align: left;
+  text-align: right;
 
   border-radius: var(--radius-sm);
 
@@ -851,22 +1002,61 @@ a {
 
   color: var(--text-secondary);
 
+  font-size: 14px;
+
+  font-weight: 600;
+
+  line-height: 1.6;
+
   transition:
     background var(--transition),
     border-color var(--transition),
     color var(--transition),
-    transform var(--transition);
+    transform var(--transition),
+    opacity var(--transition);
 }
 
-.answer-options button:hover {
+.answer-options button:hover:not(:disabled) {
   background: rgba(227, 79, 38, 0.1);
 
   border-color: rgba(227, 79, 38, 0.35);
 
   color: #ffffff;
 
-  transform: translateX(2px);
+  transform: translateY(-2px);
 }
+
+.answer-options button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.answer-options button:disabled {
+  cursor: default;
+}
+
+/* ---------- Correct Answer ---------- */
+
+.answer-options button.correct-answer {
+  background: rgba(56, 201, 138, 0.12);
+
+  border-color: rgba(56, 201, 138, 0.42);
+
+  color: #8ff0c2;
+
+  box-shadow: 0 6px 20px rgba(56, 201, 138, 0.08);
+}
+
+/* ---------- Wrong Answer ---------- */
+
+.answer-options button.wrong-answer {
+  background: rgba(239, 68, 68, 0.1);
+
+  border-color: rgba(239, 68, 68, 0.38);
+
+  color: #ffaaaa;
+}
+
+/* Compatibility with old JS/classes */
 
 .answer-options button.correct {
   background: rgba(56, 201, 138, 0.12);
@@ -885,8 +1075,98 @@ a {
 }
 
 /* =========================================================
-   18. PRACTICE
-   ========================================================= */
+   19. QUIZ ACTIONS
+========================================================= */
+
+.quiz-actions {
+  display: flex;
+
+  justify-content: flex-start;
+
+  margin-top: 22px;
+}
+
+.quiz-next-btn {
+  min-height: 46px;
+
+  min-width: 145px;
+
+  padding: 0 20px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: var(--radius-sm);
+
+  background: linear-gradient(135deg, var(--html-orange), var(--html-orange-dark));
+
+  color: #ffffff;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  box-shadow: 0 8px 25px rgba(227, 79, 38, 0.18);
+
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    opacity var(--transition),
+    filter var(--transition);
+}
+
+.quiz-next-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  box-shadow: 0 12px 32px rgba(227, 79, 38, 0.28);
+
+  filter: brightness(1.05);
+}
+
+.quiz-next-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.quiz-next-btn:disabled {
+  opacity: 0.35;
+
+  cursor: not-allowed;
+
+  box-shadow: none;
+
+  filter: grayscale(0.15);
+}
+
+/* =========================================================
+   20. ANSWER FEEDBACK
+========================================================= */
+
+.answer-feedback {
+  min-height: 22px;
+
+  margin-top: 18px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  line-height: 1.7;
+}
+
+.answer-feedback.correct {
+  color: var(--html-success);
+}
+
+.answer-feedback.wrong {
+  color: #ff8c8c;
+}
+
+/* =========================================================
+   21. PRACTICE
+========================================================= */
 
 .practice-card {
   margin-bottom: 28px;
@@ -904,22 +1184,24 @@ a {
   margin: 10px 0 14px;
 
   font-size: 25px;
+
+  line-height: 1.5;
 }
 
 .practice-card p {
   color: var(--text-secondary);
 
-  line-height: 1.8;
+  line-height: 1.9;
 }
 
 /* =========================================================
-   19. LESSON NAVIGATION
-   ========================================================= */
+   22. LESSON NAVIGATION
+========================================================= */
 
 .lesson-navigation {
   display: flex;
 
-  align-items: center;
+  align-items: stretch;
 
   justify-content: space-between;
 
@@ -929,6 +1211,8 @@ a {
 }
 
 .nav-btn {
+  min-width: 220px;
+
   min-height: 70px;
 
   display: flex;
@@ -950,7 +1234,8 @@ a {
   transition:
     transform var(--transition),
     background var(--transition),
-    border-color var(--transition);
+    border-color var(--transition),
+    opacity var(--transition);
 }
 
 .nav-btn:hover:not(:disabled) {
@@ -971,12 +1256,16 @@ a {
   font-size: 22px;
 
   color: var(--html-orange-light);
+
+  flex-shrink: 0;
 }
 
 .nav-btn div {
   display: flex;
 
   flex-direction: column;
+
+  text-align: right;
 }
 
 .nav-btn small {
@@ -991,13 +1280,23 @@ a {
   font-size: 13px;
 }
 
-.next {
+.previous {
   text-align: right;
 }
 
+.next {
+  margin-right: auto;
+
+  text-align: left;
+}
+
+.next div {
+  text-align: left;
+}
+
 /* =========================================================
-   20. CODE BLOCK INSIDE CONTENT
-   ========================================================= */
+   23. CODE BLOCK INSIDE CONTENT
+========================================================= */
 
 .content-card pre {
   margin-top: 18px;
@@ -1011,6 +1310,10 @@ a {
   background: var(--html-code-bg);
 
   border: 1px solid rgba(255, 255, 255, 0.05);
+
+  direction: ltr;
+
+  text-align: left;
 }
 
 .content-card pre code {
@@ -1021,11 +1324,13 @@ a {
   color: #e7edf2;
 
   font-family: Consolas, "Courier New", monospace;
+
+  direction: ltr;
 }
 
 /* =========================================================
-   21. INTERACTIVE PLAYGROUND
-   ========================================================= */
+   24. INTERACTIVE PLAYGROUND
+========================================================= */
 
 .playground-card {
   margin-bottom: 30px;
@@ -1089,11 +1394,13 @@ a {
   color: var(--text-secondary);
 
   font-size: 14px;
+
+  line-height: 1.8;
 }
 
 /* =========================================================
-   22. EDITOR LAYOUT
-   ========================================================= */
+   25. EDITOR LAYOUT
+========================================================= */
 
 .editor-layout {
   display: grid;
@@ -1111,7 +1418,7 @@ a {
 /* ---------- Editor ---------- */
 
 .editor-panel {
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
 
   background: #080b0f;
 }
@@ -1123,8 +1430,8 @@ a {
 }
 
 /* =========================================================
-   23. EDITOR TOP BAR
-   ========================================================= */
+   26. EDITOR TOP BAR
+========================================================= */
 
 .editor-top,
 .preview-top {
@@ -1135,6 +1442,8 @@ a {
   align-items: center;
 
   justify-content: space-between;
+
+  gap: 10px;
 
   padding: 0 18px;
 
@@ -1161,8 +1470,8 @@ a {
 }
 
 /* =========================================================
-   24. HTML CODE EDITOR
-   ========================================================= */
+   27. HTML CODE EDITOR
+========================================================= */
 
 #code-editor {
   width: 100%;
@@ -1190,15 +1499,32 @@ a {
   line-height: 1.8;
 
   caret-color: var(--html-orange-light);
+
+  direction: ltr;
+
+  text-align: left;
+
+  tab-size: 2;
 }
 
 #code-editor:focus {
   box-shadow: inset 0 0 0 1px rgba(227, 79, 38, 0.3);
 }
 
+/* Compatibility if JS uses another editor ID */
+
+#htmlEditor,
+#cssEditor {
+  direction: ltr;
+
+  text-align: left;
+
+  font-family: Consolas, "Courier New", monospace;
+}
+
 /* =========================================================
-   25. LIVE PREVIEW
-   ========================================================= */
+   28. LIVE PREVIEW
+========================================================= */
 
 #live-preview {
   width: 100%;
@@ -1212,9 +1538,23 @@ a {
   background: #ffffff;
 }
 
+/* Compatibility */
+
+#livePreview {
+  width: 100%;
+
+  height: 382px;
+
+  display: block;
+
+  border: none;
+
+  background: #ffffff;
+}
+
 /* =========================================================
-   26. RUN BUTTON
-   ========================================================= */
+   29. RUN BUTTON
+========================================================= */
 
 .run-btn {
   min-height: 42px;
@@ -1235,13 +1575,16 @@ a {
 
   transition:
     transform var(--transition),
-    box-shadow var(--transition);
+    box-shadow var(--transition),
+    filter var(--transition);
 }
 
 .run-btn:hover {
   transform: translateY(-2px);
 
   box-shadow: 0 12px 32px rgba(227, 79, 38, 0.32);
+
+  filter: brightness(1.05);
 }
 
 .run-btn:active {
@@ -1249,8 +1592,8 @@ a {
 }
 
 /* =========================================================
-   27. RESET BUTTON
-   ========================================================= */
+   30. RESET BUTTON
+========================================================= */
 
 .reset-btn {
   padding: 6px 10px;
@@ -1280,28 +1623,8 @@ a {
 }
 
 /* =========================================================
-   28. ANSWER FEEDBACK
-   ========================================================= */
-
-.answer-feedback {
-  margin-top: 18px;
-
-  font-size: 13px;
-
-  font-weight: 700;
-}
-
-.answer-feedback.correct {
-  color: var(--html-success);
-}
-
-.answer-feedback.wrong {
-  color: #ff8c8c;
-}
-
-/* =========================================================
-   29. COMPLETED LESSON
-   ========================================================= */
+   31. COMPLETED LESSON
+========================================================= */
 
 .lesson.completed .lesson-status {
   background: rgba(56, 201, 138, 0.12);
@@ -1320,8 +1643,8 @@ a {
 }
 
 /* =========================================================
-   30. HTML-SPECIFIC ACCENT ELEMENTS
-   ========================================================= */
+   32. HTML-SPECIFIC ACCENT ELEMENTS
+========================================================= */
 
 .html-accent {
   color: var(--html-orange-light);
@@ -1338,8 +1661,8 @@ a {
 }
 
 /* =========================================================
-   31. FOCUS STATES
-   ========================================================= */
+   33. FOCUS STATES
+========================================================= */
 
 button:focus-visible,
 a:focus-visible,
@@ -1350,8 +1673,35 @@ textarea:focus-visible {
 }
 
 /* =========================================================
-   32. RESPONSIVE — TABLET
-   ========================================================= */
+   34. RTL HELPERS
+========================================================= */
+
+[dir="rtl"] {
+  direction: rtl;
+}
+
+[dir="rtl"] .example-card pre,
+[dir="rtl"] .content-card pre {
+  direction: ltr;
+
+  text-align: left;
+}
+
+[dir="rtl"] .lesson {
+  text-align: right;
+}
+
+[dir="rtl"] .answer-options button {
+  text-align: right;
+}
+
+[dir="rtl"] .nav-btn div {
+  text-align: right;
+}
+
+/* =========================================================
+   35. RESPONSIVE — TABLET
+========================================================= */
 
 @media (max-width: 900px) {
   .learning-layout {
@@ -1365,7 +1715,7 @@ textarea:focus-visible {
 
     max-height: none;
 
-    border-right: none;
+    border-left: none;
 
     border-bottom: 1px solid var(--border);
   }
@@ -1389,11 +1739,25 @@ textarea:focus-visible {
   .lesson-content {
     max-width: 100%;
   }
+
+  .answer-options {
+    grid-template-columns: 1fr;
+  }
+
+  .lesson-navigation {
+    gap: 14px;
+  }
+
+  .nav-btn {
+    min-width: 0;
+
+    flex: 1;
+  }
 }
 
 /* =========================================================
-   33. RESPONSIVE — PLAYGROUND
-   ========================================================= */
+   36. RESPONSIVE — PLAYGROUND
+========================================================= */
 
 @media (max-width: 800px) {
   .editor-layout {
@@ -1401,24 +1765,50 @@ textarea:focus-visible {
   }
 
   .editor-panel {
-    border-right: none;
+    border-left: none;
 
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   #code-editor,
-  #live-preview {
+  #live-preview,
+  #livePreview {
     height: 330px;
+  }
+
+  .quiz-actions {
+    justify-content: stretch;
+  }
+
+  .quiz-next-btn {
+    width: 100%;
   }
 }
 
 /* =========================================================
-   34. SMALL MOBILE
-   ========================================================= */
+   37. SMALL MOBILE
+========================================================= */
 
 @media (max-width: 600px) {
   .learning-navbar {
-    padding: 0 5%;
+    min-height: 68px;
+
+    padding: 10px 5%;
+
+    gap: 10px;
+  }
+
+  .learning-logo {
+    width: 40px;
+    height: 40px;
+
+    font-size: 18px;
+  }
+
+  .learning-title {
+    justify-content: center;
+
+    gap: 0;
   }
 
   .learning-title span {
@@ -1427,10 +1817,22 @@ textarea:focus-visible {
 
   .learning-title strong {
     font-size: 13px;
+
+    text-align: center;
+  }
+
+  .learning-actions {
+    display: flex;
   }
 
   .back-btn {
-    display: none;
+    display: flex;
+
+    min-height: 38px;
+
+    padding: 0 11px;
+
+    font-size: 11px;
   }
 
   .sidebar {
@@ -1445,6 +1847,14 @@ textarea:focus-visible {
     padding: 40px 5% 70px;
   }
 
+  .progress-area {
+    margin-bottom: 40px;
+  }
+
+  .lesson-header {
+    margin-bottom: 35px;
+  }
+
   .lesson-header h1 {
     font-size: 42px;
 
@@ -1453,12 +1863,25 @@ textarea:focus-visible {
 
   .lesson-header p {
     font-size: 15px;
+
+    line-height: 1.85;
   }
 
   .content-card,
   .check-card,
   .practice-card {
     padding: 24px;
+  }
+
+  .content-card h2,
+  .check-card h2,
+  .practice-card h2 {
+    font-size: 22px;
+  }
+
+  .content-card p,
+  .practice-card p {
+    font-size: 14px;
   }
 
   .example-header {
@@ -1469,20 +1892,48 @@ textarea:focus-visible {
     padding: 22px;
   }
 
+  .example-card code {
+    font-size: 13px;
+  }
+
+  .quiz-progress {
+    margin-top: 12px;
+  }
+
+  .answer-options button {
+    min-height: 54px;
+
+    font-size: 13px;
+  }
+
   .lesson-navigation {
     flex-direction: column;
 
     align-items: stretch;
+
+    margin-top: 40px;
   }
 
   .nav-btn {
     width: 100%;
+
+    min-height: 64px;
+  }
+
+  .next {
+    margin-right: 0;
+  }
+
+  .next div {
+    text-align: right;
   }
 
   .playground-header {
     align-items: flex-start;
 
     flex-direction: column;
+
+    padding: 20px;
   }
 
   .run-btn {
@@ -1506,27 +1957,29 @@ textarea:focus-visible {
 }
 
 /* =========================================================
-   35. EXTRA SMALL DEVICES
-   ========================================================= */
+   38. EXTRA SMALL DEVICES
+========================================================= */
 
 @media (max-width: 400px) {
-  .learning-logo {
-    width: 40px;
-    height: 40px;
+  .learning-navbar {
+    padding: 9px 4%;
+  }
 
-    font-size: 18px;
+  .learning-logo {
+    width: 38px;
+    height: 38px;
+
+    font-size: 17px;
   }
 
   .learning-title strong {
-    font-size: 12px;
+    font-size: 11px;
   }
 
-  .learning-actions {
-    gap: 6px;
-  }
+  .back-btn {
+    padding: 0 9px;
 
-  .language-btn {
-    padding: 0 11px;
+    font-size: 10px;
   }
 
   .lesson-header h1 {
@@ -1537,5 +1990,27 @@ textarea:focus-visible {
   .check-card,
   .practice-card {
     padding: 20px;
+  }
+
+  .check-card h2 {
+    font-size: 20px;
+  }
+
+  .answer-options button {
+    padding: 13px 14px;
+
+    font-size: 12px;
+  }
+
+  .quiz-next-btn {
+    min-height: 44px;
+
+    font-size: 12px;
+  }
+
+  .nav-btn {
+    min-height: 60px;
+
+    padding: 10px 14px;
   }
 }

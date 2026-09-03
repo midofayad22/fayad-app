@@ -1,247 +1,305 @@
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <meta
       name="description"
-      content="FAYAD React Learning Path — Learn React through structured lessons, examples, challenges and practice." />
+      content="منصة FAYAD التعليمية لتعلم React من الأساسيات إلى بناء المشاريع الحديثة من خلال دروس منظمة وأمثلة عملية وتدريبات واختبارات." />
 
-    <title>FAYAD — React Learning</title>
+    <meta name="keywords" content="FAYAD, React, React Learning, تعلم React, JavaScript, Frontend, Web Development" />
+
+    <meta name="author" content="FAYAD" />
+
+    <meta name="theme-color" content="#111111" />
+
+    <title>FAYAD — تعلم React</title>
 
     <link rel="stylesheet" href="react-learning.css" />
+
     <script>
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+      window.va =
+        window.va ||
+        function () {
+          (window.vaq = window.vaq || []).push(arguments);
+        };
     </script>
+
     <script defer src="/_vercel/speed-insights/script.js"></script>
   </head>
 
   <body>
-    <!-- =========================
-         TOP NAVBAR
-    ========================== -->
+    <!-- =====================================================
+       TOP NAVBAR
+  ====================================================== -->
 
     <header class="learning-navbar">
-      <a href="../index.html" class="learning-logo">F</a>
+      <a href="../index.html" class="learning-logo" aria-label="العودة إلى الصفحة الرئيسية"> F </a>
 
       <div class="learning-title">
         <span>FAYAD</span>
-        <strong>React Learning Path</strong>
+
+        <strong> مسار تعلم React </strong>
       </div>
 
       <div class="learning-actions">
-        <a href="../index.html" class="back-btn">Back</a>
+        <a href="../index.html" class="back-btn"> الرئيسية </a>
       </div>
     </header>
 
-    <!-- =========================
-         MAIN LEARNING LAYOUT
-    ========================== -->
+    <!-- =====================================================
+       MAIN LEARNING LAYOUT
+  ====================================================== -->
 
     <main class="learning-layout">
-      <!-- =========================
-           SIDEBAR
-      ========================== -->
+      <!-- ===================================================
+         SIDEBAR
+    ==================================================== -->
 
       <aside class="sidebar">
         <div class="sidebar-header">
-          <p>LEARNING PATH</p>
+          <p>مسار التعلم</p>
+
           <h2>React</h2>
         </div>
 
-        <!-- REACT FUNDAMENTALS -->
+        <!-- =================================================
+           REACT FUNDAMENTALS
+      ================================================== -->
 
         <div class="topic-group">
-          <h3>REACT FUNDAMENTALS</h3>
+          <h3>أساسيات React</h3>
 
           <a href="#lesson-1" class="lesson active">
-            <span class="lesson-status current">01</span>
-            <span class="lesson-name">Introduction to React</span>
+            <span class="lesson-status current"> 01 </span>
+
+            <span class="lesson-name"> مقدمة إلى React </span>
           </a>
 
           <a href="#lesson-2" class="lesson">
-            <span class="lesson-status">02</span>
-            <span class="lesson-name">Why React?</span>
+            <span class="lesson-status"> 02 </span>
+
+            <span class="lesson-name"> لماذا React؟ </span>
           </a>
 
           <a href="#lesson-3" class="lesson">
-            <span class="lesson-status">03</span>
-            <span class="lesson-name">Components</span>
+            <span class="lesson-status"> 03 </span>
+
+            <span class="lesson-name"> المكونات Components </span>
           </a>
 
           <a href="#lesson-4" class="lesson">
-            <span class="lesson-status">04</span>
-            <span class="lesson-name">JSX</span>
+            <span class="lesson-status"> 04 </span>
+
+            <span class="lesson-name"> JSX </span>
           </a>
 
           <a href="#lesson-5" class="lesson">
-            <span class="lesson-status">05</span>
-            <span class="lesson-name">Props</span>
+            <span class="lesson-status"> 05 </span>
+
+            <span class="lesson-name"> Props </span>
           </a>
 
           <a href="#lesson-6" class="lesson">
-            <span class="lesson-status">06</span>
-            <span class="lesson-name">State</span>
+            <span class="lesson-status"> 06 </span>
+
+            <span class="lesson-name"> State </span>
           </a>
         </div>
 
-        <!-- CORE REACT -->
+        <!-- =================================================
+           CORE REACT
+      ================================================== -->
 
         <div class="topic-group">
-          <h3>CORE REACT</h3>
+          <h3>React الأساسية</h3>
 
           <a href="#lesson-7" class="lesson">
-            <span class="lesson-status">07</span>
-            <span class="lesson-name">Events</span>
+            <span class="lesson-status"> 07 </span>
+
+            <span class="lesson-name"> الأحداث Events </span>
           </a>
 
           <a href="#lesson-8" class="lesson">
-            <span class="lesson-status">08</span>
-            <span class="lesson-name">Conditional Rendering</span>
+            <span class="lesson-status"> 08 </span>
+
+            <span class="lesson-name"> العرض الشرطي </span>
           </a>
 
           <a href="#lesson-9" class="lesson">
-            <span class="lesson-status">09</span>
-            <span class="lesson-name">Lists & Keys</span>
+            <span class="lesson-status"> 09 </span>
+
+            <span class="lesson-name"> Lists & Keys </span>
           </a>
 
           <a href="#lesson-10" class="lesson">
-            <span class="lesson-status">10</span>
-            <span class="lesson-name">Forms</span>
+            <span class="lesson-status"> 10 </span>
+
+            <span class="lesson-name"> النماذج Forms </span>
           </a>
 
           <a href="#lesson-11" class="lesson">
-            <span class="lesson-status">11</span>
-            <span class="lesson-name">Component Composition</span>
+            <span class="lesson-status"> 11 </span>
+
+            <span class="lesson-name"> تركيب المكونات </span>
           </a>
 
           <a href="#lesson-12" class="lesson">
-            <span class="lesson-status">12</span>
-            <span class="lesson-name">Hooks Introduction</span>
+            <span class="lesson-status"> 12 </span>
+
+            <span class="lesson-name"> مقدمة إلى Hooks </span>
           </a>
         </div>
 
-        <!-- REACT HOOKS -->
+        <!-- =================================================
+           REACT HOOKS
+      ================================================== -->
 
         <div class="topic-group">
-          <h3>REACT HOOKS</h3>
+          <h3>React Hooks</h3>
 
           <a href="#lesson-13" class="lesson">
-            <span class="lesson-status">13</span>
-            <span class="lesson-name">useState</span>
+            <span class="lesson-status"> 13 </span>
+
+            <span class="lesson-name"> useState </span>
           </a>
 
           <a href="#lesson-14" class="lesson">
-            <span class="lesson-status">14</span>
-            <span class="lesson-name">useEffect</span>
+            <span class="lesson-status"> 14 </span>
+
+            <span class="lesson-name"> useEffect </span>
           </a>
 
           <a href="#lesson-15" class="lesson">
-            <span class="lesson-status">15</span>
-            <span class="lesson-name">useRef</span>
+            <span class="lesson-status"> 15 </span>
+
+            <span class="lesson-name"> useRef </span>
           </a>
 
           <a href="#lesson-16" class="lesson">
-            <span class="lesson-status">16</span>
-            <span class="lesson-name">useContext</span>
+            <span class="lesson-status"> 16 </span>
+
+            <span class="lesson-name"> useContext </span>
           </a>
 
           <a href="#lesson-17" class="lesson">
-            <span class="lesson-status">17</span>
-            <span class="lesson-name">Custom Hooks</span>
+            <span class="lesson-status"> 17 </span>
+
+            <span class="lesson-name"> Custom Hooks </span>
           </a>
         </div>
 
-        <!-- ADVANCED REACT -->
+        <!-- =================================================
+           ADVANCED REACT
+      ================================================== -->
 
         <div class="topic-group">
-          <h3>ADVANCED REACT</h3>
+          <h3>React المتقدم</h3>
 
           <a href="#lesson-18" class="lesson">
-            <span class="lesson-status">18</span>
-            <span class="lesson-name">React Router</span>
+            <span class="lesson-status"> 18 </span>
+
+            <span class="lesson-name"> React Router </span>
           </a>
 
           <a href="#lesson-19" class="lesson">
-            <span class="lesson-status">19</span>
-            <span class="lesson-name">API Requests</span>
+            <span class="lesson-status"> 19 </span>
+
+            <span class="lesson-name"> طلبات API </span>
           </a>
 
           <a href="#lesson-20" class="lesson">
-            <span class="lesson-status">20</span>
-            <span class="lesson-name">Loading & Error States</span>
+            <span class="lesson-status"> 20 </span>
+
+            <span class="lesson-name"> حالات التحميل والأخطاء </span>
           </a>
 
           <a href="#lesson-21" class="lesson">
-            <span class="lesson-status">21</span>
-            <span class="lesson-name">Performance</span>
+            <span class="lesson-status"> 21 </span>
+
+            <span class="lesson-name"> تحسين الأداء </span>
           </a>
 
           <a href="#lesson-22" class="lesson">
-            <span class="lesson-status">22</span>
-            <span class="lesson-name">React.memo</span>
+            <span class="lesson-status"> 22 </span>
+
+            <span class="lesson-name"> React.memo </span>
           </a>
 
           <a href="#lesson-23" class="lesson">
-            <span class="lesson-status">23</span>
-            <span class="lesson-name">useMemo & useCallback</span>
+            <span class="lesson-status"> 23 </span>
+
+            <span class="lesson-name"> useMemo & useCallback </span>
           </a>
 
           <a href="#lesson-24" class="lesson">
-            <span class="lesson-status">24</span>
-            <span class="lesson-name">State Management</span>
+            <span class="lesson-status"> 24 </span>
+
+            <span class="lesson-name"> إدارة الحالة </span>
           </a>
         </div>
 
-        <!-- MODERN REACT -->
+        <!-- =================================================
+           MODERN REACT
+      ================================================== -->
 
         <div class="topic-group">
-          <h3>MODERN REACT</h3>
+          <h3>React الحديثة</h3>
 
           <a href="#lesson-25" class="lesson">
-            <span class="lesson-status">25</span>
-            <span class="lesson-name">React Architecture</span>
+            <span class="lesson-status"> 25 </span>
+
+            <span class="lesson-name"> معمارية React </span>
           </a>
 
           <a href="#lesson-26" class="lesson">
-            <span class="lesson-status">26</span>
-            <span class="lesson-name">Reusable Components</span>
+            <span class="lesson-status"> 26 </span>
+
+            <span class="lesson-name"> المكونات القابلة لإعادة الاستخدام </span>
           </a>
 
           <a href="#lesson-27" class="lesson">
-            <span class="lesson-status">27</span>
-            <span class="lesson-name">Project Structure</span>
+            <span class="lesson-status"> 27 </span>
+
+            <span class="lesson-name"> تنظيم المشروع </span>
           </a>
 
           <a href="#lesson-28" class="lesson">
-            <span class="lesson-status">28</span>
-            <span class="lesson-name">Best Practices</span>
+            <span class="lesson-status"> 28 </span>
+
+            <span class="lesson-name"> أفضل الممارسات </span>
           </a>
 
           <a href="#lesson-29" class="lesson">
-            <span class="lesson-status">29</span>
-            <span class="lesson-name">React + APIs</span>
+            <span class="lesson-status"> 29 </span>
+
+            <span class="lesson-name"> React + APIs </span>
           </a>
 
           <a href="#lesson-30" class="lesson">
-            <span class="lesson-status">30</span>
-            <span class="lesson-name">Final React Project</span>
+            <span class="lesson-status"> 30 </span>
+
+            <span class="lesson-name"> المشروع النهائي </span>
           </a>
         </div>
       </aside>
 
-      <!-- =========================
-           LESSON CONTENT
-      ========================== -->
+      <!-- ===================================================
+         LESSON CONTENT
+    ==================================================== -->
 
       <section class="lesson-content">
-        <!-- PROGRESS -->
+        <!-- =================================================
+           PROGRESS
+      ================================================== -->
 
         <div class="progress-area">
           <div class="progress-info">
-            <span>React Progress</span>
-            <strong id="progressText">3%</strong>
+            <span> التقدم في React </span>
+
+            <strong id="progressText"> 3% </strong>
           </div>
 
           <div class="progress-bar">
@@ -249,160 +307,229 @@
           </div>
         </div>
 
-        <!-- LESSON HEADER -->
+        <!-- =================================================
+           LESSON HEADER
+      ================================================== -->
 
         <div class="lesson-header" id="lesson-1">
-          <span class="lesson-number" id="lessonNumber"> LESSON 01 </span>
+          <span class="lesson-number" id="lessonNumber"> الدرس 01 </span>
 
-          <h1 id="lessonTitle">Introduction to React</h1>
+          <h1 id="lessonTitle">مقدمة إلى React</h1>
 
           <p id="lessonDescription">
-            Learn what React is, why developers use it, and how React helps build modern user interfaces.
+            تعرّف على React، وفهم سبب استخدامها في بناء واجهات المستخدم الحديثة، وكيف تعتمد على المكونات Components
+            لبناء تطبيقات منظمة وقابلة لإعادة الاستخدام.
           </p>
         </div>
 
-        <!-- WHAT IS REACT -->
+        <!-- =================================================
+           WHAT IS REACT
+      ================================================== -->
 
         <article class="content-card">
-          <h2>What is React?</h2>
+          <h2>ما هي React؟</h2>
 
-          <p>React is a JavaScript library used to build user interfaces.</p>
+          <div id="lessonContent">
+            <p>
+              React هي مكتبة JavaScript تُستخدم لبناء واجهات المستخدم User Interfaces، خصوصًا في تطبيقات الويب
+              التفاعلية.
+            </p>
 
-          <p>It helps developers create reusable UI components and build interactive web applications.</p>
+            <p>
+              تعتمد React على تقسيم الواجهة إلى أجزاء صغيرة تسمى Components، بحيث يمكن بناء واجهة كبيرة من مجموعة من
+              المكونات المستقلة والقابلة لإعادة الاستخدام.
+            </p>
 
-          <p>React was designed around the idea of building a user interface from small, reusable components.</p>
+            <p>
+              هذا الأسلوب يجعل تنظيم التطبيق وصيانته وتطويره أسهل، خصوصًا عندما يصبح المشروع كبيرًا ويحتوي على العديد من
+              الصفحات والعناصر التفاعلية.
+            </p>
+          </div>
         </article>
 
-        <!-- KEY IDEA -->
+        <!-- =================================================
+           KEY IDEA
+      ================================================== -->
 
         <article class="content-card highlight-card">
-          <div class="info-label">KEY IDEA</div>
+          <div class="info-label">الفكرة الأساسية</div>
 
-          <h2>React is built around components</h2>
+          <h2 id="keyIdeaTitle">React تعتمد على Components</h2>
 
-          <p>
-            Instead of building an entire page as one large piece of code, React allows you to divide the interface into
-            smaller reusable components.
-          </p>
+          <div id="keyIdea">
+            <p>بدلًا من كتابة واجهة التطبيق بالكامل في مكان واحد، نقسمها إلى Components صغيرة.</p>
+
+            <p>كل Component يمكن أن يكون مسؤولًا عن جزء محدد من الواجهة، ويمكن استخدامه أكثر من مرة داخل التطبيق.</p>
+          </div>
         </article>
 
-        <!-- CODE EXAMPLE -->
+        <!-- =================================================
+           CODE EXAMPLE
+      ================================================== -->
 
         <article class="example-card">
           <div class="example-header">
             <div>
-              <span>CODE EXAMPLE</span>
+              <span> مثال برمجي </span>
 
-              <h2>Your first React component</h2>
+              <h2 id="exampleTitle">أول Component في React</h2>
             </div>
 
-            <button class="copy-btn" id="copyButton" type="button">Copy</button>
+            <button class="copy-btn" id="copyButton" type="button">نسخ</button>
           </div>
 
           <pre><code id="exampleCode"></code></pre>
         </article>
 
-        <!-- RESULT -->
+        <!-- =================================================
+           RESULT
+      ================================================== -->
 
         <article class="result-card">
           <div class="result-header">
-            <span>RESULT</span>
+            <span> النتيجة </span>
           </div>
 
           <div class="result-preview">
-            <div id="reactResult">Hello FAYAD</div>
+            <div id="reactResult">مرحبًا بك في FAYAD</div>
           </div>
         </article>
 
-        <!-- EXPLANATION -->
+        <!-- =================================================
+           EXPLANATION
+      ================================================== -->
 
         <article class="content-card">
-          <h2>Understanding the code</h2>
+          <h2>فهم الكود</h2>
 
-          <p><code>function</code> creates a JavaScript function.</p>
+          <div id="exampleExplanation">
+            <p>الـ <code>function</code> تُستخدم لإنشاء Function في JavaScript.</p>
 
-          <p><code>App</code> is the name of our React component.</p>
+            <p>اسم الـFunction هنا هو <code>App</code>، وهو Component في React.</p>
 
-          <p><code>return</code> specifies what the component should display.</p>
+            <p>الكلمة <code>return</code> تحدد ما سيتم عرضه بواسطة الـComponent.</p>
 
-          <p>JSX allows us to write HTML-like syntax inside JavaScript.</p>
+            <p>JSX تسمح لنا بكتابة صيغة تشبه HTML داخل JavaScript لبناء واجهة المستخدم بطريقة واضحة.</p>
+          </div>
         </article>
 
-        <!-- PRACTICE -->
+        <!-- =================================================
+           PRACTICE
+      ================================================== -->
 
         <article class="practice-card">
           <div class="practice-header">
             <div>
-              <span>TRY IT YOURSELF</span>
+              <span> جرّب بنفسك </span>
 
-              <h2>Write React</h2>
+              <h2>اكتب كود React</h2>
             </div>
           </div>
 
-          <p class="practice-description">Change the component below and run your code to see the result.</p>
+          <p class="practice-description" id="practiceDescription">
+            غيّر الكود الموجود بالأسفل، ثم اضغط «تشغيل الكود» لمشاهدة النتيجة.
+          </p>
 
-          <textarea id="codeEditor" spellcheck="false">
+          <textarea id="codeEditor" spellcheck="false" aria-label="محرر كود React">
 function App() {
-  return &lt;h1&gt;Hello FAYAD&lt;/h1&gt;;
+  return &lt;h1&gt;مرحبًا بك في FAYAD&lt;/h1&gt;;
 }</textarea
           >
 
           <div class="practice-actions">
-            <button class="run-btn" id="runCode" type="button">Run Code</button>
+            <button class="run-btn" id="runCode" type="button">تشغيل الكود</button>
 
-            <button class="reset-btn" id="resetCode" type="button">Reset</button>
+            <button class="reset-btn" id="resetCode" type="button">إعادة التعيين</button>
           </div>
 
           <div class="practice-output">
-            <span>OUTPUT</span>
+            <span> المخرجات </span>
 
-            <div id="output">Your result will appear here.</div>
+            <div id="output">ستظهر النتيجة هنا.</div>
           </div>
         </article>
 
-        <!-- QUICK CHECK -->
+        <!-- =================================================
+           QUICK CHECK
+      ================================================== -->
 
         <article class="check-card">
-          <span>QUICK CHECK</span>
+          <span> اختبار سريع </span>
 
-          <h2>What is React mainly used for?</h2>
+          <!-- Quiz Progress -->
 
-          <p>Choose the best answer.</p>
+          <div class="quiz-progress" id="quizProgress" aria-live="polite">
+            <span id="quizQuestionNumber"> السؤال 1 </span>
 
-          <div class="answer-options">
-            <button type="button" data-answer="correct">Building user interfaces</button>
+            <span aria-hidden="true"> / </span>
 
-            <button type="button" data-answer="wrong">Managing databases only</button>
-
-            <button type="button" data-answer="wrong">Styling pages without JavaScript</button>
+            <span id="quizTotalQuestions"> 3 </span>
           </div>
 
-          <div class="check-feedback" id="checkFeedback"></div>
+          <!-- Question -->
+
+          <h2 id="questionText">فيما تُستخدم React بشكل أساسي؟</h2>
+
+          <p id="questionInstruction">اختر الإجابة الصحيحة.</p>
+
+          <!-- Answers -->
+
+          <div class="answer-options" id="answerOptions">
+            <button type="button" aria-label="الإجابة الأولى">بناء واجهات المستخدم</button>
+
+            <button type="button" aria-label="الإجابة الثانية">إدارة قواعد البيانات فقط</button>
+
+            <button type="button" aria-label="الإجابة الثالثة">تصميم صفحات HTML بدون JavaScript</button>
+
+            <button type="button" aria-label="الإجابة الرابعة">إنشاء أنظمة التشغيل</button>
+          </div>
+
+          <!-- Feedback -->
+
+          <div class="check-feedback" id="answerFeedback" aria-live="polite"></div>
+
+          <!-- Quiz Navigation -->
+
+          <div class="quiz-actions" id="quizActions">
+            <button type="button" class="quiz-next-btn" id="quizNextButton" disabled>السؤال التالي</button>
+          </div>
         </article>
 
-        <!-- NAVIGATION -->
+        <!-- =================================================
+           LESSON NAVIGATION
+      ================================================== -->
 
         <div class="lesson-navigation">
+          <!-- Previous -->
+
           <button class="nav-btn previous" id="previousButton" type="button">
-            <span>←</span>
+            <span> → </span>
 
             <div>
-              <small>Previous</small>
-              <strong>JavaScript Learning</strong>
+              <small> الدرس السابق </small>
+
+              <strong> أساسيات JavaScript </strong>
             </div>
           </button>
 
+          <!-- Next -->
+
           <button class="nav-btn next" id="nextButton" type="button">
             <div>
-              <small>Next Lesson</small>
-              <strong>Why React?</strong>
+              <small> الدرس التالي </small>
+
+              <strong> لماذا React؟ </strong>
             </div>
 
-            <span>→</span>
+            <span> ← </span>
           </button>
         </div>
       </section>
     </main>
+
+    <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
 
     <script src="react-learning.js"></script>
   </body>
