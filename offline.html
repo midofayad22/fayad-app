@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta name="theme-color" content="#0b3d35">
+
+  <title>FAYAD - Offline</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: #07110f;
+      color: #ffffff;
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      text-align: center;
+    }
+
+    .offline-card {
+      width: 100%;
+      max-width: 520px;
+      padding: 40px 28px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.04);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    .logo {
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 24px;
+      border-radius: 20px;
+      object-fit: contain;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 14px;
+    }
+
+    p {
+      color: #aebbb8;
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 12px;
+      padding: 13px 24px;
+      background: #0b3d35;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="offline-card">
+
+    <img
+      class="logo"
+      src="/icons/icon-192.png"
+      alt="FAYAD"
+    >
+
+    <h1>You're Offline</h1>
+
+    <p>
+      FAYAD couldn't connect to the internet.
+      Please check your connection and try again.
+    </p>
+
+    <button onclick="location.reload()">
+      Try Again
+    </button>
+
+  </main>
+
+</body>
+</html>

@@ -610,6 +610,350 @@ img {
 }
 
 
+
+
+/* =========================================================
+   FAYAD — AUTH NAVBAR
+   Connected to js/main_auth.js
+========================================================= */
+
+.auth-container,
+.user-profile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.auth-container {
+  min-width: max-content;
+}
+
+.user-profile {
+  min-width: 0;
+  animation: authProfileIn 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.user-profile button,
+.user-profile a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.user-profile-toggle,
+.user-profile-button,
+.profile-trigger {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  max-width: 210px;
+  padding: 4px 10px 4px 7px;
+  cursor: pointer;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--text);
+  transition:
+    transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 260ms ease,
+    background 260ms ease,
+    box-shadow 260ms ease;
+}
+
+.user-profile-toggle:hover,
+.user-profile-button:hover,
+.profile-trigger:hover {
+  transform: translateY(-1px);
+  border-color: rgba(34, 197, 139, 0.38);
+  background: rgba(34, 197, 139, 0.07);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+}
+
+.user-profile-toggle:focus-visible,
+.user-profile-button:focus-visible,
+.profile-trigger:focus-visible {
+  outline: none;
+  border-color: rgba(34, 197, 139, 0.58);
+  box-shadow: 0 0 0 3px rgba(34, 197, 139, 0.1);
+}
+
+.user-avatar,
+.profile-avatar,
+.user-profile-avatar {
+  width: 31px;
+  height: 31px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 31px;
+  border: 1px solid rgba(34, 197, 139, 0.3);
+  border-radius: 10px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(34, 197, 139, 0.18),
+      rgba(18, 57, 48, 0.3)
+    );
+  color: var(--green-light);
+  font-family: "Inter", "Cairo", sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  box-shadow: inset 0 0 15px rgba(34, 197, 139, 0.04);
+}
+
+.user-profile-name,
+.profile-name,
+.user-name {
+  min-width: 0;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #f4faf7;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.user-profile-email,
+.profile-email,
+.user-email {
+  max-width: 155px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-muted);
+  font-family: "Inter", "Cairo", sans-serif;
+  font-size: 9px;
+}
+
+.user-profile-chevron,
+.profile-chevron {
+  color: var(--text-muted);
+  font-size: 9px;
+  transition: transform 220ms ease;
+}
+
+.user-profile-toggle[aria-expanded="true"] .user-profile-chevron,
+.user-profile-button[aria-expanded="true"] .user-profile-chevron,
+.profile-trigger[aria-expanded="true"] .profile-chevron {
+  transform: rotate(180deg);
+}
+
+.user-profile-menu,
+.profile-menu,
+.user-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 1200;
+  width: min(245px, calc(100vw - 30px));
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(14, 31, 26, 0.98),
+      rgba(7, 18, 15, 0.98)
+    );
+  box-shadow:
+    0 24px 55px rgba(0, 0, 0, 0.34),
+    0 0 35px rgba(34, 197, 139, 0.055);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-7px) scale(0.985);
+  transform-origin: top right;
+  transition:
+    opacity 180ms ease,
+    transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    visibility 180ms ease;
+}
+
+.user-profile-menu.open,
+.user-profile-menu.is-open,
+.profile-menu.open,
+.profile-menu.is-open,
+.user-menu.open,
+.user-menu.is-open,
+.user-profile-toggle[aria-expanded="true"] + .user-profile-menu,
+.user-profile-button[aria-expanded="true"] + .user-profile-menu,
+.profile-trigger[aria-expanded="true"] + .profile-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.user-profile-menu a,
+.profile-menu a,
+.user-menu a,
+.user-profile-menu button,
+.profile-menu button,
+.user-menu button {
+  width: 100%;
+  min-height: 39px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text-soft);
+  text-align: right;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 200ms ease,
+    color 200ms ease,
+    transform 200ms ease;
+}
+
+.user-profile-menu a:hover,
+.profile-menu a:hover,
+.user-menu a:hover,
+.user-profile-menu button:hover,
+.profile-menu button:hover,
+.user-menu button:hover {
+  background: rgba(34, 197, 139, 0.07);
+  color: #fff;
+  transform: translateX(-2px);
+}
+
+.user-profile-menu .logout,
+.profile-menu .logout,
+.user-menu .logout,
+.user-profile-menu [data-action="logout"],
+.profile-menu [data-action="logout"],
+.user-menu [data-action="logout"] {
+  color: #f59b9b;
+}
+
+.user-profile-menu .logout:hover,
+.profile-menu .logout:hover,
+.user-menu .logout:hover,
+.user-profile-menu [data-action="logout"]:hover,
+.profile-menu [data-action="logout"]:hover,
+.user-menu [data-action="logout"]:hover {
+  background: rgba(239, 68, 68, 0.07);
+  color: #ffb1b1;
+}
+
+.user-profile-menu hr,
+.profile-menu hr,
+.user-menu hr {
+  height: 1px;
+  margin: 6px 4px;
+  border: 0;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+@keyframes authProfileIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   FAYAD — NAVBAR MICRO INTERACTIONS
+========================================================= */
+
+.nav-signin-btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.nav-signin-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 80%
+  );
+  transform: translateX(-120%);
+  transition: transform 550ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  pointer-events: none;
+}
+
+.nav-signin-btn:hover::before {
+  transform: translateX(120%);
+}
+
+/* =========================================================
+   PAGE / CARD TRANSITION POLISH
+========================================================= */
+
+.fayad-page main {
+  isolation: isolate;
+}
+
+.track-card,
+.concept-card,
+.concept-main,
+.comparison-card,
+.practice-card,
+.technology-card,
+.project-card,
+.learning-group,
+.final-cta-inner {
+  will-change: transform;
+}
+
+.track-card,
+.concept-card,
+.comparison-card,
+.practice-card,
+.technology-card,
+.project-card {
+  transition:
+    transform 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 300ms ease,
+    box-shadow 360ms ease,
+    background 300ms ease;
+}
+
+.track-card:hover,
+.concept-card:hover,
+.comparison-card:hover,
+.practice-card:hover,
+.technology-card:hover,
+.project-card:hover {
+  transform: translateY(-4px);
+}
+
+/* =========================================================
+   NO JAVASCRIPT FALLBACK
+========================================================= */
+
+.noscript-message {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  left: 16px;
+  z-index: 9999;
+  padding: 12px 15px;
+  border: 1px solid rgba(215, 183, 106, 0.28);
+  border-radius: 12px;
+  background: rgba(15, 24, 20, 0.96);
+  color: var(--text-soft);
+  text-align: center;
+  font-size: 11px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
 /* =========================================================
    REDUCED MOTION
 ========================================================= */
@@ -4744,8 +5088,48 @@ main {
 ========================================================= */
 
 @media (max-width: 430px) {
+  .nav-actions {
+    gap: 6px;
+  }
+
   .nav-signin-btn {
+    display: inline-flex;
+    min-height: 34px;
+    padding: 0 9px;
+    font-size: 9px;
+    border-radius: 10px;
+  }
+
+  .user-profile-toggle,
+  .user-profile-button,
+  .profile-trigger {
+    min-height: 34px;
+    gap: 6px;
+    padding: 3px 7px 3px 5px;
+    border-radius: 10px;
+  }
+
+  .user-avatar,
+  .profile-avatar,
+  .user-profile-avatar {
+    width: 27px;
+    height: 27px;
+    flex-basis: 27px;
+    border-radius: 8px;
+    font-size: 9px;
+  }
+
+  .user-profile-name,
+  .profile-name,
+  .user-name {
     display: none;
+  }
+
+  .user-profile-menu,
+  .profile-menu,
+  .user-menu {
+    right: auto;
+    left: 0;
   }
 
   .hero-title {
@@ -4803,6 +5187,20 @@ main {
   .reveal {
     opacity: 1;
 
+    transform: none;
+  }
+
+  .user-profile {
+    animation: none !important;
+  }
+
+  .track-card:hover,
+  .concept-card:hover,
+  .comparison-card:hover,
+  .practice-card:hover,
+  .technology-card:hover,
+  .project-card:hover,
+  .nav-signin-btn:hover {
     transform: none;
   }
 }

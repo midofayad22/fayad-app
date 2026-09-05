@@ -4,6 +4,16 @@
     <meta charset="UTF-8" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- PWA -->
+<link rel="manifest" href="/manifest.json" />
+
+<!-- iOS / Safari -->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="FAYAD Learning" />
+
+<!-- App Icons -->
+<link rel="apple-touch-icon" href="/icons/icon-192.png" />
 
     <meta
       name="description"
@@ -31,17 +41,12 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
 
     <!-- Existing authentication system -->
-    <script src="js/main_auth.js" defer></script>
+    <script src="js/main-auth.js" defer></script>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
 
-    <link rel="apple-touch-icon" href="assets/images/favicon.svg" />
-
-    <meta name="apple-mobile-web-app-title" content="FAYAD Learning" />
-
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-
+    
     <!-- Vercel Analytics -->
     <script defer src="/_vercel/insights/script.js"></script>
 
@@ -57,7 +62,7 @@
     <script defer src="/_vercel/speed-insights/script.js"></script>
   </head>
 
-  <body>
+  <body class="fayad-page">
     <!-- =====================================================
        PAGE BACKGROUND
     ====================================================== -->
@@ -95,7 +100,7 @@
 
       <div class="nav-actions">
         <!-- Auth -->
-        <div id="auth-container" class="auth-container">
+        <div id="auth-container" class="auth-container" aria-live="polite">
           <a href="login.html" id="auth-btn-link" class="nav-signin-btn"> تسجيل الدخول </a>
         </div>
 
@@ -1744,7 +1749,36 @@
       </div>
     </footer>
 
+    <noscript>
+      <div class="noscript-message">يرجى تفعيل JavaScript لاستخدام جميع وظائف منصة FAYAD.</div>
+    </noscript>
+
     <!-- Main JavaScript -->
     <script src="js/app.js" defer></script>
+
+<!-- PWA Service Worker -->
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker
+        .register("/service-worker.js")
+        .then((registration) => {
+          console.log(
+            "FAYAD Service Worker registered:",
+            registration.scope
+          );
+        })
+        .catch((error) => {
+          console.error(
+            "FAYAD Service Worker registration failed:",
+            error
+          );
+        });
+    });
+  }
+</script>
+
+</body>
+</html>
   </body>
 </html>
