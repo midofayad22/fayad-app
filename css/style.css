@@ -5634,85 +5634,67 @@ body::-webkit-scrollbar-thumb:hover {
   }
 }
 /* =========================================================
-   FAYAD — HEADER USER ACCOUNT
-   Compact profile button
+   FAYAD — USER PROFILE / ACCOUNT MENU
+   FIXED + RESPONSIVE VERSION
 ========================================================= */
 
 #user-profile {
-  display: none;
-  position: relative;
-  width: auto;
-  height: auto;
-  margin: 0;
-  padding: 0;
-}
-
-/* Main account wrapper */
-#user-profile .fayad-user-menu {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: auto;
-}
-
-/* Account button */
-#user-profile .fayad-user-trigger {
-  width: 46px !important;
-  height: 46px !important;
-
-  min-width: 46px !important;
-  max-width: 46px !important;
-
-  padding: 3px !important;
-  margin: 0 !important;
-
+  position: relative !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  overflow: visible !important;
+  z-index: 999999 !important;
+}
 
-  border: 1px solid rgba(45, 170, 145, 0.35) !important;
-  border-radius: 50% !important;
+.fayad-user-menu {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: visible !important;
+  z-index: 999999 !important;
+}
 
-  background: linear-gradient(
-    135deg,
-    #0b3d35,
-    #087f6a,
-    #075b72
-  ) !important;
+/* =========================
+   ACCOUNT BUTTON
+========================= */
 
+.fayad-user-trigger {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+
+  min-height: 42px !important;
+  padding: 6px 10px !important;
+
+  border: 1px solid rgba(45, 212, 191, 0.22) !important;
+  border-radius: 12px !important;
+
+  background: rgba(7, 20, 17, 0.85) !important;
   color: #ffffff !important;
 
-  box-shadow:
-    0 5px 18px rgba(0, 0, 0, 0.25),
-    0 0 18px rgba(45, 170, 145, 0.08) !important;
+  cursor: pointer !important;
+  transition: all 0.25s ease !important;
 
-  cursor: pointer;
-  transition:
-    transform 250ms ease,
-    box-shadow 250ms ease,
-    border-color 250ms ease !important;
-
-  overflow: hidden;
+  white-space: nowrap !important;
 }
 
-/* Hover */
-#user-profile .fayad-user-trigger:hover {
-  transform: translateY(-2px) !important;
-
-  border-color: rgba(45, 170, 145, 0.75) !important;
-
-  box-shadow:
-    0 8px 25px rgba(0, 0, 0, 0.3),
-    0 0 25px rgba(45, 170, 145, 0.16) !important;
+.fayad-user-trigger:hover {
+  background: rgba(13, 50, 43, 0.95) !important;
+  border-color: rgba(45, 212, 191, 0.45) !important;
+  transform: translateY(-1px);
 }
 
-/* User avatar */
-#user-profile .fayad-user-avatar {
-  width: 38px !important;
-  height: 38px !important;
+/* =========================
+   AVATAR
+========================= */
 
-  min-width: 38px !important;
-  min-height: 38px !important;
+.fayad-user-avatar {
+  width: 32px !important;
+  height: 32px !important;
+
+  flex: 0 0 32px !important;
 
   display: flex !important;
   align-items: center !important;
@@ -5722,218 +5704,313 @@ body::-webkit-scrollbar-thumb:hover {
 
   background: linear-gradient(
     135deg,
-    #19c7a5,
-    #087f6a,
+    #0ba58a,
     #075b72
   ) !important;
 
   color: #ffffff !important;
 
-  font-size: 17px !important;
-  font-weight: 800 !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
 
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
-/* Account image */
-#user-profile .fayad-user-avatar-image {
+.fayad-user-avatar img {
   width: 100% !important;
   height: 100% !important;
-
-  display: block !important;
-
   object-fit: cover !important;
-  object-position: center !important;
-
-  border-radius: 50% !important;
 }
 
-/* Hide name + email from the header button */
-#user-profile .fayad-user-info {
-  display: none !important;
+/* =========================
+   BUTTON TEXT
+========================= */
+
+.fayad-user-info {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+
+  min-width: 0 !important;
+  max-width: 150px !important;
 }
 
-/* Hide arrow from compact button */
-#user-profile .fayad-user-trigger > i {
-  display: none !important;
+.fayad-user-info strong {
+  color: #ffffff !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
 }
 
+.fayad-user-info small {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-size: 10px !important;
 
-/* =========================================================
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+
+  max-width: 150px !important;
+}
+
+.fayad-user-trigger > i {
+  color: #7cebd8 !important;
+  font-size: 11px !important;
+}
+
+/* =========================
    DROPDOWN
-========================================================= */
+========================= */
 
-#user-profile .fayad-user-dropdown {
-  position: absolute;
+.fayad-user-dropdown {
+  position: absolute !important;
 
-  top: calc(100% + 12px);
-  right: 0;
+  top: calc(100% + 10px) !important;
+  right: 0 !important;
+  left: auto !important;
 
-  width: 270px;
+  width: 280px !important;
+  max-width: calc(100vw - 20px) !important;
 
-  padding: 12px;
+  padding: 10px !important;
 
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
+  border: 1px solid rgba(45, 212, 191, 0.22) !important;
+  border-radius: 16px !important;
 
-  background: rgba(7, 20, 17, 0.97);
+  background: rgba(7, 20, 17, 0.98) !important;
 
   box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.45),
-    0 0 30px rgba(45, 170, 145, 0.08);
+    0 20px 60px rgba(0, 0, 0, 0.45),
+    0 0 30px rgba(13, 148, 136, 0.08) !important;
 
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
 
-  z-index: 9999;
+  z-index: 2147483647 !important;
+
+  overflow: visible !important;
 }
 
-/* Dropdown header */
-#user-profile .fayad-user-dropdown-head {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-
-  padding: 8px;
+/* مهم جداً: العنصر المخفي يفضل مخفي */
+.fayad-user-dropdown[hidden] {
+  display: none !important;
 }
 
-/* Larger avatar inside dropdown */
-#user-profile .fayad-user-dropdown-head .fayad-user-avatar.large {
-  width: 48px !important;
-  height: 48px !important;
+/* =========================
+   DROPDOWN HEADER
+========================= */
 
-  min-width: 48px !important;
-  min-height: 48px !important;
+.fayad-user-dropdown-head {
+  display: flex !important;
+  align-items: center !important;
+  gap: 11px !important;
 
-  font-size: 20px !important;
+  padding: 10px !important;
+
+  min-width: 0 !important;
 }
 
-/* Name */
-#user-profile .fayad-user-dropdown-head strong {
-  display: block;
-
-  color: #ffffff;
-
-  font-size: 14px;
-  font-weight: 700;
-
-  line-height: 1.4;
+.fayad-user-dropdown-head > div {
+  min-width: 0 !important;
+  flex: 1 !important;
 }
 
-/* Email */
-#user-profile .fayad-user-dropdown-head small {
-  display: block;
+.fayad-user-dropdown-head strong {
+  display: block !important;
 
-  margin-top: 3px;
+  color: #ffffff !important;
 
-  color: rgba(255, 255, 255, 0.55);
+  font-size: 14px !important;
+  font-weight: 700 !important;
 
-  font-size: 11px;
+  margin-bottom: 3px !important;
 
-  direction: ltr;
-  text-align: left;
-
-  word-break: break-word;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
 }
 
-/* Divider */
-#user-profile .fayad-user-dropdown-divider {
-  height: 1px;
+.fayad-user-dropdown-head small {
+  display: block !important;
 
-  margin: 8px 4px;
+  color: rgba(255, 255, 255, 0.58) !important;
 
-  background: rgba(255, 255, 255, 0.07);
+  font-size: 11px !important;
+  line-height: 1.5 !important;
+
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
 }
 
-/* Dropdown items */
-#user-profile .fayad-user-menu-item {
+.fayad-user-avatar.large {
+  width: 44px !important;
+  height: 44px !important;
+
+  flex: 0 0 44px !important;
+
+  font-size: 17px !important;
+}
+
+/* =========================
+   DIVIDER
+========================= */
+
+.fayad-user-dropdown-divider {
+  width: 100% !important;
+  height: 1px !important;
+
+  margin: 6px 0 !important;
+
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* =========================
+   MENU ITEMS
+========================= */
+
+.fayad-user-menu-item {
   width: 100% !important;
 
-  min-height: 42px;
-
   display: flex !important;
-  align-items: center;
-  gap: 10px;
+  align-items: center !important;
+  gap: 10px !important;
 
-  padding: 10px 12px !important;
-  margin: 0 !important;
+  padding: 11px 12px !important;
 
   border: 0 !important;
   border-radius: 10px !important;
 
   background: transparent !important;
 
-  color: rgba(255, 255, 255, 0.82) !important;
-
-  font-size: 13px;
-  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85) !important;
 
   text-decoration: none !important;
 
-  cursor: pointer;
+  font-size: 13px !important;
 
-  box-sizing: border-box;
+  cursor: pointer !important;
+
+  box-sizing: border-box !important;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease !important;
 }
 
-/* Icons */
-#user-profile .fayad-user-menu-item i {
-  width: 18px;
-
-  color: #2daa91;
-
-  text-align: center;
+.fayad-user-menu-item:hover {
+  background: rgba(45, 212, 191, 0.09) !important;
+  color: #7cebd8 !important;
 }
 
-/* Hover items */
-#user-profile .fayad-user-menu-item:hover {
-  background: rgba(45, 170, 145, 0.10) !important;
+.fayad-user-menu-item i {
+  width: 18px !important;
 
-  color: #ffffff !important;
+  color: #53d8c1 !important;
+
+  text-align: center !important;
 }
 
-/* Logout */
-#user-profile .fayad-user-menu-item.logout {
-  color: #ff8f8f !important;
+.fayad-user-menu-item.logout {
+  color: #ff8b8b !important;
 }
 
-#user-profile .fayad-user-menu-item.logout i {
-  color: #ff7777;
+.fayad-user-menu-item.logout i {
+  color: #ff8b8b !important;
 }
 
-#user-profile .fayad-user-menu-item.logout:hover {
+.fayad-user-menu-item.logout:hover {
   background: rgba(255, 80, 80, 0.08) !important;
 }
 
-
 /* =========================================================
-   MOBILE
+   MOBILE FIX
+   القائمة تتوسّط الشاشة ولا تخرج ناحية الشمال
 ========================================================= */
 
-@media (max-width: 768px) {
+@media (max-width: 700px) {
 
-  #user-profile .fayad-user-trigger {
-    width: 42px !important;
-    height: 42px !important;
-
-    min-width: 42px !important;
-    max-width: 42px !important;
-
-    padding: 2px !important;
+  #user-profile {
+    position: static !important;
   }
 
-  #user-profile .fayad-user-avatar {
-    width: 36px !important;
-    height: 36px !important;
-
-    min-width: 36px !important;
-    min-height: 36px !important;
+  .fayad-user-menu {
+    position: static !important;
   }
 
-  #user-profile .fayad-user-dropdown {
-    right: -5px;
+  .fayad-user-trigger {
+    min-height: 40px !important;
+    padding: 5px 8px !important;
+  }
 
-    width: 250px;
+  /* نخفي اسم المستخدم من الزر على الموبايل */
+  .fayad-user-info {
+    display: none !important;
+  }
 
-    max-width: calc(100vw - 30px);
+  .fayad-user-trigger > i {
+    display: none !important;
+  }
+
+  .fayad-user-avatar {
+    width: 34px !important;
+    height: 34px !important;
+    flex-basis: 34px !important;
+  }
+
+  /* ==========================================
+     أهم تعديل:
+     القائمة أصبحت Fixed بالنسبة للشاشة
+     وليس بالنسبة للـ Header
+  ========================================== */
+
+  .fayad-user-dropdown {
+    position: fixed !important;
+
+    top: 68px !important;
+
+    left: 50% !important;
+    right: auto !important;
+
+    transform: translateX(-50%) !important;
+
+    width: min(300px, calc(100vw - 24px)) !important;
+    max-width: calc(100vw - 24px) !important;
+
+    box-sizing: border-box !important;
+
+    margin: 0 !important;
+
+    z-index: 2147483647 !important;
+  }
+}
+
+/* =========================
+   VERY SMALL PHONES
+========================= */
+
+@media (max-width: 380px) {
+
+  .fayad-user-dropdown {
+    top: 64px !important;
+
+    width: calc(100vw - 16px) !important;
+    max-width: calc(100vw - 16px) !important;
+
+    padding: 8px !important;
+
+    border-radius: 14px !important;
+  }
+
+  .fayad-user-dropdown-head {
+    padding: 8px !important;
+  }
+
+  .fayad-user-menu-item {
+    padding: 10px !important;
   }
 }
