@@ -1,0 +1,166 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 512 512"
+  width="512"
+  height="512"
+>
+  <defs>
+
+    <!-- Main blended background -->
+    <linearGradient
+      id="background"
+      x1="0"
+      y1="0"
+      x2="512"
+      y2="512"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop offset="0" stop-color="#061A16"/>
+      <stop offset="0.28" stop-color="#0B3D35"/>
+      <stop offset="0.55" stop-color="#087F6A"/>
+      <stop offset="0.78" stop-color="#075B72"/>
+      <stop offset="1" stop-color="#071A2F"/>
+    </linearGradient>
+
+    <!-- Soft green area -->
+    <radialGradient
+      id="green"
+      cx="100"
+      cy="90"
+      r="300"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop offset="0" stop-color="#21D7B2" stop-opacity="0.55"/>
+      <stop offset="0.45" stop-color="#0BA58A" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#0B3D35" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Soft blue area -->
+    <radialGradient
+      id="blue"
+      cx="430"
+      cy="430"
+      r="280"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop offset="0" stop-color="#159AC0" stop-opacity="0.45"/>
+      <stop offset="0.5" stop-color="#075B72" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#071A2F" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- F gradient -->
+    <linearGradient
+      id="letter"
+      x1="170"
+      y1="130"
+      x2="350"
+      y2="380"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.5" stop-color="#F4FFFC"/>
+      <stop offset="1" stop-color="#A9F9E8"/>
+    </linearGradient>
+
+    <!-- Border -->
+    <linearGradient
+      id="border"
+      x1="0"
+      y1="0"
+      x2="512"
+      y2="512"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop offset="0" stop-color="#5DFFE5" stop-opacity="0.5"/>
+      <stop offset="0.5" stop-color="#FFFFFF" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#159BC0" stop-opacity="0.4"/>
+    </linearGradient>
+
+  </defs>
+
+
+  <!-- Background -->
+  <rect
+    x="0"
+    y="0"
+    width="512"
+    height="512"
+    rx="112"
+    fill="url(#background)"
+  />
+
+
+  <!-- Blended lights -->
+  <rect
+    x="0"
+    y="0"
+    width="512"
+    height="512"
+    rx="112"
+    fill="url(#green)"
+  />
+
+  <rect
+    x="0"
+    y="0"
+    width="512"
+    height="512"
+    rx="112"
+    fill="url(#blue)"
+  />
+
+
+  <!-- Subtle depth -->
+  <circle
+    cx="420"
+    cy="90"
+    r="170"
+    fill="#03131F"
+    opacity="0.18"
+  />
+
+  <circle
+    cx="90"
+    cy="430"
+    r="150"
+    fill="#18C7A5"
+    opacity="0.08"
+  />
+
+
+  <!-- Border -->
+  <rect
+    x="5"
+    y="5"
+    width="502"
+    height="502"
+    rx="107"
+    fill="none"
+    stroke="url(#border)"
+    stroke-width="8"
+  />
+
+
+  <!-- =========================
+       F — REAL VECTOR PATH
+       No text / no font required
+       ========================= -->
+
+  <path
+    d="
+      M 154 132
+      H 365
+      V 190
+      H 222
+      V 236
+      H 344
+      V 292
+      H 222
+      V 380
+      H 154
+      Z
+    "
+    fill="url(#letter)"
+  />
+
+</svg>
