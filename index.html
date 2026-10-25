@@ -4,18 +4,29 @@
     <meta charset="UTF-8" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- PWA -->
-<link rel="manifest" href="/manifest.json" />
+
+    <!-- Site metadata (managed: canonical, icons, manifest, social, service worker) -->
+    <link rel="canonical" href="https://fayad-learning.vercel.app/" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="FAYAD" />
+    <meta property="og:locale" content="ar_AR" />
+    <meta property="og:title" content="FAYAD — تعلم تطوير الويب بطريقة عملية" />
+    <meta property="og:description" content="FAYAD — منصة تفاعلية حديثة لتعلم تطوير الويب من الأساسيات إلى Front-End Frameworks والمشاريع العملية." />
+    <meta property="og:url" content="https://fayad-learning.vercel.app/" />
+    <meta property="og:image" content="https://fayad-learning.vercel.app/icons/icon-512.png" />
+    <meta name="twitter:card" content="summary" />
+    <script src="/js/sw-register.js" defer></script>
 
 <!-- iOS / Safari -->
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="apple-mobile-web-app-title" content="FAYAD Learning" />
-
-<!-- App Icons -->
-<link rel="apple-touch-icon" href="/icons/icon-192.png" />
-
-    <meta
+<meta
       name="description"
       content="FAYAD — منصة تفاعلية حديثة لتعلم تطوير الويب من الأساسيات إلى Front-End Frameworks والمشاريع العملية." />
 
@@ -42,11 +53,6 @@
 
     <!-- Existing authentication system -->
     <script src="js/main-auth.js" defer></script>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
-
-    
     <!-- Vercel Analytics -->
     <script defer src="/_vercel/insights/script.js"></script>
     <meta name="google-site-verification" content="LpOkipedYcVnmHK0lsha5n-JT3Wx0jmOBBEnfZ3bwag" />
@@ -1756,30 +1762,5 @@
 
     <!-- Main JavaScript -->
     <script src="js/app.js" defer></script>
-
-<!-- PWA Service Worker -->
-<script>
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-      navigator.serviceWorker
-        .register("/service-worker.js")
-        .then((registration) => {
-          console.log(
-            "FAYAD Service Worker registered:",
-            registration.scope
-          );
-        })
-        .catch((error) => {
-          console.error(
-            "FAYAD Service Worker registration failed:",
-            error
-          );
-        });
-    });
-  }
-</script>
-
 </body>
-</html>
-  </body>
 </html>

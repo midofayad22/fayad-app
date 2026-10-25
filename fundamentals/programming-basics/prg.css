@@ -847,7 +847,7 @@ body {
   letter-spacing: 1.7px;
 }
 
-.lesson-card > h1 {
+.lesson-card > h2 {
   max-width: 850px;
 
   margin-bottom: 27px;

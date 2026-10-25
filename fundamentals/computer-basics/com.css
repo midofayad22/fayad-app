@@ -481,7 +481,7 @@ body {
   font-size: 1.4rem;
 }
 
-.lesson-card > h1 {
+.lesson-card > h2 {
   font-size: clamp(1.6rem, 4vw, 2.2rem);
 
   margin-bottom: 25px;
