@@ -5,6 +5,9 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Preferences: theme / language / direction resolved before first paint (no flash) -->
+    <script src="/js/prefs.js"></script>
+
     <!-- Site metadata (managed: canonical, icons, manifest, social, service worker) -->
     <link rel="canonical" href="https://fayad-learning.vercel.app/" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -18,8 +21,10 @@
     <meta property="og:title" content="FAYAD — تعلم تطوير الويب بطريقة عملية" />
     <meta property="og:description" content="FAYAD — منصة تفاعلية حديثة لتعلم تطوير الويب من الأساسيات إلى Front-End Frameworks والمشاريع العملية." />
     <meta property="og:url" content="https://fayad-learning.vercel.app/" />
-    <meta property="og:image" content="https://fayad-learning.vercel.app/icons/icon-512.png" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content="https://fayad-learning.vercel.app/assets/brand/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
     <script src="/js/sw-register.js" defer></script>
 
 <!-- iOS / Safari -->
@@ -67,6 +72,14 @@
 
     <!-- Vercel Speed Insights -->
     <script defer src="/_vercel/speed-insights/script.js"></script>
+  
+    <!-- FAYAD design system (loaded after page CSS so tokens win) -->
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/theme-overrides.css" />
+    <link rel="stylesheet" href="/css/shell.css" />
+    <script src="/js/i18n.js" defer></script>
+    <script src="/js/shell.js" defer></script>
   </head>
 
   <body class="fayad-page">
@@ -86,9 +99,7 @@
 
     <header class="navbar" id="navbar">
       <a href="index.html" class="logo" aria-label="الصفحة الرئيسية FAYAD">
-        <span class="logo-mark" aria-hidden="true">
-          <i class="fa-solid fa-code"></i>
-        </span>
+        <span class="logo-mark" aria-hidden="true"><img src="/assets/brand/logo-mark.svg" alt="" width="36" height="36" /></span>
 
         <span class="logo-text">FAYAD</span>
       </a>
@@ -1728,7 +1739,7 @@
       <div class="footer-inner">
         <div class="footer-brand">
           <a href="index.html" class="logo">
-            <span class="logo-mark">F</span>
+            <span class="logo-mark" aria-hidden="true"><img src="/assets/brand/logo-mark.svg" alt="" width="36" height="36" /></span>
 
             <span class="logo-text"> FAYAD </span>
           </a>

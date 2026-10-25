@@ -1,0 +1,136 @@
+/* FAYAD shell: display controls (theme + language) and update prompt. Uses tokens only. */
+
+.fy-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--fy-font);
+}
+
+.fy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid var(--fy-border-strong);
+  border-radius: var(--fy-radius-pill);
+  background: var(--fy-surface);
+  color: var(--fy-text);
+  font: 700 0.85rem/1 var(--fy-font-en);
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background-color var(--fy-dur-fast) ease, border-color var(--fy-dur-fast) ease, transform var(--fy-dur-fast) ease;
+}
+
+.fy-btn[lang="ar"] {
+  font-family: var(--fy-font-ar);
+  font-size: 1rem;
+}
+
+.fy-btn:hover {
+  background: var(--fy-surface-3);
+  border-color: var(--fy-brand);
+}
+
+.fy-btn:active {
+  transform: scale(0.96);
+}
+
+.fy-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--fy-focus);
+}
+
+/* floating dock (all pages except the homepage navbar) */
+.fy-controls--dock {
+  position: fixed;
+  inset-block-end: 16px;
+  inset-inline-end: 16px;
+  z-index: var(--fy-z-dock);
+  padding: 5px;
+  border: 1px solid var(--fy-border-strong);
+  border-radius: var(--fy-radius-pill);
+  background: var(--fy-glass);
+  box-shadow: var(--fy-shadow-lg);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.fy-controls--dock .fy-btn {
+  background: transparent;
+  border-color: transparent;
+}
+
+.fy-controls--dock .fy-btn:hover {
+  background: var(--fy-hover);
+  border-color: var(--fy-border-strong);
+}
+
+/* inline variant inside the homepage navbar */
+.fy-controls--inline {
+  margin-inline-end: 4px;
+}
+
+/* update prompt */
+.fy-update {
+  position: fixed;
+  inset-block-end: 16px;
+  inset-inline: 16px;
+  margin-inline: auto;
+  z-index: calc(var(--fy-z-dock) + 1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  max-width: 460px;
+  padding: 12px 16px;
+  border: 1px solid var(--fy-border-strong);
+  border-radius: var(--fy-radius);
+  background: var(--fy-surface);
+  color: var(--fy-text);
+  box-shadow: var(--fy-shadow-lg);
+  font: 600 0.92rem/1.5 var(--fy-font);
+}
+
+.fy-update span {
+  flex: 1 1 180px;
+}
+
+.fy-update button {
+  padding: 8px 14px;
+  border-radius: var(--fy-radius-sm);
+  border: 1px solid var(--fy-border-strong);
+  background: transparent;
+  color: var(--fy-text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.fy-update .fy-update-go {
+  background: var(--fy-brand);
+  border-color: var(--fy-brand);
+  color: var(--fy-on-brand);
+}
+
+.fy-update button:focus-visible {
+  outline: none;
+  box-shadow: var(--fy-focus);
+}
+
+@media (max-width: 600px) {
+  .fy-controls--dock {
+    inset-block-end: 12px;
+    inset-inline-end: 12px;
+  }
+  .fy-update {
+    inset-block-end: 70px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fy-btn {
+    transition: none;
+  }
+}

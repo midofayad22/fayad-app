@@ -3593,3 +3593,12 @@ if (document.readyState === "loading") {
 } else {
   initAngularLearning();
 }
+
+/* Shared language switch (js/prefs.js): follow the global language and hide the track-local toggle */
+window.addEventListener("fayad:langchange", (event) => {
+  if (event.detail.lang !== currentLanguage) setLanguage(event.detail.lang);
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const local = document.getElementById("languageButton");
+  if (local) local.hidden = true;
+});

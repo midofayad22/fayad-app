@@ -85,7 +85,7 @@ body {
 
   background:
     radial-gradient(circle at 8% 8%, rgba(22, 132, 184, 0.13), transparent 28%),
-    radial-gradient(circle at 92% 18%, rgba(15, 128, 122, 0.11), transparent 30%),
+    radial-gradient(circle at 92% 18%, color-mix(in srgb, var(--fy-course) 11%, transparent), transparent 30%),
     radial-gradient(circle at 55% 100%, rgba(177, 139, 67, 0.05), transparent 25%),
     linear-gradient(135deg, var(--bg-main), var(--bg-soft));
 
@@ -105,7 +105,7 @@ button {
 button:focus-visible,
 a:focus-visible,
 textarea:focus-visible {
-  outline: 3px solid rgba(15, 128, 122, 0.25);
+  outline: 3px solid color-mix(in srgb, var(--fy-course) 25%, transparent);
   outline-offset: 3px;
 }
 
@@ -115,7 +115,7 @@ a {
 }
 
 ::selection {
-  background: rgba(15, 128, 122, 0.18);
+  background: color-mix(in srgb, var(--fy-course) 18%, transparent);
   color: var(--blue-dark);
 }
 
@@ -132,7 +132,7 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgba(15, 128, 122, 0.45), rgba(11, 93, 145, 0.45));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--fy-course) 45%, transparent), color-mix(in srgb, var(--fy-course) 45%, transparent));
 
   border-radius: 20px;
 }
@@ -158,7 +158,7 @@ a {
 
   padding: 0 4%;
 
-  background: rgba(255, 255, 255, 0.82);
+  background: color-mix(in srgb, var(--fy-surface) 82%, transparent);
 
   backdrop-filter: blur(22px);
   -webkit-backdrop-filter: blur(22px);
@@ -192,12 +192,12 @@ a {
 
   background: linear-gradient(135deg, var(--blue-dark), var(--teal));
 
-  color: #fff;
+  color: var(--fy-course-on);
 
   font-size: 21px;
   font-weight: 900;
 
-  box-shadow: 0 9px 25px rgba(11, 93, 145, 0.22);
+  box-shadow: 0 9px 25px color-mix(in srgb, var(--fy-course) 22%, transparent);
 
   transition:
     transform var(--transition),
@@ -220,7 +220,7 @@ a {
 .learning-logo:hover {
   transform: translateY(-3px) rotate(-2deg);
 
-  box-shadow: 0 14px 32px rgba(11, 93, 145, 0.3);
+  box-shadow: 0 14px 32px color-mix(in srgb, var(--fy-course) 30%, transparent);
 }
 
 .learning-logo:active {
@@ -283,7 +283,7 @@ a {
 
   border-radius: 10px;
 
-  background: rgba(255, 255, 255, 0.75);
+  background: color-mix(in srgb, var(--fy-surface) 75%, transparent);
 
   color: var(--text-primary);
 
@@ -296,9 +296,9 @@ a {
 }
 
 .back-btn:hover {
-  background: rgba(15, 128, 122, 0.08);
+  background: color-mix(in srgb, var(--fy-course) 8%, transparent);
 
-  border-color: rgba(15, 128, 122, 0.25);
+  border-color: color-mix(in srgb, var(--fy-course) 25%, transparent);
 
   transform: translateY(-2px);
 }
@@ -332,7 +332,7 @@ a {
 
   padding: 30px 15px 40px;
 
-  background: linear-gradient(180deg, rgba(239, 248, 252, 0.92), rgba(232, 244, 249, 0.82));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--fy-surface-2) 92%, transparent), color-mix(in srgb, var(--fy-surface-2) 82%, transparent));
 
   border-right: 1px solid var(--border);
 
@@ -482,7 +482,7 @@ a {
 
   inset: 0;
 
-  background: linear-gradient(90deg, rgba(15, 128, 122, 0.08), transparent);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--fy-course) 8%, transparent), transparent);
 
   opacity: 0;
 
@@ -494,7 +494,7 @@ a {
 .lesson:hover {
   transform: translateX(3px);
 
-  background: rgba(255, 255, 255, 0.78);
+  background: color-mix(in srgb, var(--fy-surface) 78%, transparent);
 
   color: var(--blue-dark);
 
@@ -512,7 +512,7 @@ a {
 .lesson.active {
   color: var(--blue-dark);
 
-  background: linear-gradient(135deg, rgba(15, 128, 122, 0.15), rgba(11, 93, 145, 0.09));
+  background: linear-gradient(135deg, color-mix(in srgb, var(--fy-course) 15%, transparent), color-mix(in srgb, var(--fy-course) 9%, transparent));
 
   box-shadow:
     inset 3px 0 0 var(--teal),
@@ -542,7 +542,7 @@ a {
 
   border-radius: 8px;
 
-  background: rgba(255, 255, 255, 0.82);
+  background: color-mix(in srgb, var(--fy-surface) 82%, transparent);
 
   border: 1px solid var(--border);
 
@@ -564,7 +564,7 @@ a {
 
   color: var(--teal);
 
-  border-color: rgba(15, 128, 122, 0.22);
+  border-color: color-mix(in srgb, var(--fy-course) 22%, transparent);
 }
 
 .lesson-status.current {
@@ -572,9 +572,9 @@ a {
 
   border-color: transparent;
 
-  color: #fff;
+  color: var(--fy-course-on);
 
-  box-shadow: 0 7px 19px rgba(15, 128, 122, 0.22);
+  box-shadow: 0 7px 19px color-mix(in srgb, var(--fy-course) 22%, transparent);
 }
 
 .lesson.active .lesson-status.current {
@@ -584,11 +584,11 @@ a {
 @keyframes statusPulse {
   0%,
   100% {
-    box-shadow: 0 7px 19px rgba(15, 128, 122, 0.2);
+    box-shadow: 0 7px 19px color-mix(in srgb, var(--fy-course) 20%, transparent);
   }
 
   50% {
-    box-shadow: 0 9px 25px rgba(15, 128, 122, 0.34);
+    box-shadow: 0 9px 25px color-mix(in srgb, var(--fy-course) 34%, transparent);
   }
 }
 
@@ -686,7 +686,7 @@ a {
 
   background: linear-gradient(90deg, var(--teal), var(--blue-light));
 
-  box-shadow: 0 2px 10px rgba(15, 128, 122, 0.2);
+  box-shadow: 0 2px 10px color-mix(in srgb, var(--fy-course) 20%, transparent);
 
   transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -702,7 +702,7 @@ a {
   width: 70px;
   height: 100%;
 
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.42), transparent);
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--fy-surface) 42%, transparent), transparent);
 
   animation: progressShine 2.8s linear infinite;
 }
@@ -817,7 +817,7 @@ a {
 
   height: 2px;
 
-  background: linear-gradient(90deg, transparent, rgba(15, 128, 122, 0.35), transparent);
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--fy-course) 35%, transparent), transparent);
 
   opacity: 0;
 
@@ -829,7 +829,7 @@ a {
 
   box-shadow: var(--shadow-hover);
 
-  border-color: rgba(15, 128, 122, 0.15);
+  border-color: color-mix(in srgb, var(--fy-course) 15%, transparent);
 }
 
 .content-card:hover::before {
@@ -871,7 +871,7 @@ a {
 
   border-radius: 6px;
 
-  background: rgba(15, 128, 122, 0.09);
+  background: color-mix(in srgb, var(--fy-course) 9%, transparent);
 
   color: var(--teal);
 
@@ -951,7 +951,7 @@ a {
 
   padding: 20px 25px;
 
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.025), rgba(15, 128, 122, 0.06));
+  background: linear-gradient(135deg, var(--fy-hover), color-mix(in srgb, var(--fy-course) 6%, transparent));
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -981,7 +981,7 @@ a {
 
   border-radius: 8px;
 
-  background: rgba(255, 255, 255, 0.07);
+  background: color-mix(in srgb, var(--fy-surface) 7%, transparent);
 
   color: #d6e5ee;
 
@@ -1116,7 +1116,7 @@ a {
 
   border-radius: var(--radius-lg);
 
-  background: #fff;
+  background: var(--fy-surface);
 
   box-shadow: var(--shadow);
 
@@ -1140,7 +1140,7 @@ a {
 
   padding: 22px 25px;
 
-  background: linear-gradient(135deg, #f6fbfd, #eaf7f7);
+  background: linear-gradient(135deg, var(--fy-surface), var(--fy-surface-2));
 
   border-bottom: 1px solid var(--border);
 }
@@ -1174,12 +1174,12 @@ a {
 
   background: linear-gradient(135deg, var(--teal), var(--blue));
 
-  color: #fff;
+  color: var(--fy-course-on);
 
   font-size: 12px;
   font-weight: 800;
 
-  box-shadow: 0 9px 24px rgba(15, 128, 122, 0.2);
+  box-shadow: 0 9px 24px color-mix(in srgb, var(--fy-course) 20%, transparent);
 
   overflow: hidden;
 
@@ -1200,7 +1200,7 @@ a {
   width: 70%;
   height: 100%;
 
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--fy-surface) 25%, transparent), transparent);
 
   transform: skewX(-20deg);
 
@@ -1212,7 +1212,7 @@ a {
 
   filter: brightness(1.04);
 
-  box-shadow: 0 14px 31px rgba(15, 128, 122, 0.29);
+  box-shadow: 0 14px 31px color-mix(in srgb, var(--fy-course) 29%, transparent);
 }
 
 .run-button:hover::before {
@@ -1343,7 +1343,7 @@ a {
 
   border-radius: 50%;
 
-  background: radial-gradient(circle, rgba(15, 128, 122, 0.08), transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--fy-course) 8%, transparent), transparent 70%);
 
   pointer-events: none;
 }
@@ -1367,7 +1367,7 @@ a {
 
   border-radius: 8px;
 
-  background: #0b5d91;
+  background: var(--fy-course);
 
   color: #fff;
 
@@ -1379,7 +1379,7 @@ a {
 .live-preview button:hover {
   transform: translateY(-2px);
 
-  box-shadow: 0 9px 20px rgba(11, 93, 145, 0.2);
+  box-shadow: 0 9px 20px color-mix(in srgb, var(--fy-course) 20%, transparent);
 }
 
 /* =========================================================
@@ -1393,11 +1393,11 @@ a {
 
   padding: 33px;
 
-  border: 1px solid rgba(15, 128, 122, 0.19);
+  border: 1px solid color-mix(in srgb, var(--fy-course) 19%, transparent);
 
   border-radius: var(--radius-lg);
 
-  background: linear-gradient(135deg, rgba(15, 128, 122, 0.075), rgba(11, 93, 145, 0.045));
+  background: linear-gradient(135deg, color-mix(in srgb, var(--fy-course) 8%, transparent), color-mix(in srgb, var(--fy-course) 4%, transparent));
 
   box-shadow: var(--shadow);
 
@@ -1430,7 +1430,7 @@ a {
 
   box-shadow: var(--shadow-hover);
 
-  border-color: rgba(15, 128, 122, 0.27);
+  border-color: color-mix(in srgb, var(--fy-course) 27%, transparent);
 }
 
 .check-card > span {
@@ -1460,9 +1460,9 @@ a {
 
   border-radius: 8px;
 
-  background: rgba(255, 255, 255, 0.62);
+  background: color-mix(in srgb, var(--fy-surface) 62%, transparent);
 
-  border: 1px solid rgba(15, 128, 122, 0.1);
+  border: 1px solid color-mix(in srgb, var(--fy-course) 10%, transparent);
 
   color: var(--text-muted);
 
@@ -1475,7 +1475,7 @@ a {
 }
 
 .check-card:hover .quiz-progress {
-  background: rgba(255, 255, 255, 0.82);
+  background: color-mix(in srgb, var(--fy-surface) 82%, transparent);
 
   transform: translateY(-1px);
 }
@@ -1538,7 +1538,7 @@ a {
 
   border-radius: 11px;
 
-  background: rgba(255, 255, 255, 0.77);
+  background: color-mix(in srgb, var(--fy-surface) 77%, transparent);
 
   border: 1px solid var(--border);
 
@@ -1580,9 +1580,9 @@ a {
 .answer-options button:hover:not(:disabled) {
   transform: translateX(-4px);
 
-  background: rgba(255, 255, 255, 0.98);
+  background: color-mix(in srgb, var(--fy-surface) 98%, transparent);
 
-  border-color: rgba(15, 128, 122, 0.28);
+  border-color: color-mix(in srgb, var(--fy-course) 28%, transparent);
 
   color: var(--blue-dark);
 
@@ -1702,12 +1702,12 @@ a {
 
   background: linear-gradient(135deg, var(--teal), var(--blue));
 
-  color: #fff;
+  color: var(--fy-course-on);
 
   font-size: 12px;
   font-weight: 800;
 
-  box-shadow: 0 9px 23px rgba(15, 128, 122, 0.17);
+  box-shadow: 0 9px 23px color-mix(in srgb, var(--fy-course) 17%, transparent);
 
   overflow: hidden;
 
@@ -1731,7 +1731,7 @@ a {
   width: 65%;
   height: 100%;
 
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--fy-surface) 28%, transparent), transparent);
 
   transform: skewX(-20deg);
 
@@ -1741,7 +1741,7 @@ a {
 .quiz-next-btn:hover:not(:disabled) {
   transform: translateY(-3px);
 
-  box-shadow: 0 14px 30px rgba(15, 128, 122, 0.27);
+  box-shadow: 0 14px 30px color-mix(in srgb, var(--fy-course) 27%, transparent);
 
   filter: brightness(1.04);
 }
@@ -1798,7 +1798,7 @@ a {
 
   border-radius: 14px;
 
-  background: rgba(255, 255, 255, 0.74);
+  background: color-mix(in srgb, var(--fy-surface) 74%, transparent);
 
   color: var(--text-primary);
 
@@ -1841,9 +1841,9 @@ a {
 .nav-btn:hover:not(:disabled) {
   transform: translateY(-4px);
 
-  background: rgba(255, 255, 255, 0.96);
+  background: color-mix(in srgb, var(--fy-surface) 96%, transparent);
 
-  border-color: rgba(15, 128, 122, 0.18);
+  border-color: color-mix(in srgb, var(--fy-course) 18%, transparent);
 
   box-shadow: var(--shadow);
 }

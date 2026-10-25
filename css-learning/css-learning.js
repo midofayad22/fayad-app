@@ -1980,7 +1980,7 @@ let currentQuestion = 0;
 
 let quizLocked = false;
 
-let currentLanguage = "ar";
+let currentLanguage = window.FAYAD && window.FAYAD.prefs && window.FAYAD.prefs.lang === "en" ? "en" : "ar";
 
 /* =========================================================
    6. STATIC TEXT ELEMENTS
@@ -2626,3 +2626,10 @@ if (savedLesson !== null && !Number.isNaN(Number(savedLesson))) {
 ========================================================= */
 
 applyLanguage();
+
+/* Shared language switch (js/prefs.js): re-render this track when the global language changes */
+window.addEventListener("fayad:langchange", (event) => {
+  currentLanguage = event.detail.lang === "en" ? "en" : "ar";
+  applyLanguage();
+  loadLesson(currentLesson, false, false);
+});

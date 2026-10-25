@@ -107,8 +107,8 @@ img {
 }
 
 ::selection {
-  background: rgba(34, 197, 139, 0.22);
-  color: #fff;
+  background: color-mix(in srgb, var(--fy-course) 22%, transparent);
+  color: var(--fy-text);
 }
 
 /* =========================================================
@@ -130,8 +130,8 @@ img {
   opacity: 0.3;
 
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    linear-gradient(var(--fy-hover) 1px, transparent 1px),
+    linear-gradient(90deg, var(--fy-hover) 1px, transparent 1px);
 
   background-size: 52px 52px;
 }
@@ -188,9 +188,9 @@ img {
 
   gap: 30px;
 
-  background: rgba(6, 16, 13, 0.76);
+  background: color-mix(in srgb, var(--fy-bg) 76%, transparent);
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+  border-bottom: 1px solid var(--fy-border);
 
   backdrop-filter: blur(18px);
 
@@ -200,7 +200,7 @@ img {
 }
 
 .navbar.scrolled {
-  background: rgba(6, 16, 13, 0.93);
+  background: color-mix(in srgb, var(--fy-bg) 93%, transparent);
 
   border-bottom-color: var(--border);
 }
@@ -242,14 +242,14 @@ img {
 
   flex-shrink: 0;
 
-  border: 1px solid rgba(34, 197, 139, 0.28);
+  border: 1px solid color-mix(in srgb, var(--fy-course) 28%, transparent);
   border-radius: 11px;
 
   background:
     linear-gradient(
       145deg,
-      rgba(34, 197, 139, 0.15),
-      rgba(18, 49, 42, 0.22)
+      color-mix(in srgb, var(--fy-course) 15%, transparent),
+      color-mix(in srgb, var(--fy-surface) 22%, transparent)
     );
 
   color: var(--green-light);
@@ -261,7 +261,7 @@ img {
   overflow: hidden;
 
   box-shadow:
-    inset 0 0 20px rgba(34, 197, 139, 0.045),
+    inset 0 0 20px color-mix(in srgb, var(--fy-course) 4%, transparent),
     0 6px 20px rgba(0, 0, 0, 0.18);
 
   transition:
@@ -288,7 +288,7 @@ img {
   background:
     radial-gradient(
       circle at center,
-      rgba(34, 197, 139, 0.13),
+      color-mix(in srgb, var(--fy-course) 13%, transparent),
       transparent 70%
     );
 
@@ -323,7 +323,7 @@ img {
     linear-gradient(
       90deg,
       transparent,
-      rgba(255, 255, 255, 0.13),
+      color-mix(in srgb, var(--fy-text) 13%, transparent),
       transparent
     );
 
@@ -365,7 +365,7 @@ img {
 
   display: inline-block;
 
-  color: #f4faf7;
+  color: var(--fy-text);
 
   font-family: "Inter", sans-serif;
 
@@ -430,7 +430,7 @@ img {
     );
 
   box-shadow:
-    0 0 10px rgba(34, 197, 139, 0.22);
+    0 0 10px color-mix(in srgb, var(--fy-course) 22%, transparent);
 
   transition:
     width 500ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -459,7 +459,7 @@ img {
   border-radius: 50%;
 
   background:
-    rgba(34, 197, 139, 0.08);
+    color-mix(in srgb, var(--fy-course) 8%, transparent);
 
   filter: blur(22px);
 
@@ -484,19 +484,19 @@ img {
     scale(1.035);
 
   border-color:
-    rgba(34, 197, 139, 0.48);
+    color-mix(in srgb, var(--fy-course) 48%, transparent);
 
   background:
     linear-gradient(
       145deg,
-      rgba(34, 197, 139, 0.19),
-      rgba(18, 57, 48, 0.27)
+      color-mix(in srgb, var(--fy-course) 19%, transparent),
+      color-mix(in srgb, var(--fy-surface) 27%, transparent)
     );
 
   box-shadow:
-    inset 0 0 22px rgba(34, 197, 139, 0.06),
-    0 9px 28px rgba(34, 197, 139, 0.10),
-    0 0 22px rgba(34, 197, 139, 0.055);
+    inset 0 0 22px color-mix(in srgb, var(--fy-course) 6%, transparent),
+    0 9px 28px color-mix(in srgb, var(--fy-course) 10%, transparent),
+    0 0 22px color-mix(in srgb, var(--fy-course) 6%, transparent);
 }
 
 .logo:hover .logo-mark::before {
@@ -521,7 +521,7 @@ img {
   filter:
     drop-shadow(
       0 0 8px
-      rgba(34, 197, 139, 0.28)
+      color-mix(in srgb, var(--fy-course) 28%, transparent)
     );
 }
 
@@ -540,7 +540,7 @@ img {
   filter:
     drop-shadow(
       0 0 10px
-      rgba(34, 197, 139, 0.10)
+      color-mix(in srgb, var(--fy-course) 10%, transparent)
     );
 }
 
@@ -569,8 +569,8 @@ img {
   border-color: var(--green);
 
   box-shadow:
-    0 0 0 3px rgba(34, 197, 139, 0.12),
-    0 0 25px rgba(34, 197, 139, 0.08);
+    0 0 0 3px color-mix(in srgb, var(--fy-course) 12%, transparent),
+    0 0 25px color-mix(in srgb, var(--fy-course) 8%, transparent);
 }
 
 .logo:focus-visible .logo-text::after {
@@ -652,7 +652,7 @@ img {
   cursor: pointer;
   border: 1px solid var(--border-strong);
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.035);
+  background: var(--fy-hover);
   color: var(--text);
   transition:
     transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
@@ -665,8 +665,8 @@ img {
 .user-profile-button:hover,
 .profile-trigger:hover {
   transform: translateY(-1px);
-  border-color: rgba(34, 197, 139, 0.38);
-  background: rgba(34, 197, 139, 0.07);
+  border-color: color-mix(in srgb, var(--fy-course) 38%, transparent);
+  background: color-mix(in srgb, var(--fy-course) 7%, transparent);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
 }
 
@@ -674,8 +674,8 @@ img {
 .user-profile-button:focus-visible,
 .profile-trigger:focus-visible {
   outline: none;
-  border-color: rgba(34, 197, 139, 0.58);
-  box-shadow: 0 0 0 3px rgba(34, 197, 139, 0.1);
+  border-color: color-mix(in srgb, var(--fy-course) 58%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--fy-course) 10%, transparent);
 }
 
 .user-avatar,
@@ -686,19 +686,19 @@ img {
   display: grid;
   place-items: center;
   flex: 0 0 31px;
-  border: 1px solid rgba(34, 197, 139, 0.3);
+  border: 1px solid color-mix(in srgb, var(--fy-course) 30%, transparent);
   border-radius: 10px;
   background:
     linear-gradient(
       145deg,
-      rgba(34, 197, 139, 0.18),
-      rgba(18, 57, 48, 0.3)
+      color-mix(in srgb, var(--fy-course) 18%, transparent),
+      color-mix(in srgb, var(--fy-surface) 30%, transparent)
     );
   color: var(--green-light);
   font-family: "Inter", "Cairo", sans-serif;
   font-size: 11px;
   font-weight: 800;
-  box-shadow: inset 0 0 15px rgba(34, 197, 139, 0.04);
+  box-shadow: inset 0 0 15px color-mix(in srgb, var(--fy-course) 4%, transparent);
 }
 
 .user-profile-name,
@@ -709,7 +709,7 @@ img {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: #f4faf7;
+  color: var(--fy-text);
   font-size: 11px;
   font-weight: 800;
 }
@@ -748,17 +748,17 @@ img {
   z-index: 1200;
   width: min(245px, calc(100vw - 30px));
   padding: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  border: 1px solid var(--fy-border);
   border-radius: 16px;
   background:
     linear-gradient(
       145deg,
-      rgba(14, 31, 26, 0.98),
-      rgba(7, 18, 15, 0.98)
+      color-mix(in srgb, var(--fy-bg-soft) 98%, transparent),
+      color-mix(in srgb, var(--fy-bg) 98%, transparent)
     );
   box-shadow:
     0 24px 55px rgba(0, 0, 0, 0.34),
-    0 0 35px rgba(34, 197, 139, 0.055);
+    0 0 35px color-mix(in srgb, var(--fy-course) 6%, transparent);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   opacity: 0;
@@ -818,8 +818,8 @@ img {
 .user-profile-menu button:hover,
 .profile-menu button:hover,
 .user-menu button:hover {
-  background: rgba(34, 197, 139, 0.07);
-  color: #fff;
+  background: color-mix(in srgb, var(--fy-course) 7%, transparent);
+  color: var(--fy-text);
   transform: translateX(-2px);
 }
 
@@ -848,7 +848,7 @@ img {
   height: 1px;
   margin: 6px 4px;
   border: 0;
-  background: rgba(255, 255, 255, 0.055);
+  background: var(--fy-hover);
 }
 
 @keyframes authProfileIn {
@@ -880,7 +880,7 @@ img {
   background: linear-gradient(
     110deg,
     transparent 20%,
-    rgba(255, 255, 255, 0.08) 50%,
+    color-mix(in srgb, var(--fy-text) 8%, transparent) 50%,
     transparent 80%
   );
   transform: translateX(-120%);
@@ -947,7 +947,7 @@ img {
   padding: 12px 15px;
   border: 1px solid rgba(215, 183, 106, 0.28);
   border-radius: 12px;
-  background: rgba(15, 24, 20, 0.96);
+  background: color-mix(in srgb, var(--fy-bg-soft) 96%, transparent);
   color: var(--text-soft);
   text-align: center;
   font-size: 11px;
@@ -1019,7 +1019,7 @@ img {
 
 .nav-link:hover,
 .nav-link.active {
-  color: #fff;
+  color: var(--fy-text);
 }
 
 .nav-link:hover::after,
@@ -1054,7 +1054,7 @@ img {
 
   border-radius: 11px;
 
-  background: rgba(255, 255, 255, 0.035);
+  background: var(--fy-hover);
 
   color: var(--text);
 
@@ -1066,9 +1066,9 @@ img {
 }
 
 .nav-signin-btn:hover {
-  border-color: rgba(34, 197, 139, 0.4);
+  border-color: color-mix(in srgb, var(--fy-course) 40%, transparent);
 
-  background: rgba(34, 197, 139, 0.08);
+  background: color-mix(in srgb, var(--fy-course) 8%, transparent);
 
   transform: translateY(-1px);
 }
@@ -1098,15 +1098,15 @@ img {
 
   border-radius: 12px;
 
-  background: rgba(255, 255, 255, 0.035);
+  background: var(--fy-hover);
 
   transition: var(--transition);
 }
 
 .menu-btn:hover {
-  border-color: rgba(34, 197, 139, 0.35);
+  border-color: color-mix(in srgb, var(--fy-course) 35%, transparent);
 
-  background: rgba(34, 197, 139, 0.07);
+  background: color-mix(in srgb, var(--fy-course) 7%, transparent);
 }
 
 .menu-btn span {
@@ -1154,7 +1154,7 @@ img {
 
   overflow-y: auto;
 
-  background: #081411;
+  background: var(--fy-bg);
 
   border-left: 1px solid var(--border);
 
@@ -1182,7 +1182,7 @@ img {
 
   padding: 28px 25px 22px;
 
-  background: rgba(8, 20, 17, 0.94);
+  background: color-mix(in srgb, var(--fy-bg) 94%, transparent);
 
   border-bottom: 1px solid var(--border);
 
@@ -1226,9 +1226,9 @@ img {
 
   border-radius: 10px;
 
-  background: rgba(255, 255, 255, 0.035);
+  background: var(--fy-hover);
 
-  color: #fff;
+  color: var(--fy-text);
 
   font-size: 25px;
 
@@ -1248,7 +1248,7 @@ img {
 .menu-section {
   padding: 20px 0;
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+  border-bottom: 1px solid var(--fy-border);
 }
 
 .menu-section-label {
@@ -1282,7 +1282,7 @@ img {
 }
 
 .menu-link:hover {
-  background: rgba(255, 255, 255, 0.035);
+  background: var(--fy-hover);
 
   transform: translateX(-3px);
 }
@@ -1338,7 +1338,7 @@ img {
 .menu-socials a:hover {
   color: var(--green-light);
 
-  border-color: rgba(34, 197, 139, 0.35);
+  border-color: color-mix(in srgb, var(--fy-course) 35%, transparent);
 }
 
 .menu-phone {
@@ -1356,7 +1356,7 @@ img {
 
   border-radius: 11px;
 
-  background: rgba(255, 255, 255, 0.025);
+  background: var(--fy-hover);
 
   color: var(--text-soft);
 
@@ -1490,9 +1490,9 @@ main {
 .btn-primary {
   background: var(--green);
 
-  color: #04100c;
+  color: var(--fy-course-on);
 
-  box-shadow: 0 10px 30px rgba(34, 197, 139, 0.13);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--fy-course) 13%, transparent);
 }
 
 .btn-primary:hover {
@@ -1500,21 +1500,21 @@ main {
 
   transform: translateY(-2px);
 
-  box-shadow: 0 14px 38px rgba(34, 197, 139, 0.18);
+  box-shadow: 0 14px 38px color-mix(in srgb, var(--fy-course) 18%, transparent);
 }
 
 .btn-secondary {
   border: 1px solid var(--border-strong);
 
-  background: rgba(255, 255, 255, 0.035);
+  background: var(--fy-hover);
 
   color: var(--text);
 }
 
 .btn-secondary:hover {
-  border-color: rgba(34, 197, 139, 0.35);
+  border-color: color-mix(in srgb, var(--fy-course) 35%, transparent);
 
-  background: rgba(34, 197, 139, 0.07);
+  background: color-mix(in srgb, var(--fy-course) 7%, transparent);
 
   transform: translateY(-2px);
 }
@@ -1562,11 +1562,11 @@ main {
 
   margin-bottom: 24px;
 
-  border: 1px solid rgba(34, 197, 139, 0.18);
+  border: 1px solid color-mix(in srgb, var(--fy-course) 18%, transparent);
 
   border-radius: 999px;
 
-  background: rgba(34, 197, 139, 0.045);
+  background: color-mix(in srgb, var(--fy-course) 4%, transparent);
 
   color: var(--text-soft);
 
@@ -1588,7 +1588,7 @@ main {
 
   background: var(--green);
 
-  box-shadow: 0 0 0 4px rgba(34, 197, 139, 0.08);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--fy-course) 8%, transparent);
 }
 
 .hero-title {
@@ -1628,7 +1628,7 @@ main {
 }
 
 .hero-description strong {
-  color: #fff;
+  color: var(--fy-text);
 
   font-weight: 700;
 }
@@ -1714,7 +1714,7 @@ main {
 .hero-orbit {
   position: absolute;
 
-  border: 1px solid rgba(34, 197, 139, 0.08);
+  border: 1px solid color-mix(in srgb, var(--fy-course) 8%, transparent);
 
   border-radius: 50%;
 
@@ -1751,7 +1751,7 @@ main {
 
   border-radius: 50%;
 
-  background: rgba(34, 197, 139, 0.045);
+  background: color-mix(in srgb, var(--fy-course) 4%, transparent);
 
   filter: blur(70px);
 
@@ -1782,7 +1782,7 @@ main {
 
   box-shadow:
     0 30px 80px rgba(0, 0, 0, 0.32),
-    0 0 0 1px rgba(34, 197, 139, 0.025),
+    0 0 0 1px color-mix(in srgb, var(--fy-course) 2%, transparent),
     inset 0 1px 0 rgba(255, 255, 255, 0.025);
 
   /* ميل بسيط جدًا بدل ما يكون مقلوب */
@@ -1828,7 +1828,7 @@ main {
     linear-gradient(
       90deg,
       transparent,
-      rgba(34, 197, 139, 0.75),
+      color-mix(in srgb, var(--fy-course) 75%, transparent),
       transparent
     );
 
@@ -1858,7 +1858,7 @@ main {
   background:
     linear-gradient(
       120deg,
-      rgba(34, 197, 139, 0.035),
+      color-mix(in srgb, var(--fy-course) 4%, transparent),
       transparent 35%,
       transparent 70%,
       rgba(215, 183, 106, 0.02)
@@ -1882,11 +1882,11 @@ main {
     scale(1.012);
 
   border-color:
-    rgba(34, 197, 139, 0.22);
+    color-mix(in srgb, var(--fy-course) 22%, transparent);
 
   box-shadow:
     0 38px 95px rgba(0, 0, 0, 0.4),
-    0 0 45px rgba(34, 197, 139, 0.055),
+    0 0 45px color-mix(in srgb, var(--fy-course) 6%, transparent),
     inset 0 1px 0 rgba(255, 255, 255, 0.035);
 }
 
@@ -2129,7 +2129,7 @@ main {
 
   border-radius: 13px;
 
-  background: linear-gradient(145deg, rgba(12, 29, 24, 0.94), rgba(7, 19, 16, 0.88));
+  background: linear-gradient(145deg, color-mix(in srgb, var(--fy-bg-soft) 94%, transparent), color-mix(in srgb, var(--fy-bg) 88%, transparent));
 
   box-shadow:
     0 18px 50px rgba(0, 0, 0, 0.32),
@@ -2178,11 +2178,11 @@ main {
 /* hover */
 
 .hero-float-card:hover {
-  border-color: rgba(34, 197, 139, 0.25);
+  border-color: color-mix(in srgb, var(--fy-course) 25%, transparent);
 
   box-shadow:
     0 24px 60px rgba(0, 0, 0, 0.4),
-    0 0 25px rgba(34, 197, 139, 0.05);
+    0 0 25px color-mix(in srgb, var(--fy-course) 5%, transparent);
 
   transform: translateY(-5px) scale(1.025);
 }
@@ -2202,11 +2202,11 @@ main {
 
   flex-shrink: 0;
 
-  border: 1px solid rgba(34, 197, 139, 0.08);
+  border: 1px solid color-mix(in srgb, var(--fy-course) 8%, transparent);
 
   border-radius: 9px;
 
-  background: rgba(34, 197, 139, 0.09);
+  background: color-mix(in srgb, var(--fy-course) 9%, transparent);
 
   color: var(--green);
 
@@ -2219,9 +2219,9 @@ main {
 .hero-float-card:hover .float-icon {
   transform: scale(1.08) rotate(-4deg);
 
-  background: rgba(34, 197, 139, 0.13);
+  background: color-mix(in srgb, var(--fy-course) 13%, transparent);
 
-  box-shadow: 0 0 18px rgba(34, 197, 139, 0.08);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--fy-course) 8%, transparent);
 }
 
 .hero-float-card strong {
@@ -2269,7 +2269,7 @@ main {
 
   position: relative;
 
-  box-shadow: 0 0 0 4px rgba(34, 197, 139, 0.025);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--fy-course) 2%, transparent);
 
   transition:
     transform 400ms ease,
@@ -2285,7 +2285,7 @@ main {
 
   border-radius: 50%;
 
-  border: 1px solid rgba(34, 197, 139, 0.08);
+  border: 1px solid color-mix(in srgb, var(--fy-course) 8%, transparent);
 
   opacity: 0;
 
@@ -2300,8 +2300,8 @@ main {
   transform: scale(1.08);
 
   box-shadow:
-    0 0 0 5px rgba(34, 197, 139, 0.035),
-    0 0 22px rgba(34, 197, 139, 0.08);
+    0 0 0 5px color-mix(in srgb, var(--fy-course) 4%, transparent),
+    0 0 22px color-mix(in srgb, var(--fy-course) 8%, transparent);
 }
 
 .hero-float-card:hover .progress-ring::before {
@@ -2342,7 +2342,7 @@ main {
 
   border-radius: var(--radius);
 
-  background: linear-gradient(145deg, rgba(34, 197, 139, 0.08), rgba(255, 255, 255, 0.018));
+  background: linear-gradient(145deg, color-mix(in srgb, var(--fy-course) 8%, transparent), var(--fy-hover));
 
   transition:
     transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -2354,9 +2354,9 @@ main {
 .concept-main:hover {
   transform: translateY(-5px);
 
-  border-color: rgba(34, 197, 139, 0.18);
+  border-color: color-mix(in srgb, var(--fy-course) 18%, transparent);
 
-  background: linear-gradient(145deg, rgba(34, 197, 139, 0.095), rgba(255, 255, 255, 0.022));
+  background: linear-gradient(145deg, color-mix(in srgb, var(--fy-course) 10%, transparent), var(--fy-hover));
 
   box-shadow: 0 20px 55px rgba(0, 0, 0, 0.22);
 }
@@ -2372,11 +2372,11 @@ main {
 
   margin-bottom: auto;
 
-  border: 1px solid rgba(34, 197, 139, 0.18);
+  border: 1px solid color-mix(in srgb, var(--fy-course) 18%, transparent);
 
   border-radius: 14px;
 
-  background: rgba(34, 197, 139, 0.07);
+  background: color-mix(in srgb, var(--fy-course) 7%, transparent);
 
   color: var(--green);
 
@@ -2391,9 +2391,9 @@ main {
 .concept-main:hover .concept-icon {
   transform: translateY(-3px) rotate(-3deg);
 
-  background: rgba(34, 197, 139, 0.11);
+  background: color-mix(in srgb, var(--fy-course) 11%, transparent);
 
-  box-shadow: 0 10px 25px rgba(34, 197, 139, 0.07);
+  box-shadow: 0 10px 25px color-mix(in srgb, var(--fy-course) 7%, transparent);
 }
 
 .concept-label {
@@ -2441,7 +2441,7 @@ main {
 
   border-radius: var(--radius);
 
-  background: rgba(255, 255, 255, 0.018);
+  background: var(--fy-hover);
 
   transition:
     transform 450ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -2451,9 +2451,9 @@ main {
 }
 
 .concept-card:hover {
-  border-color: rgba(34, 197, 139, 0.22);
+  border-color: color-mix(in srgb, var(--fy-course) 22%, transparent);
 
-  background: rgba(34, 197, 139, 0.035);
+  background: color-mix(in srgb, var(--fy-course) 4%, transparent);
 
   transform: translateY(-5px);
 
@@ -2499,7 +2499,7 @@ main {
 }
 
 .concept-card-featured {
-  border-color: rgba(34, 197, 139, 0.18);
+  border-color: color-mix(in srgb, var(--fy-course) 18%, transparent);
 }
 
 /* =========================================================
@@ -2519,7 +2519,7 @@ main {
 
   border-radius: 5px;
 
-  background: rgba(34, 197, 139, 0.08);
+  background: color-mix(in srgb, var(--fy-course) 8%, transparent);
 
   color: var(--green-light);
 
@@ -2565,7 +2565,7 @@ main {
 
   border-radius: 15px;
 
-  background: rgba(255, 255, 255, 0.015);
+  background: var(--fy-hover);
 
   transition:
     border-color 400ms ease,
@@ -2574,9 +2574,9 @@ main {
 }
 
 .web-flow:hover {
-  border-color: rgba(34, 197, 139, 0.12);
+  border-color: color-mix(in srgb, var(--fy-course) 12%, transparent);
 
-  background: rgba(34, 197, 139, 0.018);
+  background: color-mix(in srgb, var(--fy-course) 2%, transparent);
 
   transform: translateY(-2px);
 }
@@ -2612,11 +2612,11 @@ main {
 .flow-highlight {
   padding: 9px 13px;
 
-  border: 1px solid rgba(34, 197, 139, 0.2);
+  border: 1px solid color-mix(in srgb, var(--fy-course) 20%, transparent);
 
   border-radius: 9px;
 
-  background: rgba(34, 197, 139, 0.06);
+  background: color-mix(in srgb, var(--fy-course) 6%, transparent);
 
   color: var(--green-light);
 
@@ -2629,9 +2629,9 @@ main {
 .web-flow:hover .flow-highlight {
   transform: translateY(-2px);
 
-  background: rgba(34, 197, 139, 0.09);
+  background: color-mix(in srgb, var(--fy-course) 9%, transparent);
 
-  box-shadow: 0 8px 25px rgba(34, 197, 139, 0.05);
+  box-shadow: 0 8px 25px color-mix(in srgb, var(--fy-course) 5%, transparent);
 }
 
 .flow-highlight small {
@@ -2890,7 +2890,7 @@ main {
 
   border-radius: var(--radius);
 
-  background: rgba(255, 255, 255, 0.018);
+  background: var(--fy-hover);
 
   transition: var(--transition);
 }
@@ -2910,7 +2910,7 @@ main {
 
   border-radius: 50%;
 
-  background: rgba(34, 197, 139, 0.08);
+  background: color-mix(in srgb, var(--fy-course) 8%, transparent);
 
   filter: blur(35px);
 }
@@ -2918,7 +2918,7 @@ main {
 .technology-card:hover {
   transform: translateY(-5px);
 
-  border-color: rgba(34, 197, 139, 0.2);
+  border-color: color-mix(in srgb, var(--fy-course) 20%, transparent);
 }
 
 .technology-number {
@@ -2952,7 +2952,7 @@ main {
 
   border-radius: 15px;
 
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--fy-hover);
 
   font-size: 26px;
 }
@@ -3012,7 +3012,7 @@ main {
 
   border-radius: 9px;
 
-  background: #07110e;
+  background: var(--fy-bg);
 
   color: var(--text-muted);
 
@@ -3082,7 +3082,7 @@ main {
   border: 1px solid var(--border);
   border-radius: 11px;
 
-  background: rgba(255, 255, 255, 0.025);
+  background: var(--fy-hover);
 
   color: var(--green);
 
@@ -3145,7 +3145,7 @@ main {
   border: 1px solid var(--border);
   border-radius: var(--radius);
 
-  background: rgba(255, 255, 255, 0.018);
+  background: var(--fy-hover);
 
   transition:
     transform 320ms ease,
@@ -3157,13 +3157,13 @@ main {
 .track-card:hover {
   transform: translateY(-6px);
 
-  border-color: rgba(34, 197, 139, 0.22);
+  border-color: color-mix(in srgb, var(--fy-course) 22%, transparent);
 
-  background: rgba(34, 197, 139, 0.025);
+  background: color-mix(in srgb, var(--fy-course) 2%, transparent);
 
   box-shadow:
     0 18px 45px rgba(0, 0, 0, 0.16),
-    0 0 30px rgba(34, 197, 139, 0.025);
+    0 0 30px color-mix(in srgb, var(--fy-course) 2%, transparent);
 }
 
 /* =========================================================
@@ -3212,16 +3212,16 @@ main {
 
   margin-bottom: 17px;
 
-  border: 1px solid rgba(34, 197, 139, 0.13);
+  border: 1px solid color-mix(in srgb, var(--fy-course) 13%, transparent);
   border-radius: 14px;
 
-  background: rgba(34, 197, 139, 0.06);
+  background: color-mix(in srgb, var(--fy-course) 6%, transparent);
 
   color: var(--green);
 
   font-size: 20px;
 
-  box-shadow: 0 0 24px rgba(34, 197, 139, 0.035);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--fy-course) 4%, transparent);
 }
 
 /* =========================================================
@@ -3312,11 +3312,11 @@ main {
 
   padding: 10px 12px;
 
-  border-right: 2px solid rgba(34, 197, 139, 0.35);
+  border-right: 2px solid color-mix(in srgb, var(--fy-course) 35%, transparent);
 
   border-radius: 5px 0 0 5px;
 
-  background: rgba(34, 197, 139, 0.035);
+  background: color-mix(in srgb, var(--fy-course) 4%, transparent);
 }
 
 .card-outcome span {
@@ -3357,7 +3357,7 @@ main {
   border: 1px solid var(--border);
   border-radius: 9px;
 
-  background: rgba(255, 255, 255, 0.025);
+  background: var(--fy-hover);
 
   color: var(--text-soft);
 
@@ -3378,11 +3378,11 @@ main {
 }
 
 .track-btn:hover {
-  border-color: rgba(34, 197, 139, 0.28);
+  border-color: color-mix(in srgb, var(--fy-course) 28%, transparent);
 
-  background: rgba(34, 197, 139, 0.07);
+  background: color-mix(in srgb, var(--fy-course) 7%, transparent);
 
-  color: #fff;
+  color: var(--fy-text);
 }
 
 .track-btn:hover i {
@@ -3562,7 +3562,7 @@ main {
 
   border-radius: 15px;
 
-  background: rgba(255, 255, 255, 0.025);
+  background: var(--fy-hover);
 
   color: var(--green);
 
@@ -3622,7 +3622,7 @@ main {
 
   border-radius: 32px;
 
-  background: linear-gradient(145deg, rgba(34, 197, 139, 0.05), rgba(255, 255, 255, 0.012));
+  background: linear-gradient(145deg, color-mix(in srgb, var(--fy-course) 5%, transparent), var(--fy-hover));
 }
 
 .frontend-copy h2 {
@@ -3672,7 +3672,7 @@ main {
 
   border-radius: 11px;
 
-  background: rgba(255, 255, 255, 0.018);
+  background: var(--fy-hover);
 }
 
 .frontend-check > span {
@@ -3708,7 +3708,7 @@ main {
 
   border-radius: 18px;
 
-  background: #08130f;
+  background: var(--fy-bg);
 
   box-shadow: var(--shadow);
 }
@@ -3752,9 +3752,9 @@ main {
 }
 
 .stack-layer.active {
-  border-color: rgba(34, 197, 139, 0.2);
+  border-color: color-mix(in srgb, var(--fy-course) 20%, transparent);
 
-  background: rgba(34, 197, 139, 0.06);
+  background: color-mix(in srgb, var(--fy-course) 6%, transparent);
 }
 
 .layer-number {
@@ -3776,7 +3776,7 @@ main {
 
   border-radius: 9px;
 
-  background: rgba(255, 255, 255, 0.035);
+  background: var(--fy-hover);
 
   color: var(--green);
 }
@@ -3856,7 +3856,7 @@ main {
 
   height: calc(100% - 50px);
 
-  background: rgba(255, 255, 255, 0.09);
+  background: color-mix(in srgb, var(--fy-text) 9%, transparent);
 
   transform: translateX(50%);
 }
@@ -3874,7 +3874,7 @@ main {
 
   background: var(--green);
 
-  box-shadow: 0 0 15px rgba(34, 197, 139, 0.3);
+  box-shadow: 0 0 15px color-mix(in srgb, var(--fy-course) 30%, transparent);
 
   transition: height 100ms linear;
 }
@@ -3944,7 +3944,7 @@ main {
 
   border-radius: 50%;
 
-  background: #0b1915;
+  background: var(--fy-bg-soft);
 
   color: var(--text-muted);
 
@@ -3972,7 +3972,7 @@ main {
 
   border-radius: 50%;
 
-  background: #10211c;
+  background: var(--fy-bg-soft);
 
   color: var(--text-muted);
 
@@ -3987,9 +3987,9 @@ main {
 
 .roadmap-step.active .roadmap-node,
 .roadmap-step.completed .roadmap-node {
-  border-color: rgba(34, 197, 139, 0.45);
+  border-color: color-mix(in srgb, var(--fy-course) 45%, transparent);
 
-  background: rgba(34, 197, 139, 0.09);
+  background: color-mix(in srgb, var(--fy-course) 9%, transparent);
 
   color: var(--green-light);
 }
@@ -4079,7 +4079,7 @@ main {
 
   border-radius: var(--radius);
 
-  background: rgba(255, 255, 255, 0.015);
+  background: var(--fy-hover);
 }
 
 .comparison-label span {
@@ -4109,7 +4109,7 @@ main {
 
   border-radius: var(--radius);
 
-  background: rgba(255, 255, 255, 0.018);
+  background: var(--fy-hover);
 
   transition: var(--transition);
 }
@@ -4117,7 +4117,7 @@ main {
 .comparison-card:hover {
   transform: translateY(-4px);
 
-  border-color: rgba(34, 197, 139, 0.2);
+  border-color: color-mix(in srgb, var(--fy-course) 20%, transparent);
 }
 
 .comparison-icon {
@@ -4133,7 +4133,7 @@ main {
 
   border-radius: 12px;
 
-  background: rgba(255, 255, 255, 0.035);
+  background: var(--fy-hover);
 
   font-size: 21px;
 }
@@ -4221,7 +4221,7 @@ main {
 
   border-radius: 32px;
 
-  background: rgba(255, 255, 255, 0.018);
+  background: var(--fy-hover);
 }
 
 .practice-copy h2 {
@@ -4265,13 +4265,13 @@ main {
 
   border-radius: 15px;
 
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--fy-hover);
 
   transition: var(--transition);
 }
 
 .practice-card:hover {
-  border-color: rgba(34, 197, 139, 0.2);
+  border-color: color-mix(in srgb, var(--fy-course) 20%, transparent);
 
   transform: translateY(-3px);
 }
@@ -4357,7 +4357,7 @@ main {
 
   border-radius: var(--radius);
 
-  background: rgba(255, 255, 255, 0.015);
+  background: var(--fy-hover);
 }
 
 .project-process-item {
@@ -4385,7 +4385,7 @@ main {
 .project-process-item:hover {
   border-color: var(--border);
 
-  background: rgba(255, 255, 255, 0.025);
+  background: var(--fy-hover);
 }
 
 .project-process-item > span {
@@ -4449,11 +4449,11 @@ main {
 
   padding: 75px 30px;
 
-  border: 1px solid rgba(34, 197, 139, 0.15);
+  border: 1px solid color-mix(in srgb, var(--fy-course) 15%, transparent);
 
   border-radius: 30px;
 
-  background: linear-gradient(145deg, rgba(34, 197, 139, 0.07), rgba(255, 255, 255, 0.015));
+  background: linear-gradient(145deg, color-mix(in srgb, var(--fy-course) 7%, transparent), var(--fy-hover));
 
   text-align: center;
 }
@@ -4473,7 +4473,7 @@ main {
 
   border-radius: 50%;
 
-  background: rgba(34, 197, 139, 0.08);
+  background: color-mix(in srgb, var(--fy-course) 8%, transparent);
 
   filter: blur(80px);
 
@@ -4493,7 +4493,7 @@ main {
 
   margin: 0 auto 18px;
 
-  border: 1px solid rgba(34, 197, 139, 0.3);
+  border: 1px solid color-mix(in srgb, var(--fy-course) 30%, transparent);
 
   border-radius: 13px;
 
@@ -4534,7 +4534,7 @@ main {
 .footer {
   border-top: 1px solid var(--border);
 
-  background: #050d0b;
+  background: var(--fy-bg);
 }
 
 .footer-inner {
@@ -4602,9 +4602,9 @@ main {
 
   gap: 20px;
 
-  border-top: 1px solid rgba(255, 255, 255, 0.045);
+  border-top: 1px solid var(--fy-border);
 
-  color: #51615b;
+  color: var(--fy-text-muted);
 
   font-family: "Inter", "Cairo", sans-serif;
 
@@ -5296,8 +5296,8 @@ body::-webkit-scrollbar-thumb:hover {
 
   background: radial-gradient(
     circle,
-    rgba(34, 197, 139, 0.16) 0%,
-    rgba(34, 197, 139, 0.07) 35%,
+    color-mix(in srgb, var(--fy-course) 16%, transparent) 0%,
+    color-mix(in srgb, var(--fy-course) 7%, transparent) 35%,
     rgba(212, 175, 55, 0.045) 52%,
     transparent 72%
   );
@@ -5338,7 +5338,7 @@ body::-webkit-scrollbar-thumb:hover {
 .profile-ring-two {
   inset: -23px;
 
-  border: 1px solid rgba(34, 197, 139, 0.2);
+  border: 1px solid color-mix(in srgb, var(--fy-course) 20%, transparent);
 
   border-left-color: rgba(212, 175, 55, 0.65);
   border-bottom-color: transparent;
@@ -5365,12 +5365,12 @@ body::-webkit-scrollbar-thumb:hover {
 
   border-radius: 50%;
 
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.95), rgba(34, 197, 139, 0.75) 48%, rgba(212, 175, 55, 0.55));
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.95), color-mix(in srgb, var(--fy-course) 75%, transparent) 48%, rgba(212, 175, 55, 0.55));
 
   box-shadow:
     0 0 0 1px rgba(212, 175, 55, 0.16),
     0 15px 45px rgba(0, 0, 0, 0.35),
-    0 0 35px rgba(34, 197, 139, 0.12);
+    0 0 35px color-mix(in srgb, var(--fy-course) 12%, transparent);
 
   overflow: hidden;
 
@@ -5399,7 +5399,7 @@ body::-webkit-scrollbar-thumb:hover {
 
   border: 3px solid rgba(7, 20, 17, 0.95);
 
-  background: #071411;
+  background: var(--fy-bg);
 
   z-index: 2;
 
@@ -5419,7 +5419,7 @@ body::-webkit-scrollbar-thumb:hover {
 
   border-radius: 50%;
 
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--fy-border);
 
   box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.3);
 
@@ -5453,7 +5453,7 @@ body::-webkit-scrollbar-thumb:hover {
 
   border-radius: 15px;
 
-  background: linear-gradient(145deg, rgba(11, 28, 24, 0.96), rgba(7, 20, 17, 0.9));
+  background: linear-gradient(145deg, color-mix(in srgb, var(--fy-bg-soft) 96%, transparent), color-mix(in srgb, var(--fy-bg) 90%, transparent));
 
   box-shadow:
     0 12px 30px rgba(0, 0, 0, 0.28),
@@ -5469,7 +5469,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .profile-brand-badge span {
-  color: #d4af37;
+  color: var(--fy-gold);
 
   font-family: "Inter", sans-serif;
 
@@ -5480,7 +5480,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .profile-brand-badge small {
-  color: rgba(255, 255, 255, 0.55);
+  color: color-mix(in srgb, var(--fy-text) 55%, transparent);
 
   font-family: "Inter", sans-serif;
 
@@ -5499,7 +5499,7 @@ body::-webkit-scrollbar-thumb:hover {
 
   box-shadow:
     0 18px 55px rgba(0, 0, 0, 0.4),
-    0 0 45px rgba(34, 197, 139, 0.16),
+    0 0 45px color-mix(in srgb, var(--fy-course) 16%, transparent),
     0 0 20px rgba(212, 175, 55, 0.1);
 }
 
@@ -5671,8 +5671,8 @@ body::-webkit-scrollbar-thumb:hover {
   border: 1px solid rgba(45, 212, 191, 0.22) !important;
   border-radius: 12px !important;
 
-  background: rgba(7, 20, 17, 0.85) !important;
-  color: #ffffff !important;
+  background: color-mix(in srgb, var(--fy-bg) 85%, transparent) !important;
+  color: var(--fy-text) !important;
 
   cursor: pointer !important;
   transition: all 0.25s ease !important;
@@ -5681,7 +5681,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .fayad-user-trigger:hover {
-  background: rgba(13, 50, 43, 0.95) !important;
+  background: color-mix(in srgb, var(--fy-surface) 95%, transparent) !important;
   border-color: rgba(45, 212, 191, 0.45) !important;
   transform: translateY(-1px);
 }
@@ -5708,7 +5708,7 @@ body::-webkit-scrollbar-thumb:hover {
     #075b72
   ) !important;
 
-  color: #ffffff !important;
+  color: var(--fy-course-on) !important;
 
   font-size: 14px !important;
   font-weight: 700 !important;
@@ -5737,7 +5737,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .fayad-user-info strong {
-  color: #ffffff !important;
+  color: var(--fy-text) !important;
   font-size: 13px !important;
   font-weight: 700 !important;
 
@@ -5747,7 +5747,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .fayad-user-info small {
-  color: rgba(255, 255, 255, 0.6) !important;
+  color: color-mix(in srgb, var(--fy-text) 60%, transparent) !important;
   font-size: 10px !important;
 
   overflow: hidden !important;
@@ -5781,7 +5781,7 @@ body::-webkit-scrollbar-thumb:hover {
   border: 1px solid rgba(45, 212, 191, 0.22) !important;
   border-radius: 16px !important;
 
-  background: rgba(7, 20, 17, 0.98) !important;
+  background: color-mix(in srgb, var(--fy-bg) 98%, transparent) !important;
 
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.45),
@@ -5822,7 +5822,7 @@ body::-webkit-scrollbar-thumb:hover {
 .fayad-user-dropdown-head strong {
   display: block !important;
 
-  color: #ffffff !important;
+  color: var(--fy-text) !important;
 
   font-size: 14px !important;
   font-weight: 700 !important;
@@ -5837,7 +5837,7 @@ body::-webkit-scrollbar-thumb:hover {
 .fayad-user-dropdown-head small {
   display: block !important;
 
-  color: rgba(255, 255, 255, 0.58) !important;
+  color: color-mix(in srgb, var(--fy-text) 58%, transparent) !important;
 
   font-size: 11px !important;
   line-height: 1.5 !important;
@@ -5866,7 +5866,7 @@ body::-webkit-scrollbar-thumb:hover {
 
   margin: 6px 0 !important;
 
-  background: rgba(255, 255, 255, 0.08) !important;
+  background: color-mix(in srgb, var(--fy-text) 8%, transparent) !important;
 }
 
 /* =========================
@@ -5887,7 +5887,7 @@ body::-webkit-scrollbar-thumb:hover {
 
   background: transparent !important;
 
-  color: rgba(255, 255, 255, 0.85) !important;
+  color: color-mix(in srgb, var(--fy-text) 85%, transparent) !important;
 
   text-decoration: none !important;
 

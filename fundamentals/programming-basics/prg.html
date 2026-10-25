@@ -5,6 +5,9 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Preferences: theme / language / direction resolved before first paint (no flash) -->
+    <script src="/js/prefs.js"></script>
+
     <!-- Site metadata (managed: canonical, icons, manifest, social, service worker) -->
     <link rel="canonical" href="https://fayad-learning.vercel.app/fundamentals/programming-basics/prg.html" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -19,8 +22,10 @@
     <meta property="og:title" content="أساسيات البرمجة | FAYAD" />
     <meta property="og:description" content="مسار أساسيات البرمجة من FAYAD — تعلّم التفكير البرمجي والخوارزميات والمفاهيم الأساسية للبرمجة." />
     <meta property="og:url" content="https://fayad-learning.vercel.app/fundamentals/programming-basics/prg.html" />
-    <meta property="og:image" content="https://fayad-learning.vercel.app/icons/icon-512.png" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content="https://fayad-learning.vercel.app/assets/brand/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
     <script src="/js/sw-register.js" defer></script>
 
 
@@ -35,6 +40,17 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+    <!-- FAYAD design system (loaded after page CSS so tokens win) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/theme-overrides.css" />
+    <link rel="stylesheet" href="/css/shell.css" />
+    <script src="/js/i18n.js" defer></script>
+    <script src="/js/shell.js" defer></script>
   </head>
 
   <body>
