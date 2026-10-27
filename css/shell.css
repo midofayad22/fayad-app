@@ -134,3 +134,24 @@
     transition: none;
   }
 }
+
+/* skip link: visible only on keyboard focus */
+.fy-skip {
+  position: fixed;
+  inset-block-start: 8px;
+  inset-inline-start: 8px;
+  z-index: calc(var(--fy-z-dock) + 5);
+  padding: 10px 16px;
+  border-radius: var(--fy-radius-sm);
+  background: var(--fy-brand);
+  color: var(--fy-on-brand);
+  font: 700 0.95rem var(--fy-font);
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.fy-skip:focus {
+  transform: none;
+  outline: none;
+  box-shadow: var(--fy-focus);
+}

@@ -137,7 +137,8 @@ html[data-theme="light"] {
    --fy-course-soft   tinted background
    --fy-course-glow   subtle glow/border tint
 */
-html[data-track] {
+html[data-track],
+[data-course] {
   --fy-course: var(--fy-brand);
   --fy-course-on: var(--fy-on-brand);
   --fy-course-ink: var(--fy-brand);
@@ -147,33 +148,47 @@ html[data-track] {
 }
 
 /* HTML — orange */
-html[data-theme="dark"][data-track="html"] { --fy-course: #f06a3c; --fy-course-on: #1f0a03; --fy-course-ink: #ff8f68; --fy-course-strong: #d8532a; --fy-course-soft: rgba(240,106,60,.14); --fy-course-glow: rgba(240,106,60,.3); }
-html[data-theme="light"][data-track="html"] { --fy-course: #b23a0a; --fy-course-on: #ffffff; --fy-course-ink: #a63708; --fy-course-strong: #8f2f06; --fy-course-soft: rgba(194,65,12,.09); --fy-course-glow: rgba(194,65,12,.22); }
+html[data-theme="dark"][data-track="html"],
+html[data-theme="dark"] [data-course="html"] { --fy-course: #f06a3c; --fy-course-on: #1f0a03; --fy-course-ink: #ff8f68; --fy-course-strong: #d8532a; --fy-course-soft: rgba(240,106,60,.14); --fy-course-glow: rgba(240,106,60,.3); }
+html[data-theme="light"][data-track="html"],
+html[data-theme="light"] [data-course="html"] { --fy-course: #b23a0a; --fy-course-on: #ffffff; --fy-course-ink: #a63708; --fy-course-strong: #8f2f06; --fy-course-soft: rgba(194,65,12,.09); --fy-course-glow: rgba(194,65,12,.22); }
 
 /* CSS — blue */
-html[data-theme="dark"][data-track="css"] { --fy-course: #5b9bff; --fy-course-on: #04142e; --fy-course-ink: #82b4ff; --fy-course-strong: #3f84f0; --fy-course-soft: rgba(91,155,255,.14); --fy-course-glow: rgba(91,155,255,.3); }
-html[data-theme="light"][data-track="css"] { --fy-course: #1d5fd1; --fy-course-on: #ffffff; --fy-course-ink: #1a56c0; --fy-course-strong: #144ba8; --fy-course-soft: rgba(29,95,209,.09); --fy-course-glow: rgba(29,95,209,.22); }
+html[data-theme="dark"][data-track="css"],
+html[data-theme="dark"] [data-course="css"] { --fy-course: #5b9bff; --fy-course-on: #04142e; --fy-course-ink: #82b4ff; --fy-course-strong: #3f84f0; --fy-course-soft: rgba(91,155,255,.14); --fy-course-glow: rgba(91,155,255,.3); }
+html[data-theme="light"][data-track="css"],
+html[data-theme="light"] [data-course="css"] { --fy-course: #1d5fd1; --fy-course-on: #ffffff; --fy-course-ink: #1a56c0; --fy-course-strong: #144ba8; --fy-course-soft: rgba(29,95,209,.09); --fy-course-glow: rgba(29,95,209,.22); }
 
 /* JavaScript — yellow */
-html[data-theme="dark"][data-track="js"] { --fy-course: #f7df1e; --fy-course-on: #1c1800; --fy-course-ink: #f7df1e; --fy-course-strong: #d9c200; --fy-course-soft: rgba(247,223,30,.12); --fy-course-glow: rgba(247,223,30,.28); }
-html[data-theme="light"][data-track="js"] { --fy-course: #786100; --fy-course-on: #ffffff; --fy-course-ink: #6f5a00; --fy-course-strong: #5e4c00; --fy-course-soft: rgba(176,150,0,.12); --fy-course-glow: rgba(176,150,0,.28); }
+html[data-theme="dark"][data-track="js"],
+html[data-theme="dark"] [data-course="js"] { --fy-course: #f7df1e; --fy-course-on: #1c1800; --fy-course-ink: #f7df1e; --fy-course-strong: #d9c200; --fy-course-soft: rgba(247,223,30,.12); --fy-course-glow: rgba(247,223,30,.28); }
+html[data-theme="light"][data-track="js"],
+html[data-theme="light"] [data-course="js"] { --fy-course: #786100; --fy-course-on: #ffffff; --fy-course-ink: #6f5a00; --fy-course-strong: #5e4c00; --fy-course-soft: rgba(176,150,0,.12); --fy-course-glow: rgba(176,150,0,.28); }
 
 /* React — cyan */
-html[data-theme="dark"][data-track="react"] { --fy-course: #61dafb; --fy-course-on: #03222b; --fy-course-ink: #61dafb; --fy-course-strong: #38c4e8; --fy-course-soft: rgba(97,218,251,.12); --fy-course-glow: rgba(97,218,251,.28); }
-html[data-theme="light"][data-track="react"] { --fy-course: #06708f; --fy-course-on: #ffffff; --fy-course-ink: #056a88; --fy-course-strong: #045a74; --fy-course-soft: rgba(8,126,164,.09); --fy-course-glow: rgba(8,126,164,.22); }
+html[data-theme="dark"][data-track="react"],
+html[data-theme="dark"] [data-course="react"] { --fy-course: #61dafb; --fy-course-on: #03222b; --fy-course-ink: #61dafb; --fy-course-strong: #38c4e8; --fy-course-soft: rgba(97,218,251,.12); --fy-course-glow: rgba(97,218,251,.28); }
+html[data-theme="light"][data-track="react"],
+html[data-theme="light"] [data-course="react"] { --fy-course: #06708f; --fy-course-on: #ffffff; --fy-course-ink: #056a88; --fy-course-strong: #045a74; --fy-course-soft: rgba(8,126,164,.09); --fy-course-glow: rgba(8,126,164,.22); }
 
 /* Vue — green */
-html[data-theme="dark"][data-track="vue"] { --fy-course: #42b883; --fy-course-on: #03221a; --fy-course-ink: #5fd9a0; --fy-course-strong: #35a572; --fy-course-soft: rgba(66,184,131,.13); --fy-course-glow: rgba(66,184,131,.28); }
-html[data-theme="light"][data-track="vue"] { --fy-course: #16794f; --fy-course-on: #ffffff; --fy-course-ink: #136b45; --fy-course-strong: #0f5c3b; --fy-course-soft: rgba(29,138,92,.09); --fy-course-glow: rgba(29,138,92,.22); }
+html[data-theme="dark"][data-track="vue"],
+html[data-theme="dark"] [data-course="vue"] { --fy-course: #42b883; --fy-course-on: #03221a; --fy-course-ink: #5fd9a0; --fy-course-strong: #35a572; --fy-course-soft: rgba(66,184,131,.13); --fy-course-glow: rgba(66,184,131,.28); }
+html[data-theme="light"][data-track="vue"],
+html[data-theme="light"] [data-course="vue"] { --fy-course: #16794f; --fy-course-on: #ffffff; --fy-course-ink: #136b45; --fy-course-strong: #0f5c3b; --fy-course-soft: rgba(29,138,92,.09); --fy-course-glow: rgba(29,138,92,.22); }
 
 /* Angular — burgundy */
-html[data-theme="dark"][data-track="angular"] { --fy-course: #ee6a8d; --fy-course-on: #2b0510; --fy-course-ink: #ff8aa5; --fy-course-strong: #d94f74; --fy-course-soft: rgba(216,69,107,.14); --fy-course-glow: rgba(216,69,107,.3); }
-html[data-theme="light"][data-track="angular"] { --fy-course: #a3193d; --fy-course-on: #ffffff; --fy-course-ink: #a3193d; --fy-course-strong: #86122f; --fy-course-soft: rgba(163,25,61,.08); --fy-course-glow: rgba(163,25,61,.2); }
+html[data-theme="dark"][data-track="angular"],
+html[data-theme="dark"] [data-course="angular"] { --fy-course: #ee6a8d; --fy-course-on: #2b0510; --fy-course-ink: #ff8aa5; --fy-course-strong: #d94f74; --fy-course-soft: rgba(216,69,107,.14); --fy-course-glow: rgba(216,69,107,.3); }
+html[data-theme="light"][data-track="angular"],
+html[data-theme="light"] [data-course="angular"] { --fy-course: #a3193d; --fy-course-on: #ffffff; --fy-course-ink: #a3193d; --fy-course-strong: #86122f; --fy-course-soft: rgba(163,25,61,.08); --fy-course-glow: rgba(163,25,61,.2); }
 
 /* Computer fundamentals — brand teal (default) */
 /* Programming fundamentals — gold */
-html[data-theme="dark"][data-track="prg"] { --fy-course: #e3b94e; --fy-course-on: #231a00; --fy-course-ink: #f0d58a; --fy-course-strong: #cfa536; --fy-course-soft: rgba(227,185,78,.12); --fy-course-glow: rgba(227,185,78,.28); }
-html[data-theme="light"][data-track="prg"] { --fy-course: #80590a; --fy-course-on: #ffffff; --fy-course-ink: #6e4c07; --fy-course-strong: #6a4a08; --fy-course-soft: rgba(169,124,20,.1); --fy-course-glow: rgba(169,124,20,.24); }
+html[data-theme="dark"][data-track="prg"],
+html[data-theme="dark"] [data-course="prg"] { --fy-course: #e3b94e; --fy-course-on: #231a00; --fy-course-ink: #f0d58a; --fy-course-strong: #cfa536; --fy-course-soft: rgba(227,185,78,.12); --fy-course-glow: rgba(227,185,78,.28); }
+html[data-theme="light"][data-track="prg"],
+html[data-theme="light"] [data-course="prg"] { --fy-course: #80590a; --fy-course-on: #ffffff; --fy-course-ink: #6e4c07; --fy-course-strong: #6a4a08; --fy-course-soft: rgba(169,124,20,.1); --fy-course-glow: rgba(169,124,20,.24); }
 
 /* ---------------- SHARED BEHAVIOUR ---------------- */
 html {

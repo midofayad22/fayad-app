@@ -92,7 +92,7 @@
   }
 
   // Pages whose lesson/interface content already has English; others show a one-time honest notice.
-  var TRANSLATED_TRACKS = ["css", "angular"];
+  var TRANSLATED_TRACKS = ["css", "angular", "home"];
 
   function maybeNotifyUntranslated() {
     if (prefs.lang !== "en") return;
@@ -110,6 +110,14 @@
     i18n.apply(bar);
     bar.querySelector("button").addEventListener("click", function () { bar.remove(); });
   }
+
+  // Remember which course page was opened last (read by the homepage "continue learning" section).
+  function rememberTrack() {
+    var track = document.documentElement.getAttribute("data-track");
+    if (["com", "prg", "html", "css", "js", "react", "vue", "angular"].indexOf(track) === -1) return;
+    try { localStorage.setItem("fayad-last-track", JSON.stringify({ id: track, ts: Date.now() })); } catch (e) {}
+  }
+  document.addEventListener("DOMContentLoaded", rememberTrack);
 
   window.addEventListener("fayad:langchange", maybeNotifyUntranslated);
   document.addEventListener("DOMContentLoaded", maybeNotifyUntranslated);

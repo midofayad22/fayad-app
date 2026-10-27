@@ -49,3 +49,9 @@ html[data-track="js"] .learning-layout > * { min-width: 0; }
 }
 /* decorative blobs / off-canvas menu on the homepage must never create a horizontal scrollbar */
 html[data-track="home"], html[data-track="home"] body { overflow-x: clip; }
+
+/* Homepage navbar brand: legacy gradient text used white stops, invisible in the light theme */
+.logo-text {
+  background-image: linear-gradient(110deg, var(--fy-text) 0%, var(--fy-text) 38%, var(--fy-brand) 74%, var(--fy-text) 100%);
+}
+.menu-btn span { background: var(--fy-text); }
