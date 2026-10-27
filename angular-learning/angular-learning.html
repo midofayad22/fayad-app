@@ -5,6 +5,29 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Preferences: theme / language / direction resolved before first paint (no flash) -->
+    <script src="/js/prefs.js"></script>
+
+    <!-- Site metadata (managed: canonical, icons, manifest, social, service worker) -->
+    <link rel="canonical" href="https://fayad-learning.vercel.app/angular-learning/angular-learning.html" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="FAYAD" />
+    <meta property="og:locale" content="ar_AR" />
+    <meta property="og:title" content="FAYAD — تعلم Angular" />
+    <meta property="og:description" content="FAYAD — منصة تعليم Angular من الأساسيات إلى المستوى المتقدم." />
+    <meta property="og:url" content="https://fayad-learning.vercel.app/angular-learning/angular-learning.html" />
+    <meta property="og:image" content="https://fayad-learning.vercel.app/assets/brand/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script src="/js/sw-register.js" defer></script>
+
+
     <meta name="description" content="FAYAD — منصة تعليم Angular من الأساسيات إلى المستوى المتقدم." />
 
     <meta name="theme-color" content="#0b1117" />
@@ -44,6 +67,17 @@
         position: relative;
       }
     </style>
+  
+    <!-- FAYAD design system (loaded after page CSS so tokens win) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/theme-overrides.css" />
+    <link rel="stylesheet" href="/css/shell.css" />
+    <script src="/js/i18n.js" defer></script>
+    <script src="/js/shell.js" defer></script>
   </head>
 
   <body class="learning-page angular-page" data-course="angular" data-language="ar">

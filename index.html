@@ -4,22 +4,38 @@
     <meta charset="UTF-8" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- PWA -->
-<link rel="manifest" href="/manifest.json" />
+
+    <!-- Preferences: theme / language / direction resolved before first paint (no flash) -->
+    <script src="/js/prefs.js"></script>
+
+    <!-- Site metadata (managed: canonical, icons, manifest, social, service worker) -->
+    <link rel="canonical" href="https://fayad-learning.vercel.app/" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="FAYAD" />
+    <meta property="og:locale" content="ar_AR" />
+    <meta property="og:title" content="FAYAD — تعلم تطوير الويب بطريقة عملية" />
+    <meta property="og:description" content="FAYAD — منصة تفاعلية حديثة لتعلم تطوير الويب من الأساسيات إلى Front-End Frameworks والمشاريع العملية." />
+    <meta property="og:url" content="https://fayad-learning.vercel.app/" />
+    <meta property="og:image" content="https://fayad-learning.vercel.app/assets/brand/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script src="/js/sw-register.js" defer></script>
 
 <!-- iOS / Safari -->
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="apple-mobile-web-app-title" content="FAYAD Learning" />
-
-<!-- App Icons -->
-<link rel="apple-touch-icon" href="/icons/icon-192.png" />
-
-    <meta
+<meta
       name="description"
       content="FAYAD — منصة تفاعلية حديثة لتعلم تطوير الويب من الأساسيات إلى Front-End Frameworks والمشاريع العملية." />
 
-    <meta name="theme-color" content="#071411" />
+    <meta name="theme-color" content="#071014" />
 
     <title>FAYAD — تعلم تطوير الويب بطريقة عملية</title>
 
@@ -42,11 +58,6 @@
 
     <!-- Existing authentication system -->
     <script src="js/main-auth.js" defer></script>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
-
-    
     <!-- Vercel Analytics -->
     <script defer src="/_vercel/insights/script.js"></script>
     <meta name="google-site-verification" content="LpOkipedYcVnmHK0lsha5n-JT3Wx0jmOBBEnfZ3bwag" />
@@ -61,1692 +72,288 @@
 
     <!-- Vercel Speed Insights -->
     <script defer src="/_vercel/speed-insights/script.js"></script>
+  
+    <!-- FAYAD design system (loaded after page CSS so tokens win) -->
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/theme-overrides.css" />
+    <link rel="stylesheet" href="/css/shell.css" />
+    <link rel="stylesheet" href="/css/home.css" />
+    <script src="/js/i18n.js" defer></script>
+    <script src="/js/shell.js" defer></script>
+    <script src="/js/catalog.js" defer></script>
+    <script src="/js/home.js" defer></script>
   </head>
-
   <body class="fayad-page">
-    <!-- =====================================================
-       PAGE BACKGROUND
-    ====================================================== -->
-
     <div class="page-background" aria-hidden="true">
       <div class="background-grid"></div>
       <div class="background-glow background-glow-one"></div>
       <div class="background-glow background-glow-two"></div>
     </div>
 
-    <!-- =====================================================
-       NAVBAR
-    ====================================================== -->
+    <a class="fy-skip" href="#main" data-i18n="common.skip">تخطي إلى المحتوى</a>
 
     <header class="navbar" id="navbar">
-      <a href="index.html" class="logo" aria-label="الصفحة الرئيسية FAYAD">
-        <span class="logo-mark" aria-hidden="true">
-          <i class="fa-solid fa-code"></i>
-        </span>
-
+      <a href="index.html" class="logo" aria-label="FAYAD">
+        <span class="logo-mark" aria-hidden="true"><img src="/assets/brand/logo-mark.svg" alt="" width="36" height="36" /></span>
         <span class="logo-text">FAYAD</span>
       </a>
 
-      <nav class="nav-links" aria-label="التنقل الرئيسي">
-        <a href="#home" class="nav-link active">الرئيسية</a>
-
-        <a href="#web-fundamentals" class="nav-link"> أساسيات الويب </a>
-
-        <a href="#tracks" class="nav-link">المسارات</a>
-
-        <a href="#roadmap" class="nav-link">Roadmap</a>
-
-        <a href="#practice" class="nav-link">التدريب</a>
+      <nav class="nav-links" aria-label="التنقل الرئيسي" data-i18n-attr="aria-label:nav.label">
+        <a href="#home" class="nav-link active" data-i18n="nav.home">الرئيسية</a>
+        <a href="#courses" class="nav-link" data-i18n="nav.courses">المسارات</a>
+        <a href="#roadmap" class="nav-link" data-i18n="nav.roadmap">خريطة التعلم</a>
+        <a href="about/about.html" class="nav-link" data-i18n="nav.about">عن المنصة</a>
       </nav>
 
       <div class="nav-actions">
-        <!-- Auth -->
         <div id="auth-container" class="auth-container" aria-live="polite">
-          <a href="login.html" id="auth-btn-link" class="nav-signin-btn"> تسجيل الدخول </a>
+          <a href="login.html" id="auth-btn-link" class="nav-signin-btn" data-i18n="nav.signin">تسجيل الدخول</a>
         </div>
-
-        <!-- User profile -->
         <div id="user-profile" class="user-profile" style="display: none"></div>
-
-        <!-- Menu -->
-        <button
-          class="menu-btn"
-          id="menuToggle"
-          type="button"
-          aria-label="فتح القائمة"
-          aria-expanded="false"
-          aria-controls="siteMenu">
-          <span></span>
-          <span></span>
-          <span></span>
+        <button class="menu-btn" id="menuToggle" type="button" aria-label="فتح القائمة" data-i18n-attr="aria-label:menu.open" aria-expanded="false" aria-controls="siteMenu">
+          <span></span><span></span><span></span>
         </button>
       </div>
     </header>
-
-    <!-- =====================================================
-       SIDE MENU
-    ====================================================== -->
 
     <aside class="site-menu" id="siteMenu" aria-hidden="true">
       <div class="site-menu-header">
         <div>
           <span class="menu-eyebrow">FAYAD</span>
-
-          <h2>استكشف</h2>
+          <h2 data-i18n="menu.title">استكشف</h2>
         </div>
-
-        <button class="menu-close" id="menuClose" type="button" aria-label="إغلاق القائمة">×</button>
+        <button class="menu-close" id="menuClose" type="button" aria-label="إغلاق القائمة" data-i18n-attr="aria-label:menu.close">×</button>
       </div>
-
       <div class="site-menu-content">
-        <!-- Learning -->
-
         <div class="menu-section">
-          <span class="menu-section-label">التعلم</span>
-
-          <a href="#tracks" class="menu-link">
-            <strong>مسارات التعلم</strong>
-
-            <small> اختر المسار المناسب وابدأ من المكان الصحيح </small>
+          <span class="menu-section-label" data-i18n="menu.learn">التعلم</span>
+          <a href="#courses" class="menu-link">
+            <strong data-i18n="menu.courses">كل المسارات</strong>
+            <small data-i18n="menu.courses.sub">اختر المسار المناسب وابدأ</small>
           </a>
-
-          <a href="#web-fundamentals" class="menu-link">
-            <strong>أساسيات الويب</strong>
-
-            <small> Web Development Fundamentals </small>
-          </a>
-
           <a href="#roadmap" class="menu-link">
-            <strong>Front-End Roadmap</strong>
-
-            <small> خطتك من البداية إلى Junior Developer </small>
+            <strong data-i18n="menu.roadmap">خريطة التعلم</strong>
+            <small data-i18n="menu.roadmap.sub">الترتيب المقترح من الأساسيات إلى الأطر</small>
           </a>
         </div>
-
-        <!-- Technologies -->
-
         <div class="menu-section">
-          <span class="menu-section-label">التقنيات</span>
-
+          <span class="menu-section-label" data-i18n="menu.fundamentals">الأساسيات</span>
+          <a href="fundamentals/computer-basics/com.html" class="menu-link">
+            <strong>Computer Fundamentals</strong>
+            <small data-i18n="menu.com.sub">كيف يعمل الحاسوب</small>
+          </a>
+          <a href="fundamentals/programming-basics/prg.html" class="menu-link">
+            <strong>Programming Fundamentals</strong>
+            <small data-i18n="menu.prg.sub">المنطق وحل المشكلات</small>
+          </a>
+        </div>
+        <div class="menu-section">
+          <span class="menu-section-label" data-i18n="menu.web">أساسيات الويب</span>
           <a href="html-learning/html-learning.html" class="menu-link">
             <strong>HTML</strong>
-
-            <small>هيكل الويب</small>
+            <small data-i18n="menu.html.sub">هيكل الصفحة</small>
           </a>
-
           <a href="css-learning/css-learning.html" class="menu-link">
             <strong>CSS</strong>
-
-            <small>التصميم والتنسيق</small>
+            <small data-i18n="menu.css.sub">التصميم والتنسيق</small>
           </a>
-
           <a href="javascript-learning/javascript-learning.html" class="menu-link">
             <strong>JavaScript</strong>
-
-            <small>المنطق والتفاعل</small>
+            <small data-i18n="menu.js.sub">المنطق والتفاعل</small>
           </a>
         </div>
-
-        <!-- Frameworks -->
-
         <div class="menu-section">
-          <span class="menu-section-label">Frameworks</span>
-
+          <span class="menu-section-label" data-i18n="menu.frameworks">أطر العمل</span>
           <a href="react-learning/react-learning.html" class="menu-link">
             <strong>React</strong>
-
-            <small>واجهات مبنية بالمكونات</small>
+            <small data-i18n="menu.react.sub">واجهات من مكونات</small>
           </a>
-
-          <a href="angular-learning/angular-learning.html" class="menu-link">
-            <strong>Angular</strong>
-
-            <small> تطبيقات منظمة وقابلة للتوسع </small>
-          </a>
-
           <a href="vue-learning/vue-learning.html" class="menu-link">
             <strong>Vue</strong>
-
-            <small> إطار مرن لبناء الواجهات </small>
+            <small data-i18n="menu.vue.sub">إطار مرن لبناء الواجهات</small>
+          </a>
+          <a href="angular-learning/angular-learning.html" class="menu-link">
+            <strong>Angular</strong>
+            <small data-i18n="menu.angular.sub">تطبيقات منظمة وقابلة للتوسع</small>
           </a>
         </div>
-
-        <!-- Fundamentals -->
-
-        <div class="menu-section">
-          <span class="menu-section-label">الأساسيات</span>
-
-          <a href="fundamentals/computer-basics/com.html" class="menu-link">
-            <strong>Computer Basics</strong>
-
-            <small> مفاهيم الحاسوب وتاريخه </small>
-          </a>
-
-          <a href="fundamentals/programming-basics/prg.html" class="menu-link">
-            <strong>Programming Basics</strong>
-
-            <small> المنطق البرمجي وحل المشكلات </small>
-          </a>
-        </div>
-
-        <!-- About -->
-
         <div class="menu-section menu-about">
-          <span class="menu-section-label">عن FAYAD</span>
-
           <a href="about/about.html" class="menu-link">
-            <strong>عن عبد الحميد فياض</strong>
-
-            <small> تعرف أكثر على مؤسس المنصة </small>
+            <strong data-i18n="menu.about">عن المنصة وصاحبها</strong>
+            <small data-i18n="menu.about.sub">من يقف وراء FAYAD</small>
           </a>
         </div>
-
-        <!-- Social -->
-
         <div class="menu-contact">
-          <span class="menu-section-label">تواصل</span>
-
+          <span class="menu-section-label" data-i18n="menu.contact">تواصل</span>
           <div class="menu-socials">
-            <a href="https://github.com/midofayad22" target="_blank" rel="noopener noreferrer"> GitHub </a>
-
-            <a href="https://www.linkedin.com/in/abdullhamid-f-800bb5379" target="_blank" rel="noopener noreferrer">
-              LinkedIn
-            </a>
-
-            <a
-              href="https://www.facebook.com/share/1D2SmWfCnX/?mibextid=wwXIfr"
-              target="_blank"
-              rel="noopener noreferrer">
-              Facebook
-            </a>
-
-            <a href="https://www.instagram.com/abdullhamid_fayad22" target="_blank" rel="noopener noreferrer">
-              Instagram
-            </a>
+            <a href="https://github.com/midofayad22" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/abdullhamid-f-800bb5379" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://www.facebook.com/share/1D2SmWfCnX/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a href="https://www.instagram.com/abdullhamid_fayad22" target="_blank" rel="noopener noreferrer">Instagram</a>
           </div>
-
-          <a href="tel:+201091573063" class="menu-phone">
-            <span>الهاتف</span>
-
-            <span dir="ltr"> +20 109 157 3063 </span>
-          </a>
         </div>
       </div>
     </aside>
-
     <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
 
-    <!-- =====================================================
-       MAIN
-    ====================================================== -->
-
-    <main>
-      <!-- ===================================================
-         HERO
-      ==================================================== -->
-
-      <section id="home" class="hero">
-        <div class="hero-content reveal">
-          <div class="hero-kicker">
-            <span class="kicker-dot"></span>
-
-            <span>FAYAD Learning Platform</span>
-          </div>
-
-          <h1 class="hero-title">
-            <span>Learn.</span>
-
-            <span class="hero-title-accent">Build.</span>
-
-            <span>Become.</span>
-          </h1>
-
-          <p class="hero-description">
-            FAYAD هي منصة تعليمية تفاعلية تساعدك على فهم
-            <strong>Web Development</strong>
-            من الأساسيات، ثم بناء مهاراتك خطوة بخطوة من خلال التعلم، التدريب، والتطبيق على مشاريع حقيقية.
-          </p>
-
-          <div class="hero-actions">
-            <a href="#tracks" class="btn btn-primary">
-              <span>ابدأ رحلة التعلم</span>
-
-              <i class="fa-solid fa-arrow-left"></i>
-            </a>
-
-            <a href="#roadmap" class="btn btn-secondary">
-              <span>شاهد الـ Roadmap</span>
-
-              <i class="fa-solid fa-route"></i>
-            </a>
-          </div>
-
-          <div class="hero-meta">
-            <div class="hero-meta-item">
-              <i class="fa-solid fa-layer-group"></i>
-
-              <div>
-                <strong>Structured</strong>
-
-                <span>تعلم منظم</span>
-              </div>
-            </div>
-
-            <div class="hero-meta-item">
-              <i class="fa-solid fa-code"></i>
-
-              <div>
-                <strong>Practical</strong>
-
-                <span>تطبيق عملي</span>
-              </div>
-            </div>
-
-            <div class="hero-meta-item">
-              <i class="fa-solid fa-diagram-project"></i>
-
-              <div>
-                <strong>Real Projects</strong>
-
-                <span>مشاريع حقيقية</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Hero Visual -->
-
-        <div class="hero-visual reveal">
-          <div class="hero-orbit orbit-one"></div>
-
-          <div class="hero-orbit orbit-two"></div>
-
-          <div class="code-window">
-            <div class="code-window-header">
-              <div class="window-dots">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-
-              <span class="window-title"> learning-roadmap.js </span>
-            </div>
-
-            <div class="code-window-body">
-              <div class="code-line">
-                <span class="line-number">01</span>
-
-                <span class="code-purple">const</span>
-
-                <span class="code-white">journey</span>
-
-                <span class="code-white">=</span>
-
-                <span class="code-green">[</span>
-              </div>
-
-              <div class="code-line indent">
-                <span class="line-number">02</span>
-
-                <span class="code-green">"HTML"</span>
-
-                <span class="code-white">,</span>
-              </div>
-
-              <div class="code-line indent">
-                <span class="line-number">03</span>
-
-                <span class="code-green">"CSS"</span>
-
-                <span class="code-white">,</span>
-              </div>
-
-              <div class="code-line indent">
-                <span class="line-number">04</span>
-
-                <span class="code-green">"JavaScript"</span>
-
-                <span class="code-white">,</span>
-              </div>
-
-              <div class="code-line indent">
-                <span class="line-number">05</span>
-
-                <span class="code-green">"Frameworks"</span>
-              </div>
-
-              <div class="code-line">
-                <span class="line-number">06</span>
-
-                <span class="code-green">];</span>
-              </div>
-
-              <div class="code-line code-comment">
-                <span class="line-number">07</span>
-
-                <span> // Learn → Practice → Build </span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Floating cards -->
-
-          <div class="hero-float-card hero-float-top">
-            <div class="float-icon">
-              <i class="fa-solid fa-code"></i>
-            </div>
-
-            <div>
-              <strong>Frontend</strong>
-
-              <span> Structure → Style → Behavior </span>
-            </div>
-          </div>
-
-          <div class="hero-float-card hero-float-bottom">
-            <div class="progress-ring">
-              <span>01</span>
-            </div>
-
-            <div>
-              <strong> Start with the basics </strong>
-
-              <span> ثم اصعد خطوة بخطوة </span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===================================================
-         LEARNING PATHS — FIRST SECTION
-      ==================================================== -->
-
-      <section id="tracks" class="section tracks-section">
-        <div class="section-heading reveal">
-          <span class="section-number"> 01 / LEARNING PATHS </span>
-
-          <p class="eyebrow">ابدأ من المسار الصحيح</p>
-
-          <h2>
-            لا تتعلم
-            <span>عشوائيًا.</span>
-          </h2>
-
-          <p>كل مرحلة تمهد للمرحلة التي بعدها. ابدأ من الأساس، ثم ابنِ مهاراتك تدريجيًا.</p>
-        </div>
-
-        <!-- Foundation -->
-
-        <div class="learning-group reveal">
-          <div class="group-heading">
-            <div class="group-number">01</div>
-
-            <div>
-              <span>FOUNDATION</span>
-
-              <h3>Foundation</h3>
-
-              <p>افهم الكمبيوتر والبرمجة قبل الدخول في تفاصيل الويب.</p>
-            </div>
-          </div>
-
-          <div class="tracks-grid foundation-grid">
-            <!-- Computer -->
-
-            <article class="track-card foundation-card computer-card" data-track="Computer Fundamentals">
-              <div class="card-background-icon">
-                <i class="fa-solid fa-computer"></i>
-              </div>
-
-              <div class="track-card-top">
-                <span>01</span>
-
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </div>
-
-              <div class="track-card-icon">
-                <i class="fa-solid fa-computer"></i>
-              </div>
-
-              <h3>Computer Basics</h3>
-
-              <p>افهم مكونات الحاسوب، Hardware، Software، أنظمة التشغيل، الشبكات، وأساسيات الحوسبة الحديثة.</p>
-
-              <div class="card-outcome">
-                <span>ستتعلم</span>
-
-                <strong> كيف يعمل الكمبيوتر؟ </strong>
-              </div>
-
-              <a href="fundamentals/computer-basics/com.html" class="track-btn">
-                ابدأ Computer Basics
-
-                <i class="fa-solid fa-arrow-left"></i>
-              </a>
-            </article>
-
-            <!-- Programming -->
-
-            <article class="track-card foundation-card programming-card" data-track="Programming Fundamentals">
-              <div class="card-background-icon">
-                <i class="fa-solid fa-code"></i>
-              </div>
-
-              <div class="track-card-top">
-                <span>02</span>
-
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </div>
-
-              <div class="track-card-icon">
-                <i class="fa-solid fa-code"></i>
-              </div>
-
-              <h3>Programming Basics</h3>
-
-              <p>تعلم Variables، Conditions، Loops، Functions، Algorithms وحل المشكلات بطريقة برمجية.</p>
-
-              <div class="card-outcome">
-                <span>ستتعلم</span>
-
-                <strong> كيف تفكر كمبرمج؟ </strong>
-              </div>
-
-              <a href="fundamentals/programming-basics/prg.html" class="track-btn">
-                ابدأ Programming Basics
-
-                <i class="fa-solid fa-arrow-left"></i>
-              </a>
-            </article>
-          </div>
-        </div>
-
-        <!-- Web Fundamentals -->
-
-        <div class="learning-group reveal">
-          <div class="group-heading">
-            <div class="group-number">02</div>
-
-            <div>
-              <span>WEB FUNDAMENTALS</span>
-
-              <h3>Web Fundamentals</h3>
-
-              <p>تعلم الثلاثة أجزاء الأساسية التي تبني بها واجهة ويب.</p>
-            </div>
-          </div>
-
-          <div class="tracks-grid">
-            <!-- HTML -->
-
-            <article class="track-card web-track-card" data-track="HTML">
-              <div class="track-card-top">
-                <span>01</span>
-
-                <i class="fa-brands fa-html5"></i>
-              </div>
-
-              <h3>HTML</h3>
-
-              <span class="track-role"> Structure </span>
-
-              <p>ابنِ هيكلًا صحيحًا ومعنى واضحًا لمواقع الويب الحديثة.</p>
-
-              <div class="track-topics">
-                <span>Elements</span>
-
-                <span>Attributes</span>
-
-                <span>Semantics</span>
-              </div>
-
-              <a href="html-learning/html-learning.html" class="track-btn">
-                ابدأ التعلم
-
-                <i class="fa-solid fa-arrow-left"></i>
-              </a>
-            </article>
-
-            <!-- CSS -->
-
-            <article class="track-card web-track-card" data-track="CSS">
-              <div class="track-card-top">
-                <span>02</span>
-
-                <i class="fa-brands fa-css3-alt"></i>
-              </div>
-
-              <h3>CSS</h3>
-
-              <span class="track-role"> Presentation </span>
-
-              <p>صمم واجهات جميلة، متجاوبة، ومنظمة باستخدام CSS.</p>
-
-              <div class="track-topics">
-                <span>Layout</span>
-
-                <span>Responsive</span>
-
-                <span>Animation</span>
-              </div>
-
-              <a href="css-learning/css-learning.html" class="track-btn">
-                ابدأ التعلم
-
-                <i class="fa-solid fa-arrow-left"></i>
-              </a>
-            </article>
-
-            <!-- JavaScript -->
-
-            <article class="track-card web-track-card" data-track="JavaScript">
-              <div class="track-card-top">
-                <span>03</span>
-
-                <i class="fa-brands fa-js"></i>
-              </div>
-
-              <h3>JavaScript</h3>
-
-              <span class="track-role"> Behavior </span>
-
-              <p>أضف المنطق والتفاعل والبيانات والسلوك الديناميكي.</p>
-
-              <div class="track-topics">
-                <span>DOM</span>
-
-                <span>Events</span>
-
-                <span>Logic</span>
-              </div>
-
-              <a href="javascript-learning/javascript-learning.html" class="track-btn">
-                ابدأ التعلم
-
-                <i class="fa-solid fa-arrow-left"></i>
-              </a>
-            </article>
-          </div>
-        </div>
-
-        <!-- Frameworks -->
-
-        <div class="learning-group reveal">
-          <div class="group-heading">
-            <div class="group-number">03</div>
-
-            <div>
-              <span>FRONTEND FRAMEWORKS</span>
-
-              <h3>Front-End Frameworks</h3>
-
-              <p>بعد فهم الأساسيات، انتقل إلى أدوات بناء التطبيقات الحديثة.</p>
-            </div>
-          </div>
-
-          <div class="tracks-grid">
-            <!-- React -->
-
-            <article class="track-card framework-card" data-track="React">
-              <div class="framework-logo">
-                <i class="fa-brands fa-react"></i>
-              </div>
-
-              <span class="framework-type"> Library </span>
-
-              <h3>React</h3>
-
-              <p>ابنِ واجهات حديثة باستخدام Component-Based Architecture ونظام بيئي واسع.</p>
-
-              <div class="framework-point">
-                <i class="fa-solid fa-check"></i>
-                مرن
-              </div>
-
-              <a href="react-learning/react-learning.html" class="track-btn">
-                استكشف React
-
-                <i class="fa-solid fa-arrow-left"></i>
-              </a>
-            </article>
-
-            <!-- Vue -->
-
-            <article class="track-card framework-card" data-track="Vue">
-              <div class="framework-logo">
-                <i class="fa-brands fa-vuejs"></i>
-              </div>
-
-              <span class="framework-type"> Progressive Framework </span>
-
-              <h3>Vue</h3>
-
-              <p>إطار مرن وسهل الدخول إلى عالم التطبيقات المبنية بالمكونات.</p>
-
-              <div class="framework-point">
-                <i class="fa-solid fa-check"></i>
-                Beginner-friendly
-              </div>
-
-              <a href="vue-learning/vue-learning.html" class="track-btn">
-                استكشف Vue
-
-                <i class="fa-solid fa-arrow-left"></i>
-              </a>
-            </article>
-
-            <!-- Angular -->
-
-            <article class="track-card framework-card" data-track="Angular">
-              <div class="framework-logo">
-                <i class="fa-brands fa-angular"></i>
-              </div>
-
-              <span class="framework-type"> Full Framework </span>
-
-              <h3>Angular</h3>
-
-              <p>بيئة متكاملة لبناء تطبيقات كبيرة ومنظمة وقابلة للتوسع.</p>
-
-              <div class="framework-point">
-                <i class="fa-solid fa-check"></i>
-                Structured Architecture
-              </div>
-
-              <a href="angular-learning/angular-learning.html" class="track-btn">
-                استكشف Angular
-
-                <i class="fa-solid fa-arrow-left"></i>
-              </a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===================================================
-         WEB DEVELOPMENT INTRO
-      ==================================================== -->
-
-      <section id="web-fundamentals" class="section web-intro-section">
-        <div class="section-heading reveal">
-          <span class="section-number"> 02 / UNDERSTAND </span>
-
-          <p class="eyebrow">قبل أن تتعلم الكود</p>
-
-          <h2>
-            ما هو
-            <span>Web Development؟</span>
-          </h2>
-
-          <p>
-            قبل أن تبدأ في حفظ Tags أو Properties أو JavaScript Methods، لازم تفهم الصورة الكبيرة: كيف يعمل الويب؟ وأين
-            يوجد دورك كمطور؟
-          </p>
-        </div>
-
-        <div class="web-concept-layout">
-          <!-- Main concept -->
-
-          <article class="concept-main reveal">
-            <div class="concept-icon">
-              <i class="fa-solid fa-globe"></i>
-            </div>
-
-            <div>
-              <span class="concept-label"> THE BIG PICTURE </span>
-
-              <h3>الموقع الذي تراه أمامك نتيجة تعاون أكثر من جزء.</h3>
-
-              <p>
-                عندما تفتح موقعًا في المتصفح، هناك Browser يعرض الواجهة، وFrontend يبني الجزء الذي تتفاعل معه، وBackend
-                يتعامل مع البيانات والمنطق والخدمات في الخلفية.
-              </p>
-            </div>
-          </article>
-
-          <!-- Browser -->
-
-          <article class="concept-card reveal">
-            <div class="concept-card-icon">
-              <i class="fa-solid fa-window-maximize"></i>
-            </div>
-
-            <span>01</span>
-
-            <h3>Browser</h3>
-
-            <p>البرنامج الذي يستخدمه المستخدم للوصول إلى صفحات الويب وتشغيل HTML وCSS وJavaScript.</p>
-          </article>
-
-          <!-- Frontend -->
-
-          <article class="concept-card concept-card-featured reveal">
-            <div class="concept-card-icon">
-              <i class="fa-solid fa-display"></i>
-            </div>
-
-            <span>02</span>
-
-            <h3>Frontend</h3>
-
-            <p>كل ما يراه المستخدم ويتفاعل معه مباشرة داخل الموقع.</p>
-
-            <div class="mini-stack">
-              <span>HTML</span>
-
-              <span>CSS</span>
-
-              <span>JavaScript</span>
-            </div>
-          </article>
-
-          <!-- Backend -->
-
-          <article class="concept-card reveal">
-            <div class="concept-card-icon">
-              <i class="fa-solid fa-server"></i>
-            </div>
-
-            <span>03</span>
-
-            <h3>Backend</h3>
-
-            <p>الجزء الذي يعمل خلف الكواليس ويتعامل مع البيانات، السيرفر، قواعد البيانات والخدمات.</p>
-          </article>
-        </div>
-
-        <!-- Flow -->
-
-        <div class="web-flow reveal">
-          <div class="flow-item">
-            <span>You</span>
-
-            <i class="fa-solid fa-arrow-left"></i>
-          </div>
-
-          <div class="flow-item">
-            <span>Browser</span>
-
-            <i class="fa-solid fa-arrow-left"></i>
-          </div>
-
-          <div class="flow-item flow-highlight">
-            <span>Frontend</span>
-
-            <small> HTML + CSS + JS </small>
-          </div>
-
-          <div class="flow-item">
-            <i class="fa-solid fa-arrow-left"></i>
-
-            <span>Backend</span>
-          </div>
-
-          <div class="flow-item">
-            <span>Data</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===================================================
-         FRONTEND FEATURE
-      ==================================================== -->
-
-      <section class="section frontend-section">
-        <div class="frontend-feature">
-          <div class="frontend-copy reveal">
-            <span class="section-number"> 03 / FRONTEND </span>
-
-            <p class="eyebrow">المسار الحقيقي</p>
-
-            <h2>
-              ماذا يعني أن تكون
-              <span>Frontend Developer؟</span>
-            </h2>
-
-            <p class="frontend-description">
-              Frontend Development مش مجرد كتابة HTML وCSS. أنت تبني التجربة التي يراها المستخدم ويتفاعل معها، وتحتاج أن
-              تجمع بين الفهم، التصميم، المنطق، والأداء.
-            </p>
-
-            <div class="frontend-checklist">
-              <div class="frontend-check">
-                <span>01</span>
-
-                <div>
-                  <strong>Understand</strong>
-
-                  <p>افهم كيف يعمل الويب والمتصفح.</p>
-                </div>
-              </div>
-
-              <div class="frontend-check">
-                <span>02</span>
-
-                <div>
-                  <strong>Build</strong>
-
-                  <p>حوّل الأفكار إلى واجهات حقيقية.</p>
-                </div>
-              </div>
-
-              <div class="frontend-check">
-                <span>03</span>
-
-                <div>
-                  <strong>Practice</strong>
-
-                  <p>اكتب الكود بنفسك وحل المشاكل.</p>
-                </div>
-              </div>
-
-              <div class="frontend-check">
-                <span>04</span>
-
-                <div>
-                  <strong>Ship</strong>
-
-                  <p>ابنِ مشاريع حقيقية قابلة للعرض.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="frontend-visual reveal">
-            <div class="frontend-panel">
-              <div class="panel-header">
-                <span>frontend-stack</span>
-
-                <span>04 steps</span>
-              </div>
-
-              <div class="stack-layer active">
-                <div class="layer-number">01</div>
-
-                <div class="layer-icon">
-                  <i class="fa-brands fa-html5"></i>
-                </div>
-
-                <div>
-                  <strong>Structure</strong>
-
-                  <span>HTML</span>
-                </div>
-
-                <i class="fa-solid fa-check layer-check"></i>
-              </div>
-
-              <div class="stack-layer">
-                <div class="layer-number">02</div>
-
-                <div class="layer-icon">
-                  <i class="fa-brands fa-css3-alt"></i>
-                </div>
-
-                <div>
-                  <strong>Presentation</strong>
-
-                  <span>CSS</span>
-                </div>
-
-                <i class="fa-solid fa-check layer-check"></i>
-              </div>
-
-              <div class="stack-layer">
-                <div class="layer-number">03</div>
-
-                <div class="layer-icon">
-                  <i class="fa-brands fa-js"></i>
-                </div>
-
-                <div>
-                  <strong>Behavior</strong>
-
-                  <span>JavaScript</span>
-                </div>
-
-                <i class="fa-solid fa-check layer-check"></i>
-              </div>
-
-              <div class="stack-layer">
-                <div class="layer-number">04</div>
-
-                <div class="layer-icon">
-                  <i class="fa-solid fa-cubes"></i>
-                </div>
-
-                <div>
-                  <strong>Applications</strong>
-
-                  <span>Frameworks</span>
-                </div>
-
-                <i class="fa-solid fa-lock layer-check"></i>
-              </div>
-
-              <div class="panel-footer">
-                <span>Next:</span>
-
-                <strong>Real Projects</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===================================================
-         HTML CSS JS
-      ==================================================== -->
-
-      <section class="section technology-section">
-        <div class="section-heading reveal">
-          <span class="section-number"> 04 / THE CORE </span>
-
-          <p class="eyebrow">تقنيات الويب الأساسية</p>
-
-          <h2>
-            كل تقنية لها
-            <span>وظيفة.</span>
-          </h2>
-
-          <p>لا تتعلم HTML وCSS وJavaScript كأنها ثلاث لغات منفصلة. افهم كيف تعمل معًا لبناء واجهة واحدة.</p>
-        </div>
-
-        <div class="technology-stack reveal">
-          <!-- HTML -->
-
-          <article class="technology-card technology-html">
-            <div class="technology-number">01</div>
-
-            <div class="technology-icon">
-              <i class="fa-brands fa-html5"></i>
-            </div>
-
-            <div class="technology-content">
-              <span class="technology-role"> STRUCTURE </span>
-
-              <h3>HTML</h3>
-
-              <p>يبني هيكل الصفحة ويعطي المحتوى معناه.</p>
-
-              <div class="technology-example">
-                <span>&lt;h1&gt;</span>
-
-                <span>Hello World</span>
-
-                <span>&lt;/h1&gt;</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- CSS -->
-
-          <article class="technology-card technology-css">
-            <div class="technology-number">02</div>
-
-            <div class="technology-icon">
-              <i class="fa-brands fa-css3-alt"></i>
-            </div>
-
-            <div class="technology-content">
-              <span class="technology-role"> PRESENTATION </span>
-
-              <h3>CSS</h3>
-
-              <p>يتحكم في شكل الصفحة، layout، الألوان، والمساحات.</p>
-
-              <div class="technology-example">
-                <span>.button</span>
-
-                <span>{</span>
-
-                <span>display: flex;</span>
-
-                <span>}</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- JavaScript -->
-
-          <article class="technology-card technology-js">
-            <div class="technology-number">03</div>
-
-            <div class="technology-icon">
-              <i class="fa-brands fa-js"></i>
-            </div>
-
-            <div class="technology-content">
-              <span class="technology-role"> BEHAVIOR </span>
-
-              <h3>JavaScript</h3>
-
-              <p>يضيف المنطق، التفاعل، البيانات والسلوك الديناميكي.</p>
-
-              <div class="technology-example">
-                <span>button</span>
-
-                <span>.addEventListener</span>
-
-                <span>("click", ...)</span>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <div class="technology-summary reveal">
-          <div class="summary-line"></div>
-
-          <p>
-            <strong>HTML</strong>
-            يبني الهيكل →
-            <strong>CSS</strong>
-            ينسق المظهر →
-            <strong>JavaScript</strong>
-            يضيف السلوك.
-          </p>
-
-          <div class="summary-line"></div>
-        </div>
-      </section>
-
-      <!-- ===================================================
-         ROADMAP
-      ==================================================== -->
-
-      <section id="roadmap" class="section roadmap-section">
-        <div class="section-heading roadmap-heading reveal">
-          <span class="section-number"> 05 / ROADMAP </span>
-
-          <p class="eyebrow">طريقك داخل FAYAD</p>
-
-          <h2>
-            من
-            <span>Zero</span>
-            إلى
-            <span>Junior Developer.</span>
-          </h2>
-
-          <p>كل مرحلة لها هدف واضح. لا تقفز للـFrameworks قبل أن تبني الأساس.</p>
-        </div>
-
-        <div class="roadmap-wrapper reveal">
-          <div class="roadmap-line">
-            <span class="roadmap-progress"></span>
-          </div>
-
-          <!-- Step 01 -->
-
-          <article class="roadmap-step completed" data-roadmap-step="1">
-            <div class="roadmap-node">
-              <span>01</span>
-
-              <i class="fa-solid fa-computer"></i>
-            </div>
-
-            <div class="roadmap-content">
-              <span>FOUNDATION</span>
-
-              <h3>Web Fundamentals</h3>
-
-              <p>Computer Basics + Programming Basics</p>
-            </div>
-          </article>
-
-          <!-- Step 02 -->
-
-          <article class="roadmap-step" data-roadmap-step="2">
-            <div class="roadmap-node">
-              <span>02</span>
-
-              <i class="fa-brands fa-html5"></i>
-            </div>
-
-            <div class="roadmap-content">
-              <span>STRUCTURE</span>
-
-              <h3>HTML</h3>
-
-              <p>Semantic structure and accessible content.</p>
-            </div>
-          </article>
-
-          <!-- Step 03 -->
-
-          <article class="roadmap-step" data-roadmap-step="3">
-            <div class="roadmap-node">
-              <span>03</span>
-
-              <i class="fa-brands fa-css3-alt"></i>
-            </div>
-
-            <div class="roadmap-content">
-              <span>PRESENTATION</span>
-
-              <h3>CSS</h3>
-
-              <p>Layout, responsive design and visual systems.</p>
-            </div>
-          </article>
-
-          <!-- Step 04 -->
-
-          <article class="roadmap-step" data-roadmap-step="4">
-            <div class="roadmap-node">
-              <span>04</span>
-
-              <i class="fa-brands fa-js"></i>
-            </div>
-
-            <div class="roadmap-content">
-              <span>BEHAVIOR</span>
-
-              <h3>JavaScript</h3>
-
-              <p>Logic, DOM, events, APIs and asynchronous programming.</p>
-            </div>
-          </article>
-
-          <!-- Step 05 -->
-
-          <article class="roadmap-step" data-roadmap-step="5">
-            <div class="roadmap-node">
-              <span>05</span>
-
-              <i class="fa-solid fa-bolt"></i>
-            </div>
-
-            <div class="roadmap-content">
-              <span>ADVANCED</span>
-
-              <h3>Advanced JavaScript</h3>
-
-              <p>Deeper concepts and professional development patterns.</p>
-            </div>
-          </article>
-
-          <!-- Step 06 -->
-
-          <article class="roadmap-step" data-roadmap-step="6">
-            <div class="roadmap-node">
-              <span>06</span>
-
-              <i class="fa-solid fa-cubes"></i>
-            </div>
-
-            <div class="roadmap-content">
-              <span>ECOSYSTEM</span>
-
-              <h3>Frameworks</h3>
-
-              <p>React · Vue · Angular</p>
-
-              <div class="roadmap-branches">
-                <span>React</span>
-
-                <span>Vue</span>
-
-                <span>Angular</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Step 07 -->
-
-          <article class="roadmap-step" data-roadmap-step="7">
-            <div class="roadmap-node">
-              <span>07</span>
-
-              <i class="fa-solid fa-rocket"></i>
-            </div>
-
-            <div class="roadmap-content">
-              <span>BUILD</span>
-
-              <h3>Real Projects</h3>
-
-              <p>طبّق كل ما تعلمته في مشاريع حقيقية.</p>
-            </div>
-          </article>
-
-          <!-- Step 08 -->
-
-          <article class="roadmap-step roadmap-final" data-roadmap-step="8">
-            <div class="roadmap-node">
-              <span>08</span>
-
-              <i class="fa-solid fa-user-tie"></i>
-            </div>
-
-            <div class="roadmap-content">
-              <span>GOAL</span>
-
-              <h3>Junior Developer</h3>
-
-              <p>أصبحت قادرًا على بناء واجهات ومشاريع حقيقية وعرض مهاراتك.</p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- ===================================================
-         FRAMEWORKS EXPLANATION
-      ==================================================== -->
-
-      <section class="section framework-explanation">
-        <div class="section-heading reveal">
-          <span class="section-number"> 06 / FRAMEWORKS </span>
-
-          <p class="eyebrow">بعد الأساسيات</p>
-
-          <h2>
-            What is a
-            <span>Framework؟</span>
-          </h2>
-
-          <p>
-            Framework ليس اختصارًا لتعلم الأساسيات. هو مجموعة أدوات وقواعد تساعدك على بناء تطبيقات أكبر بطريقة منظمة.
-          </p>
-        </div>
-
-        <div class="framework-comparison reveal">
-          <div class="comparison-label">
-            <span>CHOOSE BY PURPOSE</span>
-
-            <p>لا يوجد Framework واحد هو الأفضل للجميع.</p>
-          </div>
-
-          <div class="comparison-card">
-            <div class="comparison-icon react-icon">
-              <i class="fa-brands fa-react"></i>
-            </div>
-
-            <h3>React</h3>
-
-            <span>Library</span>
-
-            <ul>
-              <li>
-                <i class="fa-solid fa-check"></i>
-                Flexible
-              </li>
-
-              <li>
-                <i class="fa-solid fa-check"></i>
-                Huge ecosystem
-              </li>
-
-              <li>
-                <i class="fa-solid fa-check"></i>
-                Component-based
-              </li>
-            </ul>
-          </div>
-
-          <div class="comparison-card">
-            <div class="comparison-icon vue-icon">
-              <i class="fa-brands fa-vuejs"></i>
-            </div>
-
-            <h3>Vue</h3>
-
-            <span> Progressive Framework </span>
-
-            <ul>
-              <li>
-                <i class="fa-solid fa-check"></i>
-                Beginner-friendly
-              </li>
-
-              <li>
-                <i class="fa-solid fa-check"></i>
-                Simple learning curve
-              </li>
-
-              <li>
-                <i class="fa-solid fa-check"></i>
-                Flexible
-              </li>
-            </ul>
-          </div>
-
-          <div class="comparison-card">
-            <div class="comparison-icon angular-icon">
-              <i class="fa-brands fa-angular"></i>
-            </div>
-
-            <h3>Angular</h3>
-
-            <span>Full Framework</span>
-
-            <ul>
-              <li>
-                <i class="fa-solid fa-check"></i>
-                Full ecosystem
-              </li>
-
-              <li>
-                <i class="fa-solid fa-check"></i>
-                Structured architecture
-              </li>
-
-              <li>
-                <i class="fa-solid fa-check"></i>
-                Large applications
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===================================================
-         FRAMEWORK LEARNING PATHS
-      ==================================================== -->
-
-      <section id="framework-tracks" class="section framework-tracks-section">
-        <div class="section-heading reveal">
-          <span class="section-number"> 07 / FRAMEWORK PATHS </span>
-
-          <p class="eyebrow">بعد بناء الأساس</p>
-
-          <h2>
-            اختر الـ
-            <span>Framework</span>
-            الذي يناسب هدفك.
-          </h2>
-
-          <p>بعد إتقان HTML وCSS وJavaScript، يمكنك الانتقال إلى بناء تطبيقات حديثة باستخدام Framework مناسب.</p>
-        </div>
-
-        <div class="tracks-grid reveal">
-          <!-- React -->
-
-          <article class="track-card framework-card" data-track="React">
-            <div class="framework-logo">
-              <i class="fa-brands fa-react"></i>
-            </div>
-
-            <span class="framework-type"> Library </span>
-
-            <h3>React</h3>
-
-            <p>تعلم بناء واجهات حديثة باستخدام Components وإدارة الحالة وبناء تطبيقات تفاعلية.</p>
-
-            <div class="framework-point">
-              <i class="fa-solid fa-check"></i>
-              مرن وواسع الاستخدام
-            </div>
-
-            <a href="react-learning/react-learning.html" class="track-btn">
-              ابدأ React
-
-              <i class="fa-solid fa-arrow-left"></i>
-            </a>
-          </article>
-
-          <!-- Vue -->
-
-          <article class="track-card framework-card" data-track="Vue">
-            <div class="framework-logo">
-              <i class="fa-brands fa-vuejs"></i>
-            </div>
-
-            <span class="framework-type"> Progressive Framework </span>
-
-            <h3>Vue</h3>
-
-            <p>تعلم إطارًا مرنًا وسهل الدخول لبناء تطبيقات حديثة تعتمد على Components.</p>
-
-            <div class="framework-point">
-              <i class="fa-solid fa-check"></i>
-              Beginner-friendly
-            </div>
-
-            <a href="vue-learning/vue-learning.html" class="track-btn">
-              ابدأ Vue
-
-              <i class="fa-solid fa-arrow-left"></i>
-            </a>
-          </article>
-
-          <!-- Angular -->
-
-          <article class="track-card framework-card" data-track="Angular">
-            <div class="framework-logo">
-              <i class="fa-brands fa-angular"></i>
-            </div>
-
-            <span class="framework-type"> Full Framework </span>
-
-            <h3>Angular</h3>
-
-            <p>تعلم بيئة متكاملة ومنظمة لبناء تطبيقات كبيرة وقابلة للتوسع.</p>
-
-            <div class="framework-point">
-              <i class="fa-solid fa-check"></i>
-              Structured Architecture
-            </div>
-
-            <a href="angular-learning/angular-learning.html" class="track-btn">
-              ابدأ Angular
-
-              <i class="fa-solid fa-arrow-left"></i>
-            </a>
-          </article>
-        </div>
-      </section>
-
-      <!-- ===================================================
-         PRACTICE
-      ==================================================== -->
-
-      <section id="practice" class="section practice-section">
-        <div class="practice-container reveal">
-          <div class="practice-copy">
-            <span class="section-number"> 08 / PRACTICE </span>
-
-            <p class="eyebrow">التعلم الحقيقي يبدأ هنا</p>
-
-            <h2>
-              لا تكتفِ
-              <span>بالتعلم.</span>
-              مارس.
-            </h2>
-
-            <p>قراءة الكود لا تكفي. اكتب بنفسك، جرّب، أخطئ، أصلح، ثم ابنِ شيئًا من الصفر.</p>
-
-            <div class="practice-actions">
-              <a href="html-learning/html-learning.html" class="btn btn-primary">
-                ابدأ التطبيق
-
-                <i class="fa-solid fa-arrow-left"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="practice-grid">
-            <div class="practice-card">
-              <div class="practice-card-icon">
-                <i class="fa-solid fa-terminal"></i>
-              </div>
-
-              <span>01</span>
-
-              <h3>Write Code</h3>
-
-              <p>اكتب الكود بنفسك بدلًا من مجرد قراءته.</p>
-            </div>
-
-            <div class="practice-card">
-              <div class="practice-card-icon">
-                <i class="fa-solid fa-flask"></i>
-              </div>
-
-              <span>02</span>
-
-              <h3>Experiment</h3>
-
-              <p>غيّر وجرب وشاهد ماذا يحدث.</p>
-            </div>
-
-            <div class="practice-card">
-              <div class="practice-card-icon">
-                <i class="fa-solid fa-bug"></i>
-              </div>
-
-              <span>03</span>
-
-              <h3>Debug</h3>
-
-              <p>الأخطاء جزء طبيعي من تعلم البرمجة.</p>
-            </div>
-
-            <div class="practice-card">
-              <div class="practice-card-icon">
-                <i class="fa-solid fa-trophy"></i>
-              </div>
-
-              <span>04</span>
-
-              <h3>Improve</h3>
-
-              <p>كل تمرين يقربك خطوة من بناء مشاريع حقيقية.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===================================================
-         PROJECTS
-      ==================================================== -->
-
-      <section id="projects" class="section projects-section">
-        <div class="projects-heading reveal">
+    <main id="main">
+      <section id="home" class="hm-hero">
+        <div class="hm-wrap hm-hero-grid">
           <div>
-            <span class="section-number"> 09 / BUILD </span>
-
-            <p class="eyebrow">Real Projects</p>
-
-            <h2>
-              المعرفة تصبح أقوى
-              <span>عندما تبني.</span>
-            </h2>
+            <span class="hm-kicker" data-i18n="h.kicker">منصة FAYAD التعليمية</span>
+            <h1 data-i18n="h.title">تعلّم تطوير الويب خطوة بخطوة</h1>
+            <p class="hm-lead" data-i18n="h.desc">مسار واضح من أساسيات الحاسوب والبرمجة حتى HTML وCSS وJavaScript وأطر العمل، بدروس تفاعلية وتمارين تطبيقية.</p>
+            <div class="hm-actions">
+              <a class="hm-cta" href="fundamentals/computer-basics/com.html"><span data-i18n="h.cta">ابدأ من الأساسيات</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <a class="hm-link" href="#courses" data-i18n="h.browse">تصفّح كل المسارات</a>
+            </div>
+            <ul class="hm-stats">
+              <li><b data-stat="tracks">8</b><span data-i18n="h.stat.tracks">مسارات</span></li>
+              <li><b data-stat="lessons">209</b><span data-i18n="h.stat.lessons">درسًا</span></li>
+            </ul>
           </div>
-
-          <p>الهدف النهائي ليس إنهاء الدروس. الهدف أن تستطيع استخدام ما تعلمته لبناء شيء حقيقي.</p>
-        </div>
-
-        <div class="project-process reveal">
-          <div class="project-process-item">
-            <span>01</span>
-
-            <i class="fa-solid fa-book-open"></i>
-
-            <strong>Learn</strong>
-
-            <small>افهم المفهوم</small>
-          </div>
-
-          <div class="process-arrow">
-            <i class="fa-solid fa-arrow-left"></i>
-          </div>
-
-          <div class="project-process-item">
-            <span>02</span>
-
-            <i class="fa-solid fa-code"></i>
-
-            <strong>Practice</strong>
-
-            <small>اكتب الكود</small>
-          </div>
-
-          <div class="process-arrow">
-            <i class="fa-solid fa-arrow-left"></i>
-          </div>
-
-          <div class="project-process-item">
-            <span>03</span>
-
-            <i class="fa-solid fa-hammer"></i>
-
-            <strong>Build</strong>
-
-            <small>اصنع مشروعًا</small>
-          </div>
-
-          <div class="process-arrow">
-            <i class="fa-solid fa-arrow-left"></i>
-          </div>
-
-          <div class="project-process-item project-process-final">
-            <span>04</span>
-
-            <i class="fa-solid fa-briefcase"></i>
-
-            <strong>Showcase</strong>
-
-            <small>اعرض مهاراتك</small>
-          </div>
+          <figure style="margin:0" aria-hidden="true">
+            <div class="hm-preview">
+              <div class="hm-preview-bar"><i></i><i></i><i></i><span>index.html</span></div>
+<pre><span class="c">&lt;!-- FAYAD --&gt;</span>
+<span class="t">&lt;button</span> <span class="a">class</span>=<span class="s">"start"</span><span class="t">&gt;</span>
+  Hello, FAYAD
+<span class="t">&lt;/button&gt;</span>
+</pre>
+            </div>
+            <figcaption class="hm-preview-cap" data-i18n="h.preview">مثال من درس تفاعلي</figcaption>
+          </figure>
         </div>
       </section>
 
-      <!-- ===================================================
-         FINAL CTA
-      ==================================================== -->
+      <section id="continue" class="hm-section" style="padding-block-start:0" hidden aria-labelledby="continueTitle">
+        <div class="hm-wrap">
+          <div class="hm-head"><h2 id="continueTitle" data-i18n="c.title">تابع من حيث توقفت</h2><p data-i18n="c.sub">يُحفظ تقدمك على هذا الجهاز.</p></div>
+          <div class="hm-continue-list" id="continueList"></div>
+        </div>
+      </section>
 
-      <section class="final-cta section">
-        <div class="final-cta-inner reveal">
-          <span class="final-cta-mark">F</span>
+      <section id="roadmap" class="hm-section" aria-labelledby="roadmapTitle">
+        <div class="hm-wrap">
+          <div class="hm-head"><h2 id="roadmapTitle" data-i18n="r.title">خريطة التعلم</h2><p data-i18n="r.sub">اتبع الترتيب للحصول على أفضل نتيجة، أو انتقل مباشرة إلى ما تحتاجه.</p></div>
+          <ol class="hm-roadmap">
+        <li><a class="hm-step" href="fundamentals/computer-basics/com.html" data-course="com"><span class="hm-step-n" aria-hidden="true">1</span><strong data-i18n="r.com">أساسيات الحاسوب</strong><small data-i18n="r.com.d">كيف يعمل الحاسوب</small></a></li>
+        <li><a class="hm-step" href="fundamentals/programming-basics/prg.html" data-course="prg"><span class="hm-step-n" aria-hidden="true">2</span><strong data-i18n="r.prg">أساسيات البرمجة</strong><small data-i18n="r.prg.d">التفكير البرمجي</small></a></li>
+        <li><a class="hm-step" href="html-learning/html-learning.html" data-course="html"><span class="hm-step-n" aria-hidden="true">3</span><strong data-i18n="r.html">HTML</strong><small data-i18n="r.html.d">هيكل الصفحة</small></a></li>
+        <li><a class="hm-step" href="css-learning/css-learning.html" data-course="css"><span class="hm-step-n" aria-hidden="true">4</span><strong data-i18n="r.css">CSS</strong><small data-i18n="r.css.d">التصميم</small></a></li>
+        <li><a class="hm-step" href="javascript-learning/javascript-learning.html" data-course="js"><span class="hm-step-n" aria-hidden="true">5</span><strong data-i18n="r.js">JavaScript</strong><small data-i18n="r.js.d">التفاعل والمنطق</small></a></li>
+        <li><div class="hm-step hm-step-soon" data-course="com" aria-disabled="true"><span class="hm-step-n" aria-hidden="true">6</span><strong data-i18n="r.git">Git وGitHub</strong><small data-i18n="r.git.d">إدارة الإصدارات</small><span class="hm-soon" data-i18n="r.soon">قريبًا</span></div></li>
+        <li><a class="hm-step" href="#frameworks" data-course="react"><span class="hm-step-n" aria-hidden="true">7</span><strong data-i18n="r.frameworks">أطر العمل</strong><small data-i18n="r.frameworks.d">React وVue وAngular</small></a></li>
+        <li><div class="hm-step hm-step-soon" data-course="com" aria-disabled="true"><span class="hm-step-n" aria-hidden="true">8</span><strong data-i18n="r.projects">المشاريع</strong><small data-i18n="r.projects.d">طبّق ما تعلمته</small><span class="hm-soon" data-i18n="r.soon">قريبًا</span></div></li>
+          </ol>
+        </div>
+      </section>
 
-          <p class="eyebrow">YOUR JOURNEY STARTS HERE</p>
-
-          <h2>مستعد تبدأ؟</h2>
-
-          <p>ابدأ من الأساس، تعلم بشكل صحيح، وابنِ مهاراتك خطوة بخطوة.</p>
-
-          <a href="#tracks" class="btn btn-primary">
-            ابدأ رحلة التعلم
-
-            <i class="fa-solid fa-arrow-left"></i>
+      <section id="courses" class="hm-section" aria-labelledby="coursesTitle">
+        <div class="hm-wrap">
+          <div class="hm-head"><h2 id="coursesTitle" data-i18n="t.title">المسارات</h2><p data-i18n="t.sub">ثمانية مسارات بدروس عربية، يمكنك البدء من أي مسار.</p></div>
+          <div class="hm-group">
+            <h3 data-i18n="t.fundamentals">الأساسيات</h3>
+            <div class="hm-grid">
+          <a class="hm-card" href="fundamentals/computer-basics/com.html" data-course="com" data-course-card="com">
+            <span class="hm-card-top"><span class="hm-badge" aria-hidden="true">CS</span><span class="hm-count" data-lessons-for="com"></span></span>
+            <h4>Computer Fundamentals</h4>
+            <p data-i18n="t.com">من العتاد والمعالج والذاكرة إلى أنظمة التشغيل والشبكات والأمن السيبراني.</p>
+            <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
+            <span class="hm-progress-label" hidden></span>
+            <span class="hm-go"><span data-i18n="t.open">افتح المسار</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
+          <a class="hm-card" href="fundamentals/programming-basics/prg.html" data-course="prg" data-course-card="prg">
+            <span class="hm-card-top"><span class="hm-badge" aria-hidden="true">{ }</span><span class="hm-count" data-lessons-for="prg"></span></span>
+            <h4>Programming Fundamentals</h4>
+            <p data-i18n="t.prg">المتغيرات والشروط والحلقات والدوال والمصفوفات والكائنات وحل المشكلات.</p>
+            <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
+            <span class="hm-progress-label" hidden></span>
+            <span class="hm-go"><span data-i18n="t.open">افتح المسار</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+            </div>
+          </div>
+          <div class="hm-group">
+            <h3 data-i18n="t.web">أساسيات الويب</h3>
+            <div class="hm-grid">
+          <a class="hm-card" href="html-learning/html-learning.html" data-course="html" data-course-card="html">
+            <span class="hm-card-top"><span class="hm-badge" aria-hidden="true">HTML</span><span class="hm-count" data-lessons-for="html"></span></span>
+            <h4>HTML</h4>
+            <p data-i18n="t.html">بنية الصفحة والنصوص والروابط والجداول والنماذج والعناصر الدلالية وإمكانية الوصول.</p>
+            <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
+            <span class="hm-progress-label" hidden></span>
+            <span class="hm-go"><span data-i18n="t.open">افتح المسار</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="hm-card" href="css-learning/css-learning.html" data-course="css" data-course-card="css">
+            <span class="hm-card-top"><span class="hm-badge" aria-hidden="true">CSS</span><span class="hm-count" data-lessons-for="css"></span></span>
+            <h4>CSS</h4>
+            <p data-i18n="t.css">المحددات ونموذج الصندوق وFlexbox وGrid والتصميم المتجاوب والحركة.</p>
+            <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
+            <span class="hm-progress-label" hidden></span>
+            <span class="hm-go"><span data-i18n="t.open">افتح المسار</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="hm-card" href="javascript-learning/javascript-learning.html" data-course="js" data-course-card="js">
+            <span class="hm-card-top"><span class="hm-badge" aria-hidden="true">JS</span><span class="hm-count" data-lessons-for="js"></span></span>
+            <h4>JavaScript</h4>
+            <p data-i18n="t.js">أساسيات اللغة وDOM والأحداث والوحدات وPromises وFetch.</p>
+            <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
+            <span class="hm-progress-label" hidden></span>
+            <span class="hm-go"><span data-i18n="t.open">افتح المسار</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+            </div>
+          </div>
+          <div class="hm-group" id="frameworks">
+            <h3 data-i18n="t.frameworks">أطر العمل</h3>
+            <div class="hm-grid">
+          <a class="hm-card" href="react-learning/react-learning.html" data-course="react" data-course-card="react">
+            <span class="hm-card-top"><span class="hm-badge" aria-hidden="true">Re</span><span class="hm-count" data-lessons-for="react"></span></span>
+            <h4>React</h4>
+            <p data-i18n="t.react">المكونات وJSX وProps وState وHooks والتوجيه وبنية التطبيق.</p>
+            <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
+            <span class="hm-progress-label" hidden></span>
+            <span class="hm-go"><span data-i18n="t.open">افتح المسار</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="hm-card" href="vue-learning/vue-learning.html" data-course="vue" data-course-card="vue">
+            <span class="hm-card-top"><span class="hm-badge" aria-hidden="true">Vue</span><span class="hm-count" data-lessons-for="vue"></span></span>
+            <h4>Vue</h4>
+            <p data-i18n="t.vue">القوالب والتفاعلية والمكونات وComposition API وVue Router.</p>
+            <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
+            <span class="hm-progress-label" hidden></span>
+            <span class="hm-go"><span data-i18n="t.open">افتح المسار</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="hm-card" href="angular-learning/angular-learning.html" data-course="angular" data-course-card="angular">
+            <span class="hm-card-top"><span class="hm-badge" aria-hidden="true">Ng</span><span class="hm-count" data-lessons-for="angular"></span></span>
+            <h4>Angular</h4>
+            <p data-i18n="t.angular">المكونات والقوالب والتوجيهات والخدمات والتوجيه والنماذج وRxJS.</p>
+            <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
+            <span class="hm-progress-label" hidden></span>
+            <span class="hm-go"><span data-i18n="t.open">افتح المسار</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+            </div>
+          </div>
         </div>
       </section>
     </main>
 
-    <!-- =====================================================
-       FOOTER
-    ====================================================== -->
-
     <footer class="footer">
       <div class="footer-inner">
         <div class="footer-brand">
-          <a href="index.html" class="logo">
-            <span class="logo-mark">F</span>
-
-            <span class="logo-text"> FAYAD </span>
+          <a href="index.html" class="logo" aria-label="FAYAD">
+            <span class="logo-mark" aria-hidden="true"><img src="/assets/brand/logo-mark.svg" alt="" width="36" height="36" /></span>
+            <span class="logo-text">FAYAD</span>
           </a>
-
-          <p>منصة تعليمية تساعدك على فهم Web Development وبناء مهاراتك بطريقة عملية ومنظمة.</p>
+          <p data-i18n="f.text">تعلّم بالممارسة: اكتب الكود، جرّبه، أخطئ، ثم أصلح.</p>
         </div>
-
-        <div class="footer-links">
-          <a href="#home"> الرئيسية </a>
-
-          <a href="#tracks"> المسارات </a>
-
-          <a href="#roadmap"> Roadmap </a>
-
-          <a href="#practice"> التدريب </a>
-
-          <a href="about/about.html"> عن FAYAD </a>
-        </div>
+        <nav class="footer-links" aria-label="روابط التذييل" data-i18n-attr="aria-label:f.nav">
+          <a href="#courses" data-i18n="nav.courses">المسارات</a>
+          <a href="#roadmap" data-i18n="nav.roadmap">خريطة التعلم</a>
+          <a href="about/about.html" data-i18n="f.about">عن المنصة</a>
+        </nav>
       </div>
-
       <div class="footer-bottom">
-        <p>© 2026 FAYAD. Built by Abdullhamid Fayad.</p>
-
-        <span> Learn · Build · Become </span>
+        <p data-i18n="f.rights">© 2026 FAYAD. من تطوير Abdullhamid, Fayad.</p>
+        <span data-i18n="f.tag">Learn · Build · Become</span>
       </div>
     </footer>
 
@@ -1754,32 +361,6 @@
       <div class="noscript-message">يرجى تفعيل JavaScript لاستخدام جميع وظائف منصة FAYAD.</div>
     </noscript>
 
-    <!-- Main JavaScript -->
     <script src="js/app.js" defer></script>
-
-<!-- PWA Service Worker -->
-<script>
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-      navigator.serviceWorker
-        .register("/service-worker.js")
-        .then((registration) => {
-          console.log(
-            "FAYAD Service Worker registered:",
-            registration.scope
-          );
-        })
-        .catch((error) => {
-          console.error(
-            "FAYAD Service Worker registration failed:",
-            error
-          );
-        });
-    });
-  }
-</script>
-
-</body>
-</html>
   </body>
 </html>

@@ -1,0 +1,57 @@
+/* FAYAD — page-specific theme fixes that cannot be expressed through tokens alone.
+   Keep this file small; prefer fixing tokens or the generator. */
+
+/* Home: hero code window uses literal greys inside a dark panel (both themes) */
+.code-window .line-number { color: #7d948b; }
+.code-window .code-comment { color: #93a8a0; opacity: 1; }
+.hero-micro, .hero-footnote { color: var(--fy-text-muted); }
+
+/* About: the developer card is a dark island; a translucent dark glass over a light page turns muddy grey */
+html[data-theme="light"][data-track="about"] .developer-card { background: var(--fy-code-surface); border-color: var(--fy-code-border); }
+html[data-track="about"] .developer-card .file-name { color: #9db4bb; }
+html[data-track="about"] .developer-card .code-purple { color: #d4a9f2; }
+
+/* Programming fundamentals: code/console chrome uses very dim literal greys on near-black */
+.console-placeholder { color: #8f8f99; }
+.editor-btn, .code-header span, .console-header span { color: #a2a2ac; }
+
+/* Brand monogram inside legacy logo boxes */
+.logo-mark:has(> img),
+.auth-brand-mark:has(> img) { background: none; border: 0; box-shadow: none; padding: 0; }
+.logo-mark > img,
+.auth-brand-mark > img { display: block; width: 100%; height: 100%; border-radius: 22%; }
+
+/* Computer fundamentals: header banner used a fixed dark green; make it theme-aware */
+.app-header { background: linear-gradient(135deg, color-mix(in srgb, var(--fy-course) 22%, var(--fy-bg)), var(--fy-bg-soft) 70%); }
+
+/* Programming fundamentals: translucent black challenge box looks grey on the light theme */
+html[data-theme="light"][data-track="prg"] .challenge-box { background: var(--fy-course-soft); border-color: var(--fy-course-glow); }
+html[data-track="prg"] .footer-brand small,
+html[data-track="prg"] .footer-credit,
+html[data-track="prg"] #progress-text { color: var(--fy-text-muted); }
+
+/* Home footer micro-copy used a literal dark grey */
+.footer-bottom span { color: var(--fy-text-muted); }
+
+/* Track header logos: text on the course fill */
+.learning-logo { color: var(--fy-course-on); }
+/* JavaScript: translucent black output pane looks grey on light; make it an opaque code surface */
+html[data-track="js"] .practice-output { background: var(--fy-code-bg); }
+/* Programming/Vue small labels */
+html[data-track="prg"] .editor-wrapper span { color: #a2a2ac; }
+html[data-track="vue"] #quizTotalQuestions { color: var(--fy-text-soft); }
+
+/* ---------- Mobile overflow guards (Milestone 2) ---------- */
+html[data-track="js"] .learning-layout > * { min-width: 0; }
+@media (max-width: 900px) {
+  html[data-track="js"] .learning-layout { grid-template-columns: minmax(0, 1fr); }
+  html[data-track="js"] .sidebar { max-width: 100%; }
+}
+/* decorative blobs / off-canvas menu on the homepage must never create a horizontal scrollbar */
+html[data-track="home"], html[data-track="home"] body { overflow-x: clip; }
+
+/* Homepage navbar brand: legacy gradient text used white stops, invisible in the light theme */
+.logo-text {
+  background-image: linear-gradient(110deg, var(--fy-text) 0%, var(--fy-text) 38%, var(--fy-brand) 74%, var(--fy-text) 100%);
+}
+.menu-btn span { background: var(--fy-text); }

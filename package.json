@@ -1,17 +1,17 @@
 {
-  "name": "primary",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "fayad-learning",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "description": "FAYAD Learning - interactive web development learning platform (static site)",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node tests/static-server.mjs",
+    "test": "node --test \"tests/*.test.mjs\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/midofayad22/fayad-app.git"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/midofayad22/fayad-app/issues"
@@ -19,5 +19,8 @@
   "homepage": "https://github.com/midofayad22/fayad-app#readme",
   "dependencies": {
     "@vercel/analytics": "^2.0.1"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
   }
 }

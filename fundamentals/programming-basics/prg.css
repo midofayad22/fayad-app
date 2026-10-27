@@ -78,7 +78,7 @@ body {
 
   background:
     radial-gradient(circle at 85% -10%, rgba(127, 29, 29, 0.13), transparent 30%),
-    radial-gradient(circle at 0% 45%, rgba(69, 10, 10, 0.08), transparent 28%), var(--bg-main);
+    radial-gradient(circle at 0% 45%, color-mix(in srgb, var(--fy-bg-soft) 8%, transparent), transparent 28%), var(--bg-main);
 
   font-family: "Segoe UI", Tahoma, Arial, sans-serif;
 
@@ -103,8 +103,8 @@ body {
   opacity: 0.18;
 
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+    linear-gradient(var(--fy-hover) 1px, transparent 1px),
+    linear-gradient(90deg, var(--fy-hover) 1px, transparent 1px);
 
   background-size: 48px 48px;
 
@@ -136,14 +136,14 @@ body {
   top: -280px;
   right: -180px;
 
-  background: #dc2626;
+  background: var(--fy-course);
 }
 
 .glow-two {
   bottom: -300px;
   left: -220px;
 
-  background: #7f1d1d;
+  background: var(--fy-course-strong);
 }
 
 /* =========================================================
@@ -155,9 +155,9 @@ body {
 
   padding: 70px 20px 60px;
 
-  background: linear-gradient(145deg, #190708 0%, #0d0809 45%, #050506 100%);
+  background: linear-gradient(145deg, var(--fy-bg) 0%, var(--fy-bg) 45%, var(--fy-bg) 100%);
 
-  border-bottom: 1px solid rgba(220, 38, 38, 0.2);
+  border-bottom: 1px solid color-mix(in srgb, var(--fy-course) 20%, transparent);
 
   overflow: hidden;
 }
@@ -177,7 +177,7 @@ body {
 
   border-radius: 50%;
 
-  background: radial-gradient(circle, rgba(220, 38, 38, 0.11), transparent 68%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--fy-course) 11%, transparent), transparent 68%);
 }
 
 .app-header::after {
@@ -191,7 +191,7 @@ body {
 
   height: 1px;
 
-  background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.65), transparent);
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--fy-course) 65%, transparent), transparent);
 }
 
 .header-content {
@@ -222,11 +222,11 @@ body {
 
   padding: 8px 13px;
 
-  color: #77777f;
+  color: var(--fy-text-muted);
 
-  background: rgba(255, 255, 255, 0.018);
+  background: var(--fy-hover);
 
-  border: 1px solid rgba(255, 255, 255, 0.055);
+  border: 1px solid var(--fy-border);
 
   border-radius: 8px;
 
@@ -240,7 +240,7 @@ body {
 .back-btn:hover {
   color: #f87171;
 
-  background: rgba(220, 38, 38, 0.06);
+  background: color-mix(in srgb, var(--fy-course) 6%, transparent);
 
   border-color: var(--accent-border);
 
@@ -264,15 +264,15 @@ body {
 
   border-radius: 18px;
 
-  background: linear-gradient(145deg, #26090b, #100708);
+  background: linear-gradient(145deg, var(--fy-bg), var(--fy-bg));
 
-  border: 1px solid rgba(220, 38, 38, 0.3);
+  border: 1px solid color-mix(in srgb, var(--fy-course) 30%, transparent);
 
-  color: #ef4444;
+  color: var(--fy-course-ink);
 
   font-size: 2rem;
 
-  box-shadow: 0 0 35px rgba(220, 38, 38, 0.08);
+  box-shadow: 0 0 35px color-mix(in srgb, var(--fy-course) 8%, transparent);
 
   animation: iconFloat 4s ease-in-out infinite;
 }
@@ -297,7 +297,7 @@ body {
 
   margin-bottom: 6px;
 
-  color: #b91c1c;
+  color: var(--fy-course-strong);
 
   font-size: 0.68rem;
 
@@ -311,7 +311,7 @@ body {
 .app-header h1 {
   margin-bottom: 14px;
 
-  color: #fafafa;
+  color: var(--fy-text);
 
   font-size: clamp(2.2rem, 5vw, 3.7rem);
 
@@ -325,7 +325,7 @@ body {
 
   margin: auto;
 
-  color: #9999a1;
+  color: var(--fy-text-muted);
 
   font-size: clamp(0.92rem, 2vw, 1.04rem);
 }
@@ -351,9 +351,9 @@ body {
 
   padding: 12px 18px;
 
-  background: rgba(255, 255, 255, 0.025);
+  background: var(--fy-hover);
 
-  border: 1px solid rgba(255, 255, 255, 0.065);
+  border: 1px solid var(--fy-border);
 
   border-radius: 10px;
 
@@ -363,15 +363,15 @@ body {
 .stat-card:hover {
   transform: translateY(-3px);
 
-  background: rgba(220, 38, 38, 0.045);
+  background: color-mix(in srgb, var(--fy-course) 4%, transparent);
 
-  border-color: rgba(220, 38, 38, 0.18);
+  border-color: color-mix(in srgb, var(--fy-course) 18%, transparent);
 }
 
 .stat-card strong {
   display: block;
 
-  color: #dc2626;
+  color: var(--fy-course);
 
   font-size: 1.25rem;
 
@@ -379,7 +379,7 @@ body {
 }
 
 .stat-card span {
-  color: #707078;
+  color: var(--fy-text-muted);
 
   font-size: 0.73rem;
 }
@@ -421,9 +421,9 @@ body {
 
   padding: 19px;
 
-  background: linear-gradient(145deg, #121214, #0a0a0c);
+  background: linear-gradient(145deg, var(--fy-bg), var(--fy-bg));
 
-  border: 1px solid rgba(255, 255, 255, 0.065);
+  border: 1px solid var(--fy-border);
 
   border-radius: var(--radius-lg);
 
@@ -443,7 +443,7 @@ body {
 
   height: 2px;
 
-  background: linear-gradient(90deg, transparent, #991b1b, transparent);
+  background: linear-gradient(90deg, transparent, var(--fy-course-strong), transparent);
 }
 
 /* =========================================================
@@ -463,7 +463,7 @@ body {
 }
 
 .sidebar-header span {
-  color: #77777f;
+  color: var(--fy-text-muted);
 
   font-size: 0.68rem;
 
@@ -473,7 +473,7 @@ body {
 .sidebar-header h2 {
   margin-top: 2px;
 
-  color: #ededed;
+  color: var(--fy-text);
 
   font-size: 1.04rem;
 }
@@ -489,11 +489,11 @@ body {
 
   border-radius: 10px;
 
-  color: #dc2626;
+  color: var(--fy-course);
 
-  background: rgba(220, 38, 38, 0.055);
+  background: color-mix(in srgb, var(--fy-course) 6%, transparent);
 
-  border: 1px solid rgba(220, 38, 38, 0.14);
+  border: 1px solid color-mix(in srgb, var(--fy-course) 14%, transparent);
 }
 
 /* =========================================================
@@ -507,9 +507,9 @@ body {
 
   border-radius: 11px;
 
-  background: rgba(255, 255, 255, 0.022);
+  background: var(--fy-hover);
 
-  border: 1px solid rgba(255, 255, 255, 0.055);
+  border: 1px solid var(--fy-border);
 }
 
 .progress-info {
@@ -525,11 +525,11 @@ body {
 }
 
 .progress-info span {
-  color: #77777f;
+  color: var(--fy-text-muted);
 }
 
 .progress-info strong {
-  color: #dc2626;
+  color: var(--fy-course);
 
   font-size: 0.84rem;
 }
@@ -541,7 +541,7 @@ body {
 
   border-radius: 99px;
 
-  background: #1d1d20;
+  background: var(--fy-bg-soft);
 }
 
 #progress-fill {
@@ -551,9 +551,9 @@ body {
 
   border-radius: inherit;
 
-  background: linear-gradient(90deg, #7f1d1d, #dc2626);
+  background: linear-gradient(90deg, var(--fy-course-strong), var(--fy-course));
 
-  box-shadow: 0 0 12px rgba(220, 38, 38, 0.25);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--fy-course) 25%, transparent);
 
   transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -603,7 +603,7 @@ body {
 
   background: transparent;
 
-  color: #73737b;
+  color: var(--fy-text-muted);
 
   padding: 7px 8px;
 
@@ -617,21 +617,21 @@ body {
 }
 
 .lesson-item:hover {
-  color: #ddd;
+  color: var(--fy-text-soft);
 
-  background: rgba(255, 255, 255, 0.025);
+  background: var(--fy-hover);
 
-  border-color: rgba(255, 255, 255, 0.045);
+  border-color: var(--fy-border);
 }
 
 .lesson-item.active {
-  color: #f4f4f5;
+  color: var(--fy-text);
 
-  background: linear-gradient(90deg, rgba(220, 38, 38, 0.09), rgba(220, 38, 38, 0.025));
+  background: linear-gradient(90deg, color-mix(in srgb, var(--fy-course) 9%, transparent), color-mix(in srgb, var(--fy-course) 2%, transparent));
 
-  border-color: rgba(220, 38, 38, 0.15);
+  border-color: color-mix(in srgb, var(--fy-course) 15%, transparent);
 
-  box-shadow: inset -2px 0 #dc2626;
+  box-shadow: inset -2px 0 var(--fy-course);
 }
 
 .lesson-item.completed {
@@ -649,9 +649,9 @@ body {
 
   border-radius: 7px;
 
-  background: rgba(255, 255, 255, 0.035);
+  background: var(--fy-hover);
 
-  color: #686870;
+  color: var(--fy-text-muted);
 
   font-size: 0.66rem;
 
@@ -659,17 +659,17 @@ body {
 }
 
 .lesson-item.active .lesson-number {
-  color: #fff;
+  color: var(--fy-course-on);
 
-  background: #991b1b;
+  background: var(--fy-course-strong);
 
-  box-shadow: 0 0 12px rgba(220, 38, 38, 0.2);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--fy-course) 20%, transparent);
 }
 
 .lesson-item.completed .lesson-number {
-  color: #ef4444;
+  color: var(--fy-course-ink);
 
-  background: rgba(220, 38, 38, 0.08);
+  background: color-mix(in srgb, var(--fy-course) 8%, transparent);
 }
 
 .final-item {
@@ -677,7 +677,7 @@ body {
 
   padding-top: 12px;
 
-  border-top: 1px solid rgba(255, 255, 255, 0.055);
+  border-top: 1px solid var(--fy-border);
 }
 
 .final-item .lesson-number {
@@ -713,7 +713,7 @@ body {
 }
 
 .lesson-counter {
-  color: #b91c1c;
+  color: var(--fy-course-strong);
 
   font-size: 0.73rem;
 
@@ -723,7 +723,7 @@ body {
 .lesson-top h2 {
   margin-top: 2px;
 
-  color: #e4e4e7;
+  color: var(--fy-text);
 
   font-size: clamp(1.35rem, 3vw, 1.7rem);
 }
@@ -735,21 +735,21 @@ body {
 
   border-radius: 7px;
 
-  color: #66666e;
+  color: var(--fy-text-muted);
 
-  background: rgba(255, 255, 255, 0.025);
+  background: var(--fy-hover);
 
-  border: 1px solid rgba(255, 255, 255, 0.055);
+  border: 1px solid var(--fy-border);
 
   font-size: 0.69rem;
 }
 
 .lesson-status.completed {
-  color: #dc2626;
+  color: var(--fy-course);
 
-  background: rgba(220, 38, 38, 0.06);
+  background: color-mix(in srgb, var(--fy-course) 6%, transparent);
 
-  border-color: rgba(220, 38, 38, 0.15);
+  border-color: color-mix(in srgb, var(--fy-course) 15%, transparent);
 }
 
 /* =========================================================
@@ -761,9 +761,9 @@ body {
 
   padding: clamp(24px, 4vw, 44px);
 
-  background: linear-gradient(145deg, #121214 0%, #0b0b0d 100%);
+  background: linear-gradient(145deg, var(--fy-bg) 0%, var(--fy-bg) 100%);
 
-  border: 1px solid rgba(255, 255, 255, 0.065);
+  border: 1px solid var(--fy-border);
 
   border-radius: var(--radius-xl);
 
@@ -783,7 +783,7 @@ body {
   width: 230px;
   height: 230px;
 
-  background: radial-gradient(circle, rgba(220, 38, 38, 0.075), transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--fy-course) 8%, transparent), transparent 70%);
 
   pointer-events: none;
 }
@@ -800,7 +800,7 @@ body {
 
   height: 1px;
 
-  background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.45));
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--fy-course) 45%, transparent));
 }
 
 /* =========================================================
@@ -820,11 +820,11 @@ body {
 
   border-radius: 14px;
 
-  color: #dc2626;
+  color: var(--fy-course);
 
-  background: #18090a;
+  background: var(--fy-bg);
 
-  border: 1px solid rgba(220, 38, 38, 0.18);
+  border: 1px solid color-mix(in srgb, var(--fy-course) 18%, transparent);
 
   font-size: 1.25rem;
 }
@@ -838,7 +838,7 @@ body {
 
   margin-bottom: 5px;
 
-  color: #8b1c1c;
+  color: var(--fy-course-strong);
 
   font-size: 0.64rem;
 
@@ -847,12 +847,12 @@ body {
   letter-spacing: 1.7px;
 }
 
-.lesson-card > h1 {
+.lesson-card > h2 {
   max-width: 850px;
 
   margin-bottom: 27px;
 
-  color: #f4f4f5;
+  color: var(--fy-text);
 
   font-size: clamp(1.6rem, 4vw, 2.35rem);
 
@@ -866,7 +866,7 @@ body {
 ========================================================= */
 
 .lesson-content {
-  color: #b5b5bc;
+  color: var(--fy-text-muted);
 
   font-size: 0.98rem;
 }
@@ -878,7 +878,7 @@ body {
 .lesson-section h3 {
   margin-bottom: 10px;
 
-  color: #eeeeef;
+  color: var(--fy-text);
 
   font-size: 1.18rem;
 }
@@ -896,11 +896,11 @@ body {
 .lesson-section li {
   margin-bottom: 7px;
 
-  color: #b0b0b7;
+  color: var(--fy-text-muted);
 }
 
 .lesson-section li::marker {
-  color: #dc2626;
+  color: var(--fy-course);
 }
 
 .term {
@@ -926,11 +926,11 @@ body {
 .info-box {
   padding: 18px;
 
-  border: 1px solid rgba(255, 255, 255, 0.055);
+  border: 1px solid var(--fy-border);
 
   border-radius: 11px;
 
-  background: rgba(255, 255, 255, 0.018);
+  background: var(--fy-hover);
 
   transition: var(--transition);
 }
@@ -938,15 +938,15 @@ body {
 .info-box:hover {
   transform: translateY(-3px);
 
-  background: rgba(220, 38, 38, 0.035);
+  background: color-mix(in srgb, var(--fy-course) 4%, transparent);
 
-  border-color: rgba(220, 38, 38, 0.14);
+  border-color: color-mix(in srgb, var(--fy-course) 14%, transparent);
 }
 
 .info-box h4 {
   margin-bottom: 6px;
 
-  color: #d93636;
+  color: var(--fy-course-ink);
 
   font-size: 0.96rem;
 }
@@ -954,7 +954,7 @@ body {
 .info-box p {
   margin: 0;
 
-  color: #777780;
+  color: var(--fy-text-muted);
 
   font-size: 0.86rem;
 }
@@ -983,7 +983,7 @@ body {
 
   width: 1px;
 
-  background: linear-gradient(to bottom, #991b1b, rgba(153, 27, 27, 0.08));
+  background: linear-gradient(to bottom, var(--fy-course-strong), rgba(153, 27, 27, 0.08));
 }
 
 .timeline-item {
@@ -1006,7 +1006,7 @@ body {
 
   border-radius: 50%;
 
-  background: #991b1b;
+  background: var(--fy-course-strong);
 
   border: 2px solid #0d0d0f;
 
@@ -1034,7 +1034,7 @@ body {
 .timeline-item p {
   margin: 0;
 
-  color: #85858d;
+  color: var(--fy-text-muted);
 }
 
 /* =========================================================
@@ -1050,11 +1050,11 @@ body {
 
   padding: 19px;
 
-  border: 1px solid rgba(220, 38, 38, 0.13);
+  border: 1px solid color-mix(in srgb, var(--fy-course) 13%, transparent);
 
   border-radius: 12px;
 
-  background: linear-gradient(135deg, rgba(220, 38, 38, 0.055), rgba(220, 38, 38, 0.012));
+  background: linear-gradient(135deg, color-mix(in srgb, var(--fy-course) 6%, transparent), color-mix(in srgb, var(--fy-course) 1%, transparent));
 }
 
 .key-icon {
@@ -1070,9 +1070,9 @@ body {
 
   border-radius: 10px;
 
-  color: #dc2626;
+  color: var(--fy-course);
 
-  background: rgba(220, 38, 38, 0.07);
+  background: color-mix(in srgb, var(--fy-course) 7%, transparent);
 }
 
 .key-concept strong {
@@ -1080,11 +1080,11 @@ body {
 
   margin-bottom: 4px;
 
-  color: #dc2626;
+  color: var(--fy-course);
 }
 
 .key-concept p {
-  color: #aaaab1;
+  color: var(--fy-text-muted);
 
   font-size: 0.89rem;
 }
@@ -1116,17 +1116,17 @@ body {
 
   border-radius: 9px;
 
-  color: #dc2626;
+  color: var(--fy-course);
 
-  background: rgba(220, 38, 38, 0.055);
+  background: color-mix(in srgb, var(--fy-course) 6%, transparent);
 
-  border: 1px solid rgba(220, 38, 38, 0.12);
+  border: 1px solid color-mix(in srgb, var(--fy-course) 12%, transparent);
 }
 
 .section-heading span {
   display: block;
 
-  color: #67676f;
+  color: var(--fy-text-muted);
 
   font-size: 0.64rem;
 
@@ -1178,11 +1178,11 @@ body {
 }
 
 .copy-btn {
-  border: 1px solid rgba(255, 255, 255, 0.065);
+  border: 1px solid var(--fy-border);
 
-  background: rgba(255, 255, 255, 0.025);
+  background: var(--fy-hover);
 
-  color: #777780;
+  color: var(--fy-text-muted);
 
   padding: 5px 9px;
 
@@ -1196,11 +1196,11 @@ body {
 }
 
 .copy-btn:hover {
-  color: #dc2626;
+  color: var(--fy-course);
 
-  border-color: rgba(220, 38, 38, 0.2);
+  border-color: color-mix(in srgb, var(--fy-course) 20%, transparent);
 
-  background: rgba(220, 38, 38, 0.04);
+  background: color-mix(in srgb, var(--fy-course) 4%, transparent);
 }
 
 .code-block pre {
@@ -1238,7 +1238,7 @@ body {
 }
 
 .knowledge-check .section-heading-icon {
-  color: #3b82f6;
+  color: var(--fy-blue);
 
   background: rgba(59, 130, 246, 0.055);
 
@@ -1248,7 +1248,7 @@ body {
 .quiz-question {
   margin-bottom: 15px;
 
-  color: #ededed;
+  color: var(--fy-text);
 
   font-weight: 700;
 }
@@ -1268,13 +1268,13 @@ body {
 
   text-align: right;
 
-  border: 1px solid rgba(255, 255, 255, 0.065);
+  border: 1px solid var(--fy-border);
 
   border-radius: 9px;
 
-  background: rgba(255, 255, 255, 0.022);
+  background: var(--fy-hover);
 
-  color: #d4d4d8;
+  color: var(--fy-text-soft);
 
   cursor: pointer;
 
@@ -1286,25 +1286,25 @@ body {
 .quiz-btn:hover {
   transform: translateY(-2px);
 
-  border-color: rgba(220, 38, 38, 0.25);
+  border-color: color-mix(in srgb, var(--fy-course) 25%, transparent);
 
-  background: rgba(220, 38, 38, 0.045);
+  background: color-mix(in srgb, var(--fy-course) 4%, transparent);
 }
 
 .quiz-btn.correct {
   color: #f87171;
 
-  background: rgba(220, 38, 38, 0.09);
+  background: color-mix(in srgb, var(--fy-course) 9%, transparent);
 
-  border-color: #991b1b;
+  border-color: var(--fy-course-strong);
 }
 
 .quiz-btn.wrong {
-  color: #ef4444;
+  color: var(--fy-course-ink);
 
   background: rgba(127, 29, 29, 0.09);
 
-  border-color: #7f1d1d;
+  border-color: var(--fy-course-strong);
 }
 
 .quiz-result {
@@ -1316,11 +1316,11 @@ body {
 }
 
 .quiz-result.success {
-  color: #dc2626;
+  color: var(--fy-course);
 }
 
 .quiz-result.error {
-  color: #ef4444;
+  color: var(--fy-course-ink);
 }
 
 /* =========================================================
@@ -1372,7 +1372,7 @@ body {
 }
 
 .challenge-box p {
-  color: #b8b8bd;
+  color: var(--fy-text-muted);
 
   margin: 0;
 }
@@ -1394,7 +1394,7 @@ body {
 .editor-wrapper {
   overflow: hidden;
 
-  border: 1px solid rgba(220, 38, 38, 0.16);
+  border: 1px solid color-mix(in srgb, var(--fy-course) 16%, transparent);
 
   border-radius: 12px;
 
@@ -1428,7 +1428,7 @@ body {
 }
 
 .editor-toolbar i {
-  color: #b91c1c;
+  color: var(--fy-course-strong);
 }
 
 .editor-actions {
@@ -1464,15 +1464,15 @@ body {
 .editor-btn:hover {
   color: #ddd;
 
-  border-color: rgba(220, 38, 38, 0.22);
+  border-color: color-mix(in srgb, var(--fy-course) 22%, transparent);
 }
 
 .editor-btn.run {
-  color: #ef4444;
+  color: var(--fy-course-ink);
 
-  border-color: rgba(220, 38, 38, 0.17);
+  border-color: color-mix(in srgb, var(--fy-course) 17%, transparent);
 
-  background: rgba(220, 38, 38, 0.055);
+  background: color-mix(in srgb, var(--fy-course) 6%, transparent);
 }
 
 /* =========================================================
@@ -1530,7 +1530,7 @@ body {
 }
 
 .console-header i {
-  color: #dc2626;
+  color: var(--fy-course);
 }
 
 .console-output {
@@ -1582,13 +1582,13 @@ body {
 
   padding: 12px 21px;
 
-  border: 1px solid #991b1b;
+  border: 1px solid var(--fy-course-strong);
 
   border-radius: 9px;
 
-  background: linear-gradient(135deg, #b91c1c, #7f1d1d);
+  background: linear-gradient(135deg, var(--fy-course-strong), var(--fy-course-strong));
 
-  color: #fff;
+  color: var(--fy-course-on);
 
   cursor: pointer;
 
@@ -1604,17 +1604,17 @@ body {
 .complete-btn:hover {
   transform: translateY(-3px);
 
-  background: linear-gradient(135deg, #dc2626, #991b1b);
+  background: linear-gradient(135deg, var(--fy-course), var(--fy-course-strong));
 
   box-shadow: 0 15px 30px rgba(127, 29, 29, 0.24);
 }
 
 .complete-btn.completed {
-  background: rgba(220, 38, 38, 0.07);
+  background: color-mix(in srgb, var(--fy-course) 7%, transparent);
 
-  color: #ef4444;
+  color: var(--fy-course-ink);
 
-  border-color: rgba(220, 38, 38, 0.2);
+  border-color: color-mix(in srgb, var(--fy-course) 20%, transparent);
 
   box-shadow: none;
 }
@@ -1646,13 +1646,13 @@ body {
 
   padding: 10px 16px;
 
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--fy-border);
 
   border-radius: 9px;
 
-  background: rgba(255, 255, 255, 0.022);
+  background: var(--fy-hover);
 
-  color: #d4d4d8;
+  color: var(--fy-text-soft);
 
   cursor: pointer;
 
@@ -1662,27 +1662,27 @@ body {
 }
 
 .nav-btn:hover:not(:disabled) {
-  color: #ef4444;
+  color: var(--fy-course-ink);
 
-  border-color: rgba(220, 38, 38, 0.2);
+  border-color: color-mix(in srgb, var(--fy-course) 20%, transparent);
 
   transform: translateY(-2px);
 }
 
 .nav-btn.primary {
-  color: #fff;
+  color: var(--fy-course-on);
 
-  background: #991b1b;
+  background: var(--fy-course-strong);
 
-  border-color: #991b1b;
+  border-color: var(--fy-course-strong);
 
   font-weight: 800;
 }
 
 .nav-btn.primary:hover:not(:disabled) {
-  background: #b91c1c;
+  background: var(--fy-course-strong);
 
-  color: #fff;
+  color: var(--fy-course-on);
 }
 
 .nav-btn:disabled {
@@ -1736,11 +1736,11 @@ body {
 
   padding: 36px;
 
-  border: 1px solid rgba(220, 38, 38, 0.2);
+  border: 1px solid color-mix(in srgb, var(--fy-course) 20%, transparent);
 
   border-radius: 20px;
 
-  background: linear-gradient(145deg, #151113, #080809);
+  background: linear-gradient(145deg, var(--fy-bg), var(--fy-bg));
 
   box-shadow: 0 30px 100px rgba(0, 0, 0, 0.7);
 
@@ -1781,9 +1781,9 @@ body {
 
   border-radius: 8px;
 
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--fy-hover);
 
-  color: #777780;
+  color: var(--fy-text-muted);
 
   cursor: pointer;
 
@@ -1791,9 +1791,9 @@ body {
 }
 
 .close-modal:hover {
-  color: #fff;
+  color: var(--fy-text);
 
-  background: rgba(220, 38, 38, 0.1);
+  background: color-mix(in srgb, var(--fy-course) 10%, transparent);
 }
 
 .final-icon {
@@ -1819,7 +1819,7 @@ body {
 }
 
 .final-quiz > span {
-  color: #991b1b;
+  color: var(--fy-course-strong);
 
   font-size: 0.63rem;
 
@@ -1831,13 +1831,13 @@ body {
 .final-quiz h2 {
   margin: 4px 0 8px;
 
-  color: #f4f4f5;
+  color: var(--fy-text);
 
   font-size: 1.9rem;
 }
 
 .final-quiz > p {
-  color: #777780;
+  color: var(--fy-text-muted);
 
   margin-bottom: 24px;
 }
@@ -1849,15 +1849,15 @@ body {
 
   border-radius: 11px;
 
-  background: rgba(255, 255, 255, 0.018);
+  background: var(--fy-hover);
 
-  border: 1px solid rgba(255, 255, 255, 0.055);
+  border: 1px solid var(--fy-border);
 }
 
 .final-question {
   margin-bottom: 14px;
 
-  color: #eee;
+  color: var(--fy-text);
 
   font-weight: 700;
 }
@@ -1871,13 +1871,13 @@ body {
 .final-option {
   padding: 10px 12px;
 
-  border: 1px solid rgba(255, 255, 255, 0.065);
+  border: 1px solid var(--fy-border);
 
   border-radius: 8px;
 
-  background: rgba(255, 255, 255, 0.022);
+  background: var(--fy-hover);
 
-  color: #aaaab1;
+  color: var(--fy-text-muted);
 
   cursor: pointer;
 
@@ -1889,17 +1889,17 @@ body {
 }
 
 .final-option:hover {
-  border-color: rgba(220, 38, 38, 0.2);
+  border-color: color-mix(in srgb, var(--fy-course) 20%, transparent);
 
-  background: rgba(220, 38, 38, 0.045);
+  background: color-mix(in srgb, var(--fy-course) 4%, transparent);
 }
 
 .final-option.selected {
-  color: #ef4444;
+  color: var(--fy-course-ink);
 
-  border-color: #991b1b;
+  border-color: var(--fy-course-strong);
 
-  background: rgba(220, 38, 38, 0.07);
+  background: color-mix(in srgb, var(--fy-course) 7%, transparent);
 }
 
 .final-progress {
@@ -1911,7 +1911,7 @@ body {
 
   overflow: hidden;
 
-  background: #1d1d20;
+  background: var(--fy-bg-soft);
 }
 
 #final-progress-fill {
@@ -1919,7 +1919,7 @@ body {
 
   height: 100%;
 
-  background: linear-gradient(90deg, #7f1d1d, #dc2626);
+  background: linear-gradient(90deg, var(--fy-course-strong), var(--fy-course));
 
   transition: width 0.3s ease;
 }
@@ -1941,9 +1941,9 @@ footer {
 
   text-align: center;
 
-  border-top: 1px solid rgba(255, 255, 255, 0.045);
+  border-top: 1px solid var(--fy-border);
 
-  color: #55555d;
+  color: var(--fy-text-muted);
 
   font-size: 0.75rem;
 }
@@ -1951,7 +1951,7 @@ footer {
 .footer-brand span {
   display: block;
 
-  color: #a3a3aa;
+  color: var(--fy-text-muted);
 
   font-size: 1.05rem;
 
@@ -2208,7 +2208,7 @@ pre::-webkit-scrollbar-thumb {
 button:focus-visible,
 a:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid #dc2626;
+  outline: 2px solid var(--fy-course);
 
   outline-offset: 3px;
 }

@@ -84,8 +84,8 @@ body {
   line-height: 1.7;
 
   background:
-    radial-gradient(circle at 8% 5%, rgba(227, 79, 38, 0.1), transparent 28%),
-    radial-gradient(circle at 92% 8%, rgba(240, 101, 41, 0.07), transparent 25%),
+    radial-gradient(circle at 8% 5%, color-mix(in srgb, var(--fy-course) 10%, transparent), transparent 28%),
+    radial-gradient(circle at 92% 8%, color-mix(in srgb, var(--fy-course) 7%, transparent), transparent 25%),
     linear-gradient(135deg, var(--fayad-bg), var(--html-bg));
 
   direction: rtl;
@@ -113,8 +113,8 @@ a {
 ========================================================= */
 
 ::selection {
-  background: rgba(227, 79, 38, 0.3);
-  color: #ffffff;
+  background: color-mix(in srgb, var(--fy-course) 30%, transparent);
+  color: var(--fy-text);
 }
 
 /* =========================================================
@@ -140,7 +140,7 @@ a {
 
   padding: 12px 4%;
 
-  background: rgba(8, 11, 16, 0.9);
+  background: color-mix(in srgb, var(--fy-bg) 90%, transparent);
 
   backdrop-filter: blur(20px);
 
@@ -166,7 +166,7 @@ a {
 
   background: linear-gradient(135deg, var(--html-orange), var(--html-orange-dark));
 
-  color: #ffffff;
+  color: var(--fy-course-on);
 
   font-size: 20px;
 
@@ -246,7 +246,7 @@ a {
 
   border-radius: var(--radius-sm);
 
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--fy-hover);
 
   border: 1px solid var(--border);
 
@@ -266,11 +266,11 @@ a {
 }
 
 .back-btn:hover {
-  background: rgba(227, 79, 38, 0.12);
+  background: color-mix(in srgb, var(--fy-course) 12%, transparent);
 
-  border-color: rgba(227, 79, 38, 0.35);
+  border-color: color-mix(in srgb, var(--fy-course) 35%, transparent);
 
-  color: #ffffff;
+  color: var(--fy-text);
 
   transform: translateY(-2px);
 }
@@ -304,7 +304,7 @@ a {
 
   padding: 30px 16px;
 
-  background: rgba(10, 13, 17, 0.7);
+  background: color-mix(in srgb, var(--fy-bg) 70%, transparent);
 
   border-left: 1px solid var(--border);
 }
@@ -314,7 +314,7 @@ a {
 }
 
 .sidebar::-webkit-scrollbar-thumb {
-  background: rgba(227, 79, 38, 0.35);
+  background: color-mix(in srgb, var(--fy-course) 35%, transparent);
 
   border-radius: 20px;
 }
@@ -324,7 +324,7 @@ a {
 .sidebar {
   scrollbar-width: thin;
 
-  scrollbar-color: rgba(227, 79, 38, 0.35) transparent;
+  scrollbar-color: color-mix(in srgb, var(--fy-course) 35%, transparent) transparent;
 }
 
 /* ---------- Sidebar Header ---------- */
@@ -414,7 +414,7 @@ a {
 }
 
 .lesson:hover {
-  background: rgba(255, 255, 255, 0.045);
+  background: var(--fy-hover);
 
   color: var(--text-primary);
 
@@ -424,11 +424,11 @@ a {
 /* ---------- Active Lesson ---------- */
 
 .lesson.active {
-  background: linear-gradient(270deg, rgba(227, 79, 38, 0.18), rgba(227, 79, 38, 0.04));
+  background: linear-gradient(270deg, color-mix(in srgb, var(--fy-course) 18%, transparent), color-mix(in srgb, var(--fy-course) 4%, transparent));
 
-  border-color: rgba(227, 79, 38, 0.28);
+  border-color: color-mix(in srgb, var(--fy-course) 28%, transparent);
 
-  color: #ffffff;
+  color: var(--fy-text);
 
   box-shadow: inset -3px 0 0 var(--html-orange);
 }
@@ -450,7 +450,7 @@ a {
 
   border-radius: 8px;
 
-  background: rgba(255, 255, 255, 0.035);
+  background: var(--fy-hover);
 
   border: 1px solid var(--border);
 
@@ -466,7 +466,7 @@ a {
 
   border-color: var(--html-orange-light);
 
-  color: #ffffff;
+  color: var(--fy-course-on);
 
   box-shadow: 0 5px 18px var(--html-glow);
 }
@@ -538,7 +538,7 @@ a {
 
   border-radius: 20px;
 
-  background: rgba(255, 255, 255, 0.07);
+  background: color-mix(in srgb, var(--fy-text) 7%, transparent);
 }
 
 .progress-fill {
@@ -550,7 +550,7 @@ a {
 
   background: linear-gradient(90deg, var(--html-orange-dark), var(--html-orange-light));
 
-  box-shadow: 0 0 14px rgba(227, 79, 38, 0.35);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--fy-course) 35%, transparent);
 
   transition: width 0.5s ease;
 }
@@ -608,7 +608,7 @@ a {
 
   border-radius: var(--radius-lg);
 
-  background: linear-gradient(145deg, rgba(27, 31, 37, 0.94), rgba(16, 19, 24, 0.94));
+  background: linear-gradient(145deg, color-mix(in srgb, var(--fy-bg-soft) 94%, transparent), color-mix(in srgb, var(--fy-bg) 94%, transparent));
 
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
 
@@ -618,7 +618,7 @@ a {
 }
 
 .content-card:hover {
-  border-color: rgba(227, 79, 38, 0.18);
+  border-color: color-mix(in srgb, var(--fy-course) 18%, transparent);
 }
 
 .content-card h2 {
@@ -652,7 +652,7 @@ a {
 
   border-radius: 6px;
 
-  background: rgba(227, 79, 38, 0.1);
+  background: color-mix(in srgb, var(--fy-course) 10%, transparent);
 
   color: var(--html-orange-soft);
 
@@ -676,7 +676,7 @@ a {
 
   border-radius: 6px;
 
-  background: rgba(227, 79, 38, 0.11);
+  background: color-mix(in srgb, var(--fy-course) 11%, transparent);
 
   color: var(--html-orange-light);
 
@@ -720,7 +720,7 @@ a {
 
   border-bottom: 1px solid var(--border);
 
-  background: rgba(255, 255, 255, 0.018);
+  background: var(--fy-hover);
 }
 
 .example-header span {
@@ -746,7 +746,7 @@ a {
 
   border-radius: 8px;
 
-  background: rgba(255, 255, 255, 0.045);
+  background: var(--fy-hover);
 
   color: var(--text-secondary);
 
@@ -763,11 +763,11 @@ a {
 }
 
 .copy-btn:hover {
-  background: rgba(227, 79, 38, 0.14);
+  background: color-mix(in srgb, var(--fy-course) 14%, transparent);
 
-  border-color: rgba(227, 79, 38, 0.35);
+  border-color: color-mix(in srgb, var(--fy-course) 35%, transparent);
 
-  color: #ffffff;
+  color: var(--fy-text);
 }
 
 .example-card pre {
@@ -860,11 +860,11 @@ a {
 
   padding: 32px;
 
-  border: 1px solid rgba(227, 79, 38, 0.25);
+  border: 1px solid color-mix(in srgb, var(--fy-course) 25%, transparent);
 
   border-radius: var(--radius-lg);
 
-  background: linear-gradient(145deg, rgba(227, 79, 38, 0.1), rgba(227, 79, 38, 0.025));
+  background: linear-gradient(145deg, color-mix(in srgb, var(--fy-course) 10%, transparent), color-mix(in srgb, var(--fy-course) 2%, transparent));
 
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
 }
@@ -940,9 +940,9 @@ a {
 
   border-radius: 8px;
 
-  background: rgba(227, 79, 38, 0.08);
+  background: color-mix(in srgb, var(--fy-course) 8%, transparent);
 
-  border: 1px solid rgba(227, 79, 38, 0.15);
+  border: 1px solid color-mix(in srgb, var(--fy-course) 15%, transparent);
 
   color: var(--html-orange-light);
 
@@ -996,7 +996,7 @@ a {
 
   border-radius: var(--radius-sm);
 
-  background: rgba(255, 255, 255, 0.035);
+  background: var(--fy-hover);
 
   border: 1px solid var(--border);
 
@@ -1017,11 +1017,11 @@ a {
 }
 
 .answer-options button:hover:not(:disabled) {
-  background: rgba(227, 79, 38, 0.1);
+  background: color-mix(in srgb, var(--fy-course) 10%, transparent);
 
-  border-color: rgba(227, 79, 38, 0.35);
+  border-color: color-mix(in srgb, var(--fy-course) 35%, transparent);
 
-  color: #ffffff;
+  color: var(--fy-text);
 
   transform: translateY(-2px);
 }
@@ -1103,13 +1103,13 @@ a {
 
   background: linear-gradient(135deg, var(--html-orange), var(--html-orange-dark));
 
-  color: #ffffff;
+  color: var(--fy-course-on);
 
   font-size: 13px;
 
   font-weight: 800;
 
-  box-shadow: 0 8px 25px rgba(227, 79, 38, 0.18);
+  box-shadow: 0 8px 25px color-mix(in srgb, var(--fy-course) 18%, transparent);
 
   transition:
     transform var(--transition),
@@ -1121,7 +1121,7 @@ a {
 .quiz-next-btn:hover:not(:disabled) {
   transform: translateY(-2px);
 
-  box-shadow: 0 12px 32px rgba(227, 79, 38, 0.28);
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--fy-course) 28%, transparent);
 
   filter: brightness(1.05);
 }
@@ -1173,11 +1173,11 @@ a {
 
   padding: 32px;
 
-  border: 1px solid rgba(227, 79, 38, 0.22);
+  border: 1px solid color-mix(in srgb, var(--fy-course) 22%, transparent);
 
   border-radius: var(--radius-lg);
 
-  background: linear-gradient(145deg, rgba(227, 79, 38, 0.09), rgba(20, 23, 28, 0.9));
+  background: linear-gradient(145deg, color-mix(in srgb, var(--fy-course) 9%, transparent), color-mix(in srgb, var(--fy-bg-soft) 90%, transparent));
 }
 
 .practice-card h2 {
@@ -1227,7 +1227,7 @@ a {
 
   border-radius: var(--radius-md);
 
-  background: rgba(255, 255, 255, 0.035);
+  background: var(--fy-hover);
 
   color: var(--text-primary);
 
@@ -1241,9 +1241,9 @@ a {
 .nav-btn:hover:not(:disabled) {
   transform: translateY(-3px);
 
-  background: rgba(227, 79, 38, 0.08);
+  background: color-mix(in srgb, var(--fy-course) 8%, transparent);
 
-  border-color: rgba(227, 79, 38, 0.3);
+  border-color: color-mix(in srgb, var(--fy-course) 30%, transparent);
 }
 
 .nav-btn:disabled {
@@ -1337,11 +1337,11 @@ a {
 
   overflow: hidden;
 
-  border: 1px solid rgba(227, 79, 38, 0.22);
+  border: 1px solid color-mix(in srgb, var(--fy-course) 22%, transparent);
 
   border-radius: var(--radius-xl);
 
-  background: linear-gradient(145deg, rgba(29, 25, 23, 0.96), rgba(10, 12, 15, 0.96));
+  background: linear-gradient(145deg, color-mix(in srgb, var(--fy-bg-soft) 96%, transparent), color-mix(in srgb, var(--fy-bg) 96%, transparent));
 
   box-shadow: 0 22px 55px rgba(0, 0, 0, 0.25);
 }
@@ -1385,9 +1385,9 @@ a {
 .playground-description {
   padding: 20px 26px;
 
-  background: rgba(227, 79, 38, 0.035);
+  background: color-mix(in srgb, var(--fy-course) 4%, transparent);
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid var(--fy-border);
 }
 
 .playground-description p {
@@ -1508,7 +1508,7 @@ a {
 }
 
 #code-editor:focus {
-  box-shadow: inset 0 0 0 1px rgba(227, 79, 38, 0.3);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--fy-course) 30%, transparent);
 }
 
 /* Compatibility if JS uses another editor ID */
@@ -1565,13 +1565,13 @@ a {
 
   background: linear-gradient(135deg, var(--html-orange), var(--html-orange-dark));
 
-  color: #ffffff;
+  color: var(--fy-course-on);
 
   font-size: 12px;
 
   font-weight: 900;
 
-  box-shadow: 0 8px 25px rgba(227, 79, 38, 0.2);
+  box-shadow: 0 8px 25px color-mix(in srgb, var(--fy-course) 20%, transparent);
 
   transition:
     transform var(--transition),
@@ -1582,7 +1582,7 @@ a {
 .run-btn:hover {
   transform: translateY(-2px);
 
-  box-shadow: 0 12px 32px rgba(227, 79, 38, 0.32);
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--fy-course) 32%, transparent);
 
   filter: brightness(1.05);
 }
@@ -1600,11 +1600,11 @@ a {
 
   border-radius: 7px;
 
-  background: rgba(255, 255, 255, 0.045);
+  background: var(--fy-hover);
 
   color: var(--text-secondary);
 
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--fy-border);
 
   font-size: 10px;
 
@@ -1615,11 +1615,11 @@ a {
 }
 
 .reset-btn:hover {
-  background: rgba(227, 79, 38, 0.12);
+  background: color-mix(in srgb, var(--fy-course) 12%, transparent);
 
-  color: #ffffff;
+  color: var(--fy-text);
 
-  border-color: rgba(227, 79, 38, 0.25);
+  border-color: color-mix(in srgb, var(--fy-course) 25%, transparent);
 }
 
 /* =========================================================
@@ -1651,7 +1651,7 @@ a {
 }
 
 .html-highlight {
-  background: rgba(227, 79, 38, 0.1);
+  background: color-mix(in srgb, var(--fy-course) 10%, transparent);
 
   color: var(--html-orange-light);
 
