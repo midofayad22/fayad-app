@@ -25,3 +25,13 @@ export const lessons = [{
 Rules enforced by `tests/content.test.mjs`: ids unique, contiguous and matching the filename order; every lesson in exactly one
 group; every quiz has >= 1 question, >= 2 options and a valid `correct`; no empty strings; groups only reference known ids.
 `html` fields are authored content shipped with the site (never user input); learner-provided text is always inserted as text.
+
+## Foundation layout (Programming Fundamentals; Computer Basics next)
+`track.layout: "foundation"` selects `js/engine/foundation-view.js` (bound to the existing prg.html markup) instead of the default view.
+Extra optional lesson fields (required when the layout is foundation): `heading`, `level`, `body` (authored trusted HTML), `key`, `challenge`
+(all `{ar}` text), `icon` (Font Awesome class, e.g. `"fa-terminal"`), and `example.code`; plus optional `navTitle` (sidebar label when it
+differs from `title`). The foundation layout takes **exactly one** quiz question per lesson. Rules of this layout: one attempt per question,
+quiz does not gate completion, completion is the manual button.
+
+`track.assessment` (optional, any layout): `{ id, title: {ar}, passPercent: 1-100, questions: [ {question, options, correct} ] }`.
+Passing it completes every lesson of the track (the legacy rule). `track.runtime: "js"` runs learner code in the Worker runtime; `format: "json"` console formatting is requested by the view.

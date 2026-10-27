@@ -13,6 +13,7 @@ function checkText(errors, path, v, { optional = false } = {}) {
 export function validateTrack(track, lessons) {
   const errors = [];
   if (!isObj(track) || !nonEmpty(track.id)) return ["track.id missing"];
+  if (track.layout !== undefined && track.layout !== "foundation") errors.push(`track.layout invalid: ${track.layout}`);
   if (!["dom-js", "js", "html", "none"].includes(track.runtime)) errors.push(`track.runtime invalid: ${track.runtime}`);
   if (!Array.isArray(lessons) || !lessons.length) return [...errors, "lessons must be a non-empty array"];
 
@@ -25,10 +26,23 @@ export function validateTrack(track, lessons) {
     ids.add(l.id);
     checkText(errors, `${at}.title`, l.title);
     checkText(errors, `${at}.description`, l.description, { optional: true });
+    // optional "foundation" fields (Programming Fundamentals layout): see docs/lesson-schema.md
+    checkText(errors, `${at}.navTitle`, l.navTitle, { optional: true });
+    checkText(errors, `${at}.heading`, l.heading, { optional: true });
+    checkText(errors, `${at}.level`, l.level, { optional: true });
+    checkText(errors, `${at}.body`, l.body, { optional: true });
+    checkText(errors, `${at}.key`, l.key, { optional: true });
+    checkText(errors, `${at}.challenge`, l.challenge, { optional: true });
+    if (l.icon !== undefined && !(typeof l.icon === "string" && /^fa-[a-z0-9-]+$/.test(l.icon))) errors.push(`${at}.icon must be a Font Awesome class like "fa-terminal"`);
     (l.sections || []).forEach((s, j) => { checkText(errors, `${at}.sections[${j}].title`, s.title); checkText(errors, `${at}.sections[${j}].html`, s.html); checkText(errors, `${at}.sections[${j}].label`, s.label, { optional: true }); });
     if (l.example !== undefined) {
       if (!isObj(l.example) || typeof l.example.code !== "string") errors.push(`${at}.example.code must be a string`);
       else checkText(errors, `${at}.example.explanation`, l.example.explanation, { optional: true });
+    }
+    if (track.layout === "foundation") {
+      for (const f of ["heading", "level", "body", "key", "challenge", "icon"]) if (l[f] === undefined) errors.push(`${at}.${f} is required by the foundation layout`);
+      if (!l.example || typeof l.example.code !== "string") errors.push(`${at}.example.code is required by the foundation layout`);
+      if (Array.isArray(l.quiz) && l.quiz.length !== 1) errors.push(`${at}.quiz must have exactly one question in the foundation layout`);
     }
     if (!Array.isArray(l.quiz) || !l.quiz.length) errors.push(`${at}.quiz must have at least one question`);
     else l.quiz.forEach((q, j) => {
@@ -39,6 +53,23 @@ export function validateTrack(track, lessons) {
       if (!Number.isInteger(q.correct) || q.correct < 0 || q.correct >= (q.options?.length || 0)) errors.push(`${qa}.correct out of range`);
     });
   });
+
+  if (track.assessment !== undefined) {
+    const a = track.assessment;
+    if (!isObj(a) || !nonEmpty(a.id)) errors.push("track.assessment.id missing");
+    else {
+      checkText(errors, "assessment.title", a.title);
+      if (!(Number.isInteger(a.passPercent) && a.passPercent >= 1 && a.passPercent <= 100)) errors.push("assessment.passPercent must be an integer 1-100");
+      if (!Array.isArray(a.questions) || !a.questions.length) errors.push("assessment.questions must be non-empty");
+      else a.questions.forEach((q, j) => {
+        const qa = `assessment.questions[${j}]`;
+        checkText(errors, `${qa}.question`, q.question);
+        if (!Array.isArray(q.options) || q.options.length < 2) errors.push(`${qa}.options needs >= 2`);
+        else q.options.forEach((o, k) => checkText(errors, `${qa}.options[${k}]`, o));
+        if (!Number.isInteger(q.correct) || q.correct < 0 || q.correct >= (q.options?.length || 0)) errors.push(`${qa}.correct out of range`);
+      });
+    }
+  }
 
   const seen = new Map();
   (track.groups || []).forEach((g, gi) => {

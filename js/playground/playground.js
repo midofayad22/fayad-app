@@ -15,6 +15,7 @@
       runtime: "html" | "js",          // "html": HTML+CSS+JS document preview.  "js": console-only JavaScript
       title: "Preview",                // accessible name of the iframe
       timeoutMs: 3000,                 // js runtime watchdog (Worker is terminated: robust)
+      format: "text" | "json",          // js runtime: how console.log prints objects/arrays ("json" = pretty JSON)
       collect: ["#jsResult"],          // html runtime: selectors whose text is reported back after load
       loopBudget: 5000000,             // html runtime: loop iterations allowed by the loop guard
       loopGuard: true,
@@ -60,9 +61,13 @@ const exportsHolder = {};
   }
 
   // Worker body for the "js" runtime (runs in a Worker inside the opaque-origin frame).
-  function workerSource() {
+  function workerSource(format) {
     return (
       helperSource() +
+      // format "json": objects/arrays are printed as pretty JSON (the output style the Programming Fundamentals course always had)
+      (format === "json"
+        ? "var __txt0=__txt;__txt=function(a){return Array.prototype.map.call(a,function(x){if(x!==null&&typeof x==='object'&&!(x instanceof Error)&&!(typeof Node!=='undefined'&&x instanceof Node)){try{var j=JSON.stringify(x,null,2);if(j!==undefined)return j}catch(e){}}return __fmt(x)}).join(' ').slice(0," + MAX_TEXT + ")};"
+        : "") +
       "var __post=function(type,extra){var m={type:type};for(var k in extra)m[k]=extra[k];self.postMessage(m)};" +
       "['log','info','warn','error','debug'].forEach(function(l){console[l]=function(){__post('console',{level:l==='debug'?'log':l,text:__txt(arguments)})}});" +
       "self.alert=function(m){__post('console',{level:'info',text:'alert: '+__fmt(m)})};" +
@@ -75,8 +80,8 @@ const exportsHolder = {};
     );
   }
 
-  function jsFrameSource(token, code, timeoutMs) {
-    var wsrc = workerSource();
+  function jsFrameSource(token, code, timeoutMs, format) {
+    var wsrc = workerSource(format);
     return (
       "<!doctype html><meta charset=utf-8><body><script>(function(){" +
       "var T=" + JSON.stringify(token) + ",TO=" + Number(timeoutMs) + ";" +
@@ -198,7 +203,7 @@ const exportsHolder = {};
         entries = 0;
         mount();
         status("running");
-        frame.srcdoc = runtime === "js" ? jsFrameSource(token, files.js || "", timeoutMs) : htmlDocument(token, files, { loopGuard: opts.loopGuard, loopBudget: loopBudget, collect: collect });
+        frame.srcdoc = runtime === "js" ? jsFrameSource(token, files.js || "", timeoutMs, opts.format === "json" ? "json" : "text") : htmlDocument(token, files, { loopGuard: opts.loopGuard, loopBudget: loopBudget, collect: collect });
       },
       stop: function () {
         token = null; // late messages from the old run are now ignored

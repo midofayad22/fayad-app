@@ -1,0 +1,534 @@
+{
+ "lessons": {
+  "1": {
+   "title": "ما هي البرمجة؟",
+   "heading": "ابدأ بفهم الفكرة قبل كتابة الكود",
+   "icon": "fa-terminal",
+   "level": "FOUNDATION",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>البرمجة ليست مجرد كتابة كود</h3>\n\n                    <p>\n                        البرمجة هي عملية إنشاء مجموعة من التعليمات\n                        التي تخبر الكمبيوتر بما يجب عليه فعله.\n                        هذه التعليمات تُكتب باستخدام لغة برمجة\n                        يفهمها المترجم أو بيئة التشغيل.\n                    </p>\n\n                    <p>\n                        لكن أهم جزء في البرمجة ليس حفظ الكلمات،\n                        وإنما القدرة على تحويل المشكلة إلى خطوات\n                        واضحة ومنطقية.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>كيف يفكر المبرمج؟</h3>\n\n                    <div class=\"info-grid\">\n\n                        <div class=\"info-box\">\n                            <h4>1 — المشكلة</h4>\n                            <p>\n                                نحدد الشيء الذي نريد حله أو بناؤه.\n                            </p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>2 — التحليل</h4>\n                            <p>\n                                نفهم البيانات المطلوبة والنتيجة\n                                التي نريد الوصول إليها.\n                            </p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>3 — الحل</h4>\n                            <p>\n                                نحول التفكير إلى خطوات مرتبة.\n                            </p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>4 — التنفيذ</h4>\n                            <p>\n                                نكتب الخطوات باستخدام لغة برمجة.\n                            </p>\n                        </div>\n\n                    </div>\n\n                </section>\n            ",
+   "key": "المبرمج الجيد لا يبدأ بالكود مباشرة؛ يبدأ بفهم المشكلة ثم يبني الحل خطوة بخطوة.",
+   "example": "const age = 20;\n\nif (age >= 18) {\n    console.log(\"يمكنك التسجيل\");\n}",
+   "question": "ما الهدف الأساسي من البرمجة؟",
+   "answers": [
+    "كتابة نصوص طويلة",
+    "إعطاء الكمبيوتر تعليمات لتنفيذ مهمة",
+    "حفظ أوامر اللغة",
+    "تصميم الصور فقط"
+   ],
+   "correct": 1,
+   "challenge": "فكر في مهمة يومية مثل إعداد كوب من القهوة، وحوّلها إلى خطوات مرتبة كما لو كنت تشرحها للكمبيوتر."
+  },
+  "2": {
+   "title": "كيف يعمل الكود؟",
+   "heading": "من الكود الذي تكتبه إلى النتيجة",
+   "icon": "fa-gears",
+   "level": "CORE CONCEPT",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>الكود لا ينتقل مباشرة إلى الكمبيوتر</h3>\n\n                    <p>\n                        عندما تكتب برنامجًا، توجد عدة مراحل بين\n                        النص الذي كتبته وبين النتيجة التي تظهر أمامك.\n                    </p>\n\n                    <div class=\"timeline\">\n\n                        <div class=\"timeline-item\">\n                            <span class=\"timeline-year\">01</span>\n                            <p>\n                                تكتب التعليمات باستخدام لغة برمجة.\n                            </p>\n                        </div>\n\n                        <div class=\"timeline-item\">\n                            <span class=\"timeline-year\">02</span>\n                            <p>\n                                يتم تحليل الكود والتأكد من قواعده.\n                            </p>\n                        </div>\n\n                        <div class=\"timeline-item\">\n                            <span class=\"timeline-year\">03</span>\n                            <p>\n                                يتم تحويله أو تفسيره إلى تعليمات قابلة للتنفيذ.\n                            </p>\n                        </div>\n\n                        <div class=\"timeline-item\">\n                            <span class=\"timeline-year\">04</span>\n                            <p>\n                                ينفذ الكمبيوتر التعليمات وينتج النتيجة.\n                            </p>\n                        </div>\n\n                    </div>\n\n                </section>\n            ",
+   "key": "الكود هو الوسيلة التي نستخدمها لوصف خطوات الحل، والكمبيوتر ينفذ هذه الخطوات وفق القواعد التي تحددها اللغة.",
+   "example": "let x = 10;\nlet y = 5;\n\nlet result = x + y;\n\nconsole.log(result);",
+   "question": "ماذا يحدث بعد كتابة الكود؟",
+   "answers": [
+    "ينفذه الكمبيوتر بطريقة عشوائية",
+    "يتم تحليله ثم تنفيذه",
+    "يُحذف تلقائيًا",
+    "يتحول إلى صورة"
+   ],
+   "correct": 1,
+   "challenge": "اشرح بكلماتك الفرق بين الكود الذي تكتبه والعملية التي ينفذها الكمبيوتر."
+  },
+  "3": {
+   "title": "التفكير البرمجي",
+   "heading": "تعلم طريقة التفكير قبل تعلم اللغة",
+   "icon": "fa-brain",
+   "level": "PROBLEM SOLVING",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>ما هو التفكير البرمجي؟</h3>\n\n                    <p>\n                        التفكير البرمجي هو طريقة منظمة لتحليل المشكلات\n                        وتقسيمها إلى أجزاء صغيرة يمكن التعامل معها.\n                    </p>\n\n                    <div class=\"info-grid\">\n\n                        <div class=\"info-box\">\n                            <h4>Decomposition</h4>\n                            <p>\n                                تقسيم المشكلة الكبيرة إلى مشاكل أصغر.\n                            </p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Pattern Recognition</h4>\n                            <p>\n                                اكتشاف الأنماط المتكررة داخل المشكلات.\n                            </p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Abstraction</h4>\n                            <p>\n                                التركيز على المعلومات المهمة وإخفاء التفاصيل غير الضرورية.\n                            </p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Algorithm</h4>\n                            <p>\n                                بناء خطوات واضحة للوصول إلى الحل.\n                            </p>\n                        </div>\n\n                    </div>\n\n                </section>\n            ",
+   "key": "التفكير البرمجي مهارة مستقلة عن لغة البرمجة؛ يمكنك استخدام نفس طريقة التفكير مع JavaScript أو Python أو C++.",
+   "example": "const tasks = [\n    \"فتح التطبيق\",\n    \"تسجيل الدخول\",\n    \"اختيار الدرس\",\n    \"بدء التعلم\"\n];\n\nconsole.log(tasks);",
+   "question": "ما معنى Decomposition؟",
+   "answers": [
+    "كتابة الكود بسرعة",
+    "تقسيم المشكلة إلى أجزاء أصغر",
+    "حذف المشكلة",
+    "اختيار لغة البرمجة"
+   ],
+   "correct": 1,
+   "challenge": "خذ مشروعًا مثل متجر إلكتروني، وقسمه إلى أجزاء صغيرة مثل المستخدمين والمنتجات والدفع."
+  },
+  "4": {
+   "title": "الخوارزميات",
+   "heading": "حوّل الحل إلى خطوات واضحة",
+   "icon": "fa-list-ol",
+   "level": "ALGORITHMS",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>ما هي Algorithm؟</h3>\n\n                    <p>\n                        الخوارزمية هي مجموعة خطوات مرتبة ومحددة\n                        تستخدم لحل مشكلة أو تنفيذ مهمة.\n                    </p>\n\n                    <p>\n                        لا يشترط أن تكون الخوارزمية مكتوبة بلغة برمجة.\n                        يمكن كتابتها بالكلمات أو رسمها باستخدام Flowchart\n                        ثم تحويلها لاحقًا إلى كود.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>مثال</h3>\n\n                    <div class=\"info-grid\">\n\n                        <div class=\"info-box\">\n                            <h4>Input</h4>\n                            <p>رقمان يريد المستخدم جمعهما.</p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Process</h4>\n                            <p>إجراء عملية الجمع.</p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Output</h4>\n                            <p>عرض الناتج للمستخدم.</p>\n                        </div>\n\n                    </div>\n\n                </section>\n            ",
+   "key": "الخوارزمية تصف طريقة الحل، بينما الكود يترجم هذه الطريقة إلى لغة يستطيع الكمبيوتر تنفيذها.",
+   "example": "let a = 10;\nlet b = 20;\n\nlet sum = a + b;\n\nconsole.log(sum);",
+   "question": "ما الذي تصفه الخوارزمية؟",
+   "answers": [
+    "لون الموقع",
+    "خطوات حل المشكلة",
+    "نوع الشاشة",
+    "حجم الملف"
+   ],
+   "correct": 1,
+   "challenge": "اكتب خوارزمية بسيطة لحساب متوسط ثلاثة أرقام."
+  },
+  "5": {
+   "title": "لغات البرمجة",
+   "heading": "لماذا توجد لغات برمجة كثيرة؟",
+   "icon": "fa-language",
+   "level": "LANGUAGES",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>لغة البرمجة هي وسيلة للتواصل مع الكمبيوتر</h3>\n\n                    <p>\n                        توجد لغات كثيرة لأن كل لغة صممت لتناسب\n                        أنواعًا معينة من المشاريع والمشكلات.\n                    </p>\n\n                    <div class=\"info-grid\">\n\n                        <div class=\"info-box\">\n                            <h4>JavaScript</h4>\n                            <p>\n                                أساسية لتطوير الويب والتفاعل داخل صفحات الويب.\n                            </p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Python</h4>\n                            <p>\n                                مشهورة بالتعلم السهل والذكاء الاصطناعي والبيانات.\n                            </p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>C / C++</h4>\n                            <p>\n                                تستخدم في الأنظمة والبرمجيات عالية الأداء.\n                            </p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Java</h4>\n                            <p>\n                                تستخدم في تطبيقات وأنظمة ومشاريع كبيرة ومتنوعة.\n                            </p>\n                        </div>\n\n                    </div>\n\n                </section>\n            ",
+   "key": "لا توجد لغة برمجة واحدة هي الأفضل لكل شيء؛ اختيار اللغة يعتمد على المشكلة والمنصة ومتطلبات المشروع.",
+   "example": "let language = \"JavaScript\";\n\nconsole.log(\n    \"I am learning \" + language\n);",
+   "question": "لماذا توجد لغات برمجة متعددة؟",
+   "answers": [
+    "لأن كل اللغات متطابقة",
+    "لأن لكل لغة استخدامات وخصائص مختلفة",
+    "لزيادة حجم الملفات",
+    "لأن الكمبيوتر لا يستطيع التعلم"
+   ],
+   "correct": 1,
+   "challenge": "ابحث ذهنيًا عن ثلاثة مجالات مختلفة واختر لغة مناسبة لكل مجال."
+  },
+  "6": {
+   "title": "Syntax",
+   "heading": "قواعد اللغة التي تكتب بها الكود",
+   "icon": "fa-code",
+   "level": "SYNTAX",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>ما معنى Syntax؟</h3>\n\n                    <p>\n                        Syntax هي مجموعة القواعد التي تحدد الشكل الصحيح\n                        لكتابة الأوامر في لغة البرمجة.\n                    </p>\n\n                    <p>\n                        كما أن اللغة الطبيعية لها قواعد، فإن JavaScript\n                        وغيرها من اللغات لها قواعد يجب اتباعها.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>خطأ Syntax</h3>\n\n                    <p>\n                        إذا كتبت الكود بطريقة تخالف قواعد اللغة،\n                        فقد تحصل على Syntax Error.\n                    </p>\n\n                </section>\n            ",
+   "key": "Syntax تحدد كيف يجب أن تكتب الكود، بينما Logic تحدد هل الكود يحل المشكلة بالطريقة الصحيحة أم لا.",
+   "example": "const name = \"FAYAD\";\n\nconsole.log(name);",
+   "question": "ما المقصود بـ Syntax؟",
+   "answers": [
+    "قواعد كتابة الكود",
+    "سرعة الكمبيوتر",
+    "حجم البرنامج",
+    "نوع المعالج"
+   ],
+   "correct": 0,
+   "challenge": "اكتب سطر JavaScript صحيحًا يعرّف متغيرًا باسم username."
+  },
+  "7": {
+   "title": "المتغيرات",
+   "heading": "كيف نخزن المعلومات داخل البرنامج؟",
+   "icon": "fa-box",
+   "level": "DATA",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>ما هو Variable؟</h3>\n\n                    <p>\n                        المتغير هو اسم نستخدمه للإشارة إلى قيمة مخزنة\n                        يمكن للبرنامج استخدامها أثناء التنفيذ.\n                    </p>\n\n                    <p>\n                        في JavaScript يمكنك إنشاء المتغيرات باستخدام\n                        <span class=\"term\">let</span> و\n                        <span class=\"term\">const</span>.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <div class=\"info-grid\">\n\n                        <div class=\"info-box\">\n                            <h4>let</h4>\n                            <p>\n                                تستخدم عندما تتوقع أن تتغير القيمة.\n                            </p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>const</h4>\n                            <p>\n                                تستخدم عندما لا تريد إعادة إسناد القيمة.\n                            </p>\n                        </div>\n\n                    </div>\n\n                </section>\n            ",
+   "key": "المتغير يجعل بيانات البرنامج قابلة للتسمية والاستخدام بدل التعامل مع القيم بطريقة عشوائية.",
+   "example": "let score = 100;\n\nscore = 150;\n\nconst username = \"FAYAD\";\n\nconsole.log(username);\nconsole.log(score);",
+   "question": "أي كلمة تستخدم لتعريف متغير يمكن تغيير قيمته؟",
+   "answers": [
+    "const",
+    "let",
+    "fixed",
+    "change"
+   ],
+   "correct": 1,
+   "challenge": "أنشئ متغيرًا لاسم المستخدم ومتغيرًا آخر لعمره ثم اطبع الاثنين."
+  },
+  "8": {
+   "title": "أنواع البيانات",
+   "heading": "افهم نوع القيمة التي يتعامل معها برنامجك",
+   "icon": "fa-database",
+   "level": "DATA TYPES",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>لماذا توجد Data Types؟</h3>\n\n                    <p>\n                        البيانات ليست كلها من النوع نفسه. الرقم يختلف\n                        عن النص، والقيمة المنطقية تختلف عن Array أو Object.\n                    </p>\n\n                    <div class=\"info-grid\">\n\n                        <div class=\"info-box\">\n                            <h4>String</h4>\n                            <p>نص مثل \"Hello\".</p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Number</h4>\n                            <p>رقم مثل 25.</p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Boolean</h4>\n                            <p>true أو false.</p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Object</h4>\n                            <p>مجموعة بيانات مرتبطة ببعضها.</p>\n                        </div>\n\n                    </div>\n\n                </section>\n            ",
+   "key": "معرفة نوع البيانات مهمة لأن العمليات التي يمكن تنفيذها تعتمد على نوع القيمة.",
+   "example": "const name = \"Abdullhamid\";\nconst age = 20;\nconst isStudent = true;\n\nconsole.log(typeof name);\nconsole.log(typeof age);\nconsole.log(typeof isStudent);",
+   "question": "أي نوع يستخدم لتخزين true أو false؟",
+   "answers": [
+    "String",
+    "Number",
+    "Boolean",
+    "Array"
+   ],
+   "correct": 2,
+   "challenge": "أنشئ ثلاثة متغيرات: اسم، عمر، وحالة تسجيل الدخول."
+  },
+  "9": {
+   "title": "Operators",
+   "heading": "اجعل البرنامج ينفذ العمليات",
+   "icon": "fa-calculator",
+   "level": "OPERATORS",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>ما هو Operator؟</h3>\n\n                    <p>\n                        Operators هي رموز أو كلمات تسمح لنا بتنفيذ\n                        عمليات على القيم.\n                    </p>\n\n                    <div class=\"info-grid\">\n\n                        <div class=\"info-box\">\n                            <h4>Arithmetic</h4>\n                            <p>\n                                + &nbsp; - &nbsp; * &nbsp; / &nbsp; %\n                            </p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Comparison</h4>\n                            <p>\n                                === &nbsp; !== &nbsp; &gt; &nbsp; &lt;\n                            </p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Logical</h4>\n                            <p>\n                                && &nbsp; || &nbsp; !\n                            </p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Assignment</h4>\n                            <p>\n                                = &nbsp; += &nbsp; -=\n                            </p>\n                        </div>\n\n                    </div>\n\n                </section>\n            ",
+   "key": "Operators هي الأدوات التي تسمح للبرنامج بإجراء الحساب والمقارنة واتخاذ القرارات.",
+   "example": "const age = 20;\n\nconsole.log(age >= 18);\nconsole.log(age === 20);",
+   "question": "ما نتيجة 10 + 5؟",
+   "answers": [
+    "15",
+    "105",
+    "5",
+    "10"
+   ],
+   "correct": 0,
+   "challenge": "اكتب برنامجًا يقارن عمر المستخدم بالسن القانوني."
+  },
+  "10": {
+   "title": "الشروط",
+   "heading": "اجعل البرنامج يتخذ قرارات",
+   "icon": "fa-code-branch",
+   "level": "CONTROL FLOW",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>Conditional Statements</h3>\n\n                    <p>\n                        الشروط تسمح للبرنامج بتنفيذ تعليمات مختلفة\n                        بناءً على تحقق شرط معين.\n                    </p>\n\n                    <p>\n                        في JavaScript نستخدم غالبًا\n                        <span class=\"term\">if</span> و\n                        <span class=\"term\">else</span>.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>الفكرة</h3>\n\n                    <div class=\"info-grid\">\n\n                        <div class=\"info-box\">\n                            <h4>إذا تحقق الشرط</h4>\n                            <p>نفذ مجموعة التعليمات الأولى.</p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>إذا لم يتحقق</h4>\n                            <p>انتقل إلى التعليمات البديلة.</p>\n                        </div>\n\n                    </div>\n\n                </section>\n            ",
+   "key": "الشروط تحول البرنامج من مجموعة أوامر ثابتة إلى برنامج يستطيع اتخاذ قرارات.",
+   "example": "const score = 85;\n\nif (score >= 50) {\n    console.log(\"ناجح\");\n} else {\n    console.log(\"حاول مرة أخرى\");\n}",
+   "question": "ما الذي تستخدمه if؟",
+   "answers": [
+    "لتخزين الصور",
+    "لاتخاذ قرار بناءً على شرط",
+    "لتكرار النص فقط",
+    "لإنشاء ملف"
+   ],
+   "correct": 1,
+   "challenge": "اكتب شرطًا يطبع 'ناجح' إذا كانت الدرجة أكبر من أو تساوي 50."
+  },
+  "11": {
+   "title": "Loops",
+   "heading": "كرر التعليمات بدون تكرار الكود",
+   "icon": "fa-repeat",
+   "level": "LOOPS",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>لماذا نستخدم Loops؟</h3>\n\n                    <p>\n                        أحيانًا نحتاج لتنفيذ نفس العملية عدة مرات.\n                        بدل كتابة الكود نفسه عشرات المرات،\n                        نستخدم Loop.\n                    </p>\n\n                    <div class=\"info-grid\">\n\n                        <div class=\"info-box\">\n                            <h4>for</h4>\n                            <p>\n                                مناسبة عندما تعرف عدد مرات التكرار.\n                            </p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>while</h4>\n                            <p>\n                                تستمر طالما الشرط ما زال صحيحًا.\n                            </p>\n                        </div>\n\n                    </div>\n\n                </section>\n            ",
+   "key": "Loop تجعل الكود أكثر كفاءة وتمنع تكرار التعليمات يدويًا.",
+   "example": "for (let i = 1; i <= 5; i++) {\n    console.log(i);\n}",
+   "question": "ما الهدف من Loop؟",
+   "answers": [
+    "تكرار تنفيذ تعليمات",
+    "حذف المتغيرات",
+    "إيقاف الكمبيوتر",
+    "تغيير اللغة"
+   ],
+   "correct": 0,
+   "challenge": "اكتب Loop تطبع الأرقام من 1 إلى 10."
+  },
+  "12": {
+   "title": "Functions",
+   "heading": "اكتب مرة واستخدم الكود عدة مرات",
+   "icon": "fa-function",
+   "level": "FUNCTIONS",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>ما هي Function؟</h3>\n\n                    <p>\n                        Function هي كتلة من الكود مصممة لتنفيذ\n                        مهمة محددة ويمكن استدعاؤها عند الحاجة.\n                    </p>\n\n                    <p>\n                        استخدام Functions يساعد على تنظيم المشروع\n                        وتقليل تكرار الكود.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <div class=\"info-grid\">\n\n                        <div class=\"info-box\">\n                            <h4>Reusable</h4>\n                            <p>يمكن إعادة استخدام الدالة أكثر من مرة.</p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Organized</h4>\n                            <p>تجعل المشروع مقسمًا إلى أجزاء واضحة.</p>\n                        </div>\n\n                    </div>\n\n                </section>\n            ",
+   "key": "Function تجمع مجموعة تعليمات تحت اسم واحد لتصبح سهلة الاستخدام وإعادة الاستخدام.",
+   "example": "function greet() {\n    console.log(\"Welcome to FAYAD\");\n}\n\ngreet();",
+   "question": "ما فائدة Function؟",
+   "answers": [
+    "تكرار وتنظيم مجموعة تعليمات",
+    "تغيير لون الشاشة",
+    "زيادة سرعة الإنترنت",
+    "حذف البرنامج"
+   ],
+   "correct": 0,
+   "challenge": "أنشئ Function باسم sayHello تطبع رسالة ترحيب."
+  },
+  "13": {
+   "title": "Parameters & Arguments",
+   "heading": "اجعل Functions أكثر مرونة",
+   "icon": "fa-sliders",
+   "level": "FUNCTIONS",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>Parameters</h3>\n\n                    <p>\n                        Parameter هو متغير تستقبله Function\n                        لكي تتمكن من التعامل مع بيانات مختلفة.\n                    </p>\n\n                    <h3>Arguments</h3>\n\n                    <p>\n                        Argument هي القيمة الفعلية التي نرسلها\n                        إلى Function عند استدعائها.\n                    </p>\n\n                </section>\n            ",
+   "key": "Parameters تجعل Function قابلة لإعادة الاستخدام مع بيانات مختلفة بدل كتابة Function جديدة لكل حالة.",
+   "example": "function greet(name) {\n    console.log(\"Hello \" + name);\n}\n\ngreet(\"Ali\");\ngreet(\"Mona\");",
+   "question": "في المثال، ما هو name؟",
+   "answers": [
+    "Argument",
+    "Parameter",
+    "Operator",
+    "Loop"
+   ],
+   "correct": 1,
+   "challenge": "أنشئ Function تستقبل رقمين وتطبع مجموعهما."
+  },
+  "14": {
+   "title": "Scope",
+   "heading": "أين يمكن استخدام المتغير؟",
+   "icon": "fa-bullseye",
+   "level": "SCOPE",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>ما هو Scope؟</h3>\n\n                    <p>\n                        Scope يحدد المكان الذي يمكن فيه الوصول\n                        إلى المتغير واستخدامه.\n                    </p>\n\n                    <p>\n                        المتغير الذي يتم تعريفه داخل Function\n                        لا يمكن الوصول إليه عادةً من خارجها.\n                    </p>\n\n                </section>\n            ",
+   "key": "Scope يساعد على منع تداخل البيانات وتقليل المشاكل الناتجة عن استخدام المتغيرات في أماكن غير مناسبة.",
+   "example": "function test() {\n\n    let message = \"Hello\";\n\n    console.log(message);\n}\n\ntest();",
+   "question": "ماذا يحدد Scope؟",
+   "answers": [
+    "مكان إمكانية الوصول إلى المتغير",
+    "سرعة البرنامج",
+    "لون الكود",
+    "حجم الشاشة"
+   ],
+   "correct": 0,
+   "challenge": "أنشئ متغيرًا داخل Function وحاول التفكير لماذا لا يمكن استخدامه مباشرة خارجها."
+  },
+  "15": {
+   "title": "Arrays",
+   "heading": "خزن مجموعة من القيم في مكان واحد",
+   "icon": "fa-layer-group",
+   "level": "DATA STRUCTURES",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>ما هي Array؟</h3>\n\n                    <p>\n                        Array هي بنية بيانات تسمح بتخزين عدة قيم\n                        داخل متغير واحد.\n                    </p>\n\n                    <p>\n                        يمكن الوصول إلى العناصر باستخدام Index،\n                        ويبدأ الـ Index في JavaScript من الرقم 0.\n                    </p>\n\n                </section>\n            ",
+   "key": "Array مناسبة عندما تحتاج إلى التعامل مع مجموعة عناصر مرتبطة ببعضها مثل أسماء المستخدمين أو المنتجات.",
+   "example": "const languages = [\n    \"HTML\",\n    \"CSS\",\n    \"JavaScript\"\n];\n\nconsole.log(languages[0]);\nconsole.log(languages[2]);",
+   "question": "ما هو Index أول عنصر في Array؟",
+   "answers": [
+    "0",
+    "1",
+    "-1",
+    "10"
+   ],
+   "correct": 0,
+   "challenge": "أنشئ Array تحتوي على خمسة أسماء واطبع الاسم الثالث."
+  },
+  "16": {
+   "title": "Objects",
+   "heading": "نظم البيانات المرتبطة ببعضها",
+   "icon": "fa-cube",
+   "level": "DATA STRUCTURES",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>ما هو Object؟</h3>\n\n                    <p>\n                        Object يستخدم لتجميع بيانات مرتبطة بكيان معين\n                        باستخدام Properties وValues.\n                    </p>\n\n                    <p>\n                        على سبيل المثال يمكن تمثيل مستخدم باستخدام\n                        الاسم والعمر والبريد الإلكتروني.\n                    </p>\n\n                </section>\n            ",
+   "key": "Objects تجعل البيانات المعقدة أكثر تنظيمًا لأنها تربط كل قيمة باسم واضح.",
+   "example": "const user = {\n    name: \"Abdullhamid\",\n    age: 20,\n    role: \"Developer\"\n};\n\nconsole.log(user.name);\nconsole.log(user.role);",
+   "question": "ما الذي يستخدمه Object لتخزين البيانات؟",
+   "answers": [
+    "Properties وValues",
+    "Loops فقط",
+    "صور فقط",
+    "Files"
+   ],
+   "correct": 0,
+   "challenge": "أنشئ Object يمثل طالبًا يحتوي على name وage وgrade."
+  },
+  "17": {
+   "title": "الأخطاء وتصحيحها",
+   "heading": "الخطأ جزء طبيعي من حياة المبرمج",
+   "icon": "fa-bug",
+   "level": "DEBUGGING",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>لا يوجد مبرمج لا يواجه Errors</h3>\n\n                    <p>\n                        الأخطاء جزء طبيعي من عملية التطوير.\n                        المبرمج المحترف لا يحاول تجنب جميع الأخطاء،\n                        بل يتعلم كيف يقرأها ويحدد سببها ويصلحها.\n                    </p>\n\n                    <div class=\"info-grid\">\n\n                        <div class=\"info-box\">\n                            <h4>Syntax Error</h4>\n                            <p>مشكلة في قواعد كتابة الكود.</p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Runtime Error</h4>\n                            <p>خطأ يحدث أثناء تشغيل البرنامج.</p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Logic Error</h4>\n                            <p>الكود يعمل لكن النتيجة غير صحيحة.</p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Debugging</h4>\n                            <p>عملية اكتشاف الأخطاء وإصلاحها.</p>\n                        </div>\n\n                    </div>\n\n                </section>\n            ",
+   "key": "قراءة رسالة الخطأ وفهمها مهارة أساسية للمبرمج، وليست علامة على الفشل.",
+   "example": "const age = 20;\n\nif (age > 18) {\n    console.log(\"Adult\");\n}",
+   "question": "ما معنى Debugging؟",
+   "answers": [
+    "كتابة HTML",
+    "اكتشاف الأخطاء وإصلاحها",
+    "تصميم الصور",
+    "رفع الموقع"
+   ],
+   "correct": 1,
+   "challenge": "تعمد كتابة Syntax Error بسيط ثم حاول تحديد مكان الخطأ من رسالة المتصفح."
+  },
+  "18": {
+   "title": "حل المشكلات",
+   "heading": "هذه هي المهارة التي تصنع المبرمج",
+   "icon": "fa-puzzle-piece",
+   "level": "PROBLEM SOLVING",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>لا تقفز إلى الحل</h3>\n\n                    <p>\n                        عندما تواجه مشكلة برمجية، لا تبدأ بتجربة\n                        أكواد عشوائية. استخدم منهجًا واضحًا.\n                    </p>\n\n                    <div class=\"timeline\">\n\n                        <div class=\"timeline-item\">\n                            <span class=\"timeline-year\">01</span>\n                            <p>افهم المشكلة جيدًا.</p>\n                        </div>\n\n                        <div class=\"timeline-item\">\n                            <span class=\"timeline-year\">02</span>\n                            <p>حدد المدخلات والمخرجات.</p>\n                        </div>\n\n                        <div class=\"timeline-item\">\n                            <span class=\"timeline-year\">03</span>\n                            <p>قسّم المشكلة إلى أجزاء.</p>\n                        </div>\n\n                        <div class=\"timeline-item\">\n                            <span class=\"timeline-year\">04</span>\n                            <p>صمم Algorithm.</p>\n                        </div>\n\n                        <div class=\"timeline-item\">\n                            <span class=\"timeline-year\">05</span>\n                            <p>حوّل الحل إلى Code.</p>\n                        </div>\n\n                        <div class=\"timeline-item\">\n                            <span class=\"timeline-year\">06</span>\n                            <p>اختبر وعدّل.</p>\n                        </div>\n\n                    </div>\n\n                </section>\n            ",
+   "key": "كلما تحسنت قدرتك على حل المشكلات، أصبحت قادرًا على تعلم لغات وتقنيات جديدة بسهولة أكبر.",
+   "example": "function calculateTotal(price, quantity) {\n\n    return price * quantity;\n}\n\nconsole.log(\n    calculateTotal(100, 3)\n);",
+   "question": "ما الخطوة التي تأتي قبل كتابة الكود؟",
+   "answers": [
+    "شراء كمبيوتر",
+    "فهم المشكلة وتصميم الحل",
+    "فتح GitHub",
+    "اختيار اللون"
+   ],
+   "correct": 1,
+   "challenge": "اختر مشكلة بسيطة مثل حساب فاتورة شراء، وحدد Input وProcess وOutput."
+  },
+  "19": {
+   "title": "Git ومفاهيمه",
+   "heading": "ابدأ بفهم Version Control",
+   "icon": "fa-code-branch",
+   "level": "DEVELOPER TOOLS",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>ما هو Git؟</h3>\n\n                    <p>\n                        Git هو نظام Version Control يساعد المطورين\n                        على تتبع التغييرات التي تحدث في المشروع.\n                    </p>\n\n                    <div class=\"info-grid\">\n\n                        <div class=\"info-box\">\n                            <h4>Repository</h4>\n                            <p>المكان الذي يحتوي على ملفات المشروع وتاريخه.</p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Commit</h4>\n                            <p>تسجيل مجموعة من التغييرات في تاريخ المشروع.</p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Branch</h4>\n                            <p>مسار مستقل لتطوير ميزة أو تجربة.</p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>GitHub</h4>\n                            <p>منصة شهيرة لاستضافة مشاريع Git والتعاون عليها.</p>\n                        </div>\n\n                    </div>\n\n                </section>\n            ",
+   "key": "Git ليس لغة برمجة؛ هو أداة لإدارة إصدارات المشروع وتتبع التغييرات.",
+   "example": "git init\n\ngit add .\n\ngit commit -m \"Initial commit\"",
+   "question": "ما وظيفة Git الأساسية؟",
+   "answers": [
+    "تصميم واجهات",
+    "إدارة وتتبع إصدارات المشروع",
+    "تشغيل الإنترنت",
+    "إنشاء صور"
+   ],
+   "correct": 1,
+   "challenge": "تعلم الفرق بين Repository وCommit وBranch قبل الانتقال للمستوى التالي."
+  },
+  "20": {
+   "title": "مراجعة شاملة",
+   "heading": "أنت الآن تملك أساس التفكير البرمجي",
+   "icon": "fa-graduation-cap",
+   "level": "REVIEW",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>ماذا تعلمت؟</h3>\n\n                    <p>\n                        خلال هذا المسار تعرفت على الأساسيات التي\n                        تحتاجها قبل التعمق في أي لغة أو مجال برمجي.\n                    </p>\n\n                    <div class=\"info-grid\">\n\n                        <div class=\"info-box\">\n                            <h4>Thinking</h4>\n                            <p>التفكير البرمجي وتحليل المشكلات.</p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Algorithms</h4>\n                            <p>تحويل الحل إلى خطوات.</p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Data</h4>\n                            <p>Variables وData Types وArrays وObjects.</p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Logic</h4>\n                            <p>Conditions وLoops وFunctions.</p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Debugging</h4>\n                            <p>فهم الأخطاء وإصلاحها.</p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Git</h4>\n                            <p>أساسيات Version Control.</p>\n                        </div>\n\n                    </div>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>\n                        الخطوة التالية\n                    </h3>\n\n                    <p>\n                        بعد إنهاء هذا المسار، ستكون جاهزًا للانتقال\n                        إلى Web Fundamentals ثم HTML وCSS وJavaScript\n                        بشكل أكثر عمقًا.\n                    </p>\n\n                </section>\n            ",
+   "key": "الهدف من هذا المسار ليس أن تصبح محترفًا في لغة معينة، بل أن تبني الأساس الذي ستتعلم فوقه كل شيء لاحقًا.",
+   "example": "const learner = {\n    foundation: true,\n    thinking: \"problem solving\",\n    next: \"Web Fundamentals\"\n};\n\nconsole.log(learner);",
+   "question": "ما أهم شيء يجب أن تخرج به من هذا المسار؟",
+   "answers": [
+    "حفظ كل Syntax",
+    "التفكير المنطقي وحل المشكلات",
+    "حفظ أسماء اللغات",
+    "كتابة أكبر عدد من الأسطر"
+   ],
+   "correct": 1,
+   "challenge": "قبل الاختبار النهائي، راجع الدروس السابقة وحاول شرح كل مفهوم بكلماتك أنت."
+  }
+ },
+ "finalQuestions": [
+  {
+   "question": "ما الهدف الأساسي من البرمجة؟",
+   "options": [
+    "كتابة نصوص كثيرة",
+    "إعطاء الكمبيوتر تعليمات لتنفيذ مهام",
+    "تصميم الصور",
+    "زيادة سرعة الإنترنت"
+   ],
+   "correct": 1
+  },
+  {
+   "question": "ما المقصود بـ Algorithm؟",
+   "options": [
+    "لغة برمجة",
+    "مجموعة خطوات لحل مشكلة",
+    "نوع من الملفات",
+    "برنامج حماية"
+   ],
+   "correct": 1
+  },
+  {
+   "question": "أي نوع يمثل true وfalse؟",
+   "options": [
+    "String",
+    "Number",
+    "Boolean",
+    "Array"
+   ],
+   "correct": 2
+  },
+  {
+   "question": "ما فائدة Function؟",
+   "options": [
+    "تنظيم وإعادة استخدام الكود",
+    "تغيير نظام التشغيل",
+    "حذف البيانات",
+    "زيادة مساحة القرص"
+   ],
+   "correct": 0
+  },
+  {
+   "question": "ما الهدف من Loop؟",
+   "options": [
+    "تكرار تنفيذ تعليمات",
+    "إنشاء صورة",
+    "إيقاف البرنامج",
+    "تغيير اللغة"
+   ],
+   "correct": 0
+  },
+  {
+   "question": "ما هو Debugging؟",
+   "options": [
+    "تصميم الموقع",
+    "اكتشاف الأخطاء وإصلاحها",
+    "كتابة CSS",
+    "رفع الملفات"
+   ],
+   "correct": 1
+  },
+  {
+   "question": "ما وظيفة Git؟",
+   "options": [
+    "إدارة وتتبع إصدارات المشروع",
+    "تشغيل الفيديو",
+    "إنشاء قواعد البيانات فقط",
+    "تصميم الواجهات"
+   ],
+   "correct": 0
+  },
+  {
+   "question": "في JavaScript، ما Index أول عنصر في Array؟",
+   "options": [
+    "0",
+    "1",
+    "-1",
+    "10"
+   ],
+   "correct": 0
+  }
+ ],
+ "sidebar": [
+  {
+   "n": "1",
+   "name": "ما هي البرمجة؟"
+  },
+  {
+   "n": "2",
+   "name": "كيف يعمل الكود؟"
+  },
+  {
+   "n": "3",
+   "name": "التفكير البرمجي"
+  },
+  {
+   "n": "4",
+   "name": "الخوارزميات"
+  },
+  {
+   "n": "5",
+   "name": "لغات البرمجة"
+  },
+  {
+   "n": "6",
+   "name": "Syntax"
+  },
+  {
+   "n": "7",
+   "name": "المتغيرات"
+  },
+  {
+   "n": "8",
+   "name": "أنواع البيانات"
+  },
+  {
+   "n": "9",
+   "name": "Operators"
+  },
+  {
+   "n": "10",
+   "name": "الشروط"
+  },
+  {
+   "n": "11",
+   "name": "Loops"
+  },
+  {
+   "n": "12",
+   "name": "Functions"
+  },
+  {
+   "n": "13",
+   "name": "Parameters"
+  },
+  {
+   "n": "14",
+   "name": "Scope"
+  },
+  {
+   "n": "15",
+   "name": "Arrays"
+  },
+  {
+   "n": "16",
+   "name": "Objects"
+  },
+  {
+   "n": "17",
+   "name": "الأخطاء وتصحيحها"
+  },
+  {
+   "n": "18",
+   "name": "حل المشكلات"
+  },
+  {
+   "n": "19",
+   "name": "Git ومفاهيمه"
+  },
+  {
+   "n": "20",
+   "name": "مراجعة شاملة"
+  },
+  {
+   "n": "final",
+   "name": "الاختبار النهائي"
+  }
+ ],
+ "sidebarHeading": "أساسيات البرمجة",
+ "finalQuizHeading": "الاختبار النهائي"
+}
