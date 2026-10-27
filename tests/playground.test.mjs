@@ -103,3 +103,34 @@ test("links and forms cannot navigate the preview away; destroy() removes frame 
   const gone = await page.evaluate(() => { pg.destroy(); return document.querySelectorAll("iframe").length; });
   assert.equal(gone, 0);
 });
+
+test("html runtime: runaway loop in DOM-capable mode is stopped by the loop guard and the page stays responsive", async () => {
+  const r = await page.evaluate(async () => { const pg = make("html", { loopBudget: 200000 }); pg.run({ html: "<p id=jsResult>x</p>", js: "while(true){}" }); await waitStatus("done", 8000); return { errors: [...errors] }; });
+  assert.match(r.errors[0].message, /loop ran too many times/);
+  assert.equal(await page.evaluate(() => 1 + 1), 2);
+});
+
+test("html runtime: guard does not alter normal programs; DOM text is collected back (collect)", async () => {
+  const r = await page.evaluate(async () => { let dom = null; const pg = make("html", { collect: ["#jsResult", "#nope"], onDom: (v) => { dom = v; } });
+    pg.run({ html: "<p id=jsResult>start</p>", js: "let s=0; for(let i=1;i<=100;i++){ s+=i } document.getElementById('jsResult').textContent='sum='+s; console.log(s)" });
+    await waitStatus("done"); await new Promise((r) => setTimeout(r, 50)); return { dom, logs: [...logs] }; });
+  assert.deepEqual(r.dom, { "#jsResult": "sum=5050", "#nope": null });
+  assert.equal(r.logs[0].text, "5050");
+});
+
+test("console flood is capped (a loop that logs forever cannot flood the page)", async () => {
+  const r = await page.evaluate(async () => { const pg = make("html", { loopBudget: 100000 }); pg.run({ html: "", js: "for(let i=0;i<50000;i++){ console.log(i) }" }); await waitStatus("done", 8000); await new Promise((r) => setTimeout(r, 200)); return logs.length; });
+  assert.ok(r <= 502, "kept " + r);
+});
+
+test("malformed messages (wrong shape, wrong token, non-objects) are ignored without throwing", async () => {
+  const bad = await page.evaluate(async () => {
+    const pg = make("html"); pg.run({ html: "<p>x</p>", js: "parent.postMessage('str','*'); parent.postMessage(null,'*'); parent.postMessage({fayad:1,token:'x',type:'console',text:'nope'},'*'); parent.postMessage({fayad:1,type:'console',text:'notoken'},'*'); parent.postMessage({type:'console'},'*')" });
+    await waitStatus("done"); await new Promise((r) => setTimeout(r, 100)); return logs.length; });
+  assert.equal(bad, 0);
+});
+
+test("learner output is shown as text, never rendered as HTML by the runner API", async () => {
+  const r = await run("html", { html: "", js: "console.log('<img src=x onerror=alert(1)>')" });
+  assert.equal(r.logs[0].text, "<img src=x onerror=alert(1)>"); // delivered verbatim as a string for textContent use
+});

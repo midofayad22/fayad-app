@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><meta charset="utf-8"><title>playground fixture</title>
 <body><div id="host" style="width:400px;height:240px"></div>
-<script src="/js/playground/playground.js"></script>
+<script type="module">import * as P from "/js/playground/playground.js"; window.PG = P;</script>
 <script>
   window.logs = []; window.errors = []; window.statuses = [];
   window.make = (runtime, extra) => { document.getElementById("host").textContent = "";

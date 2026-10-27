@@ -14,9 +14,13 @@
     const pg = FAYAD.playground.create(hostElement, {
       runtime: "html" | "js",          // "html": HTML+CSS+JS document preview.  "js": console-only JavaScript
       title: "Preview",                // accessible name of the iframe
-      timeoutMs: 3000,                 // js runtime watchdog
+      timeoutMs: 3000,                 // js runtime watchdog (Worker is terminated: robust)
+      collect: ["#jsResult"],          // html runtime: selectors whose text is reported back after load
+      loopBudget: 5000000,             // html runtime: loop iterations allowed by the loop guard
+      loopGuard: true,
       onConsole(entry),                // { level: "log|info|warn|error|result", text }
       onError({ message, line, column }),
+      onDom(values)                    // html runtime: { selector: textContent } for the selectors given in `collect`
       onStatus("running" | "done" | "timeout" | "error"),
     });
     pg.run({ html, css, js });          // html runtime
@@ -25,11 +29,14 @@
 
   Nothing here executes learner code in the page's own realm and nothing is simulated.
 */
+import { guardLoops } from "./loop-guard.js";
+
+const exportsHolder = {};
 (function () {
   "use strict";
-  window.FAYAD = window.FAYAD || {};
-
   var MAX_TEXT = 4000;
+  var MAX_ENTRIES = 500; // console lines kept per run (a loop that logs forever must not flood the page)
+  var DEFAULT_LOOP_BUDGET = 5000000;
 
   // ---- code that runs INSIDE the sandbox (serialised into the frame) ----
   // Shared helper: safe, bounded stringification of any value.
@@ -86,12 +93,14 @@
     );
   }
 
-  function htmlBootstrap(token) {
+  function htmlBootstrap(token, budget, collect) {
     return (
       "<script>(function(){" +
       helperSource() +
-      "var T=" + JSON.stringify(token) + ";" +
-      "function send(m){m.fayad=1;m.token=T;parent.postMessage(m,'*')}" +
+      "var T=" + JSON.stringify(token) + ",N=0,MAXN=" + MAX_ENTRIES + ",GC=0,LIM=" + Number(budget) + ",COLLECT=" + JSON.stringify(collect) + ";" +
+      "function send(m){if(m.type==='console'&&++N>MAXN+1)return;if(m.type==='console'&&N===MAXN+1)m={type:'console',level:'warn',text:'… output truncated'};m.fayad=1;m.token=T;parent.postMessage(m,'*')}" +
+      "window.__g=function(){if(++GC>LIM)throw new Error('Execution stopped: a loop ran too many times (possible infinite loop).')};" +
+      "window.__fyRun=function(g,o){var src;try{new Function(g);src=g}catch(e){src=o}var el=document.createElement('script');el.text=src;(document.body||document.documentElement).appendChild(el)};" +
       "['log','info','warn','error','debug'].forEach(function(l){var o=console[l];console[l]=function(){send({type:'console',level:l==='debug'?'log':l,text:__txt(arguments)})}});" +
       "window.alert=function(m){send({type:'console',level:'info',text:'alert: '+__fmt(m)})};" +
       "window.confirm=function(m){send({type:'console',level:'info',text:'confirm: '+__fmt(m)});return false};" +
@@ -101,16 +110,26 @@
       "document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');" +
       "if(a&&a.getAttribute('href').charAt(0)!=='#'){e.preventDefault();send({type:'console',level:'info',text:'Navigation is disabled in the preview: '+a.getAttribute('href')})}},true);" +
       "document.addEventListener('submit',function(e){e.preventDefault()},true);" +
-      "window.addEventListener('load',function(){send({type:'done'})});" +
+      "window.addEventListener('load',function(){setTimeout(function(){if(COLLECT.length){var v={};COLLECT.forEach(function(sel){var e=document.querySelector(sel);v[sel]=e?String(e.textContent).slice(0,4000):null});send({type:'dom',values:v})}send({type:'done'})},0)});" +
       "})()<\/script>"
     );
   }
 
-  function htmlDocument(token, files) {
+  function jsonForScript(v) {
+    // JSON that is safe inside an inline <script> (no </script>, no HTML comment openers, no line separators)
+    return JSON.stringify(v).replace(/</g, "\\u003c").replace(/\u2028/g, "\\u2028").replace(/\u2029/g, "\\u2029");
+  }
+
+  function htmlDocument(token, files, opts) {
     var css = files.css ? "<style>" + String(files.css).replace(/<\/style/gi, "<\\/style") + "</style>" : "";
-    var js = files.js ? "<script>" + String(files.js).replace(/<\/script/gi, "<\\/script") + "<\/script>" : "";
     var body = files.html != null ? String(files.html) : "";
-    return "<!doctype html><meta charset=utf-8>" + htmlBootstrap(token) + css + body + js;
+    var js = "";
+    if (files.js) {
+      var original = String(files.js);
+      var guarded = opts.loopGuard === false ? original : guardLoops(original).code;
+      js = "<script>__fyRun(" + jsonForScript(guarded) + "," + jsonForScript(original) + ")<\/script>";
+    }
+    return "<!doctype html><meta charset=utf-8>" + htmlBootstrap(token, opts.loopBudget, opts.collect) + css + body + js;
   }
 
   function randomToken() {
@@ -123,6 +142,9 @@
     opts = opts || {};
     var runtime = opts.runtime === "js" ? "js" : "html";
     var timeoutMs = Number(opts.timeoutMs) > 0 ? Number(opts.timeoutMs) : 3000;
+    var loopBudget = Number(opts.loopBudget) > 0 ? Number(opts.loopBudget) : DEFAULT_LOOP_BUDGET;
+    var collect = Array.isArray(opts.collect) ? opts.collect.filter(function (x) { return typeof x === "string" && x.length < 200; }).slice(0, 20) : [];
+    var entries = 0;
     var frame = null;
     var token = null;
     var destroyed = false;
@@ -134,10 +156,17 @@
       var d = event.data;
       if (!d || d.fayad !== 1 || d.token !== token) return; // and carry THIS run's token
       if (d.type === "console" && typeof opts.onConsole === "function") {
+        if (++entries > MAX_ENTRIES + 1) return; // hard cap on the parent side as well
         opts.onConsole({ level: String(d.level || "log"), text: String(d.text == null ? "" : d.text).slice(0, MAX_TEXT) });
       } else if (d.type === "error") {
         if (typeof opts.onError === "function") opts.onError({ message: String(d.message || "Error").slice(0, MAX_TEXT), line: d.line, column: d.column });
         status("error");
+      } else if (d.type === "dom") {
+        if (typeof opts.onDom === "function" && d.values && typeof d.values === "object") {
+          var safe = {};
+          collect.forEach(function (sel) { var v = d.values[sel]; safe[sel] = typeof v === "string" ? v.slice(0, MAX_TEXT) : null; });
+          opts.onDom(safe);
+        }
       } else if (d.type === "done") {
         status("done");
       } else if (d.type === "timeout") {
@@ -166,9 +195,10 @@
         if (destroyed) return;
         files = files || {};
         token = randomToken();
+        entries = 0;
         mount();
         status("running");
-        frame.srcdoc = runtime === "js" ? jsFrameSource(token, files.js || "", timeoutMs) : htmlDocument(token, files);
+        frame.srcdoc = runtime === "js" ? jsFrameSource(token, files.js || "", timeoutMs) : htmlDocument(token, files, { loopGuard: opts.loopGuard, loopBudget: loopBudget, collect: collect });
       },
       stop: function () {
         token = null; // late messages from the old run are now ignored
@@ -184,5 +214,10 @@
     };
   }
 
-  window.FAYAD.playground = { create: create };
+  var api = { create: create, guardLoops: guardLoops };
+  if (typeof window !== "undefined") { window.FAYAD = window.FAYAD || {}; window.FAYAD.playground = api; }
+  exportsHolder.api = api;
 })();
+
+export const create = (host, opts) => exportsHolder.api.create(host, opts);
+export { guardLoops };
