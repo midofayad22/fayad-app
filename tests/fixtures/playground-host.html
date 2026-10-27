@@ -1,0 +1,11 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>playground fixture</title>
+<body><div id="host" style="width:400px;height:240px"></div>
+<script src="/js/playground/playground.js"></script>
+<script>
+  window.logs = []; window.errors = []; window.statuses = [];
+  window.make = (runtime, extra) => { document.getElementById("host").textContent = "";
+    logs.length = errors.length = statuses.length = 0;
+    return (window.pg = FAYAD.playground.create(document.getElementById("host"), Object.assign({ runtime,
+      onConsole: (e) => logs.push(e), onError: (e) => errors.push(e), onStatus: (s) => statuses.push(s) }, extra || {}))); };
+  window.waitStatus = (s, ms = 6000) => new Promise((res, rej) => { const t0 = Date.now(); (function tick() { if (statuses.includes(s)) return res(true); if (Date.now() - t0 > ms) return rej(new Error("no status " + s + " got " + statuses)); setTimeout(tick, 25); })(); });
+</script></body></html>
