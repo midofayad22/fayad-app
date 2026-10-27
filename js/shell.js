@@ -92,7 +92,7 @@
   }
 
   // Pages whose lesson/interface content already has English; others show a one-time honest notice.
-  var TRANSLATED_TRACKS = ["css", "angular", "home"];
+  var TRANSLATED_TRACKS = ["css", "angular", "home", "about"];
 
   function maybeNotifyUntranslated() {
     if (prefs.lang !== "en") return;

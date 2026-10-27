@@ -15,12 +15,12 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#0b3d35" />
+    <meta name="theme-color" content="#071014" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="FAYAD" />
     <meta property="og:locale" content="ar_AR" />
-    <meta property="og:title" content="عن فياض — عبد الحميد فياض | FAYAD" />
-    <meta property="og:description" content="نبذة عن عبد الحميد فياض، طالب هندسة حاسبات ومؤسس منصة FAYAD التعليمية." />
+    <meta property="og:title" content="عبد الحميد فياض — عن المنصة | FAYAD" />
+    <meta property="og:description" content="تعرّف على عبد الحميد فياض، صاحب منصة FAYAD التعليمية لتعلم تطوير الويب، وعلى ما تقدمه المنصة." />
     <meta property="og:url" content="https://fayad-learning.vercel.app/about/about.html" />
     <meta property="og:image" content="https://fayad-learning.vercel.app/assets/brand/og-image.png" />
     <meta property="og:image:width" content="1200" />
@@ -29,12 +29,11 @@
     <script src="/js/sw-register.js" defer></script>
 
 
-    <meta name="description" content="نبذة عن عبد الحميد فياض، طالب هندسة حاسبات ومؤسس منصة FAYAD التعليمية." />
+    <meta name="description" content="تعرّف على عبد الحميد فياض، صاحب منصة FAYAD التعليمية لتعلم تطوير الويب، وعلى ما تقدمه المنصة." />
 
-    <title>عن فياض — عبد الحميد فياض | FAYAD</title>
+    <title>عبد الحميد فياض — عن المنصة | FAYAD</title>
 
-    <link rel="stylesheet" href="about.css" />
-
+    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -47,432 +46,88 @@
     <link rel="stylesheet" href="/css/theme.css" />
     <link rel="stylesheet" href="/css/theme-overrides.css" />
     <link rel="stylesheet" href="/css/shell.css" />
+    <link rel="stylesheet" href="/about/about.css" />
     <script src="/js/i18n.js" defer></script>
     <script src="/js/shell.js" defer></script>
+    <script src="/js/catalog.js" defer></script>
+    <script src="/about/about.js" defer></script>
   </head>
+  <body class="fayad-page ab-page">
+    <a class="fy-skip" href="#main" data-i18n="common.skip">تخطي إلى المحتوى</a>
 
-  <body>
-    <!-- Background -->
-    <div class="background-grid"></div>
-    <div class="glow glow-one"></div>
-    <div class="glow glow-two"></div>
-
-    <!-- Navigation -->
-    <header class="navbar">
-      <a href="../index.html" class="logo"> FAYAD<span>.</span> </a>
-
-      <nav class="nav-links">
-        <a href="../index.html">الرئيسية</a>
-        <a href="#about" class="active">عن فياض</a>
-        <a href="#journey">رحلتي</a>
-        <a href="#projects">مشاريعي</a>
-      </nav>
-
-      <button class="menu-btn" id="menuBtn" aria-label="فتح القائمة" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+    <header class="ab-header">
+      <div class="ab-wrap ab-header-inner">
+        <a href="/index.html" class="ab-logo" aria-label="FAYAD">
+          <img src="/assets/brand/logo-mark.svg" alt="" width="34" height="34" />
+          <span>FAYAD</span>
+        </a>
+        <nav class="ab-nav" aria-label="التنقل الرئيسي" data-i18n-attr="aria-label:nav.label">
+          <a href="/index.html" data-i18n="nav.home">الرئيسية</a>
+          <a href="/index.html#courses" data-i18n="nav.courses">المسارات</a>
+          <a href="/about/about.html" aria-current="page" data-i18n="nav.about">عن المنصة</a>
+        </nav>
+      </div>
     </header>
 
-    <main>
-      <!-- HERO -->
-      <section class="hero" id="about">
-        <div class="hero-content">
-          <div class="status">
-            <span class="status-dot"></span>
-            أبني. أتعلم. أبتكر.
-          </div>
-
-          <p class="small-title">مرحبًا، أنا</p>
-
-          <h1>
-            عبد الحميد
-            <span>فياض</span>
-          </h1>
-
-          <h2>
-            طالب هندسة حاسبات
-            <br />
-            ومطور Web
-          </h2>
-
-          <p class="hero-description">
-            أنا طالب هندسة حاسبات في جامعة طنطا، ولدي اهتمام كبير بمجال Web Development والتقنيات الحديثة. أتعلم
-            باستمرار، وأبني المشاريع، وأحوّل الأفكار إلى تجارب حقيقية.
-          </p>
-
-          <div class="hero-buttons">
-            <a
-              href="https://abdullhamid-fayad-portfolio.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn primary">
-              زيارة Portfolio
-              <span>↗</span>
-            </a>
-
-            <a href="#journey" class="btn secondary">
-              اكتشف رحلتي
-              <span>↓</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Developer Card -->
-        <div class="developer-card">
-          <div class="card-top">
-            <div class="window-buttons">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-
-            <span class="file-name">fayad.dev</span>
-          </div>
-
-          <div class="code-content" dir="ltr">
-            <p>
-              <span class="code-purple">const</span>
-              <span class="code-blue">developer</span>
-              =
-              <span class="code-orange">{</span>
-            </p>
-
-            <p class="indent">
-              name:
-              <span class="code-green">"Abdullhamid, Fayad"</span>,
-            </p>
-
-            <p class="indent">
-              university:
-              <span class="code-green">"Tanta University"</span>,
-            </p>
-
-            <p class="indent">
-              major:
-              <span class="code-green">"Computer Engineering"</span>,
-            </p>
-
-            <p class="indent">
-              focus:
-              <span class="code-green">"Web Development"</span>,
-            </p>
-
-            <p class="indent">
-              learning:
-              <span class="code-green">true</span>,
-            </p>
-
-            <p class="indent">
-              building:
-              <span class="code-green">"FAYAD"</span>
-            </p>
-
-            <p>
-              <span class="code-orange">}</span>;
-              <span class="cursor"></span>
-            </p>
+    <main id="main">
+      <section class="ab-hero">
+        <div class="ab-wrap">
+          <p class="ab-kicker" data-i18n="a.kicker">عن المنصة وصاحبها</p>
+          <h1 class="ab-name" data-i18n="a.name">عبد الحميد فياض</h1>
+          <p class="ab-role" data-i18n="a.role">صاحب منصة FAYAD التعليمية</p>
+          <p class="ab-edu" data-i18n="a.edu">طالب هندسة حاسبات في جامعة طنطا</p>
+          <div class="ab-actions">
+            <a class="ab-btn ab-btn-primary" href="https://abdullhamid-fayad-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer"><span data-i18n="a.portfolio">زيارة الـ Portfolio</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            <a class="ab-btn" href="/index.html#courses"><span data-i18n="a.explore">استكشف المسارات</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </div>
       </section>
 
-      <!-- ABOUT -->
-      <section class="section about-section">
-        <div class="section-heading">
-          <span class="section-number">01</span>
-
-          <div>
-            <p class="section-label">من أنا</p>
-
-            <h2>
-              أكثر من مجرد
-              <span>Code.</span>
-            </h2>
-          </div>
-        </div>
-
-        <div class="about-grid">
-          <div class="about-text">
-            <p>أنا عبد الحميد فياض، طالب هندسة حاسبات في جامعة طنطا.</p>
-
-            <p>
-              تركز رحلتي في مجال التكنولوجيا على فهم كيفية عمل الأشياء، ثم تحويل هذه المعرفة إلى مشاريع عملية حقيقية.
-            </p>
-
-            <p>
-              أصبح Web Development أحد المجالات التي أهتم بها بشكل خاص. أستمتع بالعمل باستخدام HTML وCSS وJavaScript،
-              واستكشاف التقنيات الحديثة خطوة بخطوة.
-            </p>
-
-            <p>FAYAD هو أحد المشاريع التي أبنيها بهدف الجمع بين التعلم والتجربة والتطوير العملي في مكان واحد.</p>
-          </div>
-
-          <div class="stats">
-            <div class="stat-card">
-              <span class="stat-number">01</span>
-
-              <span class="stat-title">هندسة الحاسبات</span>
-
-              <span class="stat-description">جامعة طنطا</span>
-            </div>
-
-            <div class="stat-card">
-              <span class="stat-number">02</span>
-
-              <span class="stat-title">Web Development</span>
-
-              <span class="stat-description">تعلم وبناء</span>
-            </div>
-
-            <div class="stat-card">
-              <span class="stat-number">03</span>
-
-              <span class="stat-title">FAYAD</span>
-
-              <span class="stat-description">منصة تعليمية</span>
-            </div>
-
-            <div class="stat-card">
-              <span class="stat-number">∞</span>
-
-              <span class="stat-title">الفضول</span>
-
-              <span class="stat-description">التعلم المستمر</span>
-            </div>
+      <section class="ab-section" aria-labelledby="whoTitle">
+        <div class="ab-wrap ab-two">
+          <h2 id="whoTitle" data-i18n="a.who.title">من أنا</h2>
+          <div class="ab-prose">
+            <p data-i18n="a.who.p1">تركز رحلتي في التكنولوجيا على فهم كيف تعمل الأشياء، ثم تحويل هذه المعرفة إلى مشاريع عملية.</p>
+            <p data-i18n="a.who.p2">يهمني تطوير الويب بشكل خاص، وأعمل بـ HTML وCSS وJavaScript وأستكشف التقنيات الحديثة خطوة بخطوة.</p>
           </div>
         </div>
       </section>
 
-      <!-- JOURNEY -->
-      <section class="section journey-section" id="journey">
-        <div class="section-heading">
-          <span class="section-number">02</span>
-
-          <div>
-            <p class="section-label">رحلتي</p>
-
-            <h2>
-              أتعلم من خلال
-              <span>البناء.</span>
-            </h2>
-          </div>
-        </div>
-
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-marker">01</div>
-
-            <div class="timeline-content">
-              <span class="timeline-tag">الأساسيات</span>
-
-              <h3>بناء الأساسيات</h3>
-
-              <p>
-                بدأت في بناء أساس قوي في البرمجة ومفاهيم علوم الحاسب، مع التركيز على فهم طريقة عمل الأشياء بدلًا من
-                حفظها فقط.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-marker">02</div>
-
-            <div class="timeline-content">
-              <span class="timeline-tag">WEB DEVELOPMENT</span>
-
-              <h3>استكشاف عالم Web</h3>
-
-              <p>ركزت على HTML وCSS وJavaScript، وبدأت في تعلم كيفية تصميم وبناء المواقع الحديثة بطريقة عملية.</p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-marker">03</div>
-
-            <div class="timeline-content">
-              <span class="timeline-tag">BUILDING</span>
-
-              <h3>إنشاء مشاريع حقيقية</h3>
-
-              <p>بدأت في تحويل ما أتعلمه إلى مشاريع عملية بدلًا من الاعتماد على الجانب النظري فقط.</p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-marker">04</div>
-
-            <div class="timeline-content">
-              <span class="timeline-tag">FAYAD</span>
-
-              <h3>بناء منصة تعليمية</h3>
-
-              <p>أنشأت FAYAD كبيئة تفاعلية تساعد على تعلم وممارسة Web Development بطريقة منظمة وعملية.</p>
-            </div>
+      <section class="ab-section" aria-labelledby="fayadTitle">
+        <div class="ab-wrap ab-two">
+          <h2 id="fayadTitle" data-i18n="a.fayad.title">عن منصة FAYAD</h2>
+          <div class="ab-prose">
+            <p data-i18n="a.fayad.p1">FAYAD منصة تعليمية تفاعلية تهدف إلى جعل تعلم تطوير الويب أكثر تنظيمًا وعملية: تبدأ من أساسيات الحاسوب والبرمجة، ثم HTML وCSS وJavaScript، ثم أطر العمل.</p>
+            <ul class="ab-facts" aria-label="FAYAD">
+              <li><b data-fact="tracks">8</b><span data-i18n="a.fact.tracks">مسارات تعليمية</span></li>
+              <li><b data-fact="lessons">209</b><span data-i18n="a.fact.lessons">درسًا</span></li>
+              <li><b>AR · EN</b><span data-i18n="a.fact.lang">واجهة بالعربية والإنجليزية، ودروس عربية</span></li>
+              <li><b>☾ ☀</b><span data-i18n="a.fact.theme">وضع فاتح وداكن</span></li>
+            </ul>
+            <p class="ab-note" data-i18n="a.fayad.note">يُحفظ تقدمك على جهازك. وتُضاف مسارات ومزايا جديدة تدريجيًا.</p>
           </div>
         </div>
       </section>
 
-      <!-- PROJECTS -->
-      <section class="section projects-section" id="projects">
-        <div class="section-heading">
-          <span class="section-number">03</span>
-
-          <div>
-            <p class="section-label">ما الذي أبنيه</p>
-
-            <h2>
-              من الأفكار إلى
-              <span>المشاريع.</span>
-            </h2>
-          </div>
-        </div>
-
-        <div class="projects-grid">
-          <article class="project-card featured">
-            <div class="project-number">01</div>
-
-            <div class="project-icon">&lt;/&gt;</div>
-
-            <span class="project-type">منصة تعليمية</span>
-
-            <h3>FAYAD</h3>
-
-            <p>منصة تعليمية تفاعلية تهدف إلى جعل تعلم Web Development أكثر عملية وتنظيمًا وتفاعلًا.</p>
-
-            <a href="../index.html" class="project-link">
-              استكشف FAYAD
-              <span>←</span>
-            </a>
-          </article>
-
-          <article class="project-card">
-            <div class="project-number">02</div>
-
-            <div class="project-icon">&lt;HTML&gt;</div>
-
-            <span class="project-type">WEB DEVELOPMENT</span>
-
-            <h3>مشاريع Web</h3>
-
-            <p>مجموعة من التجارب والمشاريع العملية التي أنشأتها أثناء تطوير مهاراتي في Front-End.</p>
-
-            <a
-              href="https://abdullhamid-fayad-portfolio.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="project-link">
-              عرض Portfolio
-              <span>↗</span>
-            </a>
-          </article>
-
-          <article class="project-card">
-            <div class="project-number">03</div>
-
-            <div class="project-icon">JS</div>
-
-            <span class="project-type">EXPERIMENTATION</span>
-
-            <h3>التعلم والتجارب</h3>
-
-            <p>مشاريع وتجارب صغيرة تساعدني على فهم مفاهيم البرمجة من خلال التطبيق والممارسة.</p>
-
-            <a
-              href="https://abdullhamid-fayad-portfolio.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="project-link">
-              عرض أعمالي
-              <span>↗</span>
-            </a>
-          </article>
-        </div>
-      </section>
-
-      <!-- TECHNOLOGIES -->
-      <section class="section skills-section">
-        <div class="section-heading">
-          <span class="section-number">04</span>
-
-          <div>
-            <p class="section-label">مجال التركيز الحالي</p>
-
-            <h2>
-              أتعلم
-              <span>باستمرار.</span>
-            </h2>
-          </div>
-        </div>
-
-        <div class="skills-container">
-          <div class="skill">
-            <span>HTML</span>
-
-            <div class="skill-bar">
-              <div class="skill-progress" data-width="90"></div>
-            </div>
-          </div>
-
-          <div class="skill">
-            <span>CSS</span>
-
-            <div class="skill-bar">
-              <div class="skill-progress" data-width="85"></div>
-            </div>
-          </div>
-
-          <div class="skill">
-            <span>JavaScript</span>
-
-            <div class="skill-bar">
-              <div class="skill-progress" data-width="75"></div>
-            </div>
-          </div>
-
-          <div class="skill">
-            <span>Computer Science</span>
-
-            <div class="skill-bar">
-              <div class="skill-progress" data-width="70"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CTA -->
-      <section class="cta">
-        <div class="cta-content">
-          <span>لنبقَ على تواصل</span>
-
-          <h2>
-            هل تريد رؤية ما
-            <span>أبنيه؟</span>
-          </h2>
-
-          <p>شاهد Portfolio الخاص بي وتابع رحلتي بينما أستمر في التعلم وبناء المشاريع.</p>
-
-          <a
-            href="https://abdullhamid-fayad-portfolio.vercel.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn primary">
-            زيارة Portfolio
-            <span>↗</span>
-          </a>
+      <section class="ab-section" aria-labelledby="linksTitle">
+        <div class="ab-wrap ab-two">
+          <h2 id="linksTitle" data-i18n="a.links.title">روابطي</h2>
+          <ul class="ab-links">
+            <li><a href="https://abdullhamid-fayad-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer"><strong>Portfolio</strong><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
+            <li><a href="https://github.com/midofayad22" target="_blank" rel="noopener noreferrer"><strong>GitHub</strong><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/abdullhamid-f-800bb5379" target="_blank" rel="noopener noreferrer"><strong>LinkedIn</strong><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
+            <li><a href="https://www.facebook.com/share/1D2SmWfCnX/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer"><strong>Facebook</strong><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
+            <li><a href="https://www.instagram.com/abdullhamid_fayad22" target="_blank" rel="noopener noreferrer"><strong>Instagram</strong><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
+          </ul>
         </div>
       </section>
     </main>
 
-    <!-- FOOTER -->
-    <footer>
-      <div class="footer-logo">FAYAD<span>.</span></div>
-
-      <p>تم التطوير بواسطة عبد الحميد فياض</p>
-
-      <a href="../index.html"> العودة إلى FAYAD ← </a>
+    <footer class="ab-footer">
+      <div class="ab-wrap ab-footer-inner">
+        <p data-i18n="a.footer">© 2026 FAYAD. من تطوير عبد الحميد فياض.</p>
+        <a href="/index.html" data-i18n="a.back">العودة إلى FAYAD</a>
+      </div>
     </footer>
-
-    <script src="about.js"></script>
   </body>
 </html>

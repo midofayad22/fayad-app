@@ -77,8 +77,9 @@ test("robots.txt and sitemap.xml list every public route", async () => {
 
 test("About page uses the exact English and Arabic names", async () => {
   const html = fs.readFileSync("about/about.html", "utf8");
-  assert.ok(html.includes("Abdullhamid, Fayad"));
-  assert.ok(!html.includes("Abd Elhamid"));
+  const js = fs.readFileSync("about/about.js", "utf8"); // English strings live in the page's dictionary
+  assert.ok(js.includes('"a.name": "Abdullhamid, Fayad"'));
+  assert.ok(!(html + js).includes("Abd Elhamid"));
   assert.ok(html.includes("عبد الحميد فياض"));
 });
 
