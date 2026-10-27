@@ -127,11 +127,16 @@ test("catalog lesson totals match the lesson arrays used by each course page", a
   const catalog = await page.evaluate(() => Object.fromEntries(FAYAD.catalog.tracks.map((t) => [t.id, { total: t.total, path: t.path }])));
   for (const [id, url] of Object.entries(PAGES)) {
     assert.equal(catalog[id].path, url, `${id} path`);
-    const p = await ctx.newPage(); await offline(p);
-    await p.goto(base + url); await p.waitForTimeout(800);
-    const len = await p.evaluate(() => (typeof lessons !== "undefined" ? lessons.length : null));
-    assert.equal(len, catalog[id].total, `${id}: catalog ${catalog[id].total} vs page ${len}`);
-    await p.close();
+    let len;
+    const migrated = fs.existsSync(path.join(ROOT, "content", id, "index.js"));
+    if (migrated) { len = (await import(`../content/${id}/index.js`)).lessons.length; } // authoritative data
+    else {
+      const p = await ctx.newPage(); await offline(p);
+      await p.goto(base + url); await p.waitForTimeout(800);
+      len = await p.evaluate(() => (typeof lessons !== "undefined" ? lessons.length : null));
+      await p.close();
+    }
+    assert.equal(len, catalog[id].total, `${id}: catalog ${catalog[id].total} vs data ${len}`);
   }
   for (const [id, sel] of [["com", ".lesson-item"], ["prg", ".lesson-item:not(.final-item)"]]) {
     const p = await ctx.newPage(); await offline(p);

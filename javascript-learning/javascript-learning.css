@@ -1666,3 +1666,7 @@ textarea:focus-visible {
     min-height: 44px;
   }
 }
+
+/* Sandboxed result stage (shared engine): the live preview that learner code operates on */
+.result-stage { width: 100%; min-height: 150px; }
+.result-stage iframe { display: block; width: 100%; height: 170px; border: 0; border-radius: 8px; background: transparent; }

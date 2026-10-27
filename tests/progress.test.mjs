@@ -122,6 +122,18 @@ test("normalize drops unknown tracks, out-of-range ids, duplicate/invalid quiz e
   assert.ok(!("ghost" in doc.tracks) && !("ghost" in doc.imported));
 });
 
+test("a page that only knows some tracks never drops other tracks' stored progress (pass-through)", () => {
+  const storage = fakeStorage({ [KEY]: JSON.stringify({ v: 1, tracks: { html: { completed: ["html-01"], current: null, quiz: {}, updatedAt: 1 }, js: { completed: ["js-01"], current: null, quiz: {}, updatedAt: 1 } }, imported: { html: { at: 1, keys: ["k"] } } }) });
+  const onlyJs = createProgress({ storage, totals: { js: 25 } });
+  onlyJs.markCompleted("js", "js-02");
+  const saved = JSON.parse(storage.getItem(KEY));
+  assert.deepEqual(saved.tracks.html.completed, ["html-01"]);
+  assert.deepEqual(saved.tracks.js.completed, ["js-01", "js-02"]);
+  assert.deepEqual(saved.imported.html, { at: 1, keys: ["k"] });
+  const all = createProgress({ storage, totals: TOTALS });
+  assert.deepEqual([...all.completed("html")], ["html-01"]);
+});
+
 test("ids sort numerically past 99 lessons", () => {
   const big = createProgress({ storage: fakeStorage(), totals: { x: 150 } });
   big.markCompleted("x", "x-100"); big.markCompleted("x", "x-99"); big.markCompleted("x", "x-7");

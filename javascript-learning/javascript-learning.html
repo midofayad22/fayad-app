@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Preferences: theme / language / direction resolved before first paint (no flash) -->
+    <script>if(/[?&]engine=legacy\b/.test(location.search))location.replace("/legacy/javascript-learning/javascript-learning.html"+location.hash);</script>
     <script src="/js/prefs.js"></script>
 
     <!-- Site metadata (managed: canonical, icons, manifest, social, service worker) -->
@@ -86,184 +87,12 @@
          SIDEBAR
     ======================================================== -->
 
-      <aside class="sidebar">
+      <aside class="sidebar" aria-label="دروس JavaScript">
         <div class="sidebar-header">
           <p>مسار التعلم</p>
           <h2>JavaScript</h2>
         </div>
-
-        <!-- =====================================================
-           JAVASCRIPT FUNDAMENTALS
-      ====================================================== -->
-
-        <div class="topic-group">
-          <h3>أساسيات JavaScript</h3>
-
-          <a href="#lesson-1" class="lesson active" data-lesson="1">
-            <span class="lesson-status current">01</span>
-            <span class="lesson-name">مقدمة إلى JavaScript</span>
-          </a>
-
-          <a href="#lesson-2" class="lesson" data-lesson="2">
-            <span class="lesson-status">02</span>
-            <span class="lesson-name">المتغيرات</span>
-          </a>
-
-          <a href="#lesson-3" class="lesson" data-lesson="3">
-            <span class="lesson-status">03</span>
-            <span class="lesson-name">أنواع البيانات</span>
-          </a>
-
-          <a href="#lesson-4" class="lesson" data-lesson="4">
-            <span class="lesson-status">04</span>
-            <span class="lesson-name">العوامل Operators</span>
-          </a>
-
-          <a href="#lesson-5" class="lesson" data-lesson="5">
-            <span class="lesson-status">05</span>
-            <span class="lesson-name">الشروط Conditions</span>
-          </a>
-
-          <a href="#lesson-6" class="lesson" data-lesson="6">
-            <span class="lesson-status">06</span>
-            <span class="lesson-name">الحلقات Loops</span>
-          </a>
-        </div>
-
-        <!-- =====================================================
-           FUNCTIONS
-      ====================================================== -->
-
-        <div class="topic-group">
-          <h3>الدوال Functions</h3>
-
-          <a href="#lesson-7" class="lesson" data-lesson="7">
-            <span class="lesson-status">07</span>
-            <span class="lesson-name">الدوال Functions</span>
-          </a>
-
-          <a href="#lesson-8" class="lesson" data-lesson="8">
-            <span class="lesson-status">08</span>
-            <span class="lesson-name">Parameters و Arguments</span>
-          </a>
-
-          <a href="#lesson-9" class="lesson" data-lesson="9">
-            <span class="lesson-status">09</span>
-            <span class="lesson-name">Return</span>
-          </a>
-
-          <a href="#lesson-10" class="lesson" data-lesson="10">
-            <span class="lesson-status">10</span>
-            <span class="lesson-name">Arrow Functions</span>
-          </a>
-        </div>
-
-        <!-- =====================================================
-           ARRAYS & OBJECTS
-      ====================================================== -->
-
-        <div class="topic-group">
-          <h3>المصفوفات والكائنات</h3>
-
-          <a href="#lesson-11" class="lesson" data-lesson="11">
-            <span class="lesson-status">11</span>
-            <span class="lesson-name">المصفوفات Arrays</span>
-          </a>
-
-          <a href="#lesson-12" class="lesson" data-lesson="12">
-            <span class="lesson-status">12</span>
-            <span class="lesson-name">دوال المصفوفات</span>
-          </a>
-
-          <a href="#lesson-13" class="lesson" data-lesson="13">
-            <span class="lesson-status">13</span>
-            <span class="lesson-name">الكائنات Objects</span>
-          </a>
-
-          <a href="#lesson-14" class="lesson" data-lesson="14">
-            <span class="lesson-status">14</span>
-            <span class="lesson-name">دوال الكائنات</span>
-          </a>
-        </div>
-
-        <!-- =====================================================
-           DOM & BROWSER
-      ====================================================== -->
-
-        <div class="topic-group">
-          <h3>DOM والمتصفح</h3>
-
-          <a href="#lesson-15" class="lesson" data-lesson="15">
-            <span class="lesson-status">15</span>
-            <span class="lesson-name">مقدمة إلى DOM</span>
-          </a>
-
-          <a href="#lesson-16" class="lesson" data-lesson="16">
-            <span class="lesson-status">16</span>
-            <span class="lesson-name">اختيار العناصر</span>
-          </a>
-
-          <a href="#lesson-17" class="lesson" data-lesson="17">
-            <span class="lesson-status">17</span>
-            <span class="lesson-name">تغيير المحتوى</span>
-          </a>
-
-          <a href="#lesson-18" class="lesson" data-lesson="18">
-            <span class="lesson-status">18</span>
-            <span class="lesson-name">الأحداث Events</span>
-          </a>
-        </div>
-
-        <!-- =====================================================
-           MODERN JAVASCRIPT
-      ====================================================== -->
-
-        <div class="topic-group">
-          <h3>JavaScript الحديثة</h3>
-
-          <a href="#lesson-19" class="lesson" data-lesson="19">
-            <span class="lesson-status">19</span>
-            <span class="lesson-name">Destructuring</span>
-          </a>
-
-          <a href="#lesson-20" class="lesson" data-lesson="20">
-            <span class="lesson-status">20</span>
-            <span class="lesson-name">Spread و Rest</span>
-          </a>
-
-          <a href="#lesson-21" class="lesson" data-lesson="21">
-            <span class="lesson-status">21</span>
-            <span class="lesson-name">Modules</span>
-          </a>
-
-          <a href="#lesson-22" class="lesson" data-lesson="22">
-            <span class="lesson-status">22</span>
-            <span class="lesson-name">JavaScript غير المتزامنة</span>
-          </a>
-        </div>
-
-        <!-- =====================================================
-           ADVANCED JAVASCRIPT
-      ====================================================== -->
-
-        <div class="topic-group">
-          <h3>JavaScript المتقدمة</h3>
-
-          <a href="#lesson-23" class="lesson" data-lesson="23">
-            <span class="lesson-status">23</span>
-            <span class="lesson-name">Promises</span>
-          </a>
-
-          <a href="#lesson-24" class="lesson" data-lesson="24">
-            <span class="lesson-status">24</span>
-            <span class="lesson-name">Fetch API</span>
-          </a>
-
-          <a href="#lesson-25" class="lesson" data-lesson="25">
-            <span class="lesson-status">25</span>
-            <span class="lesson-name">معالجة الأخطاء</span>
-          </a>
-        </div>
+        <div id="sidebarGroups"></div>
       </aside>
 
       <!-- =======================================================
@@ -305,36 +134,7 @@
            MAIN CONTENT
       ====================================================== -->
 
-        <article class="content-card">
-          <h2>ما هي JavaScript؟</h2>
-
-          <p>JavaScript هي لغة برمجة تُستخدم لإضافة السلوك والتفاعل إلى صفحات ومواقع الويب.</p>
-
-          <p>
-            تُستخدم HTML لبناء هيكل الصفحة، وتُستخدم CSS للتحكم في المظهر والتصميم، بينما تُستخدم JavaScript لإضافة
-            المنطق والتفاعل والسلوك.
-          </p>
-
-          <p>
-            على سبيل المثال، يمكن استخدام JavaScript لجعل الزر يستجيب عند الضغط عليه، أو تغيير محتوى الصفحة، أو التحقق
-            من البيانات التي يدخلها المستخدم.
-          </p>
-        </article>
-
-        <!-- =====================================================
-           KEY IDEA
-      ====================================================== -->
-
-        <article class="content-card">
-          <div class="info-label">الفكرة الأساسية</div>
-
-          <h2>JavaScript تجعل صفحات الويب تفاعلية</h2>
-
-          <p>
-            يمكنك التفكير في موقع الويب على أنه جسم الإنسان: HTML تمثل الهيكل، CSS تمثل المظهر، وJavaScript تمثل السلوك
-            والحركة والتفاعل.
-          </p>
-        </article>
+        <div id="lessonSections"></div>
 
         <!-- =====================================================
            CODE EXAMPLE
@@ -363,9 +163,7 @@
             <span> النتيجة </span>
           </div>
 
-          <div class="result-preview">
-            <p id="jsResult">Hello FAYAD</p>
-          </div>
+          <div class="result-preview"><div id="jsResultStage" class="result-stage"></div></div>
         </article>
 
         <!-- =====================================================
@@ -393,11 +191,7 @@
 
           <p class="practice-description">غيّر الكود الموجود بالأسفل ثم شغّله لترى النتيجة.</p>
 
-          <textarea id="jsEditor" spellcheck="false">
-const message = "Hello FAYAD";
-
-document.getElementById("jsResult").textContent = message;</textarea
-          >
+          <textarea id="jsEditor" spellcheck="false" aria-label="محرر JavaScript" dir="ltr"></textarea>
 
           <div class="practice-actions">
             <button type="button" class="run-btn" id="runButton">تشغيل الكود</button>
@@ -482,13 +276,8 @@ document.getElementById("jsResult").textContent = message;</textarea
       </section>
     </main>
 
-    <!-- =========================================================
-       JAVASCRIPT LEARNING ENGINE
+    <!-- Shared lesson engine: content in /content/js/index.js, rollback: ?engine=legacy -->
 
-       This page uses its own JavaScript file.
-       It does NOT depend on app.js.
-  ========================================================== -->
-
-    <script src="javascript-learning.js"></script>
+    <script type="module" src="/js/engine/boot.js" data-track="js"></script>
   </body>
 </html>

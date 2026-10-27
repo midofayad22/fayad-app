@@ -130,10 +130,16 @@ export function createProgress(opts) {
   const del = (k) => { try { storage?.removeItem(k); } catch { /* ignore */ } delete memory[k]; };
 
   let doc = null;
+  let passthrough = { tracks: {}, imported: {} }; // data for tracks not in `totals`: preserved verbatim, never dropped
 
   function readDoc() {
     let parsed = null;
     try { const raw = get(KEY); parsed = raw ? JSON.parse(raw) : null; } catch { parsed = null; }
+    passthrough = { tracks: {}, imported: {} };
+    if (parsed && parsed.v === 1 && parsed.tracks && typeof parsed.tracks === "object") {
+      for (const [k, v] of Object.entries(parsed.tracks)) if (!(k in totals)) passthrough.tracks[k] = v;
+      if (parsed.imported && typeof parsed.imported === "object") for (const [k, v] of Object.entries(parsed.imported)) if (!(k in totals)) passthrough.imported[k] = v;
+    }
     return normalize(parsed, totals);
   }
 
@@ -172,8 +178,8 @@ export function createProgress(opts) {
   }
 
   function persist() {
-    const ok = set(KEY, JSON.stringify(doc));
-    return ok;
+    const out = { ...doc, tracks: { ...passthrough.tracks, ...doc.tracks }, imported: { ...passthrough.imported, ...doc.imported } };
+    return set(KEY, JSON.stringify(out));
   }
 
   function mirrorLegacy(track) {
@@ -183,7 +189,8 @@ export function createProgress(opts) {
     if (!map || !t) return;
     if (map.list) {
       const values = t.completed.map((id) => ordinalOf(track, id) - 1 + map.listBase).sort((a, b) => a - b);
-      set(map.list, JSON.stringify(values));
+      // do not create an empty legacy list that the previous implementation never wrote
+      if (values.length || get(map.list) !== null) set(map.list, JSON.stringify(values));
     }
     if (map.current && t.current) set(map.current, String(ordinalOf(track, t.current) - 1 + map.currentBase));
   }

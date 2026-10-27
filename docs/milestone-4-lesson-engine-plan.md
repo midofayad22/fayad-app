@@ -1,7 +1,7 @@
-# Milestone 4: shared lesson engine and unified progress (PLAN, awaiting approval)
+# Milestone 4: shared lesson engine and unified progress
 
-Nothing in this document has been implemented. It needs an explicit go/no-go because it changes how all eight
-course pages are built.
+**Status: APPROVED (decisions 1-3 accepted). Real implementation state is tracked in `docs/migration-matrix.md`; this file is the original plan.**
+Deviations from the plan are listed at the bottom.
 
 ## 1. What exists today (measured, not assumed)
 - 8 course pages, each with its own JS (1,435 to 3,604 lines; ~21,000 lines total) and its own copy of the same
@@ -76,3 +76,10 @@ passes; no write to Supabase in this milestone.
 ## 8. Work that continues while this waits (independent of the engine)
 Milestone 5's sandboxed runner (separate module, own tests) and Milestone 6 curriculum drafting do not depend on this
 approval and will proceed; the runner is written as a standalone component the engine can host.
+
+## Deviations from the plan (recorded as implemented)
+- Progress ids are `<track>-<NN>` (zero padded ordinal frozen at conversion) and the store passes through data of tracks a page does not know about.
+- The JavaScript course needed a DOM stage inside the sandbox (most lessons write to `#jsResult`), and a busy loop in a sandboxed iframe was
+  verified to freeze the parent page, so the runner gained a tokenizer-based loop guard (js/playground/loop-guard.js); console-only code
+  runs in a killable Worker.
+- Rollback uses committed `legacy/` copies plus `?engine=legacy` (docs/rollback.md) rather than a localStorage flag.

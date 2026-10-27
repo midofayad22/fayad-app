@@ -2,6 +2,7 @@
   "name": "fayad-learning",
   "version": "1.1.0",
   "private": true,
+  "type": "module",
   "description": "FAYAD Learning - interactive web development learning platform (static site)",
   "scripts": {
     "start": "node tests/static-server.mjs",

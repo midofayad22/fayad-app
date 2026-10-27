@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /legacy/
 
 Sitemap: https://fayad-learning.vercel.app/sitemap.xml
