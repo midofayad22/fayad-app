@@ -1,0 +1,1098 @@
+{
+ "lessons": [
+  {
+   "title": "مقدمة إلى JavaScript",
+   "description": "تعرّف على JavaScript ودورها في جعل صفحات الويب تفاعلية وإضافة المنطق والسلوك إليها.",
+   "code": "const message = \"Hello FAYAD\";\n\ndocument.getElementById(\"jsResult\").textContent = message;",
+   "explanation": "\n      <p><strong>const</strong> تُستخدم لإنشاء متغير لا يمكن إعادة إسناد قيمة جديدة له.</p>\n      <p><strong>message</strong> هو اسم المتغير الذي يخزن النص.</p>\n      <p><strong>\"Hello FAYAD\"</strong> عبارة عن قيمة نصية من نوع String.</p>\n      <p><strong>textContent</strong> تُستخدم لتغيير النص الموجود داخل عنصر HTML.</p>\n    ",
+   "questions": [
+    {
+     "question": "ما الاستخدام الأساسي لـ JavaScript؟",
+     "answers": [
+      "إضافة التفاعل والسلوك إلى صفحات الويب",
+      "إنشاء هيكل الصفحة فقط",
+      "تغيير ألوان الصفحة فقط",
+      "إنشاء ملفات الصور"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أي لغة تُستخدم لإضافة السلوك والمنطق إلى الموقع؟",
+     "answers": [
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "SQL"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما الذي يمكن لـ JavaScript القيام به؟",
+     "answers": [
+      "التعامل مع المستخدم وتغيير محتوى الصفحة",
+      "إنشاء الهيكل فقط",
+      "كتابة ملفات الصور فقط",
+      "استبدال نظام التشغيل"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "المتغيرات",
+   "description": "تعلّم كيف تخزن المتغيرات القيم والبيانات داخل برنامج JavaScript.",
+   "code": "let name = \"FAYAD\";\nlet age = 20;\n\ndocument.getElementById(\"jsResult\").textContent =\n  name + \" - \" + age;",
+   "explanation": "\n      <p><strong>let</strong> تُستخدم لإنشاء متغير يمكن تغيير قيمته لاحقًا.</p>\n      <p><strong>name</strong> يخزن قيمة نصية.</p>\n      <p><strong>age</strong> يخزن قيمة رقمية.</p>\n      <p>يمكن إعادة إسناد قيمة جديدة للمتغير الذي تم إنشاؤه باستخدام <strong>let</strong>.</p>\n    ",
+   "questions": [
+    {
+     "question": "أي كلمة مفتاحية تسمح بتغيير قيمة المتغير؟",
+     "answers": [
+      "let",
+      "const",
+      "fixed",
+      "value"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ماذا يخزن المتغير؟",
+     "answers": [
+      "قيمة أو بيانات",
+      "لون الشاشة فقط",
+      "ملف HTML فقط",
+      "صورة فقط"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أي متغير يمكن إعادة إسناد قيمته؟",
+     "answers": [
+      "let",
+      "const",
+      "static",
+      "constant"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "أنواع البيانات",
+   "description": "تعرّف على أهم أنواع البيانات التي تتعامل معها JavaScript.",
+   "code": "const name = \"FAYAD\";\nconst age = 20;\nconst isStudent = true;\n\ndocument.getElementById(\"jsResult\").textContent =\n  name + \" | \" + age + \" | \" + isStudent;",
+   "explanation": "\n      <p><strong>String</strong> تُستخدم للنصوص مثل <code>\"FAYAD\"</code>.</p>\n      <p><strong>Number</strong> تُستخدم للأرقام مثل <code>20</code>.</p>\n      <p><strong>Boolean</strong> تحتوي على قيمتين فقط: <code>true</code> أو <code>false</code>.</p>\n      <p>اختيار نوع البيانات المناسب يساعد البرنامج على التعامل مع المعلومات بشكل صحيح.</p>\n    ",
+   "questions": [
+    {
+     "question": "أي قيمة من التالية هي Boolean؟",
+     "answers": [
+      "true",
+      "\"Hello\"",
+      "25",
+      "null"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما نوع القيمة الموجودة في \"FAYAD\"؟",
+     "answers": [
+      "String",
+      "Number",
+      "Boolean",
+      "Object"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما نوع القيمة 25؟",
+     "answers": [
+      "Number",
+      "String",
+      "Boolean",
+      "Array"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "العوامل Operators",
+   "description": "تعلّم كيف تستخدم JavaScript العوامل الحسابية والمقارنة والمنطقية لتنفيذ العمليات.",
+   "code": "const a = 10;\nconst b = 5;\n\nconst result = a + b;\n\ndocument.getElementById(\"jsResult\").textContent = result;",
+   "explanation": "\n      <p>العوامل <strong>Operators</strong> تُستخدم لتنفيذ عمليات على القيم.</p>\n      <p><strong>+</strong> للجمع، <strong>-</strong> للطرح، <strong>*</strong> للضرب، و<strong>/</strong> للقسمة.</p>\n      <p>يمكن أيضًا استخدام عوامل المقارنة مثل <strong>===</strong> و<strong>&gt;</strong> و<strong>&lt;</strong>.</p>\n      <p>العوامل جزء أساسي من كتابة المنطق البرمجي.</p>\n    ",
+   "questions": [
+    {
+     "question": "أي عامل يُستخدم للجمع؟",
+     "answers": [
+      "+",
+      "-",
+      "*",
+      "/"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما نتيجة 10 - 4؟",
+     "answers": [
+      "6",
+      "14",
+      "40",
+      "2"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أي عامل يُستخدم للمقارنة الصارمة؟",
+     "answers": [
+      "===",
+      "=",
+      "=>",
+      "!==="
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "الشروط Conditions",
+   "description": "تعلّم كيف تستخدم if وelse لجعل البرنامج يتخذ قرارات بناءً على شروط معينة.",
+   "code": "const age = 20;\n\nif (age >= 18) {\n  document.getElementById(\"jsResult\").textContent = \"بالغ\";\n} else {\n  document.getElementById(\"jsResult\").textContent = \"قاصر\";\n}",
+   "explanation": "\n      <p><strong>if</strong> تتحقق من وجود شرط معين.</p>\n      <p>إذا كان الشرط صحيحًا يتم تنفيذ الكود الموجود داخلها.</p>\n      <p><strong>else</strong> تُستخدم لتنفيذ كود بديل عندما يكون الشرط غير صحيح.</p>\n      <p>الشروط تسمح للبرنامج باتخاذ قرارات مختلفة حسب البيانات.</p>\n    ",
+   "questions": [
+    {
+     "question": "ما الكلمة المفتاحية المستخدمة لإنشاء شرط؟",
+     "answers": [
+      "if",
+      "loop",
+      "check",
+      "condition"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "متى يتم تنفيذ else؟",
+     "answers": [
+      "عندما يكون شرط if غير صحيح",
+      "دائمًا",
+      "قبل if",
+      "عند تعريف المتغير"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما نتيجة الشرط 20 >= 18؟",
+     "answers": [
+      "true",
+      "false",
+      "undefined",
+      "null"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "الحلقات Loops",
+   "description": "تعلّم كيف تكرر JavaScript تنفيذ مجموعة من الأوامر باستخدام الحلقات.",
+   "code": "let result = \"\";\n\nfor (let i = 1; i <= 5; i++) {\n  result += i + \" \";\n}\n\ndocument.getElementById(\"jsResult\").textContent = result;",
+   "explanation": "\n      <p>الحلقات <strong>Loops</strong> تسمح بتكرار تنفيذ مجموعة من التعليمات.</p>\n      <p>حلقة <strong>for</strong> تتكون عادةً من البداية والشرط والتغيير.</p>\n      <p>في المثال تبدأ قيمة <strong>i</strong> من 1 وتستمر حتى تصل إلى 5.</p>\n      <p>الحلقات تقلل الحاجة إلى كتابة نفس الكود عدة مرات.</p>\n    ",
+   "questions": [
+    {
+     "question": "ما الاستخدام الأساسي للحلقات؟",
+     "answers": [
+      "تكرار تنفيذ الكود",
+      "إنشاء HTML",
+      "تغيير ملفات CSS",
+      "إنشاء الصور"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أي كلمة مفتاحية تُستخدم لإنشاء حلقة for؟",
+     "answers": [
+      "for",
+      "repeat",
+      "looping",
+      "cycle"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ماذا يحدث عندما يصبح شرط الحلقة false؟",
+     "answers": [
+      "تتوقف الحلقة",
+      "تبدأ من جديد",
+      "يتوقف المتصفح",
+      "يتم حذف المتغير"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "الدوال Functions",
+   "description": "تعلّم كيف تنشئ دوال قابلة لإعادة الاستخدام لتنظيم الكود وتقليل التكرار.",
+   "code": "function greet() {\n  return \"مرحبًا بك في FAYAD\";\n}\n\ndocument.getElementById(\"jsResult\").textContent = greet();",
+   "explanation": "\n      <p>الدالة <strong>Function</strong> هي مجموعة من التعليمات يمكن إعادة استخدامها.</p>\n      <p>يتم تعريف الدالة باستخدام الكلمة المفتاحية <strong>function</strong>.</p>\n      <p>يمكن تشغيل الدالة عن طريق كتابة اسمها متبوعًا بالأقواس.</p>\n      <p>استخدام الدوال يجعل البرنامج أكثر تنظيمًا وأسهل في الصيانة.</p>\n    ",
+   "questions": [
+    {
+     "question": "ما هي الدالة؟",
+     "answers": [
+      "مجموعة قابلة لإعادة الاستخدام من التعليمات",
+      "عنصر HTML",
+      "خاصية CSS",
+      "نوع من الصور"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أي كلمة مفتاحية تُستخدم لتعريف Function تقليدية؟",
+     "answers": [
+      "function",
+      "def",
+      "method",
+      "func"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "كيف يتم استدعاء الدالة greet؟",
+     "answers": [
+      "greet()",
+      "call greet",
+      "run.greet",
+      "function.greet"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "Parameters و Arguments",
+   "description": "تعلّم كيف تستقبل الدوال البيانات باستخدام Parameters وArguments.",
+   "code": "function greet(name) {\n  return \"مرحبًا \" + name;\n}\n\ndocument.getElementById(\"jsResult\").textContent =\n  greet(\"FAYAD\");",
+   "explanation": "\n      <p><strong>Parameter</strong> هو المتغير الموجود داخل تعريف الدالة لاستقبال قيمة.</p>\n      <p><strong>Argument</strong> هي القيمة التي نمررها عند استدعاء الدالة.</p>\n      <p>في المثال <strong>name</strong> هو Parameter.</p>\n      <p>أما <strong>\"FAYAD\"</strong> فهي Argument تم تمريرها إلى الدالة.</p>\n    ",
+   "questions": [
+    {
+     "question": "ما هو Parameter؟",
+     "answers": [
+      "متغير تستقبله الدالة",
+      "عنصر HTML",
+      "ملف CSS",
+      "حلقة"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما هي Argument؟",
+     "answers": [
+      "القيمة التي يتم تمريرها إلى الدالة",
+      "اسم الدالة",
+      "اسم الملف",
+      "نوع البيانات"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "في greet(\"FAYAD\") ما هي Argument؟",
+     "answers": [
+      "\"FAYAD\"",
+      "greet",
+      "name",
+      "()"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "Return",
+   "description": "تعلّم كيف تستخدم return لإرجاع قيمة من الدالة إلى المكان الذي تم استدعاؤها منه.",
+   "code": "function add(a, b) {\n  return a + b;\n}\n\nconst result = add(5, 3);\n\ndocument.getElementById(\"jsResult\").textContent = result;",
+   "explanation": "\n      <p>الكلمة المفتاحية <strong>return</strong> تُرجع قيمة من الدالة.</p>\n      <p>بعد تنفيذ <strong>return</strong> تتوقف الدالة عن تنفيذ التعليمات الموجودة بعدها.</p>\n      <p>يمكن تخزين القيمة التي أعادتها الدالة داخل متغير.</p>\n      <p>هذا يسمح باستخدام نتائج الدوال في أماكن أخرى من البرنامج.</p>\n    ",
+   "questions": [
+    {
+     "question": "ماذا تفعل return؟",
+     "answers": [
+      "ترجع قيمة من الدالة",
+      "تنشئ Loop",
+      "تحذف متغيرًا",
+      "تغير HTML فقط"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ماذا يحدث غالبًا بعد تنفيذ return؟",
+     "answers": [
+      "تتوقف الدالة عن التنفيذ",
+      "تبدأ الحلقة",
+      "يتم إنشاء متغير",
+      "يتم تشغيل CSS"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما نتيجة add(5, 3) إذا كانت الدالة ترجع a + b؟",
+     "answers": [
+      "8",
+      "2",
+      "15",
+      "53"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "Arrow Functions",
+   "description": "تعلّم الصيغة الحديثة لكتابة الدوال باستخدام Arrow Functions.",
+   "code": "const add = (a, b) => {\n  return a + b;\n};\n\ndocument.getElementById(\"jsResult\").textContent =\n  add(5, 3);",
+   "explanation": "\n      <p><strong>Arrow Function</strong> هي صيغة مختصرة وحديثة لكتابة الدوال.</p>\n      <p>يتم استخدام الرمز <strong>=&gt;</strong> بين Parameters وجسم الدالة.</p>\n      <p>يمكن اختصار الدالة أكثر إذا كانت تحتوي على تعبير واحد.</p>\n      <p>Arrow Functions شائعة جدًا في JavaScript الحديثة.</p>\n    ",
+   "questions": [
+    {
+     "question": "أي رمز يستخدم في Arrow Function؟",
+     "answers": [
+      "=>",
+      "->",
+      "::",
+      "==>"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أي صيغة صحيحة؟",
+     "answers": [
+      "const add = (a, b) => a + b;",
+      "const add => (a, b)",
+      "arrow add(a, b)",
+      "function => add"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما فائدة Arrow Functions؟",
+     "answers": [
+      "كتابة الدوال بصيغة حديثة ومختصرة",
+      "إنشاء HTML",
+      "تغيير ألوان CSS",
+      "إدارة قواعد البيانات فقط"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "المصفوفات Arrays",
+   "description": "تعلّم كيف تخزن المصفوفات عدة قيم داخل متغير واحد وكيف تصل إلى عناصرها.",
+   "code": "const fruits = [\n  \"Apple\",\n  \"Banana\",\n  \"Orange\"\n];\n\ndocument.getElementById(\"jsResult\").textContent =\n  fruits[0];",
+   "explanation": "\n      <p><strong>Array</strong> هي بنية بيانات تسمح بتخزين عدة قيم داخل متغير واحد.</p>\n      <p>العناصر داخل Array لها ترتيب رقمي يبدأ من <strong>0</strong>.</p>\n      <p>للوصول إلى أول عنصر نستخدم <strong>array[0]</strong>.</p>\n      <p>المصفوفات مهمة جدًا عند التعامل مع مجموعات البيانات.</p>\n    ",
+   "questions": [
+    {
+     "question": "ماذا تخزن Array؟",
+     "answers": [
+      "عدة قيم داخل متغير واحد",
+      "قيمة واحدة فقط",
+      "CSS فقط",
+      "HTML فقط"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما رقم فهرس أول عنصر في Array؟",
+     "answers": [
+      "0",
+      "1",
+      "-1",
+      "10"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "كيف تصل إلى أول عنصر في fruits؟",
+     "answers": [
+      "fruits[0]",
+      "fruits[1]",
+      "fruits.first",
+      "fruits()"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "دوال المصفوفات",
+   "description": "تعلّم بعض أهم الدوال المستخدمة للتعامل مع Arrays مثل push وpop وmap وfilter.",
+   "code": "const numbers = [1, 2, 3];\n\nnumbers.push(4);\n\ndocument.getElementById(\"jsResult\").textContent =\n  numbers.join(\", \");",
+   "explanation": "\n      <p>JavaScript توفر العديد من <strong>Array Methods</strong> للتعامل مع المصفوفات.</p>\n      <p><strong>push()</strong> تضيف عنصرًا إلى نهاية المصفوفة.</p>\n      <p><strong>pop()</strong> تحذف آخر عنصر.</p>\n      <p><strong>map()</strong> تنشئ Array جديدة بعد تطبيق عملية على العناصر.</p>\n      <p><strong>filter()</strong> تستخدم لاختيار العناصر التي تحقق شرطًا معينًا.</p>\n    ",
+   "questions": [
+    {
+     "question": "ماذا تفعل push()؟",
+     "answers": [
+      "تضيف عنصرًا إلى نهاية Array",
+      "تحذف أول عنصر",
+      "تحذف Array",
+      "تنشئ Function"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أي Method تحذف آخر عنصر؟",
+     "answers": [
+      "pop()",
+      "push()",
+      "remove()",
+      "deleteLast()"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما الاستخدام الشائع لـ filter()؟",
+     "answers": [
+      "اختيار العناصر التي تحقق شرطًا",
+      "إضافة عنصر دائمًا",
+      "حذف كل العناصر",
+      "إنشاء HTML"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "الكائنات Objects",
+   "description": "تعلّم كيف تخزن Objects البيانات المرتبطة باستخدام Properties وValues.",
+   "code": "const user = {\n  name: \"FAYAD\",\n  age: 20,\n  student: true\n};\n\ndocument.getElementById(\"jsResult\").textContent =\n  user.name;",
+   "explanation": "\n      <p><strong>Object</strong> يستخدم لتجميع البيانات المرتبطة داخل بنية واحدة.</p>\n      <p>يحتوي Object على <strong>Properties</strong>، ولكل Property قيمة.</p>\n      <p>في المثال <strong>name</strong> و<strong>age</strong> و<strong>student</strong> هي Properties.</p>\n      <p>يمكن الوصول إلى Property باستخدام النقطة مثل <strong>user.name</strong>.</p>\n    ",
+   "questions": [
+    {
+     "question": "ماذا يحتوي Object عادةً؟",
+     "answers": [
+      "Properties وValues",
+      "CSS فقط",
+      "HTML فقط",
+      "أرقام فقط"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "كيف تصل إلى name داخل user؟",
+     "answers": [
+      "user.name",
+      "user->name",
+      "user[name()]",
+      "name.user"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما هي name في user.name؟",
+     "answers": [
+      "Property",
+      "Loop",
+      "Function",
+      "Array"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "دوال الكائنات",
+   "description": "تعلّم كيف يمكن للكائنات أن تحتوي على Functions تُعرف باسم Methods.",
+   "code": "const user = {\n  name: \"FAYAD\",\n\n  greet() {\n    return \"Hello \" + this.name;\n  }\n};\n\ndocument.getElementById(\"jsResult\").textContent =\n  user.greet();",
+   "explanation": "\n      <p><strong>Method</strong> هي Function مرتبطة بكائن Object.</p>\n      <p>يمكن تعريف Method داخل Object.</p>\n      <p>الكلمة المفتاحية <strong>this</strong> تشير في هذا السياق إلى الكائن الذي ينتمي إليه الـMethod.</p>\n      <p>Methods تسمح للكائن بتجميع البيانات والسلوك معًا.</p>\n    ",
+   "questions": [
+    {
+     "question": "ما هي Method؟",
+     "answers": [
+      "Function داخل Object",
+      "خاصية CSS",
+      "HTML Attribute",
+      "Array"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما الذي تشير إليه this غالبًا داخل Method الخاصة بالكائن؟",
+     "answers": [
+      "الكائن الحالي",
+      "ملف CSS",
+      "المتصفح فقط",
+      "Array دائمًا"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "كيف تستدعي greet داخل user؟",
+     "answers": [
+      "user.greet()",
+      "greet.user",
+      "user->greet",
+      "call.user"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "مقدمة إلى DOM",
+   "description": "تعلّم كيف تمثل JavaScript صفحة HTML من خلال Document Object Model وكيف تتعامل معها.",
+   "code": "const title =\n  document.getElementById(\"lessonTitle\");\n\ndocument.getElementById(\"jsResult\").textContent =\n  title.textContent;",
+   "explanation": "\n      <p><strong>DOM</strong> اختصار لـ Document Object Model.</p>\n      <p>يقوم المتصفح بتمثيل مستند HTML كهيكل من العناصر والكائنات.</p>\n      <p>JavaScript تستطيع الوصول إلى هذه العناصر وتغييرها والتفاعل معها.</p>\n      <p>الـDOM هو الأساس الذي يسمح لـJavaScript بالتعامل مع واجهة الصفحة.</p>\n    ",
+   "questions": [
+    {
+     "question": "ماذا يعني DOM؟",
+     "answers": [
+      "Document Object Model",
+      "Data Object Method",
+      "Document Order Manager",
+      "Dynamic Object Module"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما الذي يسمح DOM لـJavaScript بالتعامل معه؟",
+     "answers": [
+      "عناصر صفحة HTML",
+      "ملفات النظام فقط",
+      "كروت الشاشة",
+      "ملفات الصوت فقط"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "من الذي ينشئ DOM عند تحميل صفحة HTML؟",
+     "answers": [
+      "المتصفح",
+      "CSS",
+      "قاعدة البيانات",
+      "المستخدم يدويًا"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "اختيار العناصر",
+   "description": "تعلّم الطرق الأساسية لاختيار عناصر HTML باستخدام JavaScript.",
+   "code": "const title =\n  document.querySelector(\"h1\");\n\ndocument.getElementById(\"jsResult\").textContent =\n  title.textContent;",
+   "explanation": "\n      <p><strong>querySelector()</strong> تختار أول عنصر يطابق CSS Selector معين.</p>\n      <p><strong>getElementById()</strong> تختار عنصرًا باستخدام قيمة ID.</p>\n      <p>اختيار العناصر هو الخطوة الأولى قبل تعديلها أو التعامل معها.</p>\n      <p>يمكن استخدام Selectors مثل <strong>h1</strong> و<strong>.class</strong> و<strong>#id</strong>.</p>\n    ",
+   "questions": [
+    {
+     "question": "أي Method تستخدم CSS Selector لاختيار عنصر؟",
+     "answers": [
+      "querySelector()",
+      "selectElement()",
+      "getCSS()",
+      "findCSS()"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما الذي يستخدمه getElementById()؟",
+     "answers": [
+      "ID العنصر",
+      "اسم CSS",
+      "اسم الملف",
+      "اسم المتصفح"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ماذا يعيد querySelector() عند وجود أكثر من عنصر مطابق؟",
+     "answers": [
+      "أول عنصر مطابق",
+      "كل العناصر",
+      "آخر عنصر فقط",
+      "لا شيء"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "تغيير المحتوى",
+   "description": "تعلّم كيف تغيّر JavaScript النصوص والمحتوى الموجود داخل عناصر HTML.",
+   "code": "const title =\n  document.querySelector(\"h1\");\n\ntitle.textContent = \"مرحبًا من JavaScript\";\n\ndocument.getElementById(\"jsResult\").textContent =\n  title.textContent;",
+   "explanation": "\n      <p><strong>textContent</strong> تسمح بقراءة أو تغيير النص الموجود داخل العنصر.</p>\n      <p>يمكن استخدامها لتحديث محتوى الصفحة بناءً على تفاعل المستخدم أو البيانات.</p>\n      <p>عند إسناد قيمة جديدة إلى textContent يتم تحديث النص في الصفحة مباشرة.</p>\n      <p>هذه من أكثر عمليات DOM استخدامًا.</p>\n    ",
+   "questions": [
+    {
+     "question": "أي Property تغيّر النص داخل العنصر؟",
+     "answers": [
+      "textContent",
+      "textChange",
+      "contentText",
+      "changeText"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ماذا يحدث عند كتابة element.textContent = \"Hello\"؟",
+     "answers": [
+      "يتغير النص داخل العنصر",
+      "يتم حذف JavaScript",
+      "يتغير CSS فقط",
+      "يتم إنشاء Array"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "هل يمكن استخدام textContent لقراءة النص؟",
+     "answers": [
+      "نعم",
+      "لا",
+      "فقط داخل CSS",
+      "فقط داخل HTML"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "الأحداث Events",
+   "description": "تعلّم كيف تستجيب JavaScript لأفعال المستخدم مثل الضغط والكتابة وتحريك الماوس.",
+   "code": "const button =\n  document.querySelector(\"button\");\n\nbutton.addEventListener(\"click\", () => {\n  document.getElementById(\"jsResult\").textContent =\n    \"تم الضغط على الزر\";\n});",
+   "explanation": "\n      <p><strong>Event</strong> هو حدث يحدث داخل الصفحة مثل الضغط على زر.</p>\n      <p><strong>addEventListener()</strong> تُستخدم للاستماع إلى حدث معين.</p>\n      <p>في المثال نستمع إلى حدث <strong>click</strong>.</p>\n      <p>عند حدوث الحدث يتم تنفيذ Function معينة.</p>\n    ",
+   "questions": [
+    {
+     "question": "أي Method تستمع إلى الأحداث؟",
+     "answers": [
+      "addEventListener()",
+      "listenEvent()",
+      "eventClick()",
+      "watchEvent()"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما اسم الحدث الذي يحدث عند الضغط على زر؟",
+     "answers": [
+      "click",
+      "press",
+      "button",
+      "tapOnly"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ماذا يحدث عند وقوع Event؟",
+     "answers": [
+      "يمكن تنفيذ Function مرتبطة به",
+      "يتوقف المتصفح",
+      "يُحذف HTML",
+      "يتم حذف CSS"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "Destructuring",
+   "description": "تعلّم كيف تستخرج القيم من Arrays وObjects بطريقة مختصرة ومنظمة.",
+   "code": "const user = {\n  name: \"FAYAD\",\n  age: 20\n};\n\nconst { name, age } = user;\n\ndocument.getElementById(\"jsResult\").textContent =\n  name + \" - \" + age;",
+   "explanation": "\n      <p><strong>Destructuring</strong> تسمح باستخراج القيم من Object أو Array داخل متغيرات.</p>\n      <p>بدلًا من كتابة <strong>user.name</strong> و<strong>user.age</strong> عدة مرات يمكن استخراج القيم مباشرة.</p>\n      <p>يُستخدم Destructuring بكثرة في JavaScript الحديثة.</p>\n      <p>يمكن استخدامه مع Objects وArrays.</p>\n    ",
+   "questions": [
+    {
+     "question": "ما فائدة Destructuring؟",
+     "answers": [
+      "استخراج القيم بسهولة من Objects وArrays",
+      "إنشاء CSS",
+      "إنشاء HTML",
+      "تشغيل المتصفح"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أي صيغة تستخدم Destructuring من Object؟",
+     "answers": [
+      "const { name } = user;",
+      "const name = { user };",
+      "const [name] = user;",
+      "destructure(user)"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "هل يمكن استخدام Destructuring مع Arrays؟",
+     "answers": [
+      "نعم",
+      "لا",
+      "فقط مع CSS",
+      "فقط مع Functions"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "Spread و Rest",
+   "description": "تعلّم استخدام ... في نسخ وتجميع القيم مع Arrays وObjects وFunctions.",
+   "code": "const numbers = [1, 2, 3];\n\nconst newNumbers = [\n  ...numbers,\n  4\n];\n\ndocument.getElementById(\"jsResult\").textContent =\n  newNumbers.join(\", \");",
+   "explanation": "\n      <p>الرمز <strong>...</strong> يستخدم في JavaScript الحديثة بأكثر من طريقة.</p>\n      <p><strong>Spread</strong> يفكك القيم داخل Array أو Object لاستخدامها في مكان آخر.</p>\n      <p><strong>Rest</strong> يجمع عدة قيم داخل Array واحدة في Parameters الخاصة بالدالة.</p>\n      <p>الفرق يعتمد على السياق الذي يتم فيه استخدام الرمز.</p>\n    ",
+   "questions": [
+    {
+     "question": "ما الرمز المستخدم في Spread وRest؟",
+     "answers": [
+      "...",
+      "***",
+      ">>>",
+      "::"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ماذا يفعل Spread مع Array؟",
+     "answers": [
+      "يفكك عناصرها لاستخدامها في Array أخرى",
+      "يحذفها",
+      "يحولها إلى String",
+      "يوقف البرنامج"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ماذا يفعل Rest Parameters؟",
+     "answers": [
+      "يجمع عدة قيم داخل Array",
+      "يحذف القيم",
+      "ينشئ HTML",
+      "ينشئ CSS"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "Modules",
+   "description": "تعلّم كيف تقسّم JavaScript إلى ملفات مستقلة باستخدام export وimport.",
+   "code": "// math.js\nexport function add(a, b) {\n  return a + b;\n}\n\n// app.js\nimport { add } from \"./math.js\";\n\ndocument.getElementById(\"jsResult\").textContent =\n  add(5, 3);",
+   "explanation": "\n      <p><strong>Modules</strong> تسمح بتقسيم البرنامج إلى ملفات منفصلة ومنظمة.</p>\n      <p><strong>export</strong> تجعل قيمة أو Function متاحة لملفات أخرى.</p>\n      <p><strong>import</strong> تستخدم لاستيراد ما تم تصديره من Module أخرى.</p>\n      <p>استخدام Modules يساعد في تنظيم المشاريع الكبيرة.</p>\n    ",
+   "questions": [
+    {
+     "question": "لماذا نستخدم Modules؟",
+     "answers": [
+      "لتقسيم وتنظيم الكود بين ملفات متعددة",
+      "لتغيير ألوان CSS",
+      "لاستبدال HTML",
+      "لإنشاء الصور"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أي كلمة تستخدم لتصدير Function؟",
+     "answers": [
+      "export",
+      "send",
+      "public",
+      "share"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أي كلمة تستخدم لاستيراد قيمة؟",
+     "answers": [
+      "import",
+      "include",
+      "requireOnly",
+      "load"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "JavaScript غير المتزامنة",
+   "description": "تعرّف على مفهوم Asynchronous JavaScript وكيفية التعامل مع المهام التي تستغرق وقتًا.",
+   "code": "document.getElementById(\"jsResult\").textContent =\n  \"ابدأ\";\n\nsetTimeout(() => {\n  document.getElementById(\"jsResult\").textContent =\n    \"اكتملت المهمة\";\n}, 1000);",
+   "explanation": "\n      <p><strong>Asynchronous JavaScript</strong> تسمح للبرنامج بالتعامل مع مهام لا تنتهي فورًا.</p>\n      <p>من أمثلة ذلك طلب البيانات من Server أو الانتظار باستخدام Timer.</p>\n      <p><strong>setTimeout()</strong> تسمح بتأجيل تنفيذ Function لمدة محددة.</p>\n      <p>الهدف هو التعامل مع المهام التي تحتاج إلى وقت دون تجميد تجربة المستخدم.</p>\n    ",
+   "questions": [
+    {
+     "question": "ماذا يعني Asynchronous؟",
+     "answers": [
+      "تنفيذ المهام بطريقة لا تتطلب الانتظار لكل شيء قبل الاستمرار",
+      "إيقاف البرنامج",
+      "حذف HTML",
+      "تغيير CSS"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أي Function تستخدم لتأخير التنفيذ؟",
+     "answers": [
+      "setTimeout()",
+      "delayCode()",
+      "waitJS()",
+      "pauseScript()"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أين تظهر الحاجة إلى Async JavaScript كثيرًا؟",
+     "answers": [
+      "طلبات الشبكة والعمليات التي تستغرق وقتًا",
+      "كتابة CSS فقط",
+      "كتابة HTML فقط",
+      "تغيير الخطوط فقط"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "Promises",
+   "description": "تعلّم كيف تمثل Promises نتيجة عملية غير متزامنة قد تنجح أو تفشل.",
+   "code": "const promise = new Promise((resolve) => {\n  resolve(\"نجحت العملية\");\n});\n\npromise.then((result) => {\n  document.getElementById(\"jsResult\").textContent =\n    result;\n});",
+   "explanation": "\n      <p><strong>Promise</strong> تمثل نتيجة مستقبلية لعملية غير متزامنة.</p>\n      <p>يمكن أن تكون العملية في حالة Pending أو Fulfilled أو Rejected.</p>\n      <p><strong>resolve</strong> تستخدم للإشارة إلى نجاح العملية.</p>\n      <p><strong>then()</strong> تستخدم للتعامل مع النتيجة عند نجاح Promise.</p>\n    ",
+   "questions": [
+    {
+     "question": "ماذا تمثل Promise؟",
+     "answers": [
+      "النتيجة المستقبلية لعملية غير متزامنة",
+      "عنصر HTML",
+      "لون CSS",
+      "Array فقط"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ماذا يعني Fulfilled؟",
+     "answers": [
+      "نجحت العملية",
+      "العملية بدأت فقط",
+      "فشلت العملية",
+      "تم حذف Promise"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أي Method تستخدم للتعامل مع نجاح Promise؟",
+     "answers": [
+      "then()",
+      "success()",
+      "doneOnly()",
+      "resolveThen()"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "Fetch API",
+   "description": "تعلّم كيف تستخدم Fetch API لإرسال طلبات HTTP والحصول على البيانات من Server أو API.",
+   "code": "fetch(\"https://example.com/data\")\n  .then(response => response.json())\n  .then(data => {\n    console.log(data);\n  })\n  .catch(error => {\n    console.error(error);\n  });",
+   "explanation": "\n      <p><strong>Fetch API</strong> توفر طريقة حديثة لإرسال HTTP Requests من JavaScript.</p>\n      <p>يمكن استخدامها لجلب بيانات من API أو Server.</p>\n      <p>النتيجة الأولية تكون Response ويمكن تحويلها إلى JSON باستخدام <strong>response.json()</strong>.</p>\n      <p>عادةً يتم التعامل مع النتيجة باستخدام Promises أو <strong>async/await</strong>.</p>\n    ",
+   "questions": [
+    {
+     "question": "فيما تستخدم fetch() غالبًا؟",
+     "answers": [
+      "إرسال طلبات والحصول على بيانات من Server",
+      "تغيير ألوان CSS",
+      "إنشاء HTML Tags",
+      "إنشاء صور"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ماذا تفعل response.json()؟",
+     "answers": [
+      "تحول Response إلى بيانات JSON قابلة للاستخدام",
+      "تحذف Response",
+      "ترسل CSS",
+      "تنشئ HTML"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "هل fetch() مرتبطة بالتعامل مع الشبكة؟",
+     "answers": [
+      "نعم",
+      "لا",
+      "فقط مع CSS",
+      "فقط مع Arrays"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "معالجة الأخطاء",
+   "description": "تعلّم كيف تتعامل مع الأخطاء باستخدام try وcatch وfinally.",
+   "code": "try {\n  const result = unknownVariable;\n\n  document.getElementById(\"jsResult\").textContent =\n    result;\n} catch (error) {\n  document.getElementById(\"jsResult\").textContent =\n    \"حدث خطأ\";\n}",
+   "explanation": "\n      <p>الأخطاء يمكن أن تحدث أثناء تشغيل JavaScript لأسباب مختلفة.</p>\n      <p><strong>try</strong> تحتوي على الكود الذي قد ينتج عنه خطأ.</p>\n      <p><strong>catch</strong> تستقبل الخطأ وتسمح لنا بالتعامل معه بدلًا من ترك البرنامج يتوقف بشكل غير متوقع.</p>\n      <p><strong>finally</strong> يمكن استخدامها لتنفيذ كود سواء حدث خطأ أم لا.</p>\n    ",
+   "questions": [
+    {
+     "question": "أي Block تستخدم للتعامل مع الخطأ؟",
+     "answers": [
+      "catch",
+      "errorBlock",
+      "handle",
+      "exceptOnly"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أين نضع الكود الذي قد ينتج عنه خطأ؟",
+     "answers": [
+      "try",
+      "catch",
+      "finally",
+      "error"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "متى يمكن استخدام finally؟",
+     "answers": [
+      "لتنفيذ كود بعد انتهاء try/catch سواء حدث خطأ أم لا",
+      "فقط عند حدوث خطأ",
+      "فقط عند نجاح try",
+      "لإنشاء Function"
+     ],
+     "correct": 0
+    }
+   ]
+  }
+ ],
+ "sidebar": [
+  {
+   "title": "أساسيات JavaScript",
+   "items": [
+    {
+     "n": 1,
+     "name": "مقدمة إلى JavaScript"
+    },
+    {
+     "n": 2,
+     "name": "المتغيرات"
+    },
+    {
+     "n": 3,
+     "name": "أنواع البيانات"
+    },
+    {
+     "n": 4,
+     "name": "العوامل Operators"
+    },
+    {
+     "n": 5,
+     "name": "الشروط Conditions"
+    },
+    {
+     "n": 6,
+     "name": "الحلقات Loops"
+    }
+   ]
+  },
+  {
+   "title": "الدوال Functions",
+   "items": [
+    {
+     "n": 7,
+     "name": "الدوال Functions"
+    },
+    {
+     "n": 8,
+     "name": "Parameters و Arguments"
+    },
+    {
+     "n": 9,
+     "name": "Return"
+    },
+    {
+     "n": 10,
+     "name": "Arrow Functions"
+    }
+   ]
+  },
+  {
+   "title": "المصفوفات والكائنات",
+   "items": [
+    {
+     "n": 11,
+     "name": "المصفوفات Arrays"
+    },
+    {
+     "n": 12,
+     "name": "دوال المصفوفات"
+    },
+    {
+     "n": 13,
+     "name": "الكائنات Objects"
+    },
+    {
+     "n": 14,
+     "name": "دوال الكائنات"
+    }
+   ]
+  },
+  {
+   "title": "DOM والمتصفح",
+   "items": [
+    {
+     "n": 15,
+     "name": "مقدمة إلى DOM"
+    },
+    {
+     "n": 16,
+     "name": "اختيار العناصر"
+    },
+    {
+     "n": 17,
+     "name": "تغيير المحتوى"
+    },
+    {
+     "n": 18,
+     "name": "الأحداث Events"
+    }
+   ]
+  },
+  {
+   "title": "JavaScript الحديثة",
+   "items": [
+    {
+     "n": 19,
+     "name": "Destructuring"
+    },
+    {
+     "n": 20,
+     "name": "Spread و Rest"
+    },
+    {
+     "n": 21,
+     "name": "Modules"
+    },
+    {
+     "n": 22,
+     "name": "JavaScript غير المتزامنة"
+    }
+   ]
+  },
+  {
+   "title": "JavaScript المتقدمة",
+   "items": [
+    {
+     "n": 23,
+     "name": "Promises"
+    },
+    {
+     "n": 24,
+     "name": "Fetch API"
+    },
+    {
+     "n": 25,
+     "name": "معالجة الأخطاء"
+    }
+   ]
+  }
+ ],
+ "staticCards": [
+  {
+   "label": null,
+   "title": "ما هي JavaScript؟",
+   "html": "<p>JavaScript هي لغة برمجة تُستخدم لإضافة السلوك والتفاعل إلى صفحات ومواقع الويب.</p>\n<p>\nتُستخدم HTML لبناء هيكل الصفحة، وتُستخدم CSS للتحكم في المظهر والتصميم، بينما تُستخدم JavaScript لإضافة\nالمنطق والتفاعل والسلوك.\n</p>\n<p>\nعلى سبيل المثال، يمكن استخدام JavaScript لجعل الزر يستجيب عند الضغط عليه، أو تغيير محتوى الصفحة، أو التحقق\nمن البيانات التي يدخلها المستخدم.\n</p>"
+  },
+  {
+   "label": "الفكرة الأساسية",
+   "title": "JavaScript تجعل صفحات الويب تفاعلية",
+   "html": "<p>\nيمكنك التفكير في موقع الويب على أنه جسم الإنسان: HTML تمثل الهيكل، CSS تمثل المظهر، وJavaScript تمثل السلوك\nوالحركة والتفاعل.\n</p>"
+  }
+ ]
+}
