@@ -141,3 +141,11 @@ test("catalog lesson totals match the lesson arrays used by each course page", a
   }
   await ctx.close();
 });
+
+test("no phone number or tel: link is published on the homepage (privacy decision)", async () => {
+  const html = fs.readFileSync(path.join(ROOT, "index.html"), "utf8");
+  assert.ok(!/tel:|\+20\s?1\d|1091573063|109 157 3063|menu-phone/.test(html));
+  const { ctx, page } = await open();
+  assert.equal(await page.locator("a[href^='tel:']").count(), 0);
+  await ctx.close();
+});
