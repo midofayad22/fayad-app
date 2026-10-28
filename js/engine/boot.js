@@ -6,7 +6,6 @@
 import { validateTrack } from "./schema.js";
 import { createProgress } from "./progress.js";
 import { createState } from "./state.js";
-import { mountCourse } from "./course-view.js";
 
 // Lesson counts of every course. Only the migrated course is authoritative from its content module; the others are the
 // legacy counts (verified against the legacy pages by tests/home.test.mjs) so progress validation never drops their data.
@@ -21,8 +20,15 @@ async function main() {
     const problems = validateTrack(track, lessons);
     if (problems.length) throw new Error("invalid course content: " + problems.slice(0, 3).join("; "));
     const progress = createProgress({ totals: { ...OTHER_TOTALS, [id]: lessons.length } });
-    const state = createState({ track, lessons, progress });
-    const view = mountCourse({ track, lessons, state, lang: "ar" });
+    let state = null, view;
+    if (track.layout === "foundation" || track.layout === "foundation-lite") {
+      const { mountFoundation } = await import("./foundation-view.js");
+      view = mountFoundation({ track, lessons, progress, lang: "ar" });
+    } else {
+      const { mountCourse } = await import("./course-view.js");
+      state = createState({ track, lessons, progress });
+      view = mountCourse({ track, lessons, state, lang: "ar" });
+    }
     view.start();
     window.FAYAD = window.FAYAD || {};
     window.FAYAD.course = { track, state, progress, view };

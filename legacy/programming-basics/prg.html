@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Preferences: theme / language / direction resolved before first paint (no flash) -->
+    <script src="/js/prefs.js"></script>
+
+    <!-- Site metadata (managed: canonical, icons, manifest, social, service worker) -->
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#0b3d35" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="FAYAD" />
+    <meta property="og:locale" content="ar_AR" />
+    <meta property="og:title" content="أساسيات البرمجة | FAYAD" />
+    <meta property="og:description" content="مسار أساسيات البرمجة من FAYAD — تعلّم التفكير البرمجي والخوارزميات والمفاهيم الأساسية للبرمجة." />
+    <meta property="og:url" content="https://fayad-learning.vercel.app/fundamentals/programming-basics/prg.html" />
+    <meta property="og:image" content="https://fayad-learning.vercel.app/assets/brand/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script src="/js/sw-register.js" defer></script>
+
+
+    <meta
+      name="description"
+      content="مسار أساسيات البرمجة من FAYAD — تعلّم التفكير البرمجي والخوارزميات والمفاهيم الأساسية للبرمجة." />
+
+    <title>أساسيات البرمجة | FAYAD</title>
+
+    <!-- FAYAD / Programming Fundamentals -->
+    <link rel="stylesheet" href="prg.css" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+    <!-- FAYAD design system (loaded after page CSS so tokens win) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/theme-overrides.css" />
+    <link rel="stylesheet" href="/css/shell.css" />
+    <script src="/js/i18n.js" defer></script>
+    <script src="/js/shell.js" defer></script>
+  </head>
+
+  <body>
+    <!-- =====================================================
+         BACKGROUND EFFECTS
+    ====================================================== -->
+
+    <div class="background-grid"></div>
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="app-header">
+      <div class="header-content">
+        <a href="/index.html" class="back-btn">
+          <i class="fa-solid fa-arrow-right"></i>
+          العودة إلى FAYAD
+        </a>
+
+        <div class="course-icon">
+          <i class="fa-solid fa-code"></i>
+        </div>
+
+        <span class="course-label"> FAYAD FOUNDATION TRACK </span>
+
+        <h1>أساسيات البرمجة</h1>
+
+        <p class="hero-description">
+          تعلّم كيف يفكر المبرمج، وكيف تتحول الأفكار والخوارزميات إلى تعليمات يستطيع الكمبيوتر تنفيذها.
+        </p>
+
+        <!-- COURSE STATS -->
+
+        <div class="course-stats">
+          <div class="stat-card">
+            <strong>20</strong>
+            <span>درسًا</span>
+          </div>
+
+          <div class="stat-card">
+            <strong>20+</strong>
+            <span>اختبارًا</span>
+          </div>
+
+          <div class="stat-card">
+            <strong>10+</strong>
+            <span>تحديات</span>
+          </div>
+
+          <div class="stat-card">
+            <strong>1</strong>
+            <span>اختبار نهائي</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- =====================================================
+         MAIN LEARNING AREA
+    ====================================================== -->
+
+    <main class="learning-layout">
+      <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div>
+            <span>مسار التعلم</span>
+            <h2>أساسيات البرمجة</h2>
+          </div>
+
+          <i class="fa-solid fa-code"></i>
+        </div>
+
+        <!-- PROGRESS -->
+
+        <div class="progress-container">
+          <div class="progress-info">
+            <span> تقدمك </span>
+
+            <strong id="progress-percent"> 0% </strong>
+          </div>
+
+          <div class="progress-bar">
+            <div id="progress-fill"></div>
+          </div>
+
+          <small id="progress-text"> لم تبدأ بعد — هيا نبدأ 🚀 </small>
+        </div>
+
+        <!-- LESSON NAVIGATION -->
+
+        <nav class="lesson-nav" id="lesson-nav">
+          <button class="lesson-item active" data-lesson="1">
+            <span class="lesson-number">01</span>
+            <span>ما هي البرمجة؟</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="2">
+            <span class="lesson-number">02</span>
+            <span>كيف يعمل الكود؟</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="3">
+            <span class="lesson-number">03</span>
+            <span>التفكير البرمجي</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="4">
+            <span class="lesson-number">04</span>
+            <span>الخوارزميات</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="5">
+            <span class="lesson-number">05</span>
+            <span>لغات البرمجة</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="6">
+            <span class="lesson-number">06</span>
+            <span>Syntax</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="7">
+            <span class="lesson-number">07</span>
+            <span>المتغيرات</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="8">
+            <span class="lesson-number">08</span>
+            <span>أنواع البيانات</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="9">
+            <span class="lesson-number">09</span>
+            <span>Operators</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="10">
+            <span class="lesson-number">10</span>
+            <span>الشروط</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="11">
+            <span class="lesson-number">11</span>
+            <span>Loops</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="12">
+            <span class="lesson-number">12</span>
+            <span>Functions</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="13">
+            <span class="lesson-number">13</span>
+            <span>Parameters</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="14">
+            <span class="lesson-number">14</span>
+            <span>Scope</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="15">
+            <span class="lesson-number">15</span>
+            <span>Arrays</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="16">
+            <span class="lesson-number">16</span>
+            <span>Objects</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="17">
+            <span class="lesson-number">17</span>
+            <span>الأخطاء وتصحيحها</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="18">
+            <span class="lesson-number">18</span>
+            <span>حل المشكلات</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="19">
+            <span class="lesson-number">19</span>
+            <span>Git ومفاهيمه</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="20">
+            <span class="lesson-number">20</span>
+            <span>مراجعة شاملة</span>
+          </button>
+
+          <button class="lesson-item final-item" data-lesson="final">
+            <span class="lesson-number">
+              <i class="fa-solid fa-trophy"></i>
+            </span>
+
+            <span> الاختبار النهائي </span>
+          </button>
+        </nav>
+      </aside>
+
+      <!-- =================================================
+             LESSON CONTENT
+        ================================================== -->
+
+      <section class="lesson-area">
+        <!-- TOP BAR -->
+
+        <div class="lesson-top">
+          <div>
+            <span class="lesson-counter" id="lesson-counter"> الدرس 01 من 20 </span>
+
+            <h2 id="lesson-title">ما هي البرمجة؟</h2>
+          </div>
+
+          <div class="lesson-status" id="lesson-status">غير مكتمل</div>
+        </div>
+
+        <!-- =================================================
+                 LESSON CARD
+            ================================================== -->
+
+        <article class="lesson-card">
+          <div class="lesson-icon">
+            <i class="fa-solid fa-terminal" id="lesson-icon"></i>
+          </div>
+
+          <span class="lesson-level" id="lesson-level"> FOUNDATION </span>
+
+          <h2 id="lesson-heading">ابدأ بفهم الفكرة قبل كتابة الكود</h2>
+
+          <!-- DYNAMIC CONTENT -->
+
+          <div id="lesson-content" class="lesson-content"></div>
+
+          <!-- KEY CONCEPT -->
+
+          <div class="key-concept">
+            <div class="key-icon">
+              <i class="fa-solid fa-lightbulb"></i>
+            </div>
+
+            <div>
+              <strong> الفكرة الأساسية </strong>
+
+              <p id="key-description">البرمجة ليست حفظ أوامر، بل طريقة منظمة لتحويل المشكلة إلى خطوات قابلة للتنفيذ.</p>
+            </div>
+          </div>
+
+          <!-- EXAMPLE -->
+
+          <div class="example-section">
+            <div class="section-heading">
+              <div class="section-heading-icon">
+                <i class="fa-solid fa-code"></i>
+              </div>
+
+              <div>
+                <span>مثال عملي</span>
+                <h3>شاهد الفكرة في كود</h3>
+              </div>
+            </div>
+
+            <div class="code-block">
+              <div class="code-header">
+                <span> JavaScript </span>
+
+                <button id="copy-example" class="copy-btn" type="button">
+                  <i class="fa-regular fa-copy"></i>
+                  نسخ
+                </button>
+              </div>
+
+              <pre><code id="example-code"></code></pre>
+            </div>
+          </div>
+
+          <!-- KNOWLEDGE CHECK -->
+
+          <div class="knowledge-check">
+            <div class="section-heading">
+              <div class="section-heading-icon">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+
+              <div>
+                <span>اختبر فهمك</span>
+                <h3>سؤال سريع</h3>
+              </div>
+            </div>
+
+            <p id="quiz-question" class="quiz-question"></p>
+
+            <div id="quiz-options" class="quiz-options"></div>
+
+            <p id="quiz-result" class="quiz-result"></p>
+          </div>
+
+          <!-- PRACTICE -->
+
+          <div class="practice-box">
+            <div class="section-heading">
+              <div class="section-heading-icon">
+                <i class="fa-solid fa-dumbbell"></i>
+              </div>
+
+              <div>
+                <span>تطبيق</span>
+                <h3>تحدَّ نفسك</h3>
+              </div>
+            </div>
+
+            <p id="practice-text">حاول تطبيق الفكرة بنفسك قبل الانتقال إلى الدرس التالي.</p>
+
+            <div class="challenge-box">
+              <span> CHALLENGE </span>
+
+              <p id="challenge-text">اكتب مثالًا بسيطًا يطبق المفهوم الذي تعلمته.</p>
+            </div>
+          </div>
+
+          <!-- INTERACTIVE PLAYGROUND -->
+
+          <div class="playground-section" id="playground-section">
+            <div class="section-heading">
+              <div class="section-heading-icon playground-icon">
+                <i class="fa-solid fa-bolt"></i>
+              </div>
+
+              <div>
+                <span>FAYAD PLAYGROUND</span>
+                <h3>جرّب الكود بنفسك</h3>
+              </div>
+            </div>
+
+            <div class="editor-wrapper">
+              <div class="editor-toolbar">
+                <span>
+                  <i class="fa-brands fa-js"></i>
+                  JavaScript
+                </span>
+
+                <div class="editor-actions">
+                  <button id="run-code-btn" class="editor-btn run" type="button">
+                    <i class="fa-solid fa-play"></i>
+                    تشغيل
+                  </button>
+
+                  <button id="reset-code-btn" class="editor-btn" type="button">
+                    <i class="fa-solid fa-rotate-left"></i>
+                    إعادة
+                  </button>
+                </div>
+              </div>
+
+              <textarea id="code-editor" spellcheck="false" aria-label="محرر JavaScript"></textarea>
+
+              <div class="console-header">
+                <span>
+                  <i class="fa-solid fa-terminal"></i>
+                  Console
+                </span>
+              </div>
+
+              <div id="console-output" class="console-output">
+                <span class="console-placeholder"> نتيجة الكود ستظهر هنا... </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- COMPLETE BUTTON -->
+
+          <div class="lesson-actions">
+            <button id="complete-btn" class="complete-btn" type="button">
+              <i class="fa-solid fa-check"></i>
+              إتمام الدرس
+            </button>
+          </div>
+        </article>
+
+        <!-- =================================================
+                 NAVIGATION
+            ================================================== -->
+
+        <div class="lesson-navigation">
+          <button id="prev-btn" class="nav-btn" type="button">
+            <i class="fa-solid fa-arrow-right"></i>
+            الدرس السابق
+          </button>
+
+          <button id="next-btn" class="nav-btn primary" type="button">
+            الدرس التالي
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- =====================================================
+         FINAL QUIZ MODAL
+    ====================================================== -->
+
+    <div id="final-quiz-modal" class="modal hidden">
+      <div class="modal-overlay"></div>
+
+      <div class="final-quiz">
+        <button id="close-final-quiz" class="close-modal" type="button" aria-label="إغلاق">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="final-icon">
+          <i class="fa-solid fa-trophy"></i>
+        </div>
+
+        <span> FAYAD FINAL ASSESSMENT </span>
+
+        <h2>الاختبار النهائي</h2>
+
+        <p>أثبت أنك فهمت أساسيات البرمجة قبل الانتقال إلى Web Fundamentals.</p>
+
+        <div id="final-question-area" class="final-question-area"></div>
+
+        <div class="final-progress">
+          <div id="final-progress-fill"></div>
+        </div>
+
+        <div class="final-actions">
+          <button id="final-next-btn" class="complete-btn" type="button">السؤال التالي</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+      <div class="footer-brand">
+        <span>FAYAD</span>
+        <small>Learn. Build. Become.</small>
+      </div>
+
+      <p>© 2026 FAYAD — جميع الحقوق محفوظة</p>
+
+      <p class="footer-credit">Built by Abdullhamid Fayad</p>
+    </footer>
+
+    <script src="prg.js"></script>
+  </body>
+</html>

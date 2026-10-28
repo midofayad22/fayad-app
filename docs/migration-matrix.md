@@ -5,8 +5,8 @@ Legend: ✅ done and verified by tests · ⏳ not started · Preview verificatio
 | Track | URL (unchanged) | Legacy lessons (data) | Lessons in legacy sidebar | New lessons (data) | In new sidebar | Content parity | Engine tests | Legacy kept for rollback | Preview verified |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | js | /javascript-learning/javascript-learning.html | 25 | 25 | 25 | 25 (built from data) | ✅ byte-identical (tests/migration-js.test.mjs) | ✅ tests/js-engine.test.mjs | `legacy/javascript-learning/` (`?engine=legacy`) | no (sandbox cannot reach *.vercel.app) |
-| prg | /fundamentals/programming-basics/prg.html | 20 + final quiz | 21 | ⏳ | ⏳ | ⏳ | ⏳ | n/a | no |
-| com | /fundamentals/computer-basics/com.html | 20 | 20 | ⏳ | ⏳ | ⏳ | ⏳ | n/a | no |
+| prg | /fundamentals/programming-basics/prg.html | 20 + 8-question final assessment | 21 (20 + final) | 20 + 8-question final assessment | 21 (built from data) | ✅ byte-identical (tests/migration-prg.test.mjs) | ✅ tests/prg-engine.test.mjs (incl. output parity of all 20 examples vs legacy) | `legacy/programming-basics/` (`?engine=legacy`) | no (sandbox cannot reach *.vercel.app) |
+| com | /fundamentals/computer-basics/com.html | 20 | 20 | 20 | 20 (built from data) | ✅ byte-identical (tests/migration-com.test.mjs) | ✅ tests/com-engine.test.mjs | `legacy/computer-basics/` (`?engine=legacy`) | no (sandbox cannot reach *.vercel.app) |
 | html | /html-learning/html-learning.html | 30 | **22** (8 unreachable from sidebar) | ⏳ | ⏳ | ⏳ | ⏳ | n/a | no |
 | css | /css-learning/css-learning.html | 30 | 30 | ⏳ | ⏳ | ⏳ | ⏳ | n/a | no |
 | react | /react-learning/react-learning.html | 30 | 30 | ⏳ | ⏳ | ⏳ | ⏳ | n/a | no |
@@ -33,3 +33,20 @@ Legend: ✅ done and verified by tests · ⏳ not started · Preview verificatio
 5. `#lesson-N` deep links open that lesson (legacy ignored them); the URL hash follows the open lesson.
 6. Arrow-key navigation follows the page direction.
 7. Progress is stored in `fayad-progress-v1` and mirrored to the legacy keys (compat release).
+
+## Programming Fundamentals: deliberate differences from the legacy implementation
+Content (titles, headings, levels, icons, bodies, key ideas, examples, challenges, quiz questions/answers, final assessment, order) is byte-identical. Behaviour kept: one quiz attempt per lesson that does not gate completion; manual "إتمام الدرس"; final assessment pass mark 70% completes all 20 lessons.
+1. Learner code runs in the sandboxed runner (`runtime: "js"`, killable Worker inside an opaque-origin iframe) instead of `new Function` on the site's origin. Infinite loops are stopped after 3 s with a message (legacy froze the tab).
+2. Output parity: objects/arrays still print as pretty JSON (runner option `format: "json"`), `console.error` still prints `Error: …`. 19 of 20 example programs print identical text. Lesson 19's example is itself a syntax error in the legacy data (kept verbatim); the new message carries the error name (`SyntaxError: …`). Runtime errors also carry the error name. `console.warn/info` now work (legacy threw).
+3. The legacy 350 ms artificial delay before showing output is gone.
+4. The sidebar is built from data, including the final assessment entry; `#lesson-N` and `#final` deep links work (legacy ignored them); the page resumes at the last opened lesson (legacy always started at lesson 1).
+5. Legacy bug fixed: re-opening the final assessment left a stale "close" handler on the next button, so "next question" also closed the dialog. The dialog now also has `role="dialog"`, closes on overlay click/Escape and restores focus.
+6. Quiz and assessment text is inserted as text, not HTML (verified: no legacy text contained markup).
+7. Sidebar label of lesson 13 is "Parameters" while its title is "Parameters & Arguments" in the legacy data; both are preserved (`navTitle`).
+8. Progress goes to `fayad-progress-v1`, mirrored to `fayad-programming-fundamentals-progress` (1-based list). No resume key existed in legacy, so the resume pointer lives only in v1. Per-question quiz results are recorded in v1 only. The final-assessment score is not persisted (no storage existed for it).
+
+## Computer Basics: deliberate differences from the legacy implementation
+Content (titles, icons, bodies, key concepts, practice text, quiz questions/answers, final-test marker, order) is byte-identical; the page has no code execution. Behaviour kept: one quiz attempt per lesson (all options lock, a wrong answer names the correct one), manual "إكمال الدرس", the last lesson ("الاختبار النهائي") is an ordinary lesson with a quiz question and ends the course.
+1. Sidebar built from data. `data-lesson` is now 1-based (it was 0-based); `#lesson-N` deep links work; the page resumes at the last opened lesson (legacy always started at lesson 1).
+2. Legacy data flag `final: true` on lesson 20 (never read by the legacy code) is preserved as `isFinal` and drives the `final-item` sidebar style.
+3. Quiz text is inserted as text. Progress goes to `fayad-progress-v1`, mirrored to the legacy 0-based list `fayad-computer-progress`; quiz attempts are recorded in v1 only.

@@ -57,7 +57,7 @@ key `fayad-progress-v1`. Pure data; `progress.js` is the only writer. Milestone 
 | 4a | `progress.js` + migration of legacy keys, no UI change; track pages call it | low | revert one commit |
 | 4b | Lesson data converter + data-equality tests (all 8 tracks) | low (no runtime change) | n/a |
 | 4c | Engine + sidebar-from-data for **JavaScript** track only (smallest, uses `new Function` today) | medium | feature flag `?engine=legacy` |
-| 4d | Convert Programming, Computer, HTML, CSS, React, Vue, Angular one at a time; delete each old JS after its parity test passes | medium | per-track revert |
+| 4d | **Programming ✅ done (foundation layout, parity + rollback tested).** Convert Computer, HTML, CSS, React, Vue, Angular one at a time; delete each old JS after its parity test passes | medium | per-track revert |
 | 4e | Remove dead code, keep legacy-key mirroring | low | n/a |
 
 Parity tests per track: lesson count = data count, every sidebar entry opens, Next/Prev walk all lessons, quiz grades

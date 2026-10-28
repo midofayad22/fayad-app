@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Preferences: theme / language / direction resolved before first paint (no flash) -->
+    <script src="/js/prefs.js"></script>
+
+    <!-- Site metadata (managed: canonical, icons, manifest, social, service worker) -->
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#0b3d35" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="FAYAD" />
+    <meta property="og:locale" content="ar_AR" />
+    <meta property="og:title" content="أساسيات الكمبيوتر | FAYAD" />
+    <meta property="og:description" content="مسار أساسيات الكمبيوتر في FAYAD — تعلّم كيف تعمل أجهزة الكمبيوتر والبرمجيات والإنترنت من الصفر." />
+    <meta property="og:url" content="https://fayad-learning.vercel.app/fundamentals/computer-basics/com.html" />
+    <meta property="og:image" content="https://fayad-learning.vercel.app/assets/brand/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script src="/js/sw-register.js" defer></script>
+
+
+    <meta
+      name="description"
+      content="مسار أساسيات الكمبيوتر في FAYAD — تعلّم كيف تعمل أجهزة الكمبيوتر والبرمجيات والإنترنت من الصفر." />
+
+    <title>أساسيات الكمبيوتر | FAYAD</title>
+
+    <link rel="stylesheet" href="com.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+    <!-- FAYAD design system (loaded after page CSS so tokens win) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/theme-overrides.css" />
+    <link rel="stylesheet" href="/css/shell.css" />
+    <script src="/js/i18n.js" defer></script>
+    <script src="/js/shell.js" defer></script>
+  </head>
+
+  <body>
+    <header class="app-header">
+      <div class="header-content">
+        <a href="/index.html" class="back-btn">
+          <i class="fa-solid fa-arrow-right"></i>
+          العودة إلى FAYAD
+        </a>
+
+        <div class="course-icon">
+          <i class="fa-solid fa-computer"></i>
+        </div>
+
+        <span class="course-label">FOUNDATION TRACK</span>
+
+        <h1>أساسيات الكمبيوتر</h1>
+
+        <p>
+          تعلّم كيف يعمل الكمبيوتر من الداخل، وافهم مكوّناته وبرمجياته والبيانات والإنترنت وأنظمة التشغيل والأمن
+          السيبراني.
+        </p>
+
+        <div class="course-stats">
+          <div>
+            <strong>20</strong>
+            <span>درسًا</span>
+          </div>
+
+          <div>
+            <strong>20+</strong>
+            <span>اختبارًا</span>
+          </div>
+
+          <div>
+            <strong>1</strong>
+            <span>اختبار نهائي</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="learning-layout">
+      <!-- ================= SIDEBAR ================= -->
+
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div>
+            <span>مسار التعلم</span>
+            <h2>أساسيات الكمبيوتر</h2>
+          </div>
+
+          <i class="fa-solid fa-layer-group"></i>
+        </div>
+
+        <div class="progress-container">
+          <div class="progress-info">
+            <span>تقدمك</span>
+            <strong id="progress-text">0%</strong>
+          </div>
+
+          <div class="progress-bar">
+            <div id="progress-fill"></div>
+          </div>
+        </div>
+
+        <nav class="lesson-nav" id="lesson-nav">
+          <button class="lesson-item active" data-lesson="0">
+            <span class="lesson-number">01</span>
+            <span>ما هو الكمبيوتر؟</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="1">
+            <span class="lesson-number">02</span>
+            <span>كيف يعمل الكمبيوتر؟</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="2">
+            <span class="lesson-number">03</span>
+            <span>Hardware و Software</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="3">
+            <span class="lesson-number">04</span>
+            <span>المعالج CPU</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="4">
+            <span class="lesson-number">05</span>
+            <span>الذاكرة RAM</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="5">
+            <span class="lesson-number">06</span>
+            <span>التخزين Storage</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="6">
+            <span class="lesson-number">07</span>
+            <span>اللوحة الأم Motherboard</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="7">
+            <span class="lesson-number">08</span>
+            <span>بطاقة الرسوميات GPU</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="8">
+            <span class="lesson-number">09</span>
+            <span>أجهزة الإدخال والإخراج</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="9">
+            <span class="lesson-number">10</span>
+            <span>أنظمة التشغيل</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="10">
+            <span class="lesson-number">11</span>
+            <span>الملفات والمجلدات</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="11">
+            <span class="lesson-number">12</span>
+            <span>Binary و Data</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="12">
+            <span class="lesson-number">13</span>
+            <span>Bits و Bytes</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="13">
+            <span class="lesson-number">14</span>
+            <span>كيف يعمل البرنامج؟</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="14">
+            <span class="lesson-number">15</span>
+            <span>أساسيات الإنترنت والشبكات</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="15">
+            <span class="lesson-number">16</span>
+            <span>المتصفح والويب</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="16">
+            <span class="lesson-number">17</span>
+            <span>الأمن السيبراني</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="17">
+            <span class="lesson-number">18</span>
+            <span>تاريخ الكمبيوتر</span>
+          </button>
+
+          <button class="lesson-item" data-lesson="18">
+            <span class="lesson-number">19</span>
+            <span>الحوسبة الحديثة</span>
+          </button>
+
+          <button class="lesson-item final-item" data-lesson="19">
+            <span class="lesson-number">20</span>
+            <span>الاختبار النهائي</span>
+          </button>
+        </nav>
+      </aside>
+
+      <!-- ================= CONTENT ================= -->
+
+      <section class="lesson-area">
+        <div class="lesson-top">
+          <div>
+            <span class="lesson-counter" id="lesson-counter"> الدرس 1 من 20 </span>
+
+            <h2 id="lesson-title">ما هو الكمبيوتر؟</h2>
+          </div>
+
+          <div class="lesson-status" id="lesson-status">
+            <i class="fa-regular fa-circle"></i>
+            غير مكتمل
+          </div>
+        </div>
+
+        <article class="lesson-card">
+          <div class="lesson-icon" id="lesson-icon">
+            <i class="fa-solid fa-computer"></i>
+          </div>
+
+          <h2 id="content-title">ما هو الكمبيوتر؟</h2>
+
+          <div id="lesson-content"></div>
+
+          <!-- Key Concept -->
+
+          <div class="key-concept">
+            <div class="key-icon">
+              <i class="fa-solid fa-lightbulb"></i>
+            </div>
+
+            <div>
+              <strong>المفهوم الأساسي</strong>
+              <p id="key-concept-text">
+                الكمبيوتر جهاز إلكتروني يستقبل البيانات ويعالجها ويخزنها ثم ينتج معلومات يمكن للإنسان الاستفادة منها.
+              </p>
+            </div>
+          </div>
+
+          <!-- Knowledge Check -->
+
+          <section class="knowledge-check">
+            <div class="section-heading">
+              <div class="section-heading-icon">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+
+              <div>
+                <span>اختبر فهمك</span>
+                <h3>سؤال سريع</h3>
+              </div>
+            </div>
+
+            <p id="quiz-question"></p>
+
+            <div class="quiz-options" id="quiz-options"></div>
+
+            <div id="quiz-result" class="quiz-result" aria-live="polite"></div>
+          </section>
+
+          <!-- Practice -->
+
+          <section class="practice-box">
+            <div class="section-heading">
+              <div class="section-heading-icon">
+                <i class="fa-solid fa-flask"></i>
+              </div>
+
+              <div>
+                <span>تطبيق عملي</span>
+                <h3>جرّب بنفسك</h3>
+              </div>
+            </div>
+
+            <p id="practice-text"></p>
+          </section>
+
+          <!-- Completion -->
+
+          <div class="lesson-actions">
+            <button id="complete-btn" class="complete-btn">
+              <i class="fa-solid fa-check"></i>
+              إكمال الدرس
+            </button>
+          </div>
+        </article>
+
+        <!-- Navigation -->
+
+        <div class="lesson-navigation">
+          <button id="prev-btn" class="nav-btn">
+            <i class="fa-solid fa-arrow-right"></i>
+            الدرس السابق
+          </button>
+
+          <button id="next-btn" class="nav-btn primary">
+            الدرس التالي
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 FAYAD — منصة تعليمية لتعلّم البرمجة</p>
+
+      <p>Built by Abdullhamid Fayad</p>
+    </footer>
+
+    <script src="com.js"></script>
+  </body>
+</html>

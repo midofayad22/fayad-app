@@ -2,6 +2,7 @@
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
+    <script>if(/[?&]engine=legacy\b/.test(location.search))location.replace("/legacy/programming-basics/prg.html"+location.hash);</script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -148,114 +149,8 @@
 
         <!-- LESSON NAVIGATION -->
 
-        <nav class="lesson-nav" id="lesson-nav">
-          <button class="lesson-item active" data-lesson="1">
-            <span class="lesson-number">01</span>
-            <span>ما هي البرمجة؟</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="2">
-            <span class="lesson-number">02</span>
-            <span>كيف يعمل الكود؟</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="3">
-            <span class="lesson-number">03</span>
-            <span>التفكير البرمجي</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="4">
-            <span class="lesson-number">04</span>
-            <span>الخوارزميات</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="5">
-            <span class="lesson-number">05</span>
-            <span>لغات البرمجة</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="6">
-            <span class="lesson-number">06</span>
-            <span>Syntax</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="7">
-            <span class="lesson-number">07</span>
-            <span>المتغيرات</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="8">
-            <span class="lesson-number">08</span>
-            <span>أنواع البيانات</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="9">
-            <span class="lesson-number">09</span>
-            <span>Operators</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="10">
-            <span class="lesson-number">10</span>
-            <span>الشروط</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="11">
-            <span class="lesson-number">11</span>
-            <span>Loops</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="12">
-            <span class="lesson-number">12</span>
-            <span>Functions</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="13">
-            <span class="lesson-number">13</span>
-            <span>Parameters</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="14">
-            <span class="lesson-number">14</span>
-            <span>Scope</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="15">
-            <span class="lesson-number">15</span>
-            <span>Arrays</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="16">
-            <span class="lesson-number">16</span>
-            <span>Objects</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="17">
-            <span class="lesson-number">17</span>
-            <span>الأخطاء وتصحيحها</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="18">
-            <span class="lesson-number">18</span>
-            <span>حل المشكلات</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="19">
-            <span class="lesson-number">19</span>
-            <span>Git ومفاهيمه</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="20">
-            <span class="lesson-number">20</span>
-            <span>مراجعة شاملة</span>
-          </button>
-
-          <button class="lesson-item final-item" data-lesson="final">
-            <span class="lesson-number">
-              <i class="fa-solid fa-trophy"></i>
-            </span>
-
-            <span> الاختبار النهائي </span>
-          </button>
+        <nav class="lesson-nav" id="lesson-nav" aria-label="دروس المسار">
+          <!-- built from /content/prg/index.js by the shared lesson engine -->
         </nav>
       </aside>
 
@@ -505,6 +400,7 @@
       <p class="footer-credit">Built by Abdullhamid Fayad</p>
     </footer>
 
-    <script src="prg.js"></script>
+    <!-- Shared lesson engine: content in /content/prg/index.js, rollback: ?engine=legacy -->
+    <script type="module" src="/js/engine/boot.js" data-track="prg"></script>
   </body>
 </html>
