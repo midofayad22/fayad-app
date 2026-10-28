@@ -13,7 +13,7 @@ function checkText(errors, path, v, { optional = false } = {}) {
 export function validateTrack(track, lessons) {
   const errors = [];
   if (!isObj(track) || !nonEmpty(track.id)) return ["track.id missing"];
-  if (track.layout !== undefined && track.layout !== "foundation") errors.push(`track.layout invalid: ${track.layout}`);
+  if (track.layout !== undefined && !["foundation", "foundation-lite"].includes(track.layout)) errors.push(`track.layout invalid: ${track.layout}`);
   if (!["dom-js", "js", "html", "none"].includes(track.runtime)) errors.push(`track.runtime invalid: ${track.runtime}`);
   if (!Array.isArray(lessons) || !lessons.length) return [...errors, "lessons must be a non-empty array"];
 
@@ -39,6 +39,13 @@ export function validateTrack(track, lessons) {
       if (!isObj(l.example) || typeof l.example.code !== "string") errors.push(`${at}.example.code must be a string`);
       else checkText(errors, `${at}.example.explanation`, l.example.explanation, { optional: true });
     }
+    if (track.layout === "foundation-lite") {
+      for (const f of ["body", "key", "icon"]) if (l[f] === undefined) errors.push(`${at}.${f} is required by the foundation-lite layout`);
+      if (!isObj(l.practice) || !isObj(l.practice.prompt)) errors.push(`${at}.practice.prompt is required by the foundation-lite layout`);
+      else checkText(errors, `${at}.practice.prompt`, l.practice.prompt);
+      if (Array.isArray(l.quiz) && l.quiz.length !== 1) errors.push(`${at}.quiz must have exactly one question in the foundation-lite layout`);
+    }
+    if (l.isFinal !== undefined && typeof l.isFinal !== "boolean") errors.push(`${at}.isFinal must be a boolean`);
     if (track.layout === "foundation") {
       for (const f of ["heading", "level", "body", "key", "challenge", "icon"]) if (l[f] === undefined) errors.push(`${at}.${f} is required by the foundation layout`);
       if (!l.example || typeof l.example.code !== "string") errors.push(`${at}.example.code is required by the foundation layout`);

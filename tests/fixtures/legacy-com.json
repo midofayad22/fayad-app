@@ -1,0 +1,408 @@
+{
+ "lessons": [
+  {
+   "title": "ما هو الكمبيوتر؟",
+   "icon": "fa-computer",
+   "content": "\n                <section class=\"lesson-section\">\n                    <h3>تعريف الكمبيوتر</h3>\n\n                    <p>\n                        الكمبيوتر هو جهاز إلكتروني يستطيع استقبال البيانات\n                        ومعالجتها وفق مجموعة من التعليمات، ثم إنتاج نتائج\n                        يمكن للإنسان الاستفادة منها.\n                    </p>\n\n                    <p>\n                        هذه العملية يمكن تبسيطها إلى أربع مراحل أساسية:\n                        <span class=\"term\">Input</span> ثم\n                        <span class=\"term\">Processing</span> ثم\n                        <span class=\"term\">Output</span> وأخيرًا\n                        <span class=\"term\">Storage</span>.\n                    </p>\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>كيف نفكر في الكمبيوتر؟</h3>\n\n                    <div class=\"info-grid\">\n\n                        <div class=\"info-box\">\n                            <h4>Input</h4>\n                            <p>\n                                البيانات التي تدخل إلى الكمبيوتر، مثل الكتابة\n                                باستخدام لوحة المفاتيح أو النقر بالماوس.\n                            </p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Processing</h4>\n                            <p>\n                                معالجة البيانات وتنفيذ العمليات المطلوبة\n                                باستخدام مكونات الكمبيوتر.\n                            </p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Output</h4>\n                            <p>\n                                النتيجة التي يحصل عليها المستخدم، مثل ظهور\n                                صورة أو نص على الشاشة.\n                            </p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Storage</h4>\n                            <p>\n                                الاحتفاظ بالبيانات لاستخدامها في وقت لاحق.\n                            </p>\n                        </div>\n\n                    </div>\n\n                </section>\n            ",
+   "key": "الكمبيوتر لا يفكر مثل الإنسان؛ بل ينفذ تعليمات محددة على البيانات وفق ما تمت برمجته للقيام به.",
+   "practice": "انظر إلى هاتفك أو الكمبيوتر أمامك وحاول تحديد مثال واحد لكل من Input وProcessing وOutput وStorage.",
+   "question": "أي مرحلة يتم فيها تنفيذ العمليات على البيانات؟",
+   "answers": [
+    "Input",
+    "Processing",
+    "Output",
+    "Storage"
+   ],
+   "correct": 1
+  },
+  {
+   "title": "كيف يعمل الكمبيوتر؟",
+   "icon": "fa-gears",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>من الضغط على الزر إلى ظهور النتيجة</h3>\n\n                    <p>\n                        عندما تقوم بأي عملية على الكمبيوتر، تحدث سلسلة من\n                        العمليات الداخلية خلال وقت قصير جدًا.\n                    </p>\n\n                    <ul>\n                        <li>يدخل المستخدم البيانات.</li>\n                        <li>يتم نقل البيانات إلى الذاكرة.</li>\n                        <li>يقوم المعالج CPU بتنفيذ التعليمات.</li>\n                        <li>يتم إرسال النتيجة إلى أحد أجهزة الإخراج.</li>\n                    </ul>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>العلاقة بين المكونات</h3>\n\n                    <p>\n                        لا يعمل أي مكون من مكونات الكمبيوتر بمعزل عن بقية\n                        المكونات. فالمعالج يحتاج إلى الذاكرة، والبرامج تحتاج\n                        إلى نظام التشغيل، والبيانات تحتاج إلى وسيلة تخزين.\n                    </p>\n\n                </section>\n            ",
+   "key": "الكمبيوتر عبارة عن منظومة مترابطة؛ سرعة النظام وأداؤه يعتمدان على تعاون عدة مكونات وليس مكونًا واحدًا فقط.",
+   "practice": "افتح برنامجًا على جهازك ولاحظ ما يحدث: الضغط على الأيقونة، تحميل البرنامج، ثم ظهور واجهته.",
+   "question": "ما المكون المسؤول بشكل أساسي عن تنفيذ التعليمات؟",
+   "answers": [
+    "الشاشة",
+    "لوحة المفاتيح",
+    "CPU",
+    "السماعات"
+   ],
+   "correct": 2
+  },
+  {
+   "title": "Hardware و Software",
+   "icon": "fa-microchip",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>Hardware</h3>\n\n                    <p>\n                        يشير مصطلح <span class=\"term\">Hardware</span>\n                        إلى الأجزاء المادية التي يمكن لمسها ورؤيتها في\n                        الكمبيوتر، مثل CPU وRAM وMotherboard وSSD والشاشة.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>Software</h3>\n\n                    <p>\n                        يشير مصطلح <span class=\"term\">Software</span>\n                        إلى البرامج والتعليمات التي تخبر الـHardware بما\n                        يجب أن يفعله.\n                    </p>\n\n                    <div class=\"info-grid\">\n\n                        <div class=\"info-box\">\n                            <h4>Hardware</h4>\n                            <p>\n                                CPU، RAM، SSD، GPU، Keyboard، Monitor.\n                            </p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Software</h4>\n                            <p>\n                                Windows، Linux، Browsers، Applications.\n                            </p>\n                        </div>\n\n                    </div>\n\n                </section>\n            ",
+   "key": "Hardware هو الجزء المادي، بينما Software هو مجموعة البرامج والتعليمات التي تعمل على ذلك الجزء المادي.",
+   "practice": "حاول تصنيف العناصر التالية إلى Hardware أو Software: Windows، RAM، Chrome، CPU، Photoshop.",
+   "question": "أي مما يلي يعتبر Software؟",
+   "answers": [
+    "RAM",
+    "CPU",
+    "Windows",
+    "Motherboard"
+   ],
+   "correct": 2
+  },
+  {
+   "title": "المعالج CPU",
+   "icon": "fa-microchip",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>ما هو CPU؟</h3>\n\n                    <p>\n                        وحدة المعالجة المركزية\n                        <span class=\"term\">CPU — Central Processing Unit</span>\n                        هي أحد أهم مكونات الكمبيوتر، وتقوم بتنفيذ التعليمات\n                        والعمليات الحسابية والمنطقية.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>ما معنى Core؟</h3>\n\n                    <p>\n                        يحتوي المعالج الحديث عادةً على أكثر من\n                        <span class=\"term\">Core</span>.\n                        وكل Core يستطيع تنفيذ مجموعة من التعليمات، مما يسمح\n                        للمعالج بالتعامل مع عدة مهام بكفاءة أكبر.\n                    </p>\n\n                    <div class=\"info-grid\">\n\n                        <div class=\"info-box\">\n                            <h4>Clock Speed</h4>\n                            <p>\n                                سرعة تشغيل المعالج، وتقاس عادةً بالـGHz.\n                            </p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Cores</h4>\n                            <p>\n                                عدد وحدات المعالجة الموجودة داخل المعالج.\n                            </p>\n                        </div>\n\n                    </div>\n\n                </section>\n            ",
+   "key": "CPU هو المسؤول الرئيسي عن تنفيذ تعليمات البرامج ومعالجة العمليات الحسابية والمنطقية.",
+   "practice": "افتح Task Manager في Windows وابحث عن معلومات المعالج وعدد الـCores وسرعته.",
+   "question": "ماذا يعني CPU؟",
+   "answers": [
+    "Central Processing Unit",
+    "Computer Program Utility",
+    "Central Power Unit",
+    "Computer Processing User"
+   ],
+   "correct": 0
+  },
+  {
+   "title": "الذاكرة RAM",
+   "icon": "fa-memory",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>ما هي RAM؟</h3>\n\n                    <p>\n                        ذاكرة الوصول العشوائي\n                        <span class=\"term\">RAM — Random Access Memory</span>\n                        هي مساحة مؤقتة يستخدمها الكمبيوتر لتخزين البيانات\n                        والبرامج التي يتم استخدامها حاليًا.\n                    </p>\n\n                    <p>\n                        RAM تختلف عن Storage؛ فالـRAM أسرع بكثير، لكنها\n                        تفقد محتوياتها عند إيقاف تشغيل الجهاز.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>مثال بسيط</h3>\n\n                    <p>\n                        عندما تفتح المتصفح وتفتح عدة Tabs، يحتاج الكمبيوتر\n                        إلى استخدام RAM للاحتفاظ بالبيانات التي تحتاجها\n                        هذه البرامج أثناء عملها.\n                    </p>\n\n                </section>\n            ",
+   "key": "RAM ذاكرة مؤقتة وسريعة يستخدمها الكمبيوتر أثناء تشغيل البرامج.",
+   "practice": "راقب استهلاك RAM في Task Manager عند فتح عدة برامج ثم أغلقها ولاحظ الفرق.",
+   "question": "ماذا يحدث لمحتويات RAM عادةً عند إيقاف تشغيل الكمبيوتر؟",
+   "answers": [
+    "تبقى دائمًا",
+    "تنتقل إلى الشاشة",
+    "تُفقد",
+    "تتحول إلى CPU"
+   ],
+   "correct": 2
+  },
+  {
+   "title": "التخزين Storage",
+   "icon": "fa-hard-drive",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>ما هو Storage؟</h3>\n\n                    <p>\n                        التخزين هو المكان الذي يتم فيه الاحتفاظ بالبيانات\n                        والملفات لفترة طويلة، مثل الصور والفيديوهات\n                        والبرامج ونظام التشغيل.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>HDD مقابل SSD</h3>\n\n                    <div class=\"info-grid\">\n\n                        <div class=\"info-box\">\n                            <h4>HDD</h4>\n                            <p>\n                                يعتمد على أجزاء ميكانيكية متحركة، وعادةً يكون\n                                أقل سرعة من SSD.\n                            </p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>SSD</h4>\n                            <p>\n                                يعتمد على شرائح ذاكرة ولا يحتوي على أجزاء\n                                ميكانيكية متحركة، ولذلك يكون أسرع غالبًا.\n                            </p>\n                        </div>\n\n                    </div>\n\n                </section>\n            ",
+   "key": "Storage يحتفظ بالبيانات حتى بعد إيقاف تشغيل الجهاز، بعكس RAM.",
+   "practice": "تحقق من نوع وحدة التخزين الموجودة في جهازك: هل هي SSD أم HDD؟",
+   "question": "أي نوع من التخزين أسرع عادةً؟",
+   "answers": [
+    "SSD",
+    "HDD",
+    "كلاهما دائمًا بنفس السرعة",
+    "RAM"
+   ],
+   "correct": 0
+  },
+  {
+   "title": "اللوحة الأم Motherboard",
+   "icon": "fa-sitemap",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>ما هي Motherboard؟</h3>\n\n                    <p>\n                        اللوحة الأم هي اللوحة الرئيسية التي تربط مكونات\n                        الكمبيوتر المختلفة ببعضها، وتوفر مسارات الاتصال\n                        والطاقة اللازمة للتواصل بين هذه المكونات.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>ماذا يتصل بها؟</h3>\n\n                    <ul>\n                        <li>CPU</li>\n                        <li>RAM</li>\n                        <li>GPU</li>\n                        <li>Storage</li>\n                        <li>أجهزة الإدخال والإخراج</li>\n                    </ul>\n\n                </section>\n            ",
+   "key": "Motherboard هي نقطة الاتصال الأساسية بين معظم مكونات الكمبيوتر.",
+   "practice": "ابحث عن صورة للوحة أم حديثة وحاول تحديد مكان CPU وRAM وGPU وStorage.",
+   "question": "ما الدور الأساسي للـMotherboard؟",
+   "answers": [
+    "عرض الصور فقط",
+    "ربط مكونات الكمبيوتر",
+    "تخزين الملفات فقط",
+    "تشغيل الصوت فقط"
+   ],
+   "correct": 1
+  },
+  {
+   "title": "بطاقة الرسوميات GPU",
+   "icon": "fa-display",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>ما هو GPU؟</h3>\n\n                    <p>\n                        وحدة معالجة الرسوميات\n                        <span class=\"term\">GPU — Graphics Processing Unit</span>\n                        متخصصة في تنفيذ العمليات المتعلقة بالرسوميات\n                        والصور والفيديو وبعض العمليات المتوازية.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>أين نحتاج GPU بشكل كبير؟</h3>\n\n                    <ul>\n                        <li>الألعاب</li>\n                        <li>3D Graphics</li>\n                        <li>تحرير الفيديو</li>\n                        <li>التعلم الآلي والذكاء الاصطناعي في بعض المهام</li>\n                    </ul>\n\n                </section>\n            ",
+   "key": "GPU متخصص في معالجة الرسوميات والعمليات المتوازية، وليس مجرد نسخة ثانية من CPU.",
+   "practice": "ابحث عن مواصفات جهازك لمعرفة اسم الـGPU الموجود فيه.",
+   "question": "ما المجال الذي يرتبط بشكل مباشر بالـGPU؟",
+   "answers": [
+    "الرسوميات",
+    "الطباعة الورقية فقط",
+    "إدارة الملفات فقط",
+    "لوحة المفاتيح"
+   ],
+   "correct": 0
+  },
+  {
+   "title": "أجهزة الإدخال والإخراج",
+   "icon": "fa-keyboard",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>Input Devices</h3>\n\n                    <p>\n                        هي الأجهزة التي تسمح للمستخدم بإدخال البيانات إلى\n                        الكمبيوتر.\n                    </p>\n\n                    <p>\n                        أمثلة: Keyboard، Mouse، Microphone، Camera.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>Output Devices</h3>\n\n                    <p>\n                        هي الأجهزة التي يستخدمها الكمبيوتر لإظهار النتائج\n                        للمستخدم.\n                    </p>\n\n                    <p>\n                        أمثلة: Monitor، Speakers، Printer.\n                    </p>\n\n                </section>\n            ",
+   "key": "Input يدخل البيانات إلى النظام، بينما Output يعرض النتائج الناتجة عن المعالجة.",
+   "practice": "صنف Mouse وMonitor وKeyboard وSpeaker إلى Input أو Output.",
+   "question": "أي جهاز يعتبر Input Device؟",
+   "answers": [
+    "Monitor",
+    "Speaker",
+    "Keyboard",
+    "Projector"
+   ],
+   "correct": 2
+  },
+  {
+   "title": "أنظمة التشغيل",
+   "icon": "fa-window-maximize",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>ما هو Operating System؟</h3>\n\n                    <p>\n                        نظام التشغيل\n                        <span class=\"term\">Operating System</span>\n                        هو البرنامج الأساسي الذي يدير موارد الكمبيوتر\n                        ويسمح للتطبيقات والمستخدم بالتعامل مع Hardware.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>أمثلة</h3>\n\n                    <div class=\"info-grid\">\n\n                        <div class=\"info-box\">\n                            <h4>Windows</h4>\n                            <p>نظام تشغيل شائع لأجهزة الكمبيوتر الشخصية.</p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Linux</h4>\n                            <p>عائلة من أنظمة التشغيل مفتوحة المصدر.</p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>macOS</h4>\n                            <p>نظام تشغيل لأجهزة Mac.</p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Android</h4>\n                            <p>نظام تشغيل شائع للأجهزة المحمولة.</p>\n                        </div>\n\n                    </div>\n\n                </section>\n            ",
+   "key": "Operating System يعمل كوسيط بين المستخدم والتطبيقات من جهة وHardware من جهة أخرى.",
+   "practice": "حدد نظام التشغيل الذي تستخدمه الآن، ثم ابحث عن إصدار النظام.",
+   "question": "ما الوظيفة الأساسية لنظام التشغيل؟",
+   "answers": [
+    "إدارة موارد الجهاز",
+    "زيادة حجم الشاشة",
+    "استبدال CPU",
+    "صنع الإنترنت"
+   ],
+   "correct": 0
+  },
+  {
+   "title": "الملفات والمجلدات",
+   "icon": "fa-folder-open",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>ما هو File؟</h3>\n\n                    <p>\n                        الملف هو وحدة لتخزين نوع معين من البيانات، مثل صورة\n                        أو فيديو أو مستند أو برنامج.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>ما هو Folder؟</h3>\n\n                    <p>\n                        المجلد يستخدم لتنظيم الملفات والمجلدات الأخرى في\n                        هيكل يسهل الوصول إليه وإدارته.\n                    </p>\n\n                    <p>\n                        ستتعامل مع مفاهيم مثل\n                        <span class=\"term\">File Extension</span> و\n                        <span class=\"term\">Path</span> و\n                        <span class=\"term\">Directory</span>.\n                    </p>\n\n                </section>\n            ",
+   "key": "تنظيم الملفات والمجلدات مهارة أساسية لأي شخص يعمل مع الكمبيوتر.",
+   "practice": "أنشئ مجلدًا باسم FAYAD ثم أنشئ داخله مجلدات باسم HTML وCSS وJavaScript.",
+   "question": "ما الهدف الأساسي من Folder؟",
+   "answers": [
+    "تبريد CPU",
+    "تنظيم الملفات",
+    "زيادة RAM",
+    "عرض الصور"
+   ],
+   "correct": 1
+  },
+  {
+   "title": "Binary و Data",
+   "icon": "fa-code",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>لماذا يستخدم الكمبيوتر Binary؟</h3>\n\n                    <p>\n                        الأجهزة الإلكترونية الرقمية تعمل باستخدام حالات\n                        كهربائية يمكن تمثيلها بصورة مبسطة باستخدام\n                        0 و1.\n                    </p>\n\n                    <p>\n                        لذلك يتم تمثيل أنواع مختلفة من البيانات، مثل النصوص\n                        والصور والصوت، بطريقة رقمية يمكن للكمبيوتر معالجتها.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>0 و1</h3>\n\n                    <p>\n                        الرقم 0 والرقم 1 هما الرمزان الأساسيان في النظام\n                        الثنائي <span class=\"term\">Binary</span>.\n                    </p>\n\n                </section>\n            ",
+   "key": "الكمبيوتر الرقمي يمثل البيانات بطريقة ثنائية تعتمد على 0 و1.",
+   "practice": "تعلم تمثيل الأرقام الصغيرة بالنظام الثنائي، مثل 1 و2 و4 و8.",
+   "question": "ما الرموز الأساسية في Binary؟",
+   "answers": [
+    "0 و1",
+    "1 و2",
+    "A وB",
+    "0 و9"
+   ],
+   "correct": 0
+  },
+  {
+   "title": "Bits و Bytes",
+   "icon": "fa-database",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>Bit</h3>\n\n                    <p>\n                        الـ<span class=\"term\">Bit</span> هو أصغر وحدة أساسية\n                        لتمثيل البيانات الرقمية، ويمكن أن تكون قيمته\n                        0 أو 1.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>Byte</h3>\n\n                    <p>\n                        الـ<span class=\"term\">Byte</span> يساوي 8 Bits.\n                    </p>\n\n                    <p>\n                        ومن وحدات قياس البيانات أيضًا:\n                        KB، MB، GB، TB.\n                    </p>\n\n                </section>\n            ",
+   "key": "Byte واحد يتكون من 8 Bits.",
+   "practice": "حاول ترتيب KB وMB وGB وTB من الأصغر إلى الأكبر.",
+   "question": "كم Bit يوجد في Byte واحد؟",
+   "answers": [
+    "2",
+    "4",
+    "8",
+    "16"
+   ],
+   "correct": 2
+  },
+  {
+   "title": "كيف يعمل البرنامج؟",
+   "icon": "fa-terminal",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>من الكود إلى التنفيذ</h3>\n\n                    <p>\n                        البرنامج عبارة عن مجموعة من التعليمات التي تمت\n                        كتابتها لكي ينفذ الكمبيوتر مهمة معينة.\n                    </p>\n\n                    <p>\n                        عند تشغيل البرنامج، يقوم النظام بتحميل الأجزاء\n                        المطلوبة إلى الذاكرة ثم يبدأ CPU في تنفيذ التعليمات.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>لماذا نحتاج Programming Languages؟</h3>\n\n                    <p>\n                        الإنسان يحتاج إلى طريقة منظمة لكتابة التعليمات.\n                        لذلك توجد لغات برمجة مثل C وC++ وPython وJavaScript.\n                    </p>\n\n                </section>\n            ",
+   "key": "البرنامج هو تعليمات منظمة، ويقوم الكمبيوتر بتنفيذها خطوة بخطوة باستخدام المعالج.",
+   "practice": "افتح أي ملف JavaScript بسيط وحاول تحديد أين توجد التعليمات التي ينفذها الكمبيوتر.",
+   "question": "ما الذي يحتويه البرنامج؟",
+   "answers": [
+    "تعليمات",
+    "كهرباء فقط",
+    "صور فقط",
+    "مراوح"
+   ],
+   "correct": 0
+  },
+  {
+   "title": "أساسيات الإنترنت والشبكات",
+   "icon": "fa-network-wired",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>ما هي الشبكة؟</h3>\n\n                    <p>\n                        الشبكة <span class=\"term\">Network</span> هي مجموعة\n                        من الأجهزة المتصلة ببعضها بهدف تبادل البيانات\n                        والموارد.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>الإنترنت</h3>\n\n                    <p>\n                        الإنترنت شبكة عالمية ضخمة تربط عددًا هائلًا من\n                        الشبكات والأجهزة حول العالم.\n                    </p>\n\n                    <p>\n                        عند إرسال طلب إلى موقع ويب، تنتقل البيانات بين\n                        أجهزة وشبكات متعددة حتى تصل إلى الخادم المطلوب.\n                    </p>\n\n                </section>\n            ",
+   "key": "الإنترنت ليس جهازًا واحدًا؛ بل شبكة عالمية من الشبكات والأجهزة المتصلة ببعضها.",
+   "practice": "ابحث عن الفرق بين Local Network وInternet وحاول شرحه بكلماتك.",
+   "question": "ما الإنترنت؟",
+   "answers": [
+    "جهاز كمبيوتر واحد",
+    "شبكة عالمية من الشبكات",
+    "برنامج للرسم",
+    "نوع من وحدات التخزين"
+   ],
+   "correct": 1
+  },
+  {
+   "title": "المتصفح والويب",
+   "icon": "fa-globe",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>Browser</h3>\n\n                    <p>\n                        المتصفح <span class=\"term\">Web Browser</span>\n                        هو برنامج يسمح لك بالوصول إلى صفحات الويب والتفاعل\n                        معها.\n                    </p>\n\n                    <p>\n                        من أمثلته Chrome وFirefox وEdge وSafari.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>Website وWeb Page</h3>\n\n                    <p>\n                        موقع الويب قد يحتوي على عدد كبير من صفحات الويب.\n                        وتُبنى صفحات الويب غالبًا باستخدام HTML وCSS\n                        وJavaScript.\n                    </p>\n\n                </section>\n            ",
+   "key": "المتصفح هو البرنامج الذي يستخدمه المستخدم لعرض والتفاعل مع محتوى الويب.",
+   "practice": "افتح DevTools في المتصفح وشاهد HTML وCSS الخاصين بصفحة بسيطة.",
+   "question": "أي مما يلي يعتبر Web Browser؟",
+   "answers": [
+    "Chrome",
+    "RAM",
+    "CPU",
+    "SSD"
+   ],
+   "correct": 0
+  },
+  {
+   "title": "الأمن السيبراني",
+   "icon": "fa-shield-halved",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>ما هو Cybersecurity؟</h3>\n\n                    <p>\n                        الأمن السيبراني هو مجموعة من الممارسات والتقنيات\n                        التي تهدف إلى حماية الأجهزة والأنظمة والشبكات\n                        والبيانات من الوصول غير المصرح به والهجمات.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>عادات أساسية</h3>\n\n                    <ul>\n                        <li>استخدم كلمات مرور قوية وفريدة.</li>\n                        <li>فعّل المصادقة متعددة العوامل عند توفرها.</li>\n                        <li>لا تفتح الروابط والملفات المشبوهة.</li>\n                        <li>حدّث نظام التشغيل والبرامج باستمرار.</li>\n                        <li>لا تشارك معلوماتك الحساسة مع الآخرين.</li>\n                    </ul>\n\n                </section>\n            ",
+   "key": "الأمن السيبراني ليس مسؤولية الشركات فقط؛ بل يبدأ من عادات المستخدم اليومية.",
+   "practice": "راجع حساباتك المهمة وتأكد من استخدام كلمات مرور مختلفة وتفعيل المصادقة متعددة العوامل.",
+   "question": "أي ممارسة تزيد من أمان حساباتك؟",
+   "answers": [
+    "استخدام كلمة المرور نفسها في كل المواقع",
+    "مشاركة كلمة المرور",
+    "تفعيل MFA",
+    "فتح أي رابط مجهول"
+   ],
+   "correct": 2
+  },
+  {
+   "title": "تاريخ الكمبيوتر",
+   "icon": "fa-timeline",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>من الآلات الميكانيكية إلى الحواسيب الحديثة</h3>\n\n                    <p>\n                        مر تطور الكمبيوتر بمراحل طويلة بدأت بآلات حسابية\n                        ميكانيكية، ثم ظهرت الحواسيب الإلكترونية الضخمة.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>أجيال الكمبيوتر</h3>\n\n                    <ul>\n                        <li>\n                            الجيل الأول: Vacuum Tubes\n                        </li>\n\n                        <li>\n                            الجيل الثاني: Transistors\n                        </li>\n\n                        <li>\n                            الجيل الثالث: Integrated Circuits\n                        </li>\n\n                        <li>\n                            الأجيال الحديثة: Microprocessors والحوسبة\n                            المتقدمة والذكاء الاصطناعي\n                        </li>\n                    </ul>\n\n                </section>\n            ",
+   "key": "تطور الكمبيوتر ارتبط بتطور تقنيات المعالجة والذاكرة والتخزين والاتصال.",
+   "practice": "رتب Vacuum Tubes وTransistors وIntegrated Circuits وMicroprocessors زمنيًا.",
+   "question": "ما التقنية المرتبطة بالجيل الأول من الحواسيب؟",
+   "answers": [
+    "Transistors",
+    "Vacuum Tubes",
+    "Microprocessors",
+    "Cloud Computing"
+   ],
+   "correct": 1
+  },
+  {
+   "title": "الحوسبة الحديثة",
+   "icon": "fa-cloud",
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>كيف أصبحت الحوسبة اليوم؟</h3>\n\n                    <p>\n                        لم تعد الحوسبة مقتصرة على أجهزة الكمبيوتر الشخصية.\n                        اليوم توجد الهواتف الذكية والخوادم وCloud Computing\n                        ومراكز البيانات والأجهزة الذكية.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>تقنيات مهمة</h3>\n\n                    <div class=\"info-grid\">\n\n                        <div class=\"info-box\">\n                            <h4>Cloud Computing</h4>\n                            <p>\n                                استخدام موارد حوسبية عبر الإنترنت بدل الاعتماد\n                                على جهاز محلي فقط.\n                            </p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>AI</h4>\n                            <p>\n                                تقنيات تسمح للأنظمة بتنفيذ مهام تحتاج عادةً\n                                إلى قدر من الذكاء البشري.\n                            </p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>IoT</h4>\n                            <p>\n                                ربط الأجهزة المادية بالإنترنت لتبادل البيانات.\n                            </p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Data Centers</h4>\n                            <p>\n                                منشآت تحتوي على عدد كبير من الخوادم والبنية\n                                التحتية الحاسوبية.\n                            </p>\n                        </div>\n\n                    </div>\n\n                </section>\n            ",
+   "key": "الحوسبة الحديثة تعتمد على منظومة ضخمة من الأجهزة والشبكات والخدمات السحابية والبيانات.",
+   "practice": "فكر في التطبيقات التي تستخدمها يوميًا وحدد أيها يعتمد على Cloud Computing.",
+   "question": "أي مفهوم يشير إلى استخدام موارد حوسبية عبر الإنترنت؟",
+   "answers": [
+    "Cloud Computing",
+    "Keyboard",
+    "RAM",
+    "BIOS"
+   ],
+   "correct": 0
+  },
+  {
+   "title": "الاختبار النهائي",
+   "icon": "fa-graduation-cap",
+   "final": true,
+   "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>أحسنت! وصلت إلى الاختبار النهائي.</h3>\n\n                    <p>\n                        قبل الانتقال إلى مسار البرمجة، يجب أن تكون قادرًا\n                        على فهم المكونات الأساسية للكمبيوتر وطريقة عمل\n                        البرامج والبيانات والإنترنت.\n                    </p>\n\n                    <p>\n                        هذا الاختبار يجمع أهم المفاهيم التي تعلمتها في\n                        المسار.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <div class=\"info-grid\">\n\n                        <div class=\"info-box\">\n                            <h4>Hardware</h4>\n                            <p>المكونات المادية.</p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Software</h4>\n                            <p>البرامج والتعليمات.</p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>CPU</h4>\n                            <p>تنفيذ التعليمات.</p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>RAM</h4>\n                            <p>ذاكرة مؤقتة سريعة.</p>\n                        </div>\n\n                    </div>\n\n                </section>\n            ",
+   "key": "فهم أساسيات الكمبيوتر سيجعل تعلم البرمجة والويب أسهل بكثير.",
+   "practice": "راجع الدروس السابقة قبل محاولة الاختبار النهائي.",
+   "question": "أي مكون مسؤول بشكل أساسي عن تنفيذ تعليمات البرامج؟",
+   "answers": [
+    "CPU",
+    "Monitor",
+    "Keyboard",
+    "SSD"
+   ],
+   "correct": 0
+  }
+ ],
+ "sidebar": [
+  {
+   "n": 0,
+   "name": "ما هو الكمبيوتر؟",
+   "final": false
+  },
+  {
+   "n": 1,
+   "name": "كيف يعمل الكمبيوتر؟",
+   "final": false
+  },
+  {
+   "n": 2,
+   "name": "Hardware و Software",
+   "final": false
+  },
+  {
+   "n": 3,
+   "name": "المعالج CPU",
+   "final": false
+  },
+  {
+   "n": 4,
+   "name": "الذاكرة RAM",
+   "final": false
+  },
+  {
+   "n": 5,
+   "name": "التخزين Storage",
+   "final": false
+  },
+  {
+   "n": 6,
+   "name": "اللوحة الأم Motherboard",
+   "final": false
+  },
+  {
+   "n": 7,
+   "name": "بطاقة الرسوميات GPU",
+   "final": false
+  },
+  {
+   "n": 8,
+   "name": "أجهزة الإدخال والإخراج",
+   "final": false
+  },
+  {
+   "n": 9,
+   "name": "أنظمة التشغيل",
+   "final": false
+  },
+  {
+   "n": 10,
+   "name": "الملفات والمجلدات",
+   "final": false
+  },
+  {
+   "n": 11,
+   "name": "Binary و Data",
+   "final": false
+  },
+  {
+   "n": 12,
+   "name": "Bits و Bytes",
+   "final": false
+  },
+  {
+   "n": 13,
+   "name": "كيف يعمل البرنامج؟",
+   "final": false
+  },
+  {
+   "n": 14,
+   "name": "أساسيات الإنترنت والشبكات",
+   "final": false
+  },
+  {
+   "n": 15,
+   "name": "المتصفح والويب",
+   "final": false
+  },
+  {
+   "n": 16,
+   "name": "الأمن السيبراني",
+   "final": false
+  },
+  {
+   "n": 17,
+   "name": "تاريخ الكمبيوتر",
+   "final": false
+  },
+  {
+   "n": 18,
+   "name": "الحوسبة الحديثة",
+   "final": false
+  },
+  {
+   "n": 19,
+   "name": "الاختبار النهائي",
+   "final": true
+  }
+ ],
+ "sidebarHeading": "أساسيات الكمبيوتر"
+}

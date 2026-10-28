@@ -12,6 +12,16 @@
 import { t, orderedIds } from "./schema.js";
 import { create as createRunner } from "../playground/playground.js";
 
+// Two page profiles share this view: "foundation" (Programming Fundamentals: example, editor, final assessment) and
+// "foundation-lite" (Computer Basics: reading + one quiz question + practice text). Strings are kept exactly as each
+// legacy page showed them (Arabic only; the shared UI-string dictionary replaces them in the localisation milestone).
+const LITE = {
+  lessonOf: (n, total) => `الدرس ${n} من ${total}`,
+  completed: '<i class="fa-solid fa-circle-check"></i> مكتمل', notCompleted: '<i class="fa-regular fa-circle"></i> غير مكتمل',
+  completeBtn: '<i class="fa-solid fa-check"></i> إكمال الدرس', completedBtn: '<i class="fa-solid fa-check"></i> تم إكمال الدرس',
+  next: 'الدرس التالي <i class="fa-solid fa-arrow-left"></i>', end: 'تم الوصول للنهاية <i class="fa-solid fa-flag-checkered"></i>',
+  correct: "إجابة صحيحة! أحسنت، لقد فهمت المفهوم.", wrong: (answer) => `إجابة غير صحيحة. الإجابة الصحيحة هي: ${answer}`,
+};
 const UI = {
   lessonOf: (n, total) => `الدرس ${String(n).padStart(2, "0")} من ${total}`,
   completed: "✓ مكتمل", notCompleted: "غير مكتمل",
@@ -42,10 +52,18 @@ export function mountFoundation({ doc = document, track, lessons, progress, lang
   const byId = new Map(lessons.map((l) => [l.id, l]));
   const total = order.length;
   const assessment = track.assessment;
-  const el = Object.fromEntries(["lesson-nav", "lesson-counter", "lesson-title", "lesson-heading", "lesson-content", "lesson-icon", "lesson-level",
-    "lesson-status", "key-description", "example-code", "quiz-question", "quiz-options", "quiz-result", "challenge-text", "complete-btn", "prev-btn",
-    "next-btn", "progress-fill", "progress-percent", "progress-text", "copy-example", "code-editor", "run-code-btn", "reset-code-btn", "console-output",
-    "final-quiz-modal", "close-final-quiz", "final-question-area", "final-progress-fill", "final-next-btn", "playground-section"].map((id) => [id, $(id)]));
+  const lite = track.layout === "foundation-lite";
+  const IDS = lite
+    ? ["lesson-nav", "lesson-counter", "lesson-title", "content-title", "lesson-icon", "lesson-content", "key-concept-text", "practice-text", "quiz-question",
+      "quiz-options", "quiz-result", "lesson-status", "complete-btn", "prev-btn", "next-btn", "progress-fill", "progress-text"]
+    : ["lesson-nav", "lesson-counter", "lesson-title", "lesson-heading", "lesson-content", "lesson-icon", "lesson-level",
+      "lesson-status", "key-description", "example-code", "quiz-question", "quiz-options", "quiz-result", "challenge-text", "complete-btn", "prev-btn",
+      "next-btn", "progress-fill", "progress-percent", "progress-text", "copy-example", "code-editor", "run-code-btn", "reset-code-btn", "console-output",
+      "final-quiz-modal", "close-final-quiz", "final-question-area", "final-progress-fill", "final-next-btn", "playground-section"];
+  const el = Object.fromEntries(IDS.map((id) => [id, $(id)]));
+  const missing = IDS.filter((id) => !el[id]);
+  if (missing.length) throw new Error("page markup lacks: " + missing.join(", "));
+  const L = lite ? LITE : UI;
 
   let current = order[0];
   let starter = "";
@@ -62,7 +80,7 @@ export function mountFoundation({ doc = document, track, lessons, progress, lang
     order.forEach((id, i) => {
       const l = byId.get(id);
       const b = doc.createElement("button");
-      b.type = "button"; b.className = "lesson-item"; b.dataset.lesson = String(i + 1);
+      b.type = "button"; b.className = l.isFinal ? "lesson-item final-item" : "lesson-item"; b.dataset.lesson = String(i + 1);
       const num = doc.createElement("span"); num.className = "lesson-number"; num.textContent = pad2(i + 1);
       const name = doc.createElement("span"); name.textContent = t(l.navTitle || l.title, lang);
       b.append(num, name);
@@ -98,15 +116,16 @@ export function mountFoundation({ doc = document, track, lessons, progress, lang
     const done = order.filter(isDone).length;
     const percent = Math.round((done / total) * 100);
     el["progress-fill"].style.width = `${percent}%`;
+    if (lite) { el["progress-text"].textContent = `${percent}%`; return; }
     el["progress-percent"].textContent = `${percent}%`;
     el["progress-text"].textContent = percent === 0 ? UI.notStarted : percent < 50 ? UI.some(done, total) : percent < 100 ? UI.most(total - done) : UI.all;
   }
 
   function paintStatus() {
     const done = isDone(current);
-    el["lesson-status"].textContent = done ? UI.completed : UI.notCompleted;
+    if (lite) el["lesson-status"].innerHTML = done ? L.completed : L.notCompleted; else el["lesson-status"].textContent = done ? UI.completed : UI.notCompleted;
     el["lesson-status"].classList.toggle("completed", done);
-    el["complete-btn"].innerHTML = done ? UI.completedBtn : UI.completeBtn;
+    el["complete-btn"].innerHTML = done ? L.completedBtn : L.completeBtn;
     el["complete-btn"].classList.toggle("completed", done);
   }
 
@@ -114,7 +133,7 @@ export function mountFoundation({ doc = document, track, lessons, progress, lang
     const i = numberOf(current);
     el["prev-btn"].disabled = i <= 1;
     el["next-btn"].disabled = false;
-    el["next-btn"].innerHTML = i >= total ? UI.toFinal : UI.next;
+    el["next-btn"].innerHTML = i >= total ? (assessment ? UI.toFinal : L.end) : L.next;
     if (i >= total && !assessment) el["next-btn"].disabled = true;
   }
 
@@ -135,9 +154,10 @@ export function mountFoundation({ doc = document, track, lessons, progress, lang
         answered = true;
         const ok = i === q.correct;
         try { progress.recordAnswer(track.id, l.id, 0, ok); } catch { /* storage problems never block the lesson */ }
-        if (ok) { b.classList.add("correct"); el["quiz-result"].textContent = UI.correct; el["quiz-result"].classList.add("success"); }
+        if (lite) el["quiz-options"].querySelectorAll(".quiz-btn").forEach((x) => { x.disabled = true; });
+        if (ok) { b.classList.add("correct"); el["quiz-result"].textContent = lite ? LITE.correct : UI.correct; el["quiz-result"].classList.add("success"); }
         else {
-          b.classList.add("wrong"); el["quiz-result"].textContent = UI.wrong; el["quiz-result"].classList.add("error");
+          b.classList.add("wrong"); el["quiz-result"].textContent = lite ? LITE.wrong(t(q.options[q.correct], lang)) : UI.wrong; el["quiz-result"].classList.add("error");
           el["quiz-options"].children[q.correct]?.classList.add("correct");
         }
       });
@@ -162,16 +182,24 @@ export function mountFoundation({ doc = document, track, lessons, progress, lang
   function render(scroll) {
     const l = byId.get(current);
     runId += 1; if (runner) { runner.destroy(); runner = null; } // a pending run from the previous lesson must not report here
-    el["lesson-counter"].textContent = UI.lessonOf(numberOf(current), total);
+    el["lesson-counter"].textContent = L.lessonOf(numberOf(current), total);
     el["lesson-title"].textContent = t(l.title, lang);
-    el["lesson-heading"].textContent = t(l.heading, lang);
-    el["lesson-icon"].className = `fa-solid ${l.icon}`;
-    el["lesson-level"].textContent = t(l.level, lang);
     el["lesson-content"].innerHTML = t(l.body, lang); // authored, trusted content
-    el["key-description"].textContent = t(l.key, lang);
-    el["example-code"].textContent = l.example.code;
-    el["challenge-text"].textContent = t(l.challenge, lang);
-    renderQuiz(l); loadEditor(l.example.code);
+    if (lite) {
+      el["content-title"].textContent = t(l.title, lang);
+      el["lesson-icon"].innerHTML = `<i class="fa-solid ${l.icon}"></i>`;
+      el["key-concept-text"].textContent = t(l.key, lang);
+      el["practice-text"].textContent = t(l.practice.prompt, lang);
+      renderQuiz(l);
+    } else {
+      el["lesson-heading"].textContent = t(l.heading, lang);
+      el["lesson-icon"].className = `fa-solid ${l.icon}`;
+      el["lesson-level"].textContent = t(l.level, lang);
+      el["key-description"].textContent = t(l.key, lang);
+      el["example-code"].textContent = l.example.code;
+      el["challenge-text"].textContent = t(l.challenge, lang);
+      renderQuiz(l); loadEditor(l.example.code);
+    }
     paintStatus(); paintNav(); paintSidebar(); paintProgress();
     setHash(`#lesson-${numberOf(current)}`);
     if (scroll) win.scrollTo({ top: 0, behavior: "smooth" });
@@ -188,7 +216,7 @@ export function mountFoundation({ doc = document, track, lessons, progress, lang
   function completeLesson() {
     try { progress.markCompleted(track.id, current); } catch { /* ignore */ }
     paintProgress(); paintStatus(); paintSidebar();
-    setTimeout(() => { if (numberOf(current) < total) el["next-btn"].focus(); }, 300);
+    if (!lite) setTimeout(() => { if (numberOf(current) < total) el["next-btn"].focus(); }, 300);
   }
 
   // ---------- sandboxed execution ----------
@@ -224,7 +252,7 @@ export function mountFoundation({ doc = document, track, lessons, progress, lang
   }
 
   // ---------- final assessment ----------
-  const modal = el["final-quiz-modal"];
+  const modal = el["final-quiz-modal"] || null; // only the full profile has the assessment dialog
 
   function openFinal(from) {
     if (!assessment) return;
@@ -311,13 +339,15 @@ export function mountFoundation({ doc = document, track, lessons, progress, lang
     el["prev-btn"].addEventListener("click", () => { const i = numberOf(current); if (i > 1) go(order[i - 2]); });
     el["next-btn"].addEventListener("click", () => { const i = numberOf(current); if (i < total) go(order[i]); else { setHash("#final"); openFinal(el["next-btn"]); } });
     el["complete-btn"].addEventListener("click", completeLesson);
-    el["run-code-btn"].addEventListener("click", run);
-    el["reset-code-btn"].addEventListener("click", () => { el["code-editor"].value = starter; runId += 1; if (runner) { runner.destroy(); runner = null; } setConsole(null, UI.resetDone, true); });
-    el["copy-example"].addEventListener("click", copyExample);
-    el["close-final-quiz"].addEventListener("click", closeFinal);
-    el["final-next-btn"].addEventListener("click", nextFinal);
-    modal.querySelector(".modal-overlay")?.addEventListener("click", closeFinal);
-    doc.addEventListener("keydown", (e) => { if (e.key === "Escape" && !modal.classList.contains("hidden")) closeFinal(); });
+    if (!lite) {
+      el["run-code-btn"].addEventListener("click", run);
+      el["reset-code-btn"].addEventListener("click", () => { el["code-editor"].value = starter; runId += 1; if (runner) { runner.destroy(); runner = null; } setConsole(null, UI.resetDone, true); });
+      el["copy-example"].addEventListener("click", copyExample);
+      el["close-final-quiz"].addEventListener("click", closeFinal);
+      el["final-next-btn"].addEventListener("click", nextFinal);
+      modal.querySelector(".modal-overlay")?.addEventListener("click", closeFinal);
+      doc.addEventListener("keydown", (e) => { if (e.key === "Escape" && !modal.classList.contains("hidden")) closeFinal(); });
+    }
     win.addEventListener("hashchange", () => { const h = fromHash(); if (h === "final") openFinal(); else if (h && h !== current) go(h, false); });
     const h = fromHash();
     const resume = progress.current(track.id);

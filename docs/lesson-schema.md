@@ -35,3 +35,6 @@ quiz does not gate completion, completion is the manual button.
 
 `track.assessment` (optional, any layout): `{ id, title: {ar}, passPercent: 1-100, questions: [ {question, options, correct} ] }`.
 Passing it completes every lesson of the track (the legacy rule). `track.runtime: "js"` runs learner code in the Worker runtime; `format: "json"` console formatting is requested by the view.
+
+`track.layout: "foundation-lite"` (Computer Basics) uses the same view with the lighter page: required lesson fields `body`, `key`, `icon`,
+`practice.prompt`, exactly one quiz question; optional `isFinal: true` marks the lesson shown with the final-test style. No editor, example or assessment.

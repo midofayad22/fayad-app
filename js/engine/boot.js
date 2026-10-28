@@ -21,7 +21,7 @@ async function main() {
     if (problems.length) throw new Error("invalid course content: " + problems.slice(0, 3).join("; "));
     const progress = createProgress({ totals: { ...OTHER_TOTALS, [id]: lessons.length } });
     let state = null, view;
-    if (track.layout === "foundation") {
+    if (track.layout === "foundation" || track.layout === "foundation-lite") {
       const { mountFoundation } = await import("./foundation-view.js");
       view = mountFoundation({ track, lessons, progress, lang: "ar" });
     } else {

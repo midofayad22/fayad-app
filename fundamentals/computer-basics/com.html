@@ -2,6 +2,7 @@
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
+    <script>if(/[?&]engine=legacy\b/.test(location.search))location.replace("/legacy/computer-basics/com.html"+location.hash);</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Preferences: theme / language / direction resolved before first paint (no flash) -->
@@ -114,106 +115,8 @@
           </div>
         </div>
 
-        <nav class="lesson-nav" id="lesson-nav">
-          <button class="lesson-item active" data-lesson="0">
-            <span class="lesson-number">01</span>
-            <span>ما هو الكمبيوتر؟</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="1">
-            <span class="lesson-number">02</span>
-            <span>كيف يعمل الكمبيوتر؟</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="2">
-            <span class="lesson-number">03</span>
-            <span>Hardware و Software</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="3">
-            <span class="lesson-number">04</span>
-            <span>المعالج CPU</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="4">
-            <span class="lesson-number">05</span>
-            <span>الذاكرة RAM</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="5">
-            <span class="lesson-number">06</span>
-            <span>التخزين Storage</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="6">
-            <span class="lesson-number">07</span>
-            <span>اللوحة الأم Motherboard</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="7">
-            <span class="lesson-number">08</span>
-            <span>بطاقة الرسوميات GPU</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="8">
-            <span class="lesson-number">09</span>
-            <span>أجهزة الإدخال والإخراج</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="9">
-            <span class="lesson-number">10</span>
-            <span>أنظمة التشغيل</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="10">
-            <span class="lesson-number">11</span>
-            <span>الملفات والمجلدات</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="11">
-            <span class="lesson-number">12</span>
-            <span>Binary و Data</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="12">
-            <span class="lesson-number">13</span>
-            <span>Bits و Bytes</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="13">
-            <span class="lesson-number">14</span>
-            <span>كيف يعمل البرنامج؟</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="14">
-            <span class="lesson-number">15</span>
-            <span>أساسيات الإنترنت والشبكات</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="15">
-            <span class="lesson-number">16</span>
-            <span>المتصفح والويب</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="16">
-            <span class="lesson-number">17</span>
-            <span>الأمن السيبراني</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="17">
-            <span class="lesson-number">18</span>
-            <span>تاريخ الكمبيوتر</span>
-          </button>
-
-          <button class="lesson-item" data-lesson="18">
-            <span class="lesson-number">19</span>
-            <span>الحوسبة الحديثة</span>
-          </button>
-
-          <button class="lesson-item final-item" data-lesson="19">
-            <span class="lesson-number">20</span>
-            <span>الاختبار النهائي</span>
-          </button>
+        <nav class="lesson-nav" id="lesson-nav" aria-label="دروس المسار">
+          <!-- built from /content/com/index.js by the shared lesson engine -->
         </nav>
       </aside>
 
@@ -327,6 +230,7 @@
       <p>Built by Abdullhamid Fayad</p>
     </footer>
 
-    <script src="com.js"></script>
+    <!-- Shared lesson engine: content in /content/com/index.js, rollback: ?engine=legacy -->
+    <script type="module" src="/js/engine/boot.js" data-track="com"></script>
   </body>
 </html>
