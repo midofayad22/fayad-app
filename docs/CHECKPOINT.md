@@ -1,6 +1,6 @@
 # Checkpoint (2026-10-29)
 
-Branch `feature/platform-overhaul`. Tests: 276 passing (`node --test "tests/*.test.mjs"`).
+Branch `feature/platform-overhaul`. Tests: 295 passing (`node --test "tests/*.test.mjs"`).
 
 ## Done since 9206262
 - Homepage: Git/GitHub card removed; hero no longer hidden under the fixed navbar; navbar fits 320px; iPhone safe areas (`viewport-fit=cover`, env insets); 44px targets; subtle motion.
@@ -9,10 +9,10 @@ Branch `feature/platform-overhaul`. Tests: 276 passing (`node --test "tests/*.te
 
 ## Remaining
 1. Supabase: inspect real schema/RLS (needs authorized access) before any sync; prepare reviewed SQL migration + sync client with local fallback.
-2. Website favicon refresh (not the PWA icons in `icons/` or manifest).
-3. Migrate css, react, vue, angular to the shared engine (legacy copies already exist under `legacy/`).
+2. (done) favicon links consistent; Supabase prep committed (docs/supabase-sync.md).
+3. Migrate react, vue, angular to the shared engine (css done; legacy copies already exist under `legacy/`).
 4. English lesson content; login page English remnants ("OR", "YOUR LEARNING JOURNEY" in Arabic mode).
 5. CSP/execution audit docs, PWA service-worker precache check for new pages, final report and Vercel preview check.
 
 ## Next action
-Favicon update, then Supabase inspection, then css migration.
+React migration, then vue, angular; Supabase schema review when access exists.
