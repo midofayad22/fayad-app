@@ -23,11 +23,11 @@ async function main() {
     let state = null, view;
     if (track.layout === "foundation" || track.layout === "foundation-lite") {
       const { mountFoundation } = await import("./foundation-view.js");
-      view = mountFoundation({ track, lessons, progress, lang: "ar" });
+      view = mountFoundation({ track, lessons, progress, lang: "ar" }); // Arabic-only layouts until their English content exists
     } else {
       const { mountCourse } = await import("./course-view.js");
       state = createState({ track, lessons, progress });
-      view = mountCourse({ track, lessons, state, lang: "ar" });
+      view = mountCourse({ track, lessons, state });
     }
     view.start();
     window.FAYAD = window.FAYAD || {};

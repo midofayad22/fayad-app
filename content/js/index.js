@@ -3,6 +3,10 @@
 
 export const track = {
   id: "js",
+  title: { ar: "JavaScript", en: "JavaScript" },
+  editorLabel: "JavaScript",
+  exampleHeading: { ar: "كود JavaScript", en: "JavaScript code" },
+  practiceHeading: { ar: "اكتب JavaScript", en: "Write JavaScript" },
   runtime: "dom-js",
   groups: [
     {
