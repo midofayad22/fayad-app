@@ -274,6 +274,37 @@ export function createProgress(opts) {
       if (map?.current) del(map.current);
       return persist();
     },
+    /**
+     * Union-merge another v1 document (e.g. rows downloaded from the account). Never removes or lowers anything local:
+     * completed = union, quiz.passed = union, attempts/best score = max, passed flags = OR, local resume pointer wins.
+     * Returns true if the local record changed.
+     */
+    mergeSnapshot(remote) {
+      load();
+      const clean = normalize(remote, totals);
+      let changed = false;
+      for (const [track, r] of Object.entries(clean.tracks)) {
+        const t = ensure(track);
+        const before = JSON.stringify(t);
+        t.completed = [...new Set([...t.completed, ...r.completed])].sort(byOrdinal);
+        for (const [id, q] of Object.entries(r.quiz)) {
+          const l = (t.quiz[id] ||= { passed: [], attempts: 0, lastAt: 0 });
+          l.passed = [...new Set([...l.passed, ...q.passed])].sort((a, b) => a - b);
+          l.attempts = Math.max(l.attempts, q.attempts); l.lastAt = Math.max(l.lastAt, q.lastAt);
+        }
+        if (r.assessment) {
+          const a = (t.assessment ||= emptyAssessment());
+          const newer = r.assessment.lastAt > a.lastAt;
+          a.attempts = Math.max(a.attempts, r.assessment.attempts); a.bestPct = Math.max(a.bestPct, r.assessment.bestPct);
+          a.passed = a.passed || r.assessment.passed;
+          if (newer) { a.lastPct = r.assessment.lastPct; a.lastAt = r.assessment.lastAt; }
+        }
+        if (t.current === null && r.current) t.current = r.current;
+        if (JSON.stringify(t) !== before) { changed = true; t.updatedAt = Math.max(t.updatedAt, r.updatedAt, now()); }
+      }
+      if (changed) { persist(); for (const track of Object.keys(clean.tracks)) mirrorLegacy(track); }
+      return changed;
+    },
     /** Re-read storage (e.g. after the `storage` event from another tab). */
     reload() { doc = null; return load(); },
   };
