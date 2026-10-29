@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <script src="/js/prefs.js"></script>
+    <link rel="canonical" href="https://fayad-learning.vercel.app/dashboard.html" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="robots" content="noindex, follow" />
+    <meta name="theme-color" content="#071014" />
+    <meta name="description" content="تابع تقدمك في دروس FAYAD: الدروس المكتملة ونتائج الاختبارات والنقاط والإنجازات وإحصاءات التعلم." />
+    <title>لوحة التقدم — FAYAD</title>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/theme-overrides.css" />
+    <link rel="stylesheet" href="/css/shell.css" />
+    <link rel="stylesheet" href="/css/account.css" />
+    <script src="/js/sw-register.js" defer></script>
+    <script src="/js/i18n.js" defer></script>
+    <script src="/js/shell.js" defer></script>
+    <script src="/js/catalog.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="/js/main-auth.js" defer></script>
+    <script type="module" src="/js/account.js"></script>
+  </head>
+  <body class="ac-body" data-page="dashboard">
+    <a class="fy-skip" href="#main" data-i18n="common.skip">تخطي إلى المحتوى</a>
+    <div id="auth-container" hidden></div><div id="user-profile" hidden></div>
+    <header class="ac-top">
+      <div class="ac-wrap ac-top-in">
+        <a class="ac-brand" href="/index.html" aria-label="FAYAD"><img src="/assets/brand/logo-mark.svg" alt="" width="32" height="32" /><span>FAYAD</span></a>
+        <nav class="ac-nav" aria-label="حسابي" data-i18n-attr="aria-label:ac.nav">
+          <a href="/index.html" data-i18n="ac.home">الرئيسية</a>
+          <a href="/dashboard.html" data-i18n="ac.dashboard" aria-current="page">لوحة التقدم</a>
+          <a href="/profile.html" data-i18n="ac.profile" >الملف الشخصي</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="ac-wrap">
+      <section class="ac-hero">
+        <h1 data-i18n="d.title">لوحة التقدم</h1>
+        <p data-i18n="d.sub">كل الأرقام هنا محسوبة من نشاطك الفعلي على هذا الجهاز.</p>
+      </section>
+      <section class="ac-empty" id="dEmpty" hidden>
+        <h2 data-i18n="d.empty.t">لم تبدأ أي درس بعد</h2>
+        <p data-i18n="d.empty.p">أكمل أول درس وستظهر هنا نقاطك وإنجازاتك وإحصاءاتك.</p>
+        <a class="ac-btn ac-btn-primary" href="/fundamentals/computer-basics/com.html" data-i18n="h.cta">ابدأ من الأساسيات</a>
+      </section>
+      <section aria-labelledby="dStatsT"><h2 class="ac-h2" id="dStatsT" data-i18n="d.stats">إحصاءات التعلم</h2><div class="ac-stats" id="dStats"></div></section>
+      <section aria-labelledby="dTracksT"><h2 class="ac-h2" id="dTracksT" data-i18n="d.tracks">التقدم في كل مسار</h2><div class="ac-tracks" id="dTracks"></div></section>
+      <section aria-labelledby="dAchT"><h2 class="ac-h2" id="dAchT" data-i18n="d.ach">الإنجازات</h2><ul class="ac-ach" id="dAch"></ul></section>
+      <section aria-labelledby="dPtsT"><h2 class="ac-h2" id="dPtsT" data-i18n="d.points">كيف تُحسب النقاط</h2><p class="ac-note" id="dPoints"></p></section>
+    </main>
+  </body>
+</html>

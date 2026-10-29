@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <script src="/js/prefs.js"></script>
+    <link rel="canonical" href="https://fayad-learning.vercel.app/profile.html" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="robots" content="noindex, follow" />
+    <meta name="theme-color" content="#071014" />
+    <meta name="description" content="حساب FAYAD: بياناتك وتفضيلات العرض وإدارة تقدمك على هذا الجهاز." />
+    <title>الملف الشخصي — FAYAD</title>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/theme-overrides.css" />
+    <link rel="stylesheet" href="/css/shell.css" />
+    <link rel="stylesheet" href="/css/account.css" />
+    <script src="/js/sw-register.js" defer></script>
+    <script src="/js/i18n.js" defer></script>
+    <script src="/js/shell.js" defer></script>
+    <script src="/js/catalog.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="/js/main-auth.js" defer></script>
+    <script type="module" src="/js/account.js"></script>
+  </head>
+  <body class="ac-body" data-page="profile">
+    <a class="fy-skip" href="#main" data-i18n="common.skip">تخطي إلى المحتوى</a>
+    <div id="auth-container" hidden></div><div id="user-profile" hidden></div>
+    <header class="ac-top">
+      <div class="ac-wrap ac-top-in">
+        <a class="ac-brand" href="/index.html" aria-label="FAYAD"><img src="/assets/brand/logo-mark.svg" alt="" width="32" height="32" /><span>FAYAD</span></a>
+        <nav class="ac-nav" aria-label="حسابي" data-i18n-attr="aria-label:ac.nav">
+          <a href="/index.html" data-i18n="ac.home">الرئيسية</a>
+          <a href="/dashboard.html" data-i18n="ac.dashboard" >لوحة التقدم</a>
+          <a href="/profile.html" data-i18n="ac.profile" aria-current="page">الملف الشخصي</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="ac-wrap">
+      <section class="ac-hero">
+        <h1 data-i18n="p.title">الملف الشخصي</h1>
+        <p data-i18n="p.sub">بيانات حسابك وتفضيلاتك.</p>
+      </section>
+      <section class="ac-card" id="pAccount" aria-live="polite"></section>
+      <section class="ac-card" aria-labelledby="pSummaryT"><h2 class="ac-h2" id="pSummaryT" data-i18n="p.summary">ملخص التعلم</h2><div class="ac-stats" id="pSummary"></div><a class="ac-btn" href="/dashboard.html" data-i18n="p.seeDash">افتح لوحة التقدم</a></section>
+      <section class="ac-card" aria-labelledby="pDataT">
+        <h2 class="ac-h2" id="pDataT" data-i18n="p.data">بيانات هذا الجهاز</h2>
+        <p class="ac-note" data-i18n="p.data.note">يُحفظ تقدمك في متصفحك. يمكنك تنزيل نسخة منه أو مسحه بالكامل.</p>
+        <div class="ac-row">
+          <button type="button" class="ac-btn" id="pExport" data-i18n="p.export">تنزيل نسخة من تقدمي</button>
+          <button type="button" class="ac-btn ac-btn-danger" id="pReset" data-i18n="p.reset">مسح تقدمي على هذا الجهاز</button>
+        </div>
+        <p class="ac-note" id="pMsg" role="status"></p>
+      </section>
+    </main>
+  </body>
+</html>

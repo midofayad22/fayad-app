@@ -60,6 +60,10 @@ function emptyTrack() {
   return { completed: [], current: null, quiz: {}, updatedAt: 0 };
 }
 
+function emptyAssessment() {
+  return { attempts: 0, bestPct: 0, lastPct: 0, passed: false, lastAt: 0 };
+}
+
 function emptyDoc() {
   return { v: 1, tracks: {}, imported: {} };
 }
@@ -88,6 +92,11 @@ export function normalize(raw, totals) {
       }
     }
     t.updatedAt = isInt(src.updatedAt) ? src.updatedAt : 0;
+    const a = src.assessment;
+    if (a && typeof a === "object") {
+      const pct = (n) => (isInt(n) && n >= 0 && n <= 100 ? n : 0);
+      t.assessment = { attempts: isInt(a.attempts) && a.attempts >= 0 ? a.attempts : 0, bestPct: pct(a.bestPct), lastPct: pct(a.lastPct), passed: a.passed === true, lastAt: isInt(a.lastAt) ? a.lastAt : 0 };
+    }
     doc.tracks[track] = t;
   }
   if (raw.imported && typeof raw.imported === "object") {
@@ -240,6 +249,18 @@ export function createProgress(opts) {
       t.updatedAt = now();
       return persist();
     },
+    /** Final-assessment result (percentage 0-100). Best score and pass state are kept; nothing is ever lowered. */
+    recordAssessment(track, percent, passed) {
+      load();
+      if (!(track in totals)) throw new RangeError(`unknown track ${track}`);
+      if (!isInt(percent) || percent < 0 || percent > 100) throw new RangeError("invalid percentage");
+      const t = ensure(track);
+      const a = (t.assessment ||= emptyAssessment());
+      a.attempts += 1; a.lastPct = percent; a.bestPct = Math.max(a.bestPct, percent); a.passed = a.passed || passed === true; a.lastAt = now();
+      t.updatedAt = now();
+      return persist();
+    },
+    assessment(track) { load(); return doc.tracks[track]?.assessment ? { ...doc.tracks[track].assessment } : null; },
     /** Explicit learner reset of one track: clears v1 AND the legacy mirror so the merge cannot resurrect it. */
     reset(track) {
       load();

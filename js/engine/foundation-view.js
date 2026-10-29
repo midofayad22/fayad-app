@@ -319,6 +319,7 @@ export function mountFoundation({ doc = document, track, lessons, progress, lang
     area.append(icon, h, score, pct, msg);
     el["final-next-btn"].textContent = UI.close;
     finalDone = true;
+    try { progress.recordAssessment(track.id, percentage, percentage >= assessment.passPercent); } catch { /* never blocks the result screen */ }
     if (percentage >= assessment.passPercent) {
       // legacy rule: passing the final assessment marks every lesson complete
       for (const id of order) { try { progress.markCompleted(track.id, id); } catch { /* ignore */ } }
