@@ -14,7 +14,7 @@ const page = document.body.dataset.page;
 const $ = (id) => document.getElementById(id);
 const T = (k, p) => (i18n ? i18n.t(k, p) : k);
 
-const NAMES = { com: "Computer Fundamentals", prg: "Programming Fundamentals", html: "HTML", css: "CSS", js: "JavaScript", react: "React", vue: "Vue", angular: "Angular" };
+const NAMES = { com: "Computer Fundamentals", prg: "Programming Fundamentals", html: "HTML", css: "CSS", js: "JavaScript", react: "React", vue: "Vue", angular: "Angular", ajs: "Advanced JavaScript", bs: "Bootstrap 5", tw: "Tailwind CSS" };
 
 i18n?.extend({
   ar: {

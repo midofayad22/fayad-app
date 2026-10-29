@@ -254,15 +254,17 @@
         <li><a class="hm-step" href="html-learning/html-learning.html" data-course="html"><span class="hm-step-n" aria-hidden="true">3</span><strong data-i18n="r.html">HTML</strong><small data-i18n="r.html.d">هيكل الصفحة</small></a></li>
         <li><a class="hm-step" href="css-learning/css-learning.html" data-course="css"><span class="hm-step-n" aria-hidden="true">4</span><strong data-i18n="r.css">CSS</strong><small data-i18n="r.css.d">التصميم</small></a></li>
         <li><a class="hm-step" href="javascript-learning/javascript-learning.html" data-course="js"><span class="hm-step-n" aria-hidden="true">5</span><strong data-i18n="r.js">JavaScript</strong><small data-i18n="r.js.d">التفاعل والمنطق</small></a></li>
-        <li><a class="hm-step" href="#frameworks" data-course="react"><span class="hm-step-n" aria-hidden="true">6</span><strong data-i18n="r.frameworks">أطر العمل</strong><small data-i18n="r.frameworks.d">React وVue وAngular</small></a></li>
-        <li><div class="hm-step hm-step-soon" data-course="com" aria-disabled="true"><span class="hm-step-n" aria-hidden="true">7</span><strong data-i18n="r.projects">المشاريع</strong><small data-i18n="r.projects.d">طبّق ما تعلمته</small><span class="hm-soon" data-i18n="r.soon">قريبًا</span></div></li>
+        <li><a class="hm-step" href="advanced-javascript/advanced-javascript.html" data-course="ajs"><span class="hm-step-n" aria-hidden="true">6</span><strong data-i18n="r.ajs">JavaScript متقدم</strong><small data-i18n="r.ajs.d">Closures وAsync وProxy</small></a></li>
+        <li><a class="hm-step" href="#cssfw" data-course="bs"><span class="hm-step-n" aria-hidden="true">7</span><strong data-i18n="r.cssfw">Bootstrap وTailwind</strong><small data-i18n="r.cssfw.d">أطر CSS جاهزة</small></a></li>
+        <li><a class="hm-step" href="#frameworks" data-course="react"><span class="hm-step-n" aria-hidden="true">8</span><strong data-i18n="r.frameworks">أطر العمل</strong><small data-i18n="r.frameworks.d">React وVue وAngular</small></a></li>
+        <li><div class="hm-step hm-step-soon" data-course="com" aria-disabled="true"><span class="hm-step-n" aria-hidden="true">9</span><strong data-i18n="r.projects">المشاريع</strong><small data-i18n="r.projects.d">طبّق ما تعلمته</small><span class="hm-soon" data-i18n="r.soon">قريبًا</span></div></li>
           </ol>
         </div>
       </section>
 
       <section id="courses" class="hm-section" aria-labelledby="coursesTitle">
         <div class="hm-wrap">
-          <div class="hm-head"><h2 id="coursesTitle" data-i18n="t.title">المسارات</h2><p data-i18n="t.sub">ثمانية مسارات بدروس عربية، يمكنك البدء من أي مسار.</p></div>
+          <div class="hm-head"><h2 id="coursesTitle" data-i18n="t.title">المسارات</h2><p data-i18n="t.sub">مسارات بدروس عربية، يمكنك البدء من أي مسار.</p></div>
           <div class="hm-group">
             <h3 data-i18n="t.fundamentals">الأساسيات</h3>
             <div class="hm-grid">
@@ -307,6 +309,35 @@
             <span class="hm-card-top"><span class="hm-badge" aria-hidden="true">JS</span><span class="hm-count" data-lessons-for="js"></span></span>
             <h4>JavaScript</h4>
             <p data-i18n="t.js">أساسيات اللغة وDOM والأحداث والوحدات وPromises وFetch.</p>
+            <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
+            <span class="hm-progress-label" hidden></span>
+            <span class="hm-go"><span data-i18n="t.open">افتح المسار</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="hm-card" href="advanced-javascript/advanced-javascript.html" data-course="ajs" data-course-card="ajs">
+            <span class="hm-card-top"><span class="hm-badge" aria-hidden="true">JS+</span><span class="hm-count" data-lessons-for="ajs"></span></span>
+            <h4>Advanced JavaScript</h4>
+            <p data-i18n="t.ajs"></p>
+            <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
+            <span class="hm-progress-label" hidden></span>
+            <span class="hm-go"><span data-i18n="t.open">افتح المسار</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+            </div>
+          </div>
+          <div class="hm-group" id="cssfw">
+            <h3 data-i18n="t.cssfw">أطر CSS</h3>
+            <div class="hm-grid">
+          <a class="hm-card" href="bootstrap-learning/bootstrap-learning.html" data-course="bs" data-course-card="bs">
+            <span class="hm-card-top"><span class="hm-badge" aria-hidden="true">BS</span><span class="hm-count" data-lessons-for="bs"></span></span>
+            <h4>Bootstrap 5</h4>
+            <p data-i18n="t.bs"></p>
+            <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
+            <span class="hm-progress-label" hidden></span>
+            <span class="hm-go"><span data-i18n="t.open">افتح المسار</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="hm-card" href="tailwind-learning/tailwind-learning.html" data-course="tw" data-course-card="tw">
+            <span class="hm-card-top"><span class="hm-badge" aria-hidden="true">TW</span><span class="hm-count" data-lessons-for="tw"></span></span>
+            <h4>Tailwind CSS</h4>
+            <p data-i18n="t.tw"></p>
             <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
             <span class="hm-progress-label" hidden></span>
             <span class="hm-go"><span data-i18n="t.open">افتح المسار</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>

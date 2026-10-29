@@ -269,7 +269,10 @@ export function mountCourse({ doc = document, track, lessons, state, lang: initi
       onConsole: (e) => { if (my !== runId || e.level === "result") return; el.outputWrap.hidden = false; showOutput(e.text); },
     });
     if (runtime === "css") runner.run({ css: BASE_PREVIEW_CSS + code, html: demoHtml() });
-    else runner.run({ css: BASE_PREVIEW_CSS, html: code });
+    else {
+      const pv = track.preview || {};
+      runner.run({ css: pv.baseCss === false ? "" : BASE_PREVIEW_CSS, head: pv.head || "", html: code });
+    }
   }
 
   function runDomJs(my, code) {

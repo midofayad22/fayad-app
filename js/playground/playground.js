@@ -145,7 +145,9 @@ const exportsHolder = {};
       var guarded = opts.loopGuard === false ? original : guardLoops(original).code;
       js = "<script>__fyRun(" + jsonForScript(guarded) + "," + jsonForScript(original) + ")<\/script>";
     }
-    return "<!doctype html><meta charset=utf-8>" + htmlBootstrap(token, opts.loopBudget, opts.collect) + css + body + js;
+    // files.head: authored, trusted markup (e.g. vendored library <link>/<script>), never learner input
+    var head = typeof files.head === "string" ? files.head : "";
+    return "<!doctype html><meta charset=utf-8>" + htmlBootstrap(token, opts.loopBudget, opts.collect) + head + css + body + js;
   }
 
   function randomToken() {

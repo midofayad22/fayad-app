@@ -54,6 +54,10 @@ export const LEGACY = {
   react: { list: "fayad-react-completed-lessons", listBase: 0, current: "fayad-react-current-lesson", currentBase: 0 },
   vue: { list: "fayad-vue-learning-progress", listBase: 1 },
   angular: { current: "fayad-angular-current-lesson", currentBase: 0 },
+  // New courses never had a previous implementation; these keys only keep js/catalog.js (homepage progress) working.
+  ajs: { list: "fayad-ajs-completed-lessons", listBase: 0, current: "fayad-ajs-current-lesson", currentBase: 0 },
+  bs: { list: "fayad-bs-completed-lessons", listBase: 0, current: "fayad-bs-current-lesson", currentBase: 0 },
+  tw: { list: "fayad-tw-completed-lessons", listBase: 0, current: "fayad-tw-current-lesson", currentBase: 0 },
 };
 
 function emptyTrack() {

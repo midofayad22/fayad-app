@@ -53,7 +53,7 @@ test("dashboard: empty state for a new learner (ar + en)", async () => {
   for (const lang of ["ar", "en"]) {
     const { ctx, page, errors } = await open("/dashboard.html", lang);
     assert.equal(await page.locator("#dEmpty").isVisible(), true);
-    assert.equal(await page.locator("#dTracks .ac-track").count(), 8);
+    assert.equal(await page.locator("#dTracks .ac-track").count(), 11);
     assert.equal(await page.locator(".ac-ach-item.is-earned").count(), 0);
     assert.equal(await page.locator("h1").count(), 1);
     assert.deepEqual(errors, []);

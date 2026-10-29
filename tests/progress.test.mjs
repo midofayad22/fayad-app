@@ -3,7 +3,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { createProgress, KEY, LEGACY, lessonId, ordinalOf, legacyListToIds, normalize } from "../js/engine/progress.js";
 
-const TOTALS = { com: 20, prg: 20, html: 30, css: 30, js: 25, react: 30, vue: 22, angular: 32 };
+const TOTALS = { com: 20, prg: 20, html: 30, css: 30, js: 25, react: 30, vue: 22, angular: 32, ajs: 22, bs: 20, tw: 20 };
 
 function fakeStorage(init = {}) {
   const m = new Map(Object.entries(init));

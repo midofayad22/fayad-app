@@ -72,7 +72,12 @@
       "r.soon": "قريبًا",
       "r.step": "الخطوة {n}",
       "t.title": "المسارات",
-      "t.sub": "ثمانية مسارات بدروس عربية، يمكنك البدء من أي مسار.",
+      "t.sub": "مسارات بدروس عربية، يمكنك البدء من أي مسار.",
+      "t.cssfw": "أطر CSS",
+      "t.ajs": "النطاق والـ Closures والـ prototypes وProxy والمولدات وحلقة الأحداث والـ async وأنماط التصميم.",
+      "t.bs": "الشبكة والأدوات المساعدة والنماذج والمكونات التفاعلية والوضع الداكن وRTL (Bootstrap 5.3).",
+      "t.tw": "فلسفة Utility-First والتخطيط والتجاوب والحالات والوضع الداكن والتخصيص بـ @theme (Tailwind v4).",
+      "r.ajs": "JavaScript متقدم", "r.ajs.d": "Closures وAsync وProxy", "r.cssfw": "Bootstrap وTailwind", "r.cssfw.d": "أطر CSS جاهزة",
       "t.fundamentals": "الأساسيات",
       "t.web": "أساسيات الويب",
       "t.frameworks": "أطر العمل",
@@ -156,7 +161,12 @@
       "r.soon": "Coming soon",
       "r.step": "Step {n}",
       "t.title": "Courses",
-      "t.sub": "Eight courses with Arabic lessons. Start from any of them.",
+      "t.sub": "Courses with Arabic lessons. Start from any of them.",
+      "t.cssfw": "CSS frameworks",
+      "t.ajs": "Scope, closures, prototypes, Proxy, generators, the event loop, async patterns and design patterns.",
+      "t.bs": "Grid, utilities, forms, interactive components, dark mode and RTL (Bootstrap 5.3).",
+      "t.tw": "Utility-first thinking, layout, responsive design, states, dark mode and @theme customization (Tailwind v4).",
+      "r.ajs": "Advanced JavaScript", "r.ajs.d": "Closures, async, Proxy", "r.cssfw": "Bootstrap & Tailwind", "r.cssfw.d": "CSS frameworks",
       "t.fundamentals": "Fundamentals",
       "t.web": "Web foundations",
       "t.frameworks": "Frameworks",
@@ -249,7 +259,7 @@
       var top = document.createElement("span");
       top.className = "hm-continue-top";
       var name = document.createElement("strong");
-      var FRAMEWORK_NAMES = { react: "React", vue: "Vue", angular: "Angular" };
+      var FRAMEWORK_NAMES = { react: "React", vue: "Vue", angular: "Angular", ajs: "Advanced JavaScript", bs: "Bootstrap 5", tw: "Tailwind CSS" };
       name.textContent = FRAMEWORK_NAMES[t.id] || F.i18n.t("r." + t.id);
       top.appendChild(name);
       if (t.id === last) {

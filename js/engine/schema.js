@@ -21,6 +21,14 @@ export function validateTrack(track, lessons) {
   if (track.editorLabel !== undefined && !nonEmpty(track.editorLabel)) errors.push("track.editorLabel must be a non-empty string");
   if (track.quiz !== undefined && !(isObj(track.quiz) && typeof track.quiz.shuffle === "boolean")) errors.push("track.quiz must be { shuffle: boolean }");
   if (track.runtime === "css") { if (!isObj(track.preview)) errors.push("track.preview.html is required by the css runtime"); else checkText(errors, "track.preview.html", track.preview.html); }
+  if (track.runtime === "html" && track.preview !== undefined) {
+    if (!isObj(track.preview)) errors.push("track.preview must be an object");
+    else {
+      if (track.preview.head !== undefined && typeof track.preview.head !== "string") errors.push("track.preview.head must be a string (trusted markup)");
+      if (track.preview.baseCss !== undefined && typeof track.preview.baseCss !== "boolean") errors.push("track.preview.baseCss must be a boolean");
+      if (track.preview.bodyClass !== undefined && typeof track.preview.bodyClass !== "string") errors.push("track.preview.bodyClass must be a string");
+    }
+  }
   if (!Array.isArray(lessons) || !lessons.length) return [...errors, "lessons must be a non-empty array"];
 
   const ids = new Set();

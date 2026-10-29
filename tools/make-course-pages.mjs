@@ -10,27 +10,43 @@ const PAGES = {
   react: { name: "React", dir: "react-learning", legacy: "legacy/react-learning/react-learning.html" },
   vue: { name: "Vue.js", dir: "vue-learning", legacy: "legacy/vue-learning/vue-learning.html" },
   angular: { name: "Angular", dir: "angular-learning", legacy: "legacy/angular-learning/angular-learning.html" },
+  // New courses (no legacy implementation, therefore no rollback redirect): metadata is stated here.
+  ajs: {
+    name: "Advanced JavaScript", dir: "advanced-javascript", fresh: true,
+    title: "تعلم Advanced JavaScript — Closures وProxy وAsync وأكثر | FAYAD",
+    desc: "كورس JavaScript متقدم بدروس تفاعلية: النطاق والـ Closures وthis والـ prototypes والكلاسات وProxy والمولدات وحلقة الأحداث والـ async وأنماط التصميم والأداء.",
+  },
+  bs: {
+    name: "Bootstrap 5", dir: "bootstrap-learning", fresh: true,
+    title: "تعلم Bootstrap 5 — الشبكة والمكونات والتصميم المتجاوب | FAYAD",
+    desc: "كورس Bootstrap 5.3 بدروس تفاعلية: نظام الشبكة والأدوات المساعدة والنماذج والمكونات والوضع الداكن وRTL مع معاينة مباشرة.",
+  },
+  tw: {
+    name: "Tailwind CSS", dir: "tailwind-learning", fresh: true,
+    title: "تعلم Tailwind CSS v4 — Utility-First من الصفر | FAYAD",
+    desc: "كورس Tailwind CSS v4 بدروس تفاعلية: الأدوات المساعدة وFlexbox وGrid والتصميم المتجاوب والحالات والوضع الداكن والتخصيص مع معاينة مباشرة.",
+  },
 };
 const meta = (src, re, what) => { const m = re.exec(src); if (!m) throw new Error("legacy page lacks " + what); return m[1]; };
 
 for (const id of process.argv.slice(2)) {
   const cfg = PAGES[id];
   if (!cfg) throw new Error("unknown course " + id);
-  const old = fs.readFileSync(cfg.legacy, "utf8");
-  const title = meta(old, /<title>([^<]*)<\/title>/, "title");
-  const desc = meta(old, /<meta\s+name="description"\s+content="([^"]*)"/, "description");
-  const ogTitle = (/<meta property="og:title" content="([^"]*)"/.exec(old) || [null, title])[1];
-  const ogDesc = (/<meta property="og:description" content="([^"]*)"/.exec(old) || [null, desc])[1];
+  const old = cfg.fresh ? "" : fs.readFileSync(cfg.legacy, "utf8");
+  const title = cfg.fresh ? cfg.title : meta(old, /<title>([^<]*)<\/title>/, "title");
+  const desc = cfg.fresh ? cfg.desc : meta(old, /<meta\s+name="description"\s+content="([^"]*)"/, "description");
+  const ogTitle = cfg.fresh ? title : (/<meta property="og:title" content="([^"]*)"/.exec(old) || [null, title])[1];
+  const ogDesc = cfg.fresh ? desc : (/<meta property="og:description" content="([^"]*)"/.exec(old) || [null, desc])[1];
   const file = `${cfg.dir}/${cfg.dir}.html`;
   const url = `https://fayad-learning.vercel.app/${file}`;
   const page = `<!doctype html>
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+${cfg.fresh ? "" : `
     <!-- Rollback: ?engine=legacy opens the previous implementation (see docs/rollback.md) -->
-    <script>if(/[?&]engine=legacy\\b/.test(location.search))location.replace("/legacy/${cfg.dir}/${cfg.dir}.html"+location.hash);</script>
+    <script>if(/[?&]engine=legacy\\b/.test(location.search))location.replace("/legacy/${cfg.dir}/${cfg.dir}.html"+location.hash);</script>`}
     <!-- Preferences: theme / language / direction resolved before first paint (no flash) -->
     <script src="/js/prefs.js"></script>
 
@@ -83,6 +99,7 @@ for (const id of process.argv.slice(2)) {
   </body>
 </html>
 `;
+  fs.mkdirSync(cfg.dir, { recursive: true });
   fs.writeFileSync(file, page);
   console.log("wrote", file);
 }

@@ -32,13 +32,13 @@ test("every internal link on the homepage resolves to an existing file", async (
   }
 });
 
-test("roadmap has 7 steps in order (no Git course: FAYAD CODE covers it); Projects is honestly marked as coming soon", async () => {
+test("roadmap has 9 steps in order (no Git course: FAYAD CODE covers it); Projects is honestly marked as coming soon", async () => {
   const { ctx, page } = await open({}, "en");
   const steps = await page.$$eval(".hm-roadmap .hm-step", (els) => els.map((e) => ({ n: e.querySelector(".hm-step-n").textContent, name: e.querySelector("strong").textContent, link: e.tagName === "A", soon: !!e.querySelector(".hm-soon") })));
-  assert.deepEqual(steps.map((s) => s.name), ["Computer Fundamentals", "Programming Fundamentals", "HTML", "CSS", "JavaScript", "Frameworks", "Projects"]);
-  assert.deepEqual(steps.map((s) => s.soon), [false, false, false, false, false, false, true]);
-  assert.deepEqual(steps.map((s) => s.link), [true, true, true, true, true, true, false]);
-  assert.deepEqual(steps.map((s) => s.n), ["1", "2", "3", "4", "5", "6", "7"]);
+  assert.deepEqual(steps.map((s) => s.name), ["Computer Fundamentals", "Programming Fundamentals", "HTML", "CSS", "JavaScript", "Advanced JavaScript", "Bootstrap & Tailwind", "Frameworks", "Projects"]);
+  assert.deepEqual(steps.map((s) => s.soon), [false, false, false, false, false, false, false, false, true]);
+  assert.deepEqual(steps.map((s) => s.link), [true, true, true, true, true, true, true, true, false]);
+  assert.deepEqual(steps.map((s) => s.n), ["1", "2", "3", "4", "5", "6", "7", "8", "9"]);
   await ctx.close();
 });
 
@@ -71,7 +71,7 @@ test("continue learning is hidden with no progress and appears from real saved d
 test("corrupt progress data does not break the page", async () => {
   const { ctx, page } = await open({ "fayad-html-progress": "{not json", "fayad-js-current-lesson": "banana", "fayad-last-track": "###" });
   assert.equal(await page.locator("#continue").isVisible(), false);
-  assert.equal(await page.locator(".hm-card").count(), 8);
+  assert.equal(await page.locator(".hm-card").count(), 11);
   await ctx.close();
 });
 
