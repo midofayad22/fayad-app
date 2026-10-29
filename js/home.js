@@ -10,6 +10,7 @@
   F.i18n.extend({
     ar: {
       "nav.home": "الرئيسية",
+      "menu.account": "حسابي", "menu.dashboard": "لوحة التقدم", "menu.dashboard.sub": "دروسك ونقاطك وإنجازاتك", "menu.profile": "الملف الشخصي", "menu.profile.sub": "الحساب وبيانات التقدم",
       "nav.courses": "المسارات",
       "nav.roadmap": "خريطة التعلم",
       "nav.about": "عن المنصة",
@@ -59,7 +60,6 @@
       "r.html": "HTML",
       "r.css": "CSS",
       "r.js": "JavaScript",
-      "r.git": "Git وGitHub",
       "r.frameworks": "أطر العمل",
       "r.projects": "المشاريع",
       "r.com.d": "كيف يعمل الحاسوب",
@@ -67,13 +67,17 @@
       "r.html.d": "هيكل الصفحة",
       "r.css.d": "التصميم",
       "r.js.d": "التفاعل والمنطق",
-      "r.git.d": "إدارة الإصدارات",
       "r.frameworks.d": "React وVue وAngular",
       "r.projects.d": "طبّق ما تعلمته",
       "r.soon": "قريبًا",
       "r.step": "الخطوة {n}",
       "t.title": "المسارات",
-      "t.sub": "ثمانية مسارات بدروس عربية، يمكنك البدء من أي مسار.",
+      "t.sub": "مسارات بدروس عربية، يمكنك البدء من أي مسار.",
+      "t.cssfw": "أطر CSS",
+      "t.ajs": "النطاق والـ Closures والـ prototypes وProxy والمولدات وحلقة الأحداث والـ async وأنماط التصميم.",
+      "t.bs": "الشبكة والأدوات المساعدة والنماذج والمكونات التفاعلية والوضع الداكن وRTL (Bootstrap 5.3).",
+      "t.tw": "فلسفة Utility-First والتخطيط والتجاوب والحالات والوضع الداكن والتخصيص بـ @theme (Tailwind v4).",
+      "r.ajs": "JavaScript متقدم", "r.ajs.d": "Closures وAsync وProxy", "r.cssfw": "Bootstrap وTailwind", "r.cssfw.d": "أطر CSS جاهزة",
       "t.fundamentals": "الأساسيات",
       "t.web": "أساسيات الويب",
       "t.frameworks": "أطر العمل",
@@ -95,6 +99,7 @@
     },
     en: {
       "nav.home": "Home",
+      "menu.account": "My account", "menu.dashboard": "Progress dashboard", "menu.dashboard.sub": "Your lessons, points and achievements", "menu.profile": "Profile", "menu.profile.sub": "Account and progress data",
       "nav.courses": "Courses",
       "nav.roadmap": "Roadmap",
       "nav.about": "About",
@@ -144,7 +149,6 @@
       "r.html": "HTML",
       "r.css": "CSS",
       "r.js": "JavaScript",
-      "r.git": "Git & GitHub",
       "r.frameworks": "Frameworks",
       "r.projects": "Projects",
       "r.com.d": "How computers work",
@@ -152,13 +156,17 @@
       "r.html.d": "Page structure",
       "r.css.d": "Design",
       "r.js.d": "Logic and interactivity",
-      "r.git.d": "Version control",
       "r.frameworks.d": "React, Vue and Angular",
       "r.projects.d": "Apply what you learned",
       "r.soon": "Coming soon",
       "r.step": "Step {n}",
       "t.title": "Courses",
-      "t.sub": "Eight courses with Arabic lessons. Start from any of them.",
+      "t.sub": "Courses with Arabic lessons. Start from any of them.",
+      "t.cssfw": "CSS frameworks",
+      "t.ajs": "Scope, closures, prototypes, Proxy, generators, the event loop, async patterns and design patterns.",
+      "t.bs": "Grid, utilities, forms, interactive components, dark mode and RTL (Bootstrap 5.3).",
+      "t.tw": "Utility-first thinking, layout, responsive design, states, dark mode and @theme customization (Tailwind v4).",
+      "r.ajs": "Advanced JavaScript", "r.ajs.d": "Closures, async, Proxy", "r.cssfw": "Bootstrap & Tailwind", "r.cssfw.d": "CSS frameworks",
       "t.fundamentals": "Fundamentals",
       "t.web": "Web foundations",
       "t.frameworks": "Frameworks",
@@ -251,7 +259,7 @@
       var top = document.createElement("span");
       top.className = "hm-continue-top";
       var name = document.createElement("strong");
-      var FRAMEWORK_NAMES = { react: "React", vue: "Vue", angular: "Angular" };
+      var FRAMEWORK_NAMES = { react: "React", vue: "Vue", angular: "Angular", ajs: "Advanced JavaScript", bs: "Bootstrap 5", tw: "Tailwind CSS" };
       name.textContent = FRAMEWORK_NAMES[t.id] || F.i18n.t("r." + t.id);
       top.appendChild(name);
       if (t.id === last) {

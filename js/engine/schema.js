@@ -14,7 +14,21 @@ export function validateTrack(track, lessons) {
   const errors = [];
   if (!isObj(track) || !nonEmpty(track.id)) return ["track.id missing"];
   if (track.layout !== undefined && !["foundation", "foundation-lite"].includes(track.layout)) errors.push(`track.layout invalid: ${track.layout}`);
-  if (!["dom-js", "js", "html", "none"].includes(track.runtime)) errors.push(`track.runtime invalid: ${track.runtime}`);
+  if (!(["dom-js", "js", "html", "css", "none"].includes(track.runtime) || /^sim-[a-z]+$/.test(track.runtime || ""))) errors.push(`track.runtime invalid: ${track.runtime}`);
+  checkText(errors, "track.title", track.title, { optional: true });
+  checkText(errors, "track.practiceHeading", track.practiceHeading, { optional: true });
+  checkText(errors, "track.exampleHeading", track.exampleHeading, { optional: true });
+  if (track.editorLabel !== undefined && !nonEmpty(track.editorLabel)) errors.push("track.editorLabel must be a non-empty string");
+  if (track.quiz !== undefined && !(isObj(track.quiz) && typeof track.quiz.shuffle === "boolean")) errors.push("track.quiz must be { shuffle: boolean }");
+  if (track.runtime === "css") { if (!isObj(track.preview)) errors.push("track.preview.html is required by the css runtime"); else checkText(errors, "track.preview.html", track.preview.html); }
+  if (track.runtime === "html" && track.preview !== undefined) {
+    if (!isObj(track.preview)) errors.push("track.preview must be an object");
+    else {
+      if (track.preview.head !== undefined && typeof track.preview.head !== "string") errors.push("track.preview.head must be a string (trusted markup)");
+      if (track.preview.baseCss !== undefined && typeof track.preview.baseCss !== "boolean") errors.push("track.preview.baseCss must be a boolean");
+      if (track.preview.bodyClass !== undefined && typeof track.preview.bodyClass !== "string") errors.push("track.preview.bodyClass must be a string");
+    }
+  }
   if (!Array.isArray(lessons) || !lessons.length) return [...errors, "lessons must be a non-empty array"];
 
   const ids = new Set();
@@ -35,9 +49,21 @@ export function validateTrack(track, lessons) {
     checkText(errors, `${at}.challenge`, l.challenge, { optional: true });
     if (l.icon !== undefined && !(typeof l.icon === "string" && /^fa-[a-z0-9-]+$/.test(l.icon))) errors.push(`${at}.icon must be a Font Awesome class like "fa-terminal"`);
     (l.sections || []).forEach((s, j) => { checkText(errors, `${at}.sections[${j}].title`, s.title); checkText(errors, `${at}.sections[${j}].html`, s.html); checkText(errors, `${at}.sections[${j}].label`, s.label, { optional: true }); });
+    if (l.kicker !== undefined && !nonEmpty(l.kicker)) errors.push(`${at}.kicker must be a non-empty string`);
     if (l.example !== undefined) {
       if (!isObj(l.example) || typeof l.example.code !== "string") errors.push(`${at}.example.code must be a string`);
-      else checkText(errors, `${at}.example.explanation`, l.example.explanation, { optional: true });
+      else {
+        checkText(errors, `${at}.example.explanation`, l.example.explanation, { optional: true });
+        checkText(errors, `${at}.example.title`, l.example.title, { optional: true });
+        checkText(errors, `${at}.example.result`, l.example.result, { optional: true });
+      }
+    }
+    if (l.practice !== undefined) {
+      if (!isObj(l.practice)) errors.push(`${at}.practice must be an object`);
+      else {
+        if (l.practice.prompt !== undefined) checkText(errors, `${at}.practice.prompt`, l.practice.prompt);
+        if (l.practice.starterCode !== undefined && typeof l.practice.starterCode !== "string") errors.push(`${at}.practice.starterCode must be a string`);
+      }
     }
     if (track.layout === "foundation-lite") {
       for (const f of ["body", "key", "icon"]) if (l[f] === undefined) errors.push(`${at}.${f} is required by the foundation-lite layout`);

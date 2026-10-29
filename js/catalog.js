@@ -23,6 +23,18 @@
       list: "fayad-js-completed-lessons", current: "fayad-js-current-lesson",
     },
     {
+      id: "ajs", group: "web", path: "/advanced-javascript/advanced-javascript.html", total: 22,
+      list: "fayad-ajs-completed-lessons", current: "fayad-ajs-current-lesson",
+    },
+    {
+      id: "bs", group: "web", path: "/bootstrap-learning/bootstrap-learning.html", total: 20,
+      list: "fayad-bs-completed-lessons", current: "fayad-bs-current-lesson",
+    },
+    {
+      id: "tw", group: "web", path: "/tailwind-learning/tailwind-learning.html", total: 20,
+      list: "fayad-tw-completed-lessons", current: "fayad-tw-current-lesson",
+    },
+    {
       id: "react", group: "frameworks", path: "/react-learning/react-learning.html", total: 30,
       list: "fayad-react-completed-lessons", current: "fayad-react-current-lesson",
     },

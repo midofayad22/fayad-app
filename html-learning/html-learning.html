@@ -2,16 +2,19 @@
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
+    <!-- Rollback: ?engine=legacy opens the previous implementation (see docs/rollback.md) -->
+    <script>if(/[?&]engine=legacy\b/.test(location.search))location.replace("/legacy/html-learning/html-learning.html"+location.hash);</script>
     <!-- Preferences: theme / language / direction resolved before first paint (no flash) -->
     <script src="/js/prefs.js"></script>
 
-    <!-- Site metadata (managed: canonical, icons, manifest, social, service worker) -->
     <link rel="canonical" href="https://fayad-learning.vercel.app/html-learning/html-learning.html" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/icons/favicon-48.png" />
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#0b3d35" />
@@ -25,370 +28,34 @@
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <script src="/js/sw-register.js" defer></script>
-
-
-    <meta
-      name="description"
-      content="FAYAD HTML Learning Path — تعلم HTML من خلال دروس منظمة وتطبيقات واختبارات تفاعلية." />
-
+    <meta name="description" content="FAYAD HTML Learning Path — تعلم HTML من خلال دروس منظمة وتطبيقات واختبارات تفاعلية." />
     <title>FAYAD — تعلم HTML</title>
 
-    <link rel="stylesheet" href="html-learning.css" />
-
-    <script>
-      window.va =
-        window.va ||
-        function () {
-          (window.vaq = window.vaq || []).push(arguments);
-        };
-    </script>
-
-    <script defer src="/_vercel/speed-insights/script.js"></script>
-  
-    <!-- FAYAD design system (loaded after page CSS so tokens win) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/css/tokens.css" />
-    <link rel="stylesheet" href="/css/theme.css" />
-    <link rel="stylesheet" href="/css/theme-overrides.css" />
+    <link rel="stylesheet" href="/css/course.css" />
     <link rel="stylesheet" href="/css/shell.css" />
+
+    <script src="/js/sw-register.js" defer></script>
     <script src="/js/i18n.js" defer></script>
     <script src="/js/shell.js" defer></script>
+    <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
   </head>
 
   <body>
-    <!-- =========================
-       TOP NAVBAR
-  ========================== -->
-
     <header class="learning-navbar">
-      <a href="../index.html" class="learning-logo">F</a>
-
-      <div class="learning-title">
-        <span>FAYAD</span>
-        <strong id="learning-path-title">مسار تعلم HTML</strong>
-      </div>
-
-      <div class="learning-actions">
-        <a href="../index.html" class="back-btn" id="back-btn"> Back </a>
-      </div>
+      <a href="/index.html" class="learning-logo" aria-label="FAYAD">F</a>
+      <div class="learning-title"><span>FAYAD</span><h1 class="path-title" id="pathTitle">مسار تعلم HTML</h1></div>
+      <div class="learning-actions"><a href="/index.html" class="back-btn" data-s="nav.back"></a></div>
     </header>
 
-    <!-- =========================
-       MAIN LEARNING LAYOUT
-  ========================== -->
-
-    <main class="learning-layout">
-      <!-- =========================
-         SIDEBAR
-    ========================== -->
-
-      <aside class="sidebar">
-        <div class="sidebar-header">
-          <p id="learning-path-label">مسار التعلم</p>
-          <h2>HTML</h2>
-        </div>
-
-        <!-- FUNDAMENTALS -->
-
-        <div class="topic-group">
-          <h3>أساسيات HTML</h3>
-
-          <a href="#" class="lesson active" data-lesson="0">
-            <span class="lesson-status current">01</span>
-            <span class="lesson-name">مقدمة إلى HTML</span>
-          </a>
-
-          <a href="#" class="lesson" data-lesson="1">
-            <span class="lesson-status">02</span>
-            <span class="lesson-name">بنية مستند HTML</span>
-          </a>
-
-          <a href="#" class="lesson" data-lesson="2">
-            <span class="lesson-status">03</span>
-            <span class="lesson-name">Tags و Elements</span>
-          </a>
-
-          <a href="#" class="lesson" data-lesson="3">
-            <span class="lesson-status">04</span>
-            <span class="lesson-name">Attributes</span>
-          </a>
-
-          <a href="#" class="lesson" data-lesson="4">
-            <span class="lesson-status">05</span>
-            <span class="lesson-name">Headings</span>
-          </a>
-
-          <a href="#" class="lesson" data-lesson="5">
-            <span class="lesson-status">06</span>
-            <span class="lesson-name">Paragraphs</span>
-          </a>
-        </div>
-
-        <!-- TEXT & CONTENT -->
-
-        <div class="topic-group">
-          <h3>النص والمحتوى</h3>
-
-          <a href="#" class="lesson" data-lesson="6">
-            <span class="lesson-status">07</span>
-            <span class="lesson-name">تنسيق النصوص</span>
-          </a>
-
-          <a href="#" class="lesson" data-lesson="7">
-            <span class="lesson-status">08</span>
-            <span class="lesson-name">الروابط</span>
-          </a>
-
-          <a href="#" class="lesson" data-lesson="8">
-            <span class="lesson-status">09</span>
-            <span class="lesson-name">الصور</span>
-          </a>
-
-          <a href="#" class="lesson" data-lesson="9">
-            <span class="lesson-status">10</span>
-            <span class="lesson-name">القوائم</span>
-          </a>
-
-          <a href="#" class="lesson" data-lesson="10">
-            <span class="lesson-status">11</span>
-            <span class="lesson-name">الجداول</span>
-          </a>
-
-          <a href="#" class="lesson" data-lesson="11">
-            <span class="lesson-status">12</span>
-            <span class="lesson-name">Semantic HTML</span>
-          </a>
-        </div>
-
-        <!-- FORMS -->
-
-        <div class="topic-group">
-          <h3>النماذج</h3>
-
-          <a href="#" class="lesson" data-lesson="12">
-            <span class="lesson-status">13</span>
-            <span class="lesson-name">Forms</span>
-          </a>
-
-          <a href="#" class="lesson" data-lesson="13">
-            <span class="lesson-status">14</span>
-            <span class="lesson-name">Input</span>
-          </a>
-
-          <a href="#" class="lesson" data-lesson="14">
-            <span class="lesson-status">15</span>
-            <span class="lesson-name">Labels و Buttons</span>
-          </a>
-        </div>
-
-        <!-- PAGE STRUCTURE -->
-
-        <div class="topic-group">
-          <h3>بنية الصفحة</h3>
-
-          <a href="#" class="lesson" data-lesson="15">
-            <span class="lesson-status">16</span>
-            <span class="lesson-name">Header و Navigation</span>
-          </a>
-
-          <a href="#" class="lesson" data-lesson="16">
-            <span class="lesson-status">17</span>
-            <span class="lesson-name">Main و Section</span>
-          </a>
-
-          <a href="#" class="lesson" data-lesson="17">
-            <span class="lesson-status">18</span>
-            <span class="lesson-name">Article و Aside</span>
-          </a>
-
-          <a href="#" class="lesson" data-lesson="18">
-            <span class="lesson-status">19</span>
-            <span class="lesson-name">Footer</span>
-          </a>
-        </div>
-
-        <!-- ADVANCED -->
-
-        <div class="topic-group">
-          <h3>HTML متقدم</h3>
-
-          <a href="#" class="lesson" data-lesson="19">
-            <span class="lesson-status">20</span>
-            <span class="lesson-name">Accessibility</span>
-          </a>
-
-          <a href="#" class="lesson" data-lesson="20">
-            <span class="lesson-status">21</span>
-            <span class="lesson-name">أساسيات SEO</span>
-          </a>
-
-          <a href="#" class="lesson" data-lesson="21">
-            <span class="lesson-status">22</span>
-            <span class="lesson-name">Audio و Video</span>
-          </a>
-        </div>
-      </aside>
-
-      <!-- =========================
-         LESSON CONTENT
-    ========================== -->
-
-      <section class="lesson-content">
-        <!-- PROGRESS -->
-
-        <div class="progress-area">
-          <div class="progress-info">
-            <span id="progress-label">تقدم HTML</span>
-            <strong id="progress-text">0%</strong>
-          </div>
-
-          <div class="progress-bar">
-            <div class="progress-fill" id="progress-fill"></div>
-          </div>
-        </div>
-
-        <!-- LESSON HEADER -->
-
-        <div class="lesson-header">
-          <span class="lesson-number" id="lesson-number"> الدرس 01 </span>
-
-          <h1 id="lesson-title">مقدمة إلى HTML</h1>
-
-          <p id="lesson-description">تعرف على HTML ودورها في بناء صفحات الويب.</p>
-        </div>
-
-        <!-- LESSON CONTENT -->
-
-        <div id="lesson-content"></div>
-
-        <!-- CODE EXAMPLE -->
-
-        <article class="example-card">
-          <div class="example-header">
-            <div>
-              <span id="code-example-label">مثال برمجي</span>
-              <h2 id="example-title">مثال</h2>
-            </div>
-
-            <button class="copy-btn" id="copy-btn" type="button">نسخ</button>
-          </div>
-
-          <pre><code id="example-code"></code></pre>
-        </article>
-
-        <!-- RESULT -->
-
-        <article class="result-card">
-          <div class="result-header">
-            <span id="result-label">النتيجة</span>
-          </div>
-
-          <div class="result-preview" id="example-result"></div>
-        </article>
-
-        <!-- PLAYGROUND -->
-
-        <article class="playground-card">
-          <div class="playground-header">
-            <div>
-              <span id="try-it-label">جرب بنفسك</span>
-              <h2 id="write-html-title">اكتب كود HTML</h2>
-            </div>
-
-            <button class="run-btn" id="run-code" type="button">تشغيل الكود</button>
-          </div>
-
-          <div class="playground-description">
-            <p id="challenge-text"></p>
-          </div>
-
-          <div class="editor-layout">
-            <!-- EDITOR -->
-
-            <div class="editor-panel">
-              <div class="editor-top">
-                <span>HTML</span>
-
-                <button id="reset-code" class="reset-btn" type="button">إعادة ضبط</button>
-              </div>
-
-              <textarea id="code-editor" spellcheck="false"></textarea>
-            </div>
-
-            <!-- LIVE PREVIEW -->
-
-            <div class="preview-panel">
-              <div class="preview-top">
-                <span id="live-preview-label"> المعاينة المباشرة </span>
-              </div>
-
-              <iframe id="live-preview" title="HTML Live Preview"></iframe>
-            </div>
-          </div>
-        </article>
-
-        <!-- EXPLANATION -->
-
-        <section class="explanation-card">
-            <h3>فهم الكود</h3>
-            <div id="exampleExplanation"></div>
-        </section>
-
-        <!-- QUICK CHECK -->
-
-        <article class="check-card" id="quick-check">
-          <span id="quick-check-label"> اختبار سريع </span>
-
-          <div class="quiz-progress" id="quiz-progress" aria-live="polite">
-            <span id="quiz-question-number"> السؤال 1 </span>
-
-            <span aria-hidden="true"> / </span>
-
-            <span id="quiz-total-questions"> 3 </span>
-          </div>
-
-          <h2 id="questionTitle"></h2>
-
-          <p id="choose-answer-text">اختر الإجابة الصحيحة.</p>
-
-          <div class="answer-options" id="answer-options"></div>
-
-          <div id="answer-feedback" class="answer-feedback" aria-live="polite"></div>
-
-          <div class="quiz-actions">
-            <button type="button" class="quiz-next-btn" id="quiz-next-btn" disabled>السؤال التالي</button>
-          </div>
-        </article>
-
-        <!-- NAVIGATION -->
-
-        <div class="lesson-navigation">
-          <button class="nav-btn previous" id="previous-btn" type="button">
-            <span>→</span>
-
-            <div>
-              <small id="previous-label"> الدرس السابق </small>
-
-              <strong id="previous-title"> بداية المسار </strong>
-            </div>
-          </button>
-
-          <button class="nav-btn next" id="next-btn" type="button">
-            <div>
-              <small id="next-label"> الدرس التالي </small>
-
-              <strong id="next-title"> بنية مستند HTML </strong>
-            </div>
-
-            <span>←</span>
-          </button>
-        </div>
-      </section>
-    </main>
-
-    <script src="html-learning.js"></script>
+    <!-- The lesson UI is built by the shared engine from /content/html/index.js -->
+    <main class="learning-layout" id="courseRoot"></main>
+    <noscript><p style="padding:24px">JavaScript is required to run the lessons / يلزم تفعيل JavaScript لعرض الدروس.</p></noscript>
+
+    <script type="module" src="/js/engine/boot.js" data-track="html"></script>
   </body>
 </html>

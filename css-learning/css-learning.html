@@ -2,17 +2,19 @@
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <!-- Rollback: ?engine=legacy opens the previous implementation (see docs/rollback.md) -->
+    <script>if(/[?&]engine=legacy\b/.test(location.search))location.replace("/legacy/css-learning/css-learning.html"+location.hash);</script>
     <!-- Preferences: theme / language / direction resolved before first paint (no flash) -->
     <script src="/js/prefs.js"></script>
 
-    <!-- Site metadata (managed: canonical, icons, manifest, social, service worker) -->
     <link rel="canonical" href="https://fayad-learning.vercel.app/css-learning/css-learning.html" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/icons/favicon-48.png" />
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#0b3d35" />
@@ -26,510 +28,34 @@
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <script src="/js/sw-register.js" defer></script>
-
-
-    <meta
-      name="description"
-      content="FAYAD CSS Learning Path — Learn CSS through structured lessons, examples, challenges, and practice." />
-
+    <meta name="description" content="FAYAD CSS Learning Path — Learn CSS through structured lessons, examples, challenges, and practice." />
     <title>FAYAD — تعلم CSS</title>
 
-    <link rel="stylesheet" href="css-learning.css" />
-
-    <script>
-      window.va =
-        window.va ||
-        function () {
-          (window.vaq = window.vaq || []).push(arguments);
-        };
-    </script>
-
-    <script defer src="/_vercel/speed-insights/script.js"></script>
-  
-    <!-- FAYAD design system (loaded after page CSS so tokens win) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/css/tokens.css" />
-    <link rel="stylesheet" href="/css/theme.css" />
-    <link rel="stylesheet" href="/css/theme-overrides.css" />
+    <link rel="stylesheet" href="/css/course.css" />
     <link rel="stylesheet" href="/css/shell.css" />
+
+    <script src="/js/sw-register.js" defer></script>
     <script src="/js/i18n.js" defer></script>
     <script src="/js/shell.js" defer></script>
+    <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
   </head>
 
   <body>
-    <!-- =========================
-       TOP NAVBAR
-  ========================== -->
-
     <header class="learning-navbar">
-      <a href="../index.html" class="learning-logo"> F </a>
-
-      <div class="learning-title">
-        <span>FAYAD</span>
-
-        <strong id="learningPathTitle"> مسار تعلم CSS </strong>
-      </div>
-
-      <div class="learning-actions">
-        <a href="../index.html" class="back-btn" id="backButton"> رجوع → </a>
-      </div>
+      <a href="/index.html" class="learning-logo" aria-label="FAYAD">F</a>
+      <div class="learning-title"><span>FAYAD</span><h1 class="path-title" id="pathTitle">مسار تعلم CSS</h1></div>
+      <div class="learning-actions"><a href="/index.html" class="back-btn" data-s="nav.back"></a></div>
     </header>
 
-    <!-- =========================
-       MAIN LAYOUT
-  ========================== -->
-
-    <main class="learning-layout">
-      <!-- =========================
-         SIDEBAR
-    ========================== -->
-
-      <aside class="sidebar">
-        <div class="sidebar-header">
-          <p id="learningPathLabel">مسار التعلم</p>
-
-          <h2>CSS</h2>
-        </div>
-
-        <!-- =========================
-           CSS BASICS
-      ========================== -->
-
-        <div class="topic-group">
-          <h3 id="groupBasics">أساسيات CSS</h3>
-
-          <button class="lesson active" data-lesson="0">
-            <span class="lesson-status current">01</span>
-            <span class="lesson-name">مقدمة إلى CSS</span>
-          </button>
-
-          <button class="lesson" data-lesson="1">
-            <span class="lesson-status">02</span>
-            <span class="lesson-name">صيغة كتابة CSS</span>
-          </button>
-
-          <button class="lesson" data-lesson="2">
-            <span class="lesson-status">03</span>
-            <span class="lesson-name">المحددات Selectors</span>
-          </button>
-
-          <button class="lesson" data-lesson="3">
-            <span class="lesson-status">04</span>
-            <span class="lesson-name">الألوان</span>
-          </button>
-
-          <button class="lesson" data-lesson="4">
-            <span class="lesson-status">05</span>
-            <span class="lesson-name">الخلفيات</span>
-          </button>
-
-          <button class="lesson" data-lesson="5">
-            <span class="lesson-status">06</span>
-            <span class="lesson-name">الحدود Borders</span>
-          </button>
-        </div>
-
-        <!-- =========================
-           BOX MODEL
-      ========================== -->
-
-        <div class="topic-group">
-          <h3 id="groupBoxModel">نموذج الصندوق</h3>
-
-          <button class="lesson" data-lesson="6">
-            <span class="lesson-status">07</span>
-            <span class="lesson-name">العرض والارتفاع</span>
-          </button>
-
-          <button class="lesson" data-lesson="7">
-            <span class="lesson-status">08</span>
-            <span class="lesson-name">الهامش Margin</span>
-          </button>
-
-          <button class="lesson" data-lesson="8">
-            <span class="lesson-status">09</span>
-            <span class="lesson-name">الحشو Padding</span>
-          </button>
-
-          <button class="lesson" data-lesson="9">
-            <span class="lesson-status">10</span>
-            <span class="lesson-name">نموذج الصندوق Box Model</span>
-          </button>
-
-          <button class="lesson" data-lesson="10">
-            <span class="lesson-status">11</span>
-            <span class="lesson-name">حساب حجم الصندوق</span>
-          </button>
-        </div>
-
-        <!-- =========================
-           TEXT & FONTS
-      ========================== -->
-
-        <div class="topic-group">
-          <h3 id="groupTextFonts">النصوص والخطوط</h3>
-
-          <button class="lesson" data-lesson="11">
-            <span class="lesson-status">12</span>
-            <span class="lesson-name">تنسيق النصوص</span>
-          </button>
-
-          <button class="lesson" data-lesson="12">
-            <span class="lesson-status">13</span>
-            <span class="lesson-name">الخطوط Fonts</span>
-          </button>
-
-          <button class="lesson" data-lesson="13">
-            <span class="lesson-status">14</span>
-            <span class="lesson-name">ارتفاع السطر</span>
-          </button>
-
-          <button class="lesson" data-lesson="14">
-            <span class="lesson-status">15</span>
-            <span class="lesson-name">محاذاة النص</span>
-          </button>
-        </div>
-
-        <!-- =========================
-           LAYOUT
-      ========================== -->
-
-        <div class="topic-group">
-          <h3 id="groupLayout">التخطيط</h3>
-
-          <button class="lesson" data-lesson="15">
-            <span class="lesson-status">16</span>
-            <span class="lesson-name">Display</span>
-          </button>
-
-          <button class="lesson" data-lesson="16">
-            <span class="lesson-status">17</span>
-            <span class="lesson-name">Position</span>
-          </button>
-
-          <button class="lesson" data-lesson="17">
-            <span class="lesson-status">18</span>
-            <span class="lesson-name">Flexbox</span>
-          </button>
-
-          <button class="lesson" data-lesson="18">
-            <span class="lesson-status">19</span>
-            <span class="lesson-name">CSS Grid</span>
-          </button>
-
-          <button class="lesson" data-lesson="19">
-            <span class="lesson-status">20</span>
-            <span class="lesson-name">التصميم المتجاوب</span>
-          </button>
-        </div>
-
-        <!-- =========================
-           MODERN CSS
-      ========================== -->
-
-        <div class="topic-group">
-          <h3 id="groupModern">CSS الحديثة</h3>
-
-          <button class="lesson" data-lesson="20">
-            <span class="lesson-status">21</span>
-            <span class="lesson-name">Pseudo-classes</span>
-          </button>
-
-          <button class="lesson" data-lesson="21">
-            <span class="lesson-status">22</span>
-            <span class="lesson-name">Pseudo-elements</span>
-          </button>
-
-          <button class="lesson" data-lesson="22">
-            <span class="lesson-status">23</span>
-            <span class="lesson-name">Transitions</span>
-          </button>
-
-          <button class="lesson" data-lesson="23">
-            <span class="lesson-status">24</span>
-            <span class="lesson-name">Transforms</span>
-          </button>
-
-          <button class="lesson" data-lesson="24">
-            <span class="lesson-status">25</span>
-            <span class="lesson-name">Animations</span>
-          </button>
-        </div>
-
-        <!-- =========================
-           ADVANCED CSS
-      ========================== -->
-
-        <div class="topic-group">
-          <h3 id="groupAdvanced">CSS المتقدمة</h3>
-
-          <button class="lesson" data-lesson="25">
-            <span class="lesson-status">26</span>
-            <span class="lesson-name">متغيرات CSS</span>
-          </button>
-
-          <button class="lesson" data-lesson="26">
-            <span class="lesson-status">27</span>
-            <span class="lesson-name">Specificity</span>
-          </button>
-
-          <button class="lesson" data-lesson="27">
-            <span class="lesson-status">28</span>
-            <span class="lesson-name">Media Queries</span>
-          </button>
-
-          <button class="lesson" data-lesson="28">
-            <span class="lesson-status">29</span>
-            <span class="lesson-name">المحددات المتقدمة</span>
-          </button>
-
-          <button class="lesson" data-lesson="29">
-            <span class="lesson-status">30</span>
-            <span class="lesson-name">أفضل ممارسات CSS</span>
-          </button>
-        </div>
-      </aside>
-
-      <!-- =========================
-         LESSON CONTENT
-    ========================== -->
-
-      <section class="lesson-content">
-        <!-- PROGRESS -->
-
-        <div class="progress-area">
-          <div class="progress-info">
-            <span id="progressLabel"> تقدم CSS </span>
-
-            <strong id="progressText"> 3% </strong>
-          </div>
-
-          <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
-          </div>
-        </div>
-
-        <!-- LESSON HEADER -->
-
-        <div class="lesson-header">
-          <span class="lesson-number" id="lessonNumber"> الدرس 01 </span>
-
-          <h1 id="lessonTitle">مقدمة إلى CSS</h1>
-
-          <p id="lessonDescription">تعرف على ماهية CSS ولماذا نستخدمه وكيف يتحكم في مظهر عناصر HTML.</p>
-        </div>
-
-        <!-- WHAT IS CSS -->
-
-        <article class="content-card">
-          <h2 id="whatIsCssTitle">ما هو CSS؟</h2>
-
-          <p id="whatIsCssP1">
-            CSS اختصار لـ
-            <strong>Cascading Style Sheets</strong>
-            أي أوراق الأنماط المتتالية.
-          </p>
-
-          <p id="whatIsCssP2">يُستخدم CSS للتحكم في المظهر المرئي لعناصر HTML.</p>
-
-          <p id="whatIsCssP3">
-            باستخدام CSS يمكنك تغيير الألوان والأحجام والمسافات والتخطيطات والخطوط والحركات وغير ذلك الكثير.
-          </p>
-        </article>
-
-        <!-- KEY IDEA -->
-
-        <article class="content-card">
-          <div class="info-label" id="keyIdeaLabel">الفكرة الأساسية</div>
-
-          <h2 id="keyIdeaTitle">HTML ينشئ الهيكل، وCSS ينشئ التصميم.</h2>
-
-          <p id="keyIdeaText">
-            تخيل أنك تبني منزلًا. HTML يمثل هيكل المنزل، بينما CSS يتحكم في الألوان والحجم والمسافات والمظهر العام.
-          </p>
-        </article>
-
-        <!-- CODE EXAMPLE -->
-
-        <article class="example-card">
-          <div class="example-header">
-            <div>
-              <span id="codeExampleLabel"> مثال على الكود </span>
-
-              <h2 id="codeExampleTitle">أول كود CSS لك</h2>
-            </div>
-
-            <button class="copy-btn" id="copyButton" type="button">نسخ</button>
-          </div>
-
-          <pre><code id="exampleCode">h1 {
-  color: #0f807a;
-  font-size: 40px;
-}
-
-p {
-  color: #536777;
-}</code></pre>
-        </article>
-
-        <!-- RESULT -->
-
-        <article class="result-card">
-          <div class="result-header">
-            <span id="resultLabel"> النتيجة </span>
-          </div>
-
-          <div class="result-preview" id="resultPreview">
-            <h1>Hello CSS</h1>
-
-            <p>CSS changes the appearance of HTML.</p>
-          </div>
-        </article>
-
-        <!-- PLAYGROUND -->
-
-        <article class="playground-card">
-          <div class="playground-header">
-            <div>
-              <span id="tryItLabel"> جرب بنفسك </span>
-
-              <h2 id="tryItTitle">اكتب CSS وشاهد النتيجة</h2>
-            </div>
-
-            <button class="run-button" id="runButton" type="button">تشغيل CSS</button>
-          </div>
-
-          <div class="playground">
-            <!-- EDITOR -->
-
-            <div class="editor-panel">
-              <div class="editor-label" id="cssEditorLabel">محرر CSS</div>
-
-              <textarea id="cssEditor" spellcheck="false">
-h1 {
-  color: #0f807a;
-  font-size: 40px;
-}
-
-p {
-  color: #536777;
-}</textarea
-              >
-            </div>
-
-            <!-- PREVIEW -->
-
-            <div class="preview-panel">
-              <div class="editor-label" id="livePreviewLabel">المعاينة المباشرة</div>
-
-              <div class="live-preview" id="livePreview">
-                <h1>Hello CSS</h1>
-
-                <p id="livePreviewText">
-                  غيّر كود CSS ثم اضغط
-                  <strong>تشغيل CSS</strong>.
-                </p>
-
-                <button id="exampleButton">زر تجريبي</button>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- EXPLANATION -->
-
-        <article class="content-card">
-          <h2 id="syntaxTitle">فهم صيغة كتابة CSS</h2>
-
-          <p id="syntaxP1">
-            تحتوي قاعدة CSS على
-            <strong>Selector</strong>
-            ومجموعة من
-            <strong>Declarations</strong>.
-          </p>
-
-          <p id="syntaxP2">يحدد الـ Selector عنصر HTML الذي تريد تنسيقه.</p>
-
-          <p id="syntaxP3">كل Declaration تحتوي على Property وValue.</p>
-        </article>
-
-        <!-- =========================
-           QUICK CHECK
-      ========================== -->
-
-        <article class="check-card" id="quickCheck">
-          <span id="quickCheckLabel"> اختبار سريع </span>
-
-          <!-- QUIZ PROGRESS -->
-
-          <div class="quiz-progress" id="quizProgress" aria-live="polite">
-            <span id="quizQuestionNumber"> السؤال 1 </span>
-
-            <span aria-hidden="true"> / </span>
-
-            <span id="quizTotalQuestions"> 3 </span>
-          </div>
-
-          <!-- QUESTION -->
-
-          <h2 id="questionTitle">فيما يُستخدم CSS بشكل أساسي؟</h2>
-
-          <p id="questionInstruction">اختر الإجابة الصحيحة.</p>
-
-          <!-- ANSWERS -->
-
-          <div class="answer-options" id="answerOptions">
-            <button type="button" aria-label="الإجابة الأولى"></button>
-
-            <button type="button" aria-label="الإجابة الثانية"></button>
-
-            <button type="button" aria-label="الإجابة الثالثة"></button>
-
-            <button type="button" aria-label="الإجابة الرابعة"></button>
-          </div>
-
-          <!-- FEEDBACK -->
-
-          <div class="answer-feedback" id="answerFeedback" aria-live="polite"></div>
-
-          <!-- QUIZ NEXT -->
-
-          <div class="quiz-actions" id="quizActions">
-            <button type="button" class="quiz-next-btn" id="quizNextButton" disabled>السؤال التالي</button>
-          </div>
-        </article>
-
-        <!-- =========================
-           LESSON NAVIGATION
-      ========================== -->
-
-        <div class="lesson-navigation">
-          <button class="nav-btn previous" id="previousButton" type="button">
-            <span id="previousArrow"> ← </span>
-
-            <div>
-              <small id="previousLabel"> السابق </small>
-
-              <strong id="previousLessonText"> الدرس السابق </strong>
-            </div>
-          </button>
-
-          <button class="nav-btn next" id="nextButton" type="button">
-            <div>
-              <small id="nextLabel"> الدرس التالي </small>
-
-              <strong id="nextLessonText"> صيغة كتابة CSS </strong>
-            </div>
-
-            <span id="nextArrow"> → </span>
-          </button>
-        </div>
-      </section>
-    </main>
-
-    <script src="css-learning.js"></script>
+    <!-- The lesson UI is built by the shared engine from /content/css/index.js -->
+    <main class="learning-layout" id="courseRoot"></main>
+    <noscript><p style="padding:24px">JavaScript is required to run the lessons / يلزم تفعيل JavaScript لعرض الدروس.</p></noscript>
+
+    <script type="module" src="/js/engine/boot.js" data-track="css"></script>
   </body>
 </html>

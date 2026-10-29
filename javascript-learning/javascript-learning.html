@@ -2,18 +2,19 @@
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Preferences: theme / language / direction resolved before first paint (no flash) -->
+    <!-- Rollback: ?engine=legacy opens the previous implementation (see docs/rollback.md) -->
     <script>if(/[?&]engine=legacy\b/.test(location.search))location.replace("/legacy/javascript-learning/javascript-learning.html"+location.hash);</script>
+    <!-- Preferences: theme / language / direction resolved before first paint (no flash) -->
     <script src="/js/prefs.js"></script>
 
-    <!-- Site metadata (managed: canonical, icons, manifest, social, service worker) -->
     <link rel="canonical" href="https://fayad-learning.vercel.app/javascript-learning/javascript-learning.html" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/icons/favicon-48.png" />
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#0b3d35" />
@@ -27,256 +28,33 @@
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <script src="/js/sw-register.js" defer></script>
-
-
-    <meta
-      name="description"
-      content="مسار تعلم JavaScript من FAYAD — تعلم JavaScript من خلال دروس منظمة، أمثلة، تدريبات، تحديات واختبارات." />
-
+    <meta name="description" content="مسار تعلم JavaScript من FAYAD — تعلم JavaScript من خلال دروس منظمة، أمثلة، تدريبات، تحديات واختبارات." />
     <title>FAYAD — تعلم JavaScript</title>
 
-    <link rel="stylesheet" href="javascript-learning.css" />
-
-    <script>
-      window.va =
-        window.va ||
-        function () {
-          (window.vaq = window.vaq || []).push(arguments);
-        };
-    </script>
-
-    <script defer src="/_vercel/speed-insights/script.js"></script>
-  
-    <!-- FAYAD design system (loaded after page CSS so tokens win) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/css/tokens.css" />
-    <link rel="stylesheet" href="/css/theme.css" />
-    <link rel="stylesheet" href="/css/theme-overrides.css" />
+    <link rel="stylesheet" href="/css/course.css" />
     <link rel="stylesheet" href="/css/shell.css" />
+
+    <script src="/js/sw-register.js" defer></script>
     <script src="/js/i18n.js" defer></script>
     <script src="/js/shell.js" defer></script>
+    <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
   </head>
 
   <body>
-    <!-- =========================================================
-       TOP NAVBAR
-  ========================================================== -->
-
     <header class="learning-navbar">
-      <a href="../index.html" class="learning-logo"> F </a>
-
-      <div class="learning-title">
-        <span>FAYAD</span>
-        <strong>مسار تعلم JavaScript</strong>
-      </div>
-
-      <div class="learning-actions">
-        <a href="../index.html" class="back-btn"> رجوع </a>
-      </div>
+      <a href="/index.html" class="learning-logo" aria-label="FAYAD">F</a>
+      <div class="learning-title"><span>FAYAD</span><h1 class="path-title" id="pathTitle">مسار تعلم JavaScript</h1></div>
+      <div class="learning-actions"><a href="/index.html" class="back-btn" data-s="nav.back"></a></div>
     </header>
 
-    <!-- =========================================================
-       MAIN LEARNING LAYOUT
-  ========================================================== -->
-
-    <main class="learning-layout">
-      <!-- =======================================================
-         SIDEBAR
-    ======================================================== -->
-
-      <aside class="sidebar" aria-label="دروس JavaScript">
-        <div class="sidebar-header">
-          <p>مسار التعلم</p>
-          <h2>JavaScript</h2>
-        </div>
-        <div id="sidebarGroups"></div>
-      </aside>
-
-      <!-- =======================================================
-         LESSON CONTENT
-    ======================================================== -->
-
-      <section class="lesson-content">
-        <!-- =====================================================
-           PROGRESS
-      ====================================================== -->
-
-        <div class="progress-area">
-          <div class="progress-info">
-            <span>تقدم JavaScript</span>
-
-            <strong id="progressText">4%</strong>
-          </div>
-
-          <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
-          </div>
-        </div>
-
-        <!-- =====================================================
-           LESSON HEADER
-      ====================================================== -->
-
-        <div class="lesson-header" id="lessonHeader">
-          <span class="lesson-number" id="lessonNumber"> الدرس 01 </span>
-
-          <h1 id="lessonTitle">مقدمة إلى JavaScript</h1>
-
-          <p id="lessonDescription">
-            تعرّف على JavaScript، وما وظيفتها، ولماذا تُستخدم، وكيف تضيف التفاعل والسلوك إلى صفحات الويب.
-          </p>
-        </div>
-
-        <!-- =====================================================
-           MAIN CONTENT
-      ====================================================== -->
-
-        <div id="lessonSections"></div>
-
-        <!-- =====================================================
-           CODE EXAMPLE
-      ====================================================== -->
-
-        <article class="example-card">
-          <div class="example-header">
-            <div>
-              <span> مثال برمجي </span>
-
-              <h2>كود JavaScript</h2>
-            </div>
-
-            <button type="button" class="copy-btn" id="copyButton">نسخ</button>
-          </div>
-
-          <pre><code id="exampleCode"></code></pre>
-        </article>
-
-        <!-- =====================================================
-           RESULT
-      ====================================================== -->
-
-        <article class="result-card">
-          <div class="result-header">
-            <span> النتيجة </span>
-          </div>
-
-          <div class="result-preview"><div id="jsResultStage" class="result-stage"></div></div>
-        </article>
-
-        <!-- =====================================================
-           EXPLANATION
-      ====================================================== -->
-
-        <section class="explanation-card">
-          <h3>فهم الكود</h3>
-
-          <div id="exampleExplanation"></div>
-        </section>
-
-        <!-- =====================================================
-           PRACTICE
-      ====================================================== -->
-
-        <article class="practice-card">
-          <div class="practice-header">
-            <div>
-              <span> جرّب بنفسك </span>
-
-              <h2>اكتب JavaScript</h2>
-            </div>
-          </div>
-
-          <p class="practice-description">غيّر الكود الموجود بالأسفل ثم شغّله لترى النتيجة.</p>
-
-          <textarea id="jsEditor" spellcheck="false" aria-label="محرر JavaScript" dir="ltr"></textarea>
-
-          <div class="practice-actions">
-            <button type="button" class="run-btn" id="runButton">تشغيل الكود</button>
-
-            <button type="button" class="reset-btn" id="resetButton">إعادة ضبط</button>
-          </div>
-
-          <div class="practice-output">
-            <span> الناتج </span>
-
-            <div id="output">ستظهر النتيجة هنا.</div>
-          </div>
-        </article>
-
-        <!-- =====================================================
-           QUICK CHECK / QUIZ
-      ====================================================== -->
-
-        <article class="check-card" id="quickCheck">
-          <span id="quickCheckLabel"> اختبار سريع </span>
-
-          <!-- Quiz Progress -->
-
-          <div class="quiz-progress" id="quizProgress" aria-live="polite">
-            <span id="quizQuestionNumber"> السؤال 1 </span>
-
-            <span aria-hidden="true"> / </span>
-
-            <span id="quizTotalQuestions"> 3 </span>
-          </div>
-
-          <!-- Question -->
-
-          <h2 id="questionTitle">ما الاستخدام الأساسي لـ JavaScript؟</h2>
-
-          <p id="questionInstruction">اختر الإجابة الصحيحة.</p>
-
-          <!-- Answers -->
-
-          <div class="answer-options" id="answerOptions"></div>
-
-          <!-- Feedback -->
-
-          <div class="answer-feedback" id="answerFeedback" aria-live="polite"></div>
-
-          <!-- Quiz Actions -->
-
-          <div class="quiz-actions" id="quizActions">
-            <button type="button" class="quiz-next-btn" id="quizNextButton" disabled>السؤال التالي</button>
-          </div>
-        </article>
-
-        <!-- =====================================================
-           LESSON NAVIGATION
-      ====================================================== -->
-
-        <div class="lesson-navigation">
-          <!-- Previous -->
-
-          <button type="button" class="nav-btn previous" id="previousButton">
-            <span> → </span>
-
-            <div>
-              <small> الدرس السابق </small>
-
-              <strong> CSS Learning </strong>
-            </div>
-          </button>
-
-          <!-- Next -->
-
-          <button type="button" class="nav-btn next" id="nextButton">
-            <div>
-              <small> الدرس التالي </small>
-
-              <strong> المتغيرات </strong>
-            </div>
-
-            <span> ← </span>
-          </button>
-        </div>
-      </section>
-    </main>
-
-    <!-- Shared lesson engine: content in /content/js/index.js, rollback: ?engine=legacy -->
+    <!-- The lesson UI is built by the shared engine from /content/js/index.js -->
+    <main class="learning-layout" id="courseRoot"></main>
+    <noscript><p style="padding:24px">JavaScript is required to run the lessons / يلزم تفعيل JavaScript لعرض الدروس.</p></noscript>
 
     <script type="module" src="/js/engine/boot.js" data-track="js"></script>
   </body>

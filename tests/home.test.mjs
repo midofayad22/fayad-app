@@ -32,13 +32,13 @@ test("every internal link on the homepage resolves to an existing file", async (
   }
 });
 
-test("roadmap has the 8 requested steps in order; Git/GitHub and Projects are honestly marked as coming soon", async () => {
+test("roadmap has 9 steps in order (no Git course: FAYAD CODE covers it); Projects is honestly marked as coming soon", async () => {
   const { ctx, page } = await open({}, "en");
   const steps = await page.$$eval(".hm-roadmap .hm-step", (els) => els.map((e) => ({ n: e.querySelector(".hm-step-n").textContent, name: e.querySelector("strong").textContent, link: e.tagName === "A", soon: !!e.querySelector(".hm-soon") })));
-  assert.deepEqual(steps.map((s) => s.name), ["Computer Fundamentals", "Programming Fundamentals", "HTML", "CSS", "JavaScript", "Git & GitHub", "Frameworks", "Projects"]);
-  assert.deepEqual(steps.map((s) => s.soon), [false, false, false, false, false, true, false, true]);
-  assert.deepEqual(steps.map((s) => s.link), [true, true, true, true, true, false, true, false]);
-  assert.deepEqual(steps.map((s) => s.n), ["1", "2", "3", "4", "5", "6", "7", "8"]);
+  assert.deepEqual(steps.map((s) => s.name), ["Computer Fundamentals", "Programming Fundamentals", "HTML", "CSS", "JavaScript", "Advanced JavaScript", "Bootstrap & Tailwind", "Frameworks", "Projects"]);
+  assert.deepEqual(steps.map((s) => s.soon), [false, false, false, false, false, false, false, false, true]);
+  assert.deepEqual(steps.map((s) => s.link), [true, true, true, true, true, true, true, true, false]);
+  assert.deepEqual(steps.map((s) => s.n), ["1", "2", "3", "4", "5", "6", "7", "8", "9"]);
   await ctx.close();
 });
 
@@ -71,7 +71,7 @@ test("continue learning is hidden with no progress and appears from real saved d
 test("corrupt progress data does not break the page", async () => {
   const { ctx, page } = await open({ "fayad-html-progress": "{not json", "fayad-js-current-lesson": "banana", "fayad-last-track": "###" });
   assert.equal(await page.locator("#continue").isVisible(), false);
-  assert.equal(await page.locator(".hm-card").count(), 8);
+  assert.equal(await page.locator(".hm-card").count(), 11);
   await ctx.close();
 });
 
@@ -153,4 +153,27 @@ test("no phone number or tel: link is published on the homepage (privacy decisio
   const { ctx, page } = await open();
   assert.equal(await page.locator("a[href^='tel:']").count(), 0);
   await ctx.close();
+});
+
+test("hero is not hidden behind the fixed navbar and nothing overflows (320–1440, ar + en)", async () => {
+  for (const lang of ["ar", "en"]) for (const w of [320, 390, 768, 1440]) {
+    const { ctx, page } = await open({}, lang);
+    await page.setViewportSize({ width: w, height: 900 }); await page.waitForTimeout(900);
+    const r = await page.evaluate(() => ({
+      navBottom: document.querySelector(".navbar").getBoundingClientRect().bottom,
+      kick: document.querySelector(".hm-kicker").getBoundingClientRect().top,
+      sw: document.documentElement.scrollWidth, iw: innerWidth,
+      outside: [...document.querySelectorAll(".navbar .nav-actions > *")].filter((e) => { const b = e.getBoundingClientRect(); return b.width && (b.left < -0.5 || b.right > innerWidth + 0.5); }).length,
+    }));
+    assert.ok(r.kick >= r.navBottom, `${lang}@${w}: hero under navbar`);
+    assert.ok(r.sw <= r.iw, `${lang}@${w}: horizontal overflow`);
+    assert.equal(r.outside, 0, `${lang}@${w}: navbar actions leave the viewport`);
+    await ctx.close();
+  }
+});
+
+test("viewport-fit=cover and safe-area padding are present for iPhone notches", async () => {
+  const html = fs.readFileSync(path.join(ROOT, "index.html"), "utf8");
+  assert.match(html, /viewport-fit=cover/);
+  assert.match(fs.readFileSync(path.join(ROOT, "css/shell.css"), "utf8"), /env\(safe-area-inset-top/);
 });

@@ -125,16 +125,29 @@ const exportsHolder = {};
     return JSON.stringify(v).replace(/</g, "\\u003c").replace(/\u2028/g, "\\u2028").replace(/\u2029/g, "\\u2029");
   }
 
+  // Loops inside the learner's inline <script> blocks and on*="" handler attributes are guarded too: a sandboxed iframe cannot be
+  // pre-empted, so an unguarded `while(true){}` there would freeze the tab. External scripts (src=) are not ours to rewrite.
+  function guardMarkup(html) {
+    return html
+      .replace(/(<script\b(?![^>]*\bsrc\s*=)[^>]*>)([\s\S]*?)(<\/script>)/gi, function (m, open, code, close) { return open + guardLoops(code).code + close; })
+      .replace(/(\son[a-z]+\s*=\s*)(?:"([^"]*)"|'([^']*)')/gi, function (m, pre, dq, sq) {
+        return dq !== undefined ? pre + '"' + guardLoops(dq).code + '"' : pre + "'" + guardLoops(sq).code + "'";
+      });
+  }
+
   function htmlDocument(token, files, opts) {
     var css = files.css ? "<style>" + String(files.css).replace(/<\/style/gi, "<\\/style") + "</style>" : "";
     var body = files.html != null ? String(files.html) : "";
+    if (opts.loopGuard !== false) body = guardMarkup(body);
     var js = "";
     if (files.js) {
       var original = String(files.js);
       var guarded = opts.loopGuard === false ? original : guardLoops(original).code;
       js = "<script>__fyRun(" + jsonForScript(guarded) + "," + jsonForScript(original) + ")<\/script>";
     }
-    return "<!doctype html><meta charset=utf-8>" + htmlBootstrap(token, opts.loopBudget, opts.collect) + css + body + js;
+    // files.head: authored, trusted markup (e.g. vendored library <link>/<script>), never learner input
+    var head = typeof files.head === "string" ? files.head : "";
+    return "<!doctype html><meta charset=utf-8>" + htmlBootstrap(token, opts.loopBudget, opts.collect) + head + css + body + js;
   }
 
   function randomToken() {

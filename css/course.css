@@ -1,44 +1,36 @@
 /* =========================================================
-   FAYAD — JAVASCRIPT LEARNING PAGE
-   JavaScript Brand Theme
+   FAYAD — SHARED COURSE PAGE (all courses built on the shared lesson engine)
+   Accent: html[data-track] -> --fy-course*; theme: html[data-theme]
 ========================================================= */
 
 /* =========================================================
    ROOT
 ========================================================= */
 
-:root {
-  --js-yellow: #f7df1e;
-  --js-yellow-light: #fff176;
-  --js-yellow-dark: #d4bd00;
-
-  --bg-main: #111111;
-  --bg-secondary: #1a1a1a;
-  --bg-tertiary: #222222;
-
-  --accent: var(--js-yellow);
-  --accent-light: var(--js-yellow-light);
-  --accent-dark: var(--js-yellow-dark);
-
-  --text-primary: #f8f8f8;
-  --text-secondary: #c8c8c8;
-  --text-muted: #858585;
-
-  --border: rgba(247, 223, 30, 0.14);
-  --border-light: rgba(255, 255, 255, 0.1);
-
-  --card-bg: rgba(255, 255, 255, 0.045);
-
-  --code-bg: #0b0b0b;
-
-  --success: #4ade80;
-  --success-bg: rgba(74, 222, 128, 0.12);
-
-  --danger: #f87171;
-  --danger-bg: rgba(248, 113, 113, 0.12);
-
+/* Legacy variable names of this stylesheet, mapped onto the shared tokens (css/tokens.css). Works for every track:
+   the accent comes from html[data-track] (--fy-course*), the theme from html[data-theme]. */
+html {
+  --js-yellow: var(--fy-course);
+  --js-yellow-light: var(--fy-course-ink);
+  --js-yellow-dark: var(--fy-course-strong);
+  --bg-main: var(--fy-bg);
+  --bg-secondary: var(--fy-bg-soft);
+  --bg-tertiary: var(--fy-surface-2);
+  --accent: var(--fy-course);
+  --accent-light: var(--fy-course-ink);
+  --accent-dark: var(--fy-course-strong);
+  --text-primary: var(--fy-text);
+  --text-secondary: var(--fy-text-soft);
+  --text-muted: var(--fy-text-muted);
+  --border: var(--fy-border);
+  --border-light: var(--fy-border);
+  --card-bg: var(--fy-surface);
+  --code-bg: var(--fy-code-bg);
+  --success: var(--fy-success);
+  --success-bg: color-mix(in srgb, var(--fy-success) 12%, transparent);
+  --danger: var(--fy-danger);
+  --danger-bg: color-mix(in srgb, var(--fy-danger) 12%, transparent);
   --sidebar-width: 300px;
-
   --radius: 18px;
   --transition: 0.3s ease;
 }
@@ -514,7 +506,8 @@ button:disabled {
   letter-spacing: 2px;
 }
 
-.lesson-header h1 {
+.lesson-header h1,
+.lesson-header h2.lesson-title {
   margin: 10px 0 18px;
 
   font-size: clamp(38px, 5vw, 64px);
@@ -1426,7 +1419,8 @@ textarea:focus-visible {
     margin-bottom: 40px;
   }
 
-  .lesson-header h1 {
+  .lesson-header h1,
+  .lesson-header h2.lesson-title {
     font-size: clamp(36px, 9vw, 52px);
   }
 
@@ -1525,7 +1519,8 @@ textarea:focus-visible {
     margin-bottom: 40px;
   }
 
-  .lesson-header h1 {
+  .lesson-header h1,
+  .lesson-header h2.lesson-title {
     font-size: 42px;
 
     letter-spacing: -1.5px;
@@ -1652,7 +1647,8 @@ textarea:focus-visible {
     padding: 18px;
   }
 
-  .lesson-header h1 {
+  .lesson-header h1,
+  .lesson-header h2.lesson-title {
     font-size: 36px;
   }
 
@@ -1670,3 +1666,92 @@ textarea:focus-visible {
 /* Sandboxed result stage (shared engine): the live preview that learner code operates on */
 .result-stage { width: 100%; min-height: 150px; }
 .result-stage iframe { display: block; width: 100%; height: 170px; border: 0; border-radius: 8px; background: transparent; }
+
+
+/* =========================================================
+   SHARED-ENGINE ADDITIONS (Milestone 4f)
+========================================================= */
+
+/* code panels stay dark in the light theme: familiar, and highest syntax contrast */
+html[data-theme="light"] :is(.example-card, .editor-panel, .practice-output, .preview-note-dark) {
+  color-scheme: dark;
+  color: #eef6f8;
+  --fy-bg: #071014; --fy-bg-soft: #0a161b; --fy-surface: #0f1c22; --fy-surface-2: #14252c; --fy-surface-3: #1a2f38;
+  --fy-border: rgba(255, 255, 255, 0.09); --fy-border-strong: rgba(255, 255, 255, 0.17);
+  --fy-text: #eef6f8; --fy-text-soft: #b7c9cf; --fy-text-muted: #88a0a8;
+  --fy-code-bg: #08131a; --fy-code-surface: #0d1c25; --fy-code-text: #d6e6ea; --fy-code-border: rgba(255, 255, 255, 0.1);
+  --text-primary: var(--fy-text); --text-secondary: var(--fy-text-soft); --text-muted: var(--fy-text-muted);
+  --border: var(--fy-border); --border-light: var(--fy-border); --code-bg: var(--fy-code-bg);
+}
+.practice-output { background: var(--fy-code-bg); }
+.learning-logo { color: var(--fy-course-on); }
+
+/* the grid must never exceed the viewport (long code lines, wide tables) */
+.learning-layout > * { min-width: 0; }
+@media (max-width: 900px) {
+  .learning-layout { grid-template-columns: minmax(0, 1fr); }
+  .sidebar { max-width: 100%; }
+}
+
+/* lesson header kicker (course group label) */
+.lesson-kicker { display: inline-block; margin-inline-end: 10px; color: var(--text-muted); font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+
+/* reading flow: body + key idea are not boxed like the info cards */
+.body-card, .key-card { margin-bottom: 22px; padding: 0 2px; }
+.body-card { color: var(--text-secondary); max-width: 78ch; }
+.body-card h3 { margin: 22px 0 8px; font-size: 1.25rem; color: var(--text-primary); }
+.body-card p { margin: 0 0 12px; line-height: 1.9; }
+.body-card ul, .body-card ol { margin: 0 0 14px; padding-inline-start: 22px; }
+.body-card li { margin-bottom: 6px; }
+.body-card code, .key-card code { padding: 1px 6px; border-radius: 6px; background: var(--fy-code-surface); color: var(--fy-code-text); font-family: var(--fy-font-code); font-size: 0.92em; direction: ltr; unicode-bidi: isolate; }
+.key-card { padding: 16px 18px; border-inline-start: 4px solid var(--fy-course); border-radius: 12px; background: var(--fy-course-soft); max-width: 78ch; }
+.key-card p { margin: 0; color: var(--text-primary); line-height: 1.8; }
+.key-card .info-label { margin-bottom: 6px; }
+
+/* static example result (authored markup) */
+.result-static { padding: 16px; border-radius: 12px; background: var(--fy-surface-2); color: var(--text-primary); overflow-x: auto; }
+.result-static[hidden], .result-stage[hidden] { display: none; }
+
+/* playground with a live preview next to the editor */
+.editor-layout { display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr); }
+.editor-layout.has-preview { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 760px) { .editor-layout.has-preview { grid-template-columns: minmax(0, 1fr); } }
+.editor-panel, .preview-panel { display: flex; flex-direction: column; min-width: 0; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: var(--fy-surface); }
+.editor-top { display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; border-bottom: 1px solid var(--border); color: var(--text-muted); font-size: 12px; font-weight: 700; letter-spacing: 0.5px; }
+.editor-panel textarea { width: 100%; min-height: 240px; padding: 14px; border: 0; border-radius: 0; resize: vertical; background: var(--fy-code-bg); color: var(--fy-code-text); font: 14px/1.7 var(--fy-font-code); tab-size: 2; direction: ltr; text-align: left; }
+.preview-host { flex: 1; min-height: 240px; background: #fff; }
+.preview-host iframe { width: 100%; height: 100%; min-height: 240px; border: 0; background: #fff; }
+.preview-note { margin: 0; padding: 8px 14px; font-size: 13px; color: var(--text-muted); border-top: 1px solid var(--border); }
+.sim-box { padding: 18px; color: #1b2b34; font: 16px/1.6 system-ui, sans-serif; }
+.sim-box input { padding: 8px 10px; border: 1px solid #aab; border-radius: 8px; font: inherit; }
+.has-preview ~ .practice-actions { margin-top: 14px; }
+
+/* direction-aware navigation arrows */
+html[dir="ltr"] .nav-arrow { display: inline-block; transform: scaleX(-1); }
+
+/* interaction states: consistent focus + restrained motion */
+:where(a, button, textarea, summary):focus-visible { outline: 2px solid var(--fy-course-ink); outline-offset: 2px; }
+.lesson, .nav-btn, .answer-options button, .run-btn, .reset-btn, .copy-btn, .quiz-next-btn { transition: background-color var(--fy-dur-fast) ease, border-color var(--fy-dur-fast) ease, transform var(--fy-dur-fast) ease, opacity var(--fy-dur-fast) ease; }
+.answer-options button.correct, .answer-options button.correct-answer { border-color: var(--success); background: var(--success-bg); }
+.answer-options button.wrong, .answer-options button.wrong-answer { border-color: var(--danger); background: var(--danger-bg); }
+.answer-options button.correct::after, .answer-options button.correct-answer::after { content: " ✓"; }
+.answer-options button.wrong::after, .answer-options button.wrong-answer::after { content: " ✗"; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; scroll-behavior: auto !important; } }
+
+/* mobile: the lesson list is a collapsible panel instead of pushing the lesson below a long list */
+.sidebar-toggle { display: none; }
+@media (max-width: 900px) {
+  .sidebar { position: static; height: auto; overflow: visible; border-inline: 0; padding: 14px 4%; }
+  .sidebar-header { display: none; }
+  .sidebar-toggle { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px; padding: 0 16px; border: 1px solid var(--border); border-radius: 12px; background: var(--fy-surface); color: var(--text-primary); text-align: start; }
+  .sidebar-toggle span { color: var(--text-muted); font-size: 12px; font-weight: 700; white-space: nowrap; }
+  .sidebar-toggle strong { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; }
+  .sidebar-toggle::after { content: "▾"; color: var(--fy-course-ink); }
+  .sidebar.open .sidebar-toggle::after { content: "▴"; }
+  .sidebar #sidebarGroups { display: none; max-height: 60vh; overflow-y: auto; margin-top: 10px; }
+  .sidebar.open #sidebarGroups { display: block; }
+}
+
+.learning-title .path-title { margin: 0; font-size: 15px; font-weight: 700; }
+/* the accent of the example header sits on the always-dark code panel: lighten it in the light theme */
+html[data-theme="light"] :is(.example-card .example-header span, .practice-output > span) { color: color-mix(in srgb, var(--fy-course) 45%, #fff); }

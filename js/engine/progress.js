@@ -54,10 +54,18 @@ export const LEGACY = {
   react: { list: "fayad-react-completed-lessons", listBase: 0, current: "fayad-react-current-lesson", currentBase: 0 },
   vue: { list: "fayad-vue-learning-progress", listBase: 1 },
   angular: { current: "fayad-angular-current-lesson", currentBase: 0 },
+  // New courses never had a previous implementation; these keys only keep js/catalog.js (homepage progress) working.
+  ajs: { list: "fayad-ajs-completed-lessons", listBase: 0, current: "fayad-ajs-current-lesson", currentBase: 0 },
+  bs: { list: "fayad-bs-completed-lessons", listBase: 0, current: "fayad-bs-current-lesson", currentBase: 0 },
+  tw: { list: "fayad-tw-completed-lessons", listBase: 0, current: "fayad-tw-current-lesson", currentBase: 0 },
 };
 
 function emptyTrack() {
   return { completed: [], current: null, quiz: {}, updatedAt: 0 };
+}
+
+function emptyAssessment() {
+  return { attempts: 0, bestPct: 0, lastPct: 0, passed: false, lastAt: 0 };
 }
 
 function emptyDoc() {
@@ -88,6 +96,11 @@ export function normalize(raw, totals) {
       }
     }
     t.updatedAt = isInt(src.updatedAt) ? src.updatedAt : 0;
+    const a = src.assessment;
+    if (a && typeof a === "object") {
+      const pct = (n) => (isInt(n) && n >= 0 && n <= 100 ? n : 0);
+      t.assessment = { attempts: isInt(a.attempts) && a.attempts >= 0 ? a.attempts : 0, bestPct: pct(a.bestPct), lastPct: pct(a.lastPct), passed: a.passed === true, lastAt: isInt(a.lastAt) ? a.lastAt : 0 };
+    }
     doc.tracks[track] = t;
   }
   if (raw.imported && typeof raw.imported === "object") {
@@ -240,6 +253,18 @@ export function createProgress(opts) {
       t.updatedAt = now();
       return persist();
     },
+    /** Final-assessment result (percentage 0-100). Best score and pass state are kept; nothing is ever lowered. */
+    recordAssessment(track, percent, passed) {
+      load();
+      if (!(track in totals)) throw new RangeError(`unknown track ${track}`);
+      if (!isInt(percent) || percent < 0 || percent > 100) throw new RangeError("invalid percentage");
+      const t = ensure(track);
+      const a = (t.assessment ||= emptyAssessment());
+      a.attempts += 1; a.lastPct = percent; a.bestPct = Math.max(a.bestPct, percent); a.passed = a.passed || passed === true; a.lastAt = now();
+      t.updatedAt = now();
+      return persist();
+    },
+    assessment(track) { load(); return doc.tracks[track]?.assessment ? { ...doc.tracks[track].assessment } : null; },
     /** Explicit learner reset of one track: clears v1 AND the legacy mirror so the merge cannot resurrect it. */
     reset(track) {
       load();
@@ -248,6 +273,37 @@ export function createProgress(opts) {
       if (map?.list) del(map.list);
       if (map?.current) del(map.current);
       return persist();
+    },
+    /**
+     * Union-merge another v1 document (e.g. rows downloaded from the account). Never removes or lowers anything local:
+     * completed = union, quiz.passed = union, attempts/best score = max, passed flags = OR, local resume pointer wins.
+     * Returns true if the local record changed.
+     */
+    mergeSnapshot(remote) {
+      load();
+      const clean = normalize(remote, totals);
+      let changed = false;
+      for (const [track, r] of Object.entries(clean.tracks)) {
+        const t = ensure(track);
+        const before = JSON.stringify(t);
+        t.completed = [...new Set([...t.completed, ...r.completed])].sort(byOrdinal);
+        for (const [id, q] of Object.entries(r.quiz)) {
+          const l = (t.quiz[id] ||= { passed: [], attempts: 0, lastAt: 0 });
+          l.passed = [...new Set([...l.passed, ...q.passed])].sort((a, b) => a - b);
+          l.attempts = Math.max(l.attempts, q.attempts); l.lastAt = Math.max(l.lastAt, q.lastAt);
+        }
+        if (r.assessment) {
+          const a = (t.assessment ||= emptyAssessment());
+          const newer = r.assessment.lastAt > a.lastAt;
+          a.attempts = Math.max(a.attempts, r.assessment.attempts); a.bestPct = Math.max(a.bestPct, r.assessment.bestPct);
+          a.passed = a.passed || r.assessment.passed;
+          if (newer) { a.lastPct = r.assessment.lastPct; a.lastAt = r.assessment.lastAt; }
+        }
+        if (t.current === null && r.current) t.current = r.current;
+        if (JSON.stringify(t) !== before) { changed = true; t.updatedAt = Math.max(t.updatedAt, r.updatedAt, now()); }
+      }
+      if (changed) { persist(); for (const track of Object.keys(clean.tracks)) mirrorLegacy(track); }
+      return changed;
     },
     /** Re-read storage (e.g. after the `storage` event from another tab). */
     reload() { doc = null; return load(); },

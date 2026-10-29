@@ -13,7 +13,10 @@ export const PAGES = [
   "/", "/login.html", "/about/about.html", "/html-learning/html-learning.html", "/css-learning/css-learning.html",
   "/javascript-learning/javascript-learning.html", "/react-learning/react-learning.html", "/vue-learning/vue-learning.html",
   "/angular-learning/angular-learning.html", "/fundamentals/computer-basics/com.html", "/fundamentals/programming-basics/prg.html",
+  "/advanced-javascript/advanced-javascript.html", "/bootstrap-learning/bootstrap-learning.html", "/tailwind-learning/tailwind-learning.html",
+  "/dashboard.html", "/profile.html",
 ];
+const NOINDEX = ["/login.html", "/dashboard.html", "/profile.html"];
 
 let server, browser, base;
 before(async () => { server = await startServer(); base = `http://127.0.0.1:${server.address().port}`; browser = await chromium.launch(); });
@@ -41,7 +44,7 @@ for (const route of PAGES) {
     assert.ok(meta.desc?.length > 20, "description");
     assert.equal(meta.canonical, route === "/" ? `${ORIGIN}/` : `${ORIGIN}${route}`, "canonical");
     assert.equal(meta.manifest, "/manifest.json");
-    assert.ok(meta.icons.includes("/assets/images/favicon.svg") && meta.icons.includes("/favicon.ico"), "icons");
+    assert.ok(meta.icons.includes("/assets/images/favicon.svg") && meta.icons.includes("/favicon.ico") && ["16", "32", "48"].every((n) => meta.icons.includes(`/icons/favicon-${n}.png`)), "icons");
     assert.deepEqual(failed, [], "no failing same-origin requests");
     // Known environment limitation: the Vue lesson preview iframe loads Vue from unpkg.com, which is unreachable
     // from the CI/dev sandbox. Tracked for the playground milestone (pin + vendor the runtime).
@@ -70,7 +73,7 @@ test("robots.txt and sitemap.xml list every public route", async () => {
   const robots = fs.readFileSync("robots.txt", "utf8");
   assert.match(robots, /Sitemap: https:\/\/fayad-learning\.vercel\.app\/sitemap\.xml/);
   const sitemap = fs.readFileSync("sitemap.xml", "utf8");
-  for (const route of PAGES.filter((r) => r !== "/login.html")) {
+  for (const route of PAGES.filter((r) => !NOINDEX.includes(r))) {
     assert.ok(sitemap.includes(`<loc>${ORIGIN}${route}</loc>`), `sitemap missing ${route}`);
   }
 });

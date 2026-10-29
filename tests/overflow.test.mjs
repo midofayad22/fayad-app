@@ -6,7 +6,7 @@ import { startServer } from "./static-server.mjs";
 
 const ROUTES = ["/", "/about/about.html", "/login.html", "/html-learning/html-learning.html", "/css-learning/css-learning.html",
   "/javascript-learning/javascript-learning.html", "/react-learning/react-learning.html", "/vue-learning/vue-learning.html",
-  "/angular-learning/angular-learning.html", "/fundamentals/computer-basics/com.html", "/fundamentals/programming-basics/prg.html"];
+  "/angular-learning/angular-learning.html", "/fundamentals/computer-basics/com.html", "/fundamentals/programming-basics/prg.html", "/dashboard.html", "/profile.html", "/advanced-javascript/advanced-javascript.html", "/bootstrap-learning/bootstrap-learning.html", "/tailwind-learning/tailwind-learning.html"];
 let server, browser;
 let base;
 before(async () => { server = await startServer(); base = `http://127.0.0.1:${server.address().port}`; browser = await chromium.launch(); });
