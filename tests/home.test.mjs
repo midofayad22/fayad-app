@@ -154,3 +154,26 @@ test("no phone number or tel: link is published on the homepage (privacy decisio
   assert.equal(await page.locator("a[href^='tel:']").count(), 0);
   await ctx.close();
 });
+
+test("hero is not hidden behind the fixed navbar and nothing overflows (320–1440, ar + en)", async () => {
+  for (const lang of ["ar", "en"]) for (const w of [320, 390, 768, 1440]) {
+    const { ctx, page } = await open({}, lang);
+    await page.setViewportSize({ width: w, height: 900 }); await page.waitForTimeout(900);
+    const r = await page.evaluate(() => ({
+      navBottom: document.querySelector(".navbar").getBoundingClientRect().bottom,
+      kick: document.querySelector(".hm-kicker").getBoundingClientRect().top,
+      sw: document.documentElement.scrollWidth, iw: innerWidth,
+      outside: [...document.querySelectorAll(".navbar .nav-actions > *")].filter((e) => { const b = e.getBoundingClientRect(); return b.width && (b.left < -0.5 || b.right > innerWidth + 0.5); }).length,
+    }));
+    assert.ok(r.kick >= r.navBottom, `${lang}@${w}: hero under navbar`);
+    assert.ok(r.sw <= r.iw, `${lang}@${w}: horizontal overflow`);
+    assert.equal(r.outside, 0, `${lang}@${w}: navbar actions leave the viewport`);
+    await ctx.close();
+  }
+});
+
+test("viewport-fit=cover and safe-area padding are present for iPhone notches", async () => {
+  const html = fs.readFileSync(path.join(ROOT, "index.html"), "utf8");
+  assert.match(html, /viewport-fit=cover/);
+  assert.match(fs.readFileSync(path.join(ROOT, "css/shell.css"), "utf8"), /env\(safe-area-inset-top/);
+});
