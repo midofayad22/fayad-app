@@ -44,7 +44,7 @@ for (const route of PAGES) {
     assert.ok(meta.desc?.length > 20, "description");
     assert.equal(meta.canonical, route === "/" ? `${ORIGIN}/` : `${ORIGIN}${route}`, "canonical");
     assert.equal(meta.manifest, "/manifest.json");
-    assert.ok(meta.icons.includes("/assets/images/favicon.svg") && meta.icons.includes("/favicon.ico"), "icons");
+    assert.ok(meta.icons.includes("/assets/images/favicon.svg") && meta.icons.includes("/favicon.ico") && ["16", "32", "48"].every((n) => meta.icons.includes(`/icons/favicon-${n}.png`)), "icons");
     assert.deepEqual(failed, [], "no failing same-origin requests");
     // Known environment limitation: the Vue lesson preview iframe loads Vue from unpkg.com, which is unreachable
     // from the CI/dev sandbox. Tracked for the playground milestone (pin + vendor the runtime).
