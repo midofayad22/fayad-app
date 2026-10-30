@@ -53,7 +53,8 @@ export const LEGACY = {
   js: { list: "fayad-js-completed-lessons", listBase: 0, current: "fayad-js-current-lesson", currentBase: 0 },
   react: { list: "fayad-react-completed-lessons", listBase: 0, current: "fayad-react-current-lesson", currentBase: 0 },
   vue: { list: "fayad-vue-learning-progress", listBase: 1 },
-  angular: { current: "fayad-angular-current-lesson", currentBase: 0 },
+  // Angular stored per-lesson quiz results { "<0-based lesson>": [true x6] }; a lesson counts as completed when all 6 are true
+  angular: { current: "fayad-angular-current-lesson", currentBase: 0, quizMap: "fayad-angular-quiz-progress-v2", quizQuestions: 6 },
   // New courses never had a previous implementation; these keys only keep js/catalog.js (homepage progress) working.
   ajs: { list: "fayad-ajs-completed-lessons", listBase: 0, current: "fayad-ajs-current-lesson", currentBase: 0 },
   bs: { list: "fayad-bs-completed-lessons", listBase: 0, current: "fayad-bs-current-lesson", currentBase: 0 },
@@ -176,6 +177,20 @@ export function createProgress(opts) {
           if (t.completed.length !== before) { changed = true; t.updatedAt = now(); }
         }
       }
+      if (map.quizMap) {
+        const raw = get(map.quizMap);
+        if (raw !== null) {
+          usedKeys.push(map.quizMap);
+          let obj = {}; try { const p = JSON.parse(raw); if (p && typeof p === "object" && !Array.isArray(p)) obj = p; } catch { /* corrupt legacy value: ignored */ }
+          const ids = Object.entries(obj)
+            .filter(([k, v]) => /^\d+$/.test(k) && Array.isArray(v) && Array.from({ length: map.quizQuestions }, (_, i) => v[i] === true).every(Boolean))
+            .map(([k]) => Number(k) + 1).filter((n) => n >= 1 && n <= totals[track]).map((n) => lessonId(track, n));
+          const t = ensure(track);
+          const before = t.completed.length;
+          t.completed = [...new Set([...t.completed, ...ids])].sort(byOrdinal);
+          if (t.completed.length !== before) { changed = true; t.updatedAt = now(); }
+        }
+      }
       if (map.current) {
         const raw = get(map.current);
         if (raw !== null && /^\d+$/.test(raw)) {
@@ -204,6 +219,11 @@ export function createProgress(opts) {
       const values = t.completed.map((id) => ordinalOf(track, id) - 1 + map.listBase).sort((a, b) => a - b);
       // do not create an empty legacy list that the previous implementation never wrote
       if (values.length || get(map.list) !== null) set(map.list, JSON.stringify(values));
+    }
+    if (map.quizMap) {
+      let obj = {}; try { const p = JSON.parse(get(map.quizMap) || "{}"); if (p && typeof p === "object" && !Array.isArray(p)) obj = p; } catch { obj = {}; }
+      for (const id of t.completed) obj[ordinalOf(track, id) - 1] = Array(map.quizQuestions).fill(true);
+      if (t.completed.length || get(map.quizMap) !== null) set(map.quizMap, JSON.stringify(obj));
     }
     if (map.current && t.current) set(map.current, String(ordinalOf(track, t.current) - 1 + map.currentBase));
   }
@@ -272,6 +292,7 @@ export function createProgress(opts) {
       const map = LEGACY[track];
       if (map?.list) del(map.list);
       if (map?.current) del(map.current);
+      if (map?.quizMap) del(map.quizMap);
       return persist();
     },
     /**

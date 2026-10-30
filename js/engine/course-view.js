@@ -301,14 +301,15 @@ export function mountCourse({ doc = document, track, lessons, state, lang: initi
   }
 
   function runSim(code) {
-    const r = sims[runtime](code);
+    const labels = {}; for (const [k, v] of Object.entries(track.simLabels || {})) labels[k] = text(v);
+    const r = sims[runtime](code, { labels });
     el.previewHost.textContent = "";
     el.previewNote.hidden = false; el.previewNote.textContent = S("preview.sim");
     const box = doc.createElement("div"); box.className = "sim-box";
     if (r.kind === "input") { const i = doc.createElement("input"); i.placeholder = r.text; i.setAttribute("aria-label", r.text); box.appendChild(i); }
     else box.textContent = r.text ?? S("output.ran");
     el.previewHost.appendChild(box);
-    el.outputWrap.hidden = true;
+    if (r.output) { el.outputWrap.hidden = false; showOutput(r.output); } else el.outputWrap.hidden = true;
   }
 
   // css lessons: the example itself is rendered (read-only) in the result card, in its own sandbox

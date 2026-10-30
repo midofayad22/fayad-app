@@ -11,7 +11,7 @@ Legend: ✅ done and verified by tests · ⏳ not started · Preview verificatio
 | css | /css-learning/css-learning.html | 30 | 30 | 30 | 30 (built from data, 6 groups) | ✅ identical, Arabic + English (tests/migration-css.test.mjs) | ✅ tests/css-engine.test.mjs | `legacy/css-learning/` (`?engine=legacy`) | no (sandbox cannot reach *.vercel.app) |
 | react | /react-learning/react-learning.html | 30 | 30 | 30 | 30 (built from data, 5 groups) | ✅ identical, Arabic (tests/migration-react.test.mjs) | ✅ tests/react-engine.test.mjs | `legacy/react-learning/` (`?engine=legacy`) | yes |
 | vue | /vue-learning/vue-learning.html | 22 | 22 | 22 | 22 (built from data, 5 groups) | ✅ identical, Arabic (tests/migration-vue.test.mjs) | ✅ tests/vue-engine.test.mjs | `legacy/vue-learning/` (`?engine=legacy`) | yes |
-| angular | /angular-learning/angular-learning.html | 32 | **30** (2 unreachable) | ⏳ | ⏳ | ⏳ | ⏳ | n/a | no |
+| angular | /angular-learning/angular-learning.html | 32 | **30** (2 unreachable from sidebar) | 32 | **32** (built from data; the 2 missing lessons added to the last group) | ✅ identical, Arabic + English, generated quiz frozen (tests/migration-angular.test.mjs) | ✅ tests/angular-engine.test.mjs | `legacy/angular-learning/` (`?engine=legacy`) | yes |
 
 ## Legacy storage formats (verified from each track's source; see js/engine/progress.js `LEGACY`)
 | Track | Completed list key | Base | Resume key | Base |
@@ -83,3 +83,11 @@ Content is identical in both languages (30 titles, descriptions, example codes, 
 - The schema accepts `key: { title, text }` for the key card.
 - The legacy page had no current-lesson key, so only the completed list (1-based) is mirrored.
 - All 22 starters and examples are mounted in the sandbox by tests/vue-engine.test.mjs.
+
+## Angular course: deliberate differences from the legacy implementation
+
+- Content is converted mechanically (`tools/convert-angular-track.mjs`, frozen fixture `tests/fixtures/legacy-angular.json`), Arabic and English. The legacy quiz was generated at runtime (6 questions per lesson); that generated output is frozen as ordinary quiz data.
+- The legacy sidebar listed 30 of 32 lessons; lessons 31 and 32 are now in the last group.
+- Legacy question 1 displayed the English answers in Arabic mode (it read `answers.en` only). The lesson's own Arabic answers are used.
+- Preview is the same non-executing feature-detection simulation (`sim-angular`, `js/engine/sims.js`), now bilingual; learner code is never evaluated.
+- Progress: a lesson is complete when all 6 questions are correct. The legacy `fayad-angular-quiz-progress-v2` map is imported (lessons with all 6 true) and mirrored for rollback, together with `fayad-angular-current-lesson`.
