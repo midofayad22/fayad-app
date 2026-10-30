@@ -45,7 +45,10 @@ export function validateTrack(track, lessons) {
     checkText(errors, `${at}.heading`, l.heading, { optional: true });
     checkText(errors, `${at}.level`, l.level, { optional: true });
     checkText(errors, `${at}.body`, l.body, { optional: true });
-    checkText(errors, `${at}.key`, l.key, { optional: true });
+    if (isObj(l.key) && l.key.text !== undefined) { // key card with its own heading: { title, text }
+      checkText(errors, `${at}.key.title`, l.key.title, { optional: true });
+      checkText(errors, `${at}.key.text`, l.key.text);
+    } else checkText(errors, `${at}.key`, l.key, { optional: true });
     checkText(errors, `${at}.challenge`, l.challenge, { optional: true });
     if (l.icon !== undefined && !(typeof l.icon === "string" && /^fa-[a-z0-9-]+$/.test(l.icon))) errors.push(`${at}.icon must be a Font Awesome class like "fa-terminal"`);
     (l.sections || []).forEach((s, j) => { checkText(errors, `${at}.sections[${j}].title`, s.title); checkText(errors, `${at}.sections[${j}].html`, s.html); checkText(errors, `${at}.sections[${j}].label`, s.label, { optional: true }); });
