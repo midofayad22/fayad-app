@@ -1,0 +1,1382 @@
+{
+ "lessons": [
+  {
+   "title": "مقدمة إلى React",
+   "description": "تعرّف على React، ولماذا أصبحت من أشهر المكتبات المستخدمة لبناء واجهات المستخدم الحديثة.",
+   "content": "\n      <p>\n        React هي مكتبة JavaScript تُستخدم لبناء واجهات المستخدم\n        (User Interfaces)، خصوصًا التطبيقات التفاعلية التي تتغير\n        بياناتها باستمرار.\n      </p>\n      <p>\n        تعتمد React على فكرة تقسيم الواجهة إلى مكونات صغيرة تسمى\n        Components، بحيث يكون لكل مكون مسؤولية واضحة ويمكن إعادة\n        استخدامه في أكثر من مكان.\n      </p>\n      <p>\n        React لا تستبدل HTML أو CSS أو JavaScript، بل تعمل معها\n        لبناء واجهات أكثر تنظيمًا وقابلية للصيانة.\n      </p>\n    ",
+   "keyIdea": "الفكرة الأساسية في React هي بناء الواجهة باستخدام Components قابلة لإعادة الاستخدام.",
+   "explanation": "في React تكتب مكونات تصف الشكل الذي تريد عرضه، ثم تتولى React تحديث الواجهة عندما تتغير البيانات.",
+   "practice": "جرّب تعديل النص داخل العنصر h1 وشاهد النتيجة في المعاينة.",
+   "code": "function App() {\n  return <h1>مرحبًا بك في FAYAD</h1>;\n}",
+   "questions": [
+    {
+     "question": "ما الاستخدام الأساسي لمكتبة React؟",
+     "answers": [
+      "بناء واجهات المستخدم",
+      "إدارة قواعد البيانات فقط",
+      "كتابة ملفات CSS فقط",
+      "استبدال JavaScript بالكامل"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "بماذا تعتمد React بشكل أساسي في تنظيم الواجهة؟",
+     "answers": [
+      "Components",
+      "Database Tables",
+      "CSS Selectors",
+      "SQL Queries"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "هل React تستبدل HTML وCSS وJavaScript بالكامل؟",
+     "answers": [
+      "لا، تعمل معها لبناء الواجهات",
+      "نعم، تستبدلهم جميعًا",
+      "تستبدل CSS فقط",
+      "تستبدل HTML فقط"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "لماذا React؟",
+   "description": "افهم أهم الأسباب التي تجعل React مناسبة لبناء التطبيقات الحديثة والقابلة للتوسع.",
+   "content": "\n      <p>\n        من أهم أسباب انتشار React أنها تعتمد على المكونات القابلة\n        لإعادة الاستخدام.\n      </p>\n      <p>\n        بدلًا من كتابة نفس الواجهة عدة مرات، يمكنك إنشاء Component\n        واحد واستخدامه في أماكن متعددة.\n      </p>\n      <p>\n        كما تساعد React على تنظيم التطبيقات الكبيرة وتقسيمها إلى\n        أجزاء صغيرة يمكن تطويرها واختبارها بشكل مستقل.\n      </p>\n    ",
+   "keyIdea": "إعادة استخدام المكونات تجعل الكود أكثر تنظيمًا وأسهل في الصيانة.",
+   "explanation": "عندما يكون لديك Button أو Card أو Navbar متكرر، يمكنك بناءه مرة واحدة ثم استخدامه في أماكن مختلفة.",
+   "practice": "أنشئ Component باسم Button يعرض زرًا بسيطًا.",
+   "code": "function Button() {\n  return <button>اضغط هنا</button>;\n}",
+   "questions": [
+    {
+     "question": "ما إحدى أهم مزايا React؟",
+     "answers": [
+      "إعادة استخدام المكونات",
+      "إلغاء الحاجة إلى JavaScript",
+      "إلغاء الحاجة إلى HTML",
+      "استخدام قواعد البيانات فقط"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "لماذا تساعد Components في المشاريع الكبيرة؟",
+     "answers": [
+      "تقسم التطبيق إلى أجزاء منظمة",
+      "تحذف CSS",
+      "تحذف JavaScript",
+      "تمنع استخدام APIs"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ماذا يعني Reusability؟",
+     "answers": [
+      "إمكانية استخدام نفس المكون أكثر من مرة",
+      "كتابة الكود مرة واحدة ثم حذفه",
+      "منع استخدام المكون",
+      "استخدام CSS فقط"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "المكونات Components",
+   "description": "تعلم مفهوم Components وكيف تستخدمها React لتقسيم الواجهة إلى أجزاء مستقلة وقابلة لإعادة الاستخدام.",
+   "content": "\n      <p>\n        Component هو جزء مستقل من واجهة المستخدم يمكن أن يحتوي على\n        HTML-like JSX، وبيانات، وسلوك.\n      </p>\n      <p>\n        يمكن أن يكون المكون بسيطًا جدًا مثل Button، أو كبيرًا مثل\n        Dashboard يحتوي على عدة مكونات أخرى.\n      </p>\n      <p>\n        هذه الطريقة تجعل بناء التطبيقات أكثر تنظيمًا بدلًا من وضع\n        كل شيء في ملف واحد.\n      </p>\n    ",
+   "keyIdea": "Component هو وحدة بناء أساسية في React تمثل جزءًا من واجهة المستخدم.",
+   "explanation": "يمكنك تركيب Components متعددة معًا لبناء صفحة كاملة.",
+   "practice": "أنشئ Component باسم Welcome يعرض عنوان ترحيبي.",
+   "code": "function Welcome() {\n  return <h1>مرحبًا بك في FAYAD</h1>;\n}",
+   "questions": [
+    {
+     "question": "ما هو React Component؟",
+     "answers": [
+      "جزء قابل لإعادة الاستخدام من الواجهة",
+      "جدول قاعدة بيانات",
+      "خاصية CSS",
+      "ملف SQL"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "هل يمكن أن يحتوي Component على Components أخرى؟",
+     "answers": [
+      "نعم",
+      "لا",
+      "فقط في CSS",
+      "فقط في HTML"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما الهدف من تقسيم الواجهة إلى Components؟",
+     "answers": [
+      "تنظيم وإعادة استخدام الكود",
+      "إلغاء JavaScript",
+      "إلغاء HTML",
+      "منع التفاعل"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "JSX",
+   "description": "تعلم JSX وكيف تسمح لك بكتابة صيغة تشبه HTML داخل JavaScript عند بناء Components.",
+   "content": "\n      <p>\n        JSX هي صيغة تستخدمها React لكتابة واجهة المستخدم بطريقة\n        قريبة من HTML داخل JavaScript.\n      </p>\n      <p>\n        JSX ليست HTML عادية، بل يتم تحويلها أثناء عملية البناء إلى\n        JavaScript تفهمه البيئة التي تشغل التطبيق.\n      </p>\n      <p>\n        يمكنك أيضًا إدخال expressions من JavaScript داخل JSX باستخدام\n        الأقواس المعقوفة.\n      </p>\n    ",
+   "keyIdea": "JSX تجعل وصف واجهة React داخل JavaScript أكثر وضوحًا وسهولة.",
+   "explanation": "يمكنك كتابة عناصر مثل h1 وp وbutton داخل Component، واستخدام JavaScript expressions داخل {}.",
+   "practice": "غيّر النص داخل h1 وأضف فقرة p جديدة.",
+   "code": "function App() {\n  return (\n    <div>\n      <h1>مرحبًا بك</h1>\n      <p>تعلم React مع FAYAD</p>\n    </div>\n  );\n}",
+   "questions": [
+    {
+     "question": "ماذا تسمح JSX للمطور أن يكتب؟",
+     "answers": [
+      "صيغة تشبه HTML داخل JavaScript",
+      "SQL داخل CSS",
+      "CSS داخل قاعدة البيانات",
+      "HTML فقط بدون JavaScript"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أين نستخدم JavaScript expressions داخل JSX؟",
+     "answers": [
+      "داخل { }",
+      "داخل [ ] فقط",
+      "داخل SQL",
+      "داخل CSS"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "هل JSX هي HTML عادية تمامًا؟",
+     "answers": [
+      "لا",
+      "نعم دائمًا",
+      "هي CSS",
+      "هي قاعدة بيانات"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "Props",
+   "description": "تعلم كيف تسمح Props بتمرير البيانات من Component إلى Component آخر.",
+   "content": "\n      <p>\n        Props هي البيانات التي يمررها Component إلى Component آخر.\n      </p>\n      <p>\n        غالبًا يتم استخدام Props لجعل المكون قابلًا لإعادة الاستخدام،\n        لأن نفس المكون يستطيع استقبال بيانات مختلفة كل مرة.\n      </p>\n      <p>\n        Props تكون للقراءة داخل المكون، ولا ينبغي تعديلها مباشرة.\n      </p>\n    ",
+   "keyIdea": "Props هي وسيلة أساسية لتمرير البيانات إلى Components.",
+   "explanation": "يمكنك إرسال name أو title أو image أو أي قيمة أخرى إلى Component.",
+   "practice": "غيّر قيمة name وجرب تمرير اسم مختلف إلى Welcome.",
+   "code": "function Welcome({ name }) {\n  return <h1>مرحبًا {name}</h1>;\n}\n\nfunction App() {\n  return <Welcome name=\"FAYAD\" />;\n}",
+   "questions": [
+    {
+     "question": "ما الاستخدام الأساسي لـ Props؟",
+     "answers": [
+      "تمرير البيانات إلى Components",
+      "إنشاء ملفات CSS",
+      "إنشاء قواعد بيانات",
+      "تشغيل الخادم"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "من أين تأتي Props غالبًا؟",
+     "answers": [
+      "من Component الأب",
+      "من CSS",
+      "من HTML فقط",
+      "من قاعدة البيانات مباشرة دائمًا"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "هل يجب تعديل Props مباشرة داخل Component؟",
+     "answers": [
+      "لا",
+      "نعم دائمًا",
+      "نعم باستخدام CSS",
+      "فقط داخل HTML"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "State",
+   "description": "افهم مفهوم State وكيف تستخدمه React لتخزين البيانات التي يمكن أن تتغير أثناء تشغيل التطبيق.",
+   "content": "\n      <p>\n        State هي بيانات داخل Component يمكن أن تتغير مع مرور الوقت.\n      </p>\n      <p>\n        عندما تتغير State، يمكن أن تعيد React حساب الواجهة وعرض\n        البيانات الجديدة.\n      </p>\n      <p>\n        من أشهر الأدوات المستخدمة لإدارة State داخل Component هي\n        Hook تسمى useState.\n      </p>\n    ",
+   "keyIdea": "State تمثل البيانات المتغيرة التي تؤثر في واجهة المستخدم.",
+   "explanation": "مثل عداد clicks أو حالة تسجيل الدخول أو قيمة input.",
+   "practice": "جرّب تغيير القيمة الأولية للعداد.",
+   "code": "const [count, setCount] = useState(0);\n\nreturn (\n  <button onClick={() => setCount(count + 1)}>\n    {count}\n  </button>\n);",
+   "questions": [
+    {
+     "question": "ماذا تمثل State؟",
+     "answers": [
+      "بيانات يمكن أن تتغير بمرور الوقت",
+      "CSS Selector",
+      "ملف HTML",
+      "جدول قاعدة بيانات فقط"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ماذا يحدث عادة عند تحديث State؟",
+     "answers": [
+      "تُعاد معالجة الواجهة لعرض البيانات الجديدة",
+      "يتم حذف Component",
+      "يتم حذف CSS",
+      "يتوقف التطبيق"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أي Hook تستخدم لإدارة State البسيطة؟",
+     "answers": [
+      "useState",
+      "useHTML",
+      "useCSS",
+      "useDatabase"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "الأحداث Events",
+   "description": "تعلم كيف تتعامل React مع تفاعل المستخدم مثل الضغط والكتابة وإرسال النماذج.",
+   "content": "\n      <p>\n        Events تسمح للتطبيق بالاستجابة لتصرفات المستخدم.\n      </p>\n      <p>\n        في React تستخدم خصائص مثل onClick وonChange وonSubmit\n        للتعامل مع الأحداث.\n      </p>\n      <p>\n        عادة نمرر function إلى event handler ليتم تنفيذها عند وقوع\n        الحدث.\n      </p>\n    ",
+   "keyIdea": "Events تربط تصرف المستخدم بالسلوك الذي تريد تنفيذه داخل التطبيق.",
+   "explanation": "عند الضغط على زر يمكن تنفيذ function، وعند الكتابة في input يمكن تحديث State.",
+   "practice": "غيّر النص الذي يظهر عند الضغط على الزر.",
+   "code": "function App() {\n  function handleClick() {\n    console.log(\"تم الضغط على الزر\");\n  }\n\n  return <button onClick={handleClick}>اضغط هنا</button>;\n}",
+   "questions": [
+    {
+     "question": "ما الحدث المستخدم غالبًا عند الضغط على زر؟",
+     "answers": [
+      "onClick",
+      "onButton",
+      "buttonEvent",
+      "clickOnly"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ماذا نمرر عادة إلى onClick؟",
+     "answers": [
+      "Function",
+      "CSS file",
+      "Database",
+      "HTML document"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما الهدف من Events؟",
+     "answers": [
+      "التعامل مع تفاعل المستخدم",
+      "إنشاء قواعد البيانات",
+      "كتابة CSS",
+      "إزالة Components"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "العرض الشرطي",
+   "description": "تعلم كيف تعرض React عناصر مختلفة بناءً على قيمة شرط معين.",
+   "content": "\n      <p>\n        Conditional Rendering يعني عرض جزء مختلف من الواجهة حسب\n        حالة أو شرط معين.\n      </p>\n      <p>\n        يمكن استخدام if أو ternary operator أو && لتنفيذ العرض\n        الشرطي.\n      </p>\n      <p>\n        هذه الفكرة مهمة جدًا في حالات مثل تسجيل الدخول وحالات\n        التحميل والصلاحيات.\n      </p>\n    ",
+   "keyIdea": "يمكن لـReact تغيير ما يظهر للمستخدم بناءً على البيانات الحالية.",
+   "explanation": "مثل عرض Dashboard للمستخدم المسجل وإظهار Login للمستخدم غير المسجل.",
+   "practice": "غيّر قيمة isLoggedIn وشاهد النتيجة.",
+   "code": "function App({ isLoggedIn }) {\n  return (\n    <h1>\n      {isLoggedIn ? \"مرحبًا بك مجددًا!\" : \"يرجى تسجيل الدخول\"}\n    </h1>\n  );\n}",
+   "questions": [
+    {
+     "question": "ما المقصود بـ Conditional Rendering؟",
+     "answers": [
+      "عرض UI بناءً على شرط",
+      "إنشاء CSS Animation",
+      "إنشاء Database",
+      "كتابة HTML فقط"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أي Operator يستخدم كثيرًا في العرض الشرطي؟",
+     "answers": [
+      "Ternary ?",
+      "SQL JOIN",
+      "CSS #",
+      "HTML !DOCTYPE"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أين يمكن استخدام Conditional Rendering؟",
+     "answers": [
+      "في حالات تسجيل الدخول والتحميل",
+      "في CSS فقط",
+      "في قواعد البيانات فقط",
+      "في ملفات الصور"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "Lists & Keys",
+   "description": "تعلم كيفية عرض مجموعة من البيانات باستخدام map ولماذا تحتاج React إلى Keys.",
+   "content": "\n      <p>\n        غالبًا تكون البيانات في التطبيقات على شكل Array، مثل قائمة\n        المستخدمين أو المنتجات.\n      </p>\n      <p>\n        يمكن استخدام map لإنشاء عنصر UI لكل عنصر داخل Array.\n      </p>\n      <p>\n        تحتاج العناصر الناتجة عن القوائم إلى key مستقرة تساعد React\n        على معرفة هوية كل عنصر.\n      </p>\n    ",
+   "keyIdea": "map تعرض عناصر القائمة، وkey تساعد React على تحديد هوية كل عنصر.",
+   "explanation": "يفضل استخدام ID فريد كمفتاح بدلًا من استخدام index عندما تكون القائمة قابلة للتغيير.",
+   "practice": "أضف مهارة جديدة إلى Array.",
+   "code": "const skills = [\"HTML\", \"CSS\", \"JavaScript\"];\n\nfunction App() {\n  return (\n    <ul>\n      {skills.map((skill) => (\n        <li key={skill}>{skill}</li>\n      ))}\n    </ul>\n  );\n}",
+   "questions": [
+    {
+     "question": "لماذا نستخدم map في React؟",
+     "answers": [
+      "لعرض مجموعة من البيانات",
+      "لإنشاء CSS",
+      "لإنشاء Database",
+      "لتشغيل الخادم"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "لماذا نستخدم key؟",
+     "answers": [
+      "لمساعدة React على تحديد عناصر القائمة",
+      "لتغيير اللون",
+      "لإنشاء variable",
+      "لإضافة CSS"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما الأفضل عادة كقيمة لـ key؟",
+     "answers": [
+      "معرّف فريد ومستقر",
+      "قيمة عشوائية تتغير دائمًا",
+      "CSS class",
+      "اسم الملف"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "Forms",
+   "description": "تعلم كيفية التعامل مع حقول الإدخال والنماذج داخل تطبيقات React.",
+   "content": "\n      <p>\n        Forms تستخدم لجمع البيانات من المستخدم مثل الاسم والبريد\n        الإلكتروني وكلمة المرور.\n      </p>\n      <p>\n        يمكن التحكم في قيم الحقول باستخدام State، وهذا يسمى\n        Controlled Components.\n      </p>\n      <p>\n        يمكن التعامل مع إرسال النموذج باستخدام onSubmit ومنع السلوك\n        الافتراضي للمتصفح عند الحاجة.\n      </p>\n    ",
+   "keyIdea": "React تسمح لك بربط قيم حقول النموذج مع State والتحكم فيها.",
+   "explanation": "هذا يجعل التحقق من البيانات وإرسالها إلى API أسهل.",
+   "practice": "أضف input آخر إلى النموذج.",
+   "code": "function App() {\n  return (\n    <form>\n      <input placeholder=\"اكتب اسمك\" />\n      <button type=\"submit\">إرسال</button>\n    </form>\n  );\n}",
+   "questions": [
+    {
+     "question": "ماذا تستخدم Forms لجمعه؟",
+     "answers": [
+      "بيانات المستخدم",
+      "ألوان CSS فقط",
+      "صور فقط",
+      "ملفات JavaScript فقط"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما الحدث المستخدم غالبًا عند إرسال Form؟",
+     "answers": [
+      "onSubmit",
+      "onFormOnly",
+      "onSendCSS",
+      "submitHTML"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما معنى Controlled Component؟",
+     "answers": [
+      "قيمة الحقل يتم التحكم فيها من خلال React State",
+      "عنصر CSS",
+      "ملف HTML",
+      "قاعدة بيانات"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "تركيب المكونات Component Composition",
+   "description": "تعلم كيف تجمع عدة Components معًا لبناء واجهات أكبر وأكثر تنظيمًا.",
+   "content": "\n      <p>\n        Component Composition يعني بناء Component كبير من مجموعة\n        Components أصغر.\n      </p>\n      <p>\n        هذه الطريقة تجعل كل Component مسؤولًا عن جزء محدد، ثم يتم\n        تركيب الأجزاء معًا لتكوين واجهة كاملة.\n      </p>\n    ",
+   "keyIdea": "التطبيق الكبير يمكن بناؤه من مجموعة Components صغيرة ومتخصصة.",
+   "explanation": "مثل تركيب صفحة من Header وSidebar وContent وFooter.",
+   "practice": "أضف Component جديدًا إلى App.",
+   "code": "function Header() {\n  return <header>FAYAD</header>;\n}\n\nfunction App() {\n  return (\n    <>\n      <Header />\n      <main>تعلم React</main>\n    </>\n  );\n}",
+   "questions": [
+    {
+     "question": "ماذا يعني Component Composition؟",
+     "answers": [
+      "جمع Components لبناء واجهة",
+      "حذف Components",
+      "كتابة CSS فقط",
+      "إنشاء Database"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما فائدة Composition؟",
+     "answers": [
+      "تنظيم الواجهة إلى أجزاء",
+      "إلغاء JavaScript",
+      "إلغاء Props",
+      "منع إعادة الاستخدام"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أي مثال يمثل Composition؟",
+     "answers": [
+      "App يحتوي Header وFooter",
+      "ملف CSS فقط",
+      "جدول Database",
+      "صورة فقط"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "مقدمة إلى Hooks",
+   "description": "افهم مفهوم React Hooks ولماذا أصبحت أساسية في كتابة المكونات الحديثة.",
+   "content": "\n      <p>\n        Hooks هي Functions توفر للمكونات إمكانية استخدام خصائص React\n        مثل State وEffects.\n      </p>\n      <p>\n        من أشهر Hooks: useState وuseEffect وuseRef وuseContext.\n      </p>\n      <p>\n        Hooks تسمح بكتابة منطق قابل لإعادة الاستخدام دون الحاجة إلى\n        Class Components في الأسلوب الحديث.\n      </p>\n    ",
+   "keyIdea": "Hooks توفر وظائف React الأساسية داخل Function Components.",
+   "explanation": "كل Hook لها وظيفة محددة، ويجب الالتزام بقواعد استخدامها.",
+   "practice": "جرّب تغيير القيمة الأولية في useState.",
+   "code": "import { useState } from \"react\";\n\nfunction App() {\n  const [name, setName] = useState(\"FAYAD\");\n\n  return <h1>{name}</h1>;\n}",
+   "questions": [
+    {
+     "question": "ما هي React Hooks؟",
+     "answers": [
+      "Functions تسمح باستخدام خصائص React",
+      "CSS classes",
+      "HTML attributes",
+      "Database tables"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أي من التالي Hook حقيقية؟",
+     "answers": [
+      "useState",
+      "useHTML",
+      "useCSS",
+      "useDatabase"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "لماذا تستخدم Hooks؟",
+     "answers": [
+      "لاستخدام وإعادة تنظيم منطق React",
+      "لكتابة CSS فقط",
+      "لإنشاء قواعد بيانات",
+      "لإلغاء Components"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "useState",
+   "description": "تعلم كيف تستخدم useState لإضافة State إلى Function Components وتحديث الواجهة.",
+   "content": "\n      <p>\n        useState هي Hook تسمح للمكون بامتلاك قيمة State.\n      </p>\n      <p>\n        ترجع useState قيمتين: القيمة الحالية، وFunction لتحديثها.\n      </p>\n      <p>\n        عند استدعاء Function التحديث، تقوم React بإعادة معالجة\n        Component لعرض القيمة الجديدة.\n      </p>\n    ",
+   "keyIdea": "useState ترجع State value وState setter.",
+   "explanation": "مثال: const [count, setCount] = useState(0).",
+   "practice": "غيّر الرقم الأولي للعداد أو قيمة الزيادة.",
+   "code": "import { useState } from \"react\";\n\nfunction Counter() {\n  const [count, setCount] = useState(0);\n\n  return (\n    <button onClick={() => setCount(count + 1)}>\n      {count}\n    </button>\n  );\n}",
+   "questions": [
+    {
+     "question": "ماذا توفر useState؟",
+     "answers": [
+      "قيمة State وFunction لتحديثها",
+      "CSS فقط",
+      "HTML فقط",
+      "Database فقط"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ماذا تمثل setCount؟",
+     "answers": [
+      "Function لتحديث State",
+      "CSS Selector",
+      "HTML Tag",
+      "Database"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما القيمة الأولية في useState(0)؟",
+     "answers": [
+      "0",
+      "1",
+      "null",
+      "undefined دائمًا"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "useEffect",
+   "description": "تعلم كيف تستخدم useEffect للتعامل مع Side Effects مثل جلب البيانات والاشتراكات.",
+   "content": "\n      <p>\n        useEffect تستخدم لتنفيذ Side Effects المرتبطة بعملية عرض\n        Component أو بتغير بيانات معينة.\n      </p>\n      <p>\n        من الاستخدامات الشائعة جلب البيانات من API أو التعامل مع\n        subscriptions أو تحديث عنوان الصفحة.\n      </p>\n      <p>\n        Dependency Array تحدد متى يتم تشغيل Effect مرة أخرى.\n      </p>\n    ",
+   "keyIdea": "useEffect مناسبة للعمليات التي تحدث خارج حساب الواجهة المباشر.",
+   "explanation": "يمكن تشغيل Effect مرة بعد Mount باستخدام dependency array فارغة، أو عند تغير قيم محددة.",
+   "practice": "غيّر النص الموجود داخل console.log.",
+   "code": "import { useEffect } from \"react\";\n\nuseEffect(() => {\n  console.log(\"تم تشغيل Effect\");\n}, []);",
+   "questions": [
+    {
+     "question": "ما الاستخدام الشائع لـuseEffect؟",
+     "answers": [
+      "التعامل مع Side Effects",
+      "إنشاء CSS selectors",
+      "تعريف HTML tags",
+      "إنشاء Database"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ماذا تعني [] في dependency array؟",
+     "answers": [
+      "لا توجد dependencies",
+      "تشغيل كل ثانية",
+      "تشغيل عند كل CSS change",
+      "إلغاء Effect"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أي مثال مناسب لـuseEffect؟",
+     "answers": [
+      "جلب بيانات من API",
+      "كتابة لون الزر",
+      "إنشاء HTML file",
+      "تعريف CSS class"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "useRef",
+   "description": "تعلم كيف تستخدم useRef للاحتفاظ بقيمة أو الوصول إلى عنصر DOM دون التسبب في Re-render.",
+   "content": "\n      <p>\n        useRef ترجع Object يحتوي على خاصية current يمكن أن تحتفظ\n        بقيمة بين عمليات Render.\n      </p>\n      <p>\n        من الاستخدامات الشائعة الوصول إلى DOM element مثل input\n        للتركيز عليه.\n      </p>\n      <p>\n        تغيير ref.current لا يسبب Re-render للمكون.\n      </p>\n    ",
+   "keyIdea": "useRef مفيدة للقيم التي تحتاج إلى الاحتفاظ بها دون التسبب في إعادة Render.",
+   "explanation": "يمكن استخدامها أيضًا لحفظ reference إلى DOM element.",
+   "practice": "جرّب تغيير اسم inputRef.",
+   "code": "import { useRef } from \"react\";\n\nfunction App() {\n  const inputRef = useRef(null);\n\n  return <input ref={inputRef} />;\n}",
+   "questions": [
+    {
+     "question": "في ماذا يمكن استخدام useRef؟",
+     "answers": [
+      "الوصول إلى DOM elements",
+      "إنشاء CSS فقط",
+      "إنشاء Database tables",
+      "استبدال JavaScript"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أين توجد القيمة المخزنة في ref؟",
+     "answers": [
+      "current",
+      "valueOnly",
+      "state",
+      "data"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "هل تغيير ref.current يسبب Re-render؟",
+     "answers": [
+      "لا",
+      "نعم دائمًا",
+      "فقط في CSS",
+      "فقط في HTML"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "useContext",
+   "description": "تعلم كيف تسمح useContext بمشاركة البيانات بين Components دون تمرير Props عبر كل مستوى.",
+   "content": "\n      <p>\n        عندما تحتاج عدة Components إلى نفس البيانات، قد يصبح تمرير\n        Props عبر مستويات كثيرة أمرًا مزعجًا.\n      </p>\n      <p>\n        Context يوفر طريقة لمشاركة بيانات معينة عبر شجرة Components.\n      </p>\n      <p>\n        useContext تستخدم لقراءة القيمة الموجودة في Context داخل\n        Component.\n      </p>\n    ",
+   "keyIdea": "Context مناسب للبيانات المشتركة التي تحتاجها Components متعددة.",
+   "explanation": "مثل Theme أو معلومات المستخدم أو إعدادات عامة للتطبيق.",
+   "practice": "غيّر قيمة ThemeContext من light إلى dark.",
+   "code": "const ThemeContext = createContext(\"light\");\n\nfunction App() {\n  return (\n    <ThemeContext.Provider value=\"dark\">\n      <Page />\n    </ThemeContext.Provider>\n  );\n}",
+   "questions": [
+    {
+     "question": "ما المشكلة التي يساعد useContext في حلها؟",
+     "answers": [
+      "مشاركة البيانات بين Components",
+      "كتابة CSS",
+      "إنشاء HTML",
+      "إنشاء Database"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما الذي يوفره Context؟",
+     "answers": [
+      "قيمة يمكن الوصول إليها من Components داخل Provider",
+      "CSS Animation",
+      "HTML file",
+      "SQL table"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أي بيانات مناسبة لـContext؟",
+     "answers": [
+      "Theme أو بيانات مستخدم عامة",
+      "لون زر واحد فقط دائمًا",
+      "ملف CSS",
+      "صورة واحدة"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "Custom Hooks",
+   "description": "تعلم كيفية إنشاء Custom Hooks لإعادة استخدام منطق React بين عدة Components.",
+   "content": "\n      <p>\n        Custom Hook هي Function تبدأ عادة بكلمة use وتستخدم Hooks\n        أخرى بداخلها.\n      </p>\n      <p>\n        الهدف الأساسي منها هو استخراج منطق مشترك وإعادة استخدامه\n        في أكثر من Component.\n      </p>\n      <p>\n        Custom Hooks لا تشارك State نفسها بين Components، لكنها تشارك\n        منطق التعامل مع State أو Effects.\n      </p>\n    ",
+   "keyIdea": "Custom Hooks تساعدك على إعادة استخدام Logic بدلًا من تكراره.",
+   "explanation": "يمكنك إنشاء useFetch أو useToggle أو useLocalStorage مثلًا.",
+   "practice": "أنشئ Hook باسم useGreeting.",
+   "code": "function useGreeting(name) {\n  return `مرحبًا ${name}`;\n}",
+   "questions": [
+    {
+     "question": "لماذا ننشئ Custom Hook؟",
+     "answers": [
+      "لإعادة استخدام Logic",
+      "لاستبدال CSS",
+      "لإنشاء HTML",
+      "لإنشاء Database"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "بماذا يبدأ اسم Custom Hook عادة؟",
+     "answers": [
+      "use",
+      "hook",
+      "react",
+      "custom"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "هل Custom Hook يمكنها استخدام Hooks أخرى؟",
+     "answers": [
+      "نعم",
+      "لا",
+      "فقط CSS",
+      "فقط HTML"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "React Router",
+   "description": "تعلم كيف تستخدم React Router لإنشاء التنقل بين الصفحات والمشاهد داخل تطبيق React.",
+   "content": "\n      <p>\n        React Router مكتبة تستخدم لإدارة Navigation داخل تطبيقات\n        React.\n      </p>\n      <p>\n        يمكنك تعريف Routes مختلفة مثل / و/about و/profile وربط كل\n        Route بـComponent معين.\n      </p>\n      <p>\n        هذا يسمح ببناء تطبيقات متعددة الصفحات من ناحية تجربة\n        المستخدم دون الحاجة إلى إعادة تحميل الصفحة في كل انتقال.\n      </p>\n    ",
+   "keyIdea": "React Router يدير Navigation وربط URLs بالمكونات.",
+   "explanation": "يمكن تعريف Route لكل صفحة داخل التطبيق.",
+   "practice": "أضف Route جديدًا لصفحة Contact.",
+   "code": "import {\n  BrowserRouter,\n  Routes,\n  Route\n} from \"react-router-dom\";\n\n<BrowserRouter>\n  <Routes>\n    <Route path=\"/\" element={<Home />} />\n    <Route path=\"/about\" element={<About />} />\n  </Routes>\n</BrowserRouter>",
+   "questions": [
+    {
+     "question": "في ماذا يستخدم React Router؟",
+     "answers": [
+      "Client-side navigation",
+      "إدارة قواعد البيانات",
+      "كتابة CSS",
+      "إنشاء الصور"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ماذا يحدد Route؟",
+     "answers": [
+      "العلاقة بين URL وComponent",
+      "لون الصفحة",
+      "نوع قاعدة البيانات",
+      "ملف CSS"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أي عنصر يستخدم لتعريف مجموعة Routes؟",
+     "answers": [
+      "Routes",
+      "RouteGroup",
+      "RouterList",
+      "NavigationCSS"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "طلبات API",
+   "description": "تعلم كيف تتواصل تطبيقات React مع APIs للحصول على بيانات خارجية.",
+   "content": "\n      <p>\n        التطبيقات الحقيقية غالبًا تحتاج إلى بيانات من Server أو\n        خدمة خارجية.\n      </p>\n      <p>\n        يمكن استخدام fetch أو مكتبات أخرى لإرسال HTTP Requests\n        واستقبال البيانات.\n      </p>\n      <p>\n        بعد وصول البيانات يمكن تخزينها في State وعرضها داخل\n        Components.\n      </p>\n    ",
+   "keyIdea": "API هي حلقة الاتصال بين واجهة React ومصدر البيانات الخارجي.",
+   "explanation": "عادة يتم جلب البيانات ثم تحويل Response إلى JSON ثم تخزينها في State.",
+   "practice": "غيّر اسم الدالة أو مسار API في المثال.",
+   "code": "async function getUsers() {\n  const response = await fetch(\n    \"https://example.com/users\"\n  );\n\n  const data = await response.json();\n\n  return data;\n}",
+   "questions": [
+    {
+     "question": "لماذا تستخدم React APIs؟",
+     "answers": [
+      "للتواصل مع مصادر بيانات خارجية",
+      "لإنشاء CSS",
+      "لإلغاء JavaScript",
+      "لإنشاء HTML فقط"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما الدالة الشائعة لإرسال HTTP Request في JavaScript؟",
+     "answers": [
+      "fetch",
+      "style",
+      "renderCSS",
+      "queryHTML"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما وظيفة response.json()؟",
+     "answers": [
+      "تحويل Response إلى بيانات JSON",
+      "إضافة CSS",
+      "إنشاء Component",
+      "حذف البيانات"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "حالات التحميل والأخطاء",
+   "description": "تعلم كيف تعرض واجهة مناسبة أثناء تحميل البيانات أو عند حدوث خطأ.",
+   "content": "\n      <p>\n        عند جلب البيانات من API قد يحتاج التطبيق بعض الوقت قبل\n        وصول النتيجة.\n      </p>\n      <p>\n        لذلك من الأفضل إظهار Loading state حتى يعرف المستخدم أن\n        العملية ما زالت مستمرة.\n      </p>\n      <p>\n        وفي حالة فشل الطلب يجب إظهار Error state مناسبة بدل ترك\n        المستخدم دون أي معلومات.\n      </p>\n    ",
+   "keyIdea": "Loading وError states جزء أساسي من تجربة المستخدم الجيدة.",
+   "explanation": "التطبيق الاحترافي لا يعرض البيانات فقط، بل يتعامل أيضًا مع حالات الانتظار والفشل.",
+   "practice": "غيّر رسائل Loading وError.",
+   "code": "if (loading) {\n  return <p>جارٍ التحميل...</p>;\n}\n\nif (error) {\n  return <p>حدث خطأ.</p>;\n}",
+   "questions": [
+    {
+     "question": "لماذا نستخدم Loading state؟",
+     "answers": [
+      "لإخبار المستخدم أن البيانات ما زالت تُحمّل",
+      "لتغيير CSS",
+      "لحذف Component",
+      "لإنشاء Database"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "متى نستخدم Error state؟",
+     "answers": [
+      "عند حدوث مشكلة في العملية",
+      "عند نجاح الطلب فقط",
+      "عند تغيير اللون",
+      "عند تحميل CSS"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما الفائدة الأساسية من هذه الحالات؟",
+     "answers": [
+      "تحسين تجربة المستخدم",
+      "حذف JavaScript",
+      "إلغاء APIs",
+      "إلغاء State"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "تحسين الأداء Performance",
+   "description": "تعرف على المبادئ الأساسية لتحسين أداء تطبيقات React وتقليل العمل غير الضروري.",
+   "content": "\n      <p>\n        Performance optimization يعني تقليل العمليات غير الضرورية\n        التي يقوم بها التطبيق.\n      </p>\n      <p>\n        من المهم أولًا فهم سبب إعادة Render ثم تحديد الجزء الذي\n        يحتاج إلى تحسين.\n      </p>\n      <p>\n        أدوات مثل React.memo وuseMemo وuseCallback قد تساعد في حالات\n        معينة، لكنها ليست مطلوبة لكل Component.\n      </p>\n    ",
+   "keyIdea": "تحسين الأداء يبدأ بفهم المشكلة وليس بإضافة أدوات Optimization عشوائيًا.",
+   "explanation": "راقب عمليات Render والعمليات الحسابية الثقيلة قبل اختيار طريقة التحسين.",
+   "practice": "حاول تحديد Component الذي قد يحتاج إلى تحسين في المثال.",
+   "code": "function ProductList({ products }) {\n  return products.map((product) => (\n    <Product\n      key={product.id}\n      product={product}\n    />\n  ));\n}",
+   "questions": [
+    {
+     "question": "ما الهدف من Performance Optimization؟",
+     "answers": [
+      "تقليل العمل والعمليات غير الضرورية",
+      "إضافة CSS أكثر",
+      "حذف Components",
+      "إلغاء JavaScript"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ماذا يجب أن تفعل قبل Optimization؟",
+     "answers": [
+      "تفهم سبب المشكلة أولًا",
+      "تستخدم كل Hooks",
+      "تحذف State",
+      "تحذف Components"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "هل يجب استخدام memoization في كل Component؟",
+     "answers": [
+      "لا",
+      "نعم دائمًا",
+      "فقط في HTML",
+      "فقط في CSS"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "React.memo",
+   "description": "تعلم كيف يمكن لـReact.memo تقليل بعض عمليات إعادة Render غير الضرورية.",
+   "content": "\n      <p>\n        React.memo هي API تساعد على إعادة استخدام نتيجة Render\n        للمكون عندما لا تتغير Props الخاصة به.\n      </p>\n      <p>\n        إذا أعيد Render للمكون الأب وكانت Props للمكون الابن مساوية\n        حسب المقارنة المستخدمة، يمكن لـReact تخطي Render للابن.\n      </p>\n      <p>\n        React.memo ليست حلًا سحريًا، ويجب استخدامها عندما يكون لها\n        تأثير مفيد على الأداء.\n      </p>\n    ",
+   "keyIdea": "React.memo يمكن أن تمنع بعض عمليات Render غير الضرورية عندما لا تتغير Props.",
+   "explanation": "تكون مفيدة خصوصًا عندما يكون Component مكلفًا في Render ويتلقى Props مستقرة.",
+   "practice": "غيّر اسم UserCard وجرب استخدامه مع Props مختلفة.",
+   "code": "const UserCard = React.memo(function UserCard({ name }) {\n  return <h2>{name}</h2>;\n});",
+   "questions": [
+    {
+     "question": "ما الذي يمكن أن تساعد React.memo في تقليله؟",
+     "answers": [
+      "Unnecessary re-renders",
+      "HTML files",
+      "CSS files",
+      "Database tables"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "على ماذا تعتمد React.memo بشكل أساسي؟",
+     "answers": [
+      "مقارنة Props",
+      "لون العنصر",
+      "اسم ملف CSS",
+      "حجم الصورة"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "هل React.memo مطلوبة لكل Component؟",
+     "answers": [
+      "لا",
+      "نعم",
+      "فقط للصور",
+      "فقط للنماذج"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "useMemo وuseCallback",
+   "description": "تعلم الفرق بين useMemo وuseCallback ومتى يمكن استخدامهما في تحسين الأداء.",
+   "content": "\n      <p>\n        useMemo تستخدم لحفظ نتيجة عملية حسابية بين عمليات Render\n        عندما لا تتغير dependencies.\n      </p>\n      <p>\n        useCallback تستخدم لحفظ نفس Function reference بين عمليات\n        Render عندما لا تتغير dependencies.\n      </p>\n      <p>\n        يجب استخدامهما عند وجود سبب حقيقي متعلق بالأداء، لأن\n        استخدامهما بلا حاجة قد يزيد التعقيد.\n      </p>\n    ",
+   "keyIdea": "useMemo تحفظ قيمة محسوبة، بينما useCallback تحفظ Function reference.",
+   "explanation": "الاثنتان أدوات Optimization وليستا بديلًا عن تصميم التطبيق الجيد.",
+   "practice": "غيّر dependencies في المثال وشاهد كيف تؤثر.",
+   "code": "const total = useMemo(() => {\n  return calculateTotal(items);\n}, [items]);",
+   "questions": [
+    {
+     "question": "ماذا يمكن أن تحفظ useMemo؟",
+     "answers": [
+      "قيمة محسوبة",
+      "ملف HTML",
+      "ملف CSS",
+      "قاعدة بيانات"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ماذا تحفظ useCallback؟",
+     "answers": [
+      "Function reference",
+      "HTML element",
+      "CSS color",
+      "Database"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "هل يجب استخدام useMemo دائمًا؟",
+     "answers": [
+      "لا",
+      "نعم",
+      "فقط في Forms",
+      "فقط في Router"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "إدارة الحالة State Management",
+   "description": "افهم الطرق المختلفة لإدارة State عندما يكبر حجم تطبيق React.",
+   "content": "\n      <p>\n        في التطبيقات الصغيرة قد تكفي useState وuseContext لإدارة\n        معظم الحالات.\n      </p>\n      <p>\n        عندما يكبر التطبيق قد تحتاج إلى تنظيم State بشكل أفضل أو\n        استخدام مكتبة مخصصة لإدارة الحالة.\n      </p>\n      <p>\n        اختيار الطريقة يعتمد على حجم التطبيق وطبيعة البيانات وكيف\n        تشاركها Components.\n      </p>\n    ",
+   "keyIdea": "اختيار State Management المناسب يعتمد على طبيعة وحجم التطبيق.",
+   "explanation": "لا توجد أداة واحدة مناسبة لكل المشاريع.",
+   "practice": "غيّر القيمة الأولية لـuser.",
+   "code": "const [user, setUser] = useState(null);\n\nfunction login(userData) {\n  setUser(userData);\n}",
+   "questions": [
+    {
+     "question": "ما المقصود بـState Management؟",
+     "answers": [
+      "إدارة بيانات التطبيق وتغيراتها",
+      "تنسيق CSS",
+      "إنشاء HTML فقط",
+      "ضغط الصور"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "هل كل تطبيق React يحتاج مكتبة State Management خارجية؟",
+     "answers": [
+      "لا",
+      "نعم دائمًا",
+      "فقط في HTML",
+      "فقط في CSS"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما الذي يؤثر في اختيار طريقة إدارة State؟",
+     "answers": [
+      "حجم التطبيق وطبيعة البيانات",
+      "لون الموقع",
+      "اسم Component فقط",
+      "نوع الصورة"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "معمارية React",
+   "description": "تعلم المبادئ الأساسية لتنظيم مشروع React إلى طبقات ومكونات واضحة وقابلة للصيانة.",
+   "content": "\n      <p>\n        Architecture تصف الطريقة التي يتم بها تقسيم وتنظيم أجزاء\n        التطبيق.\n      </p>\n      <p>\n        يمكن فصل Components وPages وHooks وServices وغيرها في مجلدات\n        واضحة حسب احتياجات المشروع.\n      </p>\n      <p>\n        التنظيم الجيد يقلل التشابك ويساعد الفريق على فهم المشروع\n        وتطويره بسهولة.\n      </p>\n    ",
+   "keyIdea": "المعمارية الجيدة تجعل المشروع أسهل في الفهم والتطوير والصيانة.",
+   "explanation": "لا توجد بنية مجلدات واحدة إجبارية لكل مشاريع React، بل تختار الهيكل المناسب للمشروع.",
+   "practice": "أضف مجلدًا مناسبًا إلى هيكل المشروع.",
+   "code": "src/\n├── components/\n├── pages/\n├── hooks/\n├── services/\n└── App.jsx",
+   "questions": [
+    {
+     "question": "لماذا تعتبر Architecture مهمة؟",
+     "answers": [
+      "تجعل المشروع أسهل في الصيانة",
+      "تحذف JavaScript",
+      "تستبدل React",
+      "تمنع استخدام Components"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أين يمكن وضع Components المشتركة؟",
+     "answers": [
+      "components/",
+      "database/",
+      "css-only/",
+      "sql/"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "هل توجد بنية مجلدات واحدة إلزامية لكل React projects؟",
+     "answers": [
+      "لا",
+      "نعم دائمًا",
+      "نعم فقط في Vercel",
+      "نعم فقط في Windows"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "المكونات القابلة لإعادة الاستخدام",
+   "description": "تعلم كيف تصمم Components مرنة يمكن استخدامها في أكثر من مكان داخل التطبيق.",
+   "content": "\n      <p>\n        المكون القابل لإعادة الاستخدام يجب أن يكون مرنًا بما يكفي\n        ليستقبل بيانات مختلفة.\n      </p>\n      <p>\n        يمكن استخدام Props وchildren لتحديد المحتوى أو السلوك الذي\n        يتغير من استخدام لآخر.\n      </p>\n      <p>\n        الهدف هو تقليل التكرار مع الحفاظ على وضوح المكون.\n      </p>\n    ",
+   "keyIdea": "صمم Component عامًا عندما يكون هناك سلوك أو واجهة مشتركة فعلًا.",
+   "explanation": "Button مثال بسيط على Component يمكن استخدامه بأكثر من نص أو وظيفة.",
+   "practice": "جرّب تمرير نص مختلف باستخدام children.",
+   "code": "function Button({ children }) {\n  return (\n    <button className=\"button\">\n      {children}\n    </button>\n  );\n}",
+   "questions": [
+    {
+     "question": "ما هو Reusable Component؟",
+     "answers": [
+      "Component يمكن استخدامه في أماكن متعددة",
+      "Component يعمل مرة واحدة فقط",
+      "CSS file",
+      "Database"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما الذي يمكن استخدامه لجعل Button مرنًا؟",
+     "answers": [
+      "Props وchildren",
+      "CSS فقط",
+      "SQL",
+      "Database"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما الهدف من Reusability؟",
+     "answers": [
+      "تقليل التكرار",
+      "زيادة التكرار",
+      "حذف Components",
+      "حذف JavaScript"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "تنظيم المشروع Project Structure",
+   "description": "تعلم كيفية تنظيم ملفات ومجلدات مشروع React بطريقة تساعد على التوسع.",
+   "content": "\n      <p>\n        Project Structure توضح كيف يتم ترتيب ملفات المشروع.\n      </p>\n      <p>\n        يمكن فصل assets وcomponents وpages وhooks وservices حسب\n        احتياجات المشروع.\n      </p>\n      <p>\n        الهدف ليس إنشاء مجلدات كثيرة، بل الوصول إلى تنظيم واضح\n        يسهل العثور على الملفات.\n      </p>\n    ",
+   "keyIdea": "تنظيم الملفات يجب أن يخدم وضوح المشروع وليس أن يزيد التعقيد.",
+   "explanation": "اختر هيكلًا واضحًا يتناسب مع حجم التطبيق وطريقة عمل الفريق.",
+   "practice": "أضف مجلدًا خاصًا بالصور والأصول.",
+   "code": "src/\n├── components/\n├── pages/\n├── assets/\n├── hooks/\n├── services/\n└── main.jsx",
+   "questions": [
+    {
+     "question": "ماذا يصف Project Structure؟",
+     "answers": [
+      "تنظيم ملفات ومجلدات المشروع",
+      "ألوان الموقع فقط",
+      "قاعدة البيانات فقط",
+      "سرعة الإنترنت"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أين يمكن وضع الصور والأصول؟",
+     "answers": [
+      "assets/",
+      "database/",
+      "hooks-only/",
+      "sql/"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما الهدف من تنظيم المشروع؟",
+     "answers": [
+      "تسهيل العثور على الملفات وصيانة المشروع",
+      "زيادة حجم المشروع",
+      "إلغاء Components",
+      "منع إعادة الاستخدام"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "أفضل الممارسات Best Practices",
+   "description": "تعلم مجموعة من الممارسات التي تساعدك على كتابة React code واضح وقابل للصيانة.",
+   "content": "\n      <p>\n        Clean Code مهم جدًا عندما يكبر المشروع ويعمل عليه أكثر من\n        شخص.\n      </p>\n      <p>\n        من الممارسات الجيدة استخدام أسماء واضحة، Components صغيرة\n        نسبيًا، وتقليل التكرار.\n      </p>\n      <p>\n        كما يجب فصل المسؤوليات وعدم وضع كل منطق التطبيق في Component\n        واحد ضخم.\n      </p>\n    ",
+   "keyIdea": "الكود الجيد ليس فقط كودًا يعمل، بل كود يمكن فهمه وتطويره بسهولة.",
+   "explanation": "استخدم أسماء واضحة وحافظ على مسؤولية محددة لكل Component قدر الإمكان.",
+   "practice": "حاول تحسين اسم Component أو المتغير في المثال.",
+   "code": "function UserCard({ user }) {\n  return (\n    <article>\n      <h2>{user.name}</h2>\n      <p>{user.email}</p>\n    </article>\n  );\n}",
+   "questions": [
+    {
+     "question": "لماذا Best Practices مهمة؟",
+     "answers": [
+      "تحسن جودة الكود وقابليته للصيانة",
+      "تلغي Components",
+      "تجعل JavaScript غير ضرورية",
+      "تستبدل React"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أي اسم أفضل عادة؟",
+     "answers": [
+      "UserCard",
+      "x1",
+      "abc123",
+      "thing"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما المشكلة في Component ضخم جدًا؟",
+     "answers": [
+      "يصعب فهمه وصيانته",
+      "يصبح CSS فقط",
+      "لا يمكن تشغيل React",
+      "يتحول إلى Database"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "React + APIs",
+   "description": "اربط بين React وState وEffects وAPIs لبناء تطبيقات تعتمد على البيانات الحقيقية.",
+   "content": "\n      <p>\n        معظم التطبيقات العملية تحتاج إلى جلب بيانات من Backend أو\n        API خارجي.\n      </p>\n      <p>\n        غالبًا يتم استخدام useEffect لبدء عملية الجلب، ثم يتم تخزين\n        النتيجة داخل State.\n      </p>\n      <p>\n        يجب أيضًا التعامل مع Loading وError وSuccess states حتى تكون\n        تجربة المستخدم جيدة.\n      </p>\n    ",
+   "keyIdea": "التطبيقات المعتمدة على البيانات تحتاج إلى تنسيق جيد بين API وState وUI.",
+   "explanation": "يمكن فصل منطق API في services لتقليل مسؤوليات Components.",
+   "practice": "غيّر endpoint في المثال إلى endpoint آخر.",
+   "code": "useEffect(() => {\n  fetch(\"/api/users\")\n    .then((response) => response.json())\n    .then((data) => setUsers(data));\n}, []);",
+   "questions": [
+    {
+     "question": "ماذا يمكن أن يوفر API لتطبيق React؟",
+     "answers": [
+      "بيانات خارجية",
+      "CSS فقط",
+      "HTML فقط",
+      "صور CSS"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "أين يمكن تخزين البيانات القادمة من API؟",
+     "answers": [
+      "React State",
+      "CSS",
+      "HTML attribute",
+      "Class name فقط"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما Hook الشائعة لتنفيذ Fetch عند تحميل Component؟",
+     "answers": [
+      "useEffect",
+      "useHTML",
+      "useCSS",
+      "useDatabase"
+     ],
+     "correct": 0
+    }
+   ]
+  },
+  {
+   "title": "المشروع النهائي",
+   "description": "اجمع ما تعلمته في React لبناء تطبيق متكامل منظم وقابل للتوسع.",
+   "content": "\n      <p>\n        المشروع النهائي هو المرحلة التي تجمع فيها المفاهيم التي\n        تعلمتها في React.\n      </p>\n      <p>\n        يمكن أن يحتوي المشروع على Components وState وForms وRouting\n        وAPIs وLoading وError states.\n      </p>\n      <p>\n        الهدف ليس كتابة أكبر عدد من الملفات، بل بناء تطبيق حقيقي\n        منظم يوضح أنك تستطيع استخدام React لحل مشكلة كاملة.\n      </p>\n    ",
+   "keyIdea": "المشروع النهائي هو فرصة لتطبيق المفاهيم بدلًا من دراستها بشكل منفصل.",
+   "explanation": "ابدأ بتحديد فكرة التطبيق، ثم قسمها إلى Components وFeatures صغيرة.",
+   "practice": "خطط للمكونات الأساسية في مشروعك قبل كتابة الكود.",
+   "code": "function App() {\n  return (\n    <>\n      <Header />\n      <Dashboard />\n      <Footer />\n    </>\n  );\n}",
+   "questions": [
+    {
+     "question": "ما الهدف الأساسي من المشروع النهائي؟",
+     "answers": [
+      "تطبيق ما تعلمته في تطبيق كامل",
+      "تجنب استخدام React",
+      "كتابة CSS فقط",
+      "حذف Components"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما الذي يمكن أن يجمعه المشروع النهائي؟",
+     "answers": [
+      "Components وState وAPIs وRouting وغيرها",
+      "CSS فقط",
+      "HTML فقط",
+      "Database فقط"
+     ],
+     "correct": 0
+    },
+    {
+     "question": "ما أفضل طريقة للبدء في مشروع كبير؟",
+     "answers": [
+      "تقسيم الفكرة إلى Components وFeatures",
+      "كتابة كل شيء في Component واحد",
+      "حذف Architecture",
+      "عدم التخطيط"
+     ],
+     "correct": 0
+    }
+   ]
+  }
+ ],
+ "quizCount": 3,
+ "sidebar": [
+  {
+   "title": "أساسيات React",
+   "items": [
+    {
+     "n": 0,
+     "name": "مقدمة إلى React"
+    },
+    {
+     "n": 1,
+     "name": "لماذا React؟"
+    },
+    {
+     "n": 2,
+     "name": "المكونات Components"
+    },
+    {
+     "n": 3,
+     "name": "JSX"
+    },
+    {
+     "n": 4,
+     "name": "Props"
+    },
+    {
+     "n": 5,
+     "name": "State"
+    }
+   ]
+  },
+  {
+   "title": "React الأساسية",
+   "items": [
+    {
+     "n": 6,
+     "name": "الأحداث Events"
+    },
+    {
+     "n": 7,
+     "name": "العرض الشرطي"
+    },
+    {
+     "n": 8,
+     "name": "Lists & Keys"
+    },
+    {
+     "n": 9,
+     "name": "النماذج Forms"
+    },
+    {
+     "n": 10,
+     "name": "تركيب المكونات"
+    },
+    {
+     "n": 11,
+     "name": "مقدمة إلى Hooks"
+    }
+   ]
+  },
+  {
+   "title": "React Hooks",
+   "items": [
+    {
+     "n": 12,
+     "name": "useState"
+    },
+    {
+     "n": 13,
+     "name": "useEffect"
+    },
+    {
+     "n": 14,
+     "name": "useRef"
+    },
+    {
+     "n": 15,
+     "name": "useContext"
+    },
+    {
+     "n": 16,
+     "name": "Custom Hooks"
+    }
+   ]
+  },
+  {
+   "title": "React المتقدم",
+   "items": [
+    {
+     "n": 17,
+     "name": "React Router"
+    },
+    {
+     "n": 18,
+     "name": "طلبات API"
+    },
+    {
+     "n": 19,
+     "name": "حالات التحميل والأخطاء"
+    },
+    {
+     "n": 20,
+     "name": "تحسين الأداء"
+    },
+    {
+     "n": 21,
+     "name": "React.memo"
+    },
+    {
+     "n": 22,
+     "name": "useMemo & useCallback"
+    },
+    {
+     "n": 23,
+     "name": "إدارة الحالة"
+    }
+   ]
+  },
+  {
+   "title": "React الحديثة",
+   "items": [
+    {
+     "n": 24,
+     "name": "معمارية React"
+    },
+    {
+     "n": 25,
+     "name": "المكونات القابلة لإعادة الاستخدام"
+    },
+    {
+     "n": 26,
+     "name": "تنظيم المشروع"
+    },
+    {
+     "n": 27,
+     "name": "أفضل الممارسات"
+    },
+    {
+     "n": 28,
+     "name": "React + APIs"
+    },
+    {
+     "n": 29,
+     "name": "المشروع النهائي"
+    }
+   ]
+  }
+ ]
+}

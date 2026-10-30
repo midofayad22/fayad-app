@@ -9,7 +9,7 @@ Legend: ✅ done and verified by tests · ⏳ not started · Preview verificatio
 | com | /fundamentals/computer-basics/com.html | 20 | 20 | 20 | 20 (built from data) | ✅ byte-identical (tests/migration-com.test.mjs) | ✅ tests/com-engine.test.mjs | `legacy/computer-basics/` (`?engine=legacy`) | no (sandbox cannot reach *.vercel.app) |
 | html | /html-learning/html-learning.html | 30 | **22** (8 unreachable from sidebar) | 30 | **30** (built from data; the 8 missing lessons added to their own group) | ✅ byte-identical (tests/migration-html.test.mjs) | ✅ tests/html-engine.test.mjs | `legacy/html-learning/` (`?engine=legacy`) | no (sandbox cannot reach *.vercel.app) |
 | css | /css-learning/css-learning.html | 30 | 30 | 30 | 30 (built from data, 6 groups) | ✅ identical, Arabic + English (tests/migration-css.test.mjs) | ✅ tests/css-engine.test.mjs | `legacy/css-learning/` (`?engine=legacy`) | no (sandbox cannot reach *.vercel.app) |
-| react | /react-learning/react-learning.html | 30 | 30 | ⏳ | ⏳ | ⏳ | ⏳ | n/a | no |
+| react | /react-learning/react-learning.html | 30 | 30 | 30 | 30 (built from data, 5 groups) | ✅ identical, Arabic (tests/migration-react.test.mjs) | ✅ tests/react-engine.test.mjs | `legacy/react-learning/` (`?engine=legacy`) | yes |
 | vue | /vue-learning/vue-learning.html | 22 | 22 | ⏳ | ⏳ | ⏳ | ⏳ | n/a | no |
 | angular | /angular-learning/angular-learning.html | 32 | **30** (2 unreachable) | ⏳ | ⏳ | ⏳ | ⏳ | n/a | no |
 
@@ -68,3 +68,10 @@ Content is identical in both languages (30 titles, descriptions, example codes, 
 3. **Security/scoping**: learner CSS was injected as a global `<style>` into the host page (it could restyle the site UI). It now runs only inside the sandboxed preview, applied to a fixed demo document (h1, p, button); the "result" card renders the example the same way.
 4. **Completion**: the legacy CSS page never stored completed lessons (only the current lesson, which remains mirrored to `fayad-css-current-lesson`). A lesson now completes when its 3 questions are answered correctly (shared rule), stored in `fayad-progress-v1`.
 5. The progress bar shows completed lessons instead of "lesson number / 30".
+
+## React course: deliberate differences from the legacy implementation
+
+- Content is converted mechanically (`tools/convert-react-track.mjs`, frozen fixture `tests/fixtures/legacy-react.json`); Arabic only, as in the legacy page.
+- Preview stays a non-executing simulation (`sim-react`); learner code is never evaluated.
+- 7 lessons keep their shorter sidebar names via `navTitle`.
+- The legacy quiz-resume pointer (`fayad-react-quiz-progress`) is not migrated; completed and current-lesson keys are mirrored.
