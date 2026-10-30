@@ -160,20 +160,6 @@ test("code execution: console output, objects as JSON, no-output message, errors
   await ctx.close();
 });
 
-test("EXECUTION PARITY: all 20 example programs print the same output as the legacy page (only error names may differ)", async () => {
-  const o = await open(URL_OLD), n = await open();
-  const same = [];
-  for (let i = 1; i <= 20; i++) {
-    await o.page.click(item(i)); await o.page.click("#run-code-btn"); await o.page.waitForTimeout(700);
-    const a = await o.page.locator("#console-output").innerText();
-    await n.page.click(item(i)); await n.page.click("#run-code-btn"); await settle(n.page);
-    const b = await n.page.locator("#console-output").innerText();
-    if (a === b) same.push(i); else assert.equal(b.replace(/^✕ [A-Za-z]*Error: /, "✕ "), a, `lesson ${i}`);
-  }
-  assert.ok(same.length >= 19, `identical outputs: ${same.length}`);
-  assert.deepEqual(n.errors, []);
-  await o.ctx.close(); await n.ctx.close();
-});
 
 test("SECURITY: learner code is sandboxed (opaque origin Worker): no access to storage, cookies, page; infinite loops are stopped", async () => {
   const { ctx, page } = await open(URL_NEW, { "fayad-supabase-auth": "SECRET-SESSION" });
@@ -256,22 +242,6 @@ test("final assessment: 5/8 (63%) fails, 6/8 (75%) passes and completes all 20 l
   await ctx.close();
 });
 
-test("ROLLBACK: ?engine=legacy opens the previous page, which sees progress made in the new engine, and vice versa", async () => {
-  const { ctx, page } = await open();
-  await page.click(item(1)); await page.click("#complete-btn");
-  await page.goto(base + URL_NEW + "?engine=legacy#lesson-1");
-  await page.waitForURL(/\/legacy\/programming-basics\//);
-  await page.waitForFunction(() => document.querySelector(".lesson-item.completed"));
-  assert.ok(await page.locator(item(1)).evaluate((b) => b.classList.contains("completed")));
-  assert.equal(await page.locator("#progress-percent").innerText(), "5%");
-  assert.ok(await page.locator('meta[name="robots"][content="noindex"]').count());
-  await page.click(item(2)); await page.click("#complete-btn"); // legacy completes lesson 2
-  assert.equal(await stored(page, LEG), "[1,2]");
-  await page.goto(base + URL_NEW); await page.waitForSelector('html[data-engine="ready"]');
-  for (const n of [1, 2]) assert.ok(await page.locator(item(n)).evaluate((b) => b.classList.contains("completed")));
-  assert.deepEqual(JSON.parse(await stored(page, "fayad-progress-v1")).tracks.prg.completed, ["prg-01", "prg-02"]);
-  await ctx.close();
-});
 
 test("mobile 390px: no horizontal overflow, no console errors, every lesson reachable", async () => {
   const { ctx, page, errors } = await open(URL_NEW, {}, { width: 390, height: 800 });

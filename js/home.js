@@ -39,10 +39,10 @@
       "menu.about.sub": "من يقف وراء FAYAD",
       "menu.contact": "تواصل",
       "h.kicker": "منصة FAYAD التعليمية",
-      "h.title": "تعلّم تطوير الويب خطوة بخطوة",
-      "h.desc": "مسار واضح من أساسيات الحاسوب والبرمجة حتى HTML وCSS وJavaScript وأطر العمل، بدروس تفاعلية وتمارين تطبيقية.",
+      "h.title": "من أول سطر كود إلى تطبيق ويب حقيقي",
+      "h.desc": "مسار مرتّب يبدأ بأساسيات الحاسوب والبرمجة، ثم HTML وCSS وJavaScript، وينتهي بأطر العمل. كل درس: شرح، مثال، تمرين، واختبار.",
       "h.cta": "ابدأ من الأساسيات",
-      "h.browse": "تصفّح كل المسارات",
+      "h.browse": "استعرض المسار كاملًا",
       "h.stat.tracks": "مسارات",
       "h.stat.lessons": "درسًا",
       "h.preview": "مثال من درس تفاعلي",
@@ -71,8 +71,8 @@
       "r.projects.d": "طبّق ما تعلمته",
       "r.soon": "قريبًا",
       "r.step": "الخطوة {n}",
-      "t.title": "المسارات",
-      "t.sub": "مسارات بدروس عربية، يمكنك البدء من أي مسار.",
+      "t.title": "المسار التعليمي",
+      "t.sub": "أربع مراحل مرتّبة. اتبعها بالترتيب، أو ابدأ من المرحلة التي تناسبك.",
       "t.cssfw": "أطر CSS",
       "t.ajs": "النطاق والـ Closures والـ prototypes وProxy والمولدات وحلقة الأحداث والـ async وأنماط التصميم.",
       "t.bs": "الشبكة والأدوات المساعدة والنماذج والمكونات التفاعلية والوضع الداكن وRTL (Bootstrap 5.3).",
@@ -96,6 +96,34 @@
       "f.rights": "© 2026 FAYAD. من تطوير Abdullhamid, Fayad.",
       "f.tag": "Learn · Build · Become",
       "f.nav": "روابط التذييل",
+      "nav.how": "كيف تتعلم",
+      "h.continue": "تابع التعلم",
+      "st.1": "الأساسيات",
+      "st.1.s": "الأساسيات",
+      "st.1.d": "افهم كيف يعمل الحاسوب وكيف يفكر المبرمج قبل أي لغة.",
+      "st.2": "أساسيات الويب",
+      "st.2.s": "أساسيات الويب",
+      "st.2.d": "ابنِ الصفحة وصمّمها وأضف التفاعل: HTML وCSS وJavaScript.",
+      "st.3": "تعمّق وأدوات",
+      "st.3.s": "تعمّق",
+      "st.3.d": "JavaScript المتقدم، وأطر CSS الجاهزة لتسريع العمل.",
+      "st.4": "أطر العمل",
+      "st.4.s": "أطر العمل",
+      "st.4.d": "ابنِ واجهات كاملة بإطار حديث: اختر React أو Vue أو Angular.",
+      "st.meta": "{c} مسار · {l} درسًا",
+      "how.title": "كيف يعمل كل درس",
+      "how.1": "افهم الفكرة",
+      "how.1.d": "شرح مختصر للمفهوم مع مثال كامل يمكنك قراءته.",
+      "how.2": "جرّب بنفسك",
+      "how.2.d": "عدّل المثال وشغّله في محرر الدرس، ويُنفَّذ كودك في بيئة معزولة لا تمس الموقع.",
+      "how.3": "اختبر نفسك",
+      "how.3.d": "أسئلة بعد كل درس، ويُحسب الدرس منجزًا عند الإجابة الصحيحة. يُحفظ تقدمك على جهازك.",
+      "fin.title": "جاهز لتبدأ؟",
+      "n.start": "ابدأ من هنا",
+      "n.start.d": "الخطوة الأولى في المسار",
+      "n.open": "افتح المسار",
+      "n.continue": "تابع من حيث توقفت",
+      "n.resume": "تابع",
     },
     en: {
       "nav.home": "Home",
@@ -128,10 +156,10 @@
       "menu.about.sub": "Who is behind FAYAD",
       "menu.contact": "Contact",
       "h.kicker": "FAYAD Learning Platform",
-      "h.title": "Learn web development, step by step",
-      "h.desc": "A clear path from computer and programming fundamentals to HTML, CSS, JavaScript and frameworks, with interactive lessons and hands-on practice.",
+      "h.title": "From your first line of code to a real web app",
+      "h.desc": "An ordered path that starts with computer and programming fundamentals, then HTML, CSS and JavaScript, and ends with frameworks. Every lesson: explanation, example, practice and a quiz.",
       "h.cta": "Start with the fundamentals",
-      "h.browse": "Browse all courses",
+      "h.browse": "See the full path",
       "h.stat.tracks": "courses",
       "h.stat.lessons": "lessons",
       "h.preview": "A taste of an interactive lesson",
@@ -160,8 +188,8 @@
       "r.projects.d": "Apply what you learned",
       "r.soon": "Coming soon",
       "r.step": "Step {n}",
-      "t.title": "Courses",
-      "t.sub": "Courses with Arabic lessons. Start from any of them.",
+      "t.title": "The learning path",
+      "t.sub": "Four ordered stages. Follow them in order, or start at the stage that fits you.",
       "t.cssfw": "CSS frameworks",
       "t.ajs": "Scope, closures, prototypes, Proxy, generators, the event loop, async patterns and design patterns.",
       "t.bs": "Grid, utilities, forms, interactive components, dark mode and RTL (Bootstrap 5.3).",
@@ -185,6 +213,34 @@
       "f.rights": "© 2026 FAYAD. Built by Abdullhamid, Fayad.",
       "f.tag": "Learn · Build · Become",
       "f.nav": "Footer links",
+      "nav.how": "How it works",
+      "h.continue": "Continue learning",
+      "st.1": "Fundamentals",
+      "st.1.s": "Fundamentals",
+      "st.1.d": "Understand how a computer works and how a programmer thinks, before any language.",
+      "st.2": "Web foundations",
+      "st.2.s": "Web foundations",
+      "st.2.d": "Build, style and add behaviour to a page: HTML, CSS and JavaScript.",
+      "st.3": "Go deeper",
+      "st.3.s": "Go deeper",
+      "st.3.d": "Advanced JavaScript, and ready-made CSS frameworks to speed up your work.",
+      "st.4": "Frameworks",
+      "st.4.s": "Frameworks",
+      "st.4.d": "Build complete interfaces with a modern framework: pick React, Vue or Angular.",
+      "st.meta": "{c} courses · {l} lessons",
+      "how.title": "How each lesson works",
+      "how.1": "Understand the idea",
+      "how.1.d": "A short explanation of the concept with a complete example you can read.",
+      "how.2": "Try it yourself",
+      "how.2.d": "Edit the example and run it in the lesson editor. Your code runs in an isolated sandbox that cannot touch the site.",
+      "how.3": "Test yourself",
+      "how.3.d": "Questions after every lesson; a lesson counts as completed once you answer correctly. Your progress is saved on your device.",
+      "fin.title": "Ready to start?",
+      "n.start": "Start here",
+      "n.start.d": "The first step on the path",
+      "n.open": "Open course",
+      "n.continue": "Pick up where you left off",
+      "n.resume": "Continue",
     },
   });
 
@@ -232,73 +288,76 @@
     });
   }
 
-  // ---- continue learning ----
-  function renderContinue() {
-    var section = $("#continue");
-    var list = $("#continueList");
-    if (!section || !list) return;
-    var p = F.catalog.progress();
-    var started = F.catalog.tracks.filter(function (t) { return p[t.id].started; });
-    if (!started.length) { section.hidden = true; list.textContent = ""; return; }
+  // ---- next step (hero card + hero button) ----
+  var NAMES = { com: "Computer Fundamentals", prg: "Programming Fundamentals", html: "HTML", css: "CSS", js: "JavaScript", ajs: "Advanced JavaScript", bs: "Bootstrap 5", tw: "Tailwind CSS", react: "React", vue: "Vue", angular: "Angular" };
+  var BADGES = { com: "CS", prg: "{ }", html: "HTML", css: "CSS", js: "JS", ajs: "+JS", bs: "BS", tw: "TW", react: "Re", vue: "Vue", angular: "Ng" };
 
+  function pickNext(p) {
     var last = F.catalog.lastTrack();
-    started.sort(function (a, b) {
-      if (a.id === last) return -1;
-      if (b.id === last) return 1;
-      return F.catalog.tracks.indexOf(a) - F.catalog.tracks.indexOf(b);
-    });
-
-    list.textContent = "";
-    started.slice(0, 3).forEach(function (t) {
-      var info = p[t.id];
-      var a = document.createElement("a");
-      a.className = "hm-continue-card";
-      a.href = t.path;
-      a.setAttribute("data-course", t.id);
-
-      var top = document.createElement("span");
-      top.className = "hm-continue-top";
-      var name = document.createElement("strong");
-      var FRAMEWORK_NAMES = { react: "React", vue: "Vue", angular: "Angular", ajs: "Advanced JavaScript", bs: "Bootstrap 5", tw: "Tailwind CSS" };
-      name.textContent = FRAMEWORK_NAMES[t.id] || F.i18n.t("r." + t.id);
-      top.appendChild(name);
-      if (t.id === last) {
-        var badge = document.createElement("em");
-        badge.textContent = F.i18n.t("c.last");
-        top.appendChild(badge);
-      }
-      a.appendChild(top);
-
-      var status = document.createElement("span");
-      status.className = "hm-continue-status";
-      if (info.done !== null && info.done > 0) status.textContent = F.i18n.t("c.done", { done: info.done, total: info.total });
-      else if (info.current !== null && info.current > 0) status.textContent = F.i18n.t("c.at", { n: info.current + 1, total: info.total });
-      else status.textContent = F.i18n.t("c.opened");
-      a.appendChild(status);
-
-      if (info.percent !== null) {
-        var bar = document.createElement("span");
-        bar.className = "hm-bar";
-        bar.setAttribute("role", "progressbar");
-        bar.setAttribute("aria-valuemin", "0");
-        bar.setAttribute("aria-valuemax", "100");
-        bar.setAttribute("aria-valuenow", String(info.percent));
-        var fill = document.createElement("span");
-        fill.style.width = info.percent + "%";
-        bar.appendChild(fill);
-        a.appendChild(bar);
-      }
-
-      var go = document.createElement("span");
-      go.className = "hm-continue-go";
-      go.textContent = F.i18n.t("c.btn");
-      a.appendChild(go);
-      list.appendChild(a);
-    });
-    section.hidden = false;
+    var open = function (t) { return p[t.id].started && !(p[t.id].done !== null && p[t.id].done >= p[t.id].total); };
+    if (last && tracksById[last] && open(tracksById[last])) return tracksById[last];
+    var any = F.catalog.tracks.filter(open)[0];
+    return any || null;
   }
 
-  function render() { fillStats(); paintProgress(); renderContinue(); }
+  function renderNext() {
+    var card = $("#nextStep");
+    if (!card) return;
+    var p = F.catalog.progress();
+    var t = pickNext(p);
+    var tr = t || tracksById.com;
+    var info = p[tr.id];
+    card.setAttribute("data-course", tr.id);
+    $("#nextBadge").textContent = BADGES[tr.id];
+    $("#nextName").textContent = NAMES[tr.id];
+    $("#nextGo").setAttribute("href", tr.path.replace(/^\//, ""));
+    var label = $("#nextLabel"), status = $("#nextStatus"), goText = $("#nextGoText"), bar = $("#nextBar");
+    var cta = $("#heroCta"), ctaText = cta && $("span", cta), fin = $("#finalCta");
+    if (t) {
+      label.setAttribute("data-i18n", "n.continue"); label.textContent = F.i18n.t("n.continue");
+      if (info.done !== null && info.done > 0) status.textContent = F.i18n.t("c.done", { done: info.done, total: info.total });
+      else if (info.current !== null) status.textContent = F.i18n.t("c.at", { n: info.current + 1, total: info.total });
+      else status.textContent = F.i18n.t("c.opened");
+      status.removeAttribute("data-i18n");
+      goText.setAttribute("data-i18n", "n.resume"); goText.textContent = F.i18n.t("n.resume");
+      if (info.percent !== null) { bar.hidden = false; $("span", bar).style.width = info.percent + "%"; bar.setAttribute("aria-valuenow", String(info.percent)); } else bar.hidden = true;
+      if (ctaText) { ctaText.setAttribute("data-i18n", "h.continue"); ctaText.textContent = F.i18n.t("h.continue"); }
+    } else {
+      label.setAttribute("data-i18n", "n.start"); label.textContent = F.i18n.t("n.start");
+      status.setAttribute("data-i18n", "n.start.d"); status.textContent = F.i18n.t("n.start.d");
+      goText.setAttribute("data-i18n", "n.open"); goText.textContent = F.i18n.t("n.open");
+      bar.hidden = true;
+      if (ctaText) { ctaText.setAttribute("data-i18n", "h.cta"); ctaText.textContent = F.i18n.t("h.cta"); }
+    }
+    if (cta) cta.setAttribute("href", tr.path.replace(/^\//, ""));
+    if (fin) { fin.setAttribute("href", tr.path.replace(/^\//, "")); var ft = $("span", fin); if (ft && ctaText) ft.textContent = ctaText.textContent; }
+  }
+
+  // ---- stage meta + sticky stage nav highlight ----
+  function stageMeta() {
+    $$("[data-stage-meta]").forEach(function (el) {
+      var ids = el.getAttribute("data-stage-meta").split(",");
+      var lessons = ids.reduce(function (n, id) { return n + (tracksById[id] ? tracksById[id].total : 0); }, 0);
+      el.textContent = F.i18n.t("st.meta", { c: ids.length, l: lessons });
+    });
+  }
+  function watchStages() {
+    var links = $$("[data-stage-link]");
+    var stages = $$("[data-stage]");
+    if (!links.length || !("IntersectionObserver" in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var n = e.target.getAttribute("data-stage");
+        links.forEach(function (a) { if (a.getAttribute("data-stage-link") === n) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); });
+        var cur = $(".hm-stagenav a[aria-current]");
+        if (cur && cur.scrollIntoView && cur.parentNode.scrollWidth > cur.parentNode.clientWidth) cur.parentNode.scrollTo({ left: cur.offsetLeft - cur.parentNode.clientWidth / 2 + cur.clientWidth / 2, behavior: "smooth" });
+      });
+    }, { rootMargin: "-35% 0px -55% 0px" });
+    stages.forEach(function (s) { io.observe(s); });
+  }
+
+  function render() { fillStats(); paintProgress(); renderNext(); stageMeta(); }
 
   window.addEventListener("fayad:langchange", render);
   // progress can change in another tab, or when returning via the back button
@@ -306,4 +365,5 @@
   window.addEventListener("pageshow", render);
   F.i18n.apply();
   render();
+  watchStages();
 })();

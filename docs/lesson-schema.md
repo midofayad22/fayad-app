@@ -28,6 +28,8 @@ group; every quiz has >= 1 question, >= 2 options and a valid `correct`; no empt
 
 ## Foundation layout (Programming Fundamentals; Computer Basics next)
 `track.layout: "foundation"` selects `js/engine/foundation-view.js` (bound to the existing prg.html markup) instead of the default view.
+`key` may also be `{ title, text }` (a key card with its own heading; Vue course).
+
 Extra optional lesson fields (required when the layout is foundation): `heading`, `level`, `body` (authored trusted HTML), `key`, `challenge`
 (all `{ar}` text), `icon` (Font Awesome class, e.g. `"fa-terminal"`), and `example.code`; plus optional `navTitle` (sidebar label when it
 differs from `title`). The foundation layout takes **exactly one** quiz question per lesson. Rules of this layout: one attempt per question,

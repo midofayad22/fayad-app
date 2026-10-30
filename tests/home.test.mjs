@@ -1,4 +1,4 @@
-// Milestone 3: homepage behaviour (roadmap, courses, continue-learning, i18n consistency, catalog accuracy).
+// Milestone 3: homepage behaviour (stages, courses, next step, i18n consistency, catalog accuracy).
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
@@ -32,13 +32,15 @@ test("every internal link on the homepage resolves to an existing file", async (
   }
 });
 
-test("roadmap has 9 steps in order (no Git course: FAYAD CODE covers it); Projects is honestly marked as coming soon", async () => {
+test("the path has 4 ordered stages containing all 11 courses once, in learning order", async () => {
   const { ctx, page } = await open({}, "en");
-  const steps = await page.$$eval(".hm-roadmap .hm-step", (els) => els.map((e) => ({ n: e.querySelector(".hm-step-n").textContent, name: e.querySelector("strong").textContent, link: e.tagName === "A", soon: !!e.querySelector(".hm-soon") })));
-  assert.deepEqual(steps.map((s) => s.name), ["Computer Fundamentals", "Programming Fundamentals", "HTML", "CSS", "JavaScript", "Advanced JavaScript", "Bootstrap & Tailwind", "Frameworks", "Projects"]);
-  assert.deepEqual(steps.map((s) => s.soon), [false, false, false, false, false, false, false, false, true]);
-  assert.deepEqual(steps.map((s) => s.link), [true, true, true, true, true, true, true, true, false]);
-  assert.deepEqual(steps.map((s) => s.n), ["1", "2", "3", "4", "5", "6", "7", "8", "9"]);
+  const stages = await page.$$eval(".hm-stage", (els) => els.map((e) => ({ n: e.dataset.stage, title: e.querySelector("h3").textContent, courses: [...e.querySelectorAll(".hm-row")].map((r) => r.dataset.courseCard) })));
+  assert.deepEqual(stages.map((x) => x.title), ["Fundamentals", "Web foundations", "Go deeper", "Frameworks"]);
+  assert.deepEqual(stages.flatMap((x) => x.courses), ["com", "prg", "html", "css", "js", "ajs", "bs", "tw", "react", "vue", "angular"]);
+  const rows = await page.$$eval(".hm-row", (els) => els.map((r) => ({ href: r.getAttribute("href"), count: r.querySelector(".hm-count").textContent })));
+  assert.equal(rows.length, 11); assert.ok(rows.every((r) => /\d+ lessons/.test(r.count) && r.href.endsWith(".html")));
+  assert.equal(await page.locator(".hm-stagenav a").count(), 4);
+  assert.equal(await page.locator("text=/coming soon|قريبًا/i").count(), 0);
   await ctx.close();
 });
 
@@ -49,9 +51,10 @@ test("exactly one primary call to action in the hero", async () => {
   await ctx.close();
 });
 
-test("continue learning is hidden with no progress and appears from real saved data", async () => {
-  let { ctx, page } = await open();
-  assert.equal(await page.locator("#continue").isVisible(), false);
+test("the next-step card starts at the first course, then continues from real saved data", async () => {
+  let { ctx, page } = await open({}, "en");
+  assert.equal(await page.locator("#nextLabel").textContent(), "Start here");
+  assert.match(await page.locator("#heroCta").getAttribute("href"), /computer-basics\/com\.html$/);
   await ctx.close();
 
   ({ ctx, page } = await open({
@@ -59,19 +62,20 @@ test("continue learning is hidden with no progress and appears from real saved d
     "fayad-js-current-lesson": "4",
     "fayad-last-track": JSON.stringify({ id: "js", ts: 1 }),
   }, "en"));
-  assert.equal(await page.locator("#continue").isVisible(), true);
-  const cards = await page.$$eval(".hm-continue-card", (els) => els.map((e) => ({ href: e.getAttribute("href"), text: e.textContent.replace(/\s+/g, " ").trim() })));
-  assert.equal(cards.length, 2);
-  assert.match(cards[0].href, /javascript-learning/); // last visited first
-  assert.match(cards[0].text, /Lesson 5 of 25/);
-  assert.match(cards[1].text, /3 of 30 lessons completed/); // duplicates and out-of-range / non-numeric ids ignored
+  assert.equal(await page.locator("#nextLabel").textContent(), "Pick up where you left off");
+  assert.equal(await page.locator("#nextName").innerText(), "JavaScript");
+  assert.match(await page.locator("#nextGo").getAttribute("href"), /javascript-learning/);
+  assert.match(await page.locator("#nextStatus").innerText(), /Lesson 5 of 25/);
+  assert.match(await page.locator("#heroCta").getAttribute("href"), /javascript-learning/);
+  assert.equal(await page.locator("#heroCta span").innerText(), "Continue learning");
+  assert.match(await page.locator('[data-course-card="html"] .hm-progress-label').innerText(), /3 of 30 lessons completed/);
   await ctx.close();
 });
 
 test("corrupt progress data does not break the page", async () => {
   const { ctx, page } = await open({ "fayad-html-progress": "{not json", "fayad-js-current-lesson": "banana", "fayad-last-track": "###" });
-  assert.equal(await page.locator("#continue").isVisible(), false);
-  assert.equal(await page.locator(".hm-card").count(), 11);
+  assert.equal(await page.locator("#nextLabel").textContent(), "ابدأ من هنا");
+  assert.equal(await page.locator(".hm-row").count(), 11);
   await ctx.close();
 });
 
@@ -85,9 +89,9 @@ test("a visited course page is remembered as the last track", async () => {
 
 test("language switch re-renders homepage text, numbers stay derived from the catalog", async () => {
   const { ctx, page } = await open({}, "ar");
-  assert.equal(await page.locator("h1").innerText(), "تعلّم تطوير الويب خطوة بخطوة");
+  assert.equal(await page.locator("h1").innerText(), "من أول سطر كود إلى تطبيق ويب حقيقي");
   await page.click(".fy-btn-lang");
-  assert.equal(await page.locator("h1").innerText(), "Learn web development, step by step");
+  assert.equal(await page.locator("h1").innerText(), "From your first line of code to a real web app");
   const total = await page.evaluate(() => window.FAYAD.catalog.totalLessons());
   assert.equal(await page.locator("[data-stat=lessons]").innerText(), String(total));
   // the old "content not translated" notice is for untranslated pages only

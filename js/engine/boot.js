@@ -39,7 +39,7 @@ async function main() {
     const box = document.createElement("div");
     box.setAttribute("role", "alert");
     box.style.cssText = "margin:24px;padding:16px;border:1px solid #c0354a;border-radius:12px";
-    box.textContent = "تعذّر تحميل الدروس. أعد تحميل الصفحة، وإذا استمرت المشكلة جرّب النسخة السابقة: ?engine=legacy";
+    box.textContent = "تعذّر تحميل الدروس. أعد تحميل الصفحة. إذا استمرت المشكلة فتأكد من اتصالك بالإنترنت";
     (document.querySelector("main") || document.body).prepend(box);
   }
 }

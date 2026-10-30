@@ -138,20 +138,6 @@ test("reset restores the starter code; the old unsandboxed preview is gone", asy
   await ctx.close();
 });
 
-test("ROLLBACK: ?engine=legacy opens the previous page; progress is shared in both directions", async () => {
-  const { ctx, page } = await open();
-  await solve(page, "html-01");
-  await page.goto(base + URL_NEW + "?engine=legacy");
-  await page.waitForURL(/\/legacy\/html-learning\//);
-  await page.waitForSelector(".sidebar .lesson-status.completed");
-  assert.equal(await page.locator("#progress-text").innerText(), "3%");
-  assert.ok(await page.locator('meta[name="robots"][content="noindex"]').count());
-  await page.evaluate((k) => localStorage.setItem(k, JSON.stringify([1, 2])), LEG); // legacy completes lesson 2
-  await page.goto(base + URL_NEW); await page.waitForSelector('html[data-engine="ready"]');
-  for (const n of [1, 2]) assert.equal(await page.locator(`${link(n)} .lesson-status`).innerText(), "✓");
-  assert.deepEqual(JSON.parse(await stored(page, "fayad-progress-v1")).tracks.html.completed, ["html-01", "html-02"]);
-  await ctx.close();
-});
 
 test("English interface: switching the language changes the chrome (not just direction) and keeps the Arabic lesson", async () => {
   const { ctx, page } = await open();

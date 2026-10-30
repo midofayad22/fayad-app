@@ -9,9 +9,9 @@ Legend: ✅ done and verified by tests · ⏳ not started · Preview verificatio
 | com | /fundamentals/computer-basics/com.html | 20 | 20 | 20 | 20 (built from data) | ✅ byte-identical (tests/migration-com.test.mjs) | ✅ tests/com-engine.test.mjs | `legacy/computer-basics/` (`?engine=legacy`) | no (sandbox cannot reach *.vercel.app) |
 | html | /html-learning/html-learning.html | 30 | **22** (8 unreachable from sidebar) | 30 | **30** (built from data; the 8 missing lessons added to their own group) | ✅ byte-identical (tests/migration-html.test.mjs) | ✅ tests/html-engine.test.mjs | `legacy/html-learning/` (`?engine=legacy`) | no (sandbox cannot reach *.vercel.app) |
 | css | /css-learning/css-learning.html | 30 | 30 | 30 | 30 (built from data, 6 groups) | ✅ identical, Arabic + English (tests/migration-css.test.mjs) | ✅ tests/css-engine.test.mjs | `legacy/css-learning/` (`?engine=legacy`) | no (sandbox cannot reach *.vercel.app) |
-| react | /react-learning/react-learning.html | 30 | 30 | ⏳ | ⏳ | ⏳ | ⏳ | n/a | no |
-| vue | /vue-learning/vue-learning.html | 22 | 22 | ⏳ | ⏳ | ⏳ | ⏳ | n/a | no |
-| angular | /angular-learning/angular-learning.html | 32 | **30** (2 unreachable) | ⏳ | ⏳ | ⏳ | ⏳ | n/a | no |
+| react | /react-learning/react-learning.html | 30 | 30 | 30 | 30 (built from data, 5 groups) | ✅ identical, Arabic (tests/migration-react.test.mjs) | ✅ tests/react-engine.test.mjs | `legacy/react-learning/` (`?engine=legacy`) | yes |
+| vue | /vue-learning/vue-learning.html | 22 | 22 | 22 | 22 (built from data, 5 groups) | ✅ identical, Arabic (tests/migration-vue.test.mjs) | ✅ tests/vue-engine.test.mjs | `legacy/vue-learning/` (`?engine=legacy`) | yes |
+| angular | /angular-learning/angular-learning.html | 32 | **30** (2 unreachable from sidebar) | 32 | **32** (built from data; the 2 missing lessons added to the last group) | ✅ identical, Arabic + English, generated quiz frozen (tests/migration-angular.test.mjs) | ✅ tests/angular-engine.test.mjs | `legacy/angular-learning/` (`?engine=legacy`) | yes |
 
 ## Legacy storage formats (verified from each track's source; see js/engine/progress.js `LEGACY`)
 | Track | Completed list key | Base | Resume key | Base |
@@ -68,3 +68,26 @@ Content is identical in both languages (30 titles, descriptions, example codes, 
 3. **Security/scoping**: learner CSS was injected as a global `<style>` into the host page (it could restyle the site UI). It now runs only inside the sandboxed preview, applied to a fixed demo document (h1, p, button); the "result" card renders the example the same way.
 4. **Completion**: the legacy CSS page never stored completed lessons (only the current lesson, which remains mirrored to `fayad-css-current-lesson`). A lesson now completes when its 3 questions are answered correctly (shared rule), stored in `fayad-progress-v1`.
 5. The progress bar shows completed lessons instead of "lesson number / 30".
+
+## React course: deliberate differences from the legacy implementation
+
+- Content is converted mechanically (`tools/convert-react-track.mjs`, frozen fixture `tests/fixtures/legacy-react.json`); Arabic only, as in the legacy page.
+- Preview stays a non-executing simulation (`sim-react`); learner code is never evaluated.
+- 7 lessons keep their shorter sidebar names via `navTitle`.
+- The legacy quiz-resume pointer (`fayad-react-quiz-progress`) is not migrated; completed and current-lesson keys are mirrored.
+
+## Vue course: deliberate differences from the legacy implementation
+
+- Content is converted mechanically (`tools/convert-vue-track.mjs`, frozen fixture `tests/fixtures/legacy-vue.json`); Arabic only, as in the legacy page.
+- Vue 3.5.13 is vendored (`vendor/vue-3.5.13/`, MIT) instead of loading `unpkg.com/vue@3` (unpinned, network-dependent). The preview now runs in the sandboxed runner (`allow-scripts`, loop guard) instead of an unsandboxed iframe.
+- The schema accepts `key: { title, text }` for the key card.
+- The legacy page had no current-lesson key, so only the completed list (1-based) is mirrored.
+- All 22 starters and examples are mounted in the sandbox by tests/vue-engine.test.mjs.
+
+## Angular course: deliberate differences from the legacy implementation
+
+- Content is converted mechanically (`tools/convert-angular-track.mjs`, frozen fixture `tests/fixtures/legacy-angular.json`), Arabic and English. The legacy quiz was generated at runtime (6 questions per lesson); that generated output is frozen as ordinary quiz data.
+- The legacy sidebar listed 30 of 32 lessons; lessons 31 and 32 are now in the last group.
+- Legacy question 1 displayed the English answers in Arabic mode (it read `answers.en` only). The lesson's own Arabic answers are used.
+- Preview is the same non-executing feature-detection simulation (`sim-angular`, `js/engine/sims.js`), now bilingual; learner code is never evaluated.
+- Progress: a lesson is complete when all 6 questions are correct. The legacy `fayad-angular-quiz-progress-v2` map is imported (lessons with all 6 true) and mirrored for rollback, together with `fayad-angular-current-lesson`.
