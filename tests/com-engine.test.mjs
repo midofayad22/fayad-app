@@ -128,21 +128,6 @@ test("the engine page has no learner-code execution and loads no legacy script",
   assert.ok(!/<textarea|<iframe/.test(html));
 });
 
-test("ROLLBACK: ?engine=legacy opens the previous page, which sees progress made in the new engine, and vice versa", async () => {
-  const { ctx, page } = await open();
-  await page.click(item(1)); await page.click("#complete-btn");
-  await page.goto(base + URL_NEW + "?engine=legacy#lesson-1");
-  await page.waitForURL(/\/legacy\/computer-basics\//);
-  await page.waitForFunction(() => document.querySelector(".lesson-item.completed"));
-  assert.equal(await page.locator("#progress-text").innerText(), "5%");
-  assert.ok(await page.locator('meta[name="robots"][content="noindex"]').count());
-  await page.click(item(1)); await page.click("#complete-btn"); // legacy data-lesson 1 = second lesson
-  assert.equal(await stored(page, LEG), "[0,1]");
-  await page.goto(base + URL_NEW); await page.waitForSelector('html[data-engine="ready"]');
-  for (const n of [1, 2]) assert.ok(await page.locator(item(n)).evaluate((b) => b.classList.contains("completed")));
-  assert.deepEqual(JSON.parse(await stored(page, "fayad-progress-v1")).tracks.com.completed, ["com-01", "com-02"]);
-  await ctx.close();
-});
 
 test("mobile 390px: no horizontal overflow, no console errors, every lesson reachable", async () => {
   const { ctx, page, errors } = await open(URL_NEW, {}, { width: 390, height: 800 });

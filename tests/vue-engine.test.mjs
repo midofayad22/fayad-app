@@ -82,20 +82,7 @@ test("an existing learner's completed lessons (legacy key) are kept", async () =
   await ctx.close();
 });
 
-test("rollback: the frozen legacy page still loads and shares the completed-lessons key", async () => {
-  const { ctx, page } = await open(URL_OLD, { seed: { "fayad-vue-learning-progress": "[1,2]" } });
-  assert.equal(await page.locator("#lesson-title").innerText(), lessons[0].title.ar);
-  assert.match(await page.evaluate(() => document.querySelector('meta[name="robots"]')?.content), /noindex/);
-  assert.equal(await page.evaluate(() => localStorage.getItem("fayad-vue-learning-progress")), "[1,2]");
-  await ctx.close();
-});
 
-test("?engine=legacy redirects to the legacy copy", async () => {
-  const ctx = await browser.newContext(); const page = await ctx.newPage();
-  await page.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort());
-  await page.goto(base + URL_NEW + "?engine=legacy"); await page.waitForURL(/\/legacy\/vue-learning\//);
-  await ctx.close();
-});
 
 test("mobile: no horizontal overflow at 320 and 390 and a collapsible lesson list", async () => {
   for (const w of [320, 390]) {

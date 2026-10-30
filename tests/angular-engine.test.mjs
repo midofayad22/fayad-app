@@ -90,20 +90,7 @@ test("an existing learner's saved lesson (legacy key) is resumed", async () => {
   await ctx.close();
 });
 
-test("rollback: the frozen legacy page still loads and shares the current-lesson key", async () => {
-  const { ctx, page } = await open(URL_OLD, { seed: { "fayad-angular-current-lesson": "4" } });
-  assert.equal(await page.locator("#lessonTitle").innerText(), lessons[4].title.ar);
-  const r = await page.evaluate(() => document.querySelector('meta[name="robots"]')?.content);
-  assert.match(r, /noindex/);
-  await ctx.close();
-});
 
-test("?engine=legacy redirects to the legacy copy", async () => {
-  const ctx = await browser.newContext(); const page = await ctx.newPage();
-  await page.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort());
-  await page.goto(base + URL_NEW + "?engine=legacy"); await page.waitForURL(/\/legacy\/angular-learning\//);
-  await ctx.close();
-});
 
 test("mobile: no horizontal overflow at 320 and 390 and a collapsible lesson list", async () => {
   for (const w of [320, 390]) {

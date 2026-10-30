@@ -30,7 +30,7 @@ const dict = {
     "quiz.next": "السؤال التالي", "quiz.complete": "إكمال الدرس", "quiz.done": "اكتمل المسار ✓", "quiz.doneMsg": "🎉 ممتاز! لقد أكملت جميع دروس {course}.",
     "nav.prev": "الدرس السابق", "nav.next": "الدرس التالي", "nav.start": "بداية المسار", "nav.end": "اكتمل المسار",
     "nav.lessons": "كل الدروس", "nav.back": "رجوع", "nav.aria": "التنقل بين الدروس",
-    "state.loadError": "تعذّر تحميل الدروس. أعد تحميل الصفحة، وإذا استمرت المشكلة جرّب النسخة السابقة: ?engine=legacy",
+    "state.loadError": "تعذّر تحميل الدروس. أعد تحميل الصفحة. إذا استمرت المشكلة فتأكد من اتصالك بالإنترنت",
     "quiz.noAnswers": "لا توجد إجابات متاحة لهذا السؤال.",
   },
   en: {
@@ -58,7 +58,7 @@ const dict = {
     "quiz.next": "Next question", "quiz.complete": "Complete lesson", "quiz.done": "Course complete ✓", "quiz.doneMsg": "🎉 Great job! You finished every lesson of {course}.",
     "nav.prev": "Previous lesson", "nav.next": "Next lesson", "nav.start": "Start of the course", "nav.end": "Course complete",
     "nav.lessons": "All lessons", "nav.back": "Back", "nav.aria": "Lesson navigation",
-    "state.loadError": "The lessons could not be loaded. Reload the page; if the problem persists try the previous version: ?engine=legacy",
+    "state.loadError": "The lessons could not be loaded. Reload the page. If the problem persists, check your connection",
     "quiz.noAnswers": "No answers are available for this question.",
   },
 };

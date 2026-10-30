@@ -44,9 +44,6 @@ for (const id of process.argv.slice(2)) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-${cfg.fresh ? "" : `
-    <!-- Rollback: ?engine=legacy opens the previous implementation (see docs/rollback.md) -->
-    <script>if(/[?&]engine=legacy\\b/.test(location.search))location.replace("/legacy/${cfg.dir}/${cfg.dir}.html"+location.hash);</script>`}
     <!-- Preferences: theme / language / direction resolved before first paint (no flash) -->
     <script src="/js/prefs.js"></script>
 

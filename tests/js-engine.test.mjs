@@ -175,26 +175,6 @@ test("no course path uses eval / new Function, the engine page loads no legacy s
   assert.ok(!/allow-same-origin/.test(run.replace(/never[^\n]*allow-same-origin[^\n]*/gi, "").replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/[^\n]*/g, "")), "runner must never grant allow-same-origin");
 });
 
-test("ROLLBACK: ?engine=legacy opens the previous implementation, which sees progress made in the new engine, and vice versa", async () => {
-  const { ctx, page } = await open();
-  await solveLesson(page); // complete lesson 1 in the new engine
-  await page.goto(base + URL_NEW + "?engine=legacy#lesson-1");
-  await page.waitForURL(/\/legacy\/javascript-learning\//);
-  await page.waitForSelector(".lesson-status.completed");
-  assert.equal(await page.locator('.lesson[data-lesson="1"] .lesson-status').innerText(), "✓");
-  assert.equal(await page.locator("#progressText").innerText(), "4%");
-  assert.ok(await page.locator('meta[name="robots"][content="noindex"]').count());
-  // legacy completes lesson 2 (three correct answers through its own quiz) ...
-  await page.click('.lesson[data-lesson="2"]');
-  for (let i = 0; i < 3; i++) { const idx = await page.evaluate(() => lessons[currentLesson].questions[currentQuestion].correct); await page.click(`#answerOptions button[data-index="${idx}"]`); await page.click("#quizNextButton"); }
-  assert.equal(await stored(page, "fayad-js-completed-lessons"), "[0,1]");
-  // ... and the new engine (roll forward) shows both and keeps its own v1 data
-  await page.goto(base + URL_NEW);
-  await page.waitForSelector('html[data-engine="ready"]');
-  for (const n of [1, 2]) assert.equal(await page.locator(`.sidebar a.lesson[data-lesson="${n}"] .lesson-status`).innerText(), "✓");
-  assert.deepEqual(JSON.parse(await stored(page, "fayad-progress-v1")).tracks.js.completed, ["js-01", "js-02"]);
-  await ctx.close();
-});
 
 test("mobile 390px: no horizontal overflow and the sandbox stage fits", async () => {
   const { ctx, page } = await open(URL_NEW, {}, { width: 390, height: 800 });

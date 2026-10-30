@@ -1,6 +1,6 @@
 # Checkpoint (2026-10-29)
 
-Branch `feature/platform-overhaul`. Tests: 337 passing (React, Vue and Angular migrated) (`node --test "tests/*.test.mjs"`).
+Branch `feature/platform-overhaul`. Tests: 327 passing (React, Vue, Angular migrated; legacy pages no longer deployed) (`node --test "tests/*.test.mjs"`).
 
 ## Done since 9206262
 - Homepage: Git/GitHub card removed; hero no longer hidden under the fixed navbar; navbar fits 320px; iPhone safe areas (`viewport-fit=cover`, env insets); 44px targets; subtle motion.
