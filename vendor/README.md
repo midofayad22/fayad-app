@@ -10,3 +10,4 @@ Served from the site's own origin so lesson previews work in the sandbox without
 
 Files are the npm `dist` artifacts with only the trailing sourceMappingURL comment removed.
 Upgrade: `npm pack <pkg>@<version>`, replace the files, update this table, `docs/courses-bootstrap-tailwind.md` and the course content.
+| `gsap-3.13.0/` | gsap + ScrollTrigger (homepage motion) | 3.13.0 | GreenSock standard "no charge" license (free for commercial use): https://gsap.com/standard-license |

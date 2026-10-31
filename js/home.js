@@ -40,6 +40,11 @@
       "menu.contact": "تواصل",
       "h.kicker": "منصة FAYAD التعليمية",
       "h.title": "من أول سطر كود إلى تطبيق ويب حقيقي",
+      "h.t1": "من أول سطر كود",
+      "h.t2": "إلى تطبيق ويب حقيقي",
+      "t.eyebrow": "المسار التعليمي",
+      "how.eyebrow": "طريقة التعلم",
+      "fin.sub": "افتح الدرس الأول الآن. لا حاجة لتسجيل الدخول للبدء.",
       "h.desc": "مسار مرتّب يبدأ بأساسيات الحاسوب والبرمجة، ثم HTML وCSS وJavaScript، وينتهي بأطر العمل. كل درس: شرح، مثال، تمرين، واختبار.",
       "h.cta": "ابدأ من الأساسيات",
       "h.browse": "استعرض المسار كاملًا",
@@ -118,6 +123,13 @@
       "how.2.d": "عدّل المثال وشغّله في محرر الدرس، ويُنفَّذ كودك في بيئة معزولة لا تمس الموقع.",
       "how.3": "اختبر نفسك",
       "how.3.d": "أسئلة بعد كل درس، ويُحسب الدرس منجزًا عند الإجابة الصحيحة. يُحفظ تقدمك على جهازك.",
+      "o.eyebrow": "صاحب المنصة",
+      "o.name": "عبد الحميد فياض",
+      "o.role": "أبني FAYAD لأن أفضل طريقة للتعلم هي أن تكتب الكود بنفسك.",
+      "o.edu": "طالب هندسة حاسبات في جامعة طنطا",
+      "o.portfolio": "الـ Portfolio",
+      "o.more": "المزيد عن المنصة وصاحبها",
+      "o.alt": "صورة عبد الحميد فياض",
       "fin.title": "جاهز لتبدأ؟",
       "n.start": "ابدأ من هنا",
       "n.start.d": "الخطوة الأولى في المسار",
@@ -157,6 +169,11 @@
       "menu.contact": "Contact",
       "h.kicker": "FAYAD Learning Platform",
       "h.title": "From your first line of code to a real web app",
+      "h.t1": "From your first line of code",
+      "h.t2": "to a real web app",
+      "t.eyebrow": "Learning path",
+      "how.eyebrow": "How you learn",
+      "fin.sub": "Open the first lesson now. No sign-in needed to start.",
       "h.desc": "An ordered path that starts with computer and programming fundamentals, then HTML, CSS and JavaScript, and ends with frameworks. Every lesson: explanation, example, practice and a quiz.",
       "h.cta": "Start with the fundamentals",
       "h.browse": "See the full path",
@@ -235,6 +252,13 @@
       "how.2.d": "Edit the example and run it in the lesson editor. Your code runs in an isolated sandbox that cannot touch the site.",
       "how.3": "Test yourself",
       "how.3.d": "Questions after every lesson; a lesson counts as completed once you answer correctly. Your progress is saved on your device.",
+      "o.eyebrow": "Behind the platform",
+      "o.name": "Abdullhamid, Fayad",
+      "o.role": "I build FAYAD because the best way to learn is to write the code yourself.",
+      "o.edu": "Computer Engineering student at Tanta University",
+      "o.portfolio": "Portfolio",
+      "o.more": "More about the platform and its creator",
+      "o.alt": "Portrait of Abdullhamid Fayad",
       "fin.title": "Ready to start?",
       "n.start": "Start here",
       "n.start.d": "The first step on the path",
@@ -341,20 +365,41 @@
       el.textContent = F.i18n.t("st.meta", { c: ids.length, l: lessons });
     });
   }
-  function watchStages() {
-    var links = $$("[data-stage-link]");
-    var stages = $$("[data-stage]");
-    if (!links.length || !("IntersectionObserver" in window)) return;
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        var n = e.target.getAttribute("data-stage");
-        links.forEach(function (a) { if (a.getAttribute("data-stage-link") === n) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); });
-        var cur = $(".hm-stagenav a[aria-current]");
-        if (cur && cur.scrollIntoView && cur.parentNode.scrollWidth > cur.parentNode.clientWidth) cur.parentNode.scrollTo({ left: cur.offsetLeft - cur.parentNode.clientWidth / 2 + cur.clientWidth / 2, behavior: "smooth" });
+  // stage tabs (WAI-ARIA tabs pattern): one stage panel visible at a time
+  function selectStage(n, focus) {
+    var tabs = $$(".hm-tabs [role=tab]");
+    tabs.forEach(function (tb) {
+      var on = tb.getAttribute("data-seg") === String(n);
+      tb.setAttribute("aria-selected", on ? "true" : "false");
+      tb.tabIndex = on ? 0 : -1;
+      if (on && focus) tb.focus();
+      var panel = document.getElementById(tb.getAttribute("aria-controls"));
+      if (panel) panel.hidden = !on;
+    });
+    window.dispatchEvent(new CustomEvent("fayad:stagechange", { detail: { stage: n } }));
+  }
+  function initTabs() {
+    var tabs = $$(".hm-tabs [role=tab]");
+    tabs.forEach(function (tb, i) {
+      tb.addEventListener("click", function () { selectStage(tb.getAttribute("data-seg")); });
+      tb.addEventListener("keydown", function (e) {
+        var rtl = document.documentElement.dir === "rtl", k = e.key, j = -1;
+        if (k === "ArrowRight") j = i + (rtl ? -1 : 1);
+        else if (k === "ArrowLeft") j = i + (rtl ? 1 : -1);
+        else if (k === "Home") j = 0;
+        else if (k === "End") j = tabs.length - 1;
+        else return;
+        e.preventDefault();
+        j = (j + tabs.length) % tabs.length;
+        selectStage(tabs[j].getAttribute("data-seg"), true);
       });
-    }, { rootMargin: "-35% 0px -55% 0px" });
-    stages.forEach(function (s) { io.observe(s); });
+    });
+    // open the stage that holds the course the learner is currently on
+    var next = $("#nextStep");
+    var cur = next && next.getAttribute("data-course");
+    var start = 1;
+    STAGES.forEach(function (ids, i) { if (cur && ids.indexOf(cur) !== -1) start = i + 1; });
+    selectStage(cur ? start : 1);
   }
 
   // 4-segment overview of real progress per stage (only tracks that record completed lessons contribute)
@@ -364,7 +409,7 @@
     STAGES.forEach(function (ids, i) {
       var done = 0, total = 0;
       ids.forEach(function (id) { total += p[id].total; done += p[id].done || 0; });
-      var a = $('[data-seg="' + (i + 1) + '"]');
+      var a = $('.hm-tab[data-seg="' + (i + 1) + '"]');
       if (!a) return;
       var pct = total ? Math.round((done / total) * 100) : 0;
       $(".hm-seg-bar > span", a).style.width = pct + "%";
@@ -380,5 +425,5 @@
   window.addEventListener("pageshow", render);
   F.i18n.apply();
   render();
-  watchStages();
+  initTabs();
 })();

@@ -1,0 +1,22 @@
+/* Site-wide interaction layer (loaded by js/fx.js). Everything is progressive: without JS or with reduced motion nothing is hidden. */
+.fx-progress { position: fixed; inset-block-start: 0; inset-inline: 0; height: 3px; z-index: 2000; pointer-events: none; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, var(--fy-brand), var(--fy-gold, var(--fy-brand))); }
+html[dir="rtl"] .fx-progress { transform-origin: 100% 50%; }
+.fx-pre { opacity: 0; transform: translateY(22px); }
+.fx-in { opacity: 1; transform: none; transition: opacity .6s cubic-bezier(.2,.7,.2,1) var(--fx-d, 0s), transform .6s cubic-bezier(.2,.7,.2,1) var(--fx-d, 0s); }
+.fx-lift { transition: transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s ease, border-color .2s ease; }
+@media (hover: hover) { .fx-lift:hover { transform: translateY(-4px); box-shadow: 0 18px 36px -22px var(--fy-brand); } }
+.fx-ripple-host { position: relative; overflow: hidden; }
+.fx-ripple { position: absolute; border-radius: 50%; background: currentColor; opacity: .22; transform: scale(0); pointer-events: none; animation: fx-rip .6s ease-out forwards; }
+@keyframes fx-rip { to { transform: scale(1); opacity: 0; } }
+.fx-top { position: fixed; inset-block-end: 84px; inset-inline-start: 16px; z-index: 1500; width: 46px; height: 46px; display: grid; place-items: center; border: 1px solid var(--fy-border-strong); border-radius: 50%; background: var(--fy-surface); color: var(--fy-text); box-shadow: var(--fy-shadow-lg); cursor: pointer; opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity .25s ease, transform .25s ease; }
+.fx-top.on { opacity: 1; transform: none; pointer-events: auto; }
+.fx-top:focus-visible { outline: none; box-shadow: var(--fy-focus); }
+.fx-top svg { width: 20px; height: 20px; }
+@view-transition { navigation: auto; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .22s; }
+@media (prefers-reduced-motion: reduce) {
+  .fx-progress, .fx-top { display: none; }
+  .fx-pre { opacity: 1; transform: none; }
+  .fx-in, .fx-lift { transition: none; }
+  @view-transition { navigation: none; }
+}
