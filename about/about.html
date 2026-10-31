@@ -79,8 +79,61 @@
           <p class="ab-role" data-i18n="a.role">صاحب منصة FAYAD التعليمية</p>
           <p class="ab-edu" data-i18n="a.edu">طالب هندسة حاسبات في جامعة طنطا</p>
           <div class="ab-actions">
-            <a class="ab-btn ab-btn-primary" href="https://abdullhamid-fayad-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer"><span data-i18n="a.portfolio">زيارة الـ Portfolio</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-            <a class="ab-btn" href="/index.html#courses"><span data-i18n="a.explore">استكشف المسارات</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="ab-btn ab-btn-primary" href="/index.html#courses"><span data-i18n="a.explore">استكشف المسارات</span></a>
+            <a class="ab-btn" href="https://abdullhamid-fayad-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer"><span data-i18n="a.portfolio">زيارة الـ Portfolio</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="ab-section" aria-labelledby="whatTitle">
+        <div class="ab-wrap ab-two">
+          <h2 id="whatTitle" data-i18n="a.what.title">ما هي FAYAD؟</h2>
+          <div class="ab-prose">
+            <p data-i18n="a.what.p1">FAYAD منصة لتعلم تطوير الويب بالعربية، مبنية على مسار مرتّب: أساسيات الحاسوب والبرمجة أولًا، ثم HTML وCSS وJavaScript، ثم أدوات وأطر العمل.</p>
+            <ol class="ab-steps">
+              <li data-i18n="a.how.1">في كل درس شرح للفكرة ومثال كامل.</li>
+              <li data-i18n="a.how.2">أمثلة قابلة للتجربة في معظم الدروس. تُنفَّذ أكواد HTML وCSS وJavaScript وVue وBootstrap وTailwind فعليًا داخل بيئة معزولة في المتصفح، أما معاينة React وAngular فمبسّطة ولا تنفّذ الكود.</li>
+              <li data-i18n="a.how.3">اختبار قصير بعد كل درس، ويُحتسب الدرس منجزًا عند الإجابة الصحيحة عن أسئلته.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="ab-section" id="available" aria-labelledby="availTitle">
+        <div class="ab-wrap ab-two">
+          <h2 id="availTitle" data-i18n="a.avail.title">ما المتاح الآن</h2>
+          <div class="ab-prose">
+            <p data-about-count>يضم الموقع 11 مسارًا و271 درسًا.</p>
+            <p data-i18n="a.avail.p2">واجهة الموقع (القوائم والأزرار) تعمل بالعربية والإنجليزية في معظم الصفحات. أما نص الدروس نفسه فبالعربية في كل المسارات، وهو مترجم إلى الإنجليزية في المسارات الموضحة أدناه فقط.</p>
+            <div class="ab-table-wrap">
+          <table class="ab-table">
+            <caption class="sr-only" data-i18n="a.table.cap">المسارات وعدد دروسها وتوفر دروسها بالإنجليزية</caption>
+            <thead><tr><th scope="col" data-i18n="a.table.course">المسار</th><th scope="col" data-i18n="a.table.lessons">الدروس</th><th scope="col" data-i18n="a.table.en">الدروس بالإنجليزية</th></tr></thead>
+            <tbody>
+            <tr data-course="com"><th scope="row">Computer Fundamentals</th><td>20</td><td><span class="ab-pill ab-pill-none" data-en-flag="com" data-i18n="a.en.none">غير متوفرة بعد</span></td></tr>
+            <tr data-course="prg"><th scope="row">Programming Fundamentals</th><td>20</td><td><span class="ab-pill ab-pill-none" data-en-flag="prg" data-i18n="a.en.none">غير متوفرة بعد</span></td></tr>
+            <tr data-course="html"><th scope="row">HTML</th><td>30</td><td><span class="ab-pill ab-pill-none" data-en-flag="html" data-i18n="a.en.none">غير متوفرة بعد</span></td></tr>
+            <tr data-course="css"><th scope="row">CSS</th><td>30</td><td><span class="ab-pill ab-pill-full" data-en-flag="css" data-i18n="a.en.full">متوفرة</span></td></tr>
+            <tr data-course="js"><th scope="row">JavaScript</th><td>25</td><td><span class="ab-pill ab-pill-none" data-en-flag="js" data-i18n="a.en.none">غير متوفرة بعد</span></td></tr>
+            <tr data-course="ajs"><th scope="row">Advanced JavaScript</th><td>22</td><td><span class="ab-pill ab-pill-none" data-en-flag="ajs" data-i18n="a.en.none">غير متوفرة بعد</span></td></tr>
+            <tr data-course="bs"><th scope="row">Bootstrap 5</th><td>20</td><td><span class="ab-pill ab-pill-none" data-en-flag="bs" data-i18n="a.en.none">غير متوفرة بعد</span></td></tr>
+            <tr data-course="tw"><th scope="row">Tailwind CSS</th><td>20</td><td><span class="ab-pill ab-pill-none" data-en-flag="tw" data-i18n="a.en.none">غير متوفرة بعد</span></td></tr>
+            <tr data-course="react"><th scope="row">React</th><td>30</td><td><span class="ab-pill ab-pill-none" data-en-flag="react" data-i18n="a.en.none">غير متوفرة بعد</span></td></tr>
+            <tr data-course="vue"><th scope="row">Vue</th><td>22</td><td><span class="ab-pill ab-pill-none" data-en-flag="vue" data-i18n="a.en.none">غير متوفرة بعد</span></td></tr>
+            <tr data-course="angular"><th scope="row">Angular</th><td>32</td><td><span class="ab-pill ab-pill-full" data-en-flag="angular" data-i18n="a.en.full">متوفرة</span></td></tr>
+            </tbody>
+          </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="ab-section" aria-labelledby="stateTitle">
+        <div class="ab-wrap ab-two">
+          <h2 id="stateTitle" data-i18n="a.state.title">تقدمك وحسابك</h2>
+          <div class="ab-prose">
+            <p data-i18n="a.state.p1">يُحفظ تقدمك في متصفحك على هذا الجهاز. يمكنك إنشاء حساب وتسجيل الدخول، لكن مزامنة التقدم بين الأجهزة لم تُفعَّل بعد.</p>
+            <p class="ab-note" data-i18n="a.state.p2">قيد العمل: ترجمة بقية الدروس إلى الإنجليزية، ومزامنة التقدم مع الحساب.</p>
           </div>
         </div>
       </section>
@@ -91,22 +144,6 @@
           <div class="ab-prose">
             <p data-i18n="a.who.p1">تركز رحلتي في التكنولوجيا على فهم كيف تعمل الأشياء، ثم تحويل هذه المعرفة إلى مشاريع عملية.</p>
             <p data-i18n="a.who.p2">يهمني تطوير الويب بشكل خاص، وأعمل بـ HTML وCSS وJavaScript وأستكشف التقنيات الحديثة خطوة بخطوة.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="ab-section" aria-labelledby="fayadTitle">
-        <div class="ab-wrap ab-two">
-          <h2 id="fayadTitle" data-i18n="a.fayad.title">عن منصة FAYAD</h2>
-          <div class="ab-prose">
-            <p data-i18n="a.fayad.p1">FAYAD منصة تعليمية تفاعلية تهدف إلى جعل تعلم تطوير الويب أكثر تنظيمًا وعملية: تبدأ من أساسيات الحاسوب والبرمجة، ثم HTML وCSS وJavaScript، ثم أطر العمل.</p>
-            <ul class="ab-facts" aria-label="FAYAD">
-              <li><b data-fact="tracks">8</b><span data-i18n="a.fact.tracks">مسارات تعليمية</span></li>
-              <li><b data-fact="lessons">209</b><span data-i18n="a.fact.lessons">درسًا</span></li>
-              <li><b>AR · EN</b><span data-i18n="a.fact.lang">واجهة بالعربية والإنجليزية، ودروس عربية</span></li>
-              <li><b>☾ ☀</b><span data-i18n="a.fact.theme">وضع فاتح وداكن</span></li>
-            </ul>
-            <p class="ab-note" data-i18n="a.fayad.note">يُحفظ تقدمك على جهازك. وتُضاف مسارات ومزايا جديدة تدريجيًا.</p>
           </div>
         </div>
       </section>

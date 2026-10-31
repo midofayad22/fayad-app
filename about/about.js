@@ -20,11 +20,25 @@
       "a.who.p2": "يهمني تطوير الويب بشكل خاص، وأعمل بـ HTML وCSS وJavaScript وأستكشف التقنيات الحديثة خطوة بخطوة.",
       "a.fayad.title": "عن منصة FAYAD",
       "a.fayad.p1": "FAYAD منصة تعليمية تفاعلية تهدف إلى جعل تعلم تطوير الويب أكثر تنظيمًا وعملية: تبدأ من أساسيات الحاسوب والبرمجة، ثم HTML وCSS وJavaScript، ثم أطر العمل.",
-      "a.fact.tracks": "مسارات تعليمية",
+      "a.fact.tracks": "مسارات",
       "a.fact.lessons": "درسًا",
       "a.fact.lang": "واجهة بالعربية والإنجليزية، ودروس عربية",
       "a.fact.theme": "وضع فاتح وداكن",
       "a.fayad.note": "يُحفظ تقدمك على جهازك. وتُضاف مسارات ومزايا جديدة تدريجيًا.",
+      "a.what.title": "ما هي FAYAD؟",
+      "a.what.p1": "FAYAD منصة لتعلم تطوير الويب بالعربية، مبنية على مسار مرتّب: أساسيات الحاسوب والبرمجة أولًا، ثم HTML وCSS وJavaScript، ثم أدوات وأطر العمل.",
+      "a.how.1": "في كل درس شرح للفكرة ومثال كامل.",
+      "a.how.2": "أمثلة قابلة للتجربة في معظم الدروس. تُنفَّذ أكواد HTML وCSS وJavaScript وVue وBootstrap وTailwind فعليًا داخل بيئة معزولة في المتصفح، أما معاينة React وAngular فمبسّطة ولا تنفّذ الكود.",
+      "a.how.3": "اختبار قصير بعد كل درس، ويُحتسب الدرس منجزًا عند الإجابة الصحيحة عن أسئلته.",
+      "a.avail.title": "ما المتاح الآن",
+      "a.avail.p1": "يضم الموقع {c} مسارًا و{l} درسًا.",
+      "a.avail.p2": "واجهة الموقع (القوائم والأزرار) تعمل بالعربية والإنجليزية في معظم الصفحات. أما نص الدروس نفسه فبالعربية في كل المسارات، وهو مترجم إلى الإنجليزية في المسارات الموضحة أدناه فقط.",
+      "a.table.cap": "المسارات وعدد دروسها وتوفر دروسها بالإنجليزية",
+      "a.table.course": "المسار", "a.table.lessons": "الدروس", "a.table.en": "الدروس بالإنجليزية",
+      "a.en.full": "متوفرة", "a.en.partial": "جزئية", "a.en.none": "غير متوفرة بعد",
+      "a.state.title": "تقدمك وحسابك",
+      "a.state.p1": "يُحفظ تقدمك في متصفحك على هذا الجهاز. يمكنك إنشاء حساب وتسجيل الدخول، لكن مزامنة التقدم بين الأجهزة لم تُفعَّل بعد.",
+      "a.state.p2": "قيد العمل: ترجمة بقية الدروس إلى الإنجليزية، ومزامنة التقدم مع الحساب.",
       "a.links.title": "روابطي",
       "a.footer": "© 2026 FAYAD. من تطوير عبد الحميد فياض.",
       "a.back": "العودة إلى FAYAD",
@@ -50,6 +64,20 @@
       "a.fact.lang": "Arabic and English interface, Arabic lessons",
       "a.fact.theme": "Light and dark themes",
       "a.fayad.note": "Your progress is saved on your device. New courses and features are being added step by step.",
+      "a.what.title": "What is FAYAD?",
+      "a.what.p1": "FAYAD is a platform for learning web development in Arabic, built around an ordered path: computer and programming fundamentals first, then HTML, CSS and JavaScript, then tools and frameworks.",
+      "a.how.1": "Every lesson has an explanation of the idea and a complete example.",
+      "a.how.2": "Most lessons have an example you can try. HTML, CSS, JavaScript, Vue, Bootstrap and Tailwind code really runs inside an isolated sandbox in your browser; the React and Angular previews are simplified and do not execute your code.",
+      "a.how.3": "A short quiz follows every lesson, and a lesson counts as completed when you answer its questions correctly.",
+      "a.avail.title": "What is available now",
+      "a.avail.p1": "The site has {c} courses and {l} lessons.",
+      "a.avail.p2": "The site interface (menus and buttons) works in Arabic and English on most pages. The lesson text itself is in Arabic for every course, and is translated into English only for the courses shown below.",
+      "a.table.cap": "Courses, their lesson counts and whether their lessons exist in English",
+      "a.table.course": "Course", "a.table.lessons": "Lessons", "a.table.en": "Lessons in English",
+      "a.en.full": "Available", "a.en.partial": "Partial", "a.en.none": "Not available yet",
+      "a.state.title": "Your progress and account",
+      "a.state.p1": "Your progress is saved in your browser on this device. You can create an account and sign in, but syncing progress across devices is not enabled yet.",
+      "a.state.p2": "In progress: translating the remaining lessons into English, and syncing progress with your account.",
       "a.links.title": "Find me online",
       "a.footer": "© 2026 FAYAD. Built by Abdullhamid, Fayad.",
       "a.back": "Back to FAYAD",
@@ -58,11 +86,22 @@
 
   function facts() {
     if (!F.catalog) return;
-    var t = document.querySelector("[data-fact='tracks']");
-    var l = document.querySelector("[data-fact='lessons']");
-    if (t) t.textContent = String(F.catalog.tracks.length);
-    if (l) l.textContent = String(F.catalog.totalLessons());
+    var tracks = F.catalog.tracks, byId = {};
+    tracks.forEach(function (t) { byId[t.id] = t; });
+    var c = String(tracks.length), l = String(F.catalog.totalLessons());
+    var p = document.querySelector("[data-about-count]");
+    if (p) p.textContent = F.i18n.t("a.avail.p1", { c: c, l: l });
+    // the table rows are static for crawlers; flags and counts are re-read from the catalog so they can never drift
+    document.querySelectorAll("[data-course]").forEach(function (row) {
+      var t = byId[row.getAttribute("data-course")];
+      if (!t) return;
+      var td = row.querySelectorAll("td")[0];
+      if (td) td.textContent = String(t.total);
+      var pill = row.querySelector("[data-en-flag]");
+      if (pill) { pill.className = "ab-pill ab-pill-" + t.en; pill.setAttribute("data-i18n", "a.en." + t.en); pill.textContent = F.i18n.t("a.en." + t.en); }
+    });
   }
-  facts();
+  window.addEventListener("fayad:langchange", facts);
   F.i18n.apply();
+  facts();
 })();
