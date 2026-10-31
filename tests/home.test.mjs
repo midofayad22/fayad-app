@@ -17,7 +17,7 @@ async function open(init = {}, lang = "ar") {
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   await ctx.addInitScript(([l, kv]) => { localStorage.setItem("fayad-language", l); for (const [k, v] of Object.entries(kv)) localStorage.setItem(k, v); }, [lang, init]);
   const page = await ctx.newPage(); await offline(page);
-  await page.goto(base + "/"); await page.waitForSelector("[data-course-card]");
+  await page.goto(base + "/"); await page.waitForSelector("[data-course-card]", { state: "attached" });
   return { ctx, page };
 }
 
@@ -34,12 +34,19 @@ test("every internal link on the homepage resolves to an existing file", async (
 
 test("the path has 4 ordered stages containing all 11 courses once, in learning order", async () => {
   const { ctx, page } = await open({}, "en");
-  const stages = await page.$$eval(".hm-stage", (els) => els.map((e) => ({ n: e.dataset.stage, title: e.querySelector("h3").textContent, courses: [...e.querySelectorAll(".hm-row")].map((r) => r.dataset.courseCard) })));
+  const stages = await page.$$eval(".hm-stage", (els) => els.map((e) => ({ n: e.id, title: e.querySelector("h3").textContent, courses: [...e.querySelectorAll(".hm-row")].map((r) => r.dataset.courseCard) })));
   assert.deepEqual(stages.map((x) => x.title), ["Fundamentals", "Web foundations", "Go deeper", "Frameworks"]);
   assert.deepEqual(stages.flatMap((x) => x.courses), ["com", "prg", "html", "css", "js", "ajs", "bs", "tw", "react", "vue", "angular"]);
   const rows = await page.$$eval(".hm-row", (els) => els.map((r) => ({ href: r.getAttribute("href"), count: r.querySelector(".hm-count").textContent })));
   assert.equal(rows.length, 11); assert.ok(rows.every((r) => /\d+ lessons/.test(r.count) && r.href.endsWith(".html")));
-  assert.equal(await page.locator(".hm-stagenav a").count(), 4);
+  assert.equal(await page.locator(".hm-tabs [role=tab]").count(), 4);
+  assert.equal(await page.locator(".hm-stage:not([hidden])").count(), 1);
+  await page.locator(".hm-tab[data-seg='3']").click();
+  assert.equal(await page.locator("#stage-3").isVisible(), true);
+  assert.equal(await page.locator("#stage-1").isVisible(), false);
+  assert.equal(await page.locator(".hm-tab[data-seg='3']").getAttribute("aria-selected"), "true");
+  await page.keyboard.press("ArrowRight");
+  assert.equal(await page.locator(".hm-tab[data-seg='4']").getAttribute("aria-selected"), "true");
   assert.equal(await page.locator("text=/coming soon|قريبًا/i").count(), 0);
   await ctx.close();
 });
@@ -89,9 +96,9 @@ test("a visited course page is remembered as the last track", async () => {
 
 test("language switch re-renders homepage text, numbers stay derived from the catalog", async () => {
   const { ctx, page } = await open({}, "ar");
-  assert.equal(await page.locator("h1").innerText(), "من أول سطر كود إلى تطبيق ويب حقيقي");
+  assert.equal((await page.locator("h1").innerText()).replace(/\s+/g, " "), "من أول سطر كود إلى تطبيق ويب حقيقي");
   await page.click(".fy-btn-lang");
-  assert.equal(await page.locator("h1").innerText(), "From your first line of code to a real web app");
+  assert.equal((await page.locator("h1").innerText()).replace(/\s+/g, " "), "From your first line of code to a real web app");
   const total = await page.evaluate(() => window.FAYAD.catalog.totalLessons());
   assert.equal(await page.locator("[data-stat=lessons]").innerText(), String(total));
   // the old "content not translated" notice is for untranslated pages only
@@ -184,10 +191,44 @@ test("viewport-fit=cover and safe-area padding are present for iPhone notches", 
 
 test("the hero's 4-stage overview reflects real saved progress per stage (and is empty without any)", async () => {
   let { ctx, page } = await open({}, "en");
-  assert.deepEqual(await page.$$eval("[data-seg] .hm-seg-bar > span", (els) => els.map((e) => e.style.width)), ["0%", "0%", "0%", "0%"]);
+  assert.deepEqual(await page.$$eval(".hm-tab[data-seg] .hm-seg-bar > span", (els) => els.map((e) => e.style.width)), ["0%", "0%", "0%", "0%"]);
   await ctx.close();
   // html: 15 of 30 done; stage 2 = (html+css+js) = 85 lessons -> 15/85 = 18%; other stages untouched
   ({ ctx, page } = await open({ "fayad-html-progress": JSON.stringify(Array.from({ length: 15 }, (_, i) => i + 1)) }, "en"));
-  assert.deepEqual(await page.$$eval("[data-seg] .hm-seg-bar > span", (els) => els.map((e) => e.style.width)), ["0%", "18%", "0%", "0%"]);
+  assert.deepEqual(await page.$$eval(".hm-tab[data-seg] .hm-seg-bar > span", (els) => els.map((e) => e.style.width)), ["0%", "18%", "0%", "0%"]);
+  await ctx.close();
+});
+
+test("every homepage section fills the screen height and sections never overlap (ar+en, phone to desktop)", async () => {
+  for (const lang of ["ar", "en"]) for (const [w, h] of [[360, 740], [390, 844], [768, 1024], [1280, 800], [1440, 900]]) {
+    const { ctx, page } = await open({}, lang);
+    await page.setViewportSize({ width: w, height: h }); await page.waitForTimeout(1500);
+    const r = await page.evaluate(() => [...document.querySelectorAll("main > .hm-sec")].map((s) => { const b = s.getBoundingClientRect(); return { id: s.id, top: b.top + scrollY, bottom: b.bottom + scrollY, h: b.height, sh: s.scrollHeight }; }));
+    assert.equal(r.length, 4);
+    r.forEach((s, i) => {
+      assert.ok(s.h >= h - 1, `${lang}@${w}x${h}: #${s.id} shorter than the screen (${s.h})`);
+      if (i) assert.ok(s.top >= r[i - 1].bottom - 1, `${lang}@${w}x${h}: #${s.id} overlaps previous`);
+    });
+    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${lang}@${w}: x overflow`);
+    await ctx.close();
+  }
+});
+
+test("motion is skipped under prefers-reduced-motion and content stays visible", async () => {
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, reducedMotion: "reduce" });
+  const page = await ctx.newPage(); await offline(page);
+  await page.goto(base + "/"); await page.waitForSelector("[data-course-card]"); await page.waitForTimeout(500);
+  assert.equal(await page.locator(".hm-word").count(), 0);
+  assert.equal(await page.locator("h1").evaluate((e) => getComputedStyle(e).opacity), "1");
+  assert.equal(await page.locator(".hm-lead").evaluate((e) => getComputedStyle(e).opacity), "1");
+  await ctx.close();
+});
+
+test("GSAP animates the hero when motion is allowed and ends fully visible", async () => {
+  const { ctx, page } = await open({}, "ar");
+  await page.waitForTimeout(4500);
+  assert.ok(await page.locator(".hm-word").count() >= 4);
+  assert.equal(await page.locator(".hm-lead").evaluate((e) => getComputedStyle(e).opacity), "1");
+  assert.match(await page.locator("#heroCode").innerText(), /Hello, FAYAD[\s\S]*Start/);
   await ctx.close();
 });
