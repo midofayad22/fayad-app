@@ -181,3 +181,13 @@ test("viewport-fit=cover and safe-area padding are present for iPhone notches", 
   assert.match(html, /viewport-fit=cover/);
   assert.match(fs.readFileSync(path.join(ROOT, "css/shell.css"), "utf8"), /env\(safe-area-inset-top/);
 });
+
+test("the hero's 4-stage overview reflects real saved progress per stage (and is empty without any)", async () => {
+  let { ctx, page } = await open({}, "en");
+  assert.deepEqual(await page.$$eval("[data-seg] .hm-seg-bar > span", (els) => els.map((e) => e.style.width)), ["0%", "0%", "0%", "0%"]);
+  await ctx.close();
+  // html: 15 of 30 done; stage 2 = (html+css+js) = 85 lessons -> 15/85 = 18%; other stages untouched
+  ({ ctx, page } = await open({ "fayad-html-progress": JSON.stringify(Array.from({ length: 15 }, (_, i) => i + 1)) }, "en"));
+  assert.deepEqual(await page.$$eval("[data-seg] .hm-seg-bar > span", (els) => els.map((e) => e.style.width)), ["0%", "18%", "0%", "0%"]);
+  await ctx.close();
+});

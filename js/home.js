@@ -357,7 +357,22 @@
     stages.forEach(function (s) { io.observe(s); });
   }
 
-  function render() { fillStats(); paintProgress(); renderNext(); stageMeta(); }
+  // 4-segment overview of real progress per stage (only tracks that record completed lessons contribute)
+  var STAGES = [["com", "prg"], ["html", "css", "js"], ["ajs", "bs", "tw"], ["react", "vue", "angular"]];
+  function paintSegments() {
+    var p = F.catalog.progress();
+    STAGES.forEach(function (ids, i) {
+      var done = 0, total = 0;
+      ids.forEach(function (id) { total += p[id].total; done += p[id].done || 0; });
+      var a = $('[data-seg="' + (i + 1) + '"]');
+      if (!a) return;
+      var pct = total ? Math.round((done / total) * 100) : 0;
+      $(".hm-seg-bar > span", a).style.width = pct + "%";
+      a.setAttribute("title", F.i18n.t("c.done", { done: done, total: total }));
+    });
+  }
+
+  function render() { fillStats(); paintProgress(); renderNext(); stageMeta(); paintSegments(); }
 
   window.addEventListener("fayad:langchange", render);
   // progress can change in another tab, or when returning via the back button

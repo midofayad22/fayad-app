@@ -80,9 +80,11 @@
     <link rel="stylesheet" href="/css/theme.css" />
     <link rel="stylesheet" href="/css/theme-overrides.css" />
     <link rel="stylesheet" href="/css/shell.css" />
+    <link rel="stylesheet" href="/css/account-menu.css" />
     <link rel="stylesheet" href="/css/home.css" />
     <script src="/js/i18n.js" defer></script>
     <script src="/js/shell.js" defer></script>
+    <script type="module" src="/js/account-menu.js"></script>
     <script src="/js/catalog.js" defer></script>
     <script src="/js/home.js" defer></script>
   </head>
@@ -233,6 +235,12 @@
               <div><strong id="nextName">Computer Fundamentals</strong><span id="nextStatus" data-i18n="n.start.d">الخطوة الأولى في المسار</span></div>
             </div>
             <span class="hm-bar" id="nextBar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
+            <ol class="hm-seg" aria-label="خريطة التعلم" data-i18n-attr="aria-label:r.title">
+              <li><a href="#stage-1" data-seg="1"><span class="hm-seg-bar"><span></span></span><span class="hm-seg-name" data-i18n="st.1.s">الأساسيات</span></a></li>
+              <li><a href="#stage-2" data-seg="2"><span class="hm-seg-bar"><span></span></span><span class="hm-seg-name" data-i18n="st.2.s">أساسيات الويب</span></a></li>
+              <li><a href="#stage-3" data-seg="3"><span class="hm-seg-bar"><span></span></span><span class="hm-seg-name" data-i18n="st.3.s">تعمّق</span></a></li>
+              <li><a href="#stage-4" data-seg="4"><span class="hm-seg-bar"><span></span></span><span class="hm-seg-name" data-i18n="st.4.s">أطر العمل</span></a></li>
+            </ol>
             <a class="hm-next-go" id="nextGo" href="fundamentals/computer-basics/com.html"><span id="nextGoText" data-i18n="n.open">افتح المسار</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </aside>
         </div>
