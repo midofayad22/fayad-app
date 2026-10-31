@@ -152,6 +152,22 @@
      CREATE USER PROFILE UI
   ========================================================= */
 
+  /* The menu itself (avatar, real progress overview, dashboard/profile links, sign out) lives in js/account-menu.js */
+  function mountAccountMenu(host, user) {
+    if (window.FAYAD_ACCOUNT_MENU) {
+      window.FAYAD_ACCOUNT_MENU.mount(host, user, { onSignOut: signOutCore });
+      return;
+    }
+    window.addEventListener("fayad:account-menu-ready", function () { mountAccountMenu(host, user); }, { once: true });
+  }
+
+  async function signOutCore() {
+    const { error } = await supabaseClient.auth.signOut();
+    if (error) throw error;
+    renderLoggedOutUser();
+    window.dispatchEvent(new CustomEvent("fayad-auth-changed", { detail: { loggedIn: false, user: null, session: null, event: "SIGNED_OUT" } }));
+  }
+
   function renderLoggedInUser(user) {
     const authContainer = document.getElementById("auth-container");
 
@@ -188,141 +204,7 @@
       return;
     }
 
-    userProfile.style.display = "block";
-
-    const initial = getUserInitial(user);
-
-    const displayName = getUserDisplayName(user);
-
-    const email = getUserEmail(user);
-
-    const avatarUrl = getUserAvatar(user);
-
-    const safeAvatarUrl = escapeHtml(avatarUrl);
-
-    const avatarContent = safeAvatarUrl
-      ? `
-          <img
-            src="${safeAvatarUrl}"
-            alt="${escapeHtml(displayName)}"
-            class="fayad-user-avatar-image"
-            referrerpolicy="no-referrer"
-          />
-        `
-      : escapeHtml(initial);
-
-    userProfile.innerHTML = `
-      <div
-        class="fayad-user-menu"
-        id="fayadUserMenu"
-      >
-
-        <button
-          type="button"
-          class="fayad-user-trigger"
-          id="fayadUserTrigger"
-          aria-expanded="false"
-          aria-haspopup="true"
-        >
-
-          <span class="fayad-user-avatar">
-            ${avatarContent}
-          </span>
-
-          <span class="fayad-user-info">
-
-            <strong>
-              ${escapeHtml(displayName)}
-            </strong>
-
-            <small>
-              ${escapeHtml(email)}
-            </small>
-
-          </span>
-
-          <i class="fa-solid fa-chevron-down"></i>
-
-        </button>
-
-        <div
-          class="fayad-user-dropdown"
-          id="fayadUserDropdown"
-          hidden
-        >
-
-          <div class="fayad-user-dropdown-head">
-
-            <span class="fayad-user-avatar large">
-              ${avatarContent}
-            </span>
-
-            <div>
-
-              <strong>
-                ${escapeHtml(displayName)}
-              </strong>
-
-              <small>
-                ${escapeHtml(email)}
-              </small>
-
-            </div>
-
-          </div>
-
-          <div class="fayad-user-dropdown-divider"></div>
-
-          <a
-            href="#"
-            class="fayad-user-menu-item"
-            data-auth-action="account"
-          >
-
-            <i class="fa-solid fa-user"></i>
-
-            <span>
-              حسابي
-            </span>
-
-          </a>
-
-          <a
-            href="#"
-            class="fayad-user-menu-item"
-            data-auth-action="progress"
-          >
-
-            <i class="fa-solid fa-chart-line"></i>
-
-            <span>
-              تقدمي
-            </span>
-
-          </a>
-
-          <div class="fayad-user-dropdown-divider"></div>
-
-          <button
-            type="button"
-            class="fayad-user-menu-item logout"
-            id="fayadLogoutButton"
-          >
-
-            <i class="fa-solid fa-right-from-bracket"></i>
-
-            <span>
-              تسجيل الخروج
-            </span>
-
-          </button>
-
-        </div>
-
-      </div>
-    `;
-
-    bindUserMenuEvents();
+    mountAccountMenu(userProfile, user);
   }
 
   /* =========================================================
@@ -342,63 +224,6 @@
       userProfile.style.display = "none";
       userProfile.innerHTML = "";
     }
-  }
-
-  /* =========================================================
-     USER MENU EVENTS
-  ========================================================= */
-
-  function bindUserMenuEvents() {
-    const trigger = document.getElementById("fayadUserTrigger");
-
-    const dropdown = document.getElementById("fayadUserDropdown");
-
-    const logoutButton = document.getElementById("fayadLogoutButton");
-
-    if (!trigger || !dropdown) {
-      return;
-    }
-
-    trigger.addEventListener("click", function (event) {
-      event.preventDefault();
-      event.stopPropagation();
-
-      const isOpen = trigger.getAttribute("aria-expanded") === "true";
-
-      trigger.setAttribute("aria-expanded", String(!isOpen));
-
-      dropdown.hidden = isOpen;
-    });
-
-    document.addEventListener("click", function closeUserMenu(event) {
-      const menu = document.getElementById("fayadUserMenu");
-
-      if (!menu) {
-        document.removeEventListener("click", closeUserMenu);
-
-        return;
-      }
-
-      if (!menu.contains(event.target)) {
-        trigger.setAttribute("aria-expanded", "false");
-
-        dropdown.hidden = true;
-      }
-    });
-
-    if (logoutButton) {
-      logoutButton.addEventListener("click", handleLogout);
-    }
-
-    const accountLinks = document.querySelectorAll('[data-auth-action="account"], [data-auth-action="progress"]');
-
-    accountLinks.forEach(function (link) {
-      link.addEventListener("click", function (event) {
-        event.preventDefault();
-
-        console.log("[FAYAD AUTH] Account/Progress page will be connected later.");
-      });
-    });
   }
 
   /* =========================================================
