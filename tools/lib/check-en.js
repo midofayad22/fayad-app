@@ -1,7 +1,8 @@
 // Structural checks for an English translation of Arabic lesson text (shared by tools/check-en.mjs and the tests).
 const AR = /[؀-ۿ]/;
 const blocks = (s) => [...s.matchAll(/<(code|pre)\b[^>]*>[\s\S]*?<\/\1>/gi)].map((m) => m[0]);
-const tags = (s) => [...s.matchAll(/<\/?[a-zA-Z][^>]*>/g)].map((m) => m[0]);
+// human-readable attribute values (placeholder, title, alt, aria-label) may be translated, so they are blanked before comparing
+const tags = (s) => [...s.matchAll(/<\/?[a-zA-Z][^>]*>/g)].map((m) => m[0].replace(/\b(placeholder|title|alt|aria-label|value)=("[^"]*"|'[^']*')/gi, "$1=\"\""));
 const mustache = (s) => [...s.matchAll(/\{\{[\s\S]*?\}\}/g)].map((m) => m[0]);
 
 /** @returns {string[]} problems for one text pair */

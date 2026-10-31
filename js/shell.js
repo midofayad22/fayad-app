@@ -117,6 +117,13 @@
     if (["com", "prg", "html", "css", "js", "react", "vue", "angular"].indexOf(track) === -1) return;
     try { localStorage.setItem("fayad-last-track", JSON.stringify({ id: track, ts: Date.now() })); } catch (e) {}
   }
+  // site-wide interaction layer (progress bar, reveals, ripple, back-to-top); loaded once, never blocks rendering
+  (function loadFx() {
+    if (document.querySelector("link[data-fx]")) return;
+    var l = document.createElement("link"); l.rel = "stylesheet"; l.href = "/css/fx.css"; l.setAttribute("data-fx", "");
+    document.head.appendChild(l);
+    var sc = document.createElement("script"); sc.src = "/js/fx.js"; sc.defer = true; document.head.appendChild(sc);
+  })();
   document.addEventListener("DOMContentLoaded", rememberTrack);
 
   window.addEventListener("fayad:langchange", maybeNotifyUntranslated);

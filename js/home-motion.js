@@ -78,6 +78,7 @@
     on("#courses .hm-stage:not([hidden])", "#courses .hm-stage:not([hidden]) .hm-stage-rail > *, #courses .hm-stage:not([hidden]) .hm-row", { stagger: 0.07 });
     on("#how", "#how .hm-head > *");
     on("#how .hm-how-list", "#how .hm-step", { y: 44, stagger: 0.15 });
+    on("#owner", "#owner .hm-owner-body > *, #owner .hm-owner-photo", { y: 34, stagger: 0.1 });
     on("#start", "#start .hm-final-box > *", { y: 34, stagger: 0.12 });
     // gentle parallax on the ambient orbs
     $$(".hm-orb").forEach(function (o, i) {
@@ -106,6 +107,33 @@
     });
   }
 
+  // pointer reactions (fine pointers only): ambient glow that trails the mouse, per-card spotlight, 3D tilt, hero parallax
+  function pointer() {
+    if (!window.matchMedia("(hover:hover) and (pointer:fine)").matches) return;
+    var glow = document.createElement("div"); glow.className = "hm-cursor"; glow.setAttribute("aria-hidden", "true");
+    document.body.appendChild(glow);
+    var gx = gsap.quickTo(glow, "x", { duration: 0.7, ease: "power3.out" }), gy = gsap.quickTo(glow, "y", { duration: 0.7, ease: "power3.out" });
+    var hero = $("#home"), art = $(".hm-hero-art"), orbs = $$("#home .hm-orb");
+    window.addEventListener("pointermove", function (e) {
+      if (e.pointerType && e.pointerType !== "mouse") return;
+      glow.classList.add("on"); gx(e.clientX); gy(e.clientY);
+      var t = e.target.closest && e.target.closest(".hm-row, .hm-step, .hm-next, .hm-tab, [data-tilt]");
+      if (t) { var r = t.getBoundingClientRect(); t.style.setProperty("--mx", (e.clientX - r.left) + "px"); t.style.setProperty("--my", (e.clientY - r.top) + "px"); }
+      if (hero && e.clientY < hero.getBoundingClientRect().bottom) {
+        var nx = e.clientX / innerWidth - 0.5, ny = e.clientY / innerHeight - 0.5;
+        if (art) gsap.to(art, { x: nx * -18, y: ny * -14, duration: 0.9, ease: "power3.out", overwrite: "auto" });
+        orbs.forEach(function (o, i) { gsap.to(o, { x: nx * (i ? 40 : -50), duration: 1.2, ease: "power3.out", overwrite: "auto" }); });
+      }
+    }, { passive: true });
+    document.addEventListener("pointerleave", function () { glow.classList.remove("on"); });
+    $$("[data-tilt], .hm-win").forEach(function (el) {
+      var rx = gsap.quickTo(el, "rotationX", { duration: 0.5, ease: "power2.out" }), ry = gsap.quickTo(el, "rotationY", { duration: 0.5, ease: "power2.out" });
+      gsap.set(el, { transformPerspective: 900 });
+      el.addEventListener("pointermove", function (e) { var r = el.getBoundingClientRect(); ry(((e.clientX - r.left) / r.width - 0.5) * 10); rx(-((e.clientY - r.top) / r.height - 0.5) * 10); });
+      el.addEventListener("pointerleave", function () { rx(0); ry(0); });
+    });
+  }
+
   var lastLang = document.documentElement.lang;
   window.addEventListener("fayad:langchange", function () {
     if (document.documentElement.lang === lastLang) return;
@@ -119,7 +147,7 @@
     });
   });
 
-  function start() { hero(); counters(); reveals(); magnetic(); window.__hmMotionReady = true; }
+  function start() { hero(); counters(); reveals(); magnetic(); pointer(); window.__hmMotionReady = true; }
   // i18n re-applies text on DOMContentLoaded, so split/animate only after that
   function later() { requestAnimationFrame(start); }
   if (document.readyState === "complete") later(); else document.addEventListener("DOMContentLoaded", later);

@@ -204,7 +204,7 @@ test("every homepage section fills the screen height and sections never overlap 
     const { ctx, page } = await open({}, lang);
     await page.setViewportSize({ width: w, height: h }); await page.waitForTimeout(1500);
     const r = await page.evaluate(() => [...document.querySelectorAll("main > .hm-sec")].map((s) => { const b = s.getBoundingClientRect(); return { id: s.id, top: b.top + scrollY, bottom: b.bottom + scrollY, h: b.height, sh: s.scrollHeight }; }));
-    assert.equal(r.length, 4);
+    assert.equal(r.length, 5);
     r.forEach((s, i) => {
       assert.ok(s.h >= h - 1, `${lang}@${w}x${h}: #${s.id} shorter than the screen (${s.h})`);
       if (i) assert.ok(s.top >= r[i - 1].bottom - 1, `${lang}@${w}x${h}: #${s.id} overlaps previous`);
