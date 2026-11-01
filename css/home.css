@@ -7,7 +7,7 @@ html { scroll-padding-top: 0; }
 .hm-wrap { width: min(1180px, 100% - 48px); margin-inline: auto; position: relative; z-index: 1; }
 
 /* every section fills the screen (min-height keeps tall content from overlapping its neighbour on small screens) */
-.hm-sec { position: relative; isolation: isolate; display: flex; flex-direction: column; justify-content: center; min-height: 100vh; min-height: 100svh; padding-block: calc(var(--hm-nav) + 20px) 28px; overflow: clip; scroll-snap-align: start; }
+.hm-sec { position: relative; isolation: isolate; display: flex; flex-direction: column; justify-content: center; min-height: 100vh; min-height: 100svh; padding-block: calc(var(--hm-nav) + 36px) 28px; overflow: clip; scroll-snap-align: start; }
 .hm-sec + .hm-sec { border-block-start: 1px solid var(--fy-border); }
 
 /* ambient background (decorative) */
@@ -27,7 +27,7 @@ html { scroll-padding-top: 0; }
 .hm-hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: clamp(28px, 5vw, 72px); align-items: center; }
 .hm-kicker { display: inline-flex; align-items: center; gap: 10px; margin-block-end: 18px; padding: 6px 14px; border: 1px solid var(--fy-border-strong); border-radius: var(--fy-radius-pill); background: var(--fy-brand-soft); color: var(--fy-brand); font-weight: 800; font-size: 0.88rem; }
 .hm-kicker::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--fy-brand); box-shadow: 0 0 0 4px var(--fy-brand-soft); }
-.hm-hero h1 { margin: 0 0 20px; font-size: clamp(2.3rem, 5.6vw + 0.4rem, 4.8rem); line-height: 1.08; letter-spacing: -0.02em; color: var(--fy-text); text-wrap: balance; }
+.hm-hero h1 { margin: 0 0 20px; font-size: clamp(2.2rem, 4.4vw + 0.4rem, 3.9rem); line-height: 1.1; letter-spacing: -0.02em; color: var(--fy-text); text-wrap: balance; }
 html[dir="rtl"] .hm-hero h1 { line-height: 1.28; letter-spacing: 0; }
 .hm-t1, .hm-t2 { display: block; }
 .hm-word { display: inline-block; overflow: clip; vertical-align: top; padding-block: 0.06em; margin-block: -0.06em; }
@@ -254,3 +254,14 @@ html[dir="rtl"] .menu-section-label { letter-spacing: 0; text-transform: none; f
   .site-menu.open .mn-course { animation-delay: calc(.12s + var(--i, 0) * .03s); }
   @keyframes mn-in { from { opacity: 0; transform: translateY(10px); } }
 }
+
+/* floating tech chips around the lesson window (decorative) */
+.hm-floaters { position: absolute; inset: 0; pointer-events: none; z-index: 2; direction: ltr; }
+.hm-fl { position: absolute; padding: 7px 14px; border: 1px solid var(--fy-border-strong); border-radius: var(--fy-radius-pill); background: color-mix(in srgb, var(--fy-surface) 88%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); color: var(--fy-brand); font: 800 .82rem var(--fy-font-en); box-shadow: var(--fy-shadow-lg); }
+.hm-fl-1 { inset-block-start: -14px; inset-inline-start: 8%; } .hm-fl-2 { inset-block-start: 22%; inset-inline-end: -16px; } .hm-fl-3 { inset-block-start: 58%; inset-inline-start: -18px; } .hm-fl-4 { inset-block-start: 8%; inset-inline-end: 22%; }
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes hm-bob { 0%, 100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-12px) rotate(1.5deg); } }
+  .hm-fl { animation: hm-bob 6s ease-in-out infinite; }
+  .hm-fl-2 { animation-delay: -1.5s; animation-duration: 7s; } .hm-fl-3 { animation-delay: -3s; animation-duration: 8s; } .hm-fl-4 { animation-delay: -4.5s; }
+}
+@media (max-width: 1000px) { .hm-floaters { display: none; } }
