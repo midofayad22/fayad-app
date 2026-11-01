@@ -216,3 +216,13 @@ html.fy-theme-switching *::after {
     scroll-behavior: auto !important;
   }
 }
+
+/* Advanced JavaScript — JS yellow (deeper tone) */
+html[data-theme="dark"][data-track="ajs"], html[data-theme="dark"] [data-course="ajs"] { --fy-course: #f7df1e; --fy-course-on: #1c1800; --fy-course-ink: #f7df1e; --fy-course-strong: #d9c200; --fy-course-soft: rgba(247,223,30,.12); --fy-course-glow: rgba(247,223,30,.28); }
+html[data-theme="light"][data-track="ajs"], html[data-theme="light"] [data-course="ajs"] { --fy-course: #786100; --fy-course-on: #ffffff; --fy-course-ink: #6f5a00; --fy-course-strong: #5e4c00; --fy-course-soft: rgba(176,150,0,.12); --fy-course-glow: rgba(176,150,0,.28); }
+/* Bootstrap — purple */
+html[data-theme="dark"][data-track="bs"], html[data-theme="dark"] [data-course="bs"] { --fy-course: #a98bec; --fy-course-on: #1a0b3a; --fy-course-ink: #c2adf5; --fy-course-strong: #9372dd; --fy-course-soft: rgba(169,139,236,.14); --fy-course-glow: rgba(169,139,236,.3); }
+html[data-theme="light"][data-track="bs"], html[data-theme="light"] [data-course="bs"] { --fy-course: #6f42c1; --fy-course-on: #ffffff; --fy-course-ink: #6439b0; --fy-course-strong: #583396; --fy-course-soft: rgba(111,66,193,.09); --fy-course-glow: rgba(111,66,193,.22); }
+/* Tailwind CSS — cyan */
+html[data-theme="dark"][data-track="tw"], html[data-theme="dark"] [data-course="tw"] { --fy-course: #22d3ee; --fy-course-on: #012a33; --fy-course-ink: #67e8f9; --fy-course-strong: #06b6d4; --fy-course-soft: rgba(34,211,238,.12); --fy-course-glow: rgba(34,211,238,.28); }
+html[data-theme="light"][data-track="tw"], html[data-theme="light"] [data-course="tw"] { --fy-course: #0e7490; --fy-course-on: #ffffff; --fy-course-ink: #0b6379; --fy-course-strong: #0a566a; --fy-course-soft: rgba(14,116,144,.09); --fy-course-glow: rgba(14,116,144,.22); }
