@@ -45,12 +45,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet" />
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css" />
@@ -124,92 +120,44 @@
       </div>
     </header>
 
-    <aside class="site-menu" id="siteMenu" aria-hidden="true">
+    <aside class="site-menu" id="siteMenu" aria-hidden="true" aria-label="FAYAD">
       <div class="site-menu-header">
-        <div>
-          <span class="menu-eyebrow">FAYAD</span>
-          <h2 data-i18n="menu.title">استكشف</h2>
-        </div>
+        <div class="mn-brand"><img src="/assets/brand/logo-mark.svg" width="36" height="36" alt="" /><span class="menu-eyebrow">FAYAD</span></div>
         <button class="menu-close" id="menuClose" type="button" aria-label="إغلاق القائمة" data-i18n-attr="aria-label:menu.close">×</button>
       </div>
       <div class="site-menu-content">
+        <nav class="mn-nav" aria-label="FAYAD">
+          <a href="#home" class="menu-link mn-link"><span data-i18n="nav.home">الرئيسية</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="#courses" class="menu-link mn-link"><span data-i18n="nav.courses">المسارات</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="#how" class="menu-link mn-link"><span data-i18n="nav.how">كيف تتعلم</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="#owner" class="menu-link mn-link"><span data-i18n="o.eyebrow">صاحب المنصة</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </nav>
         <div class="menu-section">
-          <span class="menu-section-label" data-i18n="menu.learn">التعلم</span>
-          <a href="#courses" class="menu-link">
-            <strong data-i18n="menu.courses">كل المسارات</strong>
-            <small data-i18n="menu.courses.sub">اختر المسار المناسب وابدأ</small>
-          </a>
-          <a href="#roadmap" class="menu-link">
-            <strong data-i18n="menu.roadmap">خريطة التعلم</strong>
-            <small data-i18n="menu.roadmap.sub">الترتيب المقترح من الأساسيات إلى الأطر</small>
-          </a>
+          <span class="menu-section-label" data-i18n="menu.courses">كل المسارات</span>
+          <ul class="mn-courses">
+            <li><a class="mn-course" href="fundamentals/computer-basics/com.html" data-course="com"><span class="mn-badge">CS</span><span>Computer Fundamentals</span></a></li>
+            <li><a class="mn-course" href="fundamentals/programming-basics/prg.html" data-course="prg"><span class="mn-badge">{ }</span><span>Programming Fundamentals</span></a></li>
+            <li><a class="mn-course" href="html-learning/html-learning.html" data-course="html"><span class="mn-badge">HTML</span><span>HTML</span></a></li>
+            <li><a class="mn-course" href="css-learning/css-learning.html" data-course="css"><span class="mn-badge">CSS</span><span>CSS</span></a></li>
+            <li><a class="mn-course" href="javascript-learning/javascript-learning.html" data-course="js"><span class="mn-badge">JS</span><span>JavaScript</span></a></li>
+            <li><a class="mn-course" href="advanced-javascript/advanced-javascript.html" data-course="ajs"><span class="mn-badge">+JS</span><span>Advanced JavaScript</span></a></li>
+            <li><a class="mn-course" href="bootstrap-learning/bootstrap-learning.html" data-course="bs"><span class="mn-badge">BS</span><span>Bootstrap</span></a></li>
+            <li><a class="mn-course" href="tailwind-learning/tailwind-learning.html" data-course="tw"><span class="mn-badge">TW</span><span>Tailwind CSS</span></a></li>
+            <li><a class="mn-course" href="react-learning/react-learning.html" data-course="react"><span class="mn-badge">Re</span><span>React</span></a></li>
+            <li><a class="mn-course" href="vue-learning/vue-learning.html" data-course="vue"><span class="mn-badge">Vue</span><span>Vue</span></a></li>
+            <li><a class="mn-course" href="angular-learning/angular-learning.html" data-course="angular"><span class="mn-badge">Ng</span><span>Angular</span></a></li>
+          </ul>
         </div>
-        <div class="menu-section">
-          <span class="menu-section-label" data-i18n="menu.fundamentals">الأساسيات</span>
-          <a href="fundamentals/computer-basics/com.html" class="menu-link">
-            <strong>Computer Fundamentals</strong>
-            <small data-i18n="menu.com.sub">كيف يعمل الحاسوب</small>
-          </a>
-          <a href="fundamentals/programming-basics/prg.html" class="menu-link">
-            <strong>Programming Fundamentals</strong>
-            <small data-i18n="menu.prg.sub">المنطق وحل المشكلات</small>
-          </a>
+        <div class="menu-section mn-account">
+          <a href="dashboard.html" class="menu-link mn-pill" data-i18n="menu.dashboard">لوحة التقدم</a>
+          <a href="profile.html" class="menu-link mn-pill" data-i18n="menu.profile">الملف الشخصي</a>
+          <a href="about/about.html" class="menu-link mn-pill" data-i18n="menu.about">عن المنصة وصاحبها</a>
         </div>
-        <div class="menu-section">
-          <span class="menu-section-label" data-i18n="menu.web">أساسيات الويب</span>
-          <a href="html-learning/html-learning.html" class="menu-link">
-            <strong>HTML</strong>
-            <small data-i18n="menu.html.sub">هيكل الصفحة</small>
-          </a>
-          <a href="css-learning/css-learning.html" class="menu-link">
-            <strong>CSS</strong>
-            <small data-i18n="menu.css.sub">التصميم والتنسيق</small>
-          </a>
-          <a href="javascript-learning/javascript-learning.html" class="menu-link">
-            <strong>JavaScript</strong>
-            <small data-i18n="menu.js.sub">المنطق والتفاعل</small>
-          </a>
-        </div>
-        <div class="menu-section">
-          <span class="menu-section-label" data-i18n="menu.frameworks">أطر العمل</span>
-          <a href="react-learning/react-learning.html" class="menu-link">
-            <strong>React</strong>
-            <small data-i18n="menu.react.sub">واجهات من مكونات</small>
-          </a>
-          <a href="vue-learning/vue-learning.html" class="menu-link">
-            <strong>Vue</strong>
-            <small data-i18n="menu.vue.sub">إطار مرن لبناء الواجهات</small>
-          </a>
-          <a href="angular-learning/angular-learning.html" class="menu-link">
-            <strong>Angular</strong>
-            <small data-i18n="menu.angular.sub">تطبيقات منظمة وقابلة للتوسع</small>
-          </a>
-        </div>
-        <div class="menu-section">
-          <span class="menu-section-label" data-i18n="menu.account">حسابي</span>
-          <a href="dashboard.html" class="menu-link">
-            <strong data-i18n="menu.dashboard">لوحة التقدم</strong>
-            <small data-i18n="menu.dashboard.sub">دروسك ونقاطك وإنجازاتك</small>
-          </a>
-          <a href="profile.html" class="menu-link">
-            <strong data-i18n="menu.profile">الملف الشخصي</strong>
-            <small data-i18n="menu.profile.sub">الحساب وبيانات التقدم</small>
-          </a>
-        </div>
-        <div class="menu-section menu-about">
-          <a href="about/about.html" class="menu-link">
-            <strong data-i18n="menu.about">عن المنصة وصاحبها</strong>
-            <small data-i18n="menu.about.sub">من يقف وراء FAYAD</small>
-          </a>
-        </div>
-        <div class="menu-contact">
-          <span class="menu-section-label" data-i18n="menu.contact">تواصل</span>
-          <div class="menu-socials">
-            <a href="https://github.com/midofayad22" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://www.linkedin.com/in/abdullhamid-f-800bb5379" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="https://www.facebook.com/share/1D2SmWfCnX/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Facebook</a>
-            <a href="https://www.instagram.com/abdullhamid_fayad22" target="_blank" rel="noopener noreferrer">Instagram</a>
-          </div>
+        <div class="menu-contact mn-social">
+          <a href="https://github.com/midofayad22" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/abdullhamid-f-800bb5379" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://www.facebook.com/share/1D2SmWfCnX/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a href="https://www.instagram.com/abdullhamid_fayad22" target="_blank" rel="noopener noreferrer">Instagram</a>
         </div>
       </div>
     </aside>
@@ -446,12 +394,11 @@
       </section>
 
       <section id="owner" class="hm-sec hm-owner" aria-labelledby="ownerTitle">
-        <div class="hm-bg" aria-hidden="true"><i class="hm-orb hm-orb-b"></i><i class="hm-grid"></i></div>
-        <div class="hm-wrap hm-owner-grid">
-          <div class="hm-owner-photo" data-tilt>
-            <img src="/assets/images/profile.webp" width="960" height="1082" loading="lazy" decoding="async" alt="صورة عبد الحميد فياض" data-i18n-attr="alt:o.alt" />
-            <span class="hm-owner-tag" dir="ltr">Computer Engineering · Tanta University</span>
-          </div>
+        <div class="hm-bg" aria-hidden="true"><i class="hm-orb hm-orb-b"></i></div>
+        <div class="hm-wrap"><div class="hm-owner-card">
+          <figure class="hm-owner-photo">
+            <img src="/assets/images/profile-560.webp" width="560" height="560" loading="lazy" decoding="async" alt="صورة عبد الحميد فياض" data-i18n-attr="alt:o.alt" />
+            </figure>
           <div class="hm-owner-body">
             <span class="hm-eyebrow" data-i18n="o.eyebrow">صاحب المنصة</span>
             <h2 id="ownerTitle" data-i18n="o.name">عبد الحميد فياض</h2>
@@ -464,7 +411,7 @@
             </ul>
             <a class="hm-link" href="about/about.html" data-i18n="o.more">المزيد عن المنصة وصاحبها</a>
           </div>
-        </div>
+        </div></div>
       </section>
 
       <section id="start" class="hm-sec hm-final" aria-labelledby="finalTitle">
@@ -488,7 +435,7 @@
         </div>
         <nav class="footer-links" aria-label="روابط التذييل" data-i18n-attr="aria-label:f.nav">
           <a href="#courses" data-i18n="nav.courses">المسارات</a>
-          <a href="#roadmap" data-i18n="nav.roadmap">خريطة التعلم</a>
+          <a href="#courses" data-i18n="nav.roadmap">خريطة التعلم</a>
           <a href="about/about.html" data-i18n="f.about">عن المنصة</a>
         </nav>
       </div>

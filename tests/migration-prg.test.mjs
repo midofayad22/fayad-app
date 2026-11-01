@@ -59,8 +59,8 @@ test("the final assessment (8 questions, pass mark 70%) is identical to the lega
   });
 });
 
-test("only Arabic text exists (English belongs to Milestone 6)", () => {
-  const walk = (v) => { if (v && typeof v === "object") { if ("ar" in v) assert.deepEqual(Object.keys(v), ["ar"]); Object.values(v).forEach(walk); } };
+test("every text has both an Arabic and an English version", () => {
+  const walk = (v) => { if (v && typeof v === "object") { if ("ar" in v) assert.deepEqual(Object.keys(v).sort(), ["ar", "en"]); Object.values(v).forEach(walk); } };
   walk(track); walk(lessons);
 });
 

@@ -15,14 +15,14 @@ import { create as createRunner } from "../playground/playground.js";
 // Two page profiles share this view: "foundation" (Programming Fundamentals: example, editor, final assessment) and
 // "foundation-lite" (Computer Basics: reading + one quiz question + practice text). Strings are kept exactly as each
 // legacy page showed them (Arabic only; the shared UI-string dictionary replaces them in the localisation milestone).
-const LITE = {
+const LITE_AR = {
   lessonOf: (n, total) => `الدرس ${n} من ${total}`,
   completed: '<i class="fa-solid fa-circle-check"></i> مكتمل', notCompleted: '<i class="fa-regular fa-circle"></i> غير مكتمل',
   completeBtn: '<i class="fa-solid fa-check"></i> إكمال الدرس', completedBtn: '<i class="fa-solid fa-check"></i> تم إكمال الدرس',
   next: 'الدرس التالي <i class="fa-solid fa-arrow-left"></i>', end: 'تم الوصول للنهاية <i class="fa-solid fa-flag-checkered"></i>',
   correct: "إجابة صحيحة! أحسنت، لقد فهمت المفهوم.", wrong: (answer) => `إجابة غير صحيحة. الإجابة الصحيحة هي: ${answer}`,
 };
-const UI = {
+const UI_AR = {
   lessonOf: (n, total) => `الدرس ${String(n).padStart(2, "0")} من ${total}`,
   completed: "✓ مكتمل", notCompleted: "غير مكتمل",
   completeBtn: '<i class="fa-solid fa-check"></i> إتمام الدرس',
@@ -45,7 +45,65 @@ const UI = {
   msgs: [[90, "ممتاز جدًا! أساسك البرمجي قوي. 🔥"], [70, "أداء رائع! أنت جاهز للخطوة التالية."], [50, "نتيجة جيدة، لكن من الأفضل مراجعة بعض الدروس."], [0, "لا مشكلة. راجع المسار مرة أخرى وستتحسن."]],
 };
 
-export function mountFoundation({ doc = document, track, lessons, progress, lang = "ar" }) {
+const LITE_EN = {
+  lessonOf: (n, total) => `Lesson ${n} of ${total}`,
+  completed: '<i class="fa-solid fa-circle-check"></i> Completed', notCompleted: '<i class="fa-regular fa-circle"></i> Not completed',
+  completeBtn: '<i class="fa-solid fa-check"></i> Complete lesson', completedBtn: '<i class="fa-solid fa-check"></i> Lesson completed',
+  next: 'Next lesson <i class="fa-solid fa-arrow-right"></i>', end: 'You reached the end <i class="fa-solid fa-flag-checkered"></i>',
+  correct: "Correct! Well done, you understood the concept.", wrong: (answer) => `Not correct. The right answer is: ${answer}`,
+};
+const UI_EN = {
+  lessonOf: (n, total) => `Lesson ${String(n).padStart(2, "0")} of ${total}`,
+  completed: "✓ Completed", notCompleted: "Not completed",
+  completeBtn: '<i class="fa-solid fa-check"></i> Complete lesson',
+  completedBtn: '<i class="fa-solid fa-circle-check"></i> Lesson completed',
+  next: 'Next lesson <i class="fa-solid fa-arrow-right"></i>',
+  toFinal: 'Final assessment <i class="fa-solid fa-trophy"></i>',
+  correct: "✓ Correct! Well done.",
+  wrong: "✕ Not the right answer. Review the idea and try again next time.",
+  notStarted: "Not started yet — let's begin 🚀",
+  some: (c, n) => `You completed ${c} of ${n} lessons`,
+  most: (left) => `Great! ${left} lessons left`,
+  all: "You completed the whole course! 🎉",
+  placeholder: "The code output will appear here...",
+  resetDone: "The code was reset to its original state.",
+  running: "⏳ Running the code...",
+  noOutput: "✓ The code ran without any output.",
+  timedOut: "✕ Execution stopped: the code took too long (possibly an endless loop).",
+  copy: '<i class="fa-regular fa-copy"></i> Copy', copied: '<i class="fa-solid fa-check"></i> Copied', copyFailed: "Could not copy",
+  nextQuestion: "Next question", finish: "Finish quiz", close: "Close", result: "Your result",
+  msgs: [[90, "Excellent! Your programming foundation is strong. 🔥"], [70, "Great work! You are ready for the next step."], [50, "A good result, but reviewing a few lessons would help."], [0, "No problem. Go through the course again and you will improve."]],
+};
+
+// Static page chrome (headings, button labels, footer) of the two foundation pages; the lesson text itself comes from the content data.
+const CHROME_EN = {
+  "العودة إلى FAYAD": "Back to FAYAD",
+  "أساسيات الكمبيوتر": "Computer Fundamentals",
+  "تعلّم كيف يعمل الكمبيوتر من الداخل، وافهم مكوّناته وبرمجياته والبيانات والإنترنت وأنظمة التشغيل والأمن السيبراني.": "Learn how a computer works from the inside: its components, software, data, the internet, operating systems and cybersecurity.",
+  "أساسيات البرمجة": "Programming Fundamentals",
+  "تعلّم كيف يفكر المبرمج، وكيف تتحول الأفكار والخوارزميات إلى تعليمات يستطيع الكمبيوتر تنفيذها.": "Learn how a programmer thinks and how ideas and algorithms become instructions a computer can run.",
+  "درسًا": "lessons", "اختبارًا": "quizzes", "تحديات": "challenges", "اختبار نهائي": "final assessment",
+  "مسار التعلم": "Learning path", "تقدمك": "Your progress",
+  "المفهوم الأساسي": "Core concept", "الفكرة الأساسية": "Core idea", "اختبر فهمك": "Test yourself", "سؤال سريع": "Quick question",
+  "تطبيق عملي": "Hands-on practice", "تطبيق": "Practice", "جرّب بنفسك": "Try it yourself", "جرّب الكود بنفسك": "Try the code yourself",
+  "مثال عملي": "Worked example", "شاهد الفكرة في كود": "See the idea in code", "تحدَّ نفسك": "Challenge yourself",
+  "حاول تطبيق الفكرة بنفسك قبل الانتقال إلى الدرس التالي.": "Try applying the idea yourself before moving to the next lesson.",
+  "اكتب مثالًا بسيطًا يطبق المفهوم الذي تعلمته.": "Write a simple example that applies the concept you learned.",
+  "نسخ": "Copy", "تشغيل": "Run", "إعادة": "Reset", "إغلاق": "Close", "الدرس السابق": "Previous lesson", "الدرس التالي": "Next lesson",
+  "إكمال الدرس": "Complete lesson", "إتمام الدرس": "Complete lesson", "الاختبار النهائي": "Final assessment", "السؤال التالي": "Next question",
+  "نتيجة الكود ستظهر هنا...": "The code output will appear here...",
+  "أثبت أنك فهمت أساسيات البرمجة قبل الانتقال إلى Web Fundamentals.": "Show you understood the programming fundamentals before moving on to Web Fundamentals.",
+  "دروس المسار": "Course lessons", "محرر JavaScript": "JavaScript editor",
+  "© 2026 FAYAD — منصة تعليمية لتعلّم البرمجة": "© 2026 FAYAD — a platform for learning programming",
+  "© 2026 FAYAD — جميع الحقوق محفوظة": "© 2026 FAYAD — all rights reserved",
+};
+const squash = (x) => x.replace(/[\u064B-\u0652\u0640]/g, "").replace(/\s+/g, " ").trim();
+
+const CHROME = Object.fromEntries(Object.entries(CHROME_EN).map(([k, v]) => [squash(k), v]));
+
+export function mountFoundation({ doc = document, track, lessons, progress, lang: initialLang }) {
+  const readLang = () => (doc.documentElement.getAttribute("data-lang") === "en" ? "en" : "ar");
+  let lang = initialLang || readLang();
   const $ = (id) => doc.getElementById(id);
   const win = doc.defaultView;
   const order = orderedIds(track);
@@ -63,7 +121,8 @@ export function mountFoundation({ doc = document, track, lessons, progress, lang
   const el = Object.fromEntries(IDS.map((id) => [id, $(id)]));
   const missing = IDS.filter((id) => !el[id]);
   if (missing.length) throw new Error("page markup lacks: " + missing.join(", "));
-  const L = lite ? LITE : UI;
+  let UI = lang === "en" ? UI_EN : UI_AR;
+  let L = lite ? (lang === "en" ? LITE_EN : LITE_AR) : UI;
 
   let current = order[0];
   let starter = "";
@@ -73,6 +132,31 @@ export function mountFoundation({ doc = document, track, lessons, progress, lang
   const numberOf = (id) => order.indexOf(id) + 1;
   const pad2 = (n) => String(n).padStart(2, "0");
   const isDone = (id) => progress.isCompleted(track.id, id);
+
+  // ---------- static chrome (translated in place; the Arabic original is remembered so Arabic can be restored) ----------
+  const DYNAMIC = new Set(["lesson-title", "content-title", "lesson-heading", "lesson-content", "lesson-nav", "lesson-counter", "lesson-status", "key-concept-text", "key-description",
+    "practice-text", "challenge-text", "quiz-question", "quiz-options", "quiz-result", "complete-btn", "prev-btn", "next-btn", "progress-text", "console-output", "final-question-area", "final-next-btn", "example-code", "copy-example", "lesson-level"]);
+  const originals = new WeakMap();
+  function translateChrome() {
+    const w = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT);
+    const nodes = []; let n;
+    while ((n = w.nextNode())) nodes.push(n);
+    for (const node of nodes) {
+      const p = node.parentElement;
+      if (!p || p.closest("script,style,noscript") || p.closest("#lesson-content,#lesson-nav,#quiz-options,#final-question-area,#code-editor")) continue;
+      if (p.id && DYNAMIC.has(p.id) && !/^(complete-btn|prev-btn|next-btn)$/.test(p.id)) continue;
+      const orig = originals.get(node) ?? node.nodeValue;
+      const key = squash(orig);
+      if (!CHROME[key]) continue;
+      originals.set(node, orig);
+      node.nodeValue = lang === "en" ? CHROME[key] : orig;
+    }
+    for (const attr of ["aria-label", "title", "placeholder"]) doc.querySelectorAll(`[${attr}]`).forEach((e) => {
+      const k = `__ar_${attr}`; const ar = e[k] ?? e.getAttribute(attr);
+      if (!CHROME[squash(ar)]) return;
+      e[k] = ar; e.setAttribute(attr, lang === "en" ? CHROME[squash(ar)] : ar);
+    });
+  }
 
   // ---------- sidebar (built from data: every lesson + the final assessment is reachable) ----------
   function buildSidebar() {
@@ -155,9 +239,9 @@ export function mountFoundation({ doc = document, track, lessons, progress, lang
         const ok = i === q.correct;
         try { progress.recordAnswer(track.id, l.id, 0, ok); } catch { /* storage problems never block the lesson */ }
         if (lite) el["quiz-options"].querySelectorAll(".quiz-btn").forEach((x) => { x.disabled = true; });
-        if (ok) { b.classList.add("correct"); el["quiz-result"].textContent = lite ? LITE.correct : UI.correct; el["quiz-result"].classList.add("success"); }
+        if (ok) { b.classList.add("correct"); el["quiz-result"].textContent = lite ? L.correct : UI.correct; el["quiz-result"].classList.add("success"); }
         else {
-          b.classList.add("wrong"); el["quiz-result"].textContent = lite ? LITE.wrong(t(q.options[q.correct], lang)) : UI.wrong; el["quiz-result"].classList.add("error");
+          b.classList.add("wrong"); el["quiz-result"].textContent = lite ? L.wrong(t(q.options[q.correct], lang)) : UI.wrong; el["quiz-result"].classList.add("error");
           el["quiz-options"].children[q.correct]?.classList.add("correct");
         }
       });
@@ -350,6 +434,14 @@ export function mountFoundation({ doc = document, track, lessons, progress, lang
       doc.addEventListener("keydown", (e) => { if (e.key === "Escape" && !modal.classList.contains("hidden")) closeFinal(); });
     }
     win.addEventListener("hashchange", () => { const h = fromHash(); if (h === "final") openFinal(); else if (h && h !== current) go(h, false); });
+    win.addEventListener("fayad:langchange", () => {
+      lang = readLang();
+      UI = lang === "en" ? UI_EN : UI_AR; L = lite ? (lang === "en" ? LITE_EN : LITE_AR) : UI;
+      buildSidebar(); render(false); translateChrome();
+      if (!lite && el["copy-example"]) el["copy-example"].innerHTML = UI.copy;
+    });
+    translateChrome();
+    if (!lite && el["copy-example"]) el["copy-example"].innerHTML = UI.copy;
     const h = fromHash();
     const resume = progress.current(track.id);
     go(h && h !== "final" ? h : byId.has(resume) ? resume : order[0], false);

@@ -110,13 +110,9 @@
   // pointer reactions (fine pointers only): ambient glow that trails the mouse, per-card spotlight, 3D tilt, hero parallax
   function pointer() {
     if (!window.matchMedia("(hover:hover) and (pointer:fine)").matches) return;
-    var glow = document.createElement("div"); glow.className = "hm-cursor"; glow.setAttribute("aria-hidden", "true");
-    document.body.appendChild(glow);
-    var gx = gsap.quickTo(glow, "x", { duration: 0.7, ease: "power3.out" }), gy = gsap.quickTo(glow, "y", { duration: 0.7, ease: "power3.out" });
     var hero = $("#home"), art = $(".hm-hero-art"), orbs = $$("#home .hm-orb");
     window.addEventListener("pointermove", function (e) {
       if (e.pointerType && e.pointerType !== "mouse") return;
-      glow.classList.add("on"); gx(e.clientX); gy(e.clientY);
       var t = e.target.closest && e.target.closest(".hm-row, .hm-step, .hm-next, .hm-tab, [data-tilt]");
       if (t) { var r = t.getBoundingClientRect(); t.style.setProperty("--mx", (e.clientX - r.left) + "px"); t.style.setProperty("--my", (e.clientY - r.top) + "px"); }
       if (hero && e.clientY < hero.getBoundingClientRect().bottom) {
@@ -125,7 +121,6 @@
         orbs.forEach(function (o, i) { gsap.to(o, { x: nx * (i ? 40 : -50), duration: 1.2, ease: "power3.out", overwrite: "auto" }); });
       }
     }, { passive: true });
-    document.addEventListener("pointerleave", function () { glow.classList.remove("on"); });
     $$("[data-tilt], .hm-win").forEach(function (el) {
       var rx = gsap.quickTo(el, "rotationX", { duration: 0.5, ease: "power2.out" }), ry = gsap.quickTo(el, "rotationY", { duration: 0.5, ease: "power2.out" });
       gsap.set(el, { transformPerspective: 900 });

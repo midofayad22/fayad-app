@@ -16,16 +16,18 @@ async function main() {
   const id = script && script.getAttribute("data-track");
   try {
     if (!id || !/^[a-z]+$/.test(id)) throw new Error("missing data-track");
+    // start downloading the views in parallel with the content (avoids a request waterfall)
+    const viewsReady = Promise.all([import("./course-view.js"), import("./foundation-view.js")]).catch(() => null);
     const { track, lessons } = await import(`/content/${id}/index.js`);
     const problems = validateTrack(track, lessons);
     if (problems.length) throw new Error("invalid course content: " + problems.slice(0, 3).join("; "));
     const progress = createProgress({ totals: { ...OTHER_TOTALS, [id]: lessons.length } });
     let state = null, view;
     if (track.layout === "foundation" || track.layout === "foundation-lite") {
-      const { mountFoundation } = await import("./foundation-view.js");
-      view = mountFoundation({ track, lessons, progress, lang: "ar" }); // Arabic-only layouts until their English content exists
+      const { mountFoundation } = (await viewsReady)?.[1] || await import("./foundation-view.js");
+      view = mountFoundation({ track, lessons, progress });
     } else {
-      const { mountCourse } = await import("./course-view.js");
+      const { mountCourse } = (await viewsReady)?.[0] || await import("./course-view.js");
       state = createState({ track, lessons, progress });
       view = mountCourse({ track, lessons, state });
     }

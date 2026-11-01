@@ -1755,3 +1755,89 @@ html[dir="ltr"] .nav-arrow { display: inline-block; transform: scaleX(-1); }
 .learning-title .path-title { margin: 0; font-size: 15px; font-weight: 700; }
 /* the accent of the example header sits on the always-dark code panel: lighten it in the light theme */
 html[data-theme="light"] :is(.example-card .example-header span, .practice-output > span) { color: color-mix(in srgb, var(--fy-course) 45%, #fff); }
+
+/* =========================================================
+   HARMONY LAYER — one accent (the FAYAD brand), flat surfaces, consistent buttons and code panels.
+   Same language as the homepage: tokens only, light + dark, RTL/LTR, reduced-motion safe.
+========================================================= */
+html[data-track][data-theme] {
+  --fy-course: var(--fy-brand);
+  --fy-course-on: var(--fy-on-brand);
+  --fy-course-ink: var(--fy-brand);
+  --fy-course-strong: var(--fy-brand-strong);
+  --fy-course-soft: var(--fy-brand-soft);
+  --fy-course-glow: color-mix(in srgb, var(--fy-brand) 30%, transparent);
+}
+html[data-theme="dark"][data-track] { --fy-course-ink: var(--fy-brand-light, var(--fy-brand)); }
+
+/* page background: calm, no tinted gradients */
+body { background: var(--fy-bg); }
+.learning-navbar { background: color-mix(in srgb, var(--fy-bg) 88%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid var(--fy-border); }
+.sidebar { background: var(--fy-bg-soft); border-inline-end: 1px solid var(--fy-border); }
+.learning-logo { background: var(--fy-brand) !important; color: var(--fy-on-brand) !important; box-shadow: none !important; }
+
+/* cards: one surface, one border, one light shadow */
+.content-card, .key-card, .example-card, .result-card, .explanation-card, .practice-card, .check-card, .lesson-navigation .nav-btn {
+  background: var(--fy-surface); border: 1px solid var(--fy-border-strong); box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 12px 28px -22px rgba(0,0,0,.35); backdrop-filter: none;
+}
+.example-card { background: var(--fy-code-bg); border-color: var(--fy-code-border); color: var(--fy-code-text); }
+.example-card .example-header { background: var(--fy-code-surface); border-bottom: 1px solid var(--fy-code-border); }
+.result-card .result-header, .practice-card .practice-header { background: transparent; }
+.result-stage, .result-preview { background: #fff; color: #0b1d24; }
+
+/* code editor: same dark as the example card (no pure black) */
+.editor-panel { background: var(--fy-code-surface); border-color: var(--fy-code-border); }
+.editor-panel .editor-top { background: var(--fy-code-surface); border-color: var(--fy-code-border); color: #9db4bb; }
+.preview-panel .editor-top { background: var(--fy-surface-2); color: var(--fy-text-soft); border-bottom: 1px solid var(--fy-border); }
+.editor-panel textarea { background: var(--fy-code-bg) !important; border-top: 1px solid var(--fy-code-border) !important; }
+.editor-panel textarea:focus-visible { box-shadow: inset 0 0 0 2px var(--fy-brand); outline: none; }
+.preview-panel { background: var(--fy-surface); border-color: var(--fy-border-strong); }
+
+/* buttons — one family */
+.run-btn, .reset-btn, .quiz-next-btn, .copy-btn, .back-btn, .language-btn {
+  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 20px; border-radius: var(--fy-radius-pill, 999px); font-weight: 800; font-size: .95rem; cursor: pointer; text-decoration: none;
+  transition: transform .18s var(--fy-ease, ease), background-color .18s ease, border-color .18s ease, box-shadow .25s ease, color .18s ease;
+}
+.run-btn, .quiz-next-btn { background: var(--fy-brand); color: var(--fy-on-brand); border: 1px solid var(--fy-brand); box-shadow: 0 8px 20px -10px var(--fy-brand); }
+.run-btn:hover:not(:disabled), .quiz-next-btn:hover:not(:disabled) { background: var(--fy-brand-strong); border-color: var(--fy-brand-strong); transform: translateY(-2px); box-shadow: 0 14px 26px -12px var(--fy-brand); }
+.reset-btn, .copy-btn, .back-btn, .language-btn { background: transparent; color: var(--fy-text); border: 1px solid var(--fy-border-strong); box-shadow: none; }
+.reset-btn:hover:not(:disabled), .copy-btn:hover, .back-btn:hover, .language-btn:hover { border-color: var(--fy-brand); color: var(--fy-brand); background: var(--fy-brand-soft); transform: translateY(-1px); }
+.run-btn:active:not(:disabled), .quiz-next-btn:active:not(:disabled), .reset-btn:active, .copy-btn:active, .back-btn:active { transform: translateY(0) scale(.97); }
+.run-btn:disabled, .quiz-next-btn:disabled { opacity: .5; box-shadow: none; transform: none; }
+.copy-btn { min-height: 34px; padding: 0 14px; font-size: .82rem; color: var(--fy-code-text); border-color: var(--fy-code-border); }
+.copy-btn:hover { color: #fff; background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.3); }
+.nav-btn { border-radius: var(--fy-radius-lg, 18px); transition: transform .2s var(--fy-ease, ease), border-color .18s ease, box-shadow .25s ease; }
+.nav-btn:hover:not(:disabled) { transform: translateY(-3px); border-color: var(--fy-brand); box-shadow: 0 16px 30px -20px var(--fy-brand); }
+.nav-btn:hover:not(:disabled) .nav-arrow { color: var(--fy-brand); }
+.nav-btn .nav-arrow { transition: transform .2s ease, color .18s ease; }
+.nav-btn.next:hover:not(:disabled) .nav-arrow { transform: translateX(4px); }
+.nav-btn.previous:hover:not(:disabled) .nav-arrow { transform: translateX(-4px); }
+html[dir="rtl"] .nav-btn.next:hover:not(:disabled) .nav-arrow { transform: translateX(-4px); }
+html[dir="rtl"] .nav-btn.previous:hover:not(:disabled) .nav-arrow { transform: translateX(4px); }
+
+/* quiz answers */
+.answer-options button { border-radius: 14px; border: 1px solid var(--fy-border-strong); background: var(--fy-surface); color: var(--fy-text); transition: transform .18s ease, border-color .18s ease, background-color .18s ease; }
+.answer-options button:hover:not(:disabled) { border-color: var(--fy-brand); background: var(--fy-brand-soft); transform: translateX(3px); }
+html[dir="rtl"] .answer-options button:hover:not(:disabled) { transform: translateX(-3px); }
+.answer-options button.correct, .answer-options button.correct-answer { border-color: var(--fy-success); background: color-mix(in srgb, var(--fy-success) 14%, var(--fy-surface)); animation: fy-pop .35s ease; }
+.answer-options button.wrong, .answer-options button.wrong-answer { border-color: var(--fy-danger); background: color-mix(in srgb, var(--fy-danger) 12%, var(--fy-surface)); animation: fy-shake .35s ease; }
+@keyframes fy-pop { 50% { transform: scale(1.02); } }
+@keyframes fy-shake { 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+
+/* sidebar lessons + progress */
+.lesson { border-radius: 14px; transition: background-color .18s ease, border-color .18s ease, transform .18s ease; }
+.lesson:hover { background: var(--fy-brand-soft); transform: translateX(3px); }
+html[dir="rtl"] .lesson:hover { transform: translateX(-3px); }
+.lesson.active, .lesson.current { background: var(--fy-brand-soft); border-color: var(--fy-brand); }
+.progress-bar { background: var(--fy-surface-3); border-radius: 999px; overflow: hidden; }
+.progress-fill { background: linear-gradient(90deg, var(--fy-brand), var(--fy-brand-light, var(--fy-brand))); transition: width .6s var(--fy-ease, ease); }
+
+/* lesson entrance */
+@media (prefers-reduced-motion: no-preference) {
+  .lesson-content > * { animation: fy-rise .5s var(--fy-ease, ease) both; }
+  .lesson-content > *:nth-child(2) { animation-delay: .05s; } .lesson-content > *:nth-child(3) { animation-delay: .1s; } .lesson-content > *:nth-child(4) { animation-delay: .15s; } .lesson-content > *:nth-child(n+5) { animation-delay: .2s; }
+  @keyframes fy-rise { from { opacity: 0; transform: translateY(14px); } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .run-btn, .quiz-next-btn, .reset-btn, .copy-btn, .back-btn, .nav-btn, .lesson, .answer-options button { transition: none; animation: none !important; }
+}

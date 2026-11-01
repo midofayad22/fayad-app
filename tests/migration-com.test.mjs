@@ -36,7 +36,7 @@ test("order, sidebar labels and the final-test marker equal the legacy sidebar",
   assert.equal(track.groups[0].title.ar, legacy.sidebarHeading);
 });
 
-test("only Arabic text exists (English belongs to the localisation milestone)", () => {
-  const walk = (v) => { if (v && typeof v === "object") { if ("ar" in v) assert.deepEqual(Object.keys(v), ["ar"]); Object.values(v).forEach(walk); } };
+test("every text has both an Arabic and an English version", () => {
+  const walk = (v) => { if (v && typeof v === "object") { if ("ar" in v) assert.deepEqual(Object.keys(v).sort(), ["ar", "en"]); Object.values(v).forEach(walk); } };
   walk(track); walk(lessons);
 });

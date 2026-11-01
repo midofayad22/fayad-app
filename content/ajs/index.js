@@ -37,3 +37,7 @@ export const lessons = RAW.map((l, i) => ({
   practice: { prompt: { ar: l.prompt }, starterCode: l.starter },
   quiz: l.q.map(([question, options, correct]) => ({ question: { ar: question }, options: options.map((o) => ({ ar: o })), correct })),
 }));
+
+import { EN } from "./en.js";
+import { withEnglish } from "../../js/engine/with-english.js";
+withEnglish(track, lessons, EN);

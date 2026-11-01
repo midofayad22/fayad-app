@@ -1,4 +1,4 @@
-/* Site-wide interactivity: reading progress, scroll reveals, card lift, button ripple, back-to-top.
+/* Site-wide interactivity: scroll reveals, card lift, button ripple, back-to-top.
    Skipped entirely under prefers-reduced-motion. Never hides content unless it can reveal it again. */
 (function () {
   "use strict";
@@ -11,16 +11,6 @@
   var REVEAL = ".ab-section, .ab-hero, .ab-two > *, .ab-steps > *, .ac-hero, .ac-stats > *, .ac-card, .ac-ach, .ac-tracks > *, .auth-feature, .welcome-back";
   var LIFT = ".ac-card, .ac-tracks > *, .ab-two > *, .ac-stats > *";
   var BTN = ".ab-btn, .ac-btn, .ac-btn-primary, .hm-cta, .hm-next-go, .btn, .auth-submit, button[type=submit]";
-
-  function progress() {
-    if (document.documentElement.scrollHeight - innerHeight < 400) return;
-    var bar = document.createElement("div"); bar.className = "fx-progress"; bar.setAttribute("aria-hidden", "true");
-    document.body.appendChild(bar);
-    var tick = false;
-    function upd() { tick = false; var h = document.documentElement.scrollHeight - innerHeight; bar.style.transform = "scaleX(" + Math.min(1, Math.max(0, h > 0 ? scrollY / h : 0)) + ")"; }
-    addEventListener("scroll", function () { if (!tick) { tick = true; requestAnimationFrame(upd); } }, { passive: true });
-    upd();
-  }
 
   function reveal() {
     if (!("IntersectionObserver" in window)) return;
@@ -59,6 +49,6 @@
     addEventListener("fayad:langchange", function () { b.setAttribute("aria-label", document.documentElement.lang === "en" ? "Back to top" : "العودة للأعلى"); });
   }
 
-  function start() { progress(); reveal(); lift(); ripple(); toTop(); }
+  function start() { reveal(); lift(); ripple(); toTop(); }
   if (document.readyState === "complete") start(); else addEventListener("load", start);
 })();

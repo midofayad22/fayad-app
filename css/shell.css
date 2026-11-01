@@ -216,3 +216,13 @@ body:not(:has(.navbar)) {
   padding-right: env(safe-area-inset-right, 0px);
 }
 .ab-logo, .auth-mobile-brand, .password-toggle, .back-home { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; }
+@keyframes fy-spin{to{transform:rotate(360deg)}}.fy-spin{animation:fy-spin .8s linear infinite}
+
+/* English (LTR) mode for the two foundation pages, whose legacy stylesheets hard-code right-to-left. */
+html[dir="ltr"][data-track="com"] :is(.sidebar, .lesson-area, .learning-layout, .lesson-item, .quiz-btn, .final-question-area, .final-option, .lesson-section ul, .timeline),
+html[dir="ltr"][data-track="prg"] :is(.sidebar, .lesson-area, .learning-layout, .lesson-item, .quiz-btn, .final-question-area, .final-option, .lesson-section ul, .timeline) { direction: ltr; text-align: left; }
+html[dir="ltr"][data-track="com"] .lesson-section ul, html[dir="ltr"][data-track="prg"] .lesson-section ul { padding-right: 0; padding-left: 22px; }
+html[dir="ltr"][data-track="prg"] .timeline { padding-right: 0; padding-left: 28px; }
+html[dir="ltr"][data-track="prg"] .timeline::before { right: auto; left: 6px; }
+html[dir="ltr"][data-track="prg"] .timeline-item::before { right: auto; left: -27px; }
+html[dir="ltr"][data-track="com"] :is(.hero-content, .lesson-header, .content-card, .practice-card) , html[dir="ltr"][data-track="prg"] :is(.lesson-header, .content-card, .practice-card, .key-card, .quiz-card, .challenge-card) { text-align: left; }

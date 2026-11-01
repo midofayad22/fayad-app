@@ -3266,3 +3266,7 @@ function login(userData) {
     ],
   },
 ];
+
+import { EN } from "./en.js";
+import { withEnglish } from "../../js/engine/with-english.js";
+withEnglish(track, lessons, EN);
