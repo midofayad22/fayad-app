@@ -11,6 +11,7 @@
 */
 import { t, orderedIds } from "./schema.js";
 import { create as createRunner } from "../playground/playground.js";
+import { upgradeEditor } from "./editor.js";
 
 // Two page profiles share this view: "foundation" (Programming Fundamentals: example, editor, final assessment) and
 // "foundation-lite" (Computer Basics: reading + one quiz question + practice text). Strings are kept exactly as each
@@ -426,6 +427,7 @@ export function mountFoundation({ doc = document, track, lessons, progress, lang
     el["complete-btn"].addEventListener("click", completeLesson);
     if (!lite) {
       el["run-code-btn"].addEventListener("click", run);
+      (win.requestIdleCallback || ((f) => win.setTimeout(f, 200)))(() => upgradeEditor(el["code-editor"], { language: "js", onRun: run }));
       el["reset-code-btn"].addEventListener("click", () => { el["code-editor"].value = starter; runId += 1; if (runner) { runner.destroy(); runner = null; } setConsole(null, UI.resetDone, true); });
       el["copy-example"].addEventListener("click", copyExample);
       el["close-final-quiz"].addEventListener("click", closeFinal);

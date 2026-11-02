@@ -226,3 +226,11 @@ html[dir="ltr"][data-track="prg"] .timeline { padding-right: 0; padding-left: 28
 html[dir="ltr"][data-track="prg"] .timeline::before { right: auto; left: 6px; }
 html[dir="ltr"][data-track="prg"] .timeline-item::before { right: auto; left: -27px; }
 html[dir="ltr"][data-track="com"] :is(.hero-content, .lesson-header, .content-card, .practice-card) , html[dir="ltr"][data-track="prg"] :is(.lesson-header, .content-card, .practice-card, .key-card, .quiz-card, .challenge-card) { text-align: left; }
+
+/* VS Code-like editor (js/engine/editor.js) */
+.fy-cm-wrap { position: relative; }
+.fy-cm-source { position: absolute !important; inset-block-start: 0; inset-inline-start: 0; width: 1px !important; height: 1px !important; min-height: 0 !important; padding: 0 !important; border: 0 !important; opacity: 0; overflow: hidden; pointer-events: none; }
+.fy-cm { border-radius: 0 0 14px 14px; overflow: hidden; background: var(--fy-code-bg); transition: box-shadow .2s ease; }
+.fy-cm:focus-within { box-shadow: inset 0 0 0 2px var(--fy-course, var(--fy-brand)); }
+.fy-cm .cm-editor { max-height: 520px; }
+.fy-cm-status { display: flex; justify-content: space-between; gap: 12px; padding: 5px 14px; background: var(--fy-course, var(--fy-brand)); color: var(--fy-course-on, var(--fy-on-brand)); font: 700 .72rem var(--fy-font-en, system-ui); direction: ltr; }

@@ -17,6 +17,7 @@ import { strings } from "./strings.js";
 import { buildShell } from "./course-shell.js";
 import { sims } from "./sims.js";
 import { create as createRunner } from "../playground/playground.js";
+import { upgradeEditor } from "./editor.js";
 
 const DEFAULT_RESULT = "Hello FAYAD";
 const BASE_PREVIEW_CSS = "body{font-family:Arial,Helvetica,sans-serif;padding:16px;line-height:1.7;color:#1b2b34;background:#fff}img{max-width:100%;height:auto}table{border-collapse:collapse;width:100%}th,td{border:1px solid #ccc;padding:8px}a{color:#0066cc}";
@@ -61,6 +62,7 @@ export function mountCourse({ doc = document, track, lessons, state, lang: initi
     el.practiceHeading.textContent = text(track.practiceHeading) || "";
     el.practiceHeading.hidden = !el.practiceHeading.textContent;
     el.jsEditor.setAttribute("aria-label", S("editor.aria"));
+    const cmContent = el.jsEditor.__fyEditor && el.jsEditor.__fyEditor.contentDOM; if (cmContent) cmContent.setAttribute("aria-label", S("editor.aria"));
   }
 
   // ---------- sidebar (built from data: every lesson is reachable) ----------
@@ -340,6 +342,10 @@ export function mountCourse({ doc = document, track, lessons, state, lang: initi
     el.nextButton.addEventListener("click", () => { const id = state.nextId(); if (id) { go(id); win.scrollTo({ top: 0, behavior: "smooth" }); } });
     el.quizNextButton.addEventListener("click", onQuizNext);
     el.runButton.addEventListener("click", run);
+    // VS Code-like editor (lazy, optional): never blocks the lesson, the plain textarea keeps working if it fails to load
+    const edLang = runtime === "css" ? "css" : runtime === "sim-react" ? "jsx" : runtime === "html" || runtime === "sim-angular" ? "html" : "js";
+    const idle = win.requestIdleCallback || ((f) => win.setTimeout(f, 200));
+    idle(() => upgradeEditor(el.jsEditor, { language: edLang, onRun: () => el.runButton.click(), labelOf: () => S("editor.aria") }));
     el.resetButton.addEventListener("click", () => { el.jsEditor.value = starterOf(state.lesson); el.output.textContent = S("output.placeholder"); run(); });
     el.copyButton.addEventListener("click", copyCode);
     el.sidebarToggle.addEventListener("click", () => { const open = el.sidebar.classList.toggle("open"); el.sidebarToggle.setAttribute("aria-expanded", String(open)); });
