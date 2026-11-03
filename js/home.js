@@ -10,7 +10,7 @@
   F.i18n.extend({
     ar: {
       "nav.home": "الرئيسية",
-      "menu.account": "حسابي", "menu.dashboard": "لوحة التقدم", "menu.dashboard.sub": "دروسك ونقاطك وإنجازاتك", "menu.profile": "الملف الشخصي", "menu.profile.sub": "الحساب وبيانات التقدم",
+      "menu.game": "لعبة Flex Quest", "menu.account": "حسابي", "menu.dashboard": "لوحة التقدم", "menu.dashboard.sub": "دروسك ونقاطك وإنجازاتك", "menu.profile": "الملف الشخصي", "menu.profile.sub": "الحساب وبيانات التقدم",
       "nav.courses": "المسارات",
       "nav.roadmap": "خريطة التعلم",
       "nav.about": "عن المنصة",
@@ -144,7 +144,7 @@
     },
     en: {
       "nav.home": "Home",
-      "menu.account": "My account", "menu.dashboard": "Progress dashboard", "menu.dashboard.sub": "Your lessons, points and achievements", "menu.profile": "Profile", "menu.profile.sub": "Account and progress data",
+      "menu.game": "Flex Quest game", "menu.account": "My account", "menu.dashboard": "Progress dashboard", "menu.dashboard.sub": "Your lessons, points and achievements", "menu.profile": "Profile", "menu.profile.sub": "Account and progress data",
       "nav.courses": "Courses",
       "nav.roadmap": "Roadmap",
       "nav.about": "About",
