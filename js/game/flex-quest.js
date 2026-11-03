@@ -5,8 +5,7 @@
   Game points are stored under "fayad-game-v1" on this device only and are labelled separately from lesson points.
 */
 const F = window.FAYAD;
-const POINTS = { solve: 10, noHint: 5 };
-const KEY = "fayad-game-v1";
+import { read, award } from "/js/game/store.js";
 
 const OPTS = {
   "flex-direction": ["row", "row-reverse", "column", "column-reverse"],
@@ -22,6 +21,8 @@ const LEVELS = [
   { use: ["justify-content", "align-items"], sol: { "justify-content": "space-around", "align-items": "flex-end" }, learn: "space-around" },
   { use: ["flex-direction", "justify-content"], sol: { "flex-direction": "column", "justify-content": "center" }, learn: "flex-direction: column" },
   { use: ["flex-direction", "justify-content", "align-items"], sol: { "flex-direction": "row-reverse", "justify-content": "flex-start", "align-items": "flex-end" }, learn: "row-reverse" },
+  { use: ["flex-direction", "justify-content", "align-items"], sol: { "flex-direction": "column", "justify-content": "space-between", "align-items": "flex-end" }, learn: "column + space-between" },
+  { use: ["flex-direction", "justify-content", "align-items"], sol: { "flex-direction": "column-reverse", "justify-content": "center", "align-items": "center" }, learn: "column-reverse" },
 ];
 const SIZES = [[44, 44], [44, 64], [44, 34]]; // different sizes so only one arrangement matches
 const COLORS = ["var(--fy-course, #22d3ee)", "#f4c95d", "#f472b6"];
@@ -47,14 +48,6 @@ const lang = () => (F?.i18n?.lang === "en" ? "en" : "ar");
 const T = (k, p = {}) => String(DICT[lang()][k] ?? k).replace(/\{(\w+)\}/g, (_, x) => p[x] ?? "");
 
 const $ = (id) => document.getElementById(id);
-const save = (() => {
-  const read = () => { try { const d = JSON.parse(localStorage.getItem(KEY)); return d && d.v === 1 && d.flex ? d : null; } catch { return null; } };
-  return {
-    get() { return read() || { v: 1, flex: { solved: {} }, points: 0 }; },
-    put(d) { try { localStorage.setItem(KEY, JSON.stringify(d)); return true; } catch { return false; } },
-  };
-})();
-
 let idx = 0, state = {}, hinted = false, solved = false;
 
 function board(el, level, props) {
@@ -76,7 +69,7 @@ function codeText() {
 const defaults = (k) => ({ "flex-direction": "row", "justify-content": "flex-start", "align-items": "flex-start" }[k]);
 
 function render() {
-  const lv = LEVELS[idx], d = save.get();
+  const lv = LEVELS[idx], d = read(), done = d.games.flex?.solved || {};
   $("fqTask").textContent = T("task", { n: idx + 1 });
   $("fqLevelNo").textContent = idx + 1; $("fqTotal").textContent = LEVELS.length; $("fqPoints").textContent = d.points;
   board($("fqTarget"), lv, lv.sol);
@@ -94,7 +87,7 @@ function render() {
   hinted = false; solved = false; $("fqNext").hidden = true; $("fqMsg").textContent = "";
   $("fqCode").textContent = codeText();
   const dots = $("fqDots"); dots.textContent = "";
-  LEVELS.forEach((_, i) => { const b = document.createElement("button"); b.type = "button"; b.className = "fq-dot" + (i === idx ? " is-cur" : "") + (d.flex.solved[i + 1] ? " is-done" : ""); b.textContent = i + 1; b.setAttribute("role", "listitem"); b.setAttribute("aria-label", T("lvl", { n: i + 1 }) + (d.flex.solved[i + 1] ? " — " + T("solved") : "")); b.addEventListener("click", () => { idx = i; render(); }); dots.appendChild(b); });
+  LEVELS.forEach((_, i) => { const b = document.createElement("button"); b.type = "button"; b.className = "fq-dot" + (i === idx ? " is-cur" : "") + (done[i + 1] ? " is-done" : ""); b.textContent = i + 1; b.setAttribute("role", "listitem"); b.setAttribute("aria-label", T("lvl", { n: i + 1 }) + (done[i + 1] ? " — " + T("solved") : "")); b.addEventListener("click", () => { idx = i; render(); }); dots.appendChild(b); });
 }
 function apply() {
   const lv = LEVELS[idx];
@@ -102,13 +95,10 @@ function apply() {
   $("fqCode").textContent = codeText();
   if (solved || !same($("fqBoard"), $("fqTarget"))) return;
   solved = true;
-  const d = save.get(); let msg;
-  if (!d.flex.solved[idx + 1]) {
-    const p = POINTS.solve + (hinted ? 0 : POINTS.noHint);
-    d.flex.solved[idx + 1] = { at: Date.now(), hint: hinted }; d.points += p; save.put(d); msg = T("okPts", { p });
-  } else msg = T("again");
+  const r = award("flex", idx + 1, hinted), d = r.data;
+  const msg = r.earned ? T("okPts", { p: r.earned }) : T("again");
   $("fqPoints").textContent = d.points;
-  const all = LEVELS.every((_, i) => d.flex.solved[i + 1]);
+  const all = LEVELS.every((_, i) => d.games.flex?.solved[i + 1]);
   $("fqMsg").textContent = all ? T("done") : msg;
   $("fqBoard").classList.add("is-win"); setTimeout(() => $("fqBoard").classList.remove("is-win"), 900);
   $("fqNext").hidden = idx >= LEVELS.length - 1;

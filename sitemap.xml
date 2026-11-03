@@ -68,4 +68,10 @@
   <url>
     <loc>https://fayad-learning.vercel.app/play/flex-quest.html</loc>
   </url>
+  <url>
+    <loc>https://fayad-learning.vercel.app/play/index.html</loc>
+  </url>
+  <url>
+    <loc>https://fayad-learning.vercel.app/play/selector-quest.html</loc>
+  </url>
 </urlset>
