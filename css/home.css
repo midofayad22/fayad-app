@@ -401,3 +401,9 @@ html:not([data-theme="dark"]) .ft-social a[data-brand="gh"]:hover { background: 
   .ft-grid { gap: 22px; }
   .ft-mark { padding-block-start: 4px; }
 }
+
+/* Section rhythm: hero keeps its centred composition; every later section starts a fixed, generous distance below the
+   previous one and the track map no longer floats in the middle of a full-height block. */
+.hm-hero { padding-block-end: clamp(96px, 14vh, 140px); }
+.hm-sec:not(.hm-hero) { justify-content: flex-start; padding-block-start: calc(var(--hm-nav) + clamp(8px, 2vh, 28px)); padding-block-end: clamp(56px, 10vh, 104px); }
+@media (max-width: 900px) { .hm-sec:not(.hm-hero) { padding-block-start: calc(var(--hm-nav) + 32px); padding-block-end: 56px; } }
