@@ -139,14 +139,14 @@ test("reset restores the starter code; the old unsandboxed preview is gone", asy
 });
 
 
-test("English interface: switching the language changes the chrome (not just direction) and keeps the Arabic lesson", async () => {
+test("English interface: switching the language changes the chrome (not just direction) and shows the English lesson", async () => {
   const { ctx, page } = await open();
   await page.evaluate(() => window.FAYAD.prefs.setLang("en"));
   assert.equal(await page.evaluate(() => document.documentElement.dir), "ltr");
   assert.equal(await page.locator("#quizNextButton").innerText(), "Next question");
   assert.equal(await page.locator("#runButton").innerText(), "Run code");
   assert.equal(await page.locator("#pathTitle").innerText(), "HTML learning path");
-  assert.equal(await page.locator("#lessonTitle").innerText(), lessons[0].title.ar); // no English lesson content yet: falls back to Arabic
+  assert.equal(await page.locator("#lessonTitle").innerText(), lessons[0].title.en);
   await page.evaluate(() => window.FAYAD.prefs.setLang("ar"));
   assert.equal(await page.locator("#runButton").innerText(), "تشغيل الكود");
   await ctx.close();

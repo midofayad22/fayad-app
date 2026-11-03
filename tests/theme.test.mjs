@@ -91,12 +91,12 @@ test("CSS track switches to real English lesson content via the shared language 
   await ctx.close();
 });
 
-test("untranslated pages show an honest notice in English; translated tracks do not", async () => {
+test("no course page shows the \"untranslated\" notice any more (all courses have English lessons)", async () => {
   const ctx = await browser.newContext();
   await ctx.addInitScript(() => localStorage.setItem("fayad-language", "en"));
   const page = await ctx.newPage(); await offline(page);
   await page.goto(base + "/javascript-learning/javascript-learning.html");
-  assert.equal(await page.locator("#fy-notice").count(), 1);
+  assert.equal(await page.locator("#fy-notice").count(), 0);
   await page.goto(base + "/css-learning/css-learning.html");
   assert.equal(await page.locator("#fy-notice").count(), 0);
   await ctx.close();

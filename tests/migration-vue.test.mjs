@@ -24,7 +24,7 @@ test("every field of every lesson and question is identical to the legacy data",
     assert.equal(l.title.ar, o.title); assert.equal(l.description.ar, o.description);
     assert.equal(l.body.ar, o.content);
     assert.equal(l.key.title.ar, o.keyTitle); assert.equal(l.key.text.ar, o.keyDescription);
-    assert.equal(l.example.code, o.example); assert.equal(l.example.result.ar, o.result); assert.equal(l.example.explanation.ar, o.explanation);
+    assert.equal(l.example.code, o.example); assert.equal(l.example.result.ar, o.result); assert.equal(l.example.explanation.ar, o.explanation.replace("</code تراقب", "</code> تراقب")) // legacy typo (missing ">") fixed in the content;
     assert.equal(l.practice.prompt.ar, o.challenge); assert.equal(l.practice.starterCode, o.starterCode);
     assert.equal(l.quiz.length, 3);
     l.quiz.forEach((q, j) => {

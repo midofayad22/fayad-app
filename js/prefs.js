@@ -35,7 +35,10 @@
     var map = [
       ["html-learning", "html"],
       ["css-learning", "css"],
+      ["advanced-javascript", "ajs"],
       ["javascript-learning", "js"],
+      ["bootstrap-learning", "bs"],
+      ["tailwind-learning", "tw"],
       ["react-learning", "react"],
       ["vue-learning", "vue"],
       ["angular-learning", "angular"],

@@ -41,11 +41,11 @@ test("identity facts are exactly the verified ones, in both languages", async ()
   }
 });
 
-test("English mode explains honestly that lessons are Arabic except where listed, and nothing overflows on phones", async () => {
+test("English mode states lesson availability from the catalog flags, and nothing overflows on phones", async () => {
   const { ctx, page } = await open("en", 320);
-  assert.match(await page.locator("[data-i18n='a.avail.p2']").innerText(), /Arabic for every course.*only for the courses shown below/);
+  assert.match(await page.locator("[data-i18n='a.avail.p2']").innerText(), /available in both Arabic and English for every course shown below/);
   assert.equal(await page.locator("[data-en-flag='angular']").innerText(), "Available");
-  assert.equal(await page.locator("[data-en-flag='react']").innerText(), "Not available yet");
+  assert.equal(await page.locator("[data-en-flag='react']").innerText(), "Available");
   assert.ok((await page.evaluate(() => document.documentElement.scrollWidth)) <= 321);
   await ctx.close();
 });

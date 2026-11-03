@@ -1,3 +1,16 @@
+/* Self-hosted fonts (SIL OFL 1.1): Reem Kufi, El Messiri, Readex Pro, Inter. No third-party requests. */
+@font-face{font-family:"Reem Kufi";font-style:normal;font-display:swap;font-weight:500;src:url(/assets/fonts/reem-kufi-arabic-500-normal.woff2) format("woff2");unicode-range:U+0600-06FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FEFC}
+@font-face{font-family:"Reem Kufi";font-style:normal;font-display:swap;font-weight:500;src:url(/assets/fonts/reem-kufi-latin-500-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Reem Kufi";font-style:normal;font-display:swap;font-weight:700;src:url(/assets/fonts/reem-kufi-arabic-700-normal.woff2) format("woff2");unicode-range:U+0600-06FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FEFC}
+@font-face{font-family:"Reem Kufi";font-style:normal;font-display:swap;font-weight:700;src:url(/assets/fonts/reem-kufi-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"El Messiri";font-style:normal;font-display:swap;font-weight:500;src:url(/assets/fonts/el-messiri-arabic-500-normal.woff2) format("woff2");unicode-range:U+0600-06FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FEFC}
+@font-face{font-family:"El Messiri";font-style:normal;font-display:swap;font-weight:500;src:url(/assets/fonts/el-messiri-latin-500-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"El Messiri";font-style:normal;font-display:swap;font-weight:700;src:url(/assets/fonts/el-messiri-arabic-700-normal.woff2) format("woff2");unicode-range:U+0600-06FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FEFC}
+@font-face{font-family:"El Messiri";font-style:normal;font-display:swap;font-weight:700;src:url(/assets/fonts/el-messiri-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Readex Pro";font-style:normal;font-display:swap;font-weight:160 700;src:url(/assets/fonts/readex-pro-arabic-wght-normal.woff2) format("woff2");unicode-range:U+0600-06FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FEFC}
+@font-face{font-family:"Readex Pro";font-style:normal;font-display:swap;font-weight:160 700;src:url(/assets/fonts/readex-pro-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Inter";font-style:normal;font-display:swap;font-weight:100 900;src:url(/assets/fonts/inter-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
 /* =========================================================
    FAYAD — DESIGN TOKENS (single source of truth)
    Themes:  html[data-theme="light" | "dark"]   (set before first paint by js/prefs.js)
@@ -7,10 +20,12 @@
 
 :root {
   /* typography */
-  --fy-font-ar: "Cairo", "Segoe UI", Tahoma, system-ui, sans-serif;
+  --fy-font-ar: "Readex Pro", "Segoe UI", Tahoma, system-ui, sans-serif;
   --fy-font-en: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
   --fy-font-code: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --fy-font: var(--fy-font-ar);
+  --fy-font-display: "Reem Kufi", "Readex Pro", "Segoe UI", system-ui, sans-serif; /* site headline */
+  --fy-font-title: "El Messiri", "Readex Pro", "Segoe UI", system-ui, sans-serif; /* section & card titles */
 
   /* scale */
   --fy-space-1: 4px;
@@ -216,3 +231,13 @@ html.fy-theme-switching *::after {
     scroll-behavior: auto !important;
   }
 }
+
+/* Advanced JavaScript — JS yellow (deeper tone) */
+html[data-theme="dark"][data-track="ajs"], html[data-theme="dark"] [data-course="ajs"] { --fy-course: #f7df1e; --fy-course-on: #1c1800; --fy-course-ink: #f7df1e; --fy-course-strong: #d9c200; --fy-course-soft: rgba(247,223,30,.12); --fy-course-glow: rgba(247,223,30,.28); }
+html[data-theme="light"][data-track="ajs"], html[data-theme="light"] [data-course="ajs"] { --fy-course: #786100; --fy-course-on: #ffffff; --fy-course-ink: #6f5a00; --fy-course-strong: #5e4c00; --fy-course-soft: rgba(176,150,0,.12); --fy-course-glow: rgba(176,150,0,.28); }
+/* Bootstrap — purple */
+html[data-theme="dark"][data-track="bs"], html[data-theme="dark"] [data-course="bs"] { --fy-course: #a98bec; --fy-course-on: #1a0b3a; --fy-course-ink: #c2adf5; --fy-course-strong: #9372dd; --fy-course-soft: rgba(169,139,236,.14); --fy-course-glow: rgba(169,139,236,.3); }
+html[data-theme="light"][data-track="bs"], html[data-theme="light"] [data-course="bs"] { --fy-course: #6f42c1; --fy-course-on: #ffffff; --fy-course-ink: #6439b0; --fy-course-strong: #583396; --fy-course-soft: rgba(111,66,193,.09); --fy-course-glow: rgba(111,66,193,.22); }
+/* Tailwind CSS — cyan */
+html[data-theme="dark"][data-track="tw"], html[data-theme="dark"] [data-course="tw"] { --fy-course: #22d3ee; --fy-course-on: #012a33; --fy-course-ink: #67e8f9; --fy-course-strong: #06b6d4; --fy-course-soft: rgba(34,211,238,.12); --fy-course-glow: rgba(34,211,238,.28); }
+html[data-theme="light"][data-track="tw"], html[data-theme="light"] [data-course="tw"] { --fy-course: #0e7490; --fy-course-on: #ffffff; --fy-course-ink: #0b6379; --fy-course-strong: #0a566a; --fy-course-soft: rgba(14,116,144,.09); --fy-course-glow: rgba(14,116,144,.22); }

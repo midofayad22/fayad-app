@@ -10,7 +10,7 @@
   F.i18n.extend({
     ar: {
       "nav.home": "الرئيسية",
-      "menu.account": "حسابي", "menu.dashboard": "لوحة التقدم", "menu.dashboard.sub": "دروسك ونقاطك وإنجازاتك", "menu.profile": "الملف الشخصي", "menu.profile.sub": "الحساب وبيانات التقدم",
+      "menu.game": "لعبة Flex Quest", "menu.account": "حسابي", "menu.dashboard": "لوحة التقدم", "menu.dashboard.sub": "دروسك ونقاطك وإنجازاتك", "menu.profile": "الملف الشخصي", "menu.profile.sub": "الحساب وبيانات التقدم",
       "nav.courses": "المسارات",
       "nav.roadmap": "خريطة التعلم",
       "nav.about": "عن المنصة",
@@ -130,6 +130,11 @@
       "o.portfolio": "الـ Portfolio",
       "o.more": "المزيد عن المنصة وصاحبها",
       "o.alt": "صورة عبد الحميد فياض",
+      "ft.cta": "جاهز لكتابة أول سطر كود؟",
+      "ft.cta.btn": "اختر مسارك",
+      "ft.learn": "المسارات",
+      "ft.platform": "المنصة",
+      "ft.top": "للأعلى",
       "fin.title": "جاهز لتبدأ؟",
       "n.start": "ابدأ من هنا",
       "n.start.d": "الخطوة الأولى في المسار",
@@ -139,7 +144,7 @@
     },
     en: {
       "nav.home": "Home",
-      "menu.account": "My account", "menu.dashboard": "Progress dashboard", "menu.dashboard.sub": "Your lessons, points and achievements", "menu.profile": "Profile", "menu.profile.sub": "Account and progress data",
+      "menu.game": "Flex Quest game", "menu.account": "My account", "menu.dashboard": "Progress dashboard", "menu.dashboard.sub": "Your lessons, points and achievements", "menu.profile": "Profile", "menu.profile.sub": "Account and progress data",
       "nav.courses": "Courses",
       "nav.roadmap": "Roadmap",
       "nav.about": "About",
@@ -259,6 +264,11 @@
       "o.portfolio": "Portfolio",
       "o.more": "More about the platform and its creator",
       "o.alt": "Portrait of Abdullhamid Fayad",
+      "ft.cta": "Ready to write your first line of code?",
+      "ft.cta.btn": "Pick your course",
+      "ft.learn": "Courses",
+      "ft.platform": "Platform",
+      "ft.top": "Back to top",
       "fin.title": "Ready to start?",
       "n.start": "Start here",
       "n.start.d": "The first step on the path",
@@ -374,7 +384,7 @@
       tb.tabIndex = on ? 0 : -1;
       if (on && focus) tb.focus();
       var panel = document.getElementById(tb.getAttribute("aria-controls"));
-      if (panel) panel.hidden = !on;
+      if (panel) { panel.hidden = !on; panel.classList.toggle("is-on", on); }
     });
     window.dispatchEvent(new CustomEvent("fayad:stagechange", { detail: { stage: n } }));
   }

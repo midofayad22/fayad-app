@@ -11,3 +11,4 @@ Served from the site's own origin so lesson previews work in the sandbox without
 Files are the npm `dist` artifacts with only the trailing sourceMappingURL comment removed.
 Upgrade: `npm pack <pkg>@<version>`, replace the files, update this table, `docs/courses-bootstrap-tailwind.md` and the course content.
 | `gsap-3.13.0/` | gsap + ScrollTrigger (homepage motion) | 3.13.0 | GreenSock standard "no charge" license (free for commercial use): https://gsap.com/standard-license |
+| codemirror-6 | CodeMirror 6 (view 6.43, state 6.7, commands 6.11, language 6.13, autocomplete, lang-html 6.4, lang-css 6.3, lang-javascript 6.2, lezer highlight) bundled with esbuild into one ES module | MIT | VS Code-like lesson editor (line numbers, highlighting, auto-close, autocomplete); built from npm packages, loaded lazily |

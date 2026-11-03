@@ -14,7 +14,7 @@ export const PAGES = [
   "/javascript-learning/javascript-learning.html", "/react-learning/react-learning.html", "/vue-learning/vue-learning.html",
   "/angular-learning/angular-learning.html", "/fundamentals/computer-basics/com.html", "/fundamentals/programming-basics/prg.html",
   "/advanced-javascript/advanced-javascript.html", "/bootstrap-learning/bootstrap-learning.html", "/tailwind-learning/tailwind-learning.html",
-  "/dashboard.html", "/profile.html",
+  "/dashboard.html", "/profile.html", "/play/flex-quest.html",
 ];
 const NOINDEX = ["/login.html", "/dashboard.html", "/profile.html"];
 

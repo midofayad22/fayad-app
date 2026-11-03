@@ -16,31 +16,31 @@
   // tests/language-coverage.test.mjs checks these flags against content/<id>/index.js, so they cannot overstate.
   // kind "list": a JSON array of completed lesson ids.  current: 0-based index of the last lesson opened.
   var tracks = [
-    { id: "com", group: "fundamentals", en: "none", path: "/fundamentals/computer-basics/com.html", total: 20, list: "fayad-computer-progress" },
-    { id: "prg", group: "fundamentals", en: "none", path: "/fundamentals/programming-basics/prg.html", total: 20, list: "fayad-programming-fundamentals-progress" },
-    { id: "html", group: "web", en: "none", path: "/html-learning/html-learning.html", total: 30, list: "fayad-html-progress" },
+    { id: "com", group: "fundamentals", en: "full", path: "/fundamentals/computer-basics/com.html", total: 20, list: "fayad-computer-progress" },
+    { id: "prg", group: "fundamentals", en: "full", path: "/fundamentals/programming-basics/prg.html", total: 20, list: "fayad-programming-fundamentals-progress" },
+    { id: "html", group: "web", en: "full", path: "/html-learning/html-learning.html", total: 30, list: "fayad-html-progress" },
     { id: "css", group: "web", en: "full", path: "/css-learning/css-learning.html", total: 30, current: "fayad-css-current-lesson" },
     {
-      id: "js", group: "web", en: "none", path: "/javascript-learning/javascript-learning.html", total: 25,
+      id: "js", group: "web", en: "full", path: "/javascript-learning/javascript-learning.html", total: 25,
       list: "fayad-js-completed-lessons", current: "fayad-js-current-lesson",
     },
     {
-      id: "ajs", group: "web", en: "none", path: "/advanced-javascript/advanced-javascript.html", total: 22,
+      id: "ajs", group: "web", en: "full", path: "/advanced-javascript/advanced-javascript.html", total: 22,
       list: "fayad-ajs-completed-lessons", current: "fayad-ajs-current-lesson",
     },
     {
-      id: "bs", group: "web", en: "none", path: "/bootstrap-learning/bootstrap-learning.html", total: 20,
+      id: "bs", group: "web", en: "full", path: "/bootstrap-learning/bootstrap-learning.html", total: 20,
       list: "fayad-bs-completed-lessons", current: "fayad-bs-current-lesson",
     },
     {
-      id: "tw", group: "web", en: "none", path: "/tailwind-learning/tailwind-learning.html", total: 20,
+      id: "tw", group: "web", en: "full", path: "/tailwind-learning/tailwind-learning.html", total: 20,
       list: "fayad-tw-completed-lessons", current: "fayad-tw-current-lesson",
     },
     {
-      id: "react", group: "frameworks", en: "none", path: "/react-learning/react-learning.html", total: 30,
+      id: "react", group: "frameworks", en: "full", path: "/react-learning/react-learning.html", total: 30,
       list: "fayad-react-completed-lessons", current: "fayad-react-current-lesson",
     },
-    { id: "vue", group: "frameworks", en: "none", path: "/vue-learning/vue-learning.html", total: 22, list: "fayad-vue-learning-progress" },
+    { id: "vue", group: "frameworks", en: "full", path: "/vue-learning/vue-learning.html", total: 22, list: "fayad-vue-learning-progress" },
     { id: "angular", group: "frameworks", en: "full", path: "/angular-learning/angular-learning.html", total: 32, current: "fayad-angular-current-lesson" },
   ];
 

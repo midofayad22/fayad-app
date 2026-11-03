@@ -3012,7 +3012,7 @@ createApp({
       explanation: {
         ar: `
       <p>
-        <code>watch()</code تراقب مصدرًا Reactive.
+        <code>watch()</code> تراقب مصدرًا Reactive.
       </p>
 
       <p>
@@ -3804,3 +3804,7 @@ createApp({
     ],
   },
 ];
+
+import { EN } from "./en.js";
+import { withEnglish } from "../../js/engine/with-english.js";
+withEnglish(track, lessons, EN);

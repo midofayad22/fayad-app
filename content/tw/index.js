@@ -43,3 +43,7 @@ export const lessons = RAW.map((l, i) => ({
 
 /** Test metadata: [selector, cssProperty, expected computed value] verified in the sandboxed preview. Not shown to learners. */
 export const checks = RAW.map((l) => l.check);
+
+import { EN } from "./en.js";
+import { withEnglish } from "../../js/engine/with-english.js";
+withEnglish(track, lessons, EN);

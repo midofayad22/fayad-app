@@ -43,3 +43,7 @@ export const lessons = RAW.map((l, i) => ({
 
 /** Test metadata: selector that must exist once the lesson's example renders (tests/bs-engine.test.mjs). Not shown to learners. */
 export const checks = RAW.map((l) => l.check);
+
+import { EN } from "./en.js";
+import { withEnglish } from "../../js/engine/with-english.js";
+withEnglish(track, lessons, EN);

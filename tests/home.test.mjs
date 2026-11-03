@@ -40,7 +40,10 @@ test("the path has 4 ordered stages containing all 11 courses once, in learning 
   const rows = await page.$$eval(".hm-row", (els) => els.map((r) => ({ href: r.getAttribute("href"), count: r.querySelector(".hm-count").textContent })));
   assert.equal(rows.length, 11); assert.ok(rows.every((r) => /\d+ lessons/.test(r.count) && r.href.endsWith(".html")));
   assert.equal(await page.locator(".hm-tabs [role=tab]").count(), 4);
-  assert.equal(await page.locator(".hm-stage:not([hidden])").count(), 1);
+  // desktop (journey layout): all four stages are visible side by side
+  assert.equal(await page.locator(".hm-stage:visible").count(), 4);
+  await page.setViewportSize({ width: 800, height: 900 }); await page.waitForTimeout(300);
+  assert.equal(await page.locator(".hm-stage:visible").count(), 1);
   await page.locator(".hm-tab[data-seg='3']").click();
   assert.equal(await page.locator("#stage-3").isVisible(), true);
   assert.equal(await page.locator("#stage-1").isVisible(), false);
