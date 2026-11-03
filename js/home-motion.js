@@ -95,7 +95,7 @@
     on("#owner", "#owner .hm-owner-body > *, #owner .hm-owner-photo", { y: 34, stagger: 0.1 });
     on(".ft-cta", ".ft-cta-in > *", { y: 24 });
     on(".ft-grid", ".ft-grid > *", { y: 30, stagger: 0.12 });
-    if (document.querySelector(".ft-mark span")) gsap.from(".ft-mark span", { yPercent: 40, opacity: 0, duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: ".ft-mark", start: "top 95%", once: true } });
+    if (document.querySelector(".ft-mark span")) gsap.from(".ft-mark span", { yPercent: 40, opacity: 0, duration: 1.1, clearProps: "transform,opacity", stagger: .06, ease: "power3.out", scrollTrigger: { trigger: ".ft-mark", start: "top 95%", once: true } });
     on("#start", "#start .hm-final-box > *", { y: 34, stagger: 0.12 });
     // gentle parallax on the ambient orbs
     $$(".hm-orb").forEach(function (o, i) {
