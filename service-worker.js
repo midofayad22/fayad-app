@@ -11,7 +11,7 @@
   - Bump CACHE_VERSION on any change to this strategy; old caches are deleted.
 */
 
-const CACHE_VERSION = "v2";
+const CACHE_VERSION = "v3"; // v3: new logo icons + self-hosted fonts
 const CACHE_NAME = `fayad-static-${CACHE_VERSION}`;
 const OFFLINE_URL = "/offline.html";
 const PRECACHE = [OFFLINE_URL, "/icons/icon-192.png"];

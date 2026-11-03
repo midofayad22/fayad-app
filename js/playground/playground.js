@@ -115,6 +115,16 @@ const exportsHolder = {};
       "document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');" +
       "if(a&&a.getAttribute('href').charAt(0)!=='#'){e.preventDefault();send({type:'console',level:'info',text:'Navigation is disabled in the preview: '+a.getAttribute('href')})}},true);" +
       "document.addEventListener('submit',function(e){e.preventDefault()},true);" +
+      // Contrast guard: learner CSS often sets light text (color:#fff) but no background. On the default white canvas
+      // that is white-on-white, so when light text dominates and nothing paints a background, give the canvas a dark one.
+      "window.addEventListener('load',function(){try{var de=document.documentElement,bd=document.body;if(!bd)return;" +
+      "function rgb(c){var m=c.match(/[\\d.]+/g);return m?m.map(Number):[0,0,0,1]}" +
+      "function lum(a){return(0.2126*a[0]+0.7152*a[1]+0.0722*a[2])/255}" +
+      "function effBg(el){while(el){var b=rgb(getComputedStyle(el).backgroundColor);if(b.length<4||b[3]>0.5)return b;el=el.parentElement}return null}" +
+      "if(effBg(bd)||effBg(de))return;var light=0,dark=0,w=document.createTreeWalker(bd,NodeFilter.SHOW_TEXT);" +
+      "while(w.nextNode()){var n=w.currentNode;if(!n.nodeValue.trim())continue;var p=n.parentElement;if(!p||effBg(p))continue;var cs=getComputedStyle(p);if(cs.visibility==='hidden'||cs.display==='none')continue;" +
+      "if(lum(rgb(cs.color))>0.62)light++;else dark++}" +
+      "de.style.background=light>dark?'#0f172a':'#fff'}catch(e){}});" +
       "window.addEventListener('load',function(){setTimeout(function(){if(COLLECT.length){var v={};COLLECT.forEach(function(sel){var e=document.querySelector(sel);v[sel]=e?String(e.textContent).slice(0,4000):null});send({type:'dom',values:v})}send({type:'done'})},0)});" +
       "})()<\/script>"
     );

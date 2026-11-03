@@ -25,6 +25,11 @@
       "a.fact.lang": "الواجهة والدروس بالعربية والإنجليزية",
       "a.fact.theme": "وضع فاتح وداكن",
       "a.fayad.note": "يُحفظ تقدمك على جهازك. وتُضاف مسارات ومزايا جديدة تدريجيًا.",
+      "a.toc": "في هذه الصفحة", "a.arch.title": "البنية والمنهجية",
+      "a.arch.1.t": "موقع ثابت وسريع", "a.arch.1.d": "صفحات HTML وCSS وJavaScript بلا إطار ثقيل، تُقدَّم من Vercel.",
+      "a.arch.2.t": "محرك دروس مشترك", "a.arch.2.d": "كل المسارات تعمل بنفس المحرك، فتتشابه التجربة وتبقى الصيانة بسيطة.",
+      "a.arch.3.t": "تقدم محفوظ على جهازك", "a.arch.3.d": "يُحفظ التقدم في متصفحك. تسجيل الدخول متاح، لكن مزامنة التقدم لم تُفعَّل بعد.",
+      "a.arch.4.t": "تعلّم بالتطبيق", "a.arch.4.d": "شرح ثم مثال ثم تجربة ثم اختبار قصير، وألعاب صغيرة لتثبيت الفكرة.",
       "a.what.title": "ما هي FAYAD؟",
       "a.what.p1": "FAYAD منصة لتعلم تطوير الويب بالعربية، مبنية على مسار مرتّب: أساسيات الحاسوب والبرمجة أولًا، ثم HTML وCSS وJavaScript، ثم أدوات وأطر العمل.",
       "a.how.1": "في كل درس شرح للفكرة ومثال كامل.",
@@ -44,6 +49,11 @@
       "a.back": "العودة إلى FAYAD",
     },
     en: {
+      "a.toc": "On this page", "a.arch.title": "Architecture & method",
+      "a.arch.1.t": "A static, fast site", "a.arch.1.d": "Plain HTML, CSS and JavaScript pages without a heavy framework, served from Vercel.",
+      "a.arch.2.t": "One shared lesson engine", "a.arch.2.d": "Every course runs on the same engine, so the experience is consistent and easy to maintain.",
+      "a.arch.3.t": "Progress kept on your device", "a.arch.3.d": "Progress is saved in your browser. Sign-in is available, but progress sync is not enabled yet.",
+      "a.arch.4.t": "Learn by doing", "a.arch.4.d": "Explanation, example, a try-it step and a short quiz, plus small games to lock the idea in.",
       "nav.home": "Home",
       "nav.courses": "Courses",
       "nav.about": "About",
@@ -104,4 +114,14 @@
   window.addEventListener("fayad:langchange", facts);
   F.i18n.apply();
   facts();
+})();
+
+(function () {
+  var links = [].slice.call(document.querySelectorAll(".ab-toc a"));
+  if (!links.length || !("IntersectionObserver" in window)) return;
+  var map = {}; links.forEach(function (a) { map[a.getAttribute("href").slice(1)] = a; });
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { links.forEach(function (a) { a.removeAttribute("aria-current"); }); map[e.target.id].setAttribute("aria-current", "true"); } });
+  }, { rootMargin: "-20% 0px -70% 0px" });
+  Object.keys(map).forEach(function (id) { var s = document.getElementById(id); if (s) io.observe(s); });
 })();

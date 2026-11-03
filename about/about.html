@@ -78,7 +78,20 @@
         </div>
       </section>
 
-      <section class="ab-section" aria-labelledby="whatTitle">
+    <div class="ab-docs ab-wrap">
+      <aside class="ab-side" aria-label="فهرس الصفحة" data-i18n-attr="aria-label:a.toc">
+        <p class="ab-side-t" data-i18n="a.toc">في هذه الصفحة</p>
+        <nav class="ab-toc">
+          <a href="#what" data-i18n="a.what.title">ما هي FAYAD؟</a>
+          <a href="#available" data-i18n="a.avail.title">ما المتاح الآن</a>
+          <a href="#arch" data-i18n="a.arch.title">البنية والمنهجية</a>
+          <a href="#state" data-i18n="a.state.title">تقدمك وحسابك</a>
+          <a href="#who" data-i18n="a.who.title">من أنا</a>
+          <a href="#links" data-i18n="a.links.title">روابطي</a>
+        </nav>
+      </aside>
+      <div class="ab-docs-main">
+      <section class="ab-section" id="what" aria-labelledby="whatTitle">
         <div class="ab-wrap ab-two">
           <h2 id="whatTitle" data-i18n="a.what.title">ما هي FAYAD؟</h2>
           <div class="ab-prose">
@@ -121,7 +134,21 @@
         </div>
       </section>
 
-      <section class="ab-section" aria-labelledby="stateTitle">
+      <section class="ab-section" id="arch" aria-labelledby="archTitle">
+        <div class="ab-wrap ab-two">
+          <h2 id="archTitle" data-i18n="a.arch.title">البنية والمنهجية</h2>
+          <div class="ab-prose">
+            <ul class="ab-cards">
+              <li><strong data-i18n="a.arch.1.t">موقع ثابت وسريع</strong><span data-i18n="a.arch.1.d">صفحات HTML وCSS وJavaScript بلا إطار ثقيل، تُقدَّم من Vercel.</span></li>
+              <li><strong data-i18n="a.arch.2.t">محرك دروس مشترك</strong><span data-i18n="a.arch.2.d">كل المسارات تعمل بنفس المحرك، فتتشابه التجربة وتبقى الصيانة بسيطة.</span></li>
+              <li><strong data-i18n="a.arch.3.t">تقدم محفوظ على جهازك</strong><span data-i18n="a.arch.3.d">يُحفظ التقدم في متصفحك. تسجيل الدخول متاح، لكن مزامنة التقدم لم تُفعَّل بعد.</span></li>
+              <li><strong data-i18n="a.arch.4.t">تعلّم بالتطبيق</strong><span data-i18n="a.arch.4.d">شرح ثم مثال ثم تجربة ثم اختبار قصير، وألعاب صغيرة لتثبيت الفكرة.</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="ab-section" id="state" aria-labelledby="stateTitle">
         <div class="ab-wrap ab-two">
           <h2 id="stateTitle" data-i18n="a.state.title">تقدمك وحسابك</h2>
           <div class="ab-prose">
@@ -131,7 +158,7 @@
         </div>
       </section>
 
-      <section class="ab-section" aria-labelledby="whoTitle">
+      <section class="ab-section" id="who" aria-labelledby="whoTitle">
         <div class="ab-wrap ab-two">
           <h2 id="whoTitle" data-i18n="a.who.title">من أنا</h2>
           <div class="ab-prose">
@@ -141,7 +168,7 @@
         </div>
       </section>
 
-      <section class="ab-section" aria-labelledby="linksTitle">
+      <section class="ab-section" id="links" aria-labelledby="linksTitle">
         <div class="ab-wrap ab-two">
           <h2 id="linksTitle" data-i18n="a.links.title">روابطي</h2>
           <ul class="ab-links">
@@ -153,6 +180,8 @@
           </ul>
         </div>
       </section>
+      </div>
+    </div>
     </main>
 
     <footer class="ab-footer">

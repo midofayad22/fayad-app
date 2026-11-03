@@ -367,3 +367,43 @@ html[dir="rtl"] .hm-row-title strong { font-size: 1.2rem; }
 html[dir="rtl"] .hm-row:hover .hm-row-go svg { transform: scaleX(-1) translateX(4px); }
 #courses .hm-eyebrow{display:none}
 #courses .hm-row-title strong{font-size:1.02rem}
+
+/* ===== Hero stats as glass pills ===== */
+.hm-stats { gap: 12px; flex-wrap: wrap; margin-block-start: 40px; }
+.hm-stats li { display: flex; align-items: baseline; gap: 8px; padding: 10px 18px; border: 1px solid color-mix(in srgb, var(--fy-text) 14%, transparent); border-radius: 999px; background: color-mix(in srgb, var(--fy-surface) 55%, transparent); -webkit-backdrop-filter: blur(12px) saturate(140%); backdrop-filter: blur(12px) saturate(140%); box-shadow: 0 10px 30px -18px var(--fy-brand); transition: transform .5s cubic-bezier(.22,.8,.2,1), border-color .3s; animation: hm-float 6s ease-in-out infinite; }
+.hm-stats li:nth-child(2) { animation-delay: -3s; }
+.hm-stats li:hover { transform: translateY(-3px); border-color: var(--fy-brand); }
+.hm-stats b { font-size: 1.5rem; color: var(--fy-brand-ink, var(--fy-brand)); }
+.hm-stats span { font-size: .95rem; color: var(--fy-text-soft); }
+@keyframes hm-float { 50% { transform: translateY(-4px); } }
+@media (prefers-reduced-motion: reduce) { .hm-stats li { animation: none; } }
+
+/* ===== Footer: per-letter FAYAD + brand-coloured socials ===== */
+.ft-mark span { background: linear-gradient(180deg, color-mix(in srgb, var(--fy-text) 22%, transparent), color-mix(in srgb, var(--fy-text) 4%, transparent)); -webkit-background-clip: text; background-clip: text; opacity: 1; cursor: default; transition: transform .6s cubic-bezier(.22,.8,.2,1), filter .4s; }
+.ft-mark span:hover { transform: translateY(-.06em) scale(1.04); background-image: linear-gradient(135deg, var(--fy-brand), #f4c95d, var(--fy-brand)); background-size: 200% 200%; animation: ft-shift 2.4s linear infinite; }
+
+@keyframes ft-shift { to { background-position: 200% 0; } }
+@media (prefers-reduced-motion: reduce) { .ft-mark span:hover { animation: none; } }
+.ft-social a { --b: var(--fy-brand); }
+.ft-social a[data-brand="gh"] { --b: #6e7681; } .ft-social a[data-brand="in"] { --b: #0a66c2; } .ft-social a[data-brand="fb"] { --b: #1877f2; }
+.ft-social a:hover { background: var(--b); border-color: var(--b); color: #fff; }
+.ft-social a[data-brand="ig"]:hover { background: linear-gradient(45deg, #f09433, #dc2743 55%, #bc1888); border-color: transparent; }
+html[data-theme="dark"] .ft-social a[data-brand="gh"]:hover { background: #f0f6fc; color: #0d1117; border-color: #f0f6fc; }
+html:not([data-theme="dark"]) .ft-social a[data-brand="gh"]:hover { background: #24292f; }
+
+/* Footer on phones: compact two-column link lists, one back-to-top control */
+@media (max-width: 640px) {
+  .ft-col ul { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 16px; }
+  .ft-col h3 { margin-block-end: 8px; }
+  .ft-top { display: none; }
+  .ft-bottom { justify-content: flex-start; }
+  .ft-bottom p { padding-inline-end: 64px; }
+  .ft-grid { gap: 22px; }
+  .ft-mark { padding-block-start: 4px; }
+}
+
+/* Section rhythm: hero keeps its centred composition; every later section starts a fixed, generous distance below the
+   previous one and the track map no longer floats in the middle of a full-height block. */
+.hm-hero { padding-block-end: clamp(96px, 14vh, 140px); }
+.hm-sec:not(.hm-hero) { justify-content: flex-start; padding-block-start: calc(var(--hm-nav) + clamp(8px, 2vh, 28px)); padding-block-end: clamp(56px, 10vh, 104px); }
+@media (max-width: 900px) { .hm-sec:not(.hm-hero) { padding-block-start: calc(var(--hm-nav) + 32px); padding-block-end: 56px; } }

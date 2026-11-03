@@ -10,7 +10,7 @@
   F.i18n.extend({
     ar: {
       "nav.home": "الرئيسية",
-      "menu.game": "لعبة Flex Quest", "menu.account": "حسابي", "menu.dashboard": "لوحة التقدم", "menu.dashboard.sub": "دروسك ونقاطك وإنجازاتك", "menu.profile": "الملف الشخصي", "menu.profile.sub": "الحساب وبيانات التقدم",
+      "menu.game": "الألعاب", "menu.account": "حسابي", "menu.dashboard": "لوحة التقدم", "menu.dashboard.sub": "دروسك ونقاطك وإنجازاتك", "menu.profile": "الملف الشخصي", "menu.profile.sub": "الحساب وبيانات التقدم",
       "nav.courses": "المسارات",
       "nav.roadmap": "خريطة التعلم",
       "nav.about": "عن المنصة",
@@ -47,7 +47,7 @@
       "fin.sub": "افتح الدرس الأول الآن. لا حاجة لتسجيل الدخول للبدء.",
       "h.desc": "مسار مرتّب يبدأ بأساسيات الحاسوب والبرمجة، ثم HTML وCSS وJavaScript، وينتهي بأطر العمل. كل درس: شرح، مثال، تمرين، واختبار.",
       "h.cta": "ابدأ من الأساسيات",
-      "h.browse": "استعرض المسار كاملًا",
+      
       "h.stat.tracks": "مسارات",
       "h.stat.lessons": "درسًا",
       "h.preview": "مثال من درس تفاعلي",
@@ -144,7 +144,7 @@
     },
     en: {
       "nav.home": "Home",
-      "menu.game": "Flex Quest game", "menu.account": "My account", "menu.dashboard": "Progress dashboard", "menu.dashboard.sub": "Your lessons, points and achievements", "menu.profile": "Profile", "menu.profile.sub": "Account and progress data",
+      "menu.game": "Games", "menu.account": "My account", "menu.dashboard": "Progress dashboard", "menu.dashboard.sub": "Your lessons, points and achievements", "menu.profile": "Profile", "menu.profile.sub": "Account and progress data",
       "nav.courses": "Courses",
       "nav.roadmap": "Roadmap",
       "nav.about": "About",
@@ -181,7 +181,7 @@
       "fin.sub": "Open the first lesson now. No sign-in needed to start.",
       "h.desc": "An ordered path that starts with computer and programming fundamentals, then HTML, CSS and JavaScript, and ends with frameworks. Every lesson: explanation, example, practice and a quiz.",
       "h.cta": "Start with the fundamentals",
-      "h.browse": "See the full path",
+      
       "h.stat.tracks": "courses",
       "h.stat.lessons": "lessons",
       "h.preview": "A taste of an interactive lesson",

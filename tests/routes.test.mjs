@@ -14,7 +14,7 @@ export const PAGES = [
   "/javascript-learning/javascript-learning.html", "/react-learning/react-learning.html", "/vue-learning/vue-learning.html",
   "/angular-learning/angular-learning.html", "/fundamentals/computer-basics/com.html", "/fundamentals/programming-basics/prg.html",
   "/advanced-javascript/advanced-javascript.html", "/bootstrap-learning/bootstrap-learning.html", "/tailwind-learning/tailwind-learning.html",
-  "/dashboard.html", "/profile.html", "/play/flex-quest.html",
+  "/dashboard.html", "/profile.html", "/play/flex-quest.html", "/play/index.html", "/play/selector-quest.html",
 ];
 const NOINDEX = ["/login.html", "/dashboard.html", "/profile.html"];
 
@@ -106,7 +106,7 @@ test("service worker: registers, precaches offline page, serves it when offline,
     return { names, keys, controlled: !!navigator.serviceWorker.controller };
   });
   assert.ok(state.controlled, "page controlled by service worker");
-  assert.deepEqual(state.names, ["fayad-static-v2"]);
+  assert.deepEqual(state.names, ["fayad-static-v3"]);
   assert.ok(state.keys.includes("/offline.html"), "offline page precached");
   assert.ok(state.keys.includes("/about/about.html"), "visited page cached as offline fallback");
   assert.ok(!state.keys.some((k) => k.startsWith("/_vercel/")), "no analytics scripts cached");

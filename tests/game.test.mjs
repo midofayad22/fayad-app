@@ -28,7 +28,7 @@ test("a wrong arrangement does not score; the right one does and persists", asyn
   assert.equal(await page.locator("#fqNext").isHidden(), false);
   const saved = await page.evaluate(() => JSON.parse(localStorage.getItem("fayad-game-v1")));
   assert.equal(saved.points, 15);
-  assert.ok(saved.flex.solved["1"]);
+  assert.ok(saved.games.flex.solved["1"]);
   await page.reload(); await page.waitForSelector("#fqControls select");
   assert.equal(await page.textContent("#fqPoints"), "15");
   assert.deepEqual(errors, []);
@@ -55,6 +55,8 @@ test("every level is solvable and the game uses no eval", async () => {
     { "justify-content": "space-around", "align-items": "flex-end" },
     { "flex-direction": "column", "justify-content": "center" },
     { "flex-direction": "row-reverse", "justify-content": "flex-start", "align-items": "flex-end" },
+    { "flex-direction": "column", "justify-content": "space-between", "align-items": "flex-end" },
+    { "flex-direction": "column-reverse", "justify-content": "center", "align-items": "center" },
   ];
   for (let i = 0; i < levels.length; i++) {
     for (const [k, v] of Object.entries(levels[i])) await page.selectOption(`select[data-prop="${k}"]`, v);
@@ -65,4 +67,30 @@ test("every level is solvable and the game uses no eval", async () => {
   await ctx.close();
   const src = (await import("node:fs")).readFileSync("js/game/flex-quest.js", "utf8");
   assert.ok(!/\beval\s*\(|new Function/.test(src));
+});
+
+test("selector quest: wrong selector does not solve, exact selector does, invalid selector is handled", async () => {
+  const ctx = await browser.newContext({ serviceWorkers: "block" }); const page = await ctx.newPage();
+  await page.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort());
+  const errors = []; page.on("pageerror", (e) => errors.push(e.message));
+  await page.goto(base + "/play/selector-quest.html"); await page.waitForSelector("#sqInput");
+  await page.fill("#sqInput", "span"); assert.equal(await page.textContent("#fqPoints"), "0");
+  await page.fill("#sqInput", "p[["); assert.ok((await page.textContent("#sqCount")).length > 3);
+  await page.fill("#sqInput", "p");
+  await page.waitForFunction(() => document.getElementById("fqPoints").textContent === "15");
+  const answers = ["p", ".a", "#x", "p.a", "ul li", "ul > li", "li:first-child", ":disabled", "li:not(.a)", "h2 + p"];
+  for (let i = 1; i < answers.length; i++) { await page.click("#fqNext"); await page.fill("#sqInput", answers[i]); await page.waitForFunction((n) => document.querySelectorAll(".fq-dot")[n].classList.contains("is-done"), i); }
+  assert.equal(await page.textContent("#fqPoints"), "150");
+  assert.deepEqual(errors, []); await ctx.close();
+});
+
+test("games hub lists both games with progress from the shared store", async () => {
+  const ctx = await browser.newContext({ serviceWorkers: "block" }); const page = await ctx.newPage();
+  await page.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort());
+  await page.addInitScript(() => localStorage.setItem("fayad-game-v1", JSON.stringify({ v: 1, flex: { solved: { 1: { at: 1 }, 2: { at: 1 } } }, points: 30 })));
+  await page.goto(base + "/play/index.html"); await page.waitForSelector(".gh-card");
+  assert.equal(await page.locator(".gh-card").count(), 2);
+  assert.equal(await page.textContent("#ghPoints"), "30");
+  assert.match(await page.locator(".gh-card").first().textContent(), /2/);
+  await ctx.close();
 });
