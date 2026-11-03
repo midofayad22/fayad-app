@@ -390,3 +390,14 @@ html[dir="rtl"] .hm-row:hover .hm-row-go svg { transform: scaleX(-1) translateX(
 .ft-social a[data-brand="ig"]:hover { background: linear-gradient(45deg, #f09433, #dc2743 55%, #bc1888); border-color: transparent; }
 html[data-theme="dark"] .ft-social a[data-brand="gh"]:hover { background: #f0f6fc; color: #0d1117; border-color: #f0f6fc; }
 html:not([data-theme="dark"]) .ft-social a[data-brand="gh"]:hover { background: #24292f; }
+
+/* Footer on phones: compact two-column link lists, one back-to-top control */
+@media (max-width: 640px) {
+  .ft-col ul { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 16px; }
+  .ft-col h3 { margin-block-end: 8px; }
+  .ft-top { display: none; }
+  .ft-bottom { justify-content: flex-start; }
+  .ft-bottom p { padding-inline-end: 64px; }
+  .ft-grid { gap: 22px; }
+  .ft-mark { padding-block-start: 4px; }
+}
