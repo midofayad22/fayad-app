@@ -342,3 +342,28 @@ html[dir="rtl"] .ft-col a:hover { transform: translateX(-4px); }
   .ft-bottom { flex-direction: column; align-items: flex-start; }
 }
 @media (max-width: 480px) { .ft-grid { grid-template-columns: minmax(0, 1fr); } .ft-cta .hm-cta { width: 100%; } }
+
+/* ===== Calm layer: fewer words on cards, distinctive Arabic type, softer motion ===== */
+.hm-hero h1, .hm-final h2, .ft-cta h2 { font-family: var(--fy-font-display); font-weight: 700; }
+.hm-head h2, .hm-stage-rail h3, .hm-step h3, .hm-owner-card h2, .ft-col h3, .mn-title { font-family: var(--fy-font-title); font-weight: 700; }
+.hm-row-title strong, .hm-tab-name { font-family: var(--fy-font-title); font-weight: 700; letter-spacing: 0; }
+html[dir="rtl"] .hm-row-title strong { font-size: 1.2rem; }
+
+/* one idea per stage: title + tiny count; no paragraphs above the cards */
+#courses .hm-head p, #courses .hm-stage-rail p, #courses .hm-stage-meta { display: none; }
+#courses .hm-head { margin-block-end: clamp(14px, 2.4vh, 26px); }
+#courses .hm-stage-rail h3 { margin: 0; font-size: clamp(1.5rem, 2.4vw, 2rem); }
+
+/* cards: badge, name, count, arrow. Description appears only on hover/focus */
+.hm-row { min-height: 0; padding: 14px 18px; gap: 14px; }
+.hm-row .hm-badge { min-width: 52px; height: 52px; border-radius: 16px; font-size: .8rem; }
+.hm-row-desc { max-height: 0; opacity: 0; overflow: hidden; margin: 0; transition: max-height .45s var(--fy-ease), opacity .3s var(--fy-ease); }
+.hm-row:hover .hm-row-desc, .hm-row:focus-visible .hm-row-desc { max-height: 4.8em; opacity: 1; }
+@media (hover: none) { .hm-row-desc { display: none; } }
+#courses .hm-row-desc { display: block; -webkit-line-clamp: unset; }
+@media (hover: none) { #courses .hm-row-desc { display: none; } }
+.hm-row, .hm-row-go svg, .hm-badge { transition-duration: .5s; transition-timing-function: cubic-bezier(.22,.8,.2,1); }
+.hm-row:hover .hm-row-go svg { transform: translateX(4px); }
+html[dir="rtl"] .hm-row:hover .hm-row-go svg { transform: scaleX(-1) translateX(4px); }
+#courses .hm-eyebrow{display:none}
+#courses .hm-row-title strong{font-size:1.02rem}

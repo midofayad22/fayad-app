@@ -234,3 +234,8 @@ html[dir="ltr"][data-track="com"] :is(.hero-content, .lesson-header, .content-ca
 .fy-cm:focus-within { box-shadow: inset 0 0 0 2px var(--fy-course, var(--fy-brand)); }
 .fy-cm .cm-editor { max-height: 520px; }
 .fy-cm-status { display: flex; justify-content: space-between; gap: 12px; padding: 5px 14px; background: var(--fy-course, var(--fy-brand)); color: var(--fy-course-on, var(--fy-on-brand)); font: 700 .72rem var(--fy-font-en, system-ui); direction: ltr; }
+
+/* Site-wide type roles: Reem Kufi = headlines, El Messiri = section/card titles, Readex Pro = text */
+h1 { font-family: var(--fy-font-display); }
+h2, h3 { font-family: var(--fy-font-title); }
+.fy-cm, .fy-cm *, pre, code, kbd, samp, textarea.code, .code-editor { font-family: var(--fy-font-code); }
