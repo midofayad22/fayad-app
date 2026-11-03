@@ -106,7 +106,7 @@ test("service worker: registers, precaches offline page, serves it when offline,
     return { names, keys, controlled: !!navigator.serviceWorker.controller };
   });
   assert.ok(state.controlled, "page controlled by service worker");
-  assert.deepEqual(state.names, ["fayad-static-v2"]);
+  assert.deepEqual(state.names, ["fayad-static-v3"]);
   assert.ok(state.keys.includes("/offline.html"), "offline page precached");
   assert.ok(state.keys.includes("/about/about.html"), "visited page cached as offline fallback");
   assert.ok(!state.keys.some((k) => k.startsWith("/_vercel/")), "no analytics scripts cached");
