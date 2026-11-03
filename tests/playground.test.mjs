@@ -134,3 +134,15 @@ test("learner output is shown as text, never rendered as HTML by the runner API"
   const r = await run("html", { html: "", js: "console.log('<img src=x onerror=alert(1)>')" });
   assert.equal(r.logs[0].text, "<img src=x onerror=alert(1)>"); // delivered verbatim as a string for textContent use
 });
+
+test("contrast guard: light text with no background gets a dark canvas; dark text and explicit backgrounds are left alone", async () => {
+  const bg = (files) => page.evaluate(async (f) => {
+    const pg = make("html");
+    pg.run({ ...f, js: "window.addEventListener('load',function(){setTimeout(function(){console.log(getComputedStyle(document.documentElement).backgroundColor)},50)})" });
+    await waitStatus("done").catch(() => {}); await new Promise((r) => setTimeout(r, 400));
+    return logs.map((l) => l.text).pop();
+  }, files);
+  assert.equal(await bg({ html: "<h1>Hi</h1><p>text</p>", css: "h1,p{color:#fff}" }), "rgb(15, 23, 42)");
+  assert.notEqual(await bg({ html: "<h1>Hi</h1>", css: "h1{color:#111}" }), "rgb(15, 23, 42)");
+  assert.notEqual(await bg({ html: "<h1>Hi</h1>", css: "body{background:#fff} h1{color:#fff}" }), "rgb(15, 23, 42)");
+});
