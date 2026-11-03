@@ -233,7 +233,7 @@ html[dir="ltr"][data-track="com"] :is(.hero-content, .lesson-header, .content-ca
 .fy-cm { border-radius: 0 0 14px 14px; overflow: hidden; background: var(--fy-code-bg); transition: box-shadow .2s ease; }
 .fy-cm:focus-within { box-shadow: inset 0 0 0 2px var(--fy-course, var(--fy-brand)); }
 .fy-cm .cm-editor { max-height: 520px; }
-.fy-cm-status { display: flex; justify-content: space-between; gap: 12px; padding: 5px 14px; background: var(--fy-course, var(--fy-brand)); color: var(--fy-course-on, var(--fy-on-brand)); font: 700 .72rem var(--fy-font-en, system-ui); direction: ltr; }
+.fy-cm-status { display: flex; justify-content: space-between; gap: 12px; padding: 5px 14px; background: var(--fy-surface-2, var(--fy-surface)); color: var(--fy-text); border-block-start: 3px solid var(--fy-course, var(--fy-brand)); font: 700 .72rem var(--fy-font-en, system-ui); direction: ltr; }
 
 /* Site-wide type roles: Reem Kufi = headlines, El Messiri = section/card titles, Readex Pro = text */
 h1 { font-family: var(--fy-font-display); }
