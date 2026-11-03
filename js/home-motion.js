@@ -66,8 +66,22 @@
     if (typed) typed.delay(0.9);
   }
 
+  // animated journey track under the stage tabs (desktop): the line draws itself, the four nodes pop in
+  function journey() {
+    var tabs = $(".hm-tabs");
+    if (!tabs || !ST || !window.matchMedia("(min-width:1001px)").matches || $(".hm-track", tabs)) return;
+    var tr = document.createElement("div"); tr.className = "hm-track"; tr.setAttribute("aria-hidden", "true");
+    tr.innerHTML = "<b></b><i></i><i></i><i></i><i></i>";
+    tabs.appendChild(tr);
+    var tl = gsap.timeline({ scrollTrigger: { trigger: "#courses", start: "top 65%", once: true } });
+    tl.from(tr.querySelector("b"), { scaleX: 0, duration: 1.4, ease: "power2.inOut" })
+      .from(tr.querySelectorAll("i"), { scale: 0, duration: 0.5, ease: "back.out(2.4)", stagger: 0.28 }, 0.1)
+      .from("#courses .hm-stage", { y: 46, opacity: 0, duration: 0.7, ease: "power3.out", stagger: 0.14, clearProps: "transform,opacity" }, 0.35);
+  }
+
   function reveals() {
     if (!ST) return;
+    journey();
     function on(trigger, targets, vars) {
       var els = $$(targets);
       if (!els.length) return;
@@ -75,10 +89,13 @@
         scrollTrigger: { trigger: trigger, start: "top 72%", once: true } }, vars || {}));
     }
     on("#courses", "#courses .hm-head > *, #courses .hm-tab");
-    on("#courses .hm-stage:not([hidden])", "#courses .hm-stage:not([hidden]) .hm-stage-rail > *, #courses .hm-stage:not([hidden]) .hm-row", { stagger: 0.07 });
+    if (!window.matchMedia("(min-width:1001px)").matches) on("#courses .hm-stage:not([hidden])", "#courses .hm-stage:not([hidden]) .hm-stage-rail > *, #courses .hm-stage:not([hidden]) .hm-row", { stagger: 0.07 });
     on("#how", "#how .hm-head > *");
     on("#how .hm-how-list", "#how .hm-step", { y: 44, stagger: 0.15 });
     on("#owner", "#owner .hm-owner-body > *, #owner .hm-owner-photo", { y: 34, stagger: 0.1 });
+    on(".ft-cta", ".ft-cta-in > *", { y: 24 });
+    on(".ft-grid", ".ft-grid > *", { y: 30, stagger: 0.12 });
+    if (document.querySelector(".ft-mark span")) gsap.from(".ft-mark span", { yPercent: 40, opacity: 0, duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: ".ft-mark", start: "top 95%", once: true } });
     on("#start", "#start .hm-final-box > *", { y: 34, stagger: 0.12 });
     // gentle parallax on the ambient orbs
     $$(".hm-orb").forEach(function (o, i) {
@@ -92,6 +109,7 @@
 
   // re-animate the rows whenever another stage is opened
   window.addEventListener("fayad:stagechange", function () {
+    if (window.matchMedia("(min-width:1001px)").matches) return;
     var rows = $$(".hm-stage:not([hidden]) .hm-stage-rail > *, .hm-stage:not([hidden]) .hm-row");
     if (!rows.length || !window.__hmMotionReady) return;
     gsap.fromTo(rows, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out", stagger: 0.06, clearProps: "transform,opacity", overwrite: true });
@@ -121,6 +139,8 @@
         orbs.forEach(function (o, i) { gsap.to(o, { x: nx * (i ? 40 : -50), duration: 1.2, ease: "power3.out", overwrite: "auto" }); });
       }
     }, { passive: true });
+    var mark = $(".ft-mark");
+    if (mark) mark.addEventListener("pointermove", function (e) { var r = mark.getBoundingClientRect(); mark.style.setProperty("--mx", (e.clientX - r.left) + "px"); });
     $$("[data-tilt], .hm-win").forEach(function (el) {
       var rx = gsap.quickTo(el, "rotationX", { duration: 0.5, ease: "power2.out" }), ry = gsap.quickTo(el, "rotationY", { duration: 0.5, ease: "power2.out" });
       gsap.set(el, { transformPerspective: 900 });
@@ -142,7 +162,8 @@
     });
   });
 
-  function start() { hero(); counters(); reveals(); magnetic(); pointer(); window.__hmMotionReady = true; }
+  function start() { var top = $(".ft-top"); if (top) top.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+    hero(); counters(); reveals(); magnetic(); pointer(); window.__hmMotionReady = true; }
   // i18n re-applies text on DOMContentLoaded, so split/animate only after that
   function later() { requestAnimationFrame(start); }
   if (document.readyState === "complete") later(); else document.addEventListener("DOMContentLoaded", later);
