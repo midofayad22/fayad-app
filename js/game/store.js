@@ -15,11 +15,11 @@ export function read() {
 }
 export const solvedOf = (d, game) => Object.keys(d.games[game]?.solved || {}).length;
 /** Records a first-time solve; returns points earned (0 if already solved). */
-export function award(game, level, hinted) {
+export function award(game, level, hinted, base = POINTS.solve) {
   const d = read();
   const g = (d.games[game] ||= { solved: {} });
   if (g.solved[level]) return { earned: 0, data: d };
-  const earned = POINTS.solve + (hinted ? 0 : POINTS.noHint);
+  const earned = base + (hinted ? 0 : POINTS.noHint);
   g.solved[level] = { at: Date.now(), hint: !!hinted };
   d.points += earned;
   try { localStorage.setItem(KEY, JSON.stringify(d)); } catch { /* storage full or blocked: play continues */ }

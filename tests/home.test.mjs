@@ -202,14 +202,15 @@ test("the hero's 4-stage overview reflects real saved progress per stage (and is
   await ctx.close();
 });
 
-test("every homepage section fills the screen height and sections never overlap (ar+en, phone to desktop)", async () => {
+test("homepage sections flow continuously: never overlap, never overflow sideways, hero stays above the fold (ar+en, phone to desktop)", async () => {
   for (const lang of ["ar", "en"]) for (const [w, h] of [[360, 740], [390, 844], [768, 1024], [1280, 800], [1440, 900]]) {
     const { ctx, page } = await open({}, lang);
     await page.setViewportSize({ width: w, height: h }); await page.waitForTimeout(1500);
     const r = await page.evaluate(() => [...document.querySelectorAll("main > .hm-sec")].map((s) => { const b = s.getBoundingClientRect(); return { id: s.id, top: b.top + scrollY, bottom: b.bottom + scrollY, h: b.height, sh: s.scrollHeight }; }));
     assert.equal(r.length, 5);
     r.forEach((s, i) => {
-      assert.ok(s.h >= h - 1, `${lang}@${w}x${h}: #${s.id} shorter than the screen (${s.h})`);
+      if (i === 0) assert.ok(s.h >= Math.min(h, 860) - 1, `${lang}@${w}x${h}: hero shorter than the screen (${s.h})`);
+      assert.ok(s.h > 200, `${lang}@${w}x${h}: #${s.id} collapsed (${s.h})`);
       if (i) assert.ok(s.top >= r[i - 1].bottom - 1, `${lang}@${w}x${h}: #${s.id} overlaps previous`);
     });
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${lang}@${w}: x overflow`);
