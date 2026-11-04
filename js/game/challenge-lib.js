@@ -14,7 +14,8 @@
 export const LEVELS = ["beginner", "intermediate", "advanced", "expert"];
 export const BASE_POINTS = { beginner: 10, intermediate: 15, advanced: 20, expert: 30 };
 
-const PRELUDE = "function __FYT(i,f){var ok=false;try{ok=!!f()}catch(e){}console.log('@@FY '+(ok?1:0)+' '+i)}";
+// a check may return a Promise (resolved through microtasks only: timers would outlive the run)
+const PRELUDE = "function __FYT(i,f){function L(ok){console.log('@@FY '+(ok?1:0)+' '+i)}try{var r=f();if(r&&typeof r.then==='function'){r.then(function(v){L(!!v)},function(){L(false)})}else L(!!r)}catch(e){L(false)}}";
 
 /** The JS that is appended to the learner's JS so the checks run in the same scope. */
 export function checkScript(ch) {
