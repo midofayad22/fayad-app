@@ -99,7 +99,7 @@
     on("#start", "#start .hm-final-box > *", { y: 34, stagger: 0.12 });
     // gentle parallax on the ambient orbs
     $$(".hm-orb").forEach(function (o, i) {
-      gsap.to(o, { yPercent: i ? -18 : 18, ease: "none", scrollTrigger: { trigger: o.closest(".hm-sec"), start: "top bottom", end: "bottom top", scrub: 0.6 } });
+      gsap.to(o, { yPercent: i ? -18 : 18, ease: "none", scrollTrigger: { trigger: o.closest(".hm-sec"), start: "top bottom", end: "bottom top", scrub: 1 } });
     });
     // progress bars in the step art fill as the step enters
     $$("#how .hm-step-art > i").forEach(function (b) {
