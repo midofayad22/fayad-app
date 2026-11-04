@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <script src="/js/prefs.js"></script>
+    <link rel="canonical" href="https://fayad-learning.vercel.app/play/arena.html" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/icons/favicon-48.png" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#071014" />
+    <meta name="description" content="ساحة التحديات: تحديات برمجية عملية بمستويات من المبتدئ إلى الخبير، مع محرر ومعاينة حية وتحقق فوري." />
+    <title>ساحة التحديات — FAYAD</title>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/theme-overrides.css" />
+    <link rel="stylesheet" href="/css/shell.css" />
+    <link rel="stylesheet" href="/css/account.css" />
+    <link rel="stylesheet" href="/css/game.css" />
+    <script src="/js/i18n.js" defer></script>
+    <script src="/js/shell.js" defer></script>
+    <script type="module" src="/js/game/arena.js"></script>
+  </head>
+  <body class="ac-body" data-page="arena">
+    <a class="fy-skip" href="#main" data-i18n="common.skip">تخطي إلى المحتوى</a>
+    <header class="ac-top">
+      <div class="ac-wrap ac-top-in">
+        <a class="ac-brand" href="/index.html" aria-label="FAYAD"><img src="/assets/brand/logo-mark.svg" alt="" width="32" height="32" /><span>FAYAD</span></a>
+        <nav class="ac-nav" aria-label="FAYAD">
+          <a href="/index.html" data-i18n="fq.home">الرئيسية</a>
+          <a href="/play/index.html" data-i18n="fq.hub">الألعاب</a>
+          <a href="/dashboard.html" data-i18n="fq.dash">لوحة التقدم</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="ar-main">
+      <div class="ar-head">
+        <div><h1 id="arTrack" class="ar-h1"></h1><p class="ar-sub" id="arSub"></p></div>
+        <span class="fq-chip"><span data-i18n="fq.points">نقاط اللعبة</span>: <b id="arPoints">0</b></span>
+      </div>
+      <div class="ar-levels" id="arLevels" role="list"></div>
+      <div class="ar-grid" id="arGrid" hidden>
+        <section class="ar-brief" aria-labelledby="arTitle">
+          <span class="ar-badge" id="arBadge"></span>
+          <h2 id="arTitle"></h2>
+          <p class="ar-goal"><b data-i18n="ar.goal">الهدف التعليمي:</b> <span id="arGoal"></span></p>
+          <p id="arBrief"></p>
+          <h3 class="ar-h3" data-i18n="ar.checks">المتطلبات</h3>
+          <ul class="ar-checks" id="arChecks"></ul>
+          <div class="ar-hints" id="arHints"></div>
+        </section>
+        <section class="ar-work" aria-label="Editor">
+          <div class="ar-tabs" id="arTabs" role="tablist"></div>
+          <div class="ar-editors" id="arEditors"></div>
+          <div class="ar-actions">
+            <button class="ac-btn ac-btn-primary" type="button" id="arRun">▶ <span data-i18n="ar.run">تشغيل</span></button>
+            <button class="ac-btn" type="button" id="arHint" data-i18n="fq.hint">تلميح</button>
+            <button class="ac-btn" type="button" id="arReset" data-i18n="fq.reset">إعادة الضبط</button>
+            <span class="ar-status" id="arStatus" role="status"></span>
+          </div>
+        </section>
+        <section class="ar-out" aria-label="Preview">
+          <div class="ar-out-bar"><span data-i18n="ar.preview">المعاينة</span></div>
+          <div class="ar-preview" id="arPreview"><p class="ar-empty" id="arEmpty" data-i18n="ar.empty">شغّل الكود لترى النتيجة هنا</p></div>
+          <div class="ar-console" id="arConsole" aria-live="polite"></div>
+        </section>
+      </div>
+      <div class="ar-win" id="arWin" role="dialog" aria-modal="true" aria-labelledby="arWinT" hidden>
+        <div class="ar-win-card">
+          <div class="ar-confetti" aria-hidden="true"></div>
+          <h2 id="arWinT"></h2>
+          <p id="arWinPts"></p>
+          <p id="arWinExplain"></p>
+          <div class="ar-win-actions"><button class="ac-btn" type="button" id="arWinStay" data-i18n="ar.replay">أعد المحاولة</button><button class="ac-btn ac-btn-primary" type="button" id="arWinNext" data-i18n="fq.next">المرحلة التالية</button></div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
