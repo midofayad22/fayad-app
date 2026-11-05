@@ -61,7 +61,7 @@ test("learner Angular code is analysed by the non-executing simulation (detected
   assert.equal(await page.locator("#previewHost iframe").count(), 0);
   await ctx.close();
   const en = await open(URL_NEW, { lang: "en" });
-  await en.page.fill("#jsEditor", "@Component({template:'<p *ngIf=\"x\">Hi</p>'}) class A {}");
+  await en.page.fill("#jsEditor", "@Component({template:'<p *ngIf=\"x\">Hi</p>'}) class A {}"); await en.page.click("#runButton");
   await en.page.waitForFunction(() => /Conditional/i.test(document.querySelector("#output")?.textContent || ""));
   assert.match(await en.page.locator("#output").innerText(), /Conditional/i);
   await en.ctx.close();

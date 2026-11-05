@@ -25,6 +25,7 @@ async function open(hash = "", viewport = { width: 1280, height: 900 }) {
   return { ctx, page, errors, failed };
 }
 const previewFrame = async (page) => {
+  if (!(await page.$("#previewHost iframe"))) await page.click("#runButton"); 
   await page.waitForSelector("#previewHost iframe");
   const handle = await page.$("#previewHost iframe");
   const frame = await handle.contentFrame();

@@ -22,7 +22,7 @@ async function open(hash = "") {
   await page.waitForFunction(() => document.documentElement.dataset.engine === "ready");
   return { ctx, page, errors };
 }
-const previewFrame = async (page) => { await page.waitForSelector("#previewHost iframe"); const f = await (await page.$("#previewHost iframe")).contentFrame(); await f.waitForLoadState("load"); return f; };
+const previewFrame = async (page) => { if (!(await page.$("#previewHost iframe"))) await page.click("#runButton"); await page.waitForSelector("#previewHost iframe"); const f = await (await page.$("#previewHost iframe")).contentFrame(); await f.waitForLoadState("load"); return f; };
 
 test("vendored Tailwind browser build exists with the documented version", () => {
   assert.ok(fs.existsSync(`vendor/tailwindcss-browser-${TAILWIND_VERSION}/LICENSE`));
