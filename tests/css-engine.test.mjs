@@ -56,7 +56,7 @@ test("the quiz is bilingual: English mode shows the English question and answers
 test("learner CSS is applied inside the sandboxed preview only (not to the page); the example is rendered in its own sandbox", async () => {
   const { ctx, page } = await open();
   const before = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
-  await page.fill("#cssEditor, #jsEditor", "body{background:rgb(255,0,0)} h1{color:rgb(0,128,0)}");
+  await page.fill("#cssEditor, #jsEditor", "body{background:rgb(255,0,0)} h1{color:rgb(0,128,0)}"); await page.click("#runButton");
   await page.waitForTimeout(1200);
   const frame = await frameOf(page, "#previewHost");
   await frame.waitForFunction(() => getComputedStyle(document.querySelector("h1")).color === "rgb(0, 128, 0)");

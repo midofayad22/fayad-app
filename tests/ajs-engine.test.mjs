@@ -43,11 +43,11 @@ test("ajs page: 22 lessons in 5 groups, no console errors, exact content for eve
 
 test("ajs: running the starter code shows real output from the sandboxed worker", async () => {
   const { ctx, page } = await open(URL_NEW + "#lesson-4");
-  await page.fill("#jsEditor", "console.log(['x','y'].map((s) => s.toUpperCase()).join('-'));");
+  await page.fill("#jsEditor", "console.log(['x','y'].map((s) => s.toUpperCase()).join('-'));"); await page.click("#runButton");
   await page.click("#runButton");
   await page.waitForFunction(() => /X-Y/.test(document.getElementById("output").textContent));
   // storage of the host page is unreachable from learner code
-  await page.fill("#jsEditor", "try { console.log(typeof localStorage, typeof document); } catch (e) { console.log('blocked'); }");
+  await page.fill("#jsEditor", "try { console.log(typeof localStorage, typeof document); } catch (e) { console.log('blocked'); }"); await page.click("#runButton");
   await page.click("#runButton");
   await page.waitForFunction(() => /undefined undefined|blocked/.test(document.getElementById("output").textContent));
   await ctx.close();
@@ -55,7 +55,7 @@ test("ajs: running the starter code shows real output from the sandboxed worker"
 
 test("ajs: a runaway loop is stopped and the page stays usable", async () => {
   const { ctx, page } = await open();
-  await page.fill("#jsEditor", "while (true) {}");
+  await page.fill("#jsEditor", "while (true) {}"); await page.click("#runButton");
   await page.click("#runButton");
   await page.waitForFunction(() => document.getElementById("output").textContent.length > 0 && !/^\s*$/.test(document.getElementById("output").textContent), null, { timeout: 15000 });
   await page.click(link(2));

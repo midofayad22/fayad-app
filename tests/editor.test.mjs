@@ -42,6 +42,6 @@ test("if the editor cannot load, the plain textarea remains usable", async () =>
   await page.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort()); await page.route(/codemirror-6\/cm\.js/, (r) => r.abort());
   await page.goto(base + "/css-learning/css-learning.html"); await page.waitForSelector('html[data-engine="ready"]'); await page.waitForTimeout(800);
   assert.equal(await page.locator(".fy-cm").count(), 0);
-  await page.fill("#jsEditor", "p{}"); assert.equal(await page.locator("#jsEditor").inputValue(), "p{}");
+  await page.fill("#jsEditor", "p{}"); assert.equal(await page.locator("#jsEditor").inputValue(), "p{}"); await page.click("#runButton");
   await ctx.close();
 });

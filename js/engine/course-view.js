@@ -161,8 +161,9 @@ export function mountCourse({ doc = document, track, lessons, state, lang: initi
 
     paintSidebar(); paintProgress(); paintNav(); renderQuestion();
     if (win.location.hash !== `#lesson-${numberOf(l.id)}`) win.history.replaceState(null, "", `#lesson-${numberOf(l.id)}`);
-    if (showPractice) run();
+    if (showPractice) clearResult();
     if (runtime === "css" && ex) runExampleStage();
+    else if (runtime === "dom-js" && ex) runExampleStageJs(ex.code ?? "");
   }
 
   function go(id) { if (state.open(id)) renderLesson(); }
@@ -237,6 +238,7 @@ export function mountCourse({ doc = document, track, lessons, state, lang: initi
   function showOutput(msg) { el.output.textContent = msg; }
 
   function run() {
+    el.previewHost.querySelector(".fy-empty")?.remove();
     const my = ++runId;
     clearTimeout(inputTimer);
     if (runner) { runner.destroy(); runner = null; }
@@ -314,6 +316,26 @@ export function mountCourse({ doc = document, track, lessons, state, lang: initi
     if (r.output) { el.outputWrap.hidden = false; showOutput(r.output); } else el.outputWrap.hidden = true;
   }
 
+  // Results appear only when the learner presses Run (W3Schools-style "try it"): until then show a calm placeholder.
+  function clearResult() {
+    runId += 1; clearTimeout(inputTimer);
+    if (runner) { runner.destroy(); runner = null; }
+    el.output.textContent = S("output.placeholder");
+    if (livePreview) {
+      el.previewHost.textContent = "";
+      const p = doc.createElement("p"); p.className = "fy-empty"; p.textContent = S("preview.empty"); el.previewHost.appendChild(p);
+    }
+  }
+  // dom-js lessons: the authored example runs once in the result card so it is never an empty block
+  function runExampleStageJs(code) {
+    if (exampleRunner) exampleRunner.destroy();
+    el.jsResultStage.textContent = "";
+    exampleRunner = createRunner(el.jsResultStage, { runtime: "html", title: S("preview.title"), loopBudget: 5000000 });
+    const { css, html } = stageDocument();
+    exampleRunner.run({ css, html, js: code });
+    el.resultCard.hidden = false;
+  }
+
   // css lessons: the example itself is rendered (read-only) in the result card, in its own sandbox
   function runExampleStage() {
     if (exampleRunner) exampleRunner.destroy();
@@ -346,11 +368,10 @@ export function mountCourse({ doc = document, track, lessons, state, lang: initi
     const edLang = runtime === "css" ? "css" : runtime === "sim-react" ? "jsx" : runtime === "html" || runtime === "sim-angular" ? "html" : "js";
     const idle = win.requestIdleCallback || ((f) => win.setTimeout(f, 200));
     idle(() => upgradeEditor(el.jsEditor, { language: edLang, onRun: () => el.runButton.click(), labelOf: () => S("editor.aria") }));
-    el.resetButton.addEventListener("click", () => { el.jsEditor.value = starterOf(state.lesson); el.output.textContent = S("output.placeholder"); run(); });
+    el.resetButton.addEventListener("click", () => { el.jsEditor.value = starterOf(state.lesson); clearResult(); });
     el.copyButton.addEventListener("click", copyCode);
     el.sidebarToggle.addEventListener("click", () => { const open = el.sidebar.classList.toggle("open"); el.sidebarToggle.setAttribute("aria-expanded", String(open)); });
     doc.addEventListener("keydown", (e) => { if (e.key === "Escape") closeSidebar(); });
-    if (livePreview) el.jsEditor.addEventListener("input", () => { clearTimeout(inputTimer); inputTimer = setTimeout(run, 450); });
     doc.addEventListener("keydown", (e) => {
       if (e.target && (e.target.tagName === "TEXTAREA" || e.target.tagName === "INPUT")) return;
       const rtl = doc.dir === "rtl";

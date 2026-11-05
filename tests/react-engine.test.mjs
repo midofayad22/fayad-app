@@ -46,7 +46,7 @@ test("boots without errors; all 30 lessons in 5 groups; exact Arabic content for
 
 test("learner JSX is described by the non-executing simulation (never evaluated, no iframe)", async () => {
   const { ctx, page } = await open();
-  await page.fill("#jsEditor", "function App(){ return <h1>Hello Fayad</h1>; }");
+  await page.fill("#jsEditor", "function App(){ return <h1>Hello Fayad</h1>; }"); await page.click("#runButton");
   await page.waitForFunction(() => /Hello Fayad/.test(document.querySelector("#previewHost .sim-box")?.textContent || ""));
   assert.equal(await page.locator("#previewHost iframe").count(), 0);
   assert.equal(await page.evaluate(() => typeof window.React), "undefined");

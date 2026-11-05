@@ -86,7 +86,7 @@ test("bs: dark color mode on an element changes its computed background (lesson 
 
 test("bs: preview is sandboxed (cannot read the host page storage)", async () => {
   const { ctx, page } = await open("#lesson-1");
-  await page.fill("#jsEditor", "<script>try{document.title=typeof localStorage}catch(e){document.title='blocked'}<\/script><p id=r>x</p>");
+  await page.fill("#jsEditor", "<script>try{document.title=typeof localStorage}catch(e){document.title='blocked'}<\/script><p id=r>x</p>"); await page.click("#runButton");
   await page.waitForTimeout(1200); // the preview re-renders (new frame) after the debounced input
   const frame = await previewFrame(page);
   await frame.waitForSelector("#r", { state: "attached" });
