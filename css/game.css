@@ -111,3 +111,8 @@
 @media (max-width: 720px) { .ar-grid { grid-template-columns: minmax(0, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .ar-win-card, .ar-confetti, .ar-hints p, .ar-checks li.ok::before, .ar-lv { animation: none; transition: none; } }
 .ar-empty[hidden], .ar-grid[hidden] { display: none; }
+
+.gh-lb{margin-block:2rem;padding:1.25rem;border:1px solid var(--fy-border,rgba(128,128,128,.25));border-radius:16px}
+.gh-lb-list{list-style:none;margin:.5rem 0;padding:0;display:grid;gap:.4rem}
+.gh-lb-list li{display:grid;grid-template-columns:2.2rem 1fr auto;gap:.75rem;align-items:center;padding:.5rem .75rem;border-radius:10px;background:rgba(128,128,128,.08)}
+.gh-lb-list em{font-style:normal;font-weight:700}

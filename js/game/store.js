@@ -20,8 +20,30 @@ export function award(game, level, hinted, base = POINTS.solve) {
   const g = (d.games[game] ||= { solved: {} });
   if (g.solved[level]) return { earned: 0, data: d };
   const earned = base + (hinted ? 0 : POINTS.noHint);
-  g.solved[level] = { at: Date.now(), hint: !!hinted };
+  g.solved[level] = { at: Date.now(), hint: !!hinted, pts: earned };
   d.points += earned;
   try { localStorage.setItem(KEY, JSON.stringify(d)); } catch { /* storage full or blocked: play continues */ }
+  try { document.dispatchEvent(new CustomEvent("fayad:solve", { detail: { game, level, earned } })); } catch { /* non-DOM */ }
   return { earned, data: d };
+}
+
+/** Union-merge solves (from the cloud) into the local store. Never lowers anything. Returns true if something was added. */
+export function mergeSolves(rows) {
+  const d = read(); let added = false;
+  for (const r of rows) {
+    const g = (d.games[r.game] ||= { solved: {} });
+    if (g.solved[r.level]) continue;
+    g.solved[r.level] = { at: Date.parse(r.solved_at) || Date.now(), hint: !!r.hinted, pts: r.points };
+    d.points += r.points; added = true;
+  }
+  if (added) { try { localStorage.setItem(KEY, JSON.stringify(d)); } catch { /* ignore */ } }
+  return added;
+}
+/** Local solves as cloud rows (points default to the old flat rule when an entry predates per-solve points). */
+export function solveRows(userId) {
+  const d = read(), out = [];
+  for (const [game, g] of Object.entries(d.games)) for (const [level, v] of Object.entries(g.solved)) {
+    out.push({ user_id: userId, game, level: Number(level), points: Math.min(60, Math.max(0, Number.isFinite(v.pts) ? v.pts : POINTS.solve + (v.hint ? 0 : POINTS.noHint))), hinted: !!v.hint });
+  }
+  return out;
 }

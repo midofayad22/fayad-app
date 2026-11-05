@@ -25,7 +25,8 @@ async function open(url = URL_NEW, seed = {}, viewport = { width: 1280, height: 
   await page.waitForFunction(() => document.documentElement.dataset.engine === "ready" || (location.pathname.includes("/legacy/") && document.querySelector("#lessonTitle")?.textContent));
   return { ctx, page, errors };
 }
-const settle = (page) => page.waitForFunction(() => !document.querySelector("#output").textContent.includes("جاري التشغيل"), null, { timeout: 8000 });
+// results appear only after Run: settle() presses it, then waits until the output is neither the placeholder nor "running"
+const settle = async (page) => { await page.click("#runButton"); await page.waitForFunction(() => { const t = document.querySelector("#output").textContent; return !t.includes("جاري التشغيل") && t !== "ستظهر النتيجة هنا."; }, null, { timeout: 8000 }); };
 const solveLesson = async (page) => { for (let i = 0; i < 3; i++) { const idx = await page.evaluate(() => FAYAD.course.state.questionData.correct); await page.click(`#answerOptions button[data-index="${idx}"]`); await page.click("#quizNextButton"); } };
 const stored = (page, k) => page.evaluate((key) => localStorage.getItem(key), k);
 
@@ -120,12 +121,12 @@ test("learner code runs in the sandbox: output, DOM stage, console, errors", asy
   assert.equal(await page.locator("#output").innerText(), "تم تشغيل الكود بنجاح.");
   const frame = page.locator("#jsResultStage iframe");
   assert.equal(await frame.getAttribute("sandbox"), "allow-scripts");
-  await page.fill("#jsEditor", 'console.log("a"); console.log({x:1});'); await page.click("#runButton"); await settle(page);
+  await page.fill("#jsEditor", 'console.log("a"); console.log({x:1});'); await settle(page);
   assert.equal(await page.locator("#output").innerText(), 'a\n{x: 1}');
-  await page.fill("#jsEditor", 'document.getElementById("jsResult").textContent = "نتيجة";'); await page.click("#runButton"); await settle(page);
+  await page.fill("#jsEditor", 'document.getElementById("jsResult").textContent = "نتيجة";'); await settle(page);
   assert.equal(await page.locator("#output").innerText(), "نتيجة");
   assert.equal(await page.frameLocator("#jsResultStage iframe").locator("#jsResult").innerText(), "نتيجة");
-  await page.fill("#jsEditor", "null.x"); await page.click("#runButton"); await settle(page);
+  await page.fill("#jsEditor", "null.x"); await settle(page);
   assert.match(await page.locator("#output").innerText(), /^خطأ: .*(TypeError|null)/);
   await ctx.close();
 });
@@ -153,11 +154,11 @@ test("SECURITY: learner code cannot read progress/session storage, cookies or th
   await page.evaluate(() => { document.cookie = "sid=SECRET-COOKIE"; });
   const code = `const p=(n,f)=>{try{console.log(n+':LEAK:'+f())}catch(e){console.log(n+':BLOCKED')}};
 p('ls',()=>localStorage.getItem('fayad-supabase-auth'));p('ss',()=>sessionStorage.length);p('cookie',()=>document.cookie);p('parent',()=>parent.document.title);p('top',()=>top.FAYAD);`;
-  await page.fill("#jsEditor", code); await page.click("#runButton"); await settle(page);
+  await page.fill("#jsEditor", code); await settle(page);
   const out = await page.locator("#output").innerText();
   assert.ok(!/LEAK|SECRET/.test(out), out);
   assert.equal((out.match(/BLOCKED/g) || []).length, 5, out);
-  await page.fill("#jsEditor", "while(true){}"); await page.click("#runButton"); await settle(page);
+  await page.fill("#jsEditor", "while(true){}"); await settle(page);
   assert.match(await page.locator("#output").innerText(), /loop ran too many times/);
   assert.equal(await page.evaluate(() => 1 + 1), 2);
   await ctx.close();

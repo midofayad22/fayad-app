@@ -55,13 +55,13 @@ test("the quiz is bilingual: English mode shows the English question and answers
 
 test("learner Angular code is analysed by the non-executing simulation (detected features, never evaluated)", async () => {
   const { ctx, page } = await open();
-  await page.fill("#jsEditor", "@Component({selector:'a',template:'<h1>Hello Angular</h1>'}) export class A {}");
+  await page.fill("#jsEditor", "@Component({selector:'a',template:'<h1>Hello Angular</h1>'}) export class A {}"); await page.click("#runButton");
   await page.waitForFunction(() => /Hello Angular/.test(document.querySelector("#previewHost .sim-box")?.textContent || ""));
   assert.match(await page.locator("#output").innerText(), /تم اكتشاف:.*Component/);
   assert.equal(await page.locator("#previewHost iframe").count(), 0);
   await ctx.close();
   const en = await open(URL_NEW, { lang: "en" });
-  await en.page.fill("#jsEditor", "@Component({template:'<p *ngIf=\"x\">Hi</p>'}) class A {}");
+  await en.page.fill("#jsEditor", "@Component({template:'<p *ngIf=\"x\">Hi</p>'}) class A {}"); await en.page.click("#runButton");
   await en.page.waitForFunction(() => /Conditional/i.test(document.querySelector("#output")?.textContent || ""));
   assert.match(await en.page.locator("#output").innerText(), /Conditional/i);
   await en.ctx.close();

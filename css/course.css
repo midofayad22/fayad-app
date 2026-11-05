@@ -1847,3 +1847,16 @@ html[dir="rtl"] .lesson:hover { transform: translateX(-3px); }
   .lesson.active .lesson-number, .lesson.current .lesson-number { animation: fy-pulse 2.4s ease-in-out infinite; }
   @keyframes fy-pulse { 0%, 100% { box-shadow: 0 0 0 0 var(--fy-course-glow); } 50% { box-shadow: 0 0 0 7px transparent; } }
 }
+
+/* ===== Try-it flow: results appear only after Run ===== */
+.preview-host .fy-empty { display: grid; place-items: center; min-height: 240px; margin: 0; padding: 24px; text-align: center; color: var(--fy-text-muted); background: repeating-linear-gradient(135deg, transparent 0 12px, color-mix(in srgb, var(--fy-text) 4%, transparent) 12px 13px); }
+.practice-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-block: 14px; }
+.practice-actions .run-btn { display: inline-flex; align-items: center; gap: 8px; min-height: 46px; padding: 0 26px; border: 0; border-radius: 12px; background: var(--fy-course, var(--fy-brand)); color: var(--fy-course-on, var(--fy-on-brand)); font: 700 1rem var(--fy-font); cursor: pointer; box-shadow: 0 10px 24px -12px var(--fy-course, var(--fy-brand)); transition: transform .25s cubic-bezier(.4,0,.2,1), box-shadow .25s; }
+.practice-actions .run-btn:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -12px var(--fy-course, var(--fy-brand)); }
+.practice-actions .run-btn:active { transform: translateY(0) scale(.98); }
+.practice-actions .reset-btn { min-height: 46px; padding: 0 20px; border: 1px solid var(--fy-border-strong); border-radius: 12px; background: transparent; color: var(--fy-text); font: 600 .95rem var(--fy-font); cursor: pointer; transition: background .25s, border-color .25s; }
+.practice-actions .reset-btn:hover { background: var(--fy-hover); border-color: var(--fy-course, var(--fy-brand)); }
+.practice-actions button:focus-visible { outline: none; box-shadow: var(--fy-focus); }
+.preview-host iframe { animation: fy-in .35s ease both; }
+@keyframes fy-in { from { opacity: 0; transform: translateY(6px); } }
+@media (prefers-reduced-motion: reduce) { .preview-host iframe { animation: none; } .practice-actions .run-btn { transition: none; } }

@@ -49,7 +49,7 @@ test("Vue code runs in the sandboxed preview: every starter and example mounts (
   for (const [i, l] of lessons.entries()) {
     await page.click(`.sidebar a.lesson[data-lesson="${i + 1}"]`);
     for (const code of [l.practice.starterCode, l.example.code]) {
-      await page.fill("#jsEditor", code); await page.click("#runButton");
+      await page.fill("#jsEditor", code); await page.click("#runButton"); await page.click("#runButton");
       const frame = await frameOf(page, "#previewHost");
       await frame.waitForFunction(() => { const a = document.querySelector("#app"); return !a || (a.innerHTML.trim() !== "" && !/\{\{/.test(a.textContent)); }, null, { timeout: 8000 }).catch(() => { throw new Error(`${l.id}: Vue did not mount`); });
     }
@@ -60,8 +60,9 @@ test("Vue code runs in the sandboxed preview: every starter and example mounts (
 
 test("the preview is sandboxed (allow-scripts only) and learner scripts cannot read the site's storage", async () => {
   const { ctx, page } = await open(URL_NEW, { seed: { "fayad-supabase-auth": "SECRET" } });
+  if (!(await page.$("#previewHost iframe"))) await page.click("#runButton"); 
   assert.equal(await (await page.waitForSelector("#previewHost iframe")).getAttribute("sandbox"), "allow-scripts");
-  await page.fill("#jsEditor", `<p id=r></p><script>var o;try{o=localStorage.getItem('fayad-supabase-auth')}catch(e){o='BLOCKED'}document.getElementById('r').textContent=o<\/script>`);
+  await page.fill("#jsEditor", `<p id=r></p><script>var o;try{o=localStorage.getItem('fayad-supabase-auth')}catch(e){o='BLOCKED'}document.getElementById('r').textContent=o<\/script>`); await page.click("#runButton");
   await page.click("#runButton");
   const frame = await frameOf(page, "#previewHost");
   await frame.waitForFunction(() => document.getElementById("r")?.textContent === "BLOCKED");

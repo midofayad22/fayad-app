@@ -1,5 +1,4 @@
--- DRAFT migration 0001: profiles + synchronized learning progress.
--- STATUS: NOT APPLIED anywhere. Review, run supabase/preflight_readonly.sql first, apply to a development project only.
+-- Migration 0001: profiles + synchronized learning progress (applied to project vsrysitexadvmmikcmfs on 2026-11-05 with the owner's approval).
 -- Idempotent where practical (IF NOT EXISTS); it never drops or rewrites existing objects.
 -- Design: every table is owned by auth.users, RLS is on, only the `authenticated` role can touch rows, and a user can only
 -- see/change their own rows. Points are NOT stored (derived from these rows by the app), so they cannot be forged here.

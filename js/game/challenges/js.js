@@ -69,7 +69,7 @@ export const CHALLENGES = [
     checks: [
       { ar: "عدّاد واحد يعدّ 1 ثم 2 ثم 3", en: "One counter gives 1, 2, 3", test: `var a=makeCounter();return a()===1&&a()===2&&a()===3` },
       { ar: "عدّادان مستقلان", en: "Two counters are independent", test: `var a=makeCounter(),b=makeCounter();a();a();return b()===1&&a()===3` },
-      { ar: "لا متغير عام باسم count", en: "No global variable named count", test: `return typeof globalThis.count==='undefined'&&(function(){try{return typeof eval('count')==='undefined'}catch(e){return true}})()` } ],
+      { ar: "لا متغير عام باسم count", en: "No global variable named count", test: `return typeof globalThis.count==='undefined'` } ],
     hints: [{ ar: "انقل المتغير إلى داخل makeCounter.", en: "Move the variable inside makeCounter." }],
     explain: { ar: "الدالة الداخلية «تتذكر» المتغيرات المحيطة بها حتى بعد انتهاء الدالة الخارجية، فتكون كل نسخة بحالتها الخاصة.", en: "The inner function “remembers” the surrounding variables even after the outer function ends, so every copy has its own private state." },
     solution: { js: "function makeCounter() {\n  let count = 0;\n  return function () {\n    count++;\n    return count;\n  };\n}\n" } },

@@ -96,14 +96,16 @@ test("legacy progress (1-based list) is imported once and never duplicated", asy
 test("live preview runs in the sandbox: renders the learner's HTML, scripts cannot touch the page, no allow-same-origin", async () => {
   const { ctx, page } = await open(URL_NEW, { "fayad-supabase-auth": "SECRET-SESSION" });
   const frame = page.locator("#previewHost iframe");
-  await frame.waitFor();
+  assert.equal(await frame.count(), 0, "nothing runs before the learner presses Run");
+  assert.ok(await page.locator("#previewHost .fy-empty").isVisible(), "a placeholder invites the learner to press Run");
+  await page.click("#runButton"); await frame.waitFor();
   assert.equal(await frame.getAttribute("sandbox"), "allow-scripts");
-  await page.fill("#jsEditor", "<h1 id=x>مرحبا</h1>");
+  await page.fill("#jsEditor", "<h1 id=x>مرحبا</h1>"); await page.click("#runButton");
   await page.waitForFunction(() => document.querySelector("#previewHost iframe")?.contentDocument === null || true);
   await page.click("#runButton");
   assert.equal(await page.frameLocator("#previewHost iframe").locator("#x").innerText(), "مرحبا");
   // a script in the learner's HTML cannot read the site's storage / parent
-  await page.fill("#jsEditor", `<p id=r></p><script>var o=[];try{o.push(localStorage.getItem('fayad-supabase-auth'))}catch(e){o.push('BLOCKED')}try{o.push(parent.document.title)}catch(e){o.push('BLOCKED')}document.getElementById('r').textContent=o.join('|')</script>`);
+  await page.fill("#jsEditor", `<p id=r></p><script>var o=[];try{o.push(localStorage.getItem('fayad-supabase-auth'))}catch(e){o.push('BLOCKED')}try{o.push(parent.document.title)}catch(e){o.push('BLOCKED')}document.getElementById('r').textContent=o.join('|')</script>`); await page.click("#runButton");
   await page.click("#runButton");
   const out = await page.frameLocator("#previewHost iframe").locator("#r").innerText();
   assert.equal(out, "BLOCKED|BLOCKED");
@@ -113,7 +115,7 @@ test("live preview runs in the sandbox: renders the learner's HTML, scripts cann
 
 test("a runaway loop in the preview is stopped and the page stays responsive", async () => {
   const { ctx, page } = await open();
-  await page.fill("#jsEditor", "<script>while(true){}</script>"); await page.click("#runButton");
+  await page.fill("#jsEditor", "<script>while(true){}</script>"); await page.click("#runButton"); await page.click("#runButton");
   await page.waitForFunction(() => !document.querySelector("#outputWrap").hidden, null, { timeout: 8000 });
   assert.match(await page.locator("#output").innerText(), /loop ran too many times/);
   assert.equal(await page.evaluate(() => 1 + 1), 2);
@@ -131,7 +133,7 @@ test("a runaway loop in an inline event handler is stopped too", async () => {
 
 test("reset restores the starter code; the old unsandboxed preview is gone", async () => {
   const { ctx, page } = await open();
-  await page.fill("#jsEditor", "x"); await page.click("#resetButton");
+  await page.fill("#jsEditor", "x"); await page.click("#resetButton"); await page.click("#runButton");
   assert.equal(await page.locator("#jsEditor").inputValue(), lessons[0].practice.starterCode);
   assert.ok(!fs.existsSync("html-learning/html-learning.js"));
   assert.ok(!/<iframe(?![^>]*sandbox)/.test(fs.readFileSync("html-learning/html-learning.html", "utf8")));
@@ -144,11 +146,11 @@ test("English interface: switching the language changes the chrome (not just dir
   await page.evaluate(() => window.FAYAD.prefs.setLang("en"));
   assert.equal(await page.evaluate(() => document.documentElement.dir), "ltr");
   assert.equal(await page.locator("#quizNextButton").innerText(), "Next question");
-  assert.equal(await page.locator("#runButton").innerText(), "Run code");
+  assert.equal(await page.locator("#runButton").innerText(), "▶ Run");
   assert.equal(await page.locator("#pathTitle").innerText(), "HTML learning path");
   assert.equal(await page.locator("#lessonTitle").innerText(), lessons[0].title.en);
   await page.evaluate(() => window.FAYAD.prefs.setLang("ar"));
-  assert.equal(await page.locator("#runButton").innerText(), "تشغيل الكود");
+  assert.equal(await page.locator("#runButton").innerText(), "▶ تشغيل");
   await ctx.close();
 });
 
