@@ -1,6 +1,4 @@
--- Migration 0002: game solves + public leaderboard. Additive only.
--- Points per solve are reported by the client (the server cannot re-run the learner's code), so the leaderboard is a friendly
--- competition, NOT cheat-proof. Values are bounded by CHECK constraints and each (user, game, level) can be recorded once.
+-- Migration 0002: game solves + public leaderboard. Additive only. NOTE: the direct-insert policy created here is removed by 0003 (scores are now submitted via submit_solve).
 
 create table if not exists public.game_solves (
   user_id   uuid not null references auth.users (id) on delete cascade,

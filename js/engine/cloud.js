@@ -31,8 +31,14 @@ export async function syncGames() {
     const added = mergeSolves(data || []);
     const have = new Set((data || []).map((r) => `${r.game}:${r.level}`));
     const missing = solveRows(id).filter((r) => !have.has(`${r.game}:${r.level}`));
-    if (missing.length) { const { error: e2 } = await c.from("game_solves").upsert(missing, { onConflict: "user_id,game,level", ignoreDuplicates: true }); if (e2) throw e2; }
-    return { ok: true, pulled: added, pushed: missing.length };
+    let pushed = 0;
+    for (const r of missing) {                       // points are decided by the server (submit_solve); we only report which level and whether hints were used
+      const { error: e2 } = await c.rpc("submit_solve", { p_game: r.game, p_level: r.level, p_hinted: r.hinted });
+      if (e2) { if (/rate_limited/.test(e2.message)) break; if (/unknown_level/.test(e2.message)) continue; throw e2; }
+      pushed++;
+    }
+    if (pushed) { const { data: again } = await c.from("game_solves").select("game,level,points,hinted,solved_at").eq("user_id", id); mergeSolves(again || []); }
+    return { ok: true, pulled: added, pushed };
   } catch (e) { return { ok: false, reason: "error", message: String(e?.message || e) }; }
 }
 
