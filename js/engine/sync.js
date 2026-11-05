@@ -25,22 +25,25 @@ export function rowsToSnapshot({ completions = [], quiz = [], assessments = [] }
 }
 
 /** Local snapshot + rows already on the server -> the rows that must be written (additive only). */
+const TRACK_RX = /^[a-z]{2,10}$/, LESSON_RX = /^[a-z]{2,10}-[0-9]{2,3}$/;
+const okLesson = (track, id) => TRACK_RX.test(track) && LESSON_RX.test(id) && id.startsWith(track + "-");
 export function diffForUpload(snapshot, userId, remote) {
   const have = rowsToSnapshot(remote);
   const out = { completions: [], quiz: [], assessments: [] };
   for (const [track, t] of Object.entries(snapshot.tracks || {})) {
     const r = have.tracks[track] || { completed: [], quiz: {} };
-    for (const id of t.completed || []) if (!r.completed.includes(id)) out.completions.push({ user_id: userId, track, lesson_id: id });
+    for (const id of t.completed || []) if (okLesson(track, id) && !r.completed.includes(id)) out.completions.push({ user_id: userId, track, lesson_id: id });
     for (const [lesson, q] of Object.entries(t.quiz || {})) {
+      if (!okLesson(track, lesson)) continue;
       const rq = r.quiz[lesson];
-      const merged = [...new Set([...(rq?.passed || []), ...q.passed])].sort((a, b) => a - b);
+      const merged = [...new Set([...(rq?.passed || []), ...q.passed])].filter((n) => Number.isInteger(n) && n >= 0 && n < 50).sort((a, b) => a - b);
       const attempts = Math.max(rq?.attempts || 0, q.attempts);
       if (!rq || merged.length !== rq.passed.length || attempts > rq.attempts) {
         out.quiz.push({ user_id: userId, track, lesson_id: lesson, passed: merged, attempts, last_at: new Date(Math.max(q.lastAt || 0, rq?.lastAt || 0) || Date.now()).toISOString() });
       }
     }
     const a = t.assessment, ra = r.assessment;
-    if (a && (!ra || a.bestPct > ra.bestPct || a.attempts > ra.attempts || (a.passed && !ra.passed))) {
+    if (a && TRACK_RX.test(track) && (!ra || a.bestPct > ra.bestPct || a.attempts > ra.attempts || (a.passed && !ra.passed))) {
       out.assessments.push({ user_id: userId, track, attempts: Math.max(a.attempts, ra?.attempts || 0), best_pct: Math.max(a.bestPct, ra?.bestPct || 0), last_pct: a.lastPct, passed: a.passed || !!ra?.passed, last_at: new Date(a.lastAt || Date.now()).toISOString() });
     }
   }

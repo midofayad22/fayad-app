@@ -153,3 +153,4 @@ function mount(host, user, { onSignOut }) {
 
 window.FAYAD_ACCOUNT_MENU = { mount };
 window.dispatchEvent(new CustomEvent("fayad:account-menu-ready"));
+import("/js/engine/cloud.js").then((m) => m.startSync()).catch(() => {});
