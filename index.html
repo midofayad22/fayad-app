@@ -367,6 +367,49 @@
         </div>
       </section>
 
+      <section id="games" class="hm-sec hm-games" aria-labelledby="gamesTitle">
+        <div class="hm-wrap">
+          <div class="hm-head">
+            <span class="hm-eyebrow" data-i18n="g.eyebrow">ألعاب FAYBIT</span>
+            <h2 id="gamesTitle" data-i18n="g.title">تعلّم باللعب</h2>
+            <p data-i18n="g.lead">تحديات برمجية قصيرة بمراحل متدرجة، والتحقق منها فوري داخل متصفحك.</p>
+          </div>
+          <div class="gm-grid">
+            <a class="gm gm-main" href="play/arena.html?track=js" data-game="js">
+              <span class="gm-tag" data-i18n="g.arena.tag">ساحة التحديات</span>
+              <h3 data-i18n="g.arena.t">تحديات برمجية حقيقية</h3>
+              <p data-i18n="g.arena.d">محرر ومعاينة حية وتحقق فوري، بمستويات من المبتدئ إلى الخبير في HTML وCSS وJavaScript.</p>
+              <div class="gm-code" aria-hidden="true"><span class="k">const</span> <span class="f">solve</span> = (x) =&gt; <span class="k">x</span> * <span class="n">2</span><i></i></div>
+              <span class="gm-prog" data-prog="arena"></span>
+              <span class="gm-go"><span data-i18n="g.play">العب الآن</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </a>
+            <a class="gm gm-flex" href="play/flex-quest.html" data-game="flex">
+              <span class="gm-tag" data-i18n="g.css">CSS</span>
+              <h3>Flex Quest</h3>
+              <p data-i18n="g.flex.d">رتّب العناصر بخصائص Flexbox حتى تطابق الهدف.</p>
+              <span class="gm-prog" data-prog="flex"></span>
+            </a>
+            <a class="gm gm-sel" href="play/selector-quest.html" data-game="sel">
+              <span class="gm-tag" data-i18n="g.css">CSS</span>
+              <h3>Selector Quest</h3>
+              <p data-i18n="g.sel.d">اكتب محدد CSS يختار العناصر المطلوبة فقط.</p>
+              <span class="gm-prog" data-prog="sel"></span>
+            </a>
+            <div class="gm gm-soon gm-zombie" aria-disabled="true">
+              <span class="gm-tag" data-i18n="g.soon">قيد التطوير</span>
+              <h3>Zombie Survival</h3>
+              <p data-i18n="g.zombie.d">لعبة بقاء تتعلم فيها منطق البرمجة. لم تصدر بعد.</p>
+            </div>
+            <div class="gm gm-soon gm-adv" aria-disabled="true">
+              <span class="gm-tag" data-i18n="g.soon">قيد التطوير</span>
+              <h3 data-i18n="g.adv.t">FAYAD: المغامرة الكبرى</h3>
+              <p data-i18n="g.adv.d">رحلة عبر 120 مرحلة نحو الجائزة الكبرى. لم تصدر بعد.</p>
+            </div>
+          </div>
+          <a class="hm-chip gm-all" href="play/index.html"><span data-i18n="g.all">مركز الألعاب ولوحة الترتيب</span></a>
+        </div>
+      </section>
+
       <section id="how" class="hm-sec hm-how" aria-labelledby="howTitle">
         <div class="hm-wrap">
           <div class="hm-head">
@@ -454,5 +497,6 @@
     </noscript>
 
     <script src="js/app.js" defer></script>
+      <script src="js/home-games.js" defer></script>
   </body>
 </html>

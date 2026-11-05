@@ -28,7 +28,7 @@
   }
 
   function systemTheme() {
-    return window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    return "light"; // light is the default for first-time visitors; dark is an explicit, persistent choice
   }
 
   function trackFromPath(path) {
@@ -110,8 +110,8 @@
     }
   });
 
-  // Follow the OS theme live, but only while the user has not chosen explicitly.
-  if (window.matchMedia) {
+  // (light by default: the OS theme is no longer followed)
+  if (false) {
     var mq = window.matchMedia("(prefers-color-scheme: light)");
     var onChange = function () {
       if (!read("fayad-theme")) {
