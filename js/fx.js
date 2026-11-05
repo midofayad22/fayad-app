@@ -47,6 +47,9 @@
     document.body.appendChild(b);
     addEventListener("scroll", function () { b.classList.toggle("on", scrollY > innerHeight * 0.8); }, { passive: true });
     addEventListener("fayad:langchange", function () { b.setAttribute("aria-label", document.documentElement.lang === "en" ? "Back to top" : "العودة للأعلى"); });
+    // the footer has its own "top" button: do not float over the footer content
+    var ft = document.querySelector("footer.ft");
+    if (ft && "IntersectionObserver" in window) new IntersectionObserver(function (e) { b.classList.toggle("hide", e[0].isIntersecting); }).observe(ft);
   }
 
   function start() { reveal(); lift(); ripple(); toTop(); }
