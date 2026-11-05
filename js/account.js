@@ -33,7 +33,7 @@ i18n?.extend({
     "p.title": "الملف الشخصي", "p.sub": "بيانات حسابك وتفضيلاتك.", "p.summary": "ملخص التعلم", "p.seeDash": "افتح لوحة التقدم",
     "p.data": "بيانات هذا الجهاز", "p.data.note": "يُحفظ تقدمك في متصفحك. يمكنك تنزيل نسخة منه أو مسحه بالكامل.", "p.export": "تنزيل نسخة من تقدمي", "p.reset": "مسح تقدمي على هذا الجهاز",
     "p.reset.confirm": "سيُمسح تقدمك على هذا الجهاز نهائيًا ولا يمكن التراجع. هل تريد المتابعة؟", "p.reset.done": "تم مسح التقدم على هذا الجهاز.", "p.export.done": "تم تنزيل النسخة.",
-    "p.acc.title": "الحساب", "p.acc.out": "أنت غير مسجل الدخول. يعمل FAYAD بالكامل بدون حساب، ويُحفظ تقدمك على هذا الجهاز.", "p.acc.signin": "تسجيل الدخول أو إنشاء حساب",
+    "p.acc.title": "الحساب", "p.acc.out": "أنت غير مسجل الدخول. يعمل FAYBIT بالكامل بدون حساب، ويُحفظ تقدمك على هذا الجهاز.", "p.acc.signin": "تسجيل الدخول أو إنشاء حساب",
     "p.acc.name": "الاسم", "p.acc.email": "البريد الإلكتروني", "p.acc.signout": "تسجيل الخروج", "p.acc.sync": "مزامنة التقدم مع حسابك غير مفعّلة بعد؛ تقدمك محفوظ على هذا الجهاز فقط.", "p.acc.unavail": "تعذّر الاتصال بخدمة الحساب الآن.",
   },
   en: {
@@ -52,7 +52,7 @@ i18n?.extend({
     "p.title": "Profile", "p.sub": "Your account details and preferences.", "p.summary": "Learning summary", "p.seeDash": "Open the progress dashboard",
     "p.data": "Data on this device", "p.data.note": "Your progress is stored in your browser. You can download a copy or erase it completely.", "p.export": "Download a copy of my progress", "p.reset": "Erase my progress on this device",
     "p.reset.confirm": "This permanently erases your progress on this device and cannot be undone. Continue?", "p.reset.done": "Progress on this device was erased.", "p.export.done": "Copy downloaded.",
-    "p.acc.title": "Account", "p.acc.out": "You are not signed in. FAYAD works fully without an account and keeps your progress on this device.", "p.acc.signin": "Sign in or create an account",
+    "p.acc.title": "Account", "p.acc.out": "You are not signed in. FAYBIT works fully without an account and keeps your progress on this device.", "p.acc.signin": "Sign in or create an account",
     "p.acc.name": "Name", "p.acc.email": "Email", "p.acc.signout": "Sign out", "p.acc.sync": "Syncing progress to your account is not enabled yet; your progress is stored on this device only.", "p.acc.unavail": "The account service can't be reached right now.",
   },
 });

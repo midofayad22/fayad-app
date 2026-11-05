@@ -1,5 +1,5 @@
 /* =========================================================
-   FAYAD — CENTRAL AUTH SYSTEM
+   FAYBIT — CENTRAL AUTH SYSTEM
    Supabase Authentication
 ========================================================= */
 
@@ -110,11 +110,11 @@
   }
 
   function getUserDisplayName(user) {
-    if (!user) return "FAYAD User";
+    if (!user) return "FAYBIT User";
 
     const metadata = user.user_metadata || {};
 
-    return metadata.full_name || metadata.name || metadata.username || "FAYAD User";
+    return metadata.full_name || metadata.name || metadata.username || "FAYBIT User";
   }
 
   function getUserEmail(user) {

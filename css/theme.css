@@ -36,10 +36,10 @@ html[data-theme="light"][data-track="home"] :is(.code-window) {
   --fy-text: #eef6f8;
   --fy-text-soft: #b7c9cf;
   --fy-text-muted: #88a0a8;
-  --fy-brand: #3cc4d6;
+  --fy-brand: #2dd4bf;
   --fy-brand-light: #7fdce8;
   --fy-brand-strong: #1b9fb4;
-  --fy-brand-soft: rgba(60, 196, 214, 0.12);
+  --fy-brand-soft: rgba(45, 212, 191, 0.12);
   --fy-on-brand: #04222a;
   --fy-gold: #e3b94e;
   --fy-gold-light: #f0d58a;
@@ -61,7 +61,7 @@ html[data-theme="light"][data-track="home"] :is(.code-window) {
   --fy-course-ink: var(--fy-brand);
   --fy-course-strong: var(--fy-brand-strong);
   --fy-course-soft: var(--fy-brand-soft);
-  --fy-course-glow: rgba(60, 196, 214, 0.25);
+  --fy-course-glow: rgba(45, 212, 191, 0.25);
 
   --bg: var(--fy-bg);
   --bg-soft: var(--fy-bg-soft);
@@ -110,10 +110,10 @@ html[data-theme="light"][data-track="about"] :is(.developer-card) {
   --fy-text: #eef6f8;
   --fy-text-soft: #b7c9cf;
   --fy-text-muted: #88a0a8;
-  --fy-brand: #3cc4d6;
+  --fy-brand: #2dd4bf;
   --fy-brand-light: #7fdce8;
   --fy-brand-strong: #1b9fb4;
-  --fy-brand-soft: rgba(60, 196, 214, 0.12);
+  --fy-brand-soft: rgba(45, 212, 191, 0.12);
   --fy-on-brand: #04222a;
   --fy-gold: #e3b94e;
   --fy-gold-light: #f0d58a;
@@ -135,7 +135,7 @@ html[data-theme="light"][data-track="about"] :is(.developer-card) {
   --fy-course-ink: var(--fy-brand);
   --fy-course-strong: var(--fy-brand-strong);
   --fy-course-soft: var(--fy-brand-soft);
-  --fy-course-glow: rgba(60, 196, 214, 0.25);
+  --fy-course-glow: rgba(45, 212, 191, 0.25);
 
   --bg: var(--fy-bg);
   --bg-secondary: var(--fy-bg-soft);
@@ -187,10 +187,10 @@ html[data-theme="light"][data-track="html"] :is(.example-card, .editor-panel) {
   --fy-text: #eef6f8;
   --fy-text-soft: #b7c9cf;
   --fy-text-muted: #88a0a8;
-  --fy-brand: #3cc4d6;
+  --fy-brand: #2dd4bf;
   --fy-brand-light: #7fdce8;
   --fy-brand-strong: #1b9fb4;
-  --fy-brand-soft: rgba(60, 196, 214, 0.12);
+  --fy-brand-soft: rgba(45, 212, 191, 0.12);
   --fy-on-brand: #04222a;
   --fy-gold: #e3b94e;
   --fy-gold-light: #f0d58a;
@@ -212,7 +212,7 @@ html[data-theme="light"][data-track="html"] :is(.example-card, .editor-panel) {
   --fy-course-ink: var(--fy-brand);
   --fy-course-strong: var(--fy-brand-strong);
   --fy-course-soft: var(--fy-brand-soft);
-  --fy-course-glow: rgba(60, 196, 214, 0.25);
+  --fy-course-glow: rgba(45, 212, 191, 0.25);
   --fy-course: #f06a3c;
   --fy-course-on: #1f0a03;
   --fy-course-ink: #ff8f68;
@@ -282,7 +282,7 @@ html[data-theme="dark"][data-track="html"] :is(.result-preview, .preview-panel) 
   --fy-course-ink: var(--fy-brand);
   --fy-course-strong: var(--fy-brand-strong);
   --fy-course-soft: var(--fy-brand-soft);
-  --fy-course-glow: rgba(60, 196, 214, 0.25);
+  --fy-course-glow: rgba(45, 212, 191, 0.25);
   --fy-course: #b23a0a;
   --fy-course-on: #ffffff;
   --fy-course-ink: #a63708;
@@ -356,10 +356,10 @@ html[data-theme="light"][data-track="css"] :is(.example-card, .editor-panel) {
   --fy-text: #eef6f8;
   --fy-text-soft: #b7c9cf;
   --fy-text-muted: #88a0a8;
-  --fy-brand: #3cc4d6;
+  --fy-brand: #2dd4bf;
   --fy-brand-light: #7fdce8;
   --fy-brand-strong: #1b9fb4;
-  --fy-brand-soft: rgba(60, 196, 214, 0.12);
+  --fy-brand-soft: rgba(45, 212, 191, 0.12);
   --fy-on-brand: #04222a;
   --fy-gold: #e3b94e;
   --fy-gold-light: #f0d58a;
@@ -381,7 +381,7 @@ html[data-theme="light"][data-track="css"] :is(.example-card, .editor-panel) {
   --fy-course-ink: var(--fy-brand);
   --fy-course-strong: var(--fy-brand-strong);
   --fy-course-soft: var(--fy-brand-soft);
-  --fy-course-glow: rgba(60, 196, 214, 0.25);
+  --fy-course-glow: rgba(45, 212, 191, 0.25);
   --fy-course: #5b9bff;
   --fy-course-on: #04142e;
   --fy-course-ink: #82b4ff;
@@ -458,7 +458,7 @@ html[data-theme="dark"][data-track="css"] :is(.result-card, .preview-panel) {
   --fy-course-ink: var(--fy-brand);
   --fy-course-strong: var(--fy-brand-strong);
   --fy-course-soft: var(--fy-brand-soft);
-  --fy-course-glow: rgba(60, 196, 214, 0.25);
+  --fy-course-glow: rgba(45, 212, 191, 0.25);
   --fy-course: #1d5fd1;
   --fy-course-on: #ffffff;
   --fy-course-ink: #1a56c0;
@@ -532,10 +532,10 @@ html[data-theme="light"][data-track="js"] :is(.example-card, #jsEditor, .practic
   --fy-text: #eef6f8;
   --fy-text-soft: #b7c9cf;
   --fy-text-muted: #88a0a8;
-  --fy-brand: #3cc4d6;
+  --fy-brand: #2dd4bf;
   --fy-brand-light: #7fdce8;
   --fy-brand-strong: #1b9fb4;
-  --fy-brand-soft: rgba(60, 196, 214, 0.12);
+  --fy-brand-soft: rgba(45, 212, 191, 0.12);
   --fy-on-brand: #04222a;
   --fy-gold: #e3b94e;
   --fy-gold-light: #f0d58a;
@@ -557,7 +557,7 @@ html[data-theme="light"][data-track="js"] :is(.example-card, #jsEditor, .practic
   --fy-course-ink: var(--fy-brand);
   --fy-course-strong: var(--fy-brand-strong);
   --fy-course-soft: var(--fy-brand-soft);
-  --fy-course-glow: rgba(60, 196, 214, 0.25);
+  --fy-course-glow: rgba(45, 212, 191, 0.25);
   --fy-course: #f7df1e;
   --fy-course-on: #1c1800;
   --fy-course-ink: #f7df1e;
@@ -626,10 +626,10 @@ html[data-theme="light"][data-track="react"] :is(.example-card) {
   --fy-text: #eef6f8;
   --fy-text-soft: #b7c9cf;
   --fy-text-muted: #88a0a8;
-  --fy-brand: #3cc4d6;
+  --fy-brand: #2dd4bf;
   --fy-brand-light: #7fdce8;
   --fy-brand-strong: #1b9fb4;
-  --fy-brand-soft: rgba(60, 196, 214, 0.12);
+  --fy-brand-soft: rgba(45, 212, 191, 0.12);
   --fy-on-brand: #04222a;
   --fy-gold: #e3b94e;
   --fy-gold-light: #f0d58a;
@@ -651,7 +651,7 @@ html[data-theme="light"][data-track="react"] :is(.example-card) {
   --fy-course-ink: var(--fy-brand);
   --fy-course-strong: var(--fy-brand-strong);
   --fy-course-soft: var(--fy-brand-soft);
-  --fy-course-glow: rgba(60, 196, 214, 0.25);
+  --fy-course-glow: rgba(45, 212, 191, 0.25);
   --fy-course: #61dafb;
   --fy-course-on: #03222b;
   --fy-course-ink: #61dafb;
@@ -723,7 +723,7 @@ html[data-theme="dark"][data-track="react"] :is(#reactResult, .practice-output) 
   --fy-course-ink: var(--fy-brand);
   --fy-course-strong: var(--fy-brand-strong);
   --fy-course-soft: var(--fy-brand-soft);
-  --fy-course-glow: rgba(60, 196, 214, 0.25);
+  --fy-course-glow: rgba(45, 212, 191, 0.25);
   --fy-course: #06708f;
   --fy-course-on: #ffffff;
   --fy-course-ink: #056a88;
@@ -787,10 +787,10 @@ html[data-theme="light"][data-track="vue"] :is(.example-card, .editor-top, .prev
   --fy-text: #eef6f8;
   --fy-text-soft: #b7c9cf;
   --fy-text-muted: #88a0a8;
-  --fy-brand: #3cc4d6;
+  --fy-brand: #2dd4bf;
   --fy-brand-light: #7fdce8;
   --fy-brand-strong: #1b9fb4;
-  --fy-brand-soft: rgba(60, 196, 214, 0.12);
+  --fy-brand-soft: rgba(45, 212, 191, 0.12);
   --fy-on-brand: #04222a;
   --fy-gold: #e3b94e;
   --fy-gold-light: #f0d58a;
@@ -812,7 +812,7 @@ html[data-theme="light"][data-track="vue"] :is(.example-card, .editor-top, .prev
   --fy-course-ink: var(--fy-brand);
   --fy-course-strong: var(--fy-brand-strong);
   --fy-course-soft: var(--fy-brand-soft);
-  --fy-course-glow: rgba(60, 196, 214, 0.25);
+  --fy-course-glow: rgba(45, 212, 191, 0.25);
   --fy-course: #42b883;
   --fy-course-on: #03221a;
   --fy-course-ink: #5fd9a0;
@@ -877,7 +877,7 @@ html[data-theme="dark"][data-track="vue"] :is(.result-preview, .preview-panel) {
   --fy-course-ink: var(--fy-brand);
   --fy-course-strong: var(--fy-brand-strong);
   --fy-course-soft: var(--fy-brand-soft);
-  --fy-course-glow: rgba(60, 196, 214, 0.25);
+  --fy-course-glow: rgba(45, 212, 191, 0.25);
   --fy-course: #16794f;
   --fy-course-on: #ffffff;
   --fy-course-ink: #136b45;
@@ -947,10 +947,10 @@ html[data-theme="light"][data-track="angular"] :is(.example-card) {
   --fy-text: #eef6f8;
   --fy-text-soft: #b7c9cf;
   --fy-text-muted: #88a0a8;
-  --fy-brand: #3cc4d6;
+  --fy-brand: #2dd4bf;
   --fy-brand-light: #7fdce8;
   --fy-brand-strong: #1b9fb4;
-  --fy-brand-soft: rgba(60, 196, 214, 0.12);
+  --fy-brand-soft: rgba(45, 212, 191, 0.12);
   --fy-on-brand: #04222a;
   --fy-gold: #e3b94e;
   --fy-gold-light: #f0d58a;
@@ -972,7 +972,7 @@ html[data-theme="light"][data-track="angular"] :is(.example-card) {
   --fy-course-ink: var(--fy-brand);
   --fy-course-strong: var(--fy-brand-strong);
   --fy-course-soft: var(--fy-brand-soft);
-  --fy-course-glow: rgba(60, 196, 214, 0.25);
+  --fy-course-glow: rgba(45, 212, 191, 0.25);
   --fy-course: #ee6a8d;
   --fy-course-on: #2b0510;
   --fy-course-ink: #ff8aa5;
@@ -1050,7 +1050,7 @@ html[data-theme="dark"][data-track="angular"] :is(#angularResult, .practice-outp
   --fy-course-ink: var(--fy-brand);
   --fy-course-strong: var(--fy-brand-strong);
   --fy-course-soft: var(--fy-brand-soft);
-  --fy-course-glow: rgba(60, 196, 214, 0.25);
+  --fy-course-glow: rgba(45, 212, 191, 0.25);
   --fy-course: #a3193d;
   --fy-course-on: #ffffff;
   --fy-course-ink: #a3193d;
@@ -1163,10 +1163,10 @@ html[data-theme="light"][data-track="prg"] :is(.code-block, .editor-wrapper) {
   --fy-text: #eef6f8;
   --fy-text-soft: #b7c9cf;
   --fy-text-muted: #88a0a8;
-  --fy-brand: #3cc4d6;
+  --fy-brand: #2dd4bf;
   --fy-brand-light: #7fdce8;
   --fy-brand-strong: #1b9fb4;
-  --fy-brand-soft: rgba(60, 196, 214, 0.12);
+  --fy-brand-soft: rgba(45, 212, 191, 0.12);
   --fy-on-brand: #04222a;
   --fy-gold: #e3b94e;
   --fy-gold-light: #f0d58a;
@@ -1188,7 +1188,7 @@ html[data-theme="light"][data-track="prg"] :is(.code-block, .editor-wrapper) {
   --fy-course-ink: var(--fy-brand);
   --fy-course-strong: var(--fy-brand-strong);
   --fy-course-soft: var(--fy-brand-soft);
-  --fy-course-glow: rgba(60, 196, 214, 0.25);
+  --fy-course-glow: rgba(45, 212, 191, 0.25);
   --fy-course: #e3b94e;
   --fy-course-on: #231a00;
   --fy-course-ink: #f0d58a;

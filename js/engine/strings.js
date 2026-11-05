@@ -7,7 +7,7 @@
 const dict = {
   ar: {
     "path.title": "مسار تعلم {course}",
-    "page.title": "FAYAD — تعلم {course}",
+    "page.title": "FAYBIT — تعلم {course}",
     "sidebar.label": "مسار التعلم",
     "sidebar.aria": "دروس {course}",
     "lesson.label": "الدرس",
@@ -35,7 +35,7 @@ const dict = {
   },
   en: {
     "path.title": "{course} learning path",
-    "page.title": "FAYAD — Learn {course}",
+    "page.title": "FAYBIT — Learn {course}",
     "sidebar.label": "Learning path",
     "sidebar.aria": "{course} lessons",
     "lesson.label": "Lesson",
