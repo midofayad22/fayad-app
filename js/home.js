@@ -1,5 +1,5 @@
 /*
-  FAYAD homepage: interface strings (Arabic + English), roadmap/course status, and "continue learning".
+  FAYBIT homepage: interface strings (Arabic + English), roadmap/course status, and "continue learning".
   Requires js/i18n.js and js/catalog.js. Never writes lesson progress; it only reads it.
   Course/track names and code terms are kept in Latin script in both languages on purpose.
 */
@@ -36,9 +36,9 @@
       "menu.com.sub": "كيف يعمل الحاسوب",
       "menu.prg.sub": "المنطق وحل المشكلات",
       "menu.about": "عن المنصة وصاحبها",
-      "menu.about.sub": "من يقف وراء FAYAD",
+      "menu.about.sub": "من يقف وراء FAYBIT",
       "menu.contact": "تواصل",
-      "h.kicker": "منصة FAYAD التعليمية",
+      "h.kicker": "منصة FAYBIT التعليمية",
       "h.title": "من أول سطر كود إلى تطبيق ويب حقيقي",
       "h.t1": "من أول سطر كود",
       "h.t2": "إلى تطبيق ويب حقيقي",
@@ -98,7 +98,7 @@
       "t.angular": "المكونات والقوالب والتوجيهات والخدمات والتوجيه والنماذج وRxJS.",
       "f.text": "تعلّم بالممارسة: اكتب الكود، جرّبه، أخطئ، ثم أصلح.",
       "f.about": "عن المنصة",
-      "f.rights": "© 2026 FAYAD. من تطوير Abdullhamid, Fayad.",
+      "f.rights": "© 2026 FAYBIT. من تطوير Abdullhamid, Fayad.",
       "f.tag": "Learn · Build · Become",
       "f.nav": "روابط التذييل",
       "nav.how": "كيف تتعلم",
@@ -125,7 +125,7 @@
       "how.3.d": "أسئلة بعد كل درس، ويُحسب الدرس منجزًا عند الإجابة الصحيحة. يُحفظ تقدمك على جهازك.",
       "o.eyebrow": "صاحب المنصة",
       "o.name": "عبد الحميد فياض",
-      "o.role": "أبني FAYAD لأن أفضل طريقة للتعلم هي أن تكتب الكود بنفسك.",
+      "o.role": "أبني FAYBIT لأن أفضل طريقة للتعلم هي أن تكتب الكود بنفسك.",
       "o.edu": "طالب هندسة حاسبات في جامعة طنطا",
       "o.portfolio": "الـ Portfolio",
       "o.more": "المزيد عن المنصة وصاحبها",
@@ -170,9 +170,9 @@
       "menu.com.sub": "How a computer works",
       "menu.prg.sub": "Logic and problem solving",
       "menu.about": "About the platform",
-      "menu.about.sub": "Who is behind FAYAD",
+      "menu.about.sub": "Who is behind FAYBIT",
       "menu.contact": "Contact",
-      "h.kicker": "FAYAD Learning Platform",
+      "h.kicker": "FAYBIT",
       "h.title": "From your first line of code to a real web app",
       "h.t1": "From your first line of code",
       "h.t2": "to a real web app",
@@ -232,7 +232,7 @@
       "t.angular": "Components, templates, directives, services, routing, forms and RxJS.",
       "f.text": "Learn by doing: write the code, try it, break it, then fix it.",
       "f.about": "About",
-      "f.rights": "© 2026 FAYAD. Built by Abdullhamid, Fayad.",
+      "f.rights": "© 2026 FAYBIT. Built by Abdullhamid, Fayad.",
       "f.tag": "Learn · Build · Become",
       "f.nav": "Footer links",
       "nav.how": "How it works",
@@ -259,7 +259,7 @@
       "how.3.d": "Questions after every lesson; a lesson counts as completed once you answer correctly. Your progress is saved on your device.",
       "o.eyebrow": "Behind the platform",
       "o.name": "Abdullhamid, Fayad",
-      "o.role": "I build FAYAD because the best way to learn is to write the code yourself.",
+      "o.role": "I build FAYBIT because the best way to learn is to write the code yourself.",
       "o.edu": "Computer Engineering student at Tanta University",
       "o.portfolio": "Portfolio",
       "o.more": "More about the platform and its creator",

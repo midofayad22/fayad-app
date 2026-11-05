@@ -59,12 +59,12 @@ html[lang="en"] {
 html[data-theme="dark"] {
   color-scheme: dark;
 
-  --fy-bg: #071014;
-  --fy-bg-soft: #0a161b;
-  --fy-surface: #0f1c22;
-  --fy-surface-2: #14252c;
-  --fy-surface-3: #1a2f38;
-  --fy-glass: rgba(15, 28, 34, 0.78);
+  --fy-bg: #0b1b2b;
+  --fy-bg-soft: #0e2236;
+  --fy-surface: #12293f;
+  --fy-surface-2: #173249;
+  --fy-surface-3: #1d3a54;
+  --fy-glass: rgba(18, 41, 63, 0.78);
 
   --fy-border: rgba(255, 255, 255, 0.09);
   --fy-border-strong: rgba(255, 255, 255, 0.17);
@@ -73,11 +73,12 @@ html[data-theme="dark"] {
   --fy-text-soft: #b7c9cf;
   --fy-text-muted: #88a0a8;
 
-  --fy-brand: #3cc4d6;
-  --fy-brand-light: #7fdce8;
-  --fy-brand-strong: #1b9fb4;
-  --fy-brand-soft: rgba(60, 196, 214, 0.12);
-  --fy-on-brand: #04222a;
+  --fy-brand: #2dd4bf;
+  --fy-brand-light: #99f6e4;
+  --fy-brand-strong: #0d9488;
+  --fy-brand-soft: rgba(45, 212, 191, 0.12);
+  --fy-on-brand: #042f2c;
+  --fy-navy: #102a43; --fy-mint: #ccfbf1; --fy-teal: #0d9488; --fy-teal-deep: #0f766e;
 
   --fy-gold: #e3b94e;
   --fy-gold-light: #f0d58a;
@@ -117,10 +118,10 @@ html[data-theme="light"] {
   --fy-text-soft: #3b5760;
   --fy-text-muted: #4d646b;
 
-  --fy-brand: #0b7184;
-  --fy-brand-light: #0a758a;
-  --fy-brand-strong: #07505f;
-  --fy-brand-soft: rgba(11, 113, 132, 0.09);
+  --fy-brand: #0f766e;
+  --fy-brand-light: #0d9488;
+  --fy-brand-strong: #0b5f59;
+  --fy-brand-soft: rgba(15, 118, 110, 0.09);
   --fy-on-brand: #ffffff;
 
   --fy-gold: #86600a;

@@ -78,7 +78,7 @@ const UI_EN = {
 
 // Static page chrome (headings, button labels, footer) of the two foundation pages; the lesson text itself comes from the content data.
 const CHROME_EN = {
-  "العودة إلى FAYAD": "Back to FAYAD",
+  "العودة إلى FAYBIT": "Back to FAYBIT",
   "أساسيات الكمبيوتر": "Computer Fundamentals",
   "تعلّم كيف يعمل الكمبيوتر من الداخل، وافهم مكوّناته وبرمجياته والبيانات والإنترنت وأنظمة التشغيل والأمن السيبراني.": "Learn how a computer works from the inside: its components, software, data, the internet, operating systems and cybersecurity.",
   "أساسيات البرمجة": "Programming Fundamentals",
@@ -95,8 +95,8 @@ const CHROME_EN = {
   "نتيجة الكود ستظهر هنا...": "The code output will appear here...",
   "أثبت أنك فهمت أساسيات البرمجة قبل الانتقال إلى Web Fundamentals.": "Show you understood the programming fundamentals before moving on to Web Fundamentals.",
   "دروس المسار": "Course lessons", "محرر JavaScript": "JavaScript editor",
-  "© 2026 FAYAD — منصة تعليمية لتعلّم البرمجة": "© 2026 FAYAD — a platform for learning programming",
-  "© 2026 FAYAD — جميع الحقوق محفوظة": "© 2026 FAYAD — all rights reserved",
+  "© 2026 FAYBIT — منصة تعليمية لتعلّم البرمجة": "© 2026 FAYBIT — a platform for learning programming",
+  "© 2026 FAYBIT — جميع الحقوق محفوظة": "© 2026 FAYBIT — all rights reserved",
 };
 const squash = (x) => x.replace(/[\u064B-\u0652\u0640]/g, "").replace(/\s+/g, " ").trim();
 

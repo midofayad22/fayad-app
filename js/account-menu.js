@@ -94,7 +94,7 @@ function item(href, title, sub) {
 /** Build the menu into `host` (#user-profile). */
 function mount(host, user, { onSignOut }) {
   host.textContent = "";
-  const name = (user.user_metadata && (user.user_metadata.full_name || user.user_metadata.name || user.user_metadata.username)) || "FAYAD";
+  const name = (user.user_metadata && (user.user_metadata.full_name || user.user_metadata.name || user.user_metadata.username)) || "FAYBIT";
   const root = el("div", "am"); root.id = "fayadUserMenu";
   const trigger = el("button", "am-trigger"); trigger.type = "button"; trigger.id = "fayadUserTrigger";
   trigger.setAttribute("aria-expanded", "false"); trigger.setAttribute("aria-haspopup", "true"); trigger.setAttribute("aria-controls", "fayadUserDropdown");
@@ -153,3 +153,4 @@ function mount(host, user, { onSignOut }) {
 
 window.FAYAD_ACCOUNT_MENU = { mount };
 window.dispatchEvent(new CustomEvent("fayad:account-menu-ready"));
+import("/js/engine/cloud.js").then((m) => m.startSync()).catch(() => {});

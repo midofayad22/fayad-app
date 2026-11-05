@@ -9,7 +9,7 @@ import { createState } from "./state.js";
 
 // Lesson counts of every course. Only the migrated course is authoritative from its content module; the others are the
 // legacy counts (verified against the legacy pages by tests/home.test.mjs) so progress validation never drops their data.
-const OTHER_TOTALS = { com: 20, prg: 20, html: 30, css: 30, react: 30, vue: 22, angular: 32, ajs: 22, bs: 20, tw: 20 };
+import { TOTALS as OTHER_TOTALS } from "./totals.js";
 
 async function main() {
   const script = document.querySelector("script[data-track]");
@@ -35,6 +35,8 @@ async function main() {
     window.FAYAD = window.FAYAD || {};
     window.FAYAD.course = { track, state, progress, view };
     document.documentElement.setAttribute("data-engine", "ready");
+    // account sync is optional and lazy: only does anything when a saved sign-in exists on this device
+    (window.requestIdleCallback || ((f) => setTimeout(f, 1500)))(() => import("./cloud.js").then((m) => m.startSync()).catch(() => {}));
   } catch (err) {
     console.error("[FAYAD engine]", err);
     document.documentElement.setAttribute("data-engine", "error");

@@ -106,7 +106,7 @@ test("service worker: registers, precaches offline page, serves it when offline,
     return { names, keys, controlled: !!navigator.serviceWorker.controller };
   });
   assert.ok(state.controlled, "page controlled by service worker");
-  assert.deepEqual(state.names, ["fayad-static-v3"]);
+  assert.deepEqual(state.names, ["fayad-static-v4"]);
   assert.ok(state.keys.includes("/offline.html"), "offline page precached");
   assert.ok(state.keys.includes("/about/about.html"), "visited page cached as offline fallback");
   assert.ok(!state.keys.some((k) => k.startsWith("/_vercel/")), "no analytics scripts cached");
@@ -116,7 +116,7 @@ test("service worker: registers, precaches offline page, serves it when offline,
   assert.ok(cached && cached.ok(), "previously visited page works offline");
   const unseen = await page.goto(base + "/never-visited.html").catch(() => null);
   assert.ok(unseen, "navigation answered by the worker");
-  assert.match(await page.content(), /FAYAD/);
+  assert.match(await page.content(), /FAYBIT/);
   assert.match(await page.title(), /Offline/);
   await context.close();
 });
