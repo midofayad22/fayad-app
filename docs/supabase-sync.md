@@ -1,21 +1,18 @@
-# Supabase progress sync (prepared, NOT enabled, NOT applied)
+# Supabase sync (ENABLED)
 
-## Blocker (honest status)
-The actual project schema, RLS policies and grants could not be inspected: the build sandbox cannot reach `*.supabase.co` (proxy 403) and the
-Supabase connector is not installed in this session. Nothing was guessed or applied. Production is untouched.
+Status: migrations 0001-0003 are applied to project `vsrysitexadvmmikcmfs` (owner-approved). Sync is on, but lazy: the auth libraries are only
+downloaded when the device already holds a saved sign-in (`sb-vsrysitexadvmmikcmfs-auth-token`), so anonymous visitors pay nothing and keep working offline from local storage.
 
-## What exists in the repo
-- `supabase/preflight_readonly.sql`: read-only queries (tables + RLS flags, columns, policies, grants, triggers on `auth.users`). Run in the SQL editor
-  of the target project and share the structure-only output, or connect the Supabase connector (read-only, development project).
-- `supabase/migrations/0001_learning_progress.sql`: DRAFT, idempotent where practical. Tables `profiles`, `lesson_completions`, `quiz_results`,
-  `assessment_results`; RLS on; own-rows-only policies; no `anon` access; sign-up trigger for profiles; documented manual rollback.
-  Points are not stored (derived by the app) so a client cannot forge them.
-- `js/engine/sync.js` (+ `tests/sync.test.mjs`): additive pull/merge/push, disabled by default, every failure resolves to `{ ok: false }`.
-  `progress.mergeSnapshot()` union-merges remote data: completed = union, quiz answers = union, attempts/best score = max, pass flags = OR, local resume pointer wins.
-  It never deletes remote rows, never lowers values and never overwrites local data (anonymous -> signed-in merge is therefore lossless).
+## Flow (`js/engine/cloud.js`, `js/engine/sync.js`)
+1. pull this user's rows, 2. union-merge into the local record (`progress.mergeSnapshot`: completed = union, quiz passed = union, attempts and best score = max, flags = OR, local resume pointer wins), 3. upload only what the server lacks (invalid ids/values are filtered first).
+It never deletes cloud rows and never lowers a value on either side. Re-runs after local changes (debounced), on sign-in and when the tab is hidden.
 
-## To enable (after review)
-1. Run the preflight; adjust 0001 if tables/policies/triggers already exist (names collide? existing `on_auth_user_created`?).
-2. Apply to a development project; verify RLS with two test users (user A cannot read/write user B).
-3. In the app: `createSync({ client: window.FAYAD_AUTH.client, progress, enabled: true }).sync()` on `fayad-auth-changed` (signed-in) and after progress changes (debounced).
-4. Production only after explicit approval; the service-role key must never appear in the repository or browser.
+## Tables (RLS on, own rows only, no anon access)
+`profiles`, `lesson_completions`, `quiz_results`, `assessment_results`, `game_solves` (read-only for the browser), `game_levels` (server rules, no direct access).
+Game points are written only by `submit_solve`. See `docs/game-scoring-security.md` for what that does and does not prove.
+
+## Verification
+- `tests/sync-cloud.test.mjs`: new user, existing user on a new device, both-sides merge without lowering, signed out, malformed ids, totals match content.
+- `tests/cloud.test.mjs`: game wiring with a mocked client.
+- RLS, constraints and `submit_solve` were exercised on the live project inside rolled-back transactions (cross-user read/update/delete, forged user_id, bad ids, direct score inserts and anon access are all blocked).
+- Not covered: a real browser sign-in against supabase.co (the build sandbox cannot reach it).
