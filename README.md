@@ -1,4 +1,4 @@
-# FAYAD Learning
+# FAYBIT
 
 Interactive, Arabic-first web development learning platform. Live: https://fayad-learning.vercel.app/
 

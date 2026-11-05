@@ -424,7 +424,7 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
-      name: "FAYAD",
+      name: "FAYBIT",
       message: "Welcome to Vue!"
     };
   }
@@ -434,7 +434,7 @@ createApp({
       result: {
         ar: `
       <div style="padding:20px;font-family:Arial;">
-        <h2 style="margin:0 0 8px;">FAYAD</h2>
+        <h2 style="margin:0 0 8px;">FAYBIT</h2>
         <p style="margin:0;">Welcome to Vue!</p>
       </div>
     `,
@@ -471,7 +471,7 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
-      name: "FAYAD",
+      name: "FAYBIT",
       message: "Welcome to Vue!"
     };
   }
@@ -2063,7 +2063,7 @@ const { createApp } = Vue;
 const UserCard = {
   template: \`
     <div>
-      <h2>FAYAD</h2>
+      <h2>FAYBIT</h2>
       <p>Vue Developer</p>
     </div>
   \`
@@ -2079,7 +2079,7 @@ createApp({
       result: {
         ar: `
       <div style="padding:20px;font-family:Arial;">
-        <h2 style="margin:0 0 6px;">FAYAD</h2>
+        <h2 style="margin:0 0 6px;">FAYBIT</h2>
         <p style="margin:0;">Vue Developer</p>
       </div>
     `,
@@ -2116,7 +2116,7 @@ const { createApp } = Vue;
 const UserCard = {
   template: \`
     <div>
-      <h2>FAYAD</h2>
+      <h2>FAYBIT</h2>
       <p>Vue Developer</p>
     </div>
   \`
@@ -2226,7 +2226,7 @@ createApp({
     example: {
       code: `
 <div id="app">
-  <user-card name="FAYAD"></user-card>
+  <user-card name="FAYBIT"></user-card>
 </div>
 
 <script>
@@ -2250,7 +2250,7 @@ createApp({
       result: {
         ar: `
       <div style="padding:20px;font-family:Arial;">
-        <h2 style="margin:0;">Hello FAYAD</h2>
+        <h2 style="margin:0;">Hello FAYBIT</h2>
       </div>
     `,
       },
@@ -2263,7 +2263,7 @@ createApp({
 
       <p>
         Parent يمرر القيمة باستخدام
-        <code>&lt;user-card name="FAYAD"&gt;</code>.
+        <code>&lt;user-card name="FAYBIT"&gt;</code>.
       </p>
 
       <p>
@@ -2278,7 +2278,7 @@ createApp({
       },
       starterCode: `
 <div id="app">
-  <user-card name="FAYAD"></user-card>
+  <user-card name="FAYBIT"></user-card>
 </div>
 
 <script>
@@ -2796,7 +2796,7 @@ createApp({
     const count = ref(0);
 
     const user = reactive({
-      name: "FAYAD"
+      name: "FAYBIT"
     });
 
     function increment() {
@@ -2816,7 +2816,7 @@ createApp({
         ar: `
       <div style="padding:20px;font-family:Arial;">
         <h2 style="margin:0 0 6px;">0</h2>
-        <p>FAYAD</p>
+        <p>FAYBIT</p>
         <button style="padding:8px 14px;">زيادة</button>
       </div>
     `,
@@ -2864,7 +2864,7 @@ createApp({
     const count = ref(0);
 
     const user = reactive({
-      name: "FAYAD"
+      name: "FAYBIT"
     });
 
     function increment() {

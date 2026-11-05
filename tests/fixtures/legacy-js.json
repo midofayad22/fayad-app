@@ -3,8 +3,8 @@
   {
    "title": "مقدمة إلى JavaScript",
    "description": "تعرّف على JavaScript ودورها في جعل صفحات الويب تفاعلية وإضافة المنطق والسلوك إليها.",
-   "code": "const message = \"Hello FAYAD\";\n\ndocument.getElementById(\"jsResult\").textContent = message;",
-   "explanation": "\n      <p><strong>const</strong> تُستخدم لإنشاء متغير لا يمكن إعادة إسناد قيمة جديدة له.</p>\n      <p><strong>message</strong> هو اسم المتغير الذي يخزن النص.</p>\n      <p><strong>\"Hello FAYAD\"</strong> عبارة عن قيمة نصية من نوع String.</p>\n      <p><strong>textContent</strong> تُستخدم لتغيير النص الموجود داخل عنصر HTML.</p>\n    ",
+   "code": "const message = \"Hello FAYBIT\";\n\ndocument.getElementById(\"jsResult\").textContent = message;",
+   "explanation": "\n      <p><strong>const</strong> تُستخدم لإنشاء متغير لا يمكن إعادة إسناد قيمة جديدة له.</p>\n      <p><strong>message</strong> هو اسم المتغير الذي يخزن النص.</p>\n      <p><strong>\"Hello FAYBIT\"</strong> عبارة عن قيمة نصية من نوع String.</p>\n      <p><strong>textContent</strong> تُستخدم لتغيير النص الموجود داخل عنصر HTML.</p>\n    ",
    "questions": [
     {
      "question": "ما الاستخدام الأساسي لـ JavaScript؟",
@@ -41,7 +41,7 @@
   {
    "title": "المتغيرات",
    "description": "تعلّم كيف تخزن المتغيرات القيم والبيانات داخل برنامج JavaScript.",
-   "code": "let name = \"FAYAD\";\nlet age = 20;\n\ndocument.getElementById(\"jsResult\").textContent =\n  name + \" - \" + age;",
+   "code": "let name = \"FAYBIT\";\nlet age = 20;\n\ndocument.getElementById(\"jsResult\").textContent =\n  name + \" - \" + age;",
    "explanation": "\n      <p><strong>let</strong> تُستخدم لإنشاء متغير يمكن تغيير قيمته لاحقًا.</p>\n      <p><strong>name</strong> يخزن قيمة نصية.</p>\n      <p><strong>age</strong> يخزن قيمة رقمية.</p>\n      <p>يمكن إعادة إسناد قيمة جديدة للمتغير الذي تم إنشاؤه باستخدام <strong>let</strong>.</p>\n    ",
    "questions": [
     {
@@ -79,8 +79,8 @@
   {
    "title": "أنواع البيانات",
    "description": "تعرّف على أهم أنواع البيانات التي تتعامل معها JavaScript.",
-   "code": "const name = \"FAYAD\";\nconst age = 20;\nconst isStudent = true;\n\ndocument.getElementById(\"jsResult\").textContent =\n  name + \" | \" + age + \" | \" + isStudent;",
-   "explanation": "\n      <p><strong>String</strong> تُستخدم للنصوص مثل <code>\"FAYAD\"</code>.</p>\n      <p><strong>Number</strong> تُستخدم للأرقام مثل <code>20</code>.</p>\n      <p><strong>Boolean</strong> تحتوي على قيمتين فقط: <code>true</code> أو <code>false</code>.</p>\n      <p>اختيار نوع البيانات المناسب يساعد البرنامج على التعامل مع المعلومات بشكل صحيح.</p>\n    ",
+   "code": "const name = \"FAYBIT\";\nconst age = 20;\nconst isStudent = true;\n\ndocument.getElementById(\"jsResult\").textContent =\n  name + \" | \" + age + \" | \" + isStudent;",
+   "explanation": "\n      <p><strong>String</strong> تُستخدم للنصوص مثل <code>\"FAYBIT\"</code>.</p>\n      <p><strong>Number</strong> تُستخدم للأرقام مثل <code>20</code>.</p>\n      <p><strong>Boolean</strong> تحتوي على قيمتين فقط: <code>true</code> أو <code>false</code>.</p>\n      <p>اختيار نوع البيانات المناسب يساعد البرنامج على التعامل مع المعلومات بشكل صحيح.</p>\n    ",
    "questions": [
     {
      "question": "أي قيمة من التالية هي Boolean؟",
@@ -93,7 +93,7 @@
      "correct": 0
     },
     {
-     "question": "ما نوع القيمة الموجودة في \"FAYAD\"؟",
+     "question": "ما نوع القيمة الموجودة في \"FAYBIT\"؟",
      "answers": [
       "String",
       "Number",
@@ -231,7 +231,7 @@
   {
    "title": "الدوال Functions",
    "description": "تعلّم كيف تنشئ دوال قابلة لإعادة الاستخدام لتنظيم الكود وتقليل التكرار.",
-   "code": "function greet() {\n  return \"مرحبًا بك في FAYAD\";\n}\n\ndocument.getElementById(\"jsResult\").textContent = greet();",
+   "code": "function greet() {\n  return \"مرحبًا بك في FAYBIT\";\n}\n\ndocument.getElementById(\"jsResult\").textContent = greet();",
    "explanation": "\n      <p>الدالة <strong>Function</strong> هي مجموعة من التعليمات يمكن إعادة استخدامها.</p>\n      <p>يتم تعريف الدالة باستخدام الكلمة المفتاحية <strong>function</strong>.</p>\n      <p>يمكن تشغيل الدالة عن طريق كتابة اسمها متبوعًا بالأقواس.</p>\n      <p>استخدام الدوال يجعل البرنامج أكثر تنظيمًا وأسهل في الصيانة.</p>\n    ",
    "questions": [
     {
@@ -269,8 +269,8 @@
   {
    "title": "Parameters و Arguments",
    "description": "تعلّم كيف تستقبل الدوال البيانات باستخدام Parameters وArguments.",
-   "code": "function greet(name) {\n  return \"مرحبًا \" + name;\n}\n\ndocument.getElementById(\"jsResult\").textContent =\n  greet(\"FAYAD\");",
-   "explanation": "\n      <p><strong>Parameter</strong> هو المتغير الموجود داخل تعريف الدالة لاستقبال قيمة.</p>\n      <p><strong>Argument</strong> هي القيمة التي نمررها عند استدعاء الدالة.</p>\n      <p>في المثال <strong>name</strong> هو Parameter.</p>\n      <p>أما <strong>\"FAYAD\"</strong> فهي Argument تم تمريرها إلى الدالة.</p>\n    ",
+   "code": "function greet(name) {\n  return \"مرحبًا \" + name;\n}\n\ndocument.getElementById(\"jsResult\").textContent =\n  greet(\"FAYBIT\");",
+   "explanation": "\n      <p><strong>Parameter</strong> هو المتغير الموجود داخل تعريف الدالة لاستقبال قيمة.</p>\n      <p><strong>Argument</strong> هي القيمة التي نمررها عند استدعاء الدالة.</p>\n      <p>في المثال <strong>name</strong> هو Parameter.</p>\n      <p>أما <strong>\"FAYBIT\"</strong> فهي Argument تم تمريرها إلى الدالة.</p>\n    ",
    "questions": [
     {
      "question": "ما هو Parameter؟",
@@ -293,9 +293,9 @@
      "correct": 0
     },
     {
-     "question": "في greet(\"FAYAD\") ما هي Argument؟",
+     "question": "في greet(\"FAYBIT\") ما هي Argument؟",
      "answers": [
-      "\"FAYAD\"",
+      "\"FAYBIT\"",
       "greet",
       "name",
       "()"
@@ -459,7 +459,7 @@
   {
    "title": "الكائنات Objects",
    "description": "تعلّم كيف تخزن Objects البيانات المرتبطة باستخدام Properties وValues.",
-   "code": "const user = {\n  name: \"FAYAD\",\n  age: 20,\n  student: true\n};\n\ndocument.getElementById(\"jsResult\").textContent =\n  user.name;",
+   "code": "const user = {\n  name: \"FAYBIT\",\n  age: 20,\n  student: true\n};\n\ndocument.getElementById(\"jsResult\").textContent =\n  user.name;",
    "explanation": "\n      <p><strong>Object</strong> يستخدم لتجميع البيانات المرتبطة داخل بنية واحدة.</p>\n      <p>يحتوي Object على <strong>Properties</strong>، ولكل Property قيمة.</p>\n      <p>في المثال <strong>name</strong> و<strong>age</strong> و<strong>student</strong> هي Properties.</p>\n      <p>يمكن الوصول إلى Property باستخدام النقطة مثل <strong>user.name</strong>.</p>\n    ",
    "questions": [
     {
@@ -497,7 +497,7 @@
   {
    "title": "دوال الكائنات",
    "description": "تعلّم كيف يمكن للكائنات أن تحتوي على Functions تُعرف باسم Methods.",
-   "code": "const user = {\n  name: \"FAYAD\",\n\n  greet() {\n    return \"Hello \" + this.name;\n  }\n};\n\ndocument.getElementById(\"jsResult\").textContent =\n  user.greet();",
+   "code": "const user = {\n  name: \"FAYBIT\",\n\n  greet() {\n    return \"Hello \" + this.name;\n  }\n};\n\ndocument.getElementById(\"jsResult\").textContent =\n  user.greet();",
    "explanation": "\n      <p><strong>Method</strong> هي Function مرتبطة بكائن Object.</p>\n      <p>يمكن تعريف Method داخل Object.</p>\n      <p>الكلمة المفتاحية <strong>this</strong> تشير في هذا السياق إلى الكائن الذي ينتمي إليه الـMethod.</p>\n      <p>Methods تسمح للكائن بتجميع البيانات والسلوك معًا.</p>\n    ",
    "questions": [
     {
@@ -687,7 +687,7 @@
   {
    "title": "Destructuring",
    "description": "تعلّم كيف تستخرج القيم من Arrays وObjects بطريقة مختصرة ومنظمة.",
-   "code": "const user = {\n  name: \"FAYAD\",\n  age: 20\n};\n\nconst { name, age } = user;\n\ndocument.getElementById(\"jsResult\").textContent =\n  name + \" - \" + age;",
+   "code": "const user = {\n  name: \"FAYBIT\",\n  age: 20\n};\n\nconst { name, age } = user;\n\ndocument.getElementById(\"jsResult\").textContent =\n  name + \" - \" + age;",
    "explanation": "\n      <p><strong>Destructuring</strong> تسمح باستخراج القيم من Object أو Array داخل متغيرات.</p>\n      <p>بدلًا من كتابة <strong>user.name</strong> و<strong>user.age</strong> عدة مرات يمكن استخراج القيم مباشرة.</p>\n      <p>يُستخدم Destructuring بكثرة في JavaScript الحديثة.</p>\n      <p>يمكن استخدامه مع Objects وArrays.</p>\n    ",
    "questions": [
     {

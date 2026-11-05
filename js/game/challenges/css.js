@@ -6,7 +6,7 @@ export const CHALLENGES = [
     title: { ar: "لون وحجم ومحاذاة", en: "Colour, size and alignment" },
     goal: { ar: "color وfont-size وtext-align", en: "color, font-size and text-align" },
     brief: { ar: "اجعل العنوان برتقاليًا (#e34f26)، بحجم 40px، في منتصف السطر.", en: "Make the heading orange (#e34f26), 40px, centred." },
-    files: { html: '<h1 class="title">FAYAD</h1>', css: ".title {\n  \n}" },
+    files: { html: '<h1 class="title">FAYBIT</h1>', css: ".title {\n  \n}" },
     checks: [
       { ar: "اللون #e34f26", en: "Colour is #e34f26", test: `return ${cs(".title", "color")}==='rgb(227, 79, 38)'` },
       { ar: "الحجم 40px", en: "Size is 40px", test: `return ${cs(".title", "fontSize")}==='40px'` },

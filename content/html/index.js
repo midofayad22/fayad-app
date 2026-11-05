@@ -96,9 +96,9 @@ export const lessons = [
         ar: "أول كود HTML لك",
       },
       code: `<h1>مرحبًا بك</h1>
-<p>أهلًا بك في FAYAD.</p>`,
+<p>أهلًا بك في FAYBIT.</p>`,
       result: {
-        ar: "<h1>مرحبًا بك</h1><p>أهلًا بك في FAYAD.</p>",
+        ar: "<h1>مرحبًا بك</h1><p>أهلًا بك في FAYBIT.</p>",
       },
       explanation: {
         ar: "<p>العنصر <code>&lt;h1&gt;</code> يستخدم لإنشاء العنوان الرئيسي.</p><p>العنصر <code>&lt;p&gt;</code> يستخدم لإنشاء فقرة.</p>",

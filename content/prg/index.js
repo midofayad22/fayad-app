@@ -742,7 +742,7 @@ console.log(
       ar: "Syntax تحدد كيف يجب أن تكتب الكود، بينما Logic تحدد هل الكود يحل المشكلة بالطريقة الصحيحة أم لا.",
     },
     example: {
-      code: `const name = "FAYAD";
+      code: `const name = "FAYBIT";
 
 console.log(name);`,
     },
@@ -834,7 +834,7 @@ console.log(name);`,
 
 score = 150;
 
-const username = "FAYAD";
+const username = "FAYBIT";
 
 console.log(username);
 console.log(score);`,
@@ -1269,7 +1269,7 @@ if (score >= 50) {
     },
     example: {
       code: `function greet() {
-    console.log("Welcome to FAYAD");
+    console.log("Welcome to FAYBIT");
 }
 
 greet();`,

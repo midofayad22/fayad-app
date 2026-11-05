@@ -9,7 +9,7 @@ export const EN = {
  "html-01.description": "Learn what HTML is, what it does, and how it is used to build the structure of web pages.",
  "html-01.body": "\n      <article class=\"content-card\">\n        <h2>What is HTML?</h2>\n        <p>HTML stands for <strong>HyperText Markup Language</strong>. It is the core markup language used to build the structure of web pages.</p>\n        <p>HTML tells the browser what kind of content is on the page, such as headings, paragraphs, links, images, and forms.</p>\n      </article>\n      <article class=\"content-card\">\n        <div class=\"info-label\">The Key Idea</div>\n        <h2>HTML builds the page structure</h2>\n        <p>You can think of a website as a building: HTML builds the structure, CSS takes care of the appearance, and JavaScript adds behavior and interactivity.</p>\n      </article>\n    ",
  "html-01.example.title": "Your First HTML Code",
- "html-01.example.result": "<h1>Welcome</h1><p>Welcome to FAYAD.</p>",
+ "html-01.example.result": "<h1>Welcome</h1><p>Welcome to FAYBIT.</p>",
  "html-01.example.explanation": "<p>The <code>&lt;h1&gt;</code> element is used to create the main heading.</p><p>The <code>&lt;p&gt;</code> element is used to create a paragraph.</p>",
  "html-01.practice.prompt": "Create a main heading and a paragraph that welcome a visitor to your website.",
  "html-01.quiz.0.question": "What does the abbreviation HTML stand for?",

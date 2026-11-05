@@ -97,7 +97,7 @@
    "level": "SYNTAX",
    "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>ما معنى Syntax؟</h3>\n\n                    <p>\n                        Syntax هي مجموعة القواعد التي تحدد الشكل الصحيح\n                        لكتابة الأوامر في لغة البرمجة.\n                    </p>\n\n                    <p>\n                        كما أن اللغة الطبيعية لها قواعد، فإن JavaScript\n                        وغيرها من اللغات لها قواعد يجب اتباعها.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>خطأ Syntax</h3>\n\n                    <p>\n                        إذا كتبت الكود بطريقة تخالف قواعد اللغة،\n                        فقد تحصل على Syntax Error.\n                    </p>\n\n                </section>\n            ",
    "key": "Syntax تحدد كيف يجب أن تكتب الكود، بينما Logic تحدد هل الكود يحل المشكلة بالطريقة الصحيحة أم لا.",
-   "example": "const name = \"FAYAD\";\n\nconsole.log(name);",
+   "example": "const name = \"FAYBIT\";\n\nconsole.log(name);",
    "question": "ما المقصود بـ Syntax؟",
    "answers": [
     "قواعد كتابة الكود",
@@ -115,7 +115,7 @@
    "level": "DATA",
    "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>ما هو Variable؟</h3>\n\n                    <p>\n                        المتغير هو اسم نستخدمه للإشارة إلى قيمة مخزنة\n                        يمكن للبرنامج استخدامها أثناء التنفيذ.\n                    </p>\n\n                    <p>\n                        في JavaScript يمكنك إنشاء المتغيرات باستخدام\n                        <span class=\"term\">let</span> و\n                        <span class=\"term\">const</span>.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <div class=\"info-grid\">\n\n                        <div class=\"info-box\">\n                            <h4>let</h4>\n                            <p>\n                                تستخدم عندما تتوقع أن تتغير القيمة.\n                            </p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>const</h4>\n                            <p>\n                                تستخدم عندما لا تريد إعادة إسناد القيمة.\n                            </p>\n                        </div>\n\n                    </div>\n\n                </section>\n            ",
    "key": "المتغير يجعل بيانات البرنامج قابلة للتسمية والاستخدام بدل التعامل مع القيم بطريقة عشوائية.",
-   "example": "let score = 100;\n\nscore = 150;\n\nconst username = \"FAYAD\";\n\nconsole.log(username);\nconsole.log(score);",
+   "example": "let score = 100;\n\nscore = 150;\n\nconst username = \"FAYBIT\";\n\nconsole.log(username);\nconsole.log(score);",
    "question": "أي كلمة تستخدم لتعريف متغير يمكن تغيير قيمته؟",
    "answers": [
     "const",
@@ -205,7 +205,7 @@
    "level": "FUNCTIONS",
    "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>ما هي Function؟</h3>\n\n                    <p>\n                        Function هي كتلة من الكود مصممة لتنفيذ\n                        مهمة محددة ويمكن استدعاؤها عند الحاجة.\n                    </p>\n\n                    <p>\n                        استخدام Functions يساعد على تنظيم المشروع\n                        وتقليل تكرار الكود.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <div class=\"info-grid\">\n\n                        <div class=\"info-box\">\n                            <h4>Reusable</h4>\n                            <p>يمكن إعادة استخدام الدالة أكثر من مرة.</p>\n                        </div>\n\n                        <div class=\"info-box\">\n                            <h4>Organized</h4>\n                            <p>تجعل المشروع مقسمًا إلى أجزاء واضحة.</p>\n                        </div>\n\n                    </div>\n\n                </section>\n            ",
    "key": "Function تجمع مجموعة تعليمات تحت اسم واحد لتصبح سهلة الاستخدام وإعادة الاستخدام.",
-   "example": "function greet() {\n    console.log(\"Welcome to FAYAD\");\n}\n\ngreet();",
+   "example": "function greet() {\n    console.log(\"Welcome to FAYBIT\");\n}\n\ngreet();",
    "question": "ما فائدة Function؟",
    "answers": [
     "تكرار وتنظيم مجموعة تعليمات",

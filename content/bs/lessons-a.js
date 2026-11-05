@@ -118,7 +118,7 @@ export const A = [
     key: "d-flex + justify-content + align-items تغطي معظم احتياجات المحاذاة.",
     code: `<div class="container">
   <div class="d-flex justify-content-between align-items-center border p-3 mb-3">
-    <strong>FAYAD</strong>
+    <strong>FAYBIT</strong>
     <span class="text-muted">يسار/يمين حسب الاتجاه</span>
     <button class="btn btn-sm btn-primary">إجراء</button>
   </div>

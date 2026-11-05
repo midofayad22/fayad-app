@@ -94,7 +94,7 @@ export const EN = {
  "com-11.title": "Files and Folders",
  "com-11.body": "<section class=\"lesson-section\">\n<h3>What Is a File?</h3>\n<p>A file is a unit for storing a particular type of data, such as an image, a video, a document, or a program.</p>\n</section>\n<section class=\"lesson-section\">\n<h3>What Is a Folder?</h3>\n<p>A folder is used to organize files and other folders in a structure that is easy to access and manage.</p>\n<p>You will work with concepts such as <span class=\"term\">File Extension</span>, <span class=\"term\">Path</span>, and <span class=\"term\">Directory</span>.</p>\n</section>\n",
  "com-11.key": "Organizing files and folders is a basic skill for anyone who works with computers.",
- "com-11.practice.prompt": "Create a folder named FAYAD, then create folders inside it named HTML, CSS, and JavaScript.",
+ "com-11.practice.prompt": "Create a folder named FAYBIT, then create folders inside it named HTML, CSS, and JavaScript.",
  "com-11.quiz.0.question": "What is the main purpose of a Folder?",
  "com-11.quiz.0.options.0": "Cooling the CPU",
  "com-11.quiz.0.options.1": "Organizing files",

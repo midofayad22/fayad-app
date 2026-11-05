@@ -96,14 +96,14 @@ export const lessons = [
       },
     ],
     example: {
-      code: `const message = "Hello FAYAD";
+      code: `const message = "Hello FAYBIT";
 
 document.getElementById("jsResult").textContent = message;`,
       explanation: {
         ar: `
       <p><strong>const</strong> تُستخدم لإنشاء متغير لا يمكن إعادة إسناد قيمة جديدة له.</p>
       <p><strong>message</strong> هو اسم المتغير الذي يخزن النص.</p>
-      <p><strong>"Hello FAYAD"</strong> عبارة عن قيمة نصية من نوع String.</p>
+      <p><strong>"Hello FAYBIT"</strong> عبارة عن قيمة نصية من نوع String.</p>
       <p><strong>textContent</strong> تُستخدم لتغيير النص الموجود داخل عنصر HTML.</p>
     `,
       },
@@ -180,7 +180,7 @@ document.getElementById("jsResult").textContent = message;`,
       ar: "تعلّم كيف تخزن المتغيرات القيم والبيانات داخل برنامج JavaScript.",
     },
     example: {
-      code: `let name = "FAYAD";
+      code: `let name = "FAYBIT";
 let age = 20;
 
 document.getElementById("jsResult").textContent =
@@ -266,7 +266,7 @@ document.getElementById("jsResult").textContent =
       ar: "تعرّف على أهم أنواع البيانات التي تتعامل معها JavaScript.",
     },
     example: {
-      code: `const name = "FAYAD";
+      code: `const name = "FAYBIT";
 const age = 20;
 const isStudent = true;
 
@@ -274,7 +274,7 @@ document.getElementById("jsResult").textContent =
   name + " | " + age + " | " + isStudent;`,
       explanation: {
         ar: `
-      <p><strong>String</strong> تُستخدم للنصوص مثل <code>"FAYAD"</code>.</p>
+      <p><strong>String</strong> تُستخدم للنصوص مثل <code>"FAYBIT"</code>.</p>
       <p><strong>Number</strong> تُستخدم للأرقام مثل <code>20</code>.</p>
       <p><strong>Boolean</strong> تحتوي على قيمتين فقط: <code>true</code> أو <code>false</code>.</p>
       <p>اختيار نوع البيانات المناسب يساعد البرنامج على التعامل مع المعلومات بشكل صحيح.</p>
@@ -304,7 +304,7 @@ document.getElementById("jsResult").textContent =
       },
       {
         question: {
-          ar: "ما نوع القيمة الموجودة في \"FAYAD\"؟",
+          ar: "ما نوع القيمة الموجودة في \"FAYBIT\"؟",
         },
         options: [
           {
@@ -617,7 +617,7 @@ document.getElementById("jsResult").textContent = result;`,
     },
     example: {
       code: `function greet() {
-  return "مرحبًا بك في FAYAD";
+  return "مرحبًا بك في FAYBIT";
 }
 
 document.getElementById("jsResult").textContent = greet();`,
@@ -707,13 +707,13 @@ document.getElementById("jsResult").textContent = greet();`,
 }
 
 document.getElementById("jsResult").textContent =
-  greet("FAYAD");`,
+  greet("FAYBIT");`,
       explanation: {
         ar: `
       <p><strong>Parameter</strong> هو المتغير الموجود داخل تعريف الدالة لاستقبال قيمة.</p>
       <p><strong>Argument</strong> هي القيمة التي نمررها عند استدعاء الدالة.</p>
       <p>في المثال <strong>name</strong> هو Parameter.</p>
-      <p>أما <strong>"FAYAD"</strong> فهي Argument تم تمريرها إلى الدالة.</p>
+      <p>أما <strong>"FAYBIT"</strong> فهي Argument تم تمريرها إلى الدالة.</p>
     `,
       },
     },
@@ -760,11 +760,11 @@ document.getElementById("jsResult").textContent =
       },
       {
         question: {
-          ar: "في greet(\"FAYAD\") ما هي Argument؟",
+          ar: "في greet(\"FAYBIT\") ما هي Argument؟",
         },
         options: [
           {
-            ar: "\"FAYAD\"",
+            ar: "\"FAYBIT\"",
           },
           {
             ar: "greet",
@@ -1142,7 +1142,7 @@ document.getElementById("jsResult").textContent =
     },
     example: {
       code: `const user = {
-  name: "FAYAD",
+  name: "FAYBIT",
   age: 20,
   student: true
 };
@@ -1231,7 +1231,7 @@ document.getElementById("jsResult").textContent =
     },
     example: {
       code: `const user = {
-  name: "FAYAD",
+  name: "FAYBIT",
 
   greet() {
     return "Hello " + this.name;
@@ -1670,7 +1670,7 @@ button.addEventListener("click", () => {
     },
     example: {
       code: `const user = {
-  name: "FAYAD",
+  name: "FAYBIT",
   age: 20
 };
 
