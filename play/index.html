@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="/css/game.css" />
     <script src="/js/i18n.js" defer></script>
     <script src="/js/shell.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="/js/main-auth.js" defer></script>
     <script type="module" src="/js/game/hub.js"></script>
   </head>
   <body class="ac-body" data-page="game">
@@ -43,6 +45,12 @@
       </section>
       <div class="fq-bar"><span class="fq-chip"><span data-i18n="fq.points">نقاط اللعبة</span>: <b id="ghPoints">0</b></span></div>
       <ul class="gh-grid" id="ghGrid"></ul>
+      <section class="gh-lb" aria-labelledby="lbT">
+        <h2 id="lbT" data-i18n="lb.title">لوحة الترتيب</h2>
+        <p class="ac-note" id="lbMsg" role="status"></p>
+        <ol id="lbList" class="gh-lb-list"></ol>
+        <p class="ac-note" data-i18n="lb.note">الترتيب يعتمد على نقاط يرسلها المتصفح، لذلك هو للتحفيز والمرح وليس مسابقة محمية من الغش.</p>
+      </section>
       <p class="ac-note" data-i18n="gh.note">مسارات التحديات المتبقية قيد الإعداد ولن تظهر هنا قبل أن تعمل وتُختبر فعلًا.</p>
     </main>
   </body>

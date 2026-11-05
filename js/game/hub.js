@@ -1,4 +1,5 @@
 import { read, solvedOf } from "/js/game/store.js";
+import { leaderboard, syncGames } from "/js/engine/cloud.js";
 const F = window.FAYAD;
 const ARENA = [
   { id: "html", name: "HTML", ar: "ابنِ صفحات سليمة الدلالة وسهلة الوصول وأصلح أخطاءها.", en: "Build semantic, accessible pages and fix their bugs." },
@@ -10,8 +11,8 @@ const GAMES = [
   { id: "sel", href: "/play/selector-quest.html", name: "Selector Quest", total: 10, tag: "CSS", ar: "اكتب محدد CSS يختار العناصر المطلوبة فقط.", en: "Write a CSS selector that picks only the wanted elements." },
 ];
 const DICT = {
-  ar: { "gh.title": "مركز الألعاب", "gh.sub": "تعلّم باللعب: ألغاز قصيرة بمراحل متدرجة، والتحقق منها فوري. نقاطك تُحفظ على هذا الجهاز.", "gh.note": "مسارات التحديات المتبقية قيد الإعداد ولن تظهر هنا قبل أن تعمل وتُختبر فعلًا.", "fq.points": "نقاط اللعبة", "fq.home": "الرئيسية", "fq.dash": "لوحة التقدم", "fq.hub": "الألعاب", "gh.play": "العب", "gh.arena": "تحديات برمجية", "gh.levels": "{n} من {t} مراحل" },
-  en: { "gh.title": "Games hub", "gh.sub": "Learn by playing: short puzzles with growing levels and instant checking. Your points stay on this device.", "gh.note": "The remaining challenge tracks are in the works and will not be listed until they run and are tested.", "fq.points": "Game points", "fq.home": "Home", "fq.dash": "Progress dashboard", "fq.hub": "Games", "gh.play": "Play", "gh.arena": "Coding challenges", "gh.levels": "{n} of {t} levels" },
+  ar: { "gh.title": "مركز الألعاب", "gh.sub": "تعلّم باللعب: ألغاز قصيرة بمراحل متدرجة، والتحقق منها فوري. نقاطك تُحفظ على هذا الجهاز.", "gh.note": "مسارات التحديات المتبقية قيد الإعداد ولن تظهر هنا قبل أن تعمل وتُختبر فعلًا.", "fq.points": "نقاط اللعبة", "fq.home": "الرئيسية", "fq.dash": "لوحة التقدم", "fq.hub": "الألعاب", "gh.play": "العب", "gh.arena": "تحديات برمجية", "gh.levels": "{n} من {t} مراحل", "lb.title": "لوحة الترتيب", "lb.note": "الترتيب يعتمد على نقاط يرسلها المتصفح، لذلك هو للتحفيز والمرح وليس مسابقة محمية من الغش.", "lb.in": "سجّل الدخول لتظهر في اللوحة ويُحفظ تقدمك.", "lb.empty": "لا يوجد لاعبون بعد. كن الأول!", "lb.off": "تعذّر تحميل اللوحة الآن.", "lb.anon": "لاعب", "lb.pts": "نقطة" },
+  en: { "gh.title": "Games hub", "gh.sub": "Learn by playing: short puzzles with growing levels and instant checking. Your points stay on this device.", "gh.note": "The remaining challenge tracks are in the works and will not be listed until they run and are tested.", "fq.points": "Game points", "fq.home": "Home", "fq.dash": "Progress dashboard", "fq.hub": "Games", "gh.play": "Play", "gh.arena": "Coding challenges", "gh.levels": "{n} of {t} levels", "lb.title": "Leaderboard", "lb.note": "Ranks use points reported by the browser, so this is for fun and motivation, not a cheat-proof contest.", "lb.in": "Sign in to appear on the board and keep your progress.", "lb.empty": "No players yet. Be the first!", "lb.off": "Could not load the board right now.", "lb.anon": "Player", "lb.pts": "pts" },
 };
 F?.i18n?.extend(DICT);
 const lang = () => (F?.i18n?.lang === "en" ? "en" : "ar");
@@ -34,3 +35,22 @@ function render() {
 }
 document.addEventListener("fayad:langchange", () => { F?.i18n?.apply?.(); render(); });
 render();
+
+async function board() {
+  const ol = document.getElementById("lbList"); if (!ol) return;
+  const rows = await leaderboard(10); ol.textContent = "";
+  const msg = document.getElementById("lbMsg");
+  if (!rows) { msg.textContent = T("lb.off"); return; }
+  msg.textContent = rows.length ? "" : T("lb.empty");
+  for (const r of rows) {
+    const li = document.createElement("li");
+    const rk = document.createElement("b"); rk.textContent = r.rank;
+    const nm = document.createElement("span"); nm.textContent = r.display_name || T("lb.anon");
+    const pt = document.createElement("em"); pt.textContent = `${r.points} ${T("lb.pts")}`;
+    li.append(rk, nm, pt); ol.appendChild(li);
+  }
+}
+document.addEventListener("fayad:langchange", board);
+board();
+document.addEventListener("fayad:cloudsync", render);
+window.addEventListener("load", () => setTimeout(async () => { const r = await syncGames(); if (r.ok) { render(); board(); } else if (r.reason === "signed-out") document.getElementById("lbMsg").textContent = T("lb.in"); }, 1500), { once: true });
