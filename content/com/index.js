@@ -849,7 +849,7 @@ export const lessons = [
     },
     practice: {
       prompt: {
-        ar: "أنشئ مجلدًا باسم FAYAD ثم أنشئ داخله مجلدات باسم HTML وCSS وJavaScript.",
+        ar: "أنشئ مجلدًا باسم FAYBIT ثم أنشئ داخله مجلدات باسم HTML وCSS وJavaScript.",
       },
     },
     quiz: [

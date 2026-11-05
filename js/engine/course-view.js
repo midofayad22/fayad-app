@@ -19,7 +19,7 @@ import { sims } from "./sims.js";
 import { create as createRunner } from "../playground/playground.js";
 import { upgradeEditor } from "./editor.js";
 
-const DEFAULT_RESULT = "Hello FAYAD";
+const DEFAULT_RESULT = "Hello FAYBIT";
 const BASE_PREVIEW_CSS = "body{font-family:Arial,Helvetica,sans-serif;padding:16px;line-height:1.7;color:#1b2b34;background:#fff}img{max-width:100%;height:auto}table{border-collapse:collapse;width:100%}th,td{border:1px solid #ccc;padding:8px}a{color:#0066cc}";
 
 export function mountCourse({ doc = document, track, lessons, state, lang: initialLang }) {

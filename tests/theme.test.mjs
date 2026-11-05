@@ -33,12 +33,12 @@ for (const theme of ["light", "dark"]) for (const lang of ["ar", "en"]) {
   });
 }
 
-test("theme defaults to the system preference when nothing is stored", async () => {
+test("theme defaults to LIGHT for first-time visitors, whatever the OS prefers", async () => {
   for (const scheme of ["light", "dark"]) {
     const ctx = await browser.newContext({ colorScheme: scheme });
     const page = await ctx.newPage(); await offline(page);
     await page.goto(base + "/about/about.html");
-    assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), scheme);
+    assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), "light");
     assert.equal(await page.evaluate(() => document.documentElement.lang), "ar", "Arabic is the default language");
     await ctx.close();
   }
@@ -53,20 +53,21 @@ test("theme and language toggles work, persist across reload and navigation, and
   assert.ok(await lang.getAttribute("aria-label"), "language button labelled");
   const arLabel = await theme.getAttribute("aria-label");
 
+  assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), "light", "light by default");
   await theme.click();
-  assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), "light");
+  assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), "dark");
   await lang.click();
   assert.deepEqual(await page.evaluate(() => [document.documentElement.lang, document.documentElement.dir]), ["en", "ltr"]);
   assert.notEqual(await theme.getAttribute("aria-label"), arLabel, "labels follow the language");
 
   await page.reload(); // persistence
-  assert.deepEqual(await page.evaluate(() => [document.documentElement.dataset.theme, document.documentElement.lang]), ["light", "en"]);
+  assert.deepEqual(await page.evaluate(() => [document.documentElement.dataset.theme, document.documentElement.lang]), ["dark", "en"]);
   await page.goto(base + "/fundamentals/computer-basics/com.html"); // navigation to another page
-  assert.deepEqual(await page.evaluate(() => [document.documentElement.dataset.theme, document.documentElement.lang, document.documentElement.dir]), ["light", "en", "ltr"]);
+  assert.deepEqual(await page.evaluate(() => [document.documentElement.dataset.theme, document.documentElement.lang, document.documentElement.dir]), ["dark", "en", "ltr"]);
 
   // keyboard operable
   await page.locator(".fy-btn-theme").focus(); await page.keyboard.press("Enter");
-  assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), "dark");
+  assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), "light");
   await ctx.close();
 });
 

@@ -83,7 +83,7 @@ export const lessons = [
     },
     example: {
       code: `function App() {
-  return <h1>مرحبًا بك في FAYAD</h1>;
+  return <h1>مرحبًا بك في FAYBIT</h1>;
 }`,
       explanation: {
         ar: "في React تكتب مكونات تصف الشكل الذي تريد عرضه، ثم تتولى React تحديث الواجهة عندما تتغير البيانات.",
@@ -289,7 +289,7 @@ export const lessons = [
     },
     example: {
       code: `function Welcome() {
-  return <h1>مرحبًا بك في FAYAD</h1>;
+  return <h1>مرحبًا بك في FAYBIT</h1>;
 }`,
       explanation: {
         ar: "يمكنك تركيب Components متعددة معًا لبناء صفحة كاملة.",
@@ -395,7 +395,7 @@ export const lessons = [
   return (
     <div>
       <h1>مرحبًا بك</h1>
-      <p>تعلم React مع FAYAD</p>
+      <p>تعلم React مع FAYBIT</p>
     </div>
   );
 }`,
@@ -502,7 +502,7 @@ export const lessons = [
 }
 
 function App() {
-  return <Welcome name="FAYAD" />;
+  return <Welcome name="FAYBIT" />;
 }`,
       explanation: {
         ar: "يمكنك إرسال name أو title أو image أو أي قيمة أخرى إلى Component.",
@@ -1144,7 +1144,7 @@ function App() {
     },
     example: {
       code: `function Header() {
-  return <header>FAYAD</header>;
+  return <header>FAYBIT</header>;
 }
 
 function App() {
@@ -1257,7 +1257,7 @@ function App() {
       code: `import { useState } from "react";
 
 function App() {
-  const [name, setName] = useState("FAYAD");
+  const [name, setName] = useState("FAYBIT");
 
   return <h1>{name}</h1>;
 }`,

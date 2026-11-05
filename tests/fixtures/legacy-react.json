@@ -7,7 +7,7 @@
    "keyIdea": "الفكرة الأساسية في React هي بناء الواجهة باستخدام Components قابلة لإعادة الاستخدام.",
    "explanation": "في React تكتب مكونات تصف الشكل الذي تريد عرضه، ثم تتولى React تحديث الواجهة عندما تتغير البيانات.",
    "practice": "جرّب تعديل النص داخل العنصر h1 وشاهد النتيجة في المعاينة.",
-   "code": "function App() {\n  return <h1>مرحبًا بك في FAYAD</h1>;\n}",
+   "code": "function App() {\n  return <h1>مرحبًا بك في FAYBIT</h1>;\n}",
    "questions": [
     {
      "question": "ما الاستخدام الأساسي لمكتبة React؟",
@@ -89,7 +89,7 @@
    "keyIdea": "Component هو وحدة بناء أساسية في React تمثل جزءًا من واجهة المستخدم.",
    "explanation": "يمكنك تركيب Components متعددة معًا لبناء صفحة كاملة.",
    "practice": "أنشئ Component باسم Welcome يعرض عنوان ترحيبي.",
-   "code": "function Welcome() {\n  return <h1>مرحبًا بك في FAYAD</h1>;\n}",
+   "code": "function Welcome() {\n  return <h1>مرحبًا بك في FAYBIT</h1>;\n}",
    "questions": [
     {
      "question": "ما هو React Component؟",
@@ -130,7 +130,7 @@
    "keyIdea": "JSX تجعل وصف واجهة React داخل JavaScript أكثر وضوحًا وسهولة.",
    "explanation": "يمكنك كتابة عناصر مثل h1 وp وbutton داخل Component، واستخدام JavaScript expressions داخل {}.",
    "practice": "غيّر النص داخل h1 وأضف فقرة p جديدة.",
-   "code": "function App() {\n  return (\n    <div>\n      <h1>مرحبًا بك</h1>\n      <p>تعلم React مع FAYAD</p>\n    </div>\n  );\n}",
+   "code": "function App() {\n  return (\n    <div>\n      <h1>مرحبًا بك</h1>\n      <p>تعلم React مع FAYBIT</p>\n    </div>\n  );\n}",
    "questions": [
     {
      "question": "ماذا تسمح JSX للمطور أن يكتب؟",
@@ -171,7 +171,7 @@
    "keyIdea": "Props هي وسيلة أساسية لتمرير البيانات إلى Components.",
    "explanation": "يمكنك إرسال name أو title أو image أو أي قيمة أخرى إلى Component.",
    "practice": "غيّر قيمة name وجرب تمرير اسم مختلف إلى Welcome.",
-   "code": "function Welcome({ name }) {\n  return <h1>مرحبًا {name}</h1>;\n}\n\nfunction App() {\n  return <Welcome name=\"FAYAD\" />;\n}",
+   "code": "function Welcome({ name }) {\n  return <h1>مرحبًا {name}</h1>;\n}\n\nfunction App() {\n  return <Welcome name=\"FAYBIT\" />;\n}",
    "questions": [
     {
      "question": "ما الاستخدام الأساسي لـ Props؟",
@@ -417,7 +417,7 @@
    "keyIdea": "التطبيق الكبير يمكن بناؤه من مجموعة Components صغيرة ومتخصصة.",
    "explanation": "مثل تركيب صفحة من Header وSidebar وContent وFooter.",
    "practice": "أضف Component جديدًا إلى App.",
-   "code": "function Header() {\n  return <header>FAYAD</header>;\n}\n\nfunction App() {\n  return (\n    <>\n      <Header />\n      <main>تعلم React</main>\n    </>\n  );\n}",
+   "code": "function Header() {\n  return <header>FAYBIT</header>;\n}\n\nfunction App() {\n  return (\n    <>\n      <Header />\n      <main>تعلم React</main>\n    </>\n  );\n}",
    "questions": [
     {
      "question": "ماذا يعني Component Composition؟",
@@ -458,7 +458,7 @@
    "keyIdea": "Hooks توفر وظائف React الأساسية داخل Function Components.",
    "explanation": "كل Hook لها وظيفة محددة، ويجب الالتزام بقواعد استخدامها.",
    "practice": "جرّب تغيير القيمة الأولية في useState.",
-   "code": "import { useState } from \"react\";\n\nfunction App() {\n  const [name, setName] = useState(\"FAYAD\");\n\n  return <h1>{name}</h1>;\n}",
+   "code": "import { useState } from \"react\";\n\nfunction App() {\n  const [name, setName] = useState(\"FAYBIT\");\n\n  return <h1>{name}</h1>;\n}",
    "questions": [
     {
      "question": "ما هي React Hooks؟",

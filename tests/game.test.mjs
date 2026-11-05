@@ -103,7 +103,7 @@ test("arena: solving a challenge awards points once, shows the explanation and p
   await page.click("#arRun");
   await page.waitForSelector("#arChecks li.bad");
   assert.equal(await page.textContent("#arPoints"), "0");
-  await page.locator(".ar-ta").first().evaluate((t) => { t.value = "<h1>FAYAD</h1>\n<p>x</p>"; t.dispatchEvent(new Event("input")); });
+  await page.locator(".ar-ta").first().evaluate((t) => { t.value = "<h1>FAYBIT</h1>\n<p>x</p>"; t.dispatchEvent(new Event("input")); });
   await page.click("#arRun");
   await page.waitForSelector("#arWin:not([hidden])");
   assert.equal(await page.textContent("#arPoints"), "15");

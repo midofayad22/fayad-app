@@ -7,7 +7,7 @@ export const B = [
     key: "navbar-expand-{bp} يحدد النقطة التي تُفتح عندها القائمة، والزر يفتحها بـ data-bs-toggle.",
     code: `<nav class="navbar navbar-expand-md bg-body-tertiary border-bottom">
   <div class="container-fluid">
-    <a class="navbar-brand fw-bold" href="#">FAYAD</a>
+    <a class="navbar-brand fw-bold" href="#">FAYBIT</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="فتح القائمة">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -199,7 +199,7 @@ export const B = [
 
   <div class="toast-container position-fixed bottom-0 end-0 p-3">
     <div id="liveToast" class="toast" role="status" aria-live="polite" aria-atomic="true">
-      <div class="toast-header"><strong class="me-auto">FAYAD</strong><small>الآن</small><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="إغلاق"></button></div>
+      <div class="toast-header"><strong class="me-auto">FAYBIT</strong><small>الآن</small><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="إغلاق"></button></div>
       <div class="toast-body">تم حفظ التقدم.</div>
     </div>
   </div>
@@ -249,7 +249,7 @@ export const B = [
         ["نصائح", "<ul><li>ابدأ بالهاتف ثم وسّع بالنقاط.</li><li>استخدم <code>container</code> مرة واحدة لكل قسم.</li><li>اختبر الوضع الداكن واتجاه RTL.</li></ul>"]],
     key: "ابدأ من الهاتف، وابنِ كل قسم بحاوية وشبكة، ثم اختبر الوضعين والاتجاهين.",
     code: `<nav class="navbar navbar-expand-md bg-body-tertiary border-bottom">
-  <div class="container"><a class="navbar-brand fw-bold" href="#">FAYAD</a><a href="#join" class="btn btn-sm btn-primary">انضم</a></div>
+  <div class="container"><a class="navbar-brand fw-bold" href="#">FAYBIT</a><a href="#join" class="btn btn-sm btn-primary">انضم</a></div>
 </nav>
 <header class="py-5 text-center bg-primary-subtle">
   <div class="container">
@@ -271,7 +271,7 @@ export const B = [
     <button class="btn btn-primary" type="submit">اشترك</button>
   </form>
 </section>
-<footer class="py-3 text-center text-body-secondary bg-body-tertiary border-top"><small>© FAYAD</small></footer>`,
+<footer class="py-3 text-center text-body-secondary bg-body-tertiary border-top"><small>© FAYBIT</small></footer>`,
     exp: "<p>الصفحة تستخدم كل ما تعلمته: تنقل، hero، شبكة بطاقات، input-group، وتذييل. جرّب تصغير المعاينة لترى الأعمدة تتحول إلى عمود واحد.</p>",
     prompt: "أضف قسمًا رابعًا للأسئلة الشائعة باستخدام الأكورديون، ثم اختبر الوضع الداكن بوضع <code>data-bs-theme=\"dark\"</code> على الوسم الأول.", check: "header .display-5",
     q: [["من أين تبدأ في تصميم صفحة متجاوبة بـ Bootstrap؟", ["من تصميم الهاتف ثم التوسع بالنقاط", "من الشاشة الكبيرة فقط", "من الطباعة", "من ملف JavaScript"], 0],

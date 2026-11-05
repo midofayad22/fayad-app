@@ -91,7 +91,7 @@ export const A = [
         ["على العناصر", "<p><code>flex-1</code> لتمدد العنصر ليملأ المتاح، <code>shrink-0</code> لمنع الانكماش، <code>grow</code>، <code>order-*</code>، <code>ms-auto</code> لدفع العنصر إلى النهاية.</p>"]],
     key: "flex + items-center + justify-between + gap تغطي معظم الحالات.",
     code: `<nav id="nav" class="flex items-center justify-between gap-4 bg-slate-900 px-4 py-3 text-white">
-  <span class="font-bold">FAYAD</span>
+  <span class="font-bold">FAYBIT</span>
   <div class="flex gap-4 text-sm"><a href="#">الدورات</a><a href="#">المدونة</a></div>
   <button class="rounded bg-sky-500 px-3 py-1 text-sm font-semibold">دخول</button>
 </nav>

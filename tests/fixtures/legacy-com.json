@@ -155,7 +155,7 @@
    "icon": "fa-folder-open",
    "content": "\n                <section class=\"lesson-section\">\n\n                    <h3>ما هو File؟</h3>\n\n                    <p>\n                        الملف هو وحدة لتخزين نوع معين من البيانات، مثل صورة\n                        أو فيديو أو مستند أو برنامج.\n                    </p>\n\n                </section>\n\n                <section class=\"lesson-section\">\n\n                    <h3>ما هو Folder؟</h3>\n\n                    <p>\n                        المجلد يستخدم لتنظيم الملفات والمجلدات الأخرى في\n                        هيكل يسهل الوصول إليه وإدارته.\n                    </p>\n\n                    <p>\n                        ستتعامل مع مفاهيم مثل\n                        <span class=\"term\">File Extension</span> و\n                        <span class=\"term\">Path</span> و\n                        <span class=\"term\">Directory</span>.\n                    </p>\n\n                </section>\n            ",
    "key": "تنظيم الملفات والمجلدات مهارة أساسية لأي شخص يعمل مع الكمبيوتر.",
-   "practice": "أنشئ مجلدًا باسم FAYAD ثم أنشئ داخله مجلدات باسم HTML وCSS وJavaScript.",
+   "practice": "أنشئ مجلدًا باسم FAYBIT ثم أنشئ داخله مجلدات باسم HTML وCSS وJavaScript.",
    "question": "ما الهدف الأساسي من Folder؟",
    "answers": [
     "تبريد CPU",

@@ -100,10 +100,10 @@
    "content": "\n      <h2>Template Syntax</h2>\n\n      <p>\n        تستخدم Vue طريقة بسيطة لعرض البيانات داخل HTML باستخدام\n        الأقواس المزدوجة <code>{{ }}</code>.\n      </p>\n\n      <p>\n        تسمى هذه الطريقة Interpolation، وتسمح لك بعرض قيم البيانات\n        مباشرة داخل الـ Template.\n      </p>\n    ",
    "keyTitle": "استخدم {{ }} لعرض البيانات",
    "keyDescription": "Interpolation تسمح لك بعرض قيم JavaScript داخل Template الخاص بـ Vue.",
-   "example": "\n<div id=\"app\">\n  <h1>{{ name }}</h1>\n  <p>{{ message }}</p>\n</div>\n\n<script>\nconst { createApp } = Vue;\n\ncreateApp({\n  data() {\n    return {\n      name: \"FAYAD\",\n      message: \"Welcome to Vue!\"\n    };\n  }\n}).mount(\"#app\");\n</script>\n    ",
-   "result": "\n      <div style=\"padding:20px;font-family:Arial;\">\n        <h2 style=\"margin:0 0 8px;\">FAYAD</h2>\n        <p style=\"margin:0;\">Welcome to Vue!</p>\n      </div>\n    ",
+   "example": "\n<div id=\"app\">\n  <h1>{{ name }}</h1>\n  <p>{{ message }}</p>\n</div>\n\n<script>\nconst { createApp } = Vue;\n\ncreateApp({\n  data() {\n    return {\n      name: \"FAYBIT\",\n      message: \"Welcome to Vue!\"\n    };\n  }\n}).mount(\"#app\");\n</script>\n    ",
+   "result": "\n      <div style=\"padding:20px;font-family:Arial;\">\n        <h2 style=\"margin:0 0 8px;\">FAYBIT</h2>\n        <p style=\"margin:0;\">Welcome to Vue!</p>\n      </div>\n    ",
    "challenge": "اعرض الاسم والرسالة داخل الصفحة باستخدام Interpolation.",
-   "starterCode": "\n<div id=\"app\">\n  <h1>{{ name }}</h1>\n  <p>{{ message }}</p>\n</div>\n\n<script>\nconst { createApp } = Vue;\n\ncreateApp({\n  data() {\n    return {\n      name: \"FAYAD\",\n      message: \"Welcome to Vue!\"\n    };\n  }\n}).mount(\"#app\");\n</script>\n    ",
+   "starterCode": "\n<div id=\"app\">\n  <h1>{{ name }}</h1>\n  <p>{{ message }}</p>\n</div>\n\n<script>\nconst { createApp } = Vue;\n\ncreateApp({\n  data() {\n    return {\n      name: \"FAYBIT\",\n      message: \"Welcome to Vue!\"\n    };\n  }\n}).mount(\"#app\");\n</script>\n    ",
    "explanation": "\n      <p>\n        <code>{{ name }}</code> تعرض قيمة المتغير <code>name</code>.\n      </p>\n\n      <p>\n        <code>{{ message }}</code> تعرض قيمة <code>message</code>.\n      </p>\n\n      <p>\n        Vue تراقب هذه البيانات وتحدث الواجهة عندما تتغير.\n      </p>\n    ",
    "questions": [
     {
@@ -560,10 +560,10 @@
    "content": "\n      <h2>Components</h2>\n\n      <p>\n        Component هو جزء مستقل وقابل لإعادة الاستخدام من واجهة المستخدم.\n      </p>\n\n      <p>\n        تقسيم التطبيق إلى Components يجعل الكود أكثر تنظيمًا\n        وأسهل في الصيانة.\n      </p>\n    ",
    "keyTitle": "Components تجعل الواجهة قابلة لإعادة الاستخدام",
    "keyDescription": "قسّم الواجهة إلى أجزاء صغيرة مستقلة يمكن إعادة استخدامها في أكثر من مكان.",
-   "example": "\n<div id=\"app\">\n  <user-card></user-card>\n</div>\n\n<script>\nconst { createApp } = Vue;\n\nconst UserCard = {\n  template: `\n    <div>\n      <h2>FAYAD</h2>\n      <p>Vue Developer</p>\n    </div>\n  `\n};\n\ncreateApp({\n  components: {\n    UserCard\n  }\n}).mount(\"#app\");\n</script>\n    ",
-   "result": "\n      <div style=\"padding:20px;font-family:Arial;\">\n        <h2 style=\"margin:0 0 6px;\">FAYAD</h2>\n        <p style=\"margin:0;\">Vue Developer</p>\n      </div>\n    ",
+   "example": "\n<div id=\"app\">\n  <user-card></user-card>\n</div>\n\n<script>\nconst { createApp } = Vue;\n\nconst UserCard = {\n  template: `\n    <div>\n      <h2>FAYBIT</h2>\n      <p>Vue Developer</p>\n    </div>\n  `\n};\n\ncreateApp({\n  components: {\n    UserCard\n  }\n}).mount(\"#app\");\n</script>\n    ",
+   "result": "\n      <div style=\"padding:20px;font-family:Arial;\">\n        <h2 style=\"margin:0 0 6px;\">FAYBIT</h2>\n        <p style=\"margin:0;\">Vue Developer</p>\n      </div>\n    ",
    "challenge": "أنشئ Component بسيطًا يعرض اسمًا ووصفًا ويمكن إعادة استخدامه.",
-   "starterCode": "\n<div id=\"app\">\n  <user-card></user-card>\n</div>\n\n<script>\nconst { createApp } = Vue;\n\nconst UserCard = {\n  template: `\n    <div>\n      <h2>FAYAD</h2>\n      <p>Vue Developer</p>\n    </div>\n  `\n};\n\ncreateApp({\n  components: {\n    UserCard\n  }\n}).mount(\"#app\");\n</script>\n    ",
+   "starterCode": "\n<div id=\"app\">\n  <user-card></user-card>\n</div>\n\n<script>\nconst { createApp } = Vue;\n\nconst UserCard = {\n  template: `\n    <div>\n      <h2>FAYBIT</h2>\n      <p>Vue Developer</p>\n    </div>\n  `\n};\n\ncreateApp({\n  components: {\n    UserCard\n  }\n}).mount(\"#app\");\n</script>\n    ",
    "explanation": "\n      <p>\n        <code>UserCard</code> هو Component قابل لإعادة الاستخدام.\n      </p>\n\n      <p>\n        قمنا بتسجيله داخل <code>components</code>.\n      </p>\n\n      <p>\n        بعد ذلك يمكن استخدامه داخل Template باستخدام\n        <code>&lt;user-card&gt;</code>.\n      </p>\n    ",
    "questions": [
     {
@@ -606,11 +606,11 @@
    "content": "\n      <h2>Props</h2>\n\n      <p>\n        Props هي الطريقة الأساسية لتمرير البيانات من Parent Component\n        إلى Child Component.\n      </p>\n\n      <p>\n        تساعد Props على جعل Components أكثر مرونة وقابلية لإعادة الاستخدام.\n      </p>\n    ",
    "keyTitle": "Props تمرر البيانات إلى المكونات الأبناء",
    "keyDescription": "يمكن للـ Parent إرسال بيانات إلى Child من خلال Props.",
-   "example": "\n<div id=\"app\">\n  <user-card name=\"FAYAD\"></user-card>\n</div>\n\n<script>\nconst { createApp } = Vue;\n\nconst UserCard = {\n  props: [\"name\"],\n\n  template: `\n    <h2>Hello {{ name }}</h2>\n  `\n};\n\ncreateApp({\n  components: {\n    UserCard\n  }\n}).mount(\"#app\");\n</script>\n    ",
-   "result": "\n      <div style=\"padding:20px;font-family:Arial;\">\n        <h2 style=\"margin:0;\">Hello FAYAD</h2>\n      </div>\n    ",
+   "example": "\n<div id=\"app\">\n  <user-card name=\"FAYBIT\"></user-card>\n</div>\n\n<script>\nconst { createApp } = Vue;\n\nconst UserCard = {\n  props: [\"name\"],\n\n  template: `\n    <h2>Hello {{ name }}</h2>\n  `\n};\n\ncreateApp({\n  components: {\n    UserCard\n  }\n}).mount(\"#app\");\n</script>\n    ",
+   "result": "\n      <div style=\"padding:20px;font-family:Arial;\">\n        <h2 style=\"margin:0;\">Hello FAYBIT</h2>\n      </div>\n    ",
    "challenge": "مرر اسمًا من Parent إلى UserCard باستخدام Props.",
-   "starterCode": "\n<div id=\"app\">\n  <user-card name=\"FAYAD\"></user-card>\n</div>\n\n<script>\nconst { createApp } = Vue;\n\nconst UserCard = {\n  props: [\"name\"],\n\n  template: `\n    <h2>Hello {{ name }}</h2>\n  `\n};\n\ncreateApp({\n  components: {\n    UserCard\n  }\n}).mount(\"#app\");\n</script>\n    ",
-   "explanation": "\n      <p>\n        <code>props: [\"name\"]</code> تحدد أن Component يستقبل\n        Prop باسم <code>name</code>.\n      </p>\n\n      <p>\n        Parent يمرر القيمة باستخدام\n        <code>&lt;user-card name=\"FAYAD\"&gt;</code>.\n      </p>\n\n      <p>\n        داخل Child يمكن استخدام <code>{{ name }}</code>.\n      </p>\n    ",
+   "starterCode": "\n<div id=\"app\">\n  <user-card name=\"FAYBIT\"></user-card>\n</div>\n\n<script>\nconst { createApp } = Vue;\n\nconst UserCard = {\n  props: [\"name\"],\n\n  template: `\n    <h2>Hello {{ name }}</h2>\n  `\n};\n\ncreateApp({\n  components: {\n    UserCard\n  }\n}).mount(\"#app\");\n</script>\n    ",
+   "explanation": "\n      <p>\n        <code>props: [\"name\"]</code> تحدد أن Component يستقبل\n        Prop باسم <code>name</code>.\n      </p>\n\n      <p>\n        Parent يمرر القيمة باستخدام\n        <code>&lt;user-card name=\"FAYBIT\"&gt;</code>.\n      </p>\n\n      <p>\n        داخل Child يمكن استخدام <code>{{ name }}</code>.\n      </p>\n    ",
    "questions": [
     {
      "question": "ما الاستخدام الأساسي لـ Props؟",
@@ -744,10 +744,10 @@
    "content": "\n      <h2>ref و reactive</h2>\n\n      <p>\n        <code>ref()</code> تستخدم لإنشاء Reactive Reference ويمكنها\n        التعامل مع قيم بسيطة مثل Number وString.\n      </p>\n\n      <p>\n        <code>reactive()</code> تستخدم لإنشاء Reactive Object.\n      </p>\n    ",
    "keyTitle": "ref للقيم و reactive للكائنات",
    "keyDescription": "استخدم ref للقيم التفاعلية وreactive عندما تحتاج إلى Reactive Object.",
-   "example": "\n<div id=\"app\">\n  <h2>{{ count }}</h2>\n  <p>{{ user.name }}</p>\n\n  <button @click=\"increment\">\n    زيادة\n  </button>\n</div>\n\n<script>\nconst { createApp, ref, reactive } = Vue;\n\ncreateApp({\n  setup() {\n    const count = ref(0);\n\n    const user = reactive({\n      name: \"FAYAD\"\n    });\n\n    function increment() {\n      count.value++;\n    }\n\n    return {\n      count,\n      user,\n      increment\n    };\n  }\n}).mount(\"#app\");\n</script>\n    ",
-   "result": "\n      <div style=\"padding:20px;font-family:Arial;\">\n        <h2 style=\"margin:0 0 6px;\">0</h2>\n        <p>FAYAD</p>\n        <button style=\"padding:8px 14px;\">زيادة</button>\n      </div>\n    ",
+   "example": "\n<div id=\"app\">\n  <h2>{{ count }}</h2>\n  <p>{{ user.name }}</p>\n\n  <button @click=\"increment\">\n    زيادة\n  </button>\n</div>\n\n<script>\nconst { createApp, ref, reactive } = Vue;\n\ncreateApp({\n  setup() {\n    const count = ref(0);\n\n    const user = reactive({\n      name: \"FAYBIT\"\n    });\n\n    function increment() {\n      count.value++;\n    }\n\n    return {\n      count,\n      user,\n      increment\n    };\n  }\n}).mount(\"#app\");\n</script>\n    ",
+   "result": "\n      <div style=\"padding:20px;font-family:Arial;\">\n        <h2 style=\"margin:0 0 6px;\">0</h2>\n        <p>FAYBIT</p>\n        <button style=\"padding:8px 14px;\">زيادة</button>\n      </div>\n    ",
    "challenge": "أنشئ count باستخدام ref وuser باستخدام reactive.",
-   "starterCode": "\n<div id=\"app\">\n  <h2>{{ count }}</h2>\n  <p>{{ user.name }}</p>\n\n  <button @click=\"increment\">\n    زيادة\n  </button>\n</div>\n\n<script>\nconst { createApp, ref, reactive } = Vue;\n\ncreateApp({\n  setup() {\n    const count = ref(0);\n\n    const user = reactive({\n      name: \"FAYAD\"\n    });\n\n    function increment() {\n      count.value++;\n    }\n\n    return {\n      count,\n      user,\n      increment\n    };\n  }\n}).mount(\"#app\");\n</script>\n    ",
+   "starterCode": "\n<div id=\"app\">\n  <h2>{{ count }}</h2>\n  <p>{{ user.name }}</p>\n\n  <button @click=\"increment\">\n    زيادة\n  </button>\n</div>\n\n<script>\nconst { createApp, ref, reactive } = Vue;\n\ncreateApp({\n  setup() {\n    const count = ref(0);\n\n    const user = reactive({\n      name: \"FAYBIT\"\n    });\n\n    function increment() {\n      count.value++;\n    }\n\n    return {\n      count,\n      user,\n      increment\n    };\n  }\n}).mount(\"#app\");\n</script>\n    ",
    "explanation": "\n      <p>\n        <code>ref()</code> تنشئ Reactive Reference.\n      </p>\n\n      <p>\n        في JavaScript نصل إلى القيمة باستخدام\n        <code>.value</code>.\n      </p>\n\n      <p>\n        <code>reactive()</code> تجعل Object نفسه Reactive.\n      </p>\n\n      <p>\n        داخل Template تقوم Vue بعمل Unwrap تلقائي لـ ref.\n      </p>\n    ",
    "questions": [
     {
