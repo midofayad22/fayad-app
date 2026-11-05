@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="FAYBIT"><title>FAYBIT</title><defs><linearGradient id="jsa" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0F766E"/><stop offset="1" stop-color="#0D9488"/></linearGradient><linearGradient id="jsb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0D9488"/><stop offset="1" stop-color="#0B5F59"/></linearGradient></defs>
+<path fill="url(#jsa)" d="M18 22Q18 8 33 8H78L68 24Q66 27 62 27H37Q33 27 30 30L18 43Z"/>
+<path fill="url(#jsb)" d="M18 62 30 46Q33 42 38 42H64Q74 42 74 52Q74 62 64 62H46V80Q46 84 43 86L24 98Q18 101 18 94Z"/>
+<path fill="#EAB308" stroke="#EAB308" stroke-width="3" stroke-linejoin="round" d="M83 41 96 51 83 61Z"/>
+<rect x="3" y="41" width="8" height="8" fill="#EAB308"/><rect x="0" y="55" width="6" height="6" fill="#0F766E"/><rect x="7" y="69" width="7" height="7" fill="#0D9488"/></svg>
