@@ -72,3 +72,20 @@ html[data-reading="compact"] .st-lesson .st-sec { padding-block: 8px; }
   .st-facts dd, .st-keys dd { margin-bottom: 10px; }
   .st-seg button { flex: 1 1 auto; justify-content: center; }
 }
+.st-toggles { display: grid; gap: 4px; }
+.st-toggle { display: flex; align-items: flex-start; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--fy-border); min-height: 44px; cursor: pointer; }
+.st-toggle input { width: 22px; height: 22px; margin-top: 2px; accent-color: var(--fy-brand); flex: none; }
+.st-toggle-t { display: grid; gap: 2px; }
+.st-toggle-t small { color: var(--fy-text-soft); line-height: 1.6; }
+.st-notifs { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.st-notif { display: flex; gap: 12px; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; padding: 14px; border: 1px solid var(--fy-border); border-radius: var(--fy-radius-sm); background: var(--fy-surface); }
+.st-notif.unread { border-color: var(--fy-brand); box-shadow: inset 3px 0 0 var(--fy-brand); }
+html[dir="rtl"] .st-notif.unread { box-shadow: inset -3px 0 0 var(--fy-brand); }
+.st-notif-b { display: grid; gap: 4px; min-width: 0; flex: 1 1 260px; }
+.st-notif-b p { margin: 0; color: var(--fy-text-soft); line-height: 1.7; }
+.st-notif-b small { color: var(--fy-text-soft); }
+.st-notif-a { display: flex; gap: 8px; flex-wrap: wrap; }
+.st-notif-a .st-btn { min-height: 38px; padding: 0 12px; font-size: .88rem; }
+.st-empty { padding: 20px 4px; color: var(--fy-text-soft); line-height: 1.8; }
+.st-count { font-weight: 700; color: var(--fy-brand); margin-inline-end: auto; align-self: center; }
+.st-actions-tight { padding-top: 0; }

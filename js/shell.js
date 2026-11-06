@@ -147,6 +147,9 @@
   // Signed-in devices sync account preferences (guests never load Supabase).
   try {
     if (localStorage.getItem("sb-vsrysitexadvmmikcmfs-auth-token"))
-      import("/js/prefs-sync.js").then(function (m) { m.start(); }).catch(function () {});
+      {
+        import("/js/prefs-sync.js").then(function (m) { m.start(); }).catch(function () {});
+        import("/js/notif-badge.js").then(function (m) { m.start(); }).catch(function () {});
+      }
   } catch (e) {}
 })();

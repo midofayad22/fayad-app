@@ -279,3 +279,9 @@ html[dir="rtl"] .nd-panel { --nd-dir: -1; }
 }
 @media (prefers-reduced-motion: reduce) { .nd-panel, .nd-back { transition: none; } }
 @media (max-width: 560px) { .fy-controls--inline .fy-btn-menu { display: none; } }
+
+/* unread notification count on the menu button and in the drawer */
+.fy-btn-menu { position: relative; }
+.fy-btn-menu[data-unread]::after { content: attr(data-unread); position: absolute; inset-block-start: -4px; inset-inline-end: -4px; min-width: 18px; height: 18px; padding: 0 4px; box-sizing: border-box; border-radius: 9px; background: #b91c1c; color: #fff; font: 700 .68rem/18px var(--fy-font-en); text-align: center; }
+.nd-badge { margin-inline-start: auto; min-width: 22px; padding: 0 7px; border-radius: 11px; background: #b91c1c; color: #fff; font: 700 .72rem/22px var(--fy-font-en); text-align: center; }
+.nd-link:has(.nd-badge) { display: flex; align-items: center; }

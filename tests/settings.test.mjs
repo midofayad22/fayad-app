@@ -7,7 +7,7 @@ const { chromium } = createRequire(import.meta.url)("playwright");
 let server, browser, base;
 before(async () => { server = await startServer(); base = `http://127.0.0.1:${server.address().port}`; browser = await chromium.launch(); });
 after(async () => { await browser?.close(); server?.close(); });
-const LIVE = ["profile", "appearance", "language", "learning", "accessibility"];
+const LIVE = ["profile", "appearance", "language", "learning", "notifications", "accessibility"];
 const PNG = Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==", "base64");
 
 async function open(path, { w = 1200, h = 900, lang = "ar", init, stub } = {}) {
