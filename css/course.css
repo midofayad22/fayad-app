@@ -1914,3 +1914,11 @@ html[dir="rtl"] .lesson:hover { transform: translateX(-3px); }
 .learning-title .path-title { font-family: var(--fy-font-ar); letter-spacing: 0; word-spacing: .08em; }
 .learning-logo img { width: 36px; height: 36px; }
 .lesson.active::before { inset-inline-start: 2px; }
+
+/* Collapsible lesson sections (preference "sections: collapsed") */
+.content-card.is-collapsible > summary { list-style: none; cursor: pointer; display: flex; flex-direction: column; gap: 4px; position: relative; padding-inline-end: 28px; min-height: 44px; justify-content: center; }
+.content-card.is-collapsible > summary::-webkit-details-marker { display: none; }
+.content-card.is-collapsible > summary::after { content: ""; position: absolute; inset-inline-end: 4px; inset-block-start: 50%; width: 9px; height: 9px; border: solid var(--fy-text-soft); border-width: 0 2px 2px 0; transform: translateY(-70%) rotate(45deg); transition: transform .2s; }
+.content-card.is-collapsible[open] > summary::after { transform: translateY(-30%) rotate(-135deg); }
+.content-card.is-collapsible > summary h2 { margin: 0; }
+.content-card.is-collapsible[open] > summary { margin-block-end: 10px; }

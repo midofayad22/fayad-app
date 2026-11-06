@@ -41,7 +41,10 @@ export function mountCourse({ doc = document, track, lessons, state, lang: initi
     "runButton", "resetButton", "outputWrap", "output", "quizQuestionNumber", "quizTotalQuestions", "questionTitle", "answerOptions", "answerFeedback", "quizNextButton",
     "previousButton", "nextButton", "sidebar", "sidebarToggle", "sidebarCurrent", "sidebarSearch", "sidebarEmpty", "sbProgFill", "sbProgText"]) el[id] = $(id);
 
-  const text = (v) => t(v, lang);
+  // Lesson text follows the "explanation language" preference (default: the interface language); interface strings (S) always follow the interface.
+  const prefs = () => doc.defaultView?.FAYAD?.prefs?.all || {};
+  const contentLang = () => { const p = prefs().explainLang; return p === "ar" || p === "en" ? p : lang; };
+  const text = (v) => t(v, contentLang());
   const lessonTitle = (id) => text(lessons.find((l) => l.id === id)?.title);
   const navTitle = (id) => { const l = lessons.find((x) => x.id === id); return text(l?.navTitle || l?.title); };
   const numberOf = (id) => state.order.indexOf(id) + 1;
@@ -146,14 +149,20 @@ export function mountCourse({ doc = document, track, lessons, state, lang: initi
   // ---------- lesson content ----------
   function renderSections(lesson) {
     el.lessonSections.textContent = "";
-    for (const s of lesson.sections || []) {
-      const card = doc.createElement("article"); card.className = "content-card";
-      if (s.label) { const lab = doc.createElement("div"); lab.className = "info-label"; lab.textContent = text(s.label); card.appendChild(lab); }
-      const h2 = doc.createElement("h2"); h2.textContent = text(s.title); card.appendChild(h2);
+    const collapsible = prefs().sections === "collapsed";          // preference: sections start collapsed (first one stays open)
+    const cl = contentLang();
+    el.lessonSections.setAttribute("lang", cl); el.lessonSections.setAttribute("dir", cl === "ar" ? "rtl" : "ltr");
+    (lesson.sections || []).forEach((s, i) => {
+      const card = doc.createElement(collapsible ? "details" : "article"); card.className = "content-card" + (collapsible ? " is-collapsible" : "");
+      if (collapsible && i === 0) card.open = true;
+      const head = collapsible ? doc.createElement("summary") : card;
+      if (s.label) { const lab = doc.createElement("div"); lab.className = "info-label"; lab.textContent = text(s.label); head.appendChild(lab); }
+      const h2 = doc.createElement("h2"); h2.textContent = text(s.title); head.appendChild(h2);
+      if (collapsible) card.appendChild(head);
       const body = doc.createElement("div"); body.innerHTML = text(s.html); // authored, trusted content
       while (body.firstChild) card.appendChild(body.firstChild);
       el.lessonSections.appendChild(card);
-    }
+    });
   }
 
   const starterOf = (l) => l.practice?.starterCode ?? l.example?.code ?? "";
@@ -414,6 +423,7 @@ export function mountCourse({ doc = document, track, lessons, state, lang: initi
       else if (e.key === next && state.nextId()) go(state.nextId());
     });
     win.addEventListener("hashchange", () => { const id = lessonFromHash(); if (id && id !== state.current) go(id); });
+    win.addEventListener("fayad:prefschange", (e) => { if (e.detail?.changed?.some((k) => k === "explainLang" || k === "sections")) renderLesson(); });
     win.addEventListener("fayad:langchange", () => { lang = readLang(); S = strings(lang); applyChrome(); buildSidebar(); renderLesson(); });
     go(lessonFromHash() || state.resumeId()); // deep links (#lesson-N) win over the saved resume position
   }
