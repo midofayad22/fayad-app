@@ -546,5 +546,7 @@ export const EN = {
  "ajs-22.quiz.2.options.0": "Measure first, then optimize what is actually slowest",
  "ajs-22.quiz.2.options.1": "Optimize every line early",
  "ajs-22.quiz.2.options.2": "Never optimize",
- "ajs-22.quiz.2.options.3": "Write everything with nested loops"
+ "ajs-22.quiz.2.options.3": "Write everything with nested loops",
+ "ajs-01.practice.starterCode": "function test() {\n  try {\n    console.log(value); // before value is declared\n  } catch (e) {\n    console.log(e.name);\n  }\n  const value = 1;\n}\ntest();",
+ "ajs-02.practice.starterCode": "function makeAdder(n) {\n  return (x) => x + n; // edit here and try\n}\nconsole.log(makeAdder(5)(3));",
 };

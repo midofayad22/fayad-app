@@ -460,5 +460,13 @@ export const EN = {
  "js-25.quiz.2.options.0": "To run code after try/catch finishes, whether or not an error occurred",
  "js-25.quiz.2.options.1": "Only when an error occurs",
  "js-25.quiz.2.options.2": "Only when try succeeds",
- "js-25.quiz.2.options.3": "To create a Function"
+ "js-25.quiz.2.options.3": "To create a Function",
+ "js-05.example.code": "const age = 20;\n\nif (age >= 18) {\n  document.getElementById(\"jsResult\").textContent = \"Adult\";\n} else {\n  document.getElementById(\"jsResult\").textContent = \"Minor\";\n}",
+ "js-07.example.code": "function greet() {\n  return \"Welcome to FAYBIT\";\n}\n\ndocument.getElementById(\"jsResult\").textContent = greet();",
+ "js-08.example.code": "function greet(name) {\n  return \"Hello \" + name;\n}\n\ndocument.getElementById(\"jsResult\").textContent =\n  greet(\"FAYBIT\");",
+ "js-17.example.code": "const title =\n  document.querySelector(\"h1\");\n\ntitle.textContent = \"Hello from JavaScript\";\n\ndocument.getElementById(\"jsResult\").textContent =\n  title.textContent;",
+ "js-18.example.code": "const button =\n  document.querySelector(\"button\");\n\nbutton.addEventListener(\"click\", () => {\n  document.getElementById(\"jsResult\").textContent =\n    \"The button was clicked\";\n});",
+ "js-22.example.code": "document.getElementById(\"jsResult\").textContent =\n  \"Start\";\n\nsetTimeout(() => {\n  document.getElementById(\"jsResult\").textContent =\n    \"Task completed\";\n}, 1000);",
+ "js-23.example.code": "const promise = new Promise((resolve) => {\n  resolve(\"The operation succeeded\");\n});\n\npromise.then((result) => {\n  document.getElementById(\"jsResult\").textContent =\n    result;\n});",
+ "js-25.example.code": "try {\n  const result = unknownVariable;\n\n  document.getElementById(\"jsResult\").textContent =\n    result;\n} catch (error) {\n  document.getElementById(\"jsResult\").textContent =\n    \"An error occurred\";\n}",
 };

@@ -21,7 +21,18 @@ export function allTexts(track, lessons) {
   return out;
 }
 
+/* Code fields are plain strings (not { ar, en }) and the views read them directly, so an English override
+   ("<lessonId>.example.code" / "<lessonId>.practice.starterCode") is installed as a getter that follows the page language. */
+const CODE_FIELDS = [["example", "code"], ["practice", "starterCode"]];
+const pageIsEnglish = () => typeof document !== "undefined" && document.documentElement?.getAttribute("data-lang") === "en";
+
 export function withEnglish(track, lessons, EN) {
   for (const [key, node] of allTexts(track, lessons)) if (node.en === undefined && typeof EN[key] === "string" && EN[key].trim()) node.en = EN[key];
+  for (const l of lessons) for (const [obj, field] of CODE_FIELDS) {
+    const en = EN[`${l.id}.${obj}.${field}`], host = l[obj];
+    if (typeof en !== "string" || !en.trim() || !host || typeof host[field] !== "string") continue;
+    const ar = host[field];
+    Object.defineProperty(host, field, { enumerable: true, configurable: true, get: () => (pageIsEnglish() ? en : ar) });
+  }
   return { track, lessons };
 }
