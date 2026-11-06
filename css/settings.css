@@ -89,3 +89,12 @@ html[dir="rtl"] .st-notif.unread { box-shadow: inset -3px 0 0 var(--fy-brand); }
 .st-empty { padding: 20px 4px; color: var(--fy-text-soft); line-height: 1.8; }
 .st-count { font-weight: 700; color: var(--fy-brand); margin-inline-end: auto; align-self: center; }
 .st-actions-tight { padding-top: 0; }
+.st-form { display: grid; gap: 14px; max-width: 420px; }
+.st-field { display: grid; gap: 6px; }
+.st-field-t { display: grid; gap: 2px; font-weight: 600; }
+.st-check { display: flex; gap: 10px; align-items: center; min-height: 44px; cursor: pointer; }
+.st-check input { width: 20px; height: 20px; accent-color: var(--fy-brand); }
+.st-danger { border-top-color: #b91c1c; }
+.st-danger h2 { color: #b91c1c; }
+html[data-theme="dark"] .st-danger h2, html[data-theme="dark"] .st-btn-danger { color: #fca5a5; }
+html[data-theme="dark"] .st-btn-danger { border-color: #fca5a5; }

@@ -36,7 +36,7 @@ export function el(tag, attrs, ...kids) {
 }
 
 export const PAGES = ["profile", "appearance", "language", "learning", "notifications", "security", "accessibility"];
-let pagesLive = ["profile", "appearance", "language", "learning", "notifications", "accessibility"];
+let pagesLive = ["profile", "appearance", "language", "learning", "notifications", "security", "accessibility"];
 export const livePages = () => pagesLive;
 export function setLivePages(list) { pagesLive = list; }
 export const href = (p) => (p === "index" ? "/settings/index.html" : `/settings/${p}.html`);
