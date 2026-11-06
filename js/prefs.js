@@ -191,8 +191,11 @@
       if (next !== "light" && next !== "dark" && next !== "system") return;
       set({ themeMode: next });
     },
-    setLang: function (next) {
+    setLang: function (next, remoteTs) {
       if (next !== "ar" && next !== "en") return;
+      if (next === root.getAttribute("data-lang") && !remoteTs) return;
+      state.updatedAt = remoteTs ? Number(remoteTs) : Date.now();
+      persist();
       write("fayad-language", next);
       applyLang(next);
       window.dispatchEvent(new CustomEvent("fayad:langchange", { detail: { lang: next } }));
