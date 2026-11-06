@@ -14,7 +14,7 @@
   var ICON_SUN =
     '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
 
-  var themeBtn, langBtn;
+  var themeBtn, langBtn, menuBtn;
 
   function build() {
     var group = document.createElement("div");
@@ -39,6 +39,14 @@
       prefs.setLang(prefs.lang === "ar" ? "en" : "ar");
     });
 
+    menuBtn = document.createElement("button");
+    menuBtn.type = "button";
+    menuBtn.className = "fy-btn fy-btn-menu";
+    menuBtn.setAttribute("aria-haspopup", "dialog");
+    menuBtn.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
+    menuBtn.addEventListener("click", function () { import("/js/nav-drawer.js").then(function (m) { m.open(menuBtn); }); });
+
+    group.appendChild(menuBtn);
     group.appendChild(themeBtn);
     group.appendChild(langBtn);
     return group;
@@ -50,6 +58,7 @@
     themeBtn.innerHTML = dark ? ICON_SUN : ICON_MOON;
     themeBtn.setAttribute("aria-label", i18n.t(dark ? "theme.toLight" : "theme.toDark"));
     themeBtn.setAttribute("title", i18n.t(dark ? "theme.toLight" : "theme.toDark"));
+    var ml = prefs.lang === "ar" ? "القائمة" : "Menu"; menuBtn.setAttribute("aria-label", ml); menuBtn.setAttribute("title", ml);
     langBtn.textContent = i18n.t("lang.short");
     var next = prefs.lang === "ar" ? "lang.toEn" : "lang.toAr";
     langBtn.setAttribute("aria-label", i18n.t(next));
