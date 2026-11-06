@@ -83,7 +83,7 @@
   window.FAYAD.i18n = { t: t, apply: apply, extend: extend, get lang() { return currentLang(); } };
 
   /* page <title>: English names for the Arabic page titles (the Arabic one is kept and restored) */
-  var TITLES = { "الألعاب": "Games", "ساحة التحديات": "Challenge Arena", "تسجيل الدخول": "Sign in", "لوحة التقدم": "Progress dashboard", "الملف الشخصي": "Profile", "أساسيات الكمبيوتر": "Computer Fundamentals", "أساسيات البرمجة": "Programming Fundamentals", "عبد الحميد فياض — عن المنصة": "Abdullhamid Fayad — About FAYBIT", "غير متصل": "Offline" };
+  var TITLES = { "الإعدادات": "Settings", "الحساب والملف الشخصي": "Account & profile", "المظهر": "Appearance", "اللغة والمنطقة": "Language & region", "تفضيلات التعلّم": "Learning preferences", "الإشعارات": "Notifications", "الخصوصية والأمان": "Privacy & security", "إمكانية الوصول": "Accessibility", "الألعاب": "Games", "ساحة التحديات": "Challenge Arena", "تسجيل الدخول": "Sign in", "لوحة التقدم": "Progress dashboard", "الملف الشخصي": "Profile", "أساسيات الكمبيوتر": "Computer Fundamentals", "أساسيات البرمجة": "Programming Fundamentals", "عبد الحميد فياض — عن المنصة": "Abdullhamid Fayad — About FAYBIT", "غير متصل": "Offline" };
   var arTitle = null;
   function applyTitle() {
     if (arTitle === null) arTitle = document.title;
