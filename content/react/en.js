@@ -641,5 +641,17 @@ export const EN = {
  "react-30.quiz.2.options.0": "Break the idea down into Components and Features",
  "react-30.quiz.2.options.1": "Write everything in one Component",
  "react-30.quiz.2.options.2": "Delete Architecture",
- "react-30.quiz.2.options.3": "Not planning"
+ "react-30.quiz.2.options.3": "Not planning",
+ "react-01.example.code": "function App() {\n  return <h1>Welcome to FAYBIT</h1>;\n}",
+ "react-02.example.code": "function Button() {\n  return <button>Click here</button>;\n}",
+ "react-03.example.code": "function Welcome() {\n  return <h1>Welcome to FAYBIT</h1>;\n}",
+ "react-04.example.code": "function App() {\n  return (\n    <div>\n      <h1>Welcome</h1>\n      <p>Learn React with FAYBIT</p>\n    </div>\n  );\n}",
+ "react-05.example.code": "function Welcome({ name }) {\n  return <h1>Hello {name}</h1>;\n}\n\nfunction App() {\n  return <Welcome name=\"FAYBIT\" />;\n}",
+ "react-07.example.code": "function App() {\n  function handleClick() {\n    console.log(\"The button was clicked\");\n  }\n\n  return <button onClick={handleClick}>Click here</button>;\n}",
+ "react-08.example.code": "function App({ isLoggedIn }) {\n  return (\n    <h1>\n      {isLoggedIn ? \"Welcome back!\" : \"Please log in\"}\n    </h1>\n  );\n}",
+ "react-10.example.code": "function App() {\n  return (\n    <form>\n      <input placeholder=\"Type your name\" />\n      <button type=\"submit\">Submit</button>\n    </form>\n  );\n}",
+ "react-11.example.code": "function Header() {\n  return <header>FAYBIT</header>;\n}\n\nfunction App() {\n  return (\n    <>\n      <Header />\n      <main>Learn React</main>\n    </>\n  );\n}",
+ "react-14.example.code": "import { useEffect } from \"react\";\n\nuseEffect(() => {\n  console.log(\"Effect ran\");\n}, []);",
+ "react-17.example.code": "function useGreeting(name) {\n  return `Hello ${name}`;\n}",
+ "react-20.example.code": "if (loading) {\n  return <p>Loading...</p>;\n}\n\nif (error) {\n  return <p>An error occurred.</p>;\n}",
 };

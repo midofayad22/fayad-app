@@ -22,11 +22,11 @@ const LEVELS = [
 const DICT = {
   ar: { "fq.home": "الرئيسية", "fq.hub": "الألعاب", "fq.dash": "لوحة التقدم", "fq.points": "نقاط اللعبة", "fq.hint": "تلميح", "fq.reset": "إعادة الضبط", "fq.next": "المرحلة التالية",
     "fq.note": "نقاط اللعبة تُحفظ على هذا الجهاز فقط وتُحسب منفصلة عن نقاط الدروس: 10 نقاط لكل مرحلة تُحلّ لأول مرة، و5 إضافية إن حللتها بدون تلميح.",
-    "sq.label": "المحدد (CSS selector)", "sq.sub": "اكتب محدد CSS يختار العناصر ذات الإطار المنقّط فقط. كل مرحلة تُعلّمك نوع محدد جديدًا.", task: "المرحلة {n}: اختر العناصر ذات الإطار المنقّط فقط", ok: "أحسنت! +{p} نقطة.", again: "حُلّت من قبل.", done: "أنهيت كل المراحل. عمل رائع!", hintTxt: "جرّب: {h}",
+    "sq.label": "المحدد (CSS selector)", "sq.elements": "العناصر", "sq.sub": "اكتب محدد CSS يختار العناصر ذات الإطار المنقّط فقط. كل مرحلة تُعلّمك نوع محدد جديدًا.", task: "المرحلة {n}: اختر العناصر ذات الإطار المنقّط فقط", ok: "أحسنت! +{p} نقطة.", again: "حُلّت من قبل.", done: "أنهيت كل المراحل. عمل رائع!", hintTxt: "جرّب: {h}",
     count: "يطابق {m} من {t} مطلوبة، و{x} زائدة", bad: "محدد غير صالح", lvl: "المرحلة {n}", solved: "محلولة" },
   en: { "fq.home": "Home", "fq.hub": "Games", "fq.dash": "Progress dashboard", "fq.points": "Game points", "fq.hint": "Hint", "fq.reset": "Reset", "fq.next": "Next level",
     "fq.note": "Game points are saved on this device only and counted separately from lesson points: 10 per level solved for the first time, plus 5 if solved without a hint.",
-    "sq.label": "Selector (CSS selector)", "sq.sub": "Write a CSS selector that picks only the dotted-outline elements. Each level teaches a new selector type.", task: "Level {n}: select only the dotted-outline elements", ok: "Nice! +{p} points.", again: "Already solved.", done: "You finished every level. Great work!", hintTxt: "Try: {h}",
+    "sq.label": "Selector (CSS selector)", "sq.elements": "Elements", "sq.sub": "Write a CSS selector that picks only the dotted-outline elements. Each level teaches a new selector type.", task: "Level {n}: select only the dotted-outline elements", ok: "Nice! +{p} points.", again: "Already solved.", done: "You finished every level. Great work!", hintTxt: "Try: {h}",
     count: "Matches {m} of {t} wanted, {x} extra", bad: "Invalid selector", lvl: "Level {n}", solved: "solved" },
 };
 F?.i18n?.extend({ ar: DICT.ar, en: DICT.en });

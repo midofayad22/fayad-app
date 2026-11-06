@@ -30,8 +30,8 @@
       "theme.toDark": "Switch to dark theme",
       "theme.toLight": "Switch to light theme",
       "lang.toEn": "Switch to English",
-      "lang.toAr": "التبديل إلى العربية",
-      "lang.short": "ع",
+      "lang.toAr": "Switch to Arabic",
+      "lang.short": "AR",
       "update.ready": "A new version of the platform is available.",
       "update.refresh": "Refresh now",
       "update.dismiss": "Later",
@@ -82,6 +82,16 @@
 
   window.FAYAD.i18n = { t: t, apply: apply, extend: extend, get lang() { return currentLang(); } };
 
-  window.addEventListener("fayad:langchange", function () { apply(); });
-  document.addEventListener("DOMContentLoaded", function () { apply(); });
+  /* page <title>: English names for the Arabic page titles (the Arabic one is kept and restored) */
+  var TITLES = { "الألعاب": "Games", "ساحة التحديات": "Challenge Arena", "تسجيل الدخول": "Sign in", "لوحة التقدم": "Progress dashboard", "الملف الشخصي": "Profile", "أساسيات الكمبيوتر": "Computer Fundamentals", "أساسيات البرمجة": "Programming Fundamentals", "عبد الحميد فياض — عن المنصة": "Abdullhamid Fayad — About FAYBIT", "غير متصل": "Offline" };
+  var arTitle = null;
+  function applyTitle() {
+    if (arTitle === null) arTitle = document.title;
+    if (currentLang() !== "en") { document.title = arTitle; return; }
+    var m = arTitle.match(/^(.*?)\s*([—|-])\s*FAYBIT$/); var m2 = arTitle.match(/^(.*?)\s*\|\s*FAYBIT$/);
+    var head = (m && m[1]) || (m2 && m2[1]) || null;
+    if (/[\u0600-\u06FF]/.test(arTitle)) document.title = (TITLES[arTitle.replace(/\s*[|—-]\s*FAYBIT$/, "")] || TITLES[head] || "FAYBIT") + (TITLES[arTitle.replace(/\s*[|—-]\s*FAYBIT$/, "")] || TITLES[head] ? " | FAYBIT" : "");
+  }
+  window.addEventListener("fayad:langchange", function () { apply(); applyTitle(); });
+  document.addEventListener("DOMContentLoaded", function () { apply(); applyTitle(); });
 })();

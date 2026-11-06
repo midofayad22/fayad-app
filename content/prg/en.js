@@ -262,5 +262,8 @@ export const EN = {
  "prg-20.quiz.0.options.0": "Memorizing all Syntax",
  "prg-20.quiz.0.options.1": "Logical thinking and problem solving",
  "prg-20.quiz.0.options.2": "Memorizing language names",
- "prg-20.quiz.0.options.3": "Writing the largest number of lines"
+ "prg-20.quiz.0.options.3": "Writing the largest number of lines",
+ "prg-01.example.code": "const age = 20;\n\nif (age >= 18) {\n    console.log(\"You can register\");\n}",
+ "prg-03.example.code": "const tasks = [\n    \"Open the app\",\n    \"Log in\",\n    \"Choose a lesson\",\n    \"Start learning\"\n];\n\nconsole.log(tasks);",
+ "prg-10.example.code": "const score = 85;\n\nif (score >= 50) {\n    console.log(\"Passed\");\n} else {\n    console.log(\"Try again\");\n}",
 };

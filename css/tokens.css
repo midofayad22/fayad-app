@@ -242,3 +242,47 @@ html[data-theme="light"][data-track="bs"], html[data-theme="light"] [data-course
 /* Tailwind CSS — cyan */
 html[data-theme="dark"][data-track="tw"], html[data-theme="dark"] [data-course="tw"] { --fy-course: #22d3ee; --fy-course-on: #012a33; --fy-course-ink: #67e8f9; --fy-course-strong: #06b6d4; --fy-course-soft: rgba(34,211,238,.12); --fy-course-glow: rgba(34,211,238,.28); }
 html[data-theme="light"][data-track="tw"], html[data-theme="light"] [data-course="tw"] { --fy-course: #0e7490; --fy-course-on: #ffffff; --fy-course-ink: #0b6379; --fy-course-strong: #0a566a; --fy-course-soft: rgba(14,116,144,.09); --fy-course-glow: rgba(14,116,144,.22); }
+
+/* ================= USER PREFERENCES (js/prefs.js → attributes on <html>) ================= */
+
+/* Accent colours: replace the brand family; course accents (data-track) keep their own hue. */
+html[data-theme="light"][data-accent="blue"]   { --fy-brand:#1d4ed8; --fy-brand-light:#2563eb; --fy-brand-strong:#1e3a8a; --fy-brand-soft:rgba(29,78,216,.09); }
+html[data-theme="light"][data-accent="violet"] { --fy-brand:#6d28d9; --fy-brand-light:#7c3aed; --fy-brand-strong:#5b21b6; --fy-brand-soft:rgba(109,40,217,.09); }
+html[data-theme="light"][data-accent="rose"]   { --fy-brand:#be123c; --fy-brand-light:#e11d48; --fy-brand-strong:#9f1239; --fy-brand-soft:rgba(190,18,60,.09); }
+html[data-theme="light"][data-accent="amber"]  { --fy-brand:#a15207; --fy-brand-light:#b45309; --fy-brand-strong:#854d0e; --fy-brand-soft:rgba(161,82,7,.1); }
+html[data-theme="light"][data-accent="slate"]  { --fy-brand:#334155; --fy-brand-light:#475569; --fy-brand-strong:#1e293b; --fy-brand-soft:rgba(51,65,85,.09); }
+html[data-theme="dark"][data-accent="blue"]    { --fy-brand:#60a5fa; --fy-brand-light:#bfdbfe; --fy-brand-strong:#3b82f6; --fy-brand-soft:rgba(96,165,250,.13); --fy-on-brand:#06173a; }
+html[data-theme="dark"][data-accent="violet"]  { --fy-brand:#a78bfa; --fy-brand-light:#ddd6fe; --fy-brand-strong:#8b5cf6; --fy-brand-soft:rgba(167,139,250,.14); --fy-on-brand:#1a0b3a; }
+html[data-theme="dark"][data-accent="rose"]    { --fy-brand:#fb7185; --fy-brand-light:#fecdd3; --fy-brand-strong:#f43f5e; --fy-brand-soft:rgba(251,113,133,.13); --fy-on-brand:#3a0612; }
+html[data-theme="dark"][data-accent="amber"]   { --fy-brand:#fbbf24; --fy-brand-light:#fde68a; --fy-brand-strong:#f59e0b; --fy-brand-soft:rgba(251,191,36,.13); --fy-on-brand:#2b1b00; }
+html[data-theme="dark"][data-accent="slate"]   { --fy-brand:#cbd5e1; --fy-brand-light:#f1f5f9; --fy-brand-strong:#94a3b8; --fy-brand-soft:rgba(203,213,225,.13); --fy-on-brand:#0f172a; }
+
+/* Font size: scales page content (the site is px-based, so zoom is the consistent lever) */
+html[style*="--fy-scale"] main:not(:has(.lesson-content)),
+html[style*="--fy-scale"] .lesson-content { zoom: var(--fy-scale); }
+
+/* Reading density (lessons and foundation content) */
+html[data-reading="compact"] .lesson-content { line-height: 1.55; }
+html[data-reading="compact"] .lesson-content .content-card { padding-block: 14px; margin-block-end: 10px; }
+html[data-reading="comfortable"] .lesson-content { line-height: 1.95; }
+html[data-reading="comfortable"] .lesson-content .content-card { margin-block-end: 20px; }
+
+/* High contrast */
+html[data-contrast="high"][data-theme="light"] {
+  --fy-text: #000000; --fy-text-soft: #1a2f36; --fy-border: rgba(0,0,0,.55); --fy-border-strong: #000000;
+  --fy-brand: #064e48; --fy-brand-strong: #03302c;
+}
+html[data-contrast="high"][data-theme="dark"] {
+  --fy-text: #ffffff; --fy-text-soft: #e6f1f3; --fy-border: rgba(255,255,255,.6); --fy-border-strong: #ffffff;
+}
+html[data-contrast="high"] a { text-decoration: underline; }
+html[data-contrast="high"] :focus-visible { outline: 3px solid currentColor !important; outline-offset: 3px; }
+
+/* Visible focus for keyboard users everywhere (never removed, only enhanced) */
+:focus-visible { outline: 2px solid var(--fy-brand); outline-offset: 2px; }
+
+/* Reduced motion chosen in settings (the OS preference is mirrored into data-motion="reduce" by prefs.js) */
+html[data-motion="reduce"] *, html[data-motion="reduce"] *::before, html[data-motion="reduce"] *::after {
+  animation-duration: .001ms !important; animation-iteration-count: 1 !important;
+  transition-duration: .001ms !important; scroll-behavior: auto !important;
+}
