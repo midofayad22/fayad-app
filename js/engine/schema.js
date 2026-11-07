@@ -80,6 +80,32 @@ export function validateTrack(track, lessons) {
       if (!l.example || typeof l.example.code !== "string") errors.push(`${at}.example.code is required by the foundation layout`);
       if (Array.isArray(l.quiz) && l.quiz.length !== 1) errors.push(`${at}.quiz must have exactly one question in the foundation layout`);
     }
+    // optional learning extras of the foundation layouts (docs/lesson-schema.md): deep reading, extra quiz questions with explanations, an auto-checked exercise
+    checkText(errors, `${at}.deep`, l.deep, { optional: true });
+    if (l.quiz?.[0]?.explain !== undefined) checkText(errors, `${at}.quiz[0].explain`, l.quiz[0].explain);
+    if (l.quizMore !== undefined) {
+      if (!Array.isArray(l.quizMore)) errors.push(`${at}.quizMore must be an array`);
+      else l.quizMore.forEach((q, j) => {
+        const qa = `${at}.quizMore[${j}]`;
+        checkText(errors, `${qa}.question`, q.question); checkText(errors, `${qa}.explain`, q.explain);
+        if (!Array.isArray(q.options) || q.options.length < 2) errors.push(`${qa}.options needs >= 2`);
+        else q.options.forEach((o, k) => checkText(errors, `${qa}.options[${k}]`, o));
+        if (!Number.isInteger(q.correct) || q.correct < 0 || q.correct >= (q.options?.length || 0)) errors.push(`${qa}.correct out of range`);
+      });
+    }
+    if (l.exercise !== undefined) {
+      const x = l.exercise, ea = `${at}.exercise`;
+      if (!isObj(x)) errors.push(`${ea} must be an object`);
+      else {
+        checkText(errors, `${ea}.prompt`, x.prompt); checkText(errors, `${ea}.hint`, x.hint);
+        if (typeof x.starter !== "string") errors.push(`${ea}.starter must be a string`);
+        if (typeof x.solution !== "string" || !x.solution) errors.push(`${ea}.solution must be a non-empty string`);
+        if (typeof x.test !== "string" || !x.test) errors.push(`${ea}.test must be a non-empty string (JS appended after the learner's code; prints __OK or __FB:<index>)`);
+        if (!Array.isArray(x.feedback) || !x.feedback.length) errors.push(`${ea}.feedback must be a non-empty array of texts`);
+        else x.feedback.forEach((f, k) => checkText(errors, `${ea}.feedback[${k}]`, f));
+        (x.must || []).forEach((m, k) => { try { new RegExp(m.re); } catch { errors.push(`${ea}.must[${k}].re is not a valid regular expression`); } checkText(errors, `${ea}.must[${k}].msg`, m.msg); });
+      }
+    }
     if (!Array.isArray(l.quiz) || !l.quiz.length) errors.push(`${at}.quiz must have at least one question`);
     else l.quiz.forEach((q, j) => {
       const qa = `${at}.quiz[${j}]`;

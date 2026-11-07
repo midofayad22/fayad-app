@@ -50,10 +50,10 @@ test("every lesson opens from the sidebar with its exact Arabic content", async 
     assert.equal(await page.locator("#lesson-level").innerText(), l.level.ar);
     assert.equal(await page.locator("#lesson-icon").getAttribute("class"), `fa-solid ${l.icon}`);
     // compare as parsed DOM (the browser serialises "&&" as "&amp;&amp;"), i.e. exactly what the legacy innerHTML assignment produced
-    assert.equal(await page.locator("#lesson-content").innerHTML(), await page.evaluate((h) => { const d = document.createElement("div"); d.innerHTML = h; return d.innerHTML; }, l.body.ar));
+    assert.equal(await page.locator("#lesson-content").innerHTML(), await page.evaluate((h) => { const d = document.createElement("div"); d.innerHTML = h; return d.innerHTML; }, l.body.ar + (l.deep ? l.deep.ar : "")));
     assert.equal(await page.locator("#key-description").textContent(), l.key.ar);
     assert.equal(await page.locator("#example-code").textContent(), l.example.code);
-    assert.equal(await page.locator("#code-editor").inputValue(), l.example.code);
+    assert.equal(await page.locator("#code-editor").inputValue(), l.exercise ? l.exercise.starter : l.example.code);
     assert.equal(await page.locator("#challenge-text").textContent(), l.challenge.ar);
     assert.equal(await page.locator("#quiz-question").textContent(), l.quiz[0].question.ar);
     assert.deepEqual(await page.locator("#quiz-options button").allTextContents(), l.quiz[0].options.map((o) => o.ar));

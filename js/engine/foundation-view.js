@@ -225,29 +225,82 @@ export function mountFoundation({ doc = document, track, lessons, progress, lang
   // ---------- lesson ----------
   function setHash(h) { if (win.location.hash !== h) win.history.replaceState(null, "", h); }
 
+  const FX = {
+    ar: { qOf: (i, n) => `السؤال ${i} من ${n}`, nextQ: "السؤال التالي", why: "لماذا؟", check: "تحقق من حلّي", hint: "تلميح", solution: "اعرض الحل", reset: "استرجاع الكود الأولي", pass: "✓ أحسنت! الحل صحيح.", err: (m) => `✕ في الكود خطأ: ${m}`, timeout: "✕ انتهت مهلة التنفيذ. هل هناك حلقة لا تنتهي؟", nothing: "✕ لم يصل الاختبار إلى نتيجة. تأكد أن الكود يعمل حتى النهاية.", exTitle: "تمرين تفاعلي", solTitle: "الحل المقترح" },
+    en: { qOf: (i, n) => `Question ${i} of ${n}`, nextQ: "Next question", why: "Why?", check: "Check my solution", hint: "Hint", solution: "Show solution", reset: "Restore starter code", pass: "✓ Well done! Your solution is correct.", err: (m) => `✕ Your code has an error: ${m}`, timeout: "✕ Execution timed out. Is there a loop that never ends?", nothing: "✕ The test did not reach a result. Make sure your code runs to the end.", exTitle: "Interactive exercise", solTitle: "Suggested solution" },
+  };
+  const questionsOf = (l) => [l.quiz[0], ...(l.quizMore || [])];
+
   function renderQuiz(l) {
-    const q = l.quiz[0];
-    el["quiz-question"].textContent = t(q.question, lang);
-    el["quiz-options"].textContent = "";
-    el["quiz-result"].textContent = ""; el["quiz-result"].className = "quiz-result";
-    let answered = false;
-    q.options.forEach((o, i) => {
-      const b = doc.createElement("button");
-      b.type = "button"; b.className = "quiz-btn"; b.textContent = t(o, lang);
-      b.addEventListener("click", () => {
-        if (answered) return;
-        answered = true;
-        const ok = i === q.correct;
-        try { progress.recordAnswer(track.id, l.id, 0, ok); } catch { /* storage problems never block the lesson */ }
-        if (lite) el["quiz-options"].querySelectorAll(".quiz-btn").forEach((x) => { x.disabled = true; });
-        if (ok) { b.classList.add("correct"); el["quiz-result"].textContent = lite ? L.correct : UI.correct; el["quiz-result"].classList.add("success"); }
-        else {
-          b.classList.add("wrong"); el["quiz-result"].textContent = lite ? L.wrong(t(q.options[q.correct], lang)) : UI.wrong; el["quiz-result"].classList.add("error");
-          el["quiz-options"].children[q.correct]?.classList.add("correct");
-        }
+    const qs = questionsOf(l); let qi = 0;
+    const holder = el["quiz-result"].parentNode;
+    holder.querySelectorAll(".fd-qmeta, .fd-explain, .fd-qnext").forEach((n) => n.remove());
+    function show() {
+      const q = qs[qi]; let answered = false;
+      holder.querySelectorAll(".fd-qmeta, .fd-explain, .fd-qnext").forEach((n) => n.remove());
+      if (qs.length > 1) { const m = doc.createElement("p"); m.className = "fd-qmeta"; m.textContent = FX[lang].qOf(qi + 1, qs.length); el["quiz-question"].before(m); }
+      el["quiz-question"].textContent = t(q.question, lang);
+      el["quiz-options"].textContent = "";
+      el["quiz-result"].textContent = ""; el["quiz-result"].className = "quiz-result";
+      q.options.forEach((o, i) => {
+        const b = doc.createElement("button");
+        b.type = "button"; b.className = "quiz-btn"; b.textContent = t(o, lang);
+        b.addEventListener("click", () => {
+          if (answered) return;
+          answered = true;
+          const ok = i === q.correct;
+          try { progress.recordAnswer(track.id, l.id, qi, ok); } catch { /* storage problems never block the lesson */ }
+          el["quiz-options"].querySelectorAll(".quiz-btn").forEach((x) => { if (lite) x.disabled = true; });
+          if (ok) { b.classList.add("correct"); el["quiz-result"].textContent = lite ? L.correct : UI.correct; el["quiz-result"].classList.add("success"); }
+          else {
+            b.classList.add("wrong"); el["quiz-result"].textContent = lite ? L.wrong(t(q.options[q.correct], lang)) : UI.wrong; el["quiz-result"].classList.add("error");
+            el["quiz-options"].children[q.correct]?.classList.add("correct");
+          }
+          if (q.explain) { const e = doc.createElement("p"); e.className = "fd-explain"; e.setAttribute("role", "note"); const st = doc.createElement("strong"); st.textContent = FX[lang].why + " "; e.append(st, t(q.explain, lang)); el["quiz-result"].after(e); }
+          if (qi < qs.length - 1) { const n = doc.createElement("button"); n.type = "button"; n.className = "quiz-btn fd-qnext"; n.textContent = FX[lang].nextQ; n.addEventListener("click", () => { qi += 1; show(); el["quiz-question"].scrollIntoView?.({ block: "nearest" }); }); (el["quiz-result"].nextSibling?.classList?.contains("fd-explain") ? el["quiz-result"].nextSibling : el["quiz-result"]).after(n); n.focus(); }
+        });
+        el["quiz-options"].appendChild(b);
       });
-      el["quiz-options"].appendChild(b);
-    });
+    }
+    show();
+  }
+
+  // ---------- auto-checked exercise (runs learner code + the lesson's test in the sandbox; never in this page) ----------
+  function mountExercise(l) {
+    doc.getElementById("fd-exercise")?.remove();
+    const x = l.exercise; if (!x || lite) return;
+    const box = doc.createElement("div"); box.id = "fd-exercise"; box.className = "fd-exercise";
+    const h = doc.createElement("h4"); h.textContent = FX[lang].exTitle;
+    const p = doc.createElement("p"); p.className = "fd-ex-prompt"; p.textContent = t(x.prompt, lang);
+    const row = doc.createElement("div"); row.className = "fd-ex-actions";
+    const mk = (txt, fn, cls = "") => { const b = doc.createElement("button"); b.type = "button"; b.className = "editor-btn " + cls; b.textContent = txt; b.addEventListener("click", fn); row.appendChild(b); return b; };
+    const status = doc.createElement("p"); status.className = "fd-ex-status"; status.setAttribute("role", "status");
+    const extra = doc.createElement("div"); extra.className = "fd-ex-extra";
+    const say = (kind, msg) => { status.className = "fd-ex-status " + kind; status.textContent = msg; };
+    let checker = null, fails = 0;
+    mk(FX[lang].check, () => {
+      const code = el["code-editor"].value; const lines = []; let err = null, timed = false, finished = false;
+      for (const m of x.must || []) if (!new RegExp(m.re).test(code)) { fails += 1; say("bad", "✕ " + t(m.msg, lang)); return; }
+      if (checker) checker.destroy();
+      say("busy", "…");
+      checker = createRunner(el["playground-section"], { runtime: "js", format: "json", title: "Check", timeoutMs: 3000,
+        onConsole: (e) => { if (e.level !== "result") lines.push(e.text); }, onError: (e) => { if (err === null) err = e.message; },
+        onStatus: (st) => {
+          if (finished) return;
+          if (st === "timeout") { finished = true; fails += 1; say("bad", FX[lang].timeout); return; }
+          if (st !== "done") return; finished = true;
+          if (err !== null) { fails += 1; say("bad", FX[lang].err(err)); return; }
+          if (lines.includes("__OK")) { say("ok", FX[lang].pass); return; }
+          const fb = lines.map((s) => /^__FB:(\d+)$/.exec(s)).find(Boolean);
+          fails += 1; say("bad", fb && x.feedback[+fb[1]] ? "✕ " + t(x.feedback[+fb[1]], lang) : FX[lang].nothing);
+        } });
+      checker.run({ js: code + "\n;\n" + x.test });
+    }, "run");
+    mk(FX[lang].hint, () => { extra.textContent = ""; const q = doc.createElement("p"); q.className = "fd-ex-hint"; q.textContent = "💡 " + t(x.hint, lang); extra.appendChild(q); });
+    mk(FX[lang].solution, () => { extra.textContent = ""; const hd = doc.createElement("p"); hd.className = "fd-ex-hint"; hd.textContent = FX[lang].solTitle; const pre = doc.createElement("pre"); pre.className = "fd-code"; pre.dir = "ltr"; pre.textContent = x.solution; extra.append(hd, pre); });
+    mk(FX[lang].reset, () => { el["code-editor"].value = x.starter; say("", ""); });
+    box.append(h, p, row, status, extra);
+    el["challenge-text"].closest(".challenge-box").after(box);
   }
 
   function loadEditor(code) {
@@ -269,7 +322,7 @@ export function mountFoundation({ doc = document, track, lessons, progress, lang
     runId += 1; if (runner) { runner.destroy(); runner = null; } // a pending run from the previous lesson must not report here
     el["lesson-counter"].textContent = L.lessonOf(numberOf(current), total);
     el["lesson-title"].textContent = t(l.title, lang);
-    el["lesson-content"].innerHTML = t(l.body, lang); // authored, trusted content
+    el["lesson-content"].innerHTML = t(l.body, lang) + (l.deep ? t(l.deep, lang) : ""); // authored, trusted content
     if (lite) {
       el["content-title"].textContent = t(l.title, lang);
       el["lesson-icon"].innerHTML = `<i class="fa-solid ${l.icon}"></i>`;
@@ -283,7 +336,8 @@ export function mountFoundation({ doc = document, track, lessons, progress, lang
       el["key-description"].textContent = t(l.key, lang);
       el["example-code"].textContent = l.example.code;
       el["challenge-text"].textContent = t(l.challenge, lang);
-      renderQuiz(l); loadEditor(l.example.code);
+      if (!l.exercise) doc.getElementById("fd-exercise")?.remove();
+      renderQuiz(l); loadEditor(l.exercise ? l.exercise.starter : l.example.code); mountExercise(l);
     }
     paintStatus(); paintNav(); paintSidebar(); paintProgress();
     setHash(`#lesson-${numberOf(current)}`);
