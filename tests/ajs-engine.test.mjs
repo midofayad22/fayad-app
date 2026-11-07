@@ -1,4 +1,5 @@
 // Advanced JavaScript on the shared engine: sidebar, content, sandboxed run in the Worker runtime, quiz-gated completion, progress.
+import { pick } from "./_nav.mjs";
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { createRequire } from "node:module";
@@ -21,17 +22,17 @@ async function open(url = URL_NEW, viewport = { width: 1280, height: 900 }) {
   await page.waitForFunction(() => document.documentElement.dataset.engine === "ready");
   return { ctx, page, errors };
 }
-const link = (n) => `.sidebar a.lesson[data-lesson="${n}"]`;
+const link = (n) => `.sidebar a.cn-lesson[data-lesson="${n}"]`;
 const answer = (page, i) => page.click(`#answerOptions button[data-index="${i}"]`);
 const solve = async (page, id) => { for (const q of lessons.find((l) => l.id === id).quiz) { await answer(page, q.correct); await page.click("#quizNextButton"); } };
 const dom = (page, h) => page.evaluate((x) => { const d = document.createElement("div"); d.innerHTML = x; return d.innerHTML; }, h);
 
 test("ajs page: 22 lessons in 5 groups, no console errors, exact content for every lesson", async () => {
   const { ctx, page, errors } = await open();
-  assert.equal(await page.locator(".sidebar a.lesson").count(), 22);
-  assert.equal(await page.locator(".sidebar .topic-group").count(), 5);
+  assert.equal(await page.locator(".sidebar a.cn-lesson").count(), 22);
+  assert.equal(await page.locator(".sidebar .cn-mod").count(), 5);
   for (const [i, l] of lessons.entries()) {
-    await page.click(link(i + 1));
+    await pick(page, i + 1);
     assert.equal(await page.locator("#lessonTitle").innerText(), l.title.ar);
     assert.equal(await page.locator("#exampleCode").textContent(), l.example.code);
     assert.equal(await page.locator("#exampleResult").innerHTML(), await dom(page, l.example.result.ar));
@@ -58,7 +59,7 @@ test("ajs: a runaway loop is stopped and the page stays usable", async () => {
   await page.fill("#jsEditor", "while (true) {}"); await page.click("#runButton");
   await page.click("#runButton");
   await page.waitForFunction(() => document.getElementById("output").textContent.length > 0 && !/^\s*$/.test(document.getElementById("output").textContent), null, { timeout: 15000 });
-  await page.click(link(2));
+  await pick(page, 2);
   assert.equal(await page.locator("#lessonTitle").innerText(), lessons[1].title.ar);
   await ctx.close();
 });

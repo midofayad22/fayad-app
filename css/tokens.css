@@ -286,3 +286,14 @@ html[data-motion="reduce"] *, html[data-motion="reduce"] *::before, html[data-mo
   animation-duration: .001ms !important; animation-iteration-count: 1 !important;
   transition-duration: .001ms !important; scroll-behavior: auto !important;
 }
+
+/* Code editor preferences: size everywhere code is shown/edited; light palette on request */
+.editor-panel textarea, #jsEditor, .example-card pre, .example-card code, .practice-output { font-size: var(--fy-editor-size, 14px); }
+html[data-editor-theme="light"][data-theme] :is(.example-card, .editor-panel, .practice-output) {
+  color-scheme: light; color: #10252c;
+  --fy-code-bg: #f6fafb; --fy-code-surface: #e8f1f3; --fy-code-text: #10252c; --fy-code-border: rgba(9,58,74,.2);
+  --fy-code-muted: #4f6872; --fy-code-line: rgba(9,58,74,.07);
+  --fy-tok-kw: #6d28d9; --fy-tok-tag: #0e7490; --fy-tok-attr: #8a4b00; --fy-tok-str: #166534; --fy-tok-num: #a14a08;
+  --fy-tok-fn: #1d4ed8; --fy-tok-cmt: #526b75; --fy-tok-op: #475569; --fy-tok-type: #be123c; --fy-tok-bad: #b91c1c;
+}
+html[data-editor-theme="light"][data-theme] .editor-panel .editor-top { color: #3b5760; }

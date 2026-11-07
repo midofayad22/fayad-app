@@ -1971,4 +1971,6 @@ console.log(learner);`,
 
 import { EN } from "./en.js";
 import { withEnglish } from "../../js/engine/with-english.js";
+import { applyDeep } from "./deep.js";
+applyDeep(lessons);
 withEnglish(track, lessons, EN);

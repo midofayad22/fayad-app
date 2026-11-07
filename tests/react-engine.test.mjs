@@ -1,4 +1,5 @@
 // React course on the shared engine: sidebar, bilingual content, sandboxed live preview, quiz-gated completion, rollback, English switch.
+import { pick } from "./_nav.mjs";
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { createRequire } from "node:module";
@@ -30,10 +31,10 @@ const solve = async (page, id) => { for (const q of lessons.find((l) => l.id ===
 test("boots without errors; all 30 lessons in 5 groups; exact Arabic content for every lesson", async () => {
   for (const lang of ["ar"]) {
     const { ctx, page, errors } = await open(URL_NEW, { lang });
-    assert.equal(await page.locator(".sidebar a.lesson").count(), 30);
-    assert.equal(await page.locator(".sidebar .topic-group").count(), 5);
+    assert.equal(await page.locator(".sidebar a.cn-lesson").count(), 30);
+    assert.equal(await page.locator(".sidebar .cn-mod").count(), 5);
     for (const [i, l] of lessons.entries()) {
-      await page.click(`.sidebar a.lesson[data-lesson="${i + 1}"]`);
+      await pick(page, i + 1);
       assert.equal(await page.locator("#lessonTitle").innerText(), l.title.ar, `title ${i + 1}`);
       assert.equal(await page.locator("#lessonDescription").innerText(), l.description.ar);
       assert.equal(await page.locator("#exampleCode").textContent(), l.example.code);
@@ -57,7 +58,7 @@ test("a lesson completes after all 3 questions are answered correctly; the progr
   const { ctx, page } = await open();
   await solve(page, "react-01");
   await page.waitForFunction(() => (JSON.parse(localStorage.getItem("fayad-progress-v1") || "{}").tracks?.react?.completed || []).length === 1);
-  await page.click('.sidebar a.lesson[data-lesson="3"]');
+  await pick(page, 3);
   assert.equal(await page.evaluate(() => localStorage.getItem("fayad-react-current-lesson")), "2"); // legacy 0-based format
   await ctx.close();
 });

@@ -6,12 +6,11 @@
 */
 export function buildShell(doc, root, { editorLabel = "Code", multiPane = false } = {}) {
   root.innerHTML = `
-    <aside class="sidebar" id="sidebar">
+    <aside class="sidebar" id="sidebar" data-cn>
       <div class="sidebar-header"><p data-s="sidebar.label"></p><h2 id="courseName"></h2>
         <div class="sb-prog" aria-hidden="true"><i id="sbProgFill"></i></div><p class="sb-prog-text" id="sbProgText"></p></div>
       <button type="button" class="sidebar-toggle" id="sidebarToggle" aria-expanded="false" aria-controls="sidebarPanel"><span data-s="nav.lessons"></span><strong id="sidebarCurrent"></strong></button>
       <div class="sb-panel" id="sidebarPanel">
-        <div class="sb-search"><input type="search" id="sidebarSearch" autocomplete="off" /><p class="sb-empty" id="sidebarEmpty" role="status" hidden></p></div>
         <div id="sidebarGroups"></div>
       </div>
     </aside>

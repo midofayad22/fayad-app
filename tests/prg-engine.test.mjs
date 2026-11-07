@@ -1,4 +1,5 @@
 // Milestone 4d: Programming Fundamentals on the shared engine, in a real browser. Includes execution parity with the legacy page and rollback.
+import { pick } from "./_nav.mjs";
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
@@ -23,19 +24,19 @@ async function open(url = URL_NEW, seed = {}, viewport = { width: 1280, height: 
   page.on("console", (m) => { if (m.type() === "error" && !/Failed to load resource/.test(m.text())) errors.push(m.text()); });
   await page.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort());
   await page.goto(base + url);
-  if (url.startsWith("/legacy/")) await page.waitForFunction(() => document.querySelectorAll(".lesson-item").length === 21 && document.querySelector("#lesson-title")?.textContent);
+  if (url.startsWith("/legacy/")) await page.waitForFunction(() => document.querySelectorAll(".cn-lesson").length === 21 && document.querySelector("#lesson-title")?.textContent);
   else await page.waitForFunction(() => document.documentElement.dataset.engine === "ready");
   return { ctx, page, errors };
 }
 const stored = (page, k) => page.evaluate((key) => localStorage.getItem(key), k);
 const settle = (page) => page.waitForFunction(() => !document.querySelector("#console-output").textContent.includes("جاري تشغيل"), null, { timeout: 8000 });
 const runCode = async (page, code) => { await page.fill("#code-editor", code); await page.click("#run-code-btn"); await settle(page); return page.locator("#console-output").innerText(); };
-const item = (n) => `.lesson-item[data-lesson="${n}"]`;
+const item = (n) => `.cn-lesson[data-lesson="${n}"]`;
 
 test("boots without console errors; the sidebar is built from data: 20 lessons + the final assessment", async () => {
   const { ctx, page, errors } = await open();
-  assert.equal(await page.locator(".lesson-item").count(), 21);
-  assert.equal(await page.locator(".lesson-item.final-item").count(), 1);
+  assert.equal(await page.locator(".cn-lesson").count(), 21);
+  assert.equal(await page.locator(".cn-lesson.cn-assess").count(), 1);
   assert.deepEqual(errors, []);
   await ctx.close();
 });
@@ -43,22 +44,22 @@ test("boots without console errors; the sidebar is built from data: 20 lessons +
 test("every lesson opens from the sidebar with its exact Arabic content", async () => {
   const { ctx, page } = await open();
   for (const [i, l] of lessons.entries()) {
-    await page.click(item(i + 1));
+    await pick(page, i + 1);
     assert.equal(await page.locator("#lesson-title").innerText(), l.title.ar, `title ${i + 1}`);
     assert.equal(await page.locator("#lesson-counter").innerText(), `الدرس ${String(i + 1).padStart(2, "0")} من 20`);
     assert.equal(await page.locator("#lesson-heading").innerText(), l.heading.ar);
     assert.equal(await page.locator("#lesson-level").innerText(), l.level.ar);
     assert.equal(await page.locator("#lesson-icon").getAttribute("class"), `fa-solid ${l.icon}`);
     // compare as parsed DOM (the browser serialises "&&" as "&amp;&amp;"), i.e. exactly what the legacy innerHTML assignment produced
-    assert.equal(await page.locator("#lesson-content").innerHTML(), await page.evaluate((h) => { const d = document.createElement("div"); d.innerHTML = h; return d.innerHTML; }, l.body.ar));
+    assert.equal(await page.locator("#lesson-content").innerHTML(), await page.evaluate((h) => { const d = document.createElement("div"); d.innerHTML = h; return d.innerHTML; }, l.body.ar + (l.deep ? l.deep.ar : "")));
     assert.equal(await page.locator("#key-description").textContent(), l.key.ar);
     assert.equal(await page.locator("#example-code").textContent(), l.example.code);
-    assert.equal(await page.locator("#code-editor").inputValue(), l.example.code);
+    assert.equal(await page.locator("#code-editor").inputValue(), l.exercise ? l.exercise.starter : l.example.code);
     assert.equal(await page.locator("#challenge-text").textContent(), l.challenge.ar);
     assert.equal(await page.locator("#quiz-question").textContent(), l.quiz[0].question.ar);
     assert.deepEqual(await page.locator("#quiz-options button").allTextContents(), l.quiz[0].options.map((o) => o.ar));
-    assert.equal(await page.locator(".lesson-item.active").getAttribute("data-lesson"), String(i + 1));
-    assert.equal(await page.locator(`${item(i + 1)} span`).nth(1).innerText(), (l.navTitle ?? l.title).ar);
+    assert.equal(await page.locator(".cn-lesson.active").getAttribute("data-lesson"), String(i + 1));
+    assert.equal(await page.locator(`${item(i + 1)} .cn-name`).innerText(), (l.navTitle ?? l.title).ar);
   }
   await ctx.close();
 });
@@ -76,7 +77,7 @@ test("previous/next walk all lessons in order; the last lesson leads to the fina
 test("deep links: #lesson-7 opens lesson 7, #final opens the assessment, bad hashes fall back to lesson 1, the hash follows navigation", async () => {
   let { ctx, page } = await open(URL_NEW + "#lesson-7");
   assert.equal(await page.locator("#lesson-title").innerText(), lessons[6].title.ar);
-  await page.click(item(3)); assert.equal(await page.evaluate(() => location.hash), "#lesson-3");
+  await pick(page, 3); assert.equal(await page.evaluate(() => location.hash), "#lesson-3");
   await page.reload(); await page.waitForSelector('html[data-engine="ready"]');
   assert.equal(await page.locator("#lesson-title").innerText(), lessons[2].title.ar);
   await ctx.close();
@@ -106,7 +107,7 @@ test("quiz feedback: one attempt, wrong answer reveals the right one, nothing co
   assert.equal(v1.tracks.prg.quiz["prg-01"].attempts, 1);
   assert.deepEqual(v1.tracks.prg.quiz["prg-01"].passed, []);
   assert.deepEqual(v1.tracks.prg.completed, []);
-  await page.click(item(2)); await page.click(item(1)); // a fresh attempt next time the lesson is opened
+  await pick(page, 2); await pick(page, 1); // a fresh attempt next time the lesson is opened
   await page.click(`#quiz-options button:nth-child(${q.correct + 1})`);
   assert.equal(await page.locator("#quiz-result").innerText(), "✓ إجابة صحيحة! أحسنت.");
   assert.ok(await page.locator("#quiz-result").evaluate((e) => e.classList.contains("success")));
@@ -116,7 +117,7 @@ test("quiz feedback: one attempt, wrong answer reveals the right one, nothing co
 
 test("completion is manual: the button completes, stores v1 + the legacy 1-based list, updates progress, survives reload", async () => {
   const { ctx, page } = await open();
-  await page.click(item(1)); await page.click(item(2));
+  await pick(page, 1); await pick(page, 2);
   assert.equal(await stored(page, LEG), null); // opening never completes
   await page.click("#complete-btn");
   assert.equal(await page.locator("#lesson-status").innerText(), "✓ مكتمل");
@@ -124,23 +125,23 @@ test("completion is manual: the button completes, stores v1 + the legacy 1-based
   assert.deepEqual(JSON.parse(await stored(page, "fayad-progress-v1")).tracks.prg.completed, ["prg-02"]);
   assert.equal(await page.locator("#progress-percent").innerText(), "5%");
   assert.equal(await page.locator("#progress-text").innerText(), "أكملت 1 من 20 دروس");
-  assert.ok(await page.locator(item(2)).evaluate((b) => b.classList.contains("completed")));
+  assert.ok(await page.locator(item(2)).evaluate((b) => b.dataset.done === "true"));
   await page.click("#complete-btn"); // idempotent
   assert.equal(await stored(page, LEG), "[2]");
   await page.reload(); await page.waitForSelector('html[data-engine="ready"]');
-  assert.ok(await page.locator(item(2)).evaluate((b) => b.classList.contains("completed")));
+  assert.ok(await page.locator(item(2)).evaluate((b) => b.dataset.done === "true"));
   assert.equal(await page.locator("#lesson-title").innerText(), lessons[1].title.ar); // resumes where the learner was
   await ctx.close();
 });
 
 test("legacy progress (1-based list) is imported on first load and the page opened twice does not duplicate it", async () => {
   const { ctx, page } = await open(URL_NEW, { [LEG]: "[1,3,3,99,\"final\"]" });
-  for (const n of [1, 3]) assert.ok(await page.locator(item(n)).evaluate((b) => b.classList.contains("completed")), `lesson ${n}`);
-  assert.ok(!(await page.locator(item(2)).evaluate((b) => b.classList.contains("completed"))));
+  for (const n of [1, 3]) assert.ok(await page.locator(item(n)).evaluate((b) => b.dataset.done === "true"), `lesson ${n}`);
+  assert.ok(!(await page.locator(item(2)).evaluate((b) => b.dataset.done === "true")));
   assert.equal(await page.locator("#progress-percent").innerText(), "10%");
   await page.reload(); await page.waitForSelector('html[data-engine="ready"]');
   assert.deepEqual(JSON.parse(await stored(page, "fayad-progress-v1")).tracks.prg.completed, ["prg-01", "prg-03"]);
-  await page.click(item(2)); await page.click("#complete-btn");
+  await pick(page, 2); await page.click("#complete-btn");
   assert.equal(await stored(page, LEG), "[1,2,3]");
   await ctx.close();
 });
@@ -192,7 +193,7 @@ test("no course path uses eval / new Function; the engine page loads no legacy s
 
 test("final assessment: 8 questions, must pick before continuing, failing completes nothing, reopening works", async () => {
   const { ctx, page } = await open();
-  await page.click(".final-item");
+  await pick(page, "final");
   assert.equal(await page.locator("#final-question-area .final-question").innerText(), `1. ${track.assessment.questions[0].question.ar}`);
   await page.click("#final-next-btn"); // nothing selected: stays on question 1
   assert.match(await page.locator("#final-question-area .final-question").innerText(), /^1\./);
@@ -208,7 +209,7 @@ test("final assessment: 8 questions, must pick before continuing, failing comple
   assert.equal(await stored(page, LEG), null);
   await page.click("#final-next-btn"); // "إغلاق"
   assert.ok(await page.locator("#final-quiz-modal").evaluate((m) => m.classList.contains("hidden")));
-  await page.click(".final-item"); // reopening restarts at question 1 and "next" does not also close the dialog
+  await pick(page, "final"); // reopening restarts at question 1 and "next" does not also close the dialog
   assert.match(await page.locator("#final-question-area .final-question").innerText(), /^1\./);
   await page.click(`#final-question-area .final-option[data-index="${track.assessment.questions[0].correct}"]`);
   await page.click("#final-next-btn");
@@ -222,7 +223,7 @@ test("final assessment: 8 questions, must pick before continuing, failing comple
 test("final assessment: 5/8 (63%) fails, 6/8 (75%) passes and completes all 20 lessons in v1 and the legacy list", async () => {
   const { ctx, page } = await open();
   const take = async (rightCount) => {
-    await page.click(".final-item");
+    await pick(page, "final");
     for (let i = 0; i < 8; i++) {
       const q = track.assessment.questions[i];
       await page.click(`#final-question-area .final-option[data-index="${i < rightCount ? q.correct : (q.correct + 1) % q.options.length}"]`);
@@ -246,10 +247,10 @@ test("final assessment: 5/8 (63%) fails, 6/8 (75%) passes and completes all 20 l
 test("mobile 390px: no horizontal overflow, no console errors, every lesson reachable", async () => {
   const { ctx, page, errors } = await open(URL_NEW, {}, { width: 390, height: 800 });
   assert.ok((await page.evaluate(() => document.documentElement.scrollWidth)) <= 391);
-  await page.locator(item(20)).scrollIntoViewIfNeeded(); await page.click(item(20));
+  await pick(page, 20);
   assert.equal(await page.locator("#lesson-title").innerText(), lessons[19].title.ar);
   assert.ok((await page.evaluate(() => document.documentElement.scrollWidth)) <= 391);
-  await page.click(".final-item");
+  await pick(page, "final");
   const box = await page.locator(".final-quiz").boundingBox();
   assert.ok(box.x >= 0 && box.x + box.width <= 391, JSON.stringify(box));
   assert.deepEqual(errors, []);

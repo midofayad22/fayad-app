@@ -66,7 +66,7 @@
   var KEY = "fayad-prefs-v1";
   var DEFAULTS = {
     themeMode: "light", accent: "teal", fontScale: 100, contrast: "normal", motion: "system",
-    reading: "comfortable", sections: "expanded", explainLang: "auto", editorSize: 14, editorTheme: "auto",
+    reading: "comfortable", sections: "expanded", explainLang: "auto", editorSize: 14, editorTheme: "dark",
   };
   var ENUMS = {
     themeMode: ["light", "dark", "system"],
@@ -76,7 +76,7 @@
     reading: ["comfortable", "compact"],
     sections: ["expanded", "collapsed"],
     explainLang: ["auto", "ar", "en"],
-    editorTheme: ["auto", "light", "dark"],
+    editorTheme: ["dark", "light"],
   };
   var RANGES = { fontScale: [90, 130], editorSize: [11, 22] };
 
@@ -109,24 +109,28 @@
   var mqDark = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
   var mqMotion = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
 
+  var view = null; // transient, non-persisted preview (settings pages); null = show the saved state
+  function V() {
+    return view || state;
+  }
   function resolvedTheme() {
-    if (state.themeMode === "system") return mqDark && mqDark.matches ? "dark" : "light";
-    return state.themeMode;
+    if (V().themeMode === "system") return mqDark && mqDark.matches ? "dark" : "light";
+    return V().themeMode;
   }
   function reducedMotion() {
-    return state.motion === "reduce" || (state.motion === "system" && !!(mqMotion && mqMotion.matches));
+    return V().motion === "reduce" || (V().motion === "system" && !!(mqMotion && mqMotion.matches));
   }
   function applyAll() {
     var theme = resolvedTheme();
     if (root.getAttribute("data-theme") !== theme) applyTheme(theme);
-    root.setAttribute("data-accent", state.accent);
-    root.setAttribute("data-contrast", state.contrast);
+    root.setAttribute("data-accent", V().accent);
+    root.setAttribute("data-contrast", V().contrast);
     root.setAttribute("data-motion", reducedMotion() ? "reduce" : "full");
-    root.setAttribute("data-reading", state.reading);
-    root.setAttribute("data-sections", state.sections);
-    root.setAttribute("data-editor-theme", state.editorTheme);
-    root.style.setProperty("--fy-scale", String(state.fontScale / 100));
-    root.style.setProperty("--fy-editor-size", state.editorSize + "px");
+    root.setAttribute("data-reading", V().reading);
+    root.setAttribute("data-sections", V().sections);
+    root.setAttribute("data-editor-theme", V().editorTheme);
+    root.style.setProperty("--fy-scale", String(V().fontScale / 100));
+    root.style.setProperty("--fy-editor-size", V().editorSize + "px");
   }
 
   root.setAttribute("data-track", trackFromPath(location.pathname));
@@ -154,6 +158,7 @@
     for (var k in DEFAULTS) if (next[k] !== state[k]) changed.push(k);
     next.updatedAt = opts.remote && patch && patch.updatedAt ? Number(patch.updatedAt) : changed.length || opts.touch ? Date.now() : state.updatedAt;
     var prevTheme = root.getAttribute("data-theme");
+    view = null;
     state = next;
     persist();
     applyAll();
@@ -180,6 +185,15 @@
       return reducedMotion();
     },
     set: set,
+    // Show a draft without saving it (live preview). preview(null) / discard() returns to the saved state.
+    preview: function (patch) {
+      var t0 = root.getAttribute("data-theme");
+      view = patch ? clean(Object.assign({}, state, patch)) : null;
+      applyAll();
+      if (root.getAttribute("data-theme") !== t0)
+        window.dispatchEvent(new CustomEvent("fayad:themechange", { detail: { theme: root.getAttribute("data-theme") } }));
+      return view ? Object.assign({}, view) : null;
+    },
     reset: function () {
       return set(Object.assign({}, DEFAULTS), { touch: true });
     },
@@ -191,8 +205,11 @@
       if (next !== "light" && next !== "dark" && next !== "system") return;
       set({ themeMode: next });
     },
-    setLang: function (next) {
+    setLang: function (next, remoteTs) {
       if (next !== "ar" && next !== "en") return;
+      if (next === root.getAttribute("data-lang") && !remoteTs) return;
+      state.updatedAt = remoteTs ? Number(remoteTs) : Date.now();
+      persist();
       write("fayad-language", next);
       applyLang(next);
       window.dispatchEvent(new CustomEvent("fayad:langchange", { detail: { lang: next } }));
