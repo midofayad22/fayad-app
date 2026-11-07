@@ -18,6 +18,8 @@ import { buildShell } from "./course-shell.js";
 import { sims } from "./sims.js";
 import { create as createRunner } from "../playground/playground.js";
 import { upgradeEditor } from "./editor.js";
+import { createCourseNav } from "../course/nav.js";
+import { normalize } from "../course/structure.js";
 
 const DEFAULT_RESULT = "Hello FAYBIT";
 const BASE_PREVIEW_CSS = "body{font-family:Arial,Helvetica,sans-serif;padding:16px;line-height:1.7;color:#1b2b34;background:#fff}img{max-width:100%;height:auto}table{border-collapse:collapse;width:100%}th,td{border:1px solid #ccc;padding:8px}a{color:#0066cc}";
@@ -39,7 +41,7 @@ export function mountCourse({ doc = document, track, lessons, state, lang: initi
     "lessonSections", "bodyCard", "lessonBody", "keyCard", "keyLabel", "keyText", "exampleCard", "exampleHeading", "copyButton", "exampleCode", "resultCard", "exampleResult",
     "jsResultStage", "explainCard", "exampleExplanation", "practiceCard", "practiceHeading", "practiceText", "jsEditor", "previewPanel", "previewHost", "previewNote",
     "runButton", "resetButton", "outputWrap", "output", "quizQuestionNumber", "quizTotalQuestions", "questionTitle", "answerOptions", "answerFeedback", "quizNextButton",
-    "previousButton", "nextButton", "sidebar", "sidebarToggle", "sidebarCurrent", "sidebarSearch", "sidebarEmpty", "sbProgFill", "sbProgText"]) el[id] = $(id);
+    "previousButton", "nextButton", "sidebar", "sidebarToggle", "sidebarCurrent", "sbProgFill", "sbProgText"]) el[id] = $(id);
 
   // Lesson text follows the "explanation language" preference (default: the interface language); interface strings (S) always follow the interface.
   const prefs = () => doc.defaultView?.FAYAD?.prefs?.all || {};
@@ -68,69 +70,19 @@ export function mountCourse({ doc = document, track, lessons, state, lang: initi
     const cmContent = el.jsEditor.__fyEditor && el.jsEditor.__fyEditor.contentDOM; if (cmContent) cmContent.setAttribute("aria-label", S("editor.aria"));
   }
 
-  // ---------- sidebar (built from data: every lesson is reachable) ----------
-  const links = new Map();
-  const groupEls = [];
+  // ---------- course navigation (shared component: modules → units → lessons) ----------
+  let nav = null;
   function buildSidebar() {
-    el.sidebarGroups.textContent = ""; links.clear(); groupEls.length = 0;
-    el.sidebarSearch.placeholder = S("sidebar.search"); el.sidebarSearch.setAttribute("aria-label", S("sidebar.search"));
-    for (const g of track.groups) {
-      const wrap = doc.createElement("div"); wrap.className = "topic-group";
-      const head = doc.createElement("button"); head.type = "button"; head.className = "group-toggle"; head.setAttribute("aria-expanded", "true");
-      const h = doc.createElement("h3"); h.textContent = text(g.title);
-      const cnt = doc.createElement("span"); cnt.className = "group-count";
-      head.append(h, cnt); head.setAttribute("aria-label", S("sidebar.group.toggle", { title: text(g.title) }));
-      const list = doc.createElement("div"); list.className = "group-lessons";
-      head.addEventListener("click", () => { const open = head.getAttribute("aria-expanded") !== "true"; head.setAttribute("aria-expanded", String(open)); wrap.classList.toggle("collapsed", !open); });
-      wrap.append(head, list);
-      for (const id of g.lessons) {
-        const n = numberOf(id);
-        const a = doc.createElement("a");
-        a.className = "lesson"; a.href = `#lesson-${n}`; a.dataset.lesson = String(n); a.dataset.id = id;
-        const st = doc.createElement("span"); st.className = "lesson-status"; st.textContent = pad(n);
-        const nm = doc.createElement("span"); nm.className = "lesson-name"; nm.textContent = navTitle(id);
-        a.append(st, nm);
-        a.addEventListener("click", (e) => { e.preventDefault(); go(id); closeSidebar(); win.scrollTo({ top: 0, behavior: "smooth" }); });
-        list.appendChild(a); links.set(id, a);
-      }
-      groupEls.push({ wrap, head, cnt, ids: g.lessons });
-      el.sidebarGroups.appendChild(wrap);
-    }
-    filterSidebar();
+    const mods = normalize(track);
+    if (nav) { nav.setLang(lang); nav.rebuild(mods); return; }
+    nav = createCourseNav({ doc, mount: el.sidebarGroups, courseId: track.id, courseTitle: courseName(), mods, lang, ids: { search: "sidebarSearch", empty: "sidebarEmpty" },
+      titleOf: navTitle, numberOf, isDone: (id) => state.isCompleted(id), current: () => state.current,
+      onSelect: (it) => { go(it.id); closeSidebar(); win.scrollTo({ top: 0, behavior: "smooth" }); } });
   }
-
-  function filterSidebar() {
-    const q = el.sidebarSearch.value.trim().toLowerCase(); let shown = 0;
-    for (const g of groupEls) {
-      let any = false;
-      for (const id of g.ids) {
-        const a = links.get(id); const hit = !q || (navTitle(id) + " " + numberOf(id)).toLowerCase().includes(q);
-        a.hidden = !hit; if (hit) { any = true; shown++; }
-      }
-      g.wrap.hidden = !any;
-      if (q && any) { g.wrap.classList.remove("collapsed"); g.head.setAttribute("aria-expanded", "true"); }
-    }
-    el.sidebarEmpty.hidden = shown > 0; el.sidebarEmpty.textContent = shown ? "" : S("sidebar.empty");
-  }
-
   function paintSidebar() {
     el.sidebarCurrent.textContent = `${pad(numberOf(state.current))} · ${navTitle(state.current)}`;
-    for (const [id, a] of links) {
-      const active = id === state.current;
-      a.classList.toggle("active", active);
-      if (active) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
-      const st = a.querySelector(".lesson-status");
-      st.classList.toggle("current", active);
-      const done = state.isCompleted(id);
-      st.classList.toggle("completed", done);
-      st.textContent = done ? "✓" : pad(numberOf(id));
-      a.dataset.done = done ? "true" : "false";
-    }
-    let all = 0, doneAll = 0;
-    for (const g of groupEls) {
-      const d = g.ids.filter((id) => state.isCompleted(id)).length; g.cnt.textContent = `${d}/${g.ids.length}`; all += g.ids.length; doneAll += d;
-      g.wrap.classList.toggle("has-current", g.ids.includes(state.current));
-    }
+    nav.reveal();
+    const all = state.order.length, doneAll = state.order.filter((id) => state.isCompleted(id)).length;
     el.sbProgFill.style.width = all ? `${Math.round((doneAll / all) * 100)}%` : "0%";
     el.sbProgText.textContent = S("sidebar.done", { done: doneAll, total: all });
   }
@@ -411,7 +363,6 @@ export function mountCourse({ doc = document, track, lessons, state, lang: initi
     el.resetButton.addEventListener("click", () => { el.jsEditor.value = starterOf(state.lesson); clearResult(); });
     el.copyButton.addEventListener("click", copyCode);
     el.sidebarToggle.addEventListener("click", () => { const open = el.sidebar.classList.toggle("open"); el.sidebarToggle.setAttribute("aria-expanded", String(open)); doc.body.classList.toggle("sb-lock", open && win.matchMedia("(max-width:900px)").matches); });
-    el.sidebarSearch.addEventListener("input", filterSidebar);
     doc.addEventListener("keydown", (e) => { if (e.key === "Escape" && el.sidebar.classList.contains("open")) { closeSidebar(); el.sidebarToggle.focus(); } });
     el.sidebar.addEventListener("click", (e) => { if (e.target === el.sidebar) closeSidebar(); });
     doc.addEventListener("keydown", (e) => { if (e.key === "Escape") closeSidebar(); });

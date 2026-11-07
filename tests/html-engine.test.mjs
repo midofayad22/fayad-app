@@ -1,4 +1,5 @@
 // HTML course on the shared engine: sidebar completeness (30), sandboxed live preview, quiz, progress, rollback, mobile.
+import { pick } from "./_nav.mjs";
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
@@ -29,15 +30,15 @@ async function open(url = URL_NEW, seed = {}, viewport = { width: 1280, height: 
 }
 const stored = (page, k) => page.evaluate((key) => localStorage.getItem(key), k);
 const dom = (page, h) => page.evaluate((x) => { const d = document.createElement("div"); d.innerHTML = x; return d.innerHTML; }, h);
-const link = (n) => `.sidebar a.lesson[data-lesson="${n}"]`;
+const link = (n) => `.sidebar a.cn-lesson[data-lesson="${n}"]`;
 // quiz helpers: shuffled order, so buttons are found by their original index
 const answer = (page, i) => page.click(`#answerOptions button[data-index="${i}"]`);
 const solve = async (page, id) => { for (const q of lessons.find((l) => l.id === id).quiz) { await answer(page, q.correct); await page.click("#quizNextButton"); } };
 
 test("boots without console errors; the sidebar lists ALL 30 lessons (legacy listed 22) in 5 groups", async () => {
   const { ctx, page, errors } = await open();
-  assert.equal(await page.locator(".sidebar a.lesson").count(), 30);
-  assert.equal(await page.locator(".sidebar .topic-group").count(), 5);
+  assert.equal(await page.locator(".sidebar a.cn-lesson").count(), 30);
+  assert.equal(await page.locator(".sidebar .cn-mod").count(), 5);
   assert.deepEqual(errors, []);
   await ctx.close();
 });
@@ -45,7 +46,7 @@ test("boots without console errors; the sidebar lists ALL 30 lessons (legacy lis
 test("every lesson (incl. the 8 the old sidebar never reached) opens from the sidebar with its exact Arabic content", async () => {
   const { ctx, page } = await open();
   for (const [i, l] of lessons.entries()) {
-    await page.click(link(i + 1));
+    await pick(page, i + 1);
     assert.equal(await page.locator("#lessonTitle").innerText(), l.title.ar, `title ${i + 1}`);
     assert.equal(await page.locator("#lessonDescription").innerText(), l.description.ar);
     assert.equal(await page.locator("#lessonBody").innerHTML(), await dom(page, l.body.ar));
@@ -54,7 +55,7 @@ test("every lesson (incl. the 8 the old sidebar never reached) opens from the si
     assert.equal(await page.locator("#exampleExplanation").innerHTML(), await dom(page, l.example.explanation.ar));
     assert.equal(await page.locator("#practiceText").textContent(), l.practice.prompt.ar);
     assert.equal(await page.locator("#jsEditor").inputValue(), l.practice.starterCode);
-    assert.equal(await page.locator(".sidebar a.lesson.active").getAttribute("data-lesson"), String(i + 1));
+    assert.equal(await page.locator(".sidebar a.cn-lesson.active").getAttribute("data-lesson"), String(i + 1));
   }
   await ctx.close();
 });
@@ -86,7 +87,7 @@ test("quiz: 3 questions with shuffled options that stay correct, wrong answers c
 
 test("legacy progress (1-based list) is imported once and never duplicated", async () => {
   const { ctx, page } = await open(URL_NEW, { [LEG]: "[1,2,2,23,99]" });
-  for (const n of [1, 2, 23]) assert.equal(await page.locator(`${link(n)} .lesson-status`).innerText(), "✓", `lesson ${n}`);
+  for (const n of [1, 2, 23]) assert.equal(await page.locator(`${link(n)} .cn-mark`).innerText(), "✓", `lesson ${n}`);
   assert.equal(await page.locator("#progressText").innerText(), "10%");
   await page.reload(); await page.waitForSelector('html[data-engine="ready"]');
   assert.deepEqual(JSON.parse(await stored(page, "fayad-progress-v1")).tracks.html.completed, ["html-01", "html-02", "html-23"]);
@@ -160,7 +161,7 @@ test("mobile 390px: no overflow; the lesson list is a collapsible panel that rea
   assert.equal(await page.locator("#sidebarGroups").isVisible(), false);
   await page.click("#sidebarToggle");
   assert.equal(await page.locator("#sidebarToggle").getAttribute("aria-expanded"), "true");
-  await page.locator(link(30)).scrollIntoViewIfNeeded(); await page.click(link(30));
+  await pick(page, 30);
   assert.equal(await page.locator("#lessonTitle").innerText(), lessons[29].title.ar);
   assert.equal(await page.locator("#sidebarGroups").isVisible(), false); // closes after choosing
   assert.ok((await page.evaluate(() => document.documentElement.scrollWidth)) <= 391);

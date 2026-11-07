@@ -1,5 +1,6 @@
 // Tailwind course: every example must compile with the vendored @tailwindcss/browser in the sandboxed preview, and the
 // documented utility must produce the documented computed style.
+import { pick } from "./_nav.mjs";
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
@@ -31,10 +32,10 @@ test("vendored Tailwind browser build exists with the documented version", () =>
 
 test("tw page: 20 lessons / 5 groups; every example compiles and yields the documented computed style", async () => {
   const { ctx, page, errors } = await open();
-  assert.equal(await page.locator(".sidebar a.lesson").count(), lessons.length);
-  assert.equal(await page.locator(".sidebar .topic-group").count(), track.groups.length);
+  assert.equal(await page.locator(".sidebar a.cn-lesson").count(), lessons.length);
+  assert.equal(await page.locator(".sidebar .cn-mod").count(), track.groups.length);
   for (const [i, l] of lessons.entries()) {
-    await page.click(`.sidebar a.lesson[data-lesson="${i + 1}"]`);
+    await pick(page, i + 1);
     assert.equal(await page.locator("#exampleCode").textContent(), l.example.code);
     const frame = await previewFrame(page);
     const [sel, prop, want] = checks[i];

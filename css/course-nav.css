@@ -1,0 +1,94 @@
+/* Course navigation (js/course/nav.js). Everything is scoped under .cn / .sidebar[data-cn]; nothing here touches other pages. */
+.cn { --cn-acc: var(--fy-course, var(--fy-brand)); --cn-ink: var(--fy-course-ink, var(--fy-brand)); --cn-line: var(--fy-border); --cn-mark: 26px;
+  display: grid; gap: 14px; font-family: var(--fy-font); color: var(--fy-text); min-width: 0; }
+.cn *, .cn *::before, .cn *::after { box-sizing: border-box; }
+.cn-top { display: grid; gap: 10px; }
+.cn-continue { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 16px; border-radius: var(--fy-radius-sm); background: var(--cn-acc); color: var(--fy-course-on, var(--fy-on-brand)); font-weight: 700; font-size: .92rem; text-decoration: none; text-align: center; transition: filter .15s, transform .15s; }
+.cn-continue:hover { filter: brightness(1.06); }
+.cn-continue:active { transform: translateY(1px); }
+.cn-search { position: relative; }
+.cn-search input { width: 100%; min-height: 42px; padding: 0 38px; border-radius: var(--fy-radius-sm); border: 1px solid var(--fy-border-strong, var(--cn-line)); background: var(--fy-surface); color: var(--fy-text); font: inherit; font-size: .92rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='9' cy='9' r='6'/%3E%3Cpath d='M14 14l4 4'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-size: 16px; background-position: 12px center; -webkit-appearance: none; appearance: none; }
+html[dir="rtl"] .cn-search input { background-position: calc(100% - 12px) center; }
+.cn-search input::-webkit-search-cancel-button { display: none; }
+.cn-search input:focus-visible { outline: 2px solid var(--cn-acc); outline-offset: 1px; }
+.cn-clear { position: absolute; inset-block: 0; inset-inline-end: 4px; width: 34px; border: 0; background: none; color: var(--fy-text-soft); cursor: pointer; border-radius: 8px; display: grid; place-items: center; }
+.cn-clear:hover { color: var(--fy-text); background: var(--fy-surface-2); }
+.cn-status { margin: 0; font-size: .82rem; color: var(--fy-text-soft); min-height: 0; }
+.cn-status:empty { display: none; }
+.cn-status[data-empty="true"] { padding: 8px 2px; }
+.cn-bulk { display: flex; gap: 14px; }
+.cn-link { border: 0; background: none; padding: 4px 0; color: var(--fy-text-soft); font: inherit; font-size: .8rem; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: transparent; transition: color .15s, text-decoration-color .15s; }
+.cn-link:hover { color: var(--cn-ink); text-decoration-color: currentColor; }
+
+.cn-mods { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.cn-mod { border-radius: var(--fy-radius-sm); min-width: 0; }
+.cn-mod[hidden] { display: none; }
+.cn-mod-h { width: 100%; display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; align-items: center; gap: 10px; padding: 9px 8px; min-height: 52px; border: 0; background: none; color: inherit; font: inherit; text-align: start; cursor: pointer; border-radius: var(--fy-radius-sm); transition: background-color .15s; }
+.cn-mod-h:hover { background: var(--fy-surface-2); }
+.cn-mod-n { position: relative; width: 32px; height: 32px; display: grid; place-items: center; }
+.cn-ring { position: absolute; inset: 0; width: 100%; height: 100%; }
+.cn-ring-bg { stroke: var(--cn-line); }
+.cn-ring-fg { stroke: var(--cn-acc); transition: stroke-dashoffset .5s cubic-bezier(.4, 0, .2, 1); }
+.cn-mod-n b { font: 700 .72rem var(--fy-font-en); color: var(--fy-text-soft); }
+.is-complete > .cn-mod-h .cn-mod-n b, .has-current > .cn-mod-h .cn-mod-n b { color: var(--cn-ink); }
+.cn-mod-t { display: grid; gap: 1px; min-width: 0; }
+.cn-mod-t small { font: 700 .66rem var(--fy-font-en); letter-spacing: .09em; text-transform: uppercase; color: var(--fy-text-soft); }
+html[lang="ar"] .cn-mod-t small { letter-spacing: 0; font-size: .72rem; text-transform: none; font-family: var(--fy-font); }
+.cn-mod-t strong { font-size: .94rem; line-height: 1.45; font-weight: 700; overflow-wrap: anywhere; }
+.has-current > .cn-mod-h .cn-mod-t strong { color: var(--cn-ink); }
+.cn-mod-c { font: 600 .74rem var(--fy-font-en); color: var(--fy-text-soft); font-variant-numeric: tabular-nums; }
+.cn-chev { width: 8px; height: 8px; border: solid var(--fy-text-soft); border-width: 0 2px 2px 0; transform: rotate(45deg); transition: transform .25s; margin-inline: 4px; }
+.is-open > .cn-mod-h .cn-chev { transform: rotate(-135deg); }
+
+.cn-mod-b { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .28s cubic-bezier(.4, 0, .2, 1); }
+.is-open > .cn-mod-b { grid-template-rows: 1fr; }
+.cn-mod-i { overflow: hidden; min-height: 0; padding-inline-start: 15px; }
+.cn-unit { padding-block: 2px; }
+.cn-unit[hidden] { display: none; }
+.cn-unit-t { margin: 8px 0 2px; padding-inline-start: 22px; font: 700 .72rem var(--fy-font); color: var(--fy-text-soft); letter-spacing: .02em; }
+.cn-lessons { list-style: none; margin: 0; padding: 0; position: relative; }
+.cn-lessons li[hidden] { display: none; }
+.cn-lessons::before { content: ""; position: absolute; inset-block: 14px; inset-inline-start: calc(var(--cn-mark) / 2 + 6px); width: 2px; background: var(--cn-line); border-radius: 2px; }
+.cn-lesson { position: relative; display: grid; grid-template-columns: var(--cn-mark) minmax(0, 1fr); align-items: center; gap: 10px; min-height: 40px; padding: 5px 8px 5px 6px; margin: 1px 0; border-radius: var(--fy-radius-sm); color: var(--fy-text-soft); text-decoration: none; font-size: .88rem; line-height: 1.5; transition: background-color .15s, color .15s; }
+html[dir="rtl"] .cn-lesson { padding: 5px 6px 5px 8px; }
+.cn-lesson:hover { background: var(--fy-surface-2); color: var(--fy-text); }
+.cn-lesson:focus-visible, .cn-mod-h:focus-visible, .cn-continue:focus-visible, .cn-link:focus-visible, .cn-clear:focus-visible { outline: 2px solid var(--cn-acc); outline-offset: 2px; }
+.cn-mark { position: relative; z-index: 1; width: var(--cn-mark); height: var(--cn-mark); border-radius: 50%; display: grid; place-items: center; background: var(--fy-bg); border: 2px solid var(--cn-line); color: var(--fy-text-soft); font: 700 .66rem var(--fy-font-en); font-variant-numeric: tabular-nums; transition: background-color .2s, border-color .2s, color .2s, transform .2s; }
+.cn-lesson[data-state="done"] .cn-mark { background: var(--cn-acc); border-color: var(--cn-acc); color: var(--fy-course-on, var(--fy-on-brand)); font-size: .72rem; }
+.cn-lesson[data-state="done"] { color: var(--fy-text); }
+.cn-lesson[data-state="current"] { background: var(--fy-course-soft, var(--fy-brand-soft)); color: var(--fy-text); font-weight: 700; box-shadow: inset 3px 0 0 var(--cn-acc); }
+html[dir="rtl"] .cn-lesson[data-state="current"] { box-shadow: inset -3px 0 0 var(--cn-acc); }
+.cn-lesson[data-state="current"] .cn-mark { border-color: var(--cn-acc); color: var(--cn-ink); box-shadow: 0 0 0 4px var(--fy-course-soft, var(--fy-brand-soft)); }
+.cn-lesson[data-state="current"][data-done="true"] .cn-mark { background: var(--cn-acc); color: var(--fy-course-on, var(--fy-on-brand)); }
+.cn-assess .cn-mark { border-radius: 8px; font-size: .78rem; }
+.cn-name { min-width: 0; overflow-wrap: anywhere; }
+.cn-name mark { background: var(--fy-course-soft, var(--fy-brand-soft)); color: inherit; border-radius: 3px; padding: 0 1px; box-shadow: inset 0 -2px 0 var(--cn-acc); }
+.is-assess > .cn-mod-h .cn-mod-t strong { font-size: .9rem; }
+
+/* Mobile / tablet: the course nav becomes a bottom sheet behind the sticky "lessons" bar */
+.cn-clear[hidden], .cn-bulk[hidden] { display: none; }
+/* legacy foundation pages style .lesson-nav as a scrolling grid; the component owns its own layout */
+.sidebar[data-cn] .lesson-nav { display: block; max-height: none; overflow: visible; padding: 0; margin: 0; grid-template-columns: none; }
+.sidebar[data-cn] .sidebar-toggle { display: none; }
+@media (max-width: 900px) {
+  .sidebar[data-cn] { position: sticky; top: 0; z-index: 40; background: var(--fy-bg-soft); padding: 8px 4%; padding-inline: max(4%, env(safe-area-inset-left)); border-block-end: 1px solid var(--fy-border); }
+  .sidebar[data-cn] .sidebar-toggle { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--fy-border-strong, var(--fy-border)); border-radius: var(--fy-radius-sm); background: var(--fy-surface); color: var(--fy-text); }
+  .sidebar[data-cn] .sb-panel { display: none; }
+  .sidebar[data-cn] > .progress-container, .sidebar[data-cn] > .sidebar-header:has(+ .progress-container) { display: none; }
+  .sidebar[data-cn].open::before { content: ""; position: fixed; inset: 0; background: rgba(2, 8, 14, .55); z-index: 1590; animation: cn-fade .2s ease-out; }
+  .sidebar[data-cn].open .sb-panel { display: block; position: fixed; inset-inline: 0; inset-block-end: 0; z-index: 1600; max-height: min(82dvh, 720px); overflow-y: auto; overscroll-behavior: contain; background: var(--fy-bg-soft); border-radius: 20px 20px 0 0; padding: 18px 16px; padding-bottom: max(20px, env(safe-area-inset-bottom)); box-shadow: 0 -18px 50px rgba(0, 0, 0, .35); animation: cn-sheet .26s cubic-bezier(.2, .8, .2, 1); }
+  .sidebar[data-cn].open .sb-panel::before { content: ""; display: block; width: 42px; height: 4px; border-radius: 2px; background: var(--fy-border-strong, var(--fy-border)); margin: -8px auto 14px; }
+  .cn-lesson { min-height: 46px; }
+  .cn-mod-h { min-height: 56px; }
+}
+@media (min-width: 901px) {
+  .sidebar[data-cn] .cn-top { position: sticky; top: -14px; z-index: 3; background: var(--fy-bg-soft); padding-block: 4px 10px; margin-block: -4px 0; }
+}
+@keyframes cn-fade { from { opacity: 0; } }
+@keyframes cn-sheet { from { transform: translateY(40px); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .cn *, .sidebar[data-cn]::before, .sidebar[data-cn] .sb-panel { transition: none !important; animation: none !important; } }
+html[data-motion="reduce"] .cn *, html[data-motion="reduce"] .sidebar[data-cn]::before, html[data-motion="reduce"] .sidebar[data-cn] .sb-panel { transition: none !important; animation: none !important; }
+@media (forced-colors: active) { .cn-lesson[data-state="current"] { outline: 2px solid Highlight; } .cn-mark { forced-color-adjust: none; } }
+
+body.sb-lock .fy-controls--dock { display: none; }

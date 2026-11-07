@@ -1,4 +1,5 @@
 // Computer Basics on the shared engine, in a real browser (incl. rollback to the legacy page).
+import { pick } from "./_nav.mjs";
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
@@ -23,19 +24,19 @@ async function open(url = URL_NEW, seed = {}, viewport = { width: 1280, height: 
   page.on("console", (m) => { if (m.type() === "error" && !/Failed to load resource/.test(m.text())) errors.push(m.text()); });
   await page.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort());
   await page.goto(base + url);
-  if (url.startsWith("/legacy/")) await page.waitForFunction(() => document.querySelectorAll(".lesson-item").length === 20 && document.querySelector("#lesson-title")?.textContent && document.querySelector("#quiz-options button"));
+  if (url.startsWith("/legacy/")) await page.waitForFunction(() => document.querySelectorAll(".cn-lesson").length === 20 && document.querySelector("#lesson-title")?.textContent && document.querySelector("#quiz-options button"));
   else await page.waitForFunction(() => document.documentElement.dataset.engine === "ready");
   return { ctx, page, errors };
 }
 const stored = (page, k) => page.evaluate((key) => localStorage.getItem(key), k);
-const item = (n) => `.lesson-item[data-lesson="${n}"]`; // legacy data-lesson is 0-based; the engine keeps that attribute 1-based
+const item = (n) => `.cn-lesson[data-lesson="${n}"]`; // legacy data-lesson is 0-based; the engine keeps that attribute 1-based
 const dom = (page, h) => page.evaluate((x) => { const d = document.createElement("div"); d.innerHTML = x; return d.innerHTML; }, h);
 
 test("boots without console errors; all 20 lessons are in the sidebar, the last one marked as the final test", async () => {
   const { ctx, page, errors } = await open();
-  assert.equal(await page.locator(".lesson-item").count(), 20);
-  assert.equal(await page.locator(".lesson-item.final-item").count(), 1);
-  assert.equal(await page.locator(".lesson-item").last().getAttribute("class"), "lesson-item final-item");
+  assert.equal(await page.locator(".cn-lesson").count(), 20);
+  assert.equal(await page.locator(".cn-lesson.cn-assess").count(), 0);
+  assert.equal(await page.locator(".cn-lesson").last().getAttribute("data-lesson"), "20");
   assert.deepEqual(errors, []);
   await ctx.close();
 });
@@ -43,7 +44,7 @@ test("boots without console errors; all 20 lessons are in the sidebar, the last 
 test("every lesson opens from the sidebar with its exact Arabic content", async () => {
   const { ctx, page } = await open();
   for (const [i, l] of lessons.entries()) {
-    await page.click(item(i + 1));
+    await pick(page, i + 1);
     assert.equal(await page.locator("#lesson-title").innerText(), l.title.ar);
     assert.equal(await page.locator("#content-title").innerText(), l.title.ar);
     assert.equal(await page.locator("#lesson-counter").innerText(), `الدرس ${i + 1} من 20`);
@@ -53,7 +54,7 @@ test("every lesson opens from the sidebar with its exact Arabic content", async 
     assert.equal(await page.locator("#lesson-icon i").getAttribute("class"), `fa-solid ${l.icon}`);
     assert.equal(await page.locator("#quiz-question").textContent(), l.quiz[0].question.ar);
     assert.deepEqual(await page.locator("#quiz-options button").allTextContents(), l.quiz[0].options.map((o) => o.ar));
-    assert.equal(await page.locator(".lesson-item.active").getAttribute("data-lesson"), String(i + 1));
+    assert.equal(await page.locator(".cn-lesson.active").getAttribute("data-lesson"), String(i + 1));
   }
   await ctx.close();
 });
@@ -70,7 +71,7 @@ test("previous/next walk all lessons; the last lesson ends the course (no dead l
 test("deep links: #lesson-5 opens lesson 5; bad hashes fall back to lesson 1; the hash follows navigation and survives reload", async () => {
   let { ctx, page } = await open(URL_NEW + "#lesson-5");
   assert.equal(await page.locator("#lesson-title").innerText(), lessons[4].title.ar);
-  await page.click(item(9)); assert.equal(await page.evaluate(() => location.hash), "#lesson-9");
+  await pick(page, 9); assert.equal(await page.evaluate(() => location.hash), "#lesson-9");
   await page.reload(); await page.waitForSelector('html[data-engine="ready"]');
   assert.equal(await page.locator("#lesson-title").innerText(), lessons[8].title.ar);
   await ctx.close();
@@ -87,7 +88,7 @@ test("quiz feedback: all options lock after one answer; a wrong answer names the
   assert.equal(await page.locator("#quiz-options button:not([disabled])").count(), 0);
   assert.equal(await stored(page, LEG), null); // answering never completes
   assert.equal(JSON.parse(await stored(page, "fayad-progress-v1")).tracks.com.quiz["com-01"].attempts, 1);
-  await page.click(item(2)); await page.click(item(1));
+  await pick(page, 2); await pick(page, 1);
   await page.click(`#quiz-options button:nth-child(${q.correct + 1})`);
   assert.equal(await page.locator("#quiz-result").innerText(), "إجابة صحيحة! أحسنت، لقد فهمت المفهوم.");
   assert.ok(await page.locator("#quiz-result").evaluate((e) => e.classList.contains("success")));
@@ -96,7 +97,7 @@ test("quiz feedback: all options lock after one answer; a wrong answer names the
 
 test("completion is manual: stores v1 + the legacy 0-based list, updates progress, survives reload", async () => {
   const { ctx, page } = await open();
-  await page.click(item(3));
+  await pick(page, 3);
   assert.equal(await stored(page, LEG), null);
   await page.click("#complete-btn");
   assert.match(await page.locator("#lesson-status").innerText(), /مكتمل/);
@@ -106,17 +107,17 @@ test("completion is manual: stores v1 + the legacy 0-based list, updates progres
   assert.equal(await page.locator("#progress-text").innerText(), "5%");
   await page.click("#complete-btn"); assert.equal(await stored(page, LEG), "[2]");
   await page.reload(); await page.waitForSelector('html[data-engine="ready"]');
-  assert.ok(await page.locator(item(3)).evaluate((b) => b.classList.contains("completed")));
+  assert.ok(await page.locator(item(3)).evaluate((b) => b.dataset.done === "true"));
   await ctx.close();
 });
 
 test("legacy progress (0-based list) is imported once and never duplicated", async () => {
   const { ctx, page } = await open(URL_NEW, { [LEG]: "[0,2,2,40,\"x\"]" });
-  for (const n of [1, 3]) assert.ok(await page.locator(item(n)).evaluate((b) => b.classList.contains("completed")));
+  for (const n of [1, 3]) assert.ok(await page.locator(item(n)).evaluate((b) => b.dataset.done === "true"));
   assert.equal(await page.locator("#progress-text").innerText(), "10%");
   await page.reload(); await page.waitForSelector('html[data-engine="ready"]');
   assert.deepEqual(JSON.parse(await stored(page, "fayad-progress-v1")).tracks.com.completed, ["com-01", "com-03"]);
-  await page.click(item(2)); await page.click("#complete-btn");
+  await pick(page, 2); await page.click("#complete-btn");
   assert.equal(await stored(page, LEG), "[0,1,2]");
   await ctx.close();
 });
@@ -132,7 +133,7 @@ test("the engine page has no learner-code execution and loads no legacy script",
 test("mobile 390px: no horizontal overflow, no console errors, every lesson reachable", async () => {
   const { ctx, page, errors } = await open(URL_NEW, {}, { width: 390, height: 800 });
   assert.ok((await page.evaluate(() => document.documentElement.scrollWidth)) <= 391);
-  await page.locator(item(20)).scrollIntoViewIfNeeded(); await page.click(item(20));
+  await pick(page, 20);
   assert.equal(await page.locator("#lesson-title").innerText(), lessons[19].title.ar);
   assert.ok((await page.evaluate(() => document.documentElement.scrollWidth)) <= 391);
   assert.deepEqual(errors, []);

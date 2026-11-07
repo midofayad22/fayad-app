@@ -12,6 +12,8 @@
 import { t, orderedIds } from "./schema.js";
 import { create as createRunner } from "../playground/playground.js";
 import { upgradeEditor } from "./editor.js";
+import { createCourseNav } from "../course/nav.js";
+import { normalize } from "../course/structure.js";
 
 // Two page profiles share this view: "foundation" (Programming Fundamentals: example, editor, final assessment) and
 // "foundation-lite" (Computer Basics: reading + one quiz question + practice text). Strings are kept exactly as each
@@ -159,43 +161,17 @@ export function mountFoundation({ doc = document, track, lessons, progress, lang
     });
   }
 
-  // ---------- sidebar (built from data: every lesson + the final assessment is reachable) ----------
+  // ---------- course navigation (shared component) ----------
+  let nav = null;
+  const navMods = () => normalize(track, { assessments: assessment ? [{ id: "final", hash: "final", title: assessment.title }] : [] });
   function buildSidebar() {
-    el["lesson-nav"].textContent = "";
-    order.forEach((id, i) => {
-      const l = byId.get(id);
-      const b = doc.createElement("button");
-      b.type = "button"; b.className = l.isFinal ? "lesson-item final-item" : "lesson-item"; b.dataset.lesson = String(i + 1);
-      const num = doc.createElement("span"); num.className = "lesson-number"; num.textContent = pad2(i + 1);
-      const name = doc.createElement("span"); name.textContent = t(l.navTitle || l.title, lang);
-      b.append(num, name);
-      b.addEventListener("click", () => go(id));
-      el["lesson-nav"].appendChild(b);
-    });
-    if (assessment) {
-      const b = doc.createElement("button");
-      b.type = "button"; b.className = "lesson-item final-item"; b.dataset.lesson = "final";
-      const num = doc.createElement("span"); num.className = "lesson-number"; num.innerHTML = '<i class="fa-solid fa-trophy"></i>';
-      const name = doc.createElement("span"); name.textContent = t(assessment.title, lang);
-      b.append(num, name);
-      b.addEventListener("click", () => { setHash("#final"); openFinal(b); });
-      el["lesson-nav"].appendChild(b);
-    }
+    if (nav) { nav.setLang(lang); nav.rebuild(navMods()); return; }
+    nav = createCourseNav({ doc, mount: el["lesson-nav"], courseId: track.id, courseTitle: t(track.title, lang), mods: navMods(), lang,
+      titleOf: (id) => { const l = byId.get(id); return t(l.navTitle || l.title, lang); }, numberOf,
+      isDone, isPassed: () => !!progress.assessment?.(track.id)?.passed, current: () => current,
+      onSelect: (it) => { if (it.kind === "assessment") { setHash("#final"); openFinal(nav.root.querySelector(`[data-id="${it.id}"]`)); } else go(it.id); } });
   }
-
-  function paintSidebar() {
-    el["lesson-nav"].querySelectorAll(".lesson-item").forEach((b) => {
-      const n = b.dataset.lesson;
-      if (n === "final") return;
-      const id = order[Number(n) - 1];
-      const done = isDone(id);
-      b.classList.toggle("active", id === current);
-      b.classList.toggle("completed", done);
-      if (id === current) b.setAttribute("aria-current", "true"); else b.removeAttribute("aria-current");
-      const num = b.querySelector(".lesson-number");
-      if (done) num.innerHTML = '<i class="fa-solid fa-check"></i>'; else num.textContent = pad2(Number(n));
-    });
-  }
+  function paintSidebar() { nav.reveal(); paintToggle(); }
 
   function paintProgress() {
     const done = order.filter(isDone).length;
@@ -474,8 +450,26 @@ export function mountFoundation({ doc = document, track, lessons, progress, lang
     return m && order[Number(m[1]) - 1] ? order[Number(m[1]) - 1] : null;
   }
 
+  // legacy pages ship a plain <aside>: give it the same collapsible behaviour (bottom sheet on phones) as the generic course pages
+  function wireSidebarShell() {
+    const aside = el["lesson-nav"].closest(".sidebar"); if (!aside) return;
+    aside.setAttribute("data-cn", "");
+    const panel = doc.createElement("div"); panel.className = "sb-panel"; panel.id = "sidebarPanel";
+    const toggle = doc.createElement("button"); toggle.type = "button"; toggle.className = "sidebar-toggle"; toggle.setAttribute("aria-expanded", "false"); toggle.setAttribute("aria-controls", "sidebarPanel");
+    const lab = doc.createElement("span"); const cur = doc.createElement("strong"); toggle.append(lab, cur);
+    el["lesson-nav"].before(panel); panel.appendChild(el["lesson-nav"]); panel.before(toggle);
+    const close = () => { aside.classList.remove("open"); toggle.setAttribute("aria-expanded", "false"); doc.body.classList.remove("sb-lock"); };
+    toggle.addEventListener("click", () => { const o = aside.classList.toggle("open"); toggle.setAttribute("aria-expanded", String(o)); doc.body.classList.toggle("sb-lock", o && win.matchMedia("(max-width:900px)").matches); });
+    aside.addEventListener("click", (e) => { if (e.target === aside) close(); });
+    doc.addEventListener("keydown", (e) => { if (e.key === "Escape" && aside.classList.contains("open")) { close(); toggle.focus(); } });
+    el["lesson-nav"].addEventListener("click", (e) => { if (e.target.closest(".cn-lesson, .cn-continue")) close(); });
+    shell = { lab, cur };
+  }
+  let shell = null;
+  function paintToggle() { if (!shell) return; shell.lab.textContent = lang === "en" ? "Lessons" : "الدروس"; shell.cur.textContent = `${pad2(numberOf(current))} · ${t((byId.get(current) || {}).navTitle || (byId.get(current) || {}).title, lang)}`; }
+
   function start() {
-    buildSidebar();
+    wireSidebarShell(); buildSidebar();
     el["prev-btn"].addEventListener("click", () => { const i = numberOf(current); if (i > 1) go(order[i - 2]); });
     el["next-btn"].addEventListener("click", () => { const i = numberOf(current); if (i < total) go(order[i]); else { setHash("#final"); openFinal(el["next-btn"]); } });
     el["complete-btn"].addEventListener("click", completeLesson);

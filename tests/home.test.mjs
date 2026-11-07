@@ -152,7 +152,7 @@ test("catalog lesson totals match the lesson arrays used by each course page", a
     }
     assert.equal(len, catalog[id].total, `${id}: catalog ${catalog[id].total} vs data ${len}`);
   }
-  for (const [id, sel] of [["com", ".lesson-item"], ["prg", ".lesson-item:not(.final-item)"]]) {
+  for (const [id, sel] of [["com", ".cn-lesson"], ["prg", ".cn-lesson:not(.cn-assess)"]]) {
     const p = await ctx.newPage(); await offline(p);
     await p.goto(base + catalog[id].path); await p.waitForTimeout(500);
     assert.equal(await p.locator(sel).count(), catalog[id].total, id);

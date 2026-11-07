@@ -1,5 +1,6 @@
 // Bootstrap 5 course: every lesson's example must render in the sandboxed preview with the vendored Bootstrap loaded;
 // interactive components must actually work; the engine integration (sidebar, completion) is covered by the ajs/html suites.
+import { pick } from "./_nav.mjs";
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
@@ -24,12 +25,15 @@ async function open(hash = "", viewport = { width: 1280, height: 900 }) {
   await page.waitForFunction(() => document.documentElement.dataset.engine === "ready");
   return { ctx, page, errors, failed };
 }
+const tap = async (frame, sel) => { await frame.locator(sel).evaluate((n) => n.scrollIntoView({ block: "center", behavior: "instant" })); await frame.page().waitForTimeout(120); await frame.click(sel); };
 const previewFrame = async (page) => {
   if (!(await page.$("#previewHost iframe"))) await page.click("#runButton"); 
   await page.waitForSelector("#previewHost iframe");
   const handle = await page.$("#previewHost iframe");
   const frame = await handle.contentFrame();
   await frame.waitForLoadState("load");
+  await page.evaluate(() => new Promise((res) => { let last = -1, n = 0; const tick = () => { n = scrollY === last ? n + 1 : 0; last = scrollY; n >= 4 ? res() : setTimeout(tick, 60); }; tick(); })); // let the lesson's smooth scroll settle before clicking inside the frame
+  await frame.waitForFunction(() => typeof bootstrap !== "undefined" && document.readyState === "complete");
   return frame;
 };
 
@@ -40,10 +44,10 @@ test("vendored files exist with the documented version and license", () => {
 
 test("bs page: 20 lessons, 5 groups, every example renders with Bootstrap CSS + JS in the sandbox", async () => {
   const { ctx, page, errors, failed } = await open();
-  assert.equal(await page.locator(".sidebar a.lesson").count(), lessons.length);
-  assert.equal(await page.locator(".sidebar .topic-group").count(), track.groups.length);
+  assert.equal(await page.locator(".sidebar a.cn-lesson").count(), lessons.length);
+  assert.equal(await page.locator(".sidebar .cn-mod").count(), track.groups.length);
   for (const [i, l] of lessons.entries()) {
-    await page.click(`.sidebar a.lesson[data-lesson="${i + 1}"]`);
+    await pick(page, i + 1);
     assert.equal(await page.locator("#exampleCode").textContent(), l.example.code);
     const frame = await previewFrame(page);
     await frame.waitForSelector(checks[i], { state: "attached", timeout: 8000 });
@@ -59,19 +63,19 @@ test("bs page: 20 lessons, 5 groups, every example renders with Bootstrap CSS + 
 test("bs: modal, accordion and toast examples really work (JS components)", async () => {
   const { ctx, page } = await open("#lesson-16");
   let frame = await previewFrame(page);
-  await frame.click('[data-bs-target="#demoModal"]');
+  await tap(frame, '[data-bs-target="#demoModal"]');
   await frame.waitForSelector("#demoModal.show", { timeout: 5000 });
   await ctx.close();
 
   const a = await open("#lesson-17"); frame = await previewFrame(a.page);
-  await frame.click('[data-bs-target="#q2"]');
+  await tap(frame, '[data-bs-target="#q2"]');
   await frame.waitForSelector("#q2.show", { timeout: 5000 });
   await frame.waitForFunction(() => !document.getElementById("q1").classList.contains("show"));
   await a.ctx.close();
 
   const t = await open("#lesson-18"); frame = await previewFrame(t.page);
   assert.equal(await frame.evaluate(() => !!bootstrap.Tooltip.getInstance(document.getElementById("tipBtn"))), true);
-  await frame.click("#toastBtn");
+  await tap(frame, "#toastBtn");
   await frame.waitForSelector("#liveToast.show", { timeout: 5000 });
   await t.ctx.close();
 });

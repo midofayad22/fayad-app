@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-lang="ar" data-track="js">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="/css/tokens.css"><link rel="stylesheet" href="/css/course.css"><link rel="stylesheet" href="/css/course-nav.css"></head>
+<body>
+<main class="learning-layout"><aside class="sidebar" id="sidebar" data-cn>
+  <button type="button" class="sidebar-toggle" id="sidebarToggle" aria-expanded="false" aria-controls="sidebarPanel"><span>Lessons</span><strong id="cur"></strong></button>
+  <div class="sb-panel" id="sidebarPanel"><div id="mount"></div></div></aside>
+  <section class="lesson-content"><h1 id="title"></h1></section></main>
+<script type="module">
+import { createCourseNav } from "/js/course/nav.js";
+import { normalize } from "/js/course/structure.js";
+const q = new URLSearchParams(location.search);
+const MODULES = Number(q.get("modules") || 5), UNITS = Number(q.get("units") || 2), PER = Number(q.get("per") || 4);
+const shape = q.get("shape") || "modules";
+let n = 0; const lessons = []; const track = { id: "fx", title: { ar: "تجربة", en: "Fixture" } };
+const mk = () => { n += 1; const id = `fx-${String(n).padStart(2, "0")}`; lessons.push({ id, title: { ar: `درس ${n} متغيرات`, en: `Lesson ${n} variables` } }); return id; };
+if (shape === "groups") track.groups = Array.from({ length: MODULES }, (_, m) => ({ id: `g${m + 1}`, title: { ar: `مجموعة ${m + 1}`, en: `Group ${m + 1}` }, lessons: Array.from({ length: PER }, mk) }));
+else track.modules = Array.from({ length: MODULES }, (_, m) => ({ id: `m${m + 1}`, title: { ar: `وحدة ${m + 1}`, en: `Module ${m + 1}` }, units: Array.from({ length: UNITS }, (_, u) => ({ id: `m${m + 1}u${u + 1}`, title: { ar: `مفهوم ${m + 1}.${u + 1}`, en: `Unit ${m + 1}.${u + 1}` }, lessons: Array.from({ length: PER }, mk) })) }));
+const order = lessons.map((l) => l.id); const done = new Set((q.get("done") || "").split(",").filter(Boolean).map((i) => order[Number(i) - 1]));
+let current = order[Number(q.get("cur") || 1) - 1];
+const titles = new Map(lessons.map((l) => [l.id, l]));
+const lang = () => document.documentElement.dataset.lang;
+const assessments = q.get("assess") ? [{ id: "m1-test", module: "m1", title: { ar: "اختبار الوحدة", en: "Module test" }, hash: "m1-test" }, { id: "final", title: { ar: "الاختبار النهائي", en: "Final exam" }, hash: "final" }] : [];
+const mods = normalize(track, { assessments });
+const nav = createCourseNav({ doc: document, mount: document.getElementById("mount"), courseId: "fx", courseTitle: "fx", mods, lang: lang(),
+  titleOf: (id) => titles.get(id).title[lang()], numberOf: (id) => order.indexOf(id) + 1, isDone: (id) => done.has(id), isPassed: () => false,
+  current: () => current, ids: { search: "sidebarSearch", empty: "sidebarEmpty" },
+  onSelect: (it) => { if (it.kind === "lesson") current = it.id; window.__selected = it.id; document.getElementById("title").textContent = it.id; document.getElementById("cur").textContent = it.id; nav.paint(); document.getElementById("sidebar").classList.remove("open"); } });
+window.__nav = nav; window.__done = done; window.__setCurrent = (i) => { current = order[i - 1]; nav.reveal(); };
+window.__complete = (i) => { done.add(order[i - 1]); nav.paint(); };
+document.getElementById("sidebarToggle").addEventListener("click", () => { const o = document.getElementById("sidebar").classList.toggle("open"); document.getElementById("sidebarToggle").setAttribute("aria-expanded", String(o)); });
+document.documentElement.dataset.ready = "1";
+</script></body></html>

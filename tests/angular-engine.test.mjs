@@ -1,4 +1,5 @@
 // Angular course on the shared engine: sidebar, bilingual content, sandboxed live preview, quiz-gated completion, rollback, English switch.
+import { pick } from "./_nav.mjs";
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { createRequire } from "node:module";
@@ -30,10 +31,10 @@ const solve = async (page, id) => { for (const q of lessons.find((l) => l.id ===
 test("boots without errors; all 32 lessons in 3 groups; exact Arabic then English content for every lesson", async () => {
   for (const lang of ["ar", "en"]) {
     const { ctx, page, errors } = await open(URL_NEW, { lang });
-    assert.equal(await page.locator(".sidebar a.lesson").count(), 32);
-    assert.equal(await page.locator(".sidebar .topic-group").count(), 3);
+    assert.equal(await page.locator(".sidebar a.cn-lesson").count(), 32);
+    assert.equal(await page.locator(".sidebar .cn-mod").count(), 3);
     for (const [i, l] of lessons.entries()) {
-      await page.click(`.sidebar a.lesson[data-lesson="${i + 1}"]`);
+      await pick(page, i + 1);
       assert.equal(await page.locator("#lessonTitle").innerText(), l.title[lang], `${lang} title ${i + 1}`);
       assert.equal(await page.locator("#lessonDescription").innerText(), l.description[lang]);
       assert.equal(await page.locator("#exampleCode").textContent(), l.example.code);
@@ -71,7 +72,7 @@ test("a lesson completes after all 6 questions are answered correctly; the progr
   const { ctx, page } = await open();
   await solve(page, "angular-01");
   await page.waitForFunction(() => (JSON.parse(localStorage.getItem("fayad-progress-v1") || "{}").tracks?.angular?.completed || []).length === 1);
-  await page.click('.sidebar a.lesson[data-lesson="3"]');
+  await pick(page, 3);
   assert.equal(await page.evaluate(() => localStorage.getItem("fayad-angular-current-lesson")), "2"); // legacy 0-based format
   assert.deepEqual(await page.evaluate(() => JSON.parse(localStorage.getItem("fayad-angular-quiz-progress-v2"))), { 0: [true, true, true, true, true, true] }); // legacy quiz map mirrored
   await ctx.close();

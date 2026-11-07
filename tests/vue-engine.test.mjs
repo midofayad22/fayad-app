@@ -1,4 +1,5 @@
 // Vue course on the shared engine: sidebar, bilingual content, sandboxed live preview, quiz-gated completion, rollback, English switch.
+import { pick } from "./_nav.mjs";
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { createRequire } from "node:module";
@@ -30,10 +31,10 @@ const solve = async (page, id) => { for (const q of lessons.find((l) => l.id ===
 test("boots without errors; all 22 lessons in 5 groups; exact Arabic content for every lesson", async () => {
   for (const lang of ["ar"]) {
     const { ctx, page, errors } = await open(URL_NEW, { lang });
-    assert.equal(await page.locator(".sidebar a.lesson").count(), 22);
-    assert.equal(await page.locator(".sidebar .topic-group").count(), 5);
+    assert.equal(await page.locator(".sidebar a.cn-lesson").count(), 22);
+    assert.equal(await page.locator(".sidebar .cn-mod").count(), 5);
     for (const [i, l] of lessons.entries()) {
-      await page.click(`.sidebar a.lesson[data-lesson="${i + 1}"]`);
+      await pick(page, i + 1);
       assert.equal(await page.locator("#lessonTitle").innerText(), l.title.ar, `title ${i + 1}`);
       assert.equal(await page.locator("#lessonDescription").innerText(), l.description.ar);
       assert.equal(await page.locator("#exampleCode").textContent(), l.example.code);
@@ -47,7 +48,7 @@ test("boots without errors; all 22 lessons in 5 groups; exact Arabic content for
 test("Vue code runs in the sandboxed preview: every starter and example mounts (no raw {{ }} left, no page errors)", async () => {
   const { ctx, page, errors } = await open();
   for (const [i, l] of lessons.entries()) {
-    await page.click(`.sidebar a.lesson[data-lesson="${i + 1}"]`);
+    await pick(page, i + 1);
     for (const code of [l.practice.starterCode, l.example.code]) {
       await page.fill("#jsEditor", code); await page.click("#runButton"); await page.click("#runButton");
       const frame = await frameOf(page, "#previewHost");

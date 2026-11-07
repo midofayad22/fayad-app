@@ -1,4 +1,5 @@
 // Milestone 4c: JavaScript course on the shared engine, in a real browser. Includes rollback to the legacy page.
+import { pick } from "./_nav.mjs";
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
@@ -33,8 +34,8 @@ const stored = (page, k) => page.evaluate((key) => localStorage.getItem(key), k)
 test("boots without console errors; sidebar is built from data and lists every lesson", async () => {
   const { ctx, page, errors } = await open();
   assert.equal(await page.evaluate(() => document.documentElement.dataset.engine), "ready");
-  assert.equal(await page.locator(".sidebar a.lesson").count(), lessons.length);
-  assert.equal(await page.locator(".sidebar .topic-group").count(), 6);
+  assert.equal(await page.locator(".sidebar a.cn-lesson").count(), lessons.length);
+  assert.equal(await page.locator(".sidebar .cn-mod").count(), 6);
   assert.deepEqual(errors, []);
   await ctx.close();
 });
@@ -42,12 +43,12 @@ test("boots without console errors; sidebar is built from data and lists every l
 test("every lesson opens from the sidebar with its exact Arabic title, description and example code", async () => {
   const { ctx, page } = await open();
   for (const [i, l] of lessons.entries()) {
-    await page.click(`.sidebar a.lesson[data-lesson="${i + 1}"]`);
+    await pick(page, i + 1);
     assert.equal(await page.locator("#lessonTitle").innerText(), l.title.ar, `title ${i + 1}`);
     assert.equal(await page.locator("#lessonDescription").innerText(), l.description.ar);
     assert.equal(await page.locator("#exampleCode").textContent(), l.example.code);
     assert.equal(await page.locator("#jsEditor").inputValue(), l.example.code);
-    assert.equal(await page.locator(".sidebar a.lesson.active").getAttribute("data-lesson"), String(i + 1));
+    assert.equal(await page.locator(".sidebar a.cn-lesson.active").getAttribute("data-lesson"), String(i + 1));
   }
   await ctx.close();
 });
@@ -65,14 +66,14 @@ test("previous/next walk all lessons in order; boundaries are disabled", async (
 test("legacy sections: lesson 1 shows its two articles; other lessons no longer show lesson-1 text", async () => {
   const { ctx, page } = await open();
   assert.equal(await page.locator(".content-card").count(), 2);
-  await page.click('.sidebar a.lesson[data-lesson="7"]');
+  await pick(page, 7);
   assert.equal(await page.locator(".content-card").count(), 0);
   await ctx.close();
 });
 
 test("opening a lesson never completes it; completion needs 3 correct answers, then mirrors legacy + v1 storage", async () => {
   const { ctx, page } = await open();
-  await page.click('.sidebar a.lesson[data-lesson="1"]');
+  await pick(page, 1);
   assert.equal(await stored(page, "fayad-js-completed-lessons"), null);
   const correct = await page.evaluate(() => FAYAD.course.state.questionData.correct);
   const wrong = (correct + 1) % 3;
@@ -86,7 +87,7 @@ test("opening a lesson never completes it; completion needs 3 correct answers, t
   assert.deepEqual(v1.tracks.js.completed, ["js-01"]);
   assert.equal(v1.tracks.js.quiz["js-01"].attempts, 4);
   assert.equal(await page.locator("#lessonTitle").innerText(), lessons[1].title.ar); // moved to the next lesson
-  assert.equal(await page.locator('.sidebar a.lesson[data-lesson="1"] .lesson-status').innerText(), "✓");
+  assert.equal(await page.locator('.sidebar a.cn-lesson[data-lesson="1"] .cn-mark').innerText(), "✓");
   assert.equal(await page.locator("#progressText").innerText(), "4%");
   await ctx.close();
 });
@@ -94,7 +95,7 @@ test("opening a lesson never completes it; completion needs 3 correct answers, t
 test("legacy progress is imported on first load (completed lessons, resume position, percentage)", async () => {
   const { ctx, page } = await open(URL_NEW, { "fayad-js-completed-lessons": "[0,1,2]", "fayad-js-current-lesson": "3" });
   assert.equal(await page.locator("#lessonTitle").innerText(), lessons[3].title.ar);
-  for (const n of [1, 2, 3]) assert.equal(await page.locator(`.sidebar a.lesson[data-lesson="${n}"] .lesson-status`).innerText(), "✓");
+  for (const n of [1, 2, 3]) assert.equal(await page.locator(`.sidebar a.cn-lesson[data-lesson="${n}"] .cn-mark`).innerText(), "✓");
   assert.equal(await page.locator("#progressText").innerText(), "12%");
   await ctx.close();
 });
@@ -102,7 +103,7 @@ test("legacy progress is imported on first load (completed lessons, resume posit
 test("deep link #lesson-9 opens lesson 9 (the legacy page ignored it)", async () => {
   const { ctx, page } = await open(URL_NEW + "#lesson-9");
   assert.equal(await page.locator("#lessonTitle").innerText(), lessons[8].title.ar);
-  await page.click('.sidebar a.lesson[data-lesson="2"]');
+  await pick(page, 2);
   assert.equal(await page.evaluate(() => location.hash), "#lesson-2");
   await ctx.close();
 });
@@ -133,7 +134,7 @@ test("learner code runs in the sandbox: output, DOM stage, console, errors", asy
 
 test("lesson 18 (events): the sandbox stage button really triggers the learner's listener", async () => {
   const { ctx, page } = await open();
-  await page.click('.sidebar a.lesson[data-lesson="18"]'); await settle(page);
+  await pick(page, 18); await settle(page);
   const f = page.frameLocator("#jsResultStage iframe");
   await f.locator("#demoButton").click();
   assert.equal(await f.locator("#jsResult").innerText(), "تم الضغط على الزر");
@@ -143,7 +144,7 @@ test("lesson 18 (events): the sandbox stage button really triggers the learner's
 test("lessons 15-17 (DOM) work against the sandbox stage exactly as the legacy page did", async () => {
   const { ctx, page } = await open();
   for (const [n, expect] of [[15, lessons[14].title.ar], [16, lessons[15].title.ar], [17, "مرحبًا من JavaScript"]]) {
-    await page.click(`.sidebar a.lesson[data-lesson="${n}"]`); await settle(page);
+    await pick(page, n); await settle(page);
     assert.equal(await page.locator("#output").innerText(), expect, `lesson ${n}`);
   }
   await ctx.close();
