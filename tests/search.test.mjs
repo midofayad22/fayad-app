@@ -71,7 +71,7 @@ test("the navbar search icon opens the overlay; typing shows grouped, highlighte
   assert.equal(await page.evaluate(() => document.activeElement.className), "sx-input");
   await page.keyboard.type("padding"); await page.waitForSelector(".sx-opt mark");
   assert.ok((await page.locator(".sx-group h3").count()) >= 1); assert.ok((await page.locator(".sx-opt mark").count()) >= 1);
-  assert.equal(await page.locator(".sx-opt.is-active").first().getAttribute("data-href"), "/css-learning/css-learning.html#lesson-9");
+  await page.waitForFunction(() => document.querySelector(".sx-opt.is-active")?.dataset.href === "/css-learning/css-learning.html#lesson-9");
   await page.keyboard.press("ArrowDown"); await page.keyboard.press("ArrowUp");
   await Promise.all([page.waitForURL(/css-learning\.html/), page.keyboard.press("Enter")]); assert.match(page.url(), /#lesson-9$/); await ctx.close(); });
 test("Ctrl+K and / open it from anywhere; Escape closes and restores focus; / is ignored while typing in a field", async () => {
@@ -110,4 +110,11 @@ test("PWA: search works offline after it has been used once (real service worker
   await page.waitForFunction(async () => !!(await caches.match("/search/index.json")));
   await ctx.setOffline(true); await page.reload(); await page.waitForSelector(".fy-btn-search"); await page.click(".fy-btn-search"); await page.waitForFunction(() => document.activeElement?.classList.contains("sx-input"));
   await page.keyboard.type("padding"); await page.waitForSelector(".sx-opt mark"); assert.ok((await page.locator(".sx-opt").count()) > 0); await ctx.close();
+});
+
+test("Enter pressed immediately after the last keystroke opens the result for the final text, not a stale frame", async () => {
+  const { ctx, page } = await open("/index.html", { lang: "en" }); await page.keyboard.press("Control+k"); await page.waitForFunction(() => document.activeElement?.classList.contains("sx-input"));
+  await page.keyboard.type("javascript"); await page.waitForSelector(".sx-opt mark"); await page.fill(".sx-input", "");
+  await page.evaluate(() => { const i = document.querySelector(".sx-input"); i.value = "padding"; i.dispatchEvent(new Event("input", { bubbles: true })); i.form.requestSubmit(); });   // same task: no frame in between
+  await page.waitForURL(/css-learning\.html#lesson-9/); await ctx.close();
 });

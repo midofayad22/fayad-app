@@ -57,7 +57,7 @@ function build() {
   root.dir = document.documentElement.dir || (lang() === "en" ? "ltr" : "rtl"); root.lang = lang();
   const back = el("div", "sx-backdrop"); back.addEventListener("click", close);
   const panel = el("div", "sx-panel");
-  const bar = el("form", "sx-bar"); bar.setAttribute("role", "search"); bar.addEventListener("submit", (e) => { e.preventDefault(); openActive(); });
+  const bar = el("form", "sx-bar"); bar.setAttribute("role", "search"); bar.addEventListener("submit", (e) => { e.preventDefault(); flush(); openActive(); });
   const ico = el("span", "sx-glass"); ico.setAttribute("aria-hidden", "true"); ico.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>';
   const input = el("input", "sx-input"); input.type = "search"; input.autocomplete = "off"; input.autocapitalize = "off"; input.spellcheck = false; input.enterKeyHint = "search";
   input.placeholder = t.placeholder; input.setAttribute("aria-label", t.label); input.setAttribute("role", "combobox"); input.setAttribute("aria-expanded", "true"); input.setAttribute("aria-controls", "sx-list"); input.setAttribute("aria-autocomplete", "list");
@@ -131,8 +131,10 @@ let frame = 0;
 function update(q) {
   state.q = q; ui.clr.hidden = !q; cancelAnimationFrame(frame);
   if (!engine) return;
-  frame = requestAnimationFrame(() => { if (q.trim()) renderResults(q); else renderIdle(); });
+  frame = requestAnimationFrame(() => { frame = 0; if (q.trim()) renderResults(q); else renderIdle(); });
 }
+/* Enter right after the last keystroke must act on the results for the FINAL text, not the previous frame's. */
+function flush() { if (!frame || !engine) return; cancelAnimationFrame(frame); frame = 0; const q = ui.input.value; state.q = q; if (q.trim()) renderResults(q); else renderIdle(); }
 function onKey(e) {
   if (e.key === "Escape") { e.preventDefault(); close(); return; }
   if (e.key === "ArrowDown") { e.preventDefault(); setActive(state.active + 1); }
