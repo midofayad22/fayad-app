@@ -2,6 +2,8 @@
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
+    <link rel="preload" href="/assets/fonts/ibm-plex-sans-arabic-arabic-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <!-- Preferences: theme / language / direction resolved before first paint (no flash) -->
     <script src="/js/prefs.js"></script>
@@ -42,7 +44,7 @@
 
   <body>
     <header class="learning-navbar">
-      <a href="/index.html" class="learning-logo" aria-label="FAYBIT"><img src="/assets/brand/mark-bs.svg" alt="" width="30" height="30" /></a>
+      <a href="/index.html" class="learning-logo" aria-label="FAYBIT"><span class="course-mark" aria-hidden="true"></span></a>
       <div class="learning-title"><span>FAYBIT</span><h1 class="path-title" id="pathTitle">مسار تعلم Bootstrap 5</h1></div>
       <div class="learning-actions"><a href="/index.html" class="back-btn" data-s="nav.back"></a></div>
     </header>

@@ -51,8 +51,8 @@ for (const lang of ["ar", "en"]) test(`header action group is identical and last
   for (const path of ["/index.html", "/css-learning/css-learning.html", "/about/about.html", "/dashboard.html", "/profile.html", "/settings/index.html", "/play/index.html", "/fundamentals/computer-basics/com.html"]) {
     const page = await ctx.newPage(); await page.goto(base + path); await page.waitForSelector(".fy-controls--inline .fy-btn-menu"); await page.waitForTimeout(500);
     const r = await page.evaluate(() => { const g = document.querySelector(".fy-controls"); const gx = g.getBoundingClientRect(), rtl = document.documentElement.dir === "rtl";
-      return { order: [...g.querySelectorAll(".fy-btn")].map((x) => x.className.replace("fy-btn fy-btn-", "")).join(), last: [...g.parentElement.children].filter((e) => e !== g && e.getBoundingClientRect().width).every((e) => rtl ? e.getBoundingClientRect().left >= gx.left - 1 : e.getBoundingClientRect().right <= gx.right + 1) }; });
-    assert.equal(r.order, "search,lang,theme,menu", path); assert.equal(r.last, true, `${path}: group is not at the far edge`); await page.close();
+      return { order: [...g.querySelectorAll(".fy-btn")].map((x) => x.className.replace("fy-btn fy-btn-", "")).join(), last: [...(g.closest("header") || g.parentElement).querySelectorAll("a, button")].filter((e) => !g.contains(e) && e.getBoundingClientRect().width).every((e) => rtl ? e.getBoundingClientRect().left >= gx.left - 1 : e.getBoundingClientRect().right <= gx.right + 1) }; });
+    assert.equal(r.order, "search,lang,theme,account,menu", path); assert.equal(r.last, true, `${path}: group is not at the far edge`); await page.close();
   }
   await ctx.close();
 });

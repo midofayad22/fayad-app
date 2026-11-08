@@ -25,7 +25,7 @@
 }
 
 .fy-btn[lang="ar"] {
-  font-family: var(--fy-font-ar);
+  font-family: var(--fy-font);
   font-size: 1rem;
 }
 
@@ -231,9 +231,11 @@ html[dir="ltr"][data-track="com"] :is(.hero-content, .lesson-header, .content-ca
 .fy-cm .cm-editor { max-height: 520px; }
 .fy-cm-status { display: flex; justify-content: space-between; gap: 12px; padding: 5px 14px; background: var(--fy-surface-2, var(--fy-surface)); color: var(--fy-text); border-block-start: 3px solid var(--fy-course, var(--fy-brand)); font: 700 .72rem var(--fy-font-en, system-ui); direction: ltr; }
 
-/* Site-wide type roles: Reem Kufi = headlines, El Messiri = section/card titles, Readex Pro = text */
-h1 { font-family: var(--fy-font-display); }
-h2, h3 { font-family: var(--fy-font-title); }
+/* Site-wide type roles: IBM Plex Sans Arabic (Arabic) + Inter (Latin) for everything readable, JetBrains Mono for code.
+   Headings differ by size and weight (600), not by typeface. */
+h1, h2, h3, h4 { font-family: var(--fy-font); font-weight: var(--fy-fw-strong); letter-spacing: 0; line-height: var(--fy-lh-snug); }
+html[lang="en"] h1, html[lang="en"] h2 { letter-spacing: -.012em; }
+b, strong { font-weight: var(--fy-fw-strong); }
 .fy-cm, .fy-cm *, pre, code, kbd, samp, textarea.code, .code-editor { font-family: var(--fy-font-code); }
 
 /* ---- global navigation drawer ---- */
@@ -272,3 +274,14 @@ h2, h3 { font-family: var(--fy-font-title); }
 @media (prefers-reduced-motion: reduce) { .fy-controls--inline .fy-btn { transition: none; } }
 /* the action group is always the LAST thing in a header's action area (page-specific actions such as "Back" come before it) */
 .fy-controls--inline { order: 99; }
+
+/* account control: same box as its siblings; avatar fills it */
+.fy-controls--inline .fy-btn-account { text-decoration: none; }
+.fy-controls--inline .fy-btn-account.has-avatar { padding: 0; }
+.fy-avatar { width: 26px; height: 26px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; overflow: hidden; background: var(--fy-brand-soft, #e3f4f2); color: var(--fy-brand-strong, #0b5f5a); font: 700 .75rem/1 var(--fy-font-en, sans-serif); box-shadow: 0 0 0 1px var(--fy-border, rgba(0,0,0,.1)); }
+.fy-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.fy-controls--inline .fy-btn-account:hover .fy-avatar { box-shadow: 0 0 0 2px var(--fy-brand, #0f807a); }
+.fy-avatar { transition: box-shadow .14s ease; }
+
+/* large stat numerals stay bold (keeps the WCAG large-text contrast class they were designed for) */
+.course-stats strong{font-weight:700}

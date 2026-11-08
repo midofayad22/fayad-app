@@ -24,7 +24,7 @@ const COURSE_ICON = { com: "cpu", prg: "terminal", html: "code-xml", css: "palet
 const lang = () => (document.documentElement.lang === "en" ? "en" : "ar");
 const T = (k) => L[lang()][k];
 function progress() { try { return JSON.parse(localStorage.getItem("fayad-progress-v1"))?.tracks || {}; } catch { return {}; } }
-function session() { try { for (const k of Object.keys(localStorage)) if (/^sb-.*-auth-token$/.test(k)) { const u = JSON.parse(localStorage.getItem(k))?.user; if (u) return { email: u.email, name: u.user_metadata?.full_name || u.user_metadata?.name || "" }; } } catch { /* storage blocked */ } return null; }
+function session() { const u = window.FAYAD && window.FAYAD.user && window.FAYAD.user(); return u ? { email: u.email, name: u.name } : null; }
 function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
 const norm = (p) => p.replace(/\/index\.html$/, "/").replace(/\/$/, "") || "/";
 function here(href) { const u = new URL(href, location.origin); return norm(u.pathname) === norm(location.pathname) && (!u.search || u.search === location.search); }
@@ -82,14 +82,14 @@ function build() {
   acct.append(item("/settings/index.html", "settings", T("settings")));
   body.append(acct);
 
-  const plat = group(T("platform")); plat.append(item("/about/about.html", "info", T("about"))); body.append(plat);
+  const plat = group(T("platform")); plat.classList.add("nd-sec-end"); plat.append(item("/about/about.html", "info", T("about"))); body.append(plat);
 
   // account area (top of the drawer, under the header): a quiet row, not a call-to-action button
   const acctBox = el("div", "nd-account");
   if (user) { const av = el("span", "nd-av", (user.name || user.email || "?").trim()[0].toUpperCase()); av.setAttribute("aria-hidden", "true"); const w = el("span", "nd-who"); w.append(el("b", "", user.name || user.email.split("@")[0]), el("small", "", user.email)); const a = el("a", "nd-acct"); a.href = "/profile.html"; a.append(av, w); a.insertAdjacentHTML("beforeend", icon(lang() === "en" ? "chevron-right" : "chevron-left", 16, "nd-acct-go")); acctBox.append(a); }
   else { const a = el("a", "nd-acct"); a.href = "/login.html"; const av = el("span", "nd-av nd-av-guest"); av.setAttribute("aria-hidden", "true"); av.innerHTML = icon("user", 18); const w = el("span", "nd-who"); w.append(el("b", "", T("signin")), el("small", "", T("guestNote"))); a.append(av, w); a.insertAdjacentHTML("beforeend", icon(lang() === "en" ? "chevron-right" : "chevron-left", 16, "nd-acct-go"));
     const alt = el("p", "nd-acct-alt"); const la = el("a", "", T("signup")); la.href = "/login.html#signup"; alt.append(el("span", "", T("newHere") + " "), la); acctBox.append(a, alt); }
-  panel.append(head, acctBox, body); wrap.append(back, panel); return wrap;
+  panel.append(head, body, acctBox); wrap.append(back, panel); return wrap;
 }
 let cssReady = null;
 /* The stylesheet must be applied BEFORE the panel is inserted: otherwise the unstyled panel sits at the end of <body> and focusing it scrolls the page to the footer. */

@@ -76,7 +76,7 @@ body {
 
   color: var(--text);
 
-  font-family: "Readex Pro", system-ui, sans-serif;
+  font-family: "IBM Plex Sans Arabic", system-ui, sans-serif;
 
   line-height: 1.7;
 
@@ -691,7 +691,7 @@ img {
       color-mix(in srgb, var(--fy-surface) 30%, transparent)
     );
   color: var(--green-light);
-  font-family: "Inter", "Readex Pro", sans-serif;
+  font-family: "Inter", "IBM Plex Sans Arabic", sans-serif;
   font-size: 11px;
   font-weight: 800;
   box-shadow: inset 0 0 15px color-mix(in srgb, var(--fy-course) 4%, transparent);
@@ -718,7 +718,7 @@ img {
   text-overflow: ellipsis;
   white-space: nowrap;
   color: var(--text-muted);
-  font-family: "Inter", "Readex Pro", sans-serif;
+  font-family: "Inter", "IBM Plex Sans Arabic", sans-serif;
   font-size: 9px;
 }
 
@@ -1286,7 +1286,7 @@ main {
 
   color: var(--text-soft);
 
-  font-family: "Inter", "Readex Pro", sans-serif;
+  font-family: "Inter", "IBM Plex Sans Arabic", sans-serif;
 
   font-size: 10px;
 
@@ -1316,7 +1316,7 @@ main {
 
   margin-bottom: 23px;
 
-  font-family: "Inter", "Readex Pro", sans-serif;
+  font-family: "Inter", "IBM Plex Sans Arabic", sans-serif;
 
   font-size: clamp(58px, 7vw, 92px);
 
@@ -1659,7 +1659,7 @@ main {
 .window-title {
   color: var(--text-muted);
 
-  font-family: "Inter", monospace;
+  font-family: var(--fy-font-code);
   font-size: 9px;
 
   transition: color 300ms ease;
@@ -1679,7 +1679,7 @@ main {
 
   padding: 24px 20px 28px;
 
-  font-family: "Inter", monospace;
+  font-family: var(--fy-font-code);
   font-size: 12px;
 
   line-height: 2.35;
@@ -2306,7 +2306,7 @@ main {
 
   color: var(--text-muted);
 
-  font-family: "Inter", "Readex Pro", sans-serif;
+  font-family: "Inter", "IBM Plex Sans Arabic", sans-serif;
 
   font-size: 9px;
 }
@@ -2732,7 +2732,7 @@ main {
 
   color: var(--text-muted);
 
-  font-family: "Inter", monospace;
+  font-family: var(--fy-font-code);
 
   font-size: 8px;
 }
@@ -3296,7 +3296,7 @@ main {
 }
 
 .framework-card h3 {
-  font-family: "Inter", "Readex Pro", sans-serif;
+  font-family: "Inter", "IBM Plex Sans Arabic", sans-serif;
 
   margin-top: 4px;
 }
@@ -4322,7 +4322,7 @@ main {
 
   color: var(--fy-text-muted);
 
-  font-family: "Inter", "Readex Pro", sans-serif;
+  font-family: "Inter", "IBM Plex Sans Arabic", sans-serif;
 
   font-size: 8px;
 }

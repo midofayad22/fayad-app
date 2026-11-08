@@ -1,5 +1,5 @@
 /* FAYBIT sign-in / sign-up */
-.au-body { margin: 0; min-height: 100dvh; background: var(--fy-bg); color: var(--fy-text); font-family: var(--fy-font-ar); }
+.au-body { margin: 0; min-height: 100dvh; background: var(--fy-bg); color: var(--fy-text); font-family: var(--fy-font); }
 .au { min-height: 100dvh; display: grid; grid-template-columns: minmax(320px, 5fr) minmax(360px, 6fr); }
 .au-side { background: var(--fy-navy, #102a43); color: #fff; padding: clamp(28px, 4vw, 56px); display: flex; flex-direction: column; justify-content: space-between; gap: 32px; position: relative; overflow: hidden; }
 .au-side::after { content: ""; position: absolute; inset-inline-end: -120px; inset-block-end: -120px; width: 360px; height: 360px; border-radius: 50%; background: radial-gradient(circle, rgba(45, 212, 191, .28), transparent 70%); pointer-events: none; }
@@ -14,12 +14,12 @@
 .au-card { box-sizing: border-box; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 18px; padding: clamp(24px, 5vw, 64px); max-width: 520px; width: 100%; margin-inline: auto; }
 .au-brand-m { display: none; color: var(--fy-text); }
 .au-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; border-radius: 10px; background: var(--fy-bg-soft); border: 1px solid var(--fy-border); }
-.au-tabs button { min-height: 44px; border: 0; border-radius: 8px; background: transparent; color: var(--fy-text-soft); font: 700 .98rem var(--fy-font-ar); cursor: pointer; transition: background .2s, color .2s; }
+.au-tabs button { min-height: 44px; border: 0; border-radius: 8px; background: transparent; color: var(--fy-text-soft); font: 700 .98rem var(--fy-font); cursor: pointer; transition: background .2s, color .2s; }
 .au-tabs button[aria-selected="true"] { background: var(--fy-brand); color: var(--fy-on-brand); }
 .au-tabs button:focus-visible, .au-submit:focus-visible, .au-link:focus-visible, .au-welcome button:focus-visible, .au-pw button:focus-visible { outline: none; box-shadow: var(--fy-focus); }
 .au-welcome { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 14px; border-radius: 10px; background: var(--fy-brand-soft); font-size: .92rem; }
 .au-welcome[hidden], [data-only][hidden], .au-form[hidden] { display: none; }
-.au-welcome button, .au-link { background: none; border: 0; color: var(--fy-brand); font: 700 .92rem var(--fy-font-ar); cursor: pointer; padding: 8px 4px; min-height: 40px; }
+.au-welcome button, .au-link { background: none; border: 0; color: var(--fy-brand); font: 700 .92rem var(--fy-font); cursor: pointer; padding: 8px 4px; min-height: 40px; }
 .au-form { display: grid; gap: 16px; }
 .au-form h2 { margin: 0; font-size: 1.6rem; }
 .au-sub { margin: -8px 0 4px; color: var(--fy-text-soft); }
@@ -38,7 +38,7 @@
 .au-status { margin: 0; min-height: 1.4em; font-size: .92rem; line-height: 1.5; }
 .au-status.error { color: #b91c1c; } .au-status.success { color: var(--fy-brand-strong); } .au-status.loading { color: var(--fy-text-soft); }
 html[data-theme="dark"] .au-status.error { color: #fca5a5; } html[data-theme="dark"] .au-status.success { color: var(--fy-brand); }
-.au-submit { min-height: 50px; border: 0; border-radius: 10px; background: var(--fy-brand); color: var(--fy-on-brand); font: 800 1rem var(--fy-font-ar); cursor: pointer; transition: transform .15s, filter .2s; }
+.au-submit { min-height: 50px; border: 0; border-radius: 10px; background: var(--fy-brand); color: var(--fy-on-brand); font: 800 1rem var(--fy-font); cursor: pointer; transition: transform .15s, filter .2s; }
 .au-submit:hover:not(:disabled) { filter: brightness(1.06); } .au-submit:active:not(:disabled) { transform: scale(.985); } .au-submit:disabled { opacity: .6; cursor: progress; }
 .au-back { color: var(--fy-text-muted); text-decoration: none; font-size: .92rem; align-self: flex-start; padding-block: 8px; }
 .au-back:hover { color: var(--fy-brand); }

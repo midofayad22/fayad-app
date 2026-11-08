@@ -108,11 +108,11 @@ for (const [lang, dir] of [["ar", "rtl"], ["en", "ltr"]]) test(`navbar: balanced
   for (const w of [1440, 768, 390, 320]) {
     const { ctx, page } = await open("/index.html", { w, lang });
     const r = await page.evaluate(() => { const bs = [...document.querySelectorAll(".navbar .fy-controls .fy-btn")].map((b) => { const x = b.getBoundingClientRect(); return { c: b.className.replace("fy-btn ", ""), l: Math.round(x.left), r: Math.round(x.right), w: Math.round(x.width), h: Math.round(x.height), t: Math.round(x.top) }; });
-      const nav = document.querySelector(".navbar").getBoundingClientRect(); return { bs, signin: document.querySelectorAll(".navbar .nav-signin-btn, .navbar a[href*='login']").length, navL: nav.left, navR: nav.right, dir: document.documentElement.dir, over: document.documentElement.scrollWidth - innerWidth }; });
-    assert.deepEqual(r.bs.map((b) => b.c), ["fy-btn-search", "fy-btn-lang", "fy-btn-theme", "fy-btn-menu"], `${w}: order`);
+      const nav = document.querySelector(".navbar").getBoundingClientRect(); return { bs, signin: document.querySelectorAll(".navbar .nav-signin-btn, .navbar a[href*='login']:not(.fy-btn-account)").length, navL: nav.left, navR: nav.right, dir: document.documentElement.dir, over: document.documentElement.scrollWidth - innerWidth }; });
+    assert.deepEqual(r.bs.map((b) => b.c), ["fy-btn-search", "fy-btn-lang", "fy-btn-theme", "fy-btn-account", "fy-btn-menu"], `${w}: order`);
     assert.equal(new Set(r.bs.map((b) => b.w)).size, 1, `${w}: equal widths`); assert.equal(new Set(r.bs.map((b) => b.h)).size, 1); assert.equal(new Set(r.bs.map((b) => b.t)).size, 1, `${w}: aligned`);
     const gaps = r.bs.slice(1).map((b, i) => (dir === "ltr" ? b.l - r.bs[i].r : r.bs[i].l - b.r)); assert.ok(gaps.every((g) => g >= 0 && g <= 12), `${w}: gaps ${gaps}`);
-    const menu = r.bs[3]; if (dir === "ltr") assert.ok(r.bs.every((b) => b.r <= menu.r)); else assert.ok(r.bs.every((b) => b.l >= menu.l)); // toggle is the last control in reading order
+    const menu = r.bs[4]; if (dir === "ltr") assert.ok(r.bs.every((b) => b.r <= menu.r)); else assert.ok(r.bs.every((b) => b.l >= menu.l)); // toggle is the last control in reading order
     assert.equal(r.signin, 0, `${w}: sign-in must not be in the navbar`); assert.ok(r.bs.every((b) => b.l >= 0 && b.r <= w), `${w}: controls inside viewport`); assert.ok(r.over <= 0, `${w}: overflow`); await ctx.close();
   }
 });
@@ -136,4 +136,31 @@ test("motion: hover/focus transitions are short, panel timing is ≤ 220ms with 
   const c2 = await browser.newContext({ viewport: { width: 1280, height: 800 }, serviceWorkers: "block", reducedMotion: "reduce" }); await c2.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort());
   const p2 = await c2.newPage(); await p2.goto(base + "/index.html"); await p2.waitForTimeout(800); await openMenu(p2);
   const rd = await p2.evaluate(() => [".nd-panel", ".nd-back", ".nd-item"].map((s) => parseFloat(getComputedStyle(document.querySelector(s)).transitionDuration))); assert.ok(rd.every((v) => v < 0.001), `reduced motion: ${rd}`); await c2.close();
+});
+
+test("navbar account control: guest → login icon (same box as siblings); real stored session → avatar linking to the profile; course marks are one colour", async () => {
+  const g = await open("/index.html", { lang: "en" }); const a = g.page.locator(".fy-btn-account");
+  assert.equal(await a.getAttribute("href"), "/login.html"); assert.equal(await g.page.locator(".fy-btn-account .fy-avatar").count(), 0); await g.ctx.close();
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 800 }, serviceWorkers: "block" });
+  await ctx.addInitScript(() => { localStorage.setItem("fayad-language", "en"); localStorage.setItem("sb-vsrysitexadvmmikcmfs-auth-token", JSON.stringify({ user: { id: "u1", email: "sara@example.com", user_metadata: { full_name: "Sara" } }, expires_at: Math.floor(Date.now() / 1000) + 3600 })); });
+  await ctx.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort()); const page = await ctx.newPage(); await page.goto(base + "/css-learning/css-learning.html"); await page.waitForSelector(".fy-btn-account");
+  assert.equal(await page.locator(".fy-btn-account").getAttribute("href"), "/profile.html"); assert.equal((await page.locator(".fy-btn-account .fy-avatar").innerText()).trim(), "S");
+  const b = await page.locator(".fy-btn-account").boundingBox(), t = await page.locator(".fy-btn-theme").boundingBox(); assert.equal(Math.round(b.width), Math.round(t.width)); assert.equal(Math.round(b.height), Math.round(t.height));
+  const m = await page.evaluate(() => { const e = document.querySelector(".learning-logo .course-mark"), cs = getComputedStyle(e); return { bg: cs.backgroundColor, course: getComputedStyle(document.body).getPropertyValue("--fy-course").trim() || null, img: document.querySelectorAll(".learning-logo img").length, mask: cs.maskImage || cs.webkitMaskImage }; });
+  assert.equal(m.img, 0, "course logo must be a single-colour mask, not a multi-colour image"); assert.match(m.mask, /mark-mono\.svg/); assert.notEqual(m.bg, "rgba(0, 0, 0, 0)"); await ctx.close();
+});
+
+test("every course: the whole logo uses that course's colour; the title text is hidden on phones and shown on desktop", async () => {
+  const pages = { html: "/html-learning/html-learning.html", css: "/css-learning/css-learning.html", js: "/javascript-learning/javascript-learning.html", ajs: "/advanced-javascript/advanced-javascript.html", bs: "/bootstrap-learning/bootstrap-learning.html", tw: "/tailwind-learning/tailwind-learning.html", react: "/react-learning/react-learning.html", angular: "/angular-learning/angular-learning.html", vue: "/vue-learning/vue-learning.html" };
+  const colours = {};
+  for (const [id, path] of Object.entries(pages)) for (const w of [390, 1280]) {
+    const ctx = await browser.newContext({ viewport: { width: w, height: 800 }, serviceWorkers: "block" }); await ctx.addInitScript(() => localStorage.setItem("fayad-language", "en")); await ctx.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort());
+    const page = await ctx.newPage(); await page.goto(base + path); await page.waitForSelector(".learning-logo .course-mark"); await page.waitForTimeout(500);
+    const r = await page.evaluate(() => { const m = document.querySelector(".learning-logo .course-mark"); const probe = document.createElement("i"); probe.style.color = "var(--fy-course)"; document.body.append(probe); const want = getComputedStyle(probe).color; probe.remove();
+      return { bg: getComputedStyle(m).backgroundColor, want, titleW: document.querySelector(".learning-title").getBoundingClientRect().width, over: document.documentElement.scrollWidth - innerWidth }; });
+    assert.equal(r.bg, r.want, `${id}@${w}: logo colour ≠ course colour`); assert.ok(r.over <= 0, `${id}@${w}: overflow`);
+    if (w === 390) { assert.ok(r.titleW <= 2, `${id}: title should be hidden on phones`); colours[id] = r.bg; } else assert.ok(r.titleW > 60, `${id}: title should show on desktop`);
+    await ctx.close();
+  }
+  assert.ok(new Set(Object.values(colours)).size >= 6, "courses should have distinct colours: " + JSON.stringify(colours));
 });
