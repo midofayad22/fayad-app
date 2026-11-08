@@ -228,10 +228,10 @@ test("motion is skipped under prefers-reduced-motion and content stays visible",
   await ctx.close();
 });
 
-test("GSAP animates the hero when motion is allowed and ends fully visible", async () => {
+test("hero animates (CSS) when motion is allowed and ends fully visible", async () => {
   const { ctx, page } = await open({}, "ar");
   await page.waitForTimeout(4500);
-  assert.ok(await page.locator(".hm-word").count() >= 4);
+  assert.equal(await page.locator(".hm-t1").evaluate((e) => getComputedStyle(e).opacity), "1");
   assert.equal(await page.locator(".hm-lead").evaluate((e) => getComputedStyle(e).opacity), "1");
   assert.match(await page.locator("#heroCode").innerText(), /Hello, FAYBIT[\s\S]*Start/);
   await ctx.close();

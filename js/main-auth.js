@@ -152,15 +152,6 @@
      CREATE USER PROFILE UI
   ========================================================= */
 
-  /* The menu itself (avatar, real progress overview, dashboard/profile links, sign out) lives in js/account-menu.js */
-  function mountAccountMenu(host, user) {
-    if (window.FAYAD_ACCOUNT_MENU) {
-      window.FAYAD_ACCOUNT_MENU.mount(host, user, { onSignOut: signOutCore });
-      return;
-    }
-    window.addEventListener("fayad:account-menu-ready", function () { mountAccountMenu(host, user); }, { once: true });
-  }
-
   async function signOutCore() {
     const { error } = await supabaseClient.auth.signOut();
     if (error) throw error;
@@ -200,11 +191,7 @@
        SHOW PROFILE
     ===================================================== */
 
-    if (!userProfile) {
-      return;
-    }
-
-    mountAccountMenu(userProfile, user);
+    /* the signed-in identity (avatar) is rendered by the shared navbar account button, js/shell.js */
   }
 
   /* =========================================================

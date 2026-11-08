@@ -25,7 +25,7 @@
 }
 
 .fy-btn[lang="ar"] {
-  font-family: var(--fy-font-ar);
+  font-family: var(--fy-font);
   font-size: 1rem;
 }
 
@@ -181,12 +181,15 @@
 .footer-bottom, .footer-inner { padding-bottom: max(0px, env(safe-area-inset-bottom, 0px)); }
 
 /* touch targets: at least 44x44 CSS px for primary controls */
-.navbar .logo, .nav-signin-btn, .menu-btn, .menu-close, .navbar .nav-link, .hm-link, .menu-link {
+.navbar .logo, .nav-signin-btn, .navbar .nav-link, .hm-link {
   min-height: 44px;
 }
-.menu-btn, .menu-close { min-width: 44px; }
 .navbar .logo, .navbar .nav-link, .hm-link { display: inline-flex; align-items: center; }
 .menu-panel, .menu, aside.menu { padding-bottom: env(safe-area-inset-bottom, 0px); }
+
+/* the logo's decorative shine must never sit on top of neighbouring controls */
+.logo::after, .logo-text::after { pointer-events: none; }
+@media (max-width: 420px) { .logo::after { display: none; } }
 
 /* narrow phones: keep navbar actions inside the viewport */
 .navbar { gap: 12px; }
@@ -197,16 +200,9 @@
     padding-inline-start: max(14px, env(safe-area-inset-left, 0px));
     padding-inline-end: max(14px, env(safe-area-inset-right, 0px));
   }
-  .menu-btn { width: 44px; height: 44px; }
   .nav-signin-btn { min-height: 44px; display: inline-flex; align-items: center; padding: 0 12px; font-size: 12px; }
 }
-@media (max-width: 420px) {
-  .navbar .logo-text { display: none; }
-  .navbar { gap: 8px; }
-  .nav-actions, .fy-controls--inline { gap: 4px; }
-  .fy-controls--inline { margin-inline-end: 0; }
-  .nav-signin-btn { padding: 0 10px; font-size: 11.5px; }
-}
+@media (max-width: 420px) { .navbar .logo-text { display: none; } }
 
 /* pages without the homepage navbar: keep content clear of the notch / home indicator */
 body:not(:has(.navbar)) {
@@ -235,53 +231,57 @@ html[dir="ltr"][data-track="com"] :is(.hero-content, .lesson-header, .content-ca
 .fy-cm .cm-editor { max-height: 520px; }
 .fy-cm-status { display: flex; justify-content: space-between; gap: 12px; padding: 5px 14px; background: var(--fy-surface-2, var(--fy-surface)); color: var(--fy-text); border-block-start: 3px solid var(--fy-course, var(--fy-brand)); font: 700 .72rem var(--fy-font-en, system-ui); direction: ltr; }
 
-/* Site-wide type roles: Reem Kufi = headlines, El Messiri = section/card titles, Readex Pro = text */
-h1 { font-family: var(--fy-font-display); }
-h2, h3 { font-family: var(--fy-font-title); }
+/* Site-wide type roles: IBM Plex Sans Arabic (Arabic) + Inter (Latin) for everything readable, JetBrains Mono for code.
+   Headings differ by size and weight (600), not by typeface. */
+h1, h2, h3, h4 { font-family: var(--fy-font); font-weight: var(--fy-fw-strong); letter-spacing: 0; line-height: var(--fy-lh-snug); }
+html[lang="en"] h1, html[lang="en"] h2 { letter-spacing: -.012em; }
+b, strong { font-weight: var(--fy-fw-strong); }
 .fy-cm, .fy-cm *, pre, code, kbd, samp, textarea.code, .code-editor { font-family: var(--fy-font-code); }
 
 /* ---- global navigation drawer ---- */
-body.nd-lock { overflow: hidden; }
-.nd { position: fixed; inset: 0; z-index: 3000; }
-.nd-back { position: absolute; inset: 0; background: rgba(8, 20, 34, .5); opacity: 0; transition: opacity .2s; }
-.nd.on .nd-back { opacity: 1; }
-.nd-panel { position: absolute; inset-block: 0; inset-inline-start: 0; width: min(360px, 92vw); display: flex; flex-direction: column; background: var(--fy-bg-soft, #fff); color: var(--fy-text, #102a43); border-inline-end: 1px solid var(--fy-border-strong, #ccd); box-shadow: 0 0 60px rgba(0, 0, 0, .35); transform: translateX(calc(-1 * var(--nd-dir, 1) * 100%)); transition: transform .22s cubic-bezier(.22, .8, .2, 1); padding-block: env(safe-area-inset-top) env(safe-area-inset-bottom); }
-html[dir="rtl"] .nd-panel { --nd-dir: -1; }
-.nd.on .nd-panel { transform: none; }
-.nd-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid var(--fy-border, #dde); }
-.nd-brand { display: inline-flex; align-items: center; gap: 10px; color: inherit; text-decoration: none; font: 800 1.15rem var(--fy-font-en, sans-serif); letter-spacing: .04em; }
-.nd-x { width: 44px; height: 44px; border: 0; background: transparent; color: inherit; font-size: 26px; border-radius: 10px; cursor: pointer; }
-.nd-body { overflow-y: auto; overscroll-behavior: contain; padding: 8px 12px 24px; flex: 1; }
-.nd-sec { padding-block: 10px; border-bottom: 1px solid var(--fy-border, #dde); display: grid; gap: 2px; }
-.nd-h { margin: 4px 8px 6px; font: 800 .72rem var(--fy-font-en, sans-serif); letter-spacing: .1em; text-transform: uppercase; color: var(--fy-text-muted, #667); }
-.nd-link, .nd-course { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 44px; padding: 8px 10px; border-radius: 10px; color: inherit; text-decoration: none; font-weight: 600; background: none; border: 0; text-align: start; font-family: inherit; font-size: 1rem; cursor: pointer; }
-.nd-link:hover, .nd-course:hover { background: var(--fy-brand-soft, rgba(13, 148, 136, .1)); }
-.nd a[aria-current="page"] { background: var(--fy-brand-soft, rgba(13, 148, 136, .1)); color: var(--fy-brand, #0f766e); font-weight: 800; }
-.nd-link:focus-visible, .nd-course:focus-visible, .nd-x:focus-visible, .nd-gh:focus-visible, .nd-filter:focus-visible, .nd-continue:focus-visible { outline: none; box-shadow: var(--fy-focus, 0 0 0 3px rgba(13, 148, 136, .5)); }
-.nd-continue { display: grid; gap: 2px; padding: 12px 14px; margin: 2px 4px 6px; border-radius: 12px; background: var(--fy-brand); color: var(--fy-on-brand, #fff); text-decoration: none; }
-.nd-continue small { opacity: .85; font-size: .78rem; } .nd-continue b { font-size: 1rem; }
-.nd-filter { margin: 2px 4px 6px; min-height: 42px; padding: 0 12px; border: 1px solid var(--fy-border-strong, #ccd); border-radius: 10px; background: var(--fy-surface, #fff); color: inherit; font: inherit; }
-.nd-group { display: grid; }
-.nd-gh { display: flex; align-items: center; justify-content: space-between; min-height: 38px; padding: 4px 10px; border: 0; background: none; color: var(--fy-text-soft, #456); font: 700 .85rem var(--fy-font-ar, inherit); cursor: pointer; border-radius: 8px; }
-.nd-gh::after { content: ""; width: 7px; height: 7px; border: solid currentColor; border-width: 0 2px 2px 0; transform: rotate(45deg); margin-block-end: 3px; transition: transform .2s; }
-.nd-gh[aria-expanded="false"]::after { transform: rotate(-45deg); margin-block-end: 0; }
-.nd-list { display: grid; gap: 1px; } .nd-list[hidden], .nd-group[hidden], .nd-course[hidden], .nd-none[hidden] { display: none; }
-.nd-course { flex-wrap: wrap; row-gap: 4px; }
-.nd-course small { margin-inline-start: auto; font: 700 .72rem var(--fy-font-en, sans-serif); color: var(--fy-text-muted, #667); font-variant-numeric: tabular-nums; }
-.nd-meter { flex-basis: 100%; height: 3px; border-radius: 3px; background: var(--fy-border, #dde); overflow: hidden; }
-.nd-meter i { display: block; height: 100%; background: var(--fy-brand); }
-.nd-user { margin: 2px 10px 6px; font-weight: 700; word-break: break-all; color: var(--fy-text-soft, #456); }
-.nd-none { margin: 6px 10px; color: var(--fy-text-muted, #667); }
-.nd-about { margin-top: 8px; }
-@media (max-width: 640px) {
-  .nd-panel { inset-block: auto 0; inset-inline: 0; width: auto; max-height: 86dvh; border-radius: 18px 18px 0 0; border: 1px solid var(--fy-border-strong, #ccd); transform: translateY(100%); padding-block: 0 env(safe-area-inset-bottom); }
-  html[dir="rtl"] .nd-panel { --nd-dir: 1; }
-}
-@media (prefers-reduced-motion: reduce) { .nd-panel, .nd-back { transition: none; } }
-@media (max-width: 560px) { .fy-controls--inline .fy-btn-menu { display: none; } }
 
 /* unread notification count on the menu button and in the drawer */
 .fy-btn-menu { position: relative; }
 .fy-btn-menu[data-unread]::after { content: attr(data-unread); position: absolute; inset-block-start: -4px; inset-inline-end: -4px; min-width: 18px; height: 18px; padding: 0 4px; box-sizing: border-box; border-radius: 9px; background: #b91c1c; color: #fff; font: 700 .68rem/18px var(--fy-font-en); text-align: center; }
-.nd-badge { margin-inline-start: auto; min-width: 22px; padding: 0 7px; border-radius: 11px; background: #b91c1c; color: #fff; font: 700 .72rem/22px var(--fy-font-en); text-align: center; }
-.nd-link:has(.nd-badge) { display: flex; align-items: center; }
+
+/* slim header for hero-style pages that have no navbar of their own (Programming / Computer Basics) */
+.fy-bar {
+  position: sticky; inset-block-start: 0; z-index: var(--fy-z-dock, 50);
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 8px clamp(12px, 3vw, 28px); padding-block-start: calc(8px + env(safe-area-inset-top, 0px));
+  background: var(--fy-glass, rgba(255,255,255,.85)); border-block-end: 1px solid var(--fy-border, rgba(0,0,0,.08));
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+}
+.fy-bar-brand { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; letter-spacing: .02em; color: var(--fy-text, inherit); text-decoration: none; }
+.fy-slot { display: flex; align-items: center; gap: 8px; }
+
+
+/* ---------- header action group (one design for every page header) ----------
+   Ghost icon buttons on a 4px grid: 36px hit area (40px on touch), 18px icons, 4px gaps; a hairline separates the menu toggle,
+   which always sits at the far edge of the group. Floating-dock buttons (login page) keep their bordered style. */
+.fy-controls--inline { gap: 4px; margin-inline-end: 0; }
+.fy-controls--inline .fy-btn { min-width: 36px; width: 36px; height: 36px; padding: 0; border: 0; border-radius: 10px; background: transparent; color: var(--fy-text-muted, var(--fy-text));
+  font-size: .8125rem; transition: background-color .14s ease, color .14s ease, transform .14s ease; }
+.fy-controls--inline .fy-btn[lang="ar"] { font-size: .9375rem; }
+.fy-controls--inline .fy-btn svg { width: 18px; height: 18px; }
+.fy-controls--inline .fy-btn:hover { background: var(--fy-hover, rgba(0,0,0,.06)); color: var(--fy-text); border-color: transparent; }
+.fy-controls--inline .fy-btn:active { transform: scale(.94); }
+.fy-controls--inline .fy-btn-menu { margin-inline-start: 4px; position: relative; }
+.fy-controls--inline .fy-btn-menu::before { content: ""; position: absolute; inset-inline-start: -5px; top: 8px; bottom: 8px; width: 1px; background: var(--fy-border-strong, rgba(0,0,0,.14)); }
+.nav-actions { gap: 4px; }
+@media (hover: none) and (pointer: coarse) { .fy-controls--inline .fy-btn { width: 40px; height: 40px; } }
+@media (max-width: 360px) { .fy-controls--inline { gap: 0; } .fy-controls--inline .fy-btn { width: 34px; height: 34px; min-width: 34px; } .fy-controls--inline .fy-btn-menu { margin-inline-start: 2px; } }
+@media (prefers-reduced-motion: reduce) { .fy-controls--inline .fy-btn { transition: none; } }
+/* the action group is always the LAST thing in a header's action area (page-specific actions such as "Back" come before it) */
+.fy-controls--inline { order: 99; }
+
+/* account control: same box as its siblings; avatar fills it */
+.fy-controls--inline .fy-btn-account { text-decoration: none; }
+.fy-controls--inline .fy-btn-account.has-avatar { padding: 0; }
+.fy-avatar { width: 26px; height: 26px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; overflow: hidden; background: var(--fy-brand-soft, #e3f4f2); color: var(--fy-brand-strong, #0b5f5a); font: 700 .75rem/1 var(--fy-font-en, sans-serif); box-shadow: 0 0 0 1px var(--fy-border, rgba(0,0,0,.1)); }
+.fy-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.fy-controls--inline .fy-btn-account:hover .fy-avatar { box-shadow: 0 0 0 2px var(--fy-brand, #0f807a); }
+.fy-avatar { transition: box-shadow .14s ease; }
+
+/* large stat numerals stay bold (keeps the WCAG large-text contrast class they were designed for) */
+.course-stats strong{font-weight:700}

@@ -90,7 +90,8 @@ test("progress: completed lessons show ✓, module counts and rings follow, and 
 });
 test("search: filters by name or number, highlights, auto-opens, announces results, hides empty modules, Escape clears", async () => {
   const { ctx, page } = await open("cur=1");
-  await page.fill("#sidebarSearch", "درس 25");
+  assert.equal(await page.locator("#sidebarSearch").isVisible(), false); // compact by default
+  await page.click(".cn-find"); await page.fill("#sidebarSearch", "درس 25");
   assert.equal(await page.locator(".cn-lesson:visible").count(), 1);
   assert.equal(await page.locator(".cn-lesson:visible mark").count(), 1);
   assert.equal(await page.locator(`${mod(4)}:visible`).count(), 1); assert.equal(await page.locator(`${mod(1)}:visible`).count(), 0);

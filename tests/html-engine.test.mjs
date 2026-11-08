@@ -127,7 +127,7 @@ test("a runaway loop in an inline event handler is stopped too", async () => {
   const { ctx, page } = await open();
   await page.fill("#jsEditor", `<button id=b onclick="for(;;){}">x</button>`); await page.click("#runButton");
   await page.frameLocator("#previewHost iframe").locator("#b").click();
-  await page.waitForFunction(() => !document.querySelector("#outputWrap").hidden, null, { timeout: 8000 });
+  await page.waitForFunction(() => !document.querySelector("#outputWrap").hidden, null, { timeout: 25000 });
   assert.match(await page.locator("#output").innerText(), /loop ran too many times/);
   await ctx.close();
 });

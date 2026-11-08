@@ -12,14 +12,6 @@ const body = document.body;
 
 const navbar = document.getElementById("navbar");
 
-const menuToggle = document.getElementById("menuToggle");
-
-const menuClose = document.getElementById("menuClose");
-
-const siteMenu = document.getElementById("siteMenu");
-
-const menuOverlay = document.getElementById("menuOverlay");
-
 const navLinks = document.querySelectorAll(".nav-link");
 
 const revealElements = document.querySelectorAll(".reveal");
@@ -29,88 +21,6 @@ const roadmapWrapper = document.querySelector(".roadmap-wrapper");
 const roadmapProgress = document.querySelector(".roadmap-progress");
 
 const roadmapSteps = document.querySelectorAll(".roadmap-step");
-
-/* =========================================================
-   MENU
-========================================================= */
-
-function openMenu() {
-  if (!siteMenu || !menuOverlay || !menuToggle) {
-    return;
-  }
-
-  siteMenu.classList.add("open");
-
-  menuOverlay.classList.add("active");
-
-  menuToggle.classList.add("active");
-
-  menuToggle.setAttribute("aria-expanded", "true");
-
-  siteMenu.setAttribute("aria-hidden", "false");
-
-  menuOverlay.setAttribute("aria-hidden", "false");
-
-  body.classList.add("menu-open");
-}
-
-function closeMenu() {
-  if (!siteMenu || !menuOverlay || !menuToggle) {
-    return;
-  }
-
-  siteMenu.classList.remove("open");
-
-  menuOverlay.classList.remove("active");
-
-  menuToggle.classList.remove("active");
-
-  menuToggle.setAttribute("aria-expanded", "false");
-
-  siteMenu.setAttribute("aria-hidden", "true");
-
-  menuOverlay.setAttribute("aria-hidden", "true");
-
-  body.classList.remove("menu-open");
-}
-
-if (menuToggle) {
-  menuToggle.addEventListener("click", () => {
-    const isOpen = siteMenu.classList.contains("open");
-
-    if (isOpen) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
-  });
-}
-
-if (menuClose) {
-  menuClose.addEventListener("click", closeMenu);
-}
-
-if (menuOverlay) {
-  menuOverlay.addEventListener("click", closeMenu);
-}
-
-/* Close menu when clicking menu link */
-
-if (siteMenu) {
-  siteMenu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      closeMenu();
-    });
-  });
-}
-
-/* Escape */
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    closeMenu();
-  }
-});
 
 /* =========================================================
    NAVBAR SCROLL STATE

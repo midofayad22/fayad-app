@@ -60,6 +60,14 @@
     root.setAttribute("lang", lang);
     root.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
     root.setAttribute("data-lang", lang);
+    /* Markup is authored in Arabic and translated by i18n.js on DOMContentLoaded. For other languages hide the page body until the first translation pass (
+       DCL, well under a second) so users never see a flash of Arabic or the layout jump of the swap; i18n.js clears the flag, a timer is the fallback. */
+    if (lang !== "ar" && document.readyState === "loading" && !root.hasAttribute("data-i18n-pending")) {
+      root.setAttribute("data-i18n-pending", "");
+      var st = document.createElement("style"); st.id = "i18n-pending-css"; st.textContent = "html[data-i18n-pending] body{opacity:0}";
+      (document.head || root).appendChild(st);
+      setTimeout(function () { root.removeAttribute("data-i18n-pending"); }, 2500);
+    }
   }
 
   /* ---- unified preference store: one JSON object (key fayad-prefs-v1) + legacy keys kept in step ---- */

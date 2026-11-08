@@ -497,7 +497,7 @@ button:disabled {
 
   color: var(--js-yellow);
 
-  font-family: Consolas, "Courier New", monospace;
+  font-family: var(--fy-font-code);
 
   direction: ltr;
 
@@ -633,7 +633,7 @@ button:disabled {
 .example-card code {
   color: #e6e6e6;
 
-  font-family: Consolas, "Courier New", monospace;
+  font-family: var(--fy-font-code);
 
   font-size: 14px;
 
@@ -750,7 +750,7 @@ button:disabled {
 
   color: #f0f0f0;
 
-  font-family: Consolas, "Courier New", monospace;
+  font-family: var(--fy-font-code);
 
   font-size: 14px;
 
@@ -873,7 +873,7 @@ button:disabled {
 
   word-break: break-word;
 
-  font-family: Consolas, "Courier New", monospace;
+  font-family: var(--fy-font-code);
 
   line-height: 1.7;
 }
@@ -1748,7 +1748,7 @@ html[dir="rtl"] .answer-options button:hover:not(:disabled) { transform: transla
   .sidebar-header { display: none; }
   body.sb-lock { overflow: hidden; }
 }
-.learning-title .path-title { font-family: var(--fy-font-ar); letter-spacing: 0; word-spacing: .08em; }
+.learning-title .path-title { font-family: var(--fy-font); letter-spacing: 0; word-spacing: .08em; }
 .learning-logo img { width: 36px; height: 36px; }
 
 /* Collapsible lesson sections (preference "sections: collapsed") */
@@ -1758,3 +1758,21 @@ html[dir="rtl"] .answer-options button:hover:not(:disabled) { transform: transla
 .content-card.is-collapsible[open] > summary::after { transform: translateY(-30%) rotate(-135deg); }
 .content-card.is-collapsible > summary h2 { margin: 0; }
 .content-card.is-collapsible[open] > summary { margin-block-end: 10px; }
+
+/* narrow phones: the header now also hosts the display controls, so the title yields space instead of overflowing */
+.learning-navbar { min-width: 0; }
+.learning-title { min-width: 0; flex: 1 1 auto; }
+.learning-title .path-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (max-width: 420px) {
+  .learning-title > span { display: none; }
+  .learning-actions { gap: 6px; }
+  .learning-actions .back-btn { padding-inline: 10px; }
+}
+
+/* ---------- course mark: ONE glyph, drawn as a mask and filled with the course colour, so the F, the arrow and every dot always match ---------- */
+.course-mark { display: block; width: 36px; height: 36px; background: var(--fy-course, var(--fy-brand)); -webkit-mask: url(/assets/brand/mark-mono.svg) center / contain no-repeat; mask: url(/assets/brand/mark-mono.svg) center / contain no-repeat; transition: background-color .2s ease; }
+.learning-logo .course-mark { width: 30px; height: 30px; }
+/* small screens: the course is identified by the coloured mark; the title text (still the page <h1>) stays available to assistive tech only */
+@media (max-width: 600px) {
+  .learning-title { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}

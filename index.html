@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
 
+    <link rel="preload" href="/assets/fonts/ibm-plex-sans-arabic-arabic-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
     <!-- Preferences: theme / language / direction resolved before first paint (no flash) -->
@@ -71,16 +73,13 @@
     <script defer src="/_vercel/speed-insights/script.js"></script>
   
     <!-- FAYBIT design system (loaded after page CSS so tokens win) -->
-    <link rel="preload" href="/assets/fonts/readex-pro-arabic-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/css/tokens.css" />
     <link rel="stylesheet" href="/css/theme.css" />
     <link rel="stylesheet" href="/css/theme-overrides.css" />
     <link rel="stylesheet" href="/css/shell.css" />
-    <link rel="stylesheet" href="/css/account-menu.css" />
     <link rel="stylesheet" href="/css/home.css" />
     <script src="/js/i18n.js" defer></script>
     <script src="/js/shell.js" defer></script>
-    <script type="module" src="/js/account-menu.js"></script>
     <script src="/js/catalog.js" defer></script>
     <script src="/js/home.js" defer></script>
     <script src="/vendor/gsap-3.13.0/gsap.min.js" defer></script>
@@ -110,58 +109,9 @@
       </nav>
 
       <div class="nav-actions">
-        <div id="auth-container" class="auth-container" aria-live="polite">
-          <a href="login.html" id="auth-btn-link" class="nav-signin-btn" data-i18n="nav.signin">تسجيل الدخول</a>
-        </div>
-        <div id="user-profile" class="user-profile" style="display: none"></div>
-        <button class="menu-btn" id="menuToggle" type="button" aria-label="فتح القائمة" data-i18n-attr="aria-label:menu.open" aria-expanded="false" aria-controls="siteMenu">
-          <span></span><span></span><span></span>
-        </button>
+        <div id="auth-container" class="auth-container" aria-live="polite" hidden></div><!-- sign-in lives in the global sidebar (account row) -->
       </div>
     </header>
-
-    <aside class="site-menu" id="siteMenu" aria-hidden="true" aria-label="FAYBIT">
-      <div class="site-menu-header">
-        <div class="mn-brand"><img src="/assets/brand/logo-mark.svg" width="36" height="36" alt="" /><span class="menu-eyebrow">FAYBIT</span></div>
-        <button class="menu-close" id="menuClose" type="button" aria-label="إغلاق القائمة" data-i18n-attr="aria-label:menu.close">×</button>
-      </div>
-      <div class="site-menu-content">
-        <nav class="mn-nav" aria-label="FAYBIT">
-          <a href="#home" class="menu-link mn-link"><span data-i18n="nav.home">الرئيسية</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a href="#courses" class="menu-link mn-link"><span data-i18n="nav.courses">المسارات</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a href="#how" class="menu-link mn-link"><span data-i18n="nav.how">كيف تتعلم</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a href="#owner" class="menu-link mn-link"><span data-i18n="o.eyebrow">صاحب المنصة</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </nav>
-        <div class="menu-section">
-          <span class="menu-section-label" data-i18n="menu.courses">كل المسارات</span>
-          <ul class="mn-courses">
-            <li><a class="mn-course" href="fundamentals/computer-basics/com.html" data-course="com"><span class="mn-badge">CS</span><span>Computer Fundamentals</span></a></li>
-            <li><a class="mn-course" href="fundamentals/programming-basics/prg.html" data-course="prg"><span class="mn-badge">{ }</span><span>Programming Fundamentals</span></a></li>
-            <li><a class="mn-course" href="html-learning/html-learning.html" data-course="html"><span class="mn-badge">HTML</span><span>HTML</span></a></li>
-            <li><a class="mn-course" href="css-learning/css-learning.html" data-course="css"><span class="mn-badge">CSS</span><span>CSS</span></a></li>
-            <li><a class="mn-course" href="javascript-learning/javascript-learning.html" data-course="js"><span class="mn-badge">JS</span><span>JavaScript</span></a></li>
-            <li><a class="mn-course" href="advanced-javascript/advanced-javascript.html" data-course="ajs"><span class="mn-badge">+JS</span><span>Advanced JavaScript</span></a></li>
-            <li><a class="mn-course" href="bootstrap-learning/bootstrap-learning.html" data-course="bs"><span class="mn-badge">BS</span><span>Bootstrap</span></a></li>
-            <li><a class="mn-course" href="tailwind-learning/tailwind-learning.html" data-course="tw"><span class="mn-badge">TW</span><span>Tailwind CSS</span></a></li>
-            <li><a class="mn-course" href="react-learning/react-learning.html" data-course="react"><span class="mn-badge">Re</span><span>React</span></a></li>
-            <li><a class="mn-course" href="vue-learning/vue-learning.html" data-course="vue"><span class="mn-badge">Vue</span><span>Vue</span></a></li>
-            <li><a class="mn-course" href="angular-learning/angular-learning.html" data-course="angular"><span class="mn-badge">Ng</span><span>Angular</span></a></li>
-          </ul>
-        </div>
-        <div class="menu-section mn-account">
-          <a href="dashboard.html" class="menu-link mn-pill" data-i18n="menu.dashboard">لوحة التقدم</a>
-          <a href="profile.html" class="menu-link mn-pill" data-i18n="menu.profile">الملف الشخصي</a>
-          <a href="about/about.html" class="menu-link mn-pill" data-i18n="menu.about">عن المنصة وصاحبها</a>
-        </div>
-        <div class="menu-contact mn-social">
-          <a href="https://github.com/midofayad22" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://www.linkedin.com/in/abdullhamid-f-800bb5379" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://www.facebook.com/share/1D2SmWfCnX/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Facebook</a>
-          <a href="https://www.instagram.com/abdullhamid_fayad22" target="_blank" rel="noopener noreferrer">Instagram</a>
-        </div>
-      </div>
-    </aside>
-    <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
 
     <main id="main">
       <section id="home" class="hm-sec hm-hero" aria-labelledby="heroTitle">

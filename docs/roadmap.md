@@ -1,4 +1,18 @@
-# FAYBIT roadmap (updated after Phase 2, base commit 6b7bffc)
+# FAYBIT roadmap
+
+## Re-prioritised by the Design Quality & UX Overhaul brief (Nov 8) — current order
+| Phase | Content | Status |
+|---|---|---|
+| **A** | One global sidebar (left edge, icons, grouped), header search icon + command-palette search, stable hero motion, spacing/type/icon tokens, floating-control overlap, duplicate home menu removed | implemented, see `docs/phase-a-report.md` |
+| **B** | Homepage redesign (hero, search entry, learning paths, featured, continue learning, practice, final CTA, footer); SEO foundations (static crawlable lesson pages, sitemap, robots, JSON-LD, hreflang) | next |
+| **C** | Settings polish, About FAYBIT landing page (PWA install, FAQ, creator), audit remaining pages | |
+| **D** | Programming Basics, Computer Basics rebuild; assessment engine + dashboard | |
+| **E** | Zombie Survival, FAYAD Grand Adventure, Tifo, Games Center | |
+| **F** | Final QA: devices, RTL/LTR, keyboard, performance, PWA, SEO validation, regression | |
+
+The older table below is kept for detail; its "Phase N" numbers map onto A–F above.
+
+# (previous) roadmap, base commit 6b7bffc
 
 Rules for every phase: small and independently testable; existing progress, lesson IDs, routes, auth and DB data preserved; free hosting / free Supabase / open-source only; screenshots (desktop + mobile); exact test results with mocked vs real integration tests labelled; one commit + push per phase; nothing called complete without verification; every Supabase Dashboard action explained step by step and confirmed by the owner first.
 
