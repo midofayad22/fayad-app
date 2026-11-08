@@ -12,3 +12,9 @@ Full suite: 486 tests, 485 pass, 1 fail (search "recent searches" stored a parti
 ## Known gaps
 - "Computer Architecture" has no dedicated lesson (Computer Basics rebuild is Phase D).
 - Real-device testing not performed. Service-worker caching of `/search/index.json` not yet verified (Phase B/F).
+
+## Addendum — navbar/sidebar refinement (final Phase A)
+- Scroll-to-footer bug: root cause = sidebar/search stylesheets loaded lazily, so the unstyled panel was inserted at the end of `<body>` and focused. Fixed by awaiting the stylesheet before insertion, `focus({preventScroll:true})`, focusing only once visible, preloading on hover/focus. Regression tests (stylesheets delayed 500ms) cover top/middle/bottom, drawer + search, AR/EN.
+- Header action group: search · language · theme · menu (far edge) on every page; ghost 36px buttons, 4px gaps; sign-in removed from the navbar and moved to the sidebar account row.
+- Wrong-language flash + CLS fixed (`data-i18n-pending`); logo shine no longer intercepts clicks; search Enter uses the final text.
+- Final full run: 507 tests, 507 pass, 0 fail, 0 skipped (real Chromium + real static server; only external network is blocked).
