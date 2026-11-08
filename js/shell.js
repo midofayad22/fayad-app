@@ -20,8 +20,11 @@
   var searchMod = null;
   function loadSearch() {
     if (!searchMod) {
-      if (!document.querySelector("link[data-sx]")) { var l = document.createElement("link"); l.rel = "stylesheet"; l.href = "/css/search.css"; l.setAttribute("data-sx", ""); document.head.appendChild(l); }
-      searchMod = import("/js/search/ui.js");
+      // the stylesheet must be applied before the overlay is inserted, otherwise focusing it scrolls the page
+      var l = document.querySelector("link[data-sx]");
+      if (!l) { l = document.createElement("link"); l.rel = "stylesheet"; l.href = "/css/search.css"; l.setAttribute("data-sx", ""); document.head.appendChild(l); }
+      var cssDone = l.sheet ? Promise.resolve() : new Promise(function (r) { l.addEventListener("load", r, { once: true }); l.addEventListener("error", r, { once: true }); setTimeout(r, 1500); });
+      searchMod = Promise.all([import("/js/search/ui.js"), cssDone]).then(function (a) { return a[0]; });
     }
     return searchMod;
   }
@@ -69,7 +72,10 @@
     menuBtn.className = "fy-btn fy-btn-menu";
     menuBtn.setAttribute("aria-haspopup", "dialog");
     menuBtn.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
-    menuBtn.addEventListener("click", function () { import("/js/nav-drawer.js").then(function (m) { m.open(menuBtn); }); });
+    function loadDrawer() { return import("/js/nav-drawer.js"); }
+    menuBtn.addEventListener("pointerenter", function () { loadDrawer().then(function (m) { m.preload(); }); }, { once: true });
+    menuBtn.addEventListener("focus", function () { loadDrawer().then(function (m) { m.preload(); }); }, { once: true });
+    menuBtn.addEventListener("click", function () { loadDrawer().then(function (m) { m.open(menuBtn); }); });
 
     var searchBtn = document.createElement("button");
     searchBtn.type = "button";
@@ -80,10 +86,11 @@
     searchBtn.addEventListener("pointerenter", preloadSearch, { once: true });
     searchBtn.addEventListener("focus", preloadSearch, { once: true });
 
+    // order (start → end): search · language · theme · menu. The menu toggle always closes the group, at the far edge.
     group.appendChild(searchBtn);
-    group.appendChild(menuBtn);
-    group.appendChild(themeBtn);
     group.appendChild(langBtn);
+    group.appendChild(themeBtn);
+    group.appendChild(menuBtn);
     return group;
   }
 

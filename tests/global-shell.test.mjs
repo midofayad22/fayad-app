@@ -42,3 +42,17 @@ for (const lang of ["ar", "en"]) for (const w of [1440, 768, 390, 320]) test(`he
   const bad = await page.evaluate(() => [...document.querySelectorAll(".navbar a, .navbar button")].filter((e) => { const r = e.getBoundingClientRect(); if (!r.width || getComputedStyle(e).visibility === "hidden") return false; const t = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2); return !(t && (e === t || e.contains(t) || t.contains(e))); }).map((e) => e.className || e.tagName));
   assert.deepEqual(bad, []); await ctx.close();
 });
+
+// Every header on every page: same control order, and the group is the last (far-edge) item of the header's action area.
+for (const lang of ["ar", "en"]) test(`header action group is identical and last on every page type (${lang})`, async () => {
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 800 }, serviceWorkers: "block" });
+  await ctx.addInitScript((l) => { try { localStorage.setItem("fayad-prefs-v1", JSON.stringify({ v: 1, lang: l })); localStorage.setItem("fayad-language", l); } catch {} }, lang);
+  await ctx.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort());
+  for (const path of ["/index.html", "/css-learning/css-learning.html", "/about/about.html", "/dashboard.html", "/profile.html", "/settings/index.html", "/play/index.html", "/fundamentals/computer-basics/com.html"]) {
+    const page = await ctx.newPage(); await page.goto(base + path); await page.waitForSelector(".fy-controls--inline .fy-btn-menu"); await page.waitForTimeout(500);
+    const r = await page.evaluate(() => { const g = document.querySelector(".fy-controls"); const gx = g.getBoundingClientRect(), rtl = document.documentElement.dir === "rtl";
+      return { order: [...g.querySelectorAll(".fy-btn")].map((x) => x.className.replace("fy-btn fy-btn-", "")).join(), last: [...g.parentElement.children].filter((e) => e !== g && e.getBoundingClientRect().width).every((e) => rtl ? e.getBoundingClientRect().left >= gx.left - 1 : e.getBoundingClientRect().right <= gx.right + 1) }; });
+    assert.equal(r.order, "search,lang,theme,menu", path); assert.equal(r.last, true, `${path}: group is not at the far edge`); await page.close();
+  }
+  await ctx.close();
+});

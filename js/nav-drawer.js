@@ -9,10 +9,10 @@ import { icon } from "/js/ui/icons.js";
 
 const L = {
   ar: { menu: "القائمة الرئيسية", close: "إغلاق القائمة", main: "التنقل الرئيسي", acct: "حسابي", platform: "المنصة", home: "الرئيسية", courses: "المسارات التعليمية", all: "كل المسارات", games: "مركز الألعاب", dash: "لوحة التقدم",
-    profile: "الملف الشخصي", ach: "الإنجازات", settings: "الإعدادات", notif: "الإشعارات", about: "عن FAYBIT", signin: "تسجيل الدخول", signup: "إنشاء حساب", guest: "زائر", guestNote: "سجّل لحفظ تقدمك على كل أجهزتك.",
+    profile: "الملف الشخصي", ach: "الإنجازات", settings: "الإعدادات", notif: "الإشعارات", about: "عن FAYBIT", signin: "تسجيل الدخول", signup: "إنشاء حساب", guest: "زائر", guestNote: "احفظ تقدمك", newHere: "مستخدم جديد؟",
     cur: "الكورس الحالي", cont: "تابع من حيث توقفت", start: "ابدأ الكورس", done: "اكتمل", g1: "الأساسيات", g2: "أساسيات الويب", g3: "الأطر والمكتبات", search: "بحث", lesson: "الدرس" },
   en: { menu: "Main menu", close: "Close menu", main: "Main navigation", acct: "My account", platform: "Platform", home: "Home", courses: "Learning paths", all: "All paths", games: "Games Center", dash: "Dashboard",
-    profile: "Profile", ach: "Achievements", settings: "Settings", notif: "Notifications", about: "About FAYBIT", signin: "Sign in", signup: "Create account", guest: "Guest", guestNote: "Sign in to keep your progress on every device.",
+    profile: "Profile", ach: "Achievements", settings: "Settings", notif: "Notifications", about: "About FAYBIT", signin: "Sign in", signup: "Create account", guest: "Guest", guestNote: "Save your progress", newHere: "New here?",
     cur: "Current course", cont: "Continue where you left off", start: "Start the course", done: "complete", g1: "Foundations", g2: "Web basics", g3: "Frameworks & libraries", search: "Search", lesson: "Lesson" },
 };
 export const NAMES = { com: ["أساسيات الكمبيوتر", "Computer Basics"], prg: ["أساسيات البرمجة", "Programming Basics"], html: ["HTML", "HTML"], css: ["CSS", "CSS"], js: ["JavaScript", "JavaScript"], ajs: ["جافاسكريبت المتقدم", "Advanced JavaScript"], bs: ["Bootstrap", "Bootstrap"], tw: ["Tailwind CSS", "Tailwind CSS"], react: ["React", "React"], vue: ["Vue", "Vue"], angular: ["Angular", "Angular"] };
@@ -84,25 +84,33 @@ function build() {
 
   const plat = group(T("platform")); plat.append(item("/about/about.html", "info", T("about"))); body.append(plat);
 
-  const foot = el("div", "nd-foot");
-  if (user) { const av = el("span", "nd-av", (user.name || user.email || "?").trim()[0].toUpperCase()); av.setAttribute("aria-hidden", "true"); const w = el("span", "nd-who"); w.append(el("b", "", user.name || user.email.split("@")[0]), el("small", "", user.email)); const a = el("a", "nd-user"); a.href = "/profile.html"; a.append(av, w); foot.append(a); }
-  else { foot.append(el("p", "nd-guest", T("guestNote"))); const a = el("a", "nd-cta", T("signin")); a.href = "/login.html"; const b = el("a", "nd-cta nd-cta-2", T("signup")); b.href = "/login.html#signup"; const row = el("div", "nd-ctas"); row.append(a, b); foot.append(row); }
-  panel.append(head, body, foot); wrap.append(back, panel); return wrap;
+  // account area (top of the drawer, under the header): a quiet row, not a call-to-action button
+  const acctBox = el("div", "nd-account");
+  if (user) { const av = el("span", "nd-av", (user.name || user.email || "?").trim()[0].toUpperCase()); av.setAttribute("aria-hidden", "true"); const w = el("span", "nd-who"); w.append(el("b", "", user.name || user.email.split("@")[0]), el("small", "", user.email)); const a = el("a", "nd-acct"); a.href = "/profile.html"; a.append(av, w); a.insertAdjacentHTML("beforeend", icon(lang() === "en" ? "chevron-right" : "chevron-left", 16, "nd-acct-go")); acctBox.append(a); }
+  else { const a = el("a", "nd-acct"); a.href = "/login.html"; const av = el("span", "nd-av nd-av-guest"); av.setAttribute("aria-hidden", "true"); av.innerHTML = icon("user", 18); const w = el("span", "nd-who"); w.append(el("b", "", T("signin")), el("small", "", T("guestNote"))); a.append(av, w); a.insertAdjacentHTML("beforeend", icon(lang() === "en" ? "chevron-right" : "chevron-left", 16, "nd-acct-go"));
+    const alt = el("p", "nd-acct-alt"); const la = el("a", "", T("signup")); la.href = "/login.html#signup"; alt.append(el("span", "", T("newHere") + " "), la); acctBox.append(a, alt); }
+  panel.append(head, acctBox, body); wrap.append(back, panel); return wrap;
 }
-function css() { if (installedCss || document.querySelector("link[data-nd]")) return; installedCss = true; const k = el("link"); k.rel = "stylesheet"; k.href = "/css/sidebar.css"; k.setAttribute("data-nd", ""); document.head.append(k); }
-export function open(from) {
-  if (root) return; css(); opener = from || document.activeElement; root = build(); document.body.append(root); document.body.classList.add("nd-lock");
-  requestAnimationFrame(() => requestAnimationFrame(() => root && root.classList.add("on"))); root.querySelector(".nd-x").focus();
+let cssReady = null;
+/* The stylesheet must be applied BEFORE the panel is inserted: otherwise the unstyled panel sits at the end of <body> and focusing it scrolls the page to the footer. */
+function css() { if (cssReady) return cssReady; const ex = document.querySelector("link[data-nd]"); const k = ex || el("link"); if (!ex) { k.rel = "stylesheet"; k.href = "/css/sidebar.css"; k.setAttribute("data-nd", ""); document.head.append(k); }
+  cssReady = k.sheet ? Promise.resolve() : new Promise((r) => { k.addEventListener("load", r, { once: true }); k.addEventListener("error", r, { once: true }); setTimeout(r, 1500); }); return cssReady; }
+export function preload() { css(); }
+let opening = false;
+export async function open(from) {
+  if (root || opening) return; opening = true; opener = from || document.activeElement; await css(); opening = false; if (root) return;
+  root = build(); document.body.append(root); document.body.classList.add("nd-lock");
+  requestAnimationFrame(() => requestAnimationFrame(() => { if (!root) return; root.classList.add("on"); root.querySelector(".nd-x").focus({ preventScroll: true }); })); // focus once visible (hidden elements cannot take focus)
   document.addEventListener("keydown", onKey);
 }
 export function close() {
   if (!root) return; const r = root; root = null; r.classList.remove("on"); document.body.classList.remove("nd-lock"); document.removeEventListener("keydown", onKey);
-  setTimeout(() => r.remove(), matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 260); opener?.focus?.();
+  setTimeout(() => r.remove(), matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 260); opener?.focus?.({ preventScroll: true });
 }
 function onKey(e) {
   if (e.key === "Escape") return close();
   if (e.key !== "Tab" || !root) return;
   const f = [...root.querySelectorAll("a[href],button")].filter((n) => !n.hidden && !n.closest("[hidden]")); if (!f.length) return;
   const first = f[0], last = f[f.length - 1];
-  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); } else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus({ preventScroll: true }); } else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus({ preventScroll: true }); }
 }

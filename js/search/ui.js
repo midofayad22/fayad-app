@@ -104,7 +104,7 @@ function renderIdle() {
   const rec = recent.get();
   if (rec.length) {
     const sec = el("section", "sx-group"); const h = el("h3", "", t.recent); const clr = el("button", "sx-link", t.clearRecent); clr.type = "button"; clr.addEventListener("click", () => { recent.clear(); update(""); }); h.appendChild(clr); sec.appendChild(h);
-    const wrap = el("div", "sx-recent"); for (const q of rec) { const b = el("button", "sx-pill", q); b.type = "button"; b.addEventListener("click", () => { ui.input.value = q; update(q); ui.input.focus(); }); wrap.appendChild(b); } sec.appendChild(wrap); frag.appendChild(sec);
+    const wrap = el("div", "sx-recent"); for (const q of rec) { const b = el("button", "sx-pill", q); b.type = "button"; b.addEventListener("click", () => { ui.input.value = q; update(q); ui.input.focus({ preventScroll: true }); }); wrap.appendChild(b); } sec.appendChild(wrap); frag.appendChild(sec);
   }
   const sec = el("section", "sx-group"); sec.appendChild(el("h3", "", t.popular));
   for (const d of engine.docsOf(["course"])) sec.appendChild(row(d, "", n++));
@@ -115,7 +115,7 @@ function renderResults(q) {
   state.items = res;
   if (!res.length) {
     const acts = [], sugg = engine.didYouMean(q);
-    if (sugg.length) { const w = el("div", "sx-recent"); w.appendChild(el("span", "sx-muted", t.didYou)); for (const s of sugg) { const b = el("button", "sx-pill", s); b.type = "button"; b.addEventListener("click", () => { ui.input.value = s; update(s); ui.input.focus(); }); w.appendChild(b); } acts.push(w); }
+    if (sugg.length) { const w = el("div", "sx-recent"); w.appendChild(el("span", "sx-muted", t.didYou)); for (const s of sugg) { const b = el("button", "sx-pill", s); b.type = "button"; b.addEventListener("click", () => { ui.input.value = s; update(s); ui.input.focus({ preventScroll: true }); }); w.appendChild(b); } acts.push(w); }
     const a = el("a", "sx-link sx-browse", t.browse); a.href = "/index.html#courses"; acts.push(a);
     ui.body.replaceChildren(message(t.none.replace("{q}", q.trim()), t.noneHint, acts)); ui.status.textContent = t.none.replace("{q}", q.trim()); setActive(-1); return;
   }
@@ -145,7 +145,7 @@ function onKey(e) {
 export async function open(opts = {}) {
   if (root) return;
   lastFocus = document.activeElement; ui = build(); document.body.classList.add("sx-lock"); state = { q: "", filter: "all", items: [], active: -1 };
-  ui.input.value = opts.query || ""; ui.clr.hidden = !ui.input.value; ui.input.focus();
+  ui.input.value = opts.query || ""; ui.clr.hidden = !ui.input.value; ui.input.focus({ preventScroll: true });
   requestAnimationFrame(() => root && root.classList.add("on"));
   const t = S();
   if (!engine) {
@@ -160,7 +160,7 @@ export async function open(opts = {}) {
 }
 export function close(keepFocus) {
   if (!root) return; cancelAnimationFrame(frame); root.remove(); root = null; ui = null; document.body.classList.remove("sx-lock");
-  if (!keepFocus && lastFocus && lastFocus.focus) try { lastFocus.focus(); } catch { /* element gone */ }
+  if (!keepFocus && lastFocus && lastFocus.focus) try { lastFocus.focus({ preventScroll: true }); } catch { /* element gone */ }
 }
 export const isOpen = () => !!root;
 window.addEventListener("fayad:langchange", () => { if (root) { const q = ui.input.value; close(true); open({ query: q }); } });
