@@ -95,3 +95,4 @@ html[dir="rtl"] .ab-btn:not(.ab-btn-primary) svg { transform: scaleX(-1); }
   .ab-toc a[aria-current="true"] { border-color: var(--fy-brand); }
 }
 @media (prefers-reduced-motion: reduce) { .ab-cards li, .ab-toc a { transition: none; } }
+@media (max-width: 720px) { .ab-nav { display: none; } } /* the global sidebar carries these links on phones */

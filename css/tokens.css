@@ -297,3 +297,17 @@ html[data-editor-theme="light"][data-theme] :is(.example-card, .editor-panel, .p
   --fy-tok-fn: #1d4ed8; --fy-tok-cmt: #526b75; --fy-tok-op: #475569; --fy-tok-type: #be123c; --fy-tok-bad: #b91c1c;
 }
 html[data-editor-theme="light"][data-theme] .editor-panel .editor-top { color: #3b5760; }
+
+/* ---- layout, type and icon scale (single source for new and refactored components; breakpoints: 360 / 640 / 900 / 1200) ---- */
+:root {
+  --fy-container: 1160px;
+  --fy-container-narrow: 760px;
+  --fy-page-x: clamp(16px, 4vw, 40px);
+  --fy-section-y: clamp(56px, 8vw, 112px);
+  --fy-card-pad: clamp(16px, 2.4vw, 24px);
+  --fy-header-h: 64px;
+  --fy-text-xs: .75rem; --fy-text-sm: .875rem; --fy-text-md: 1rem; --fy-text-lg: 1.125rem;
+  --fy-text-xl: clamp(1.25rem, 1.1rem + .6vw, 1.5rem); --fy-text-2xl: clamp(1.6rem, 1.3rem + 1.2vw, 2.25rem); --fy-text-3xl: clamp(2.1rem, 1.5rem + 2.4vw, 3.5rem);
+  --fy-lh-tight: 1.2; --fy-lh-body: 1.7; --fy-lh-ar: 1.85;
+  --fy-icon-sm: 16px; --fy-icon-md: 20px; --fy-icon-lg: 24px;
+}

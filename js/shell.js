@@ -1,7 +1,7 @@
 /*
   FAYAD shell: shared display controls (theme + language) and the "new version" prompt.
   - On the homepage the controls sit inside the navbar (.nav-actions).
-  - Everywhere else they live in a small floating dock at the inline-end bottom corner.
+  - Every page with a header (course, account, games, settings, about) gets them inside that header; only header-less pages (login, offline) keep the small floating dock.
   Requires js/prefs.js and js/i18n.js (loaded first).
 */
 (function () {
@@ -15,6 +15,31 @@
     '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
 
   var themeBtn, langBtn, menuBtn;
+
+  // Global search: the overlay (js/search/ui.js, css/search.css, search/index.json) loads on first use only.
+  var searchMod = null;
+  function loadSearch() {
+    if (!searchMod) {
+      if (!document.querySelector("link[data-sx]")) { var l = document.createElement("link"); l.rel = "stylesheet"; l.href = "/css/search.css"; l.setAttribute("data-sx", ""); document.head.appendChild(l); }
+      searchMod = import("/js/search/ui.js");
+    }
+    return searchMod;
+  }
+  function preloadSearch() { loadSearch().then(function (m) { m.preload().catch(function () {}); }); }
+  function openSearch(query) { return loadSearch().then(function (m) { return m.open({ query: query || "" }); }); }
+  window.FAYAD.openSearch = openSearch;
+  document.addEventListener("keydown", function (e) {
+    var k = e.key;
+    var typing = /^(INPUT|TEXTAREA|SELECT)$/.test((e.target && e.target.tagName) || "") || (e.target && e.target.isContentEditable);
+    if (((e.ctrlKey || e.metaKey) && !e.shiftKey && !e.altKey && (k === "k" || k === "K")) || (k === "/" && !typing && !e.ctrlKey && !e.metaKey && !e.altKey)) {
+      if (document.querySelector(".sx")) return;
+      e.preventDefault(); openSearch();
+    }
+  });
+  document.addEventListener("click", function (e) {
+    var t = e.target && e.target.closest && e.target.closest("[data-open-search]");
+    if (t) { e.preventDefault(); openSearch(); }
+  });
 
   function build() {
     var group = document.createElement("div");
@@ -46,6 +71,16 @@
     menuBtn.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
     menuBtn.addEventListener("click", function () { import("/js/nav-drawer.js").then(function (m) { m.open(menuBtn); }); });
 
+    var searchBtn = document.createElement("button");
+    searchBtn.type = "button";
+    searchBtn.className = "fy-btn fy-btn-search";
+    searchBtn.setAttribute("aria-haspopup", "dialog");
+    searchBtn.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>';
+    searchBtn.addEventListener("click", function () { openSearch(); });
+    searchBtn.addEventListener("pointerenter", preloadSearch, { once: true });
+    searchBtn.addEventListener("focus", preloadSearch, { once: true });
+
+    group.appendChild(searchBtn);
     group.appendChild(menuBtn);
     group.appendChild(themeBtn);
     group.appendChild(langBtn);
@@ -65,11 +100,37 @@
     langBtn.setAttribute("title", i18n.t(next));
     // The label is in the *target* language, so mark it for screen readers.
     langBtn.setAttribute("lang", prefs.lang === "ar" ? "en" : "ar");
+    var sb = document.querySelector(".fy-btn-search");
+    if (sb) { var sl = prefs.lang === "ar" ? "بحث (Ctrl+K)" : "Search (Ctrl+K)"; sb.setAttribute("aria-label", sl); sb.setAttribute("title", sl); }
+  }
+
+  // Every page gets the controls inside a real header: use the page's own header when it has one, otherwise add a slim bar.
+  var HOSTS = [".learning-actions", ".ac-top-in", ".ab-header-inner", ".st-top"];
+  function findSlot() {
+    var slot = document.querySelector(".nav-actions");
+    if (slot) return slot;
+    for (var i = 0; i < HOSTS.length; i++) {
+      var host = document.querySelector(HOSTS[i]);
+      if (!host) continue;
+      slot = document.createElement("div");
+      slot.className = "nav-actions fy-slot";
+      host.insertBefore(slot, HOSTS[i] === ".learning-actions" ? host.firstChild : null);
+      return slot;
+    }
+    // hero-style course pages (Programming / Computer Basics): a slim sticky bar above the hero
+    if (document.querySelector(".app-header")) {
+      var bar = document.createElement("header");
+      bar.className = "fy-bar";
+      bar.innerHTML = '<a class="fy-bar-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a><div class="nav-actions fy-slot"></div>';
+      document.body.insertBefore(bar, document.body.firstChild);
+      return bar.querySelector(".fy-slot");
+    }
+    return null;
   }
 
   function mount() {
     var group = build();
-    var navActions = document.querySelector(".nav-actions");
+    var navActions = findSlot();
     if (navActions) {
       group.classList.add("fy-controls--inline");
       navActions.insertBefore(group, navActions.firstChild);

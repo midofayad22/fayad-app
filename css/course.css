@@ -1758,3 +1758,13 @@ html[dir="rtl"] .answer-options button:hover:not(:disabled) { transform: transla
 .content-card.is-collapsible[open] > summary::after { transform: translateY(-30%) rotate(-135deg); }
 .content-card.is-collapsible > summary h2 { margin: 0; }
 .content-card.is-collapsible[open] > summary { margin-block-end: 10px; }
+
+/* narrow phones: the header now also hosts the display controls, so the title yields space instead of overflowing */
+.learning-navbar { min-width: 0; }
+.learning-title { min-width: 0; flex: 1 1 auto; }
+.learning-title .path-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (max-width: 420px) {
+  .learning-title > span { display: none; }
+  .learning-actions { gap: 6px; }
+  .learning-actions .back-btn { padding-inline: 10px; }
+}

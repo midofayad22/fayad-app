@@ -38,7 +38,13 @@ export function createCourseNav({ doc = document, mount, courseId, courseTitle =
   searchWrap.append(input, clearBtn);
   const cont = el("a", "cn-continue");
   const bulk = el("div", "cn-bulk"); const bOpen = el("button", "cn-link"); const bClose = el("button", "cn-link"); bOpen.type = bClose.type = "button"; bulk.append(bOpen, bClose);
-  head.append(cont, searchWrap, status, bulk);
+  // the lesson filter is a compact on-demand control (global search lives in the header); it opens from a small icon button
+  searchWrap.hidden = true;
+  const find = el("button", "cn-find"); find.type = "button"; find.setAttribute("aria-expanded", "false");
+  find.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>';
+  find.addEventListener("click", () => { const o = searchWrap.hidden; searchWrap.hidden = !o; find.setAttribute("aria-expanded", String(o)); if (o) input.focus(); else if (input.value) { input.value = ""; input.dispatchEvent(new Event("input")); } });
+  bulk.append(find);
+  head.append(cont, bulk, searchWrap, status);
   const list = el("ol", "cn-mods");
   root.append(head, list);
   mount.textContent = ""; mount.appendChild(root);
@@ -93,7 +99,7 @@ export function createCourseNav({ doc = document, mount, courseId, courseTitle =
 
   function label() {
     S = STR[L]; root.setAttribute("aria-label", S.aria(courseTitle));
-    input.placeholder = S.search; input.setAttribute("aria-label", S.search); clearBtn.setAttribute("aria-label", S.clear); clearBtn.title = S.clear;
+    input.placeholder = S.search; input.setAttribute("aria-label", S.search); find.setAttribute("aria-label", S.search); find.title = S.search; clearBtn.setAttribute("aria-label", S.clear); clearBtn.title = S.clear;
     bOpen.textContent = S.openAll; bClose.textContent = S.closeAll;
     refs.mods.forEach((r) => {
       r.eyebrow.textContent = r.m.isAssessment ? S.assessment : `${S.module} ${pad(r.mi + 1)}`; r.ttl.textContent = tx(r.m.title);

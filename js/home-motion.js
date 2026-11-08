@@ -13,18 +13,6 @@
 
   var heroTl = null, typed = null;
 
-  function splitWords(el) {
-    var text = el.textContent.trim();
-    el.textContent = "";
-    text.split(/\s+/).forEach(function (w, i, a) {
-      var o = document.createElement("span"); o.className = "hm-word";
-      var inner = document.createElement("span"); inner.textContent = w; o.appendChild(inner);
-      el.appendChild(o);
-      if (i < a.length - 1) el.appendChild(document.createTextNode(" "));
-    });
-    return $$(".hm-word > span", el);
-  }
-
   function typeCode() {
     var code = $("#heroCode");
     if (!code) return null;
@@ -51,17 +39,10 @@
     });
   }
 
+  // The hero entrance is pure CSS (css/home.css, `.hm-in`): it starts hidden from the first paint and never re-runs when the
+  // language changes, so the headline cannot flash. JS only types the code sample, once.
   function hero() {
-    if (heroTl) heroTl.kill();
-    if (typed) { typed.progress(1); typed.kill(); }
-    var words = [].concat(splitWords($(".hm-t1")), splitWords($(".hm-t2")));
-    heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
-    heroTl.from(".hm-kicker", { y: 14, opacity: 0, duration: 0.5 })
-      .from(words, { yPercent: 110, duration: 0.8, stagger: 0.07 }, "-=0.25")
-      .from([".hm-lead", ".hm-actions > *", ".hm-stats li"], { y: 18, opacity: 0, duration: 0.6, stagger: 0.08 }, "-=0.45")
-      .from(".hm-win", { y: 40, opacity: 0, scale: 0.97, duration: 0.9 }, 0.2)
-      .from(".hm-next", { y: 30, opacity: 0, duration: 0.8 }, 0.7)
-      .from(".hm-marquee", { opacity: 0, duration: 0.8 }, 0.8);
+    if (typed) return;
     typed = typeCode();
     if (typed) typed.delay(0.9);
   }
