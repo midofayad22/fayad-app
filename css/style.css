@@ -5385,7 +5385,7 @@ body::-webkit-scrollbar-thumb:hover {
   color: var(--fy-text) !important;
 
   cursor: pointer !important;
-  transition: all 0.25s ease !important;
+  transition: background-color 0.25s ease, border-color 0.25s ease !important;
 
   white-space: nowrap !important;
 }

@@ -35,3 +35,15 @@ test("reduced motion: hero is visible immediately and nothing animates", async (
   await page.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort()); await page.goto(`${base}/index.html`); await page.waitForSelector(".hm-t1");
   assert.equal(await page.evaluate(() => +getComputedStyle(document.querySelector(".hm-t1")).opacity), 1); await ctx.close();
 });
+
+// Cumulative layout shift and wrong-language flash on the real homepage (Chromium layout-shift entries; no mocks).
+for (const lang of ["ar", "en"]) for (const w of [1440, 390]) test(`homepage first load: CLS < 0.05 and no visible wrong-language text (${lang} @${w})`, async () => {
+  const ctx = await browser.newContext({ viewport: { width: w, height: 900 }, serviceWorkers: "block" }); const page = await ctx.newPage();
+  await page.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort());
+  await page.addInitScript((l) => { try { localStorage.setItem("fayad-prefs-v1", JSON.stringify({ v: 1, lang: l })); localStorage.setItem("fayad-language", l); } catch {}
+    window.__cls = 0; window.__wrong = 0; new PerformanceObserver((li) => { for (const e of li.getEntries()) if (!e.hadRecentInput) window.__cls += e.value; }).observe({ type: "layout-shift", buffered: true });
+    (function tick() { const h = document.querySelector(".hm-t1"); if (h && l === "en" && +getComputedStyle(document.body).opacity > 0 && /[؀-ۿ]/.test(h.textContent)) window.__wrong++; requestAnimationFrame(tick); })(); }, lang);
+  await page.goto(`${base}/index.html`); await page.waitForTimeout(3000);
+  const r = await page.evaluate(() => ({ cls: window.__cls, wrong: window.__wrong, pending: document.documentElement.hasAttribute("data-i18n-pending"), vis: getComputedStyle(document.body).opacity }));
+  assert.ok(r.cls < 0.05, `CLS ${r.cls.toFixed(4)}`); assert.equal(r.wrong, 0, "Arabic text was visible in English mode"); assert.equal(r.pending, false); assert.equal(r.vis, "1"); await ctx.close();
+});

@@ -33,3 +33,12 @@ test("login keeps the floating dock (it has no header) and the dock never covers
   assert.equal(await page.locator(".fy-controls--dock").count(), 1);
   await ctx.close();
 });
+
+// Hit-testing: nothing decorative may cover the header controls (found: the logo's ::after shine intercepted clicks at 320px).
+for (const lang of ["ar", "en"]) for (const w of [1440, 768, 390, 320]) test(`header controls receive their own clicks (${lang} @${w})`, async () => {
+  const ctx = await browser.newContext({ viewport: { width: w, height: 700 }, serviceWorkers: "block" });
+  await ctx.addInitScript((l) => { try { localStorage.setItem("fayad-prefs-v1", JSON.stringify({ v: 1, lang: l })); localStorage.setItem("fayad-language", l); } catch {} }, lang);
+  await ctx.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort()); const page = await ctx.newPage(); await page.goto(`${base}/index.html`); await page.waitForSelector(".fy-btn-search"); await page.waitForTimeout(1200);
+  const bad = await page.evaluate(() => [...document.querySelectorAll(".navbar a, .navbar button")].filter((e) => { const r = e.getBoundingClientRect(); if (!r.width || getComputedStyle(e).visibility === "hidden") return false; const t = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2); return !(t && (e === t || e.contains(t) || t.contains(e))); }).map((e) => e.className || e.tagName));
+  assert.deepEqual(bad, []); await ctx.close();
+});

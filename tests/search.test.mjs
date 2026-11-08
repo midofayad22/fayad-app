@@ -101,3 +101,13 @@ test("phone: full-screen sheet, no horizontal overflow, filter chips scroll inst
   const { ctx, page } = await open("/index.html", { w: 360, h: 700 }); await page.click(".fy-btn-search"); await page.waitForSelector(".sx.on"); await page.keyboard.type("flex"); await page.waitForSelector(".sx-opt mark"); await page.waitForTimeout(400);
   const b = await page.locator(".sx-panel").boundingBox(); assert.ok(b.width >= 359 && b.height >= 699, JSON.stringify(b));
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)); await ctx.close(); });
+
+// Offline: with the real service worker active, the index fetched once is served from cache when the network is gone.
+test("PWA: search works offline after it has been used once (real service worker)", async () => {
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 800 } }); await ctx.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort());
+  const page = await ctx.newPage(); await page.goto(base + "/index.html"); await page.evaluate(() => navigator.serviceWorker.ready); await page.reload(); await page.waitForFunction(() => navigator.serviceWorker.controller);
+  await page.reload(); await page.waitForSelector(".fy-btn-search"); await page.click(".fy-btn-search"); await page.waitForSelector(".sx.on .sx-opt"); await page.keyboard.press("Escape");
+  await page.waitForFunction(async () => !!(await caches.match("/search/index.json")));
+  await ctx.setOffline(true); await page.reload(); await page.waitForSelector(".fy-btn-search"); await page.click(".fy-btn-search"); await page.waitForFunction(() => document.activeElement?.classList.contains("sx-input"));
+  await page.keyboard.type("padding"); await page.waitForSelector(".sx-opt mark"); assert.ok((await page.locator(".sx-opt").count()) > 0); await ctx.close();
+});

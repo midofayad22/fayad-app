@@ -187,6 +187,10 @@
 .navbar .logo, .navbar .nav-link, .hm-link { display: inline-flex; align-items: center; }
 .menu-panel, .menu, aside.menu { padding-bottom: env(safe-area-inset-bottom, 0px); }
 
+/* the logo's decorative shine must never sit on top of neighbouring controls */
+.logo::after, .logo-text::after { pointer-events: none; }
+@media (max-width: 420px) { .logo::after { display: none; } }
+
 /* narrow phones: keep navbar actions inside the viewport */
 .navbar { gap: 12px; }
 .nav-actions { display: flex; align-items: center; gap: 8px; min-width: 0; flex-shrink: 0; }

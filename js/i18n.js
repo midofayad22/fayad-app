@@ -93,5 +93,5 @@
     if (/[\u0600-\u06FF]/.test(arTitle)) document.title = (TITLES[arTitle.replace(/\s*[|—-]\s*FAYBIT$/, "")] || TITLES[head] || "FAYBIT") + (TITLES[arTitle.replace(/\s*[|—-]\s*FAYBIT$/, "")] || TITLES[head] ? " | FAYBIT" : "");
   }
   window.addEventListener("fayad:langchange", function () { apply(); applyTitle(); });
-  document.addEventListener("DOMContentLoaded", function () { apply(); applyTitle(); });
+  document.addEventListener("DOMContentLoaded", function () { apply(); applyTitle(); document.documentElement.removeAttribute("data-i18n-pending"); });
 })();

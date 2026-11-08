@@ -5,5 +5,7 @@ export async function pick(page, n) {
   if ((await t.isVisible()) && (await t.getAttribute("aria-expanded")) !== "true") await t.click();
   const h = page.locator(".cn-mod").filter({ has: a }).locator(".cn-mod-h").first();
   if ((await h.getAttribute("aria-expanded")) !== "true") { await h.click(); await page.waitForTimeout(260); }
+  // the previous selection starts a smooth scroll-to-top; clicking while the page is still moving can land on the neighbouring row
+  let last = -1; for (let i = 0; i < 40; i++) { const y = await page.evaluate(() => Math.round(scrollY)); if (y === last) break; last = y; await page.waitForTimeout(60); }
   await a.click();
 }
