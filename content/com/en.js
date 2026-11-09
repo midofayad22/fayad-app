@@ -1,6 +1,10 @@
 // English text for the com course (merged into the content by js/engine/with-english.js; validated by tests/english-content.test.mjs).
+import { osEN } from "./os.js";
+
 export const EN = {
  "track.groups.0.title": "Computer Fundamentals",
+ "track.groups.1.title": "Operating Systems in Depth",
+ "track.groups.2.title": "Final Assessment",
  "com-01.title": "What Is a Computer?",
  "com-01.body": "<section class=\"lesson-section\">\n<h3>Definition of a Computer</h3>\n<p>A computer is an electronic device that can receive data, process it according to a set of instructions, and then produce results that people can make use of.</p>\n<p>This process can be simplified into four basic stages: <span class=\"term\">Input</span>, then <span class=\"term\">Processing</span>, then <span class=\"term\">Output</span>, and finally <span class=\"term\">Storage</span>.</p>\n</section>\n<section class=\"lesson-section\">\n<h3>How Should We Think About a Computer?</h3>\n<div class=\"info-grid\">\n<div class=\"info-box\">\n<h4>Input</h4>\n<p>The data that goes into the computer, such as typing on a keyboard or clicking with a mouse.</p>\n</div>\n<div class=\"info-box\">\n<h4>Processing</h4>\n<p>Processing the data and carrying out the required operations using the computer's components.</p>\n</div>\n<div class=\"info-box\">\n<h4>Output</h4>\n<p>The result the user receives, such as an image or text appearing on the screen.</p>\n</div>\n<div class=\"info-box\">\n<h4>Storage</h4>\n<p>Keeping data so it can be used later.</p>\n</div>\n</div>\n</section>\n",
  "com-01.key": "A computer does not think like a human; it carries out specific instructions on data according to how it was programmed.",
@@ -182,3 +186,5 @@ export const EN = {
  "com-20.quiz.0.options.2": "Keyboard",
  "com-20.quiz.0.options.3": "SSD"
 };
+
+Object.assign(EN, osEN);

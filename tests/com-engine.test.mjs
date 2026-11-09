@@ -5,7 +5,9 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import { createRequire } from "node:module";
 import { startServer } from "./static-server.mjs";
-import { lessons } from "../content/com/index.js";
+import { track, lessons as authored } from "../content/com/index.js";
+// the course is shown in sidebar (group) order: com-01…19, the OS section com-21…30, then the final test com-20
+const lessons = track.groups.flatMap((g) => g.lessons).map((id) => authored.find((l) => l.id === id));
 
 const { chromium } = createRequire(import.meta.url)("playwright");
 const URL_NEW = "/fundamentals/computer-basics/com.html";
@@ -32,11 +34,11 @@ const stored = (page, k) => page.evaluate((key) => localStorage.getItem(key), k)
 const item = (n) => `.cn-lesson[data-lesson="${n}"]`; // legacy data-lesson is 0-based; the engine keeps that attribute 1-based
 const dom = (page, h) => page.evaluate((x) => { const d = document.createElement("div"); d.innerHTML = x; return d.innerHTML; }, h);
 
-test("boots without console errors; all 20 lessons are in the sidebar, the last one marked as the final test", async () => {
+test("boots without console errors; all 30 lessons are in the sidebar, the last one marked as the final test", async () => {
   const { ctx, page, errors } = await open();
-  assert.equal(await page.locator(".cn-lesson").count(), 20);
+  assert.equal(await page.locator(".cn-lesson").count(), 30);
   assert.equal(await page.locator(".cn-lesson.cn-assess").count(), 0);
-  assert.equal(await page.locator(".cn-lesson").last().getAttribute("data-lesson"), "20");
+  assert.equal(await page.locator(".cn-lesson").last().getAttribute("data-lesson"), "30");
   assert.deepEqual(errors, []);
   await ctx.close();
 });
@@ -47,7 +49,7 @@ test("every lesson opens from the sidebar with its exact Arabic content", async 
     await pick(page, i + 1);
     assert.equal(await page.locator("#lesson-title").innerText(), l.title.ar);
     assert.equal(await page.locator("#content-title").innerText(), l.title.ar);
-    assert.equal(await page.locator("#lesson-counter").innerText(), `الدرس ${i + 1} من 20`);
+    assert.equal(await page.locator("#lesson-counter").innerText(), `الدرس ${i + 1} من 30`);
     assert.equal(await page.locator("#lesson-content").innerHTML(), await dom(page, l.body.ar));
     assert.equal(await page.locator("#key-concept-text").textContent(), l.key.ar);
     assert.equal(await page.locator("#practice-text").textContent(), l.practice.prompt.ar);
@@ -75,7 +77,7 @@ test("deep links: #lesson-5 opens lesson 5; bad hashes fall back to lesson 1; th
   await page.reload(); await page.waitForSelector('html[data-engine="ready"]');
   assert.equal(await page.locator("#lesson-title").innerText(), lessons[8].title.ar);
   await ctx.close();
-  for (const bad of ["#lesson-0", "#lesson-21", "#x"]) { ({ ctx, page } = await open(URL_NEW + bad)); assert.equal(await page.locator("#lesson-title").innerText(), lessons[0].title.ar, bad); await ctx.close(); }
+  for (const bad of ["#lesson-0", "#lesson-31", "#x"]) { ({ ctx, page } = await open(URL_NEW + bad)); assert.equal(await page.locator("#lesson-title").innerText(), lessons[0].title.ar, bad); await ctx.close(); }
 });
 
 test("quiz feedback: all options lock after one answer; a wrong answer names the correct one; right answers show success", async () => {
@@ -104,7 +106,7 @@ test("completion is manual: stores v1 + the legacy 0-based list, updates progres
   assert.match(await page.locator("#complete-btn").innerText(), /تم إكمال الدرس/);
   assert.equal(await stored(page, LEG), "[2]");
   assert.deepEqual(JSON.parse(await stored(page, "fayad-progress-v1")).tracks.com.completed, ["com-03"]);
-  assert.equal(await page.locator("#progress-text").innerText(), "5%");
+  assert.equal(await page.locator("#progress-text").innerText(), "3%");
   await page.click("#complete-btn"); assert.equal(await stored(page, LEG), "[2]");
   await page.reload(); await page.waitForSelector('html[data-engine="ready"]');
   assert.ok(await page.locator(item(3)).evaluate((b) => b.dataset.done === "true"));
@@ -114,7 +116,7 @@ test("completion is manual: stores v1 + the legacy 0-based list, updates progres
 test("legacy progress (0-based list) is imported once and never duplicated", async () => {
   const { ctx, page } = await open(URL_NEW, { [LEG]: "[0,2,2,40,\"x\"]" });
   for (const n of [1, 3]) assert.ok(await page.locator(item(n)).evaluate((b) => b.dataset.done === "true"));
-  assert.equal(await page.locator("#progress-text").innerText(), "10%");
+  assert.equal(await page.locator("#progress-text").innerText(), "7%");
   await page.reload(); await page.waitForSelector('html[data-engine="ready"]');
   assert.deepEqual(JSON.parse(await stored(page, "fayad-progress-v1")).tracks.com.completed, ["com-01", "com-03"]);
   await pick(page, 2); await page.click("#complete-btn");
@@ -133,8 +135,8 @@ test("the engine page has no learner-code execution and loads no legacy script",
 test("mobile 390px: no horizontal overflow, no console errors, every lesson reachable", async () => {
   const { ctx, page, errors } = await open(URL_NEW, {}, { width: 390, height: 800 });
   assert.ok((await page.evaluate(() => document.documentElement.scrollWidth)) <= 391);
-  await pick(page, 20);
-  assert.equal(await page.locator("#lesson-title").innerText(), lessons[19].title.ar);
+  await pick(page, 30);
+  assert.equal(await page.locator("#lesson-title").innerText(), lessons[29].title.ar);
   assert.ok((await page.evaluate(() => document.documentElement.scrollWidth)) <= 391);
   assert.deepEqual(errors, []);
   await ctx.close();

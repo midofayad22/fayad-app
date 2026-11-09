@@ -1,8 +1,11 @@
+import { osLessons } from "./os.js";
+
 // Computer Basics content, shared lesson schema (see docs/lesson-schema.md).
 // Generated once from the legacy implementation by tools/convert-com-track.mjs; now hand-maintained.
 
 export const track = {
   id: "com",
+  orderIndependent: true, // sidebar order (groups) intentionally differs from id order: com-20 (final test) is listed last
   runtime: "none",
   layout: "foundation-lite",
   groups: [
@@ -31,6 +34,32 @@ export const track = {
         "com-17",
         "com-18",
         "com-19",
+      ],
+    },
+    {
+      id: "com-g2",
+      title: {
+        ar: "أنظمة التشغيل بعمق",
+      },
+      lessons: [
+        "com-21",
+        "com-22",
+        "com-23",
+        "com-24",
+        "com-25",
+        "com-26",
+        "com-27",
+        "com-28",
+        "com-29",
+        "com-30",
+      ],
+    },
+    {
+      id: "com-g3",
+      title: {
+        ar: "التقييم النهائي",
+      },
+      lessons: [
         "com-20",
       ],
     },
@@ -1538,4 +1567,6 @@ export const lessons = [
 
 import { EN } from "./en.js";
 import { withEnglish } from "../../js/engine/with-english.js";
+// Operating Systems in depth: appended as com-21 … com-30 (ids are frozen; the final test stays com-20 and is listed last by the groups).
+lessons.push(...osLessons);
 withEnglish(track, lessons, EN);

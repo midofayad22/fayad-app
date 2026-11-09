@@ -293,6 +293,14 @@ export function mountFoundation({ doc = document, track, lessons, progress, lang
     c.style.color = color || "";
   }
 
+  // copy buttons of authored code examples (.code-ex) inside the lesson body
+  el["lesson-content"].addEventListener("click", (e) => {
+    const b = e.target.closest?.(".code-ex-copy"); if (!b) return;
+    const code = b.closest(".code-ex")?.querySelector("code")?.textContent || "";
+    const done = () => { const o = b.textContent; b.textContent = lang === "en" ? "Copied" : "تم النسخ"; setTimeout(() => { b.textContent = o; }, 1500); };
+    try { win.navigator.clipboard.writeText(code).then(done, () => {}); } catch { /* clipboard unavailable: nothing to do */ }
+  });
+
   function render(scroll) {
     const l = byId.get(current);
     runId += 1; if (runner) { runner.destroy(); runner = null; } // a pending run from the previous lesson must not report here

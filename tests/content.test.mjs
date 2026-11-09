@@ -13,7 +13,8 @@ for (const name of tracks) {
     const { track, lessons } = await import(`../content/${name}/index.js`);
     assert.equal(track.id, name);
     assert.deepEqual(validateTrack(track, lessons), []);
-    assert.deepEqual(orderedIds(track), lessons.map((l) => l.id), "sidebar/navigation order must equal lesson order");
+    if (track.orderIndependent) assert.deepEqual([...orderedIds(track)].sort(), lessons.map((l) => l.id).sort(), "every lesson appears exactly once in the groups");
+    else assert.deepEqual(orderedIds(track), lessons.map((l) => l.id), "sidebar/navigation order must equal lesson order");
   });
 }
 

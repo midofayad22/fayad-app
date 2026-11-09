@@ -114,5 +114,18 @@
 
 .gh-lb{margin-block:2rem;padding:1.25rem;border:1px solid var(--fy-border,rgba(128,128,128,.25));border-radius:16px}
 .gh-lb-list{list-style:none;margin:.5rem 0;padding:0;display:grid;gap:.4rem}
-.gh-lb-list li{display:grid;grid-template-columns:2.2rem 1fr auto;gap:.75rem;align-items:center;padding:.5rem .75rem;border-radius:10px;background:rgba(128,128,128,.08)}
+.gh-lb-list li{display:grid;grid-template-columns:2.2rem 2rem minmax(0,1fr) auto;gap:.75rem;align-items:center;padding:.5rem .75rem;border-radius:10px;background:rgba(128,128,128,.08)}
 .gh-lb-list em{font-style:normal;font-weight:700}
+
+.gh-lb-list .gh-nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gh-lb-list .gh-nm small{color:var(--fy-text-muted,inherit);opacity:.75}
+.gh-av{width:2rem;height:2rem;border-radius:50%;overflow:hidden;background:rgba(128,128,128,.22);display:grid;place-items:center}
+.gh-av img{width:100%;height:100%;object-fit:cover;display:block}
+.gh-av-n::before{content:"";width:55%;height:55%;background:currentColor;opacity:.45;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 12a4.5 4.5 0 100-9 4.5 4.5 0 000 9zm0 2c-4.4 0-8 2.2-8 5v2h16v-2c0-2.8-3.6-5-8-5z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 12a4.5 4.5 0 100-9 4.5 4.5 0 000 9zm0 2c-4.4 0-8 2.2-8 5v2h16v-2c0-2.8-3.6-5-8-5z'/%3E%3C/svg%3E") center/contain no-repeat}
+.gh-lb-list li.top{padding-block:.7rem;font-weight:600}
+.gh-lb-list li.top .gh-av{width:2.4rem;height:2.4rem}
+.gh-lb-list li.top-1{background:linear-gradient(90deg,rgba(234,179,8,.22),rgba(128,128,128,.08));box-shadow:inset 0 0 0 1px rgba(234,179,8,.5)}
+.gh-lb-list li.top-2{background:linear-gradient(90deg,rgba(148,163,184,.25),rgba(128,128,128,.08));box-shadow:inset 0 0 0 1px rgba(148,163,184,.5)}
+.gh-lb-list li.top-3{background:linear-gradient(90deg,rgba(180,110,60,.22),rgba(128,128,128,.08));box-shadow:inset 0 0 0 1px rgba(180,110,60,.5)}
+.gh-lb-list li.me:not(.top){outline:2px solid var(--fy-brand,#16a34a);outline-offset:-2px}
+@media (max-width:420px){.gh-lb-list li{grid-template-columns:1.6rem 1.8rem minmax(0,1fr) auto;gap:.5rem;padding:.5rem}}

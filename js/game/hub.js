@@ -11,8 +11,8 @@ const GAMES = [
   { id: "sel", href: "/play/selector-quest.html", name: "Selector Quest", total: 10, tag: "CSS", ar: "اكتب محدد CSS يختار العناصر المطلوبة فقط.", en: "Write a CSS selector that picks only the wanted elements." },
 ];
 const DICT = {
-  ar: { "gh.title": "مركز الألعاب", "gh.sub": "تعلّم باللعب: ألغاز قصيرة بمراحل متدرجة، والتحقق منها فوري. نقاطك تُحفظ على هذا الجهاز.", "gh.note": "مسارات التحديات المتبقية قيد الإعداد ولن تظهر هنا قبل أن تعمل وتُختبر فعلًا.", "fq.points": "نقاط اللعبة", "fq.home": "الرئيسية", "fq.dash": "لوحة التقدم", "fq.hub": "الألعاب", "gh.play": "العب", "gh.arena": "تحديات برمجية", "gh.levels": "{n} من {t} مراحل", "lb.title": "لوحة الترتيب", "lb.note": "النقاط تُحسب على الخادم من قواعد ثابتة وبحدّ للمعدّل، لكن الخادم لا يستطيع إعادة تشغيل كودك للتأكد من الحل، فالترتيب ودّي وليس مسابقة محمية بالكامل.", "lb.in": "سجّل الدخول لتظهر في اللوحة ويُحفظ تقدمك.", "lb.empty": "لا يوجد لاعبون بعد. كن الأول!", "lb.off": "تعذّر تحميل اللوحة الآن.", "lb.anon": "لاعب", "lb.pts": "نقطة" },
-  en: { "gh.title": "Games hub", "gh.sub": "Learn by playing: short puzzles with growing levels and instant checking. Your points stay on this device.", "gh.note": "The remaining challenge tracks are in the works and will not be listed until they run and are tested.", "fq.points": "Game points", "fq.home": "Home", "fq.dash": "Progress dashboard", "fq.hub": "Games", "gh.play": "Play", "gh.arena": "Coding challenges", "gh.levels": "{n} of {t} levels", "lb.title": "Leaderboard", "lb.note": "Points are computed on the server from fixed rules and rate-limited, but the server cannot re-run your code to confirm a solve, so the ranking is friendly, not a fully cheat-proof contest.", "lb.in": "Sign in to appear on the board and keep your progress.", "lb.empty": "No players yet. Be the first!", "lb.off": "Could not load the board right now.", "lb.anon": "Player", "lb.pts": "pts" },
+  ar: { "lb.you": "(أنت)", "gh.title": "مركز الألعاب", "gh.sub": "تعلّم باللعب: ألغاز قصيرة بمراحل متدرجة، والتحقق منها فوري. نقاطك تُحفظ على هذا الجهاز.", "gh.note": "مسارات التحديات المتبقية قيد الإعداد ولن تظهر هنا قبل أن تعمل وتُختبر فعلًا.", "fq.points": "نقاط اللعبة", "fq.home": "الرئيسية", "fq.dash": "لوحة التقدم", "fq.hub": "الألعاب", "gh.play": "العب", "gh.arena": "تحديات برمجية", "gh.levels": "{n} من {t} مراحل", "lb.title": "لوحة الترتيب", "lb.note": "النقاط تُحسب على الخادم من قواعد ثابتة وبحدّ للمعدّل، لكن الخادم لا يستطيع إعادة تشغيل كودك للتأكد من الحل، فالترتيب ودّي وليس مسابقة محمية بالكامل.", "lb.in": "سجّل الدخول لتظهر في اللوحة ويُحفظ تقدمك.", "lb.empty": "لا يوجد لاعبون بعد. كن الأول!", "lb.off": "تعذّر تحميل اللوحة الآن.", "lb.anon": "لاعب", "lb.pts": "نقطة" },
+  en: { "lb.you": "(you)", "gh.title": "Games hub", "gh.sub": "Learn by playing: short puzzles with growing levels and instant checking. Your points stay on this device.", "gh.note": "The remaining challenge tracks are in the works and will not be listed until they run and are tested.", "fq.points": "Game points", "fq.home": "Home", "fq.dash": "Progress dashboard", "fq.hub": "Games", "gh.play": "Play", "gh.arena": "Coding challenges", "gh.levels": "{n} of {t} levels", "lb.title": "Leaderboard", "lb.note": "Points are computed on the server from fixed rules and rate-limited, but the server cannot re-run your code to confirm a solve, so the ranking is friendly, not a fully cheat-proof contest.", "lb.in": "Sign in to appear on the board and keep your progress.", "lb.empty": "No players yet. Be the first!", "lb.off": "Could not load the board right now.", "lb.anon": "Player", "lb.pts": "pts" },
 };
 F?.i18n?.extend(DICT);
 const lang = () => (F?.i18n?.lang === "en" ? "en" : "ar");
@@ -43,11 +43,19 @@ async function board() {
   if (!rows) { msg.textContent = T("lb.off"); return; }
   msg.textContent = rows.length ? "" : T("lb.empty");
   for (const r of rows) {
-    const li = document.createElement("li");
-    const rk = document.createElement("b"); rk.textContent = r.rank;
-    const nm = document.createElement("span"); nm.textContent = r.display_name || T("lb.anon");
+    const li = document.createElement("li"); const rank = Number(r.rank); li.dataset.rank = String(rank);
+    if (rank <= 3) li.className = "top top-" + rank;
+    if (r.is_me) li.classList.add("me");
+    const rk = document.createElement("b"); rk.textContent = rank;
+    const av = document.createElement("span"); av.className = "gh-av"; av.setAttribute("aria-hidden", "true");
+    const nameText = r.display_name || T("lb.anon");
+    // avatar_url is only present when its owner allows it (or it is the viewer's own); otherwise a neutral initial-less glyph is shown
+    if (typeof r.avatar_url === "string" && /^https:\/\//.test(r.avatar_url)) { const im = document.createElement("img"); im.alt = ""; im.width = im.height = 32; im.loading = "lazy"; im.decoding = "async"; im.referrerPolicy = "no-referrer"; im.src = r.avatar_url; av.appendChild(im); }
+    else av.classList.add("gh-av-n");
+    const nm = document.createElement("span"); nm.className = "gh-nm"; nm.textContent = nameText;
+    if (r.is_me) { const you = document.createElement("small"); you.textContent = T("lb.you"); nm.append(" ", you); }
     const pt = document.createElement("em"); pt.textContent = `${r.points} ${T("lb.pts")}`;
-    li.append(rk, nm, pt); ol.appendChild(li);
+    li.append(rk, av, nm, pt); ol.appendChild(li);
   }
 }
 document.addEventListener("fayad:langchange", board);

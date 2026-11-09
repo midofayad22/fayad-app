@@ -1776,3 +1776,37 @@ html[dir="rtl"] .answer-options button:hover:not(:disabled) { transform: transla
 @media (max-width: 600px) {
   .learning-title { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 }
+
+/* =========================================================
+   LESSON EXPLANATION COMPONENT  (.explanation-card)
+   One framed block that explains the example above it: heading, body text, lists, sub-headings, inline code and
+   small code samples. Used by every course through js/engine/course-shell.js; authored HTML inside
+   #exampleExplanation is styled here, never per page. Logical properties => correct in RTL and LTR.
+========================================================= */
+.explanation-card {
+  position: relative; margin: 0 0 30px; padding: 20px 24px 14px; overflow: hidden;
+  background: var(--fy-surface-2); border: 1px solid var(--fy-border-strong); border-radius: 14px; box-shadow: none;
+  border-inline-start: 3px solid var(--fy-course, var(--fy-brand));
+}
+.explanation-card > h3 {
+  display: flex; align-items: center; gap: 8px; margin: 0 0 12px; padding: 0;
+  font-size: .8rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--fy-text);
+}
+html[lang="ar"] .explanation-card > h3 { letter-spacing: 0; text-transform: none; font-size: .9rem; }
+.explanation-card > h3::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--fy-course, var(--fy-brand)); flex: none; }
+#exampleExplanation { max-width: 76ch; color: var(--fy-text); font-size: 1rem; line-height: 1.85; overflow-wrap: anywhere; }
+#exampleExplanation > :first-child { margin-top: 0; }
+#exampleExplanation p { margin: 0 0 14px; color: var(--fy-text); }
+#exampleExplanation h4 { margin: 20px 0 8px; font-size: 1.05rem; font-weight: 600; color: var(--fy-text); }
+#exampleExplanation h4 + p, #exampleExplanation h4 + ul, #exampleExplanation h4 + ol { margin-top: 0; }
+#exampleExplanation ul, #exampleExplanation ol { margin: 0 0 14px; padding-inline-start: 1.4em; padding-inline-end: 0; color: var(--fy-text); }
+#exampleExplanation li { margin-bottom: 6px; padding-inline-start: 2px; }
+#exampleExplanation li::marker { color: var(--fy-course, var(--fy-brand)); }
+#exampleExplanation strong { font-weight: 600; }
+#exampleExplanation code { padding: 1px 6px; border-radius: 6px; background: var(--fy-code-surface); color: var(--fy-code-text); font-family: var(--fy-font-code); font-size: .9em; direction: ltr; unicode-bidi: isolate; }
+#exampleExplanation pre { margin: 4px 0 16px; padding: 12px 14px; overflow-x: auto; direction: ltr; text-align: left; border: 1px solid var(--fy-code-border); border-radius: 10px; background: var(--fy-code-bg); color: var(--fy-code-text); font-size: .9rem; line-height: 1.7; }
+#exampleExplanation pre code { padding: 0; background: none; border-radius: 0; font-size: inherit; }
+#exampleExplanation hr { border: 0; border-top: 1px solid var(--fy-border); margin: 16px 0; }
+#exampleExplanation a { color: var(--fy-course, var(--fy-brand)); text-underline-offset: 3px; }
+#exampleExplanation a:focus-visible { outline: 2px solid var(--fy-course, var(--fy-brand)); outline-offset: 2px; border-radius: 3px; }
+@media (max-width: 600px) { .explanation-card { padding: 16px 16px 8px; border-radius: 12px; } #exampleExplanation { font-size: .97rem; } }

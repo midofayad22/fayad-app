@@ -16,7 +16,7 @@
   // tests/language-coverage.test.mjs checks these flags against content/<id>/index.js, so they cannot overstate.
   // kind "list": a JSON array of completed lesson ids.  current: 0-based index of the last lesson opened.
   var tracks = [
-    { id: "com", group: "fundamentals", en: "full", path: "/fundamentals/computer-basics/com.html", total: 20, list: "fayad-computer-progress" },
+    { id: "com", group: "fundamentals", en: "full", path: "/fundamentals/computer-basics/com.html", total: 30, list: "fayad-computer-progress" },
     { id: "prg", group: "fundamentals", en: "full", path: "/fundamentals/programming-basics/prg.html", total: 20, list: "fayad-programming-fundamentals-progress" },
     { id: "html", group: "web", en: "full", path: "/html-learning/html-learning.html", total: 30, list: "fayad-html-progress" },
     { id: "css", group: "web", en: "full", path: "/css-learning/css-learning.html", total: 30, current: "fayad-css-current-lesson" },
