@@ -55,3 +55,24 @@
 .doc-solution > strong { display: block; margin: 10px 0 6px; font-size: .82rem; opacity: .8; }
 .doc-solution p { margin: 0 0 8px !important; }
 @media (max-width: 600px) { .doc-layers li, .doc-flow li { flex-direction: column; align-items: flex-start; } .doc-objectives, .doc-prereq, .doc-summary, .doc-refs { padding: 14px 16px; } }
+
+/* Tree diagram (AST): pure CSS connectors, always laid out left-to-right so it reads the same in RTL pages */
+.doc-tree-wrap { overflow-x: auto; padding-block: 4px 8px; }
+.doc-tree, .doc-tree ul { display: flex; justify-content: center; margin: 0; padding: 18px 0 0; list-style: none; position: relative; direction: ltr; }
+.doc-tree { padding-top: 0; width: max-content; min-width: 100%; }
+.doc-tree li { position: relative; padding: 18px 8px 0; text-align: center; }
+.doc-tree > li { padding-top: 0; }
+.doc-tree li::before, .doc-tree li::after { content: ""; position: absolute; top: 0; right: 50%; width: 50%; height: 18px; border-top: 1px solid var(--fy-border-strong); }
+.doc-tree li::after { right: auto; left: 50%; border-left: 1px solid var(--fy-border-strong); }
+.doc-tree > li::before, .doc-tree > li::after, .doc-tree li:only-child::before, .doc-tree li:only-child::after { display: none; }
+.doc-tree li:only-child { padding-top: 18px; }
+.doc-tree > li:only-child { padding-top: 0; }
+.doc-tree li:first-child::before, .doc-tree li:last-child::after { border: 0 none; }
+.doc-tree li:last-child::before { border-right: 1px solid var(--fy-border-strong); border-radius: 0 6px 0 0; }
+.doc-tree li:first-child::after { border-radius: 6px 0 0 0; }
+.doc-tree ul::before { content: ""; position: absolute; top: 0; left: 50%; height: 18px; border-left: 1px solid var(--fy-border-strong); }
+.doc-node { display: inline-block; min-width: 34px; padding: 4px 10px; border: 1px solid var(--fy-border-strong); border-radius: 8px; background: var(--fy-surface); font: 500 .85rem/1.4 var(--fy-font-code); white-space: nowrap; }
+.doc-node-op { border-color: var(--fy-course, var(--fy-brand)); }
+.doc-node-num { background: var(--fy-code-surface); }
+.doc-node-stmt { font-weight: 600; background: var(--fy-surface-2); }
+.doc-node-var { border-style: dashed; }

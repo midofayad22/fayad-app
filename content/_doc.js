@@ -11,6 +11,7 @@ const UI = {
 };
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const treeHtml = (n, l) => `<li><span class="doc-node doc-node-${n.kind || "op"}">${esc(typeof n.t === "string" ? n.t : n.t[l])}</span>${n.kids && n.kids.length ? `<ul>${n.kids.map((k) => treeHtml(k, l)).join("")}</ul>` : ""}</li>`;
 const list = (tag, items, l) => `<${tag}>${items.map((i) => `<li>${i[l]}</li>`).join("")}</${tag}>`;
 
 const BLOCK = {
@@ -22,6 +23,7 @@ const BLOCK = {
   out: (b, l) => `<figure class="code-ex code-ex-out"><figcaption><span class="code-ex-lang">${UI[l].output}</span></figcaption><pre dir="ltr"><code>${esc(b.code)}</code></pre></figure>`,
   diagram: (b, l) => `<figure class="doc-diagram" role="group" aria-label="${UI[l].diagram}"><figcaption>${b.title[l]}</figcaption><ol class="doc-layers">${b.rows.map((r) => `<li><strong>${r.label[l]}</strong><span>${r.sub[l]}</span></li>`).join("")}</ol></figure>`,
   flow: (b, l) => `<figure class="doc-diagram" role="group" aria-label="${UI[l].diagram}"><figcaption>${b.title[l]}</figcaption><ol class="doc-flow">${b.steps.map((r) => `<li><strong>${r.label[l]}</strong><span>${r.sub[l]}</span></li>`).join("")}</ol></figure>`,
+  tree: (b, l) => `<figure class="doc-diagram doc-tree-fig" role="group" aria-label="AST"><figcaption>${b.title[l]}</figcaption><div class="doc-tree-wrap"><ul class="doc-tree">${treeHtml(b.root, l)}</ul></div></figure>`,
   table: (b, l) => `<div class="doc-table-wrap"><table class="doc-table"><thead><tr>${b.head.map((h) => `<th scope="col">${h[l]}</th>`).join("")}</tr></thead><tbody>${b.rows.map((r) => `<tr>${r.map((c, i) => (i === 0 ? `<th scope="row">${c[l]}</th>` : `<td>${c[l]}</td>`)).join("")}</tr>`).join("")}</tbody></table></div>`,
   note: (b, l) => `<aside class="doc-note doc-note-${b.kind || "info"}"><strong>${UI[l][b.kind || "info"]}</strong><p>${b.t[l]}</p></aside>`,
   mistakes: (b, l) => `<div class="doc-mistakes"><h4>${UI[l].mistakes}</h4>${list("ul", b.items, l)}</div>`,

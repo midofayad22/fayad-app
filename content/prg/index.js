@@ -34,6 +34,25 @@ export const track = {
         "prg-20",
       ],
     },
+    {
+      id: "prg-g2",
+      title: {
+        ar: "ما بعد الأساسيات: الخوارزميات وكيف تعمل اللغات",
+      },
+      lessons: [
+        "prg-21",
+        "prg-22",
+        "prg-23",
+        "prg-24",
+        "prg-25",
+        "prg-26",
+        "prg-27",
+        "prg-28",
+        "prg-29",
+        "prg-30",
+        "prg-31",
+      ],
+    },
   ],
   assessment: {
     id: "prg-final",
@@ -1972,5 +1991,8 @@ console.log(learner);`,
 import { EN } from "./en.js";
 import { withEnglish } from "../../js/engine/with-english.js";
 import { applyDeep } from "./deep.js";
+import { beyondLessons } from "./beyond.js";
+// "Beyond the basics" prg-21 … prg-28: appended (ids frozen); the final review stays prg-20 and is listed last by the groups.
+lessons.push(...beyondLessons);
 applyDeep(lessons);
 withEnglish(track, lessons, EN);
