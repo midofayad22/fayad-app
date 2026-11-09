@@ -1,11 +1,11 @@
 import { extend, T, el, mount, card, field, status, F } from "/js/settings/ui.js";
 extend({
-  ar: { "pf.guestH": "سجّل الدخول لإدارة ملفك الشخصي", "pf.guestP": "الاسم والصورة وبيانات الحساب تُحفظ في حسابك. تقدّمك الحالي على هذا الجهاز لا يضيع عند تسجيل الدخول.", "pf.photo": "الصورة الشخصية", "pf.photoD": "JPG أو PNG أو WebP بحجم حتى 5 ميجابايت. تُصغَّر الصورة تلقائيًا قبل الرفع.",
+  ar: { "pf.priv": "خصوصية الصورة", "pf.privD": "عند الإيقاف تظهر صورتك لك فقط، ويرى الآخرون في لوحة المتصدرين أيقونة محايدة.", "pf.privL": "إظهار صورتي للآخرين", "pf.privOk": "تم حفظ إعداد الخصوصية.", "pf.privE": "تعذّر الحفظ. قد يحتاج الإعداد إلى تفعيل من إدارة المنصة.", "pf.guestH": "سجّل الدخول لإدارة ملفك الشخصي", "pf.guestP": "الاسم والصورة وبيانات الحساب تُحفظ في حسابك. تقدّمك الحالي على هذا الجهاز لا يضيع عند تسجيل الدخول.", "pf.photo": "الصورة الشخصية", "pf.photoD": "JPG أو PNG أو WebP بحجم حتى 5 ميجابايت. تُصغَّر الصورة تلقائيًا قبل الرفع.",
     "pf.choose": "اختيار صورة", "pf.replace": "استبدال الصورة", "pf.remove": "إزالة الصورة", "pf.save": "حفظ الصورة", "pf.cancel": "إلغاء", "pf.name": "الاسم الظاهر", "pf.nameD": "يظهر في القوائم ولوحة الترتيب (حتى 80 حرفًا).", "pf.saveName": "حفظ الاسم",
     "pf.account": "بيانات الحساب", "pf.email": "البريد الإلكتروني", "pf.status": "حالة الحساب", "pf.verified": "البريد مؤكَّد", "pf.unverified": "البريد غير مؤكَّد بعد", "pf.since": "تاريخ الإنشاء", "pf.last": "آخر تسجيل دخول", "pf.provider": "طريقة الدخول", "pf.pw": "بريد وكلمة مرور",
     "pf.e.type": "نوع الملف غير مدعوم. اختر JPG أو PNG أو WebP.", "pf.e.size": "الصورة أكبر من 5 ميجابايت.", "pf.e.empty": "الملف فارغ.", "pf.e.decode": "تعذّر قراءة الصورة. اختر ملف صورة سليمًا.", "pf.e.name": "اكتب اسمًا من حرف إلى 80 حرفًا.",
     "pf.ok.photo": "تم تحديث صورتك.", "pf.ok.removed": "تمت إزالة الصورة.", "pf.ok.name": "تم حفظ الاسم.", "pf.preview": "معاينة قبل الحفظ", "pf.uploading": "جارٍ رفع الصورة...", "pf.initial": "صورتك" },
-  en: { "pf.guestH": "Sign in to manage your profile", "pf.guestP": "Your name, picture and account details are saved to your account. Progress already on this device is kept when you sign in.", "pf.photo": "Profile picture", "pf.photoD": "JPG, PNG or WebP up to 5 MB. The picture is shrunk automatically before upload.",
+  en: { "pf.priv": "Picture privacy", "pf.privD": "When off, only you see your picture; others see a neutral icon on the leaderboard.", "pf.privL": "Show my picture to others", "pf.privOk": "Privacy setting saved.", "pf.privE": "Could not save. This setting may need to be enabled by the platform owner.", "pf.guestH": "Sign in to manage your profile", "pf.guestP": "Your name, picture and account details are saved to your account. Progress already on this device is kept when you sign in.", "pf.photo": "Profile picture", "pf.photoD": "JPG, PNG or WebP up to 5 MB. The picture is shrunk automatically before upload.",
     "pf.choose": "Choose a picture", "pf.replace": "Replace picture", "pf.remove": "Remove picture", "pf.save": "Save picture", "pf.cancel": "Cancel", "pf.name": "Display name", "pf.nameD": "Shown in menus and on the leaderboard (up to 80 characters).", "pf.saveName": "Save name",
     "pf.account": "Account details", "pf.email": "Email", "pf.status": "Account status", "pf.verified": "Email confirmed", "pf.unverified": "Email not confirmed yet", "pf.since": "Created", "pf.last": "Last sign-in", "pf.provider": "Sign-in method", "pf.pw": "Email and password",
     "pf.e.type": "Unsupported file type. Choose JPG, PNG or WebP.", "pf.e.size": "The picture is larger than 5 MB.", "pf.e.empty": "The file is empty.", "pf.e.decode": "Could not read the picture. Choose a valid image file.", "pf.e.name": "Enter a name of 1 to 80 characters.",
@@ -30,7 +30,7 @@ const initial = (n, e) => (n || e || "?").trim().charAt(0).toUpperCase();
 
 mount("profile", async (body, { client, user }) => {
   if (!user) { body.append(card(T("pf.guestH"), T("pf.guestP"), el("p", {}, el("a", { class: "st-btn", href: "/login.html" }, T("st.signin"))))); return; }
-  let { data: prof } = await client.from("profiles").select("display_name,avatar_url,created_at").eq("id", user.id).maybeSingle();
+  let { data: prof } = await client.from("profiles").select("*").eq("id", user.id).maybeSingle();
   prof = prof || {};
   let name = prof.display_name || user.user_metadata?.full_name || "", avatar = prof.avatar_url || "";
 
@@ -97,8 +97,19 @@ mount("profile", async (body, { client, user }) => {
   add(T("pf.since"), fmt(user.created_at)); add(T("pf.last"), fmt(user.last_sign_in_at));
   add(T("pf.provider"), (user.app_metadata?.providers || []).map((p) => (p === "email" ? T("pf.pw") : p)).join(" · ") || "—");
 
+  /* ---- picture privacy (profiles.avatar_public; leaderboard hides the picture from others when off) ---- */
+  const pst = status();
+  const pub = el("input", { type: "checkbox", id: "avatarPublic", role: "switch", checked: prof.avatar_public !== false });
+  pub.addEventListener("change", async () => {
+    pub.disabled = true;
+    const { error } = await client.from("profiles").upsert({ id: user.id, avatar_public: pub.checked, updated_at: new Date().toISOString() }, { onConflict: "id" });
+    pub.disabled = false;
+    if (error) { pub.checked = !pub.checked; pst.err(T("pf.privE")); } else pst.ok(T("pf.privOk"));
+  });
+
   body.append(
     card(T("pf.photo"), T("pf.photoD"), el("div", { class: "st-avatar-row" }, img, el("div", { class: "st-avatar-ctl" }, el("div", { class: "st-actions" }, pick, save, cancel, remove), file, ast.node))),
+    card(T("pf.priv"), T("pf.privD"), field(T("pf.privL"), null, pub, "avatarPublic"), pst.node),
     card(T("pf.name"), T("pf.nameD"), el("div", { class: "st-inline" }, nameIn, saveName), nst.node),
     card(T("pf.account"), null, dl));
   nameIn.setAttribute("aria-label", T("pf.name"));

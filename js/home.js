@@ -9,6 +9,7 @@
 
   F.i18n.extend({
     ar: {
+      "w.hi": "أهلًا، {name}", "w.sum": "أكملت {done} من {total} درسًا في المسارات المحفوظة", "w.sumNone": "ابدأ أول درس وسنحفظ تقدمك هنا", "w.me": "حسابي",
       "nav.home": "الرئيسية",
       "menu.game": "الألعاب", "menu.account": "حسابي", "menu.dashboard": "لوحة التقدم", "menu.dashboard.sub": "دروسك ونقاطك وإنجازاتك", "menu.profile": "الملف الشخصي", "menu.profile.sub": "الحساب وبيانات التقدم",
       "nav.courses": "المسارات",
@@ -143,6 +144,7 @@
       "n.resume": "تابع",
     },
     en: {
+      "w.hi": "Welcome back, {name}", "w.sum": "{done} of {total} lessons completed in tracks that record progress", "w.sumNone": "Start your first lesson and your progress will appear here", "w.me": "My account",
       "nav.home": "Home",
       "menu.game": "Games", "menu.account": "My account", "menu.dashboard": "Progress dashboard", "menu.dashboard.sub": "Your lessons, points and achievements", "menu.profile": "Profile", "menu.profile.sub": "Account and progress data",
       "nav.courses": "Courses",
@@ -344,7 +346,8 @@
     card.setAttribute("data-course", tr.id);
     $("#nextBadge").textContent = BADGES[tr.id];
     $("#nextName").textContent = NAMES[tr.id];
-    $("#nextGo").setAttribute("href", tr.path.replace(/^\//, ""));
+    var deep = tr.path.replace(/^\//, "") + (t && info.current !== null ? "#lesson-" + (info.current + 1) : "");
+    $("#nextGo").setAttribute("href", deep);
     var label = $("#nextLabel"), status = $("#nextStatus"), goText = $("#nextGoText"), bar = $("#nextBar");
     var cta = $("#heroCta"), ctaText = cta && $("span", cta), fin = $("#finalCta");
     if (t) {
@@ -363,8 +366,8 @@
       bar.hidden = true;
       if (ctaText) { ctaText.setAttribute("data-i18n", "h.cta"); ctaText.textContent = F.i18n.t("h.cta"); }
     }
-    if (cta) cta.setAttribute("href", tr.path.replace(/^\//, ""));
-    if (fin) { fin.setAttribute("href", tr.path.replace(/^\//, "")); var ft = $("span", fin); if (ft && ctaText) ft.textContent = ctaText.textContent; }
+    if (cta) cta.setAttribute("href", deep);
+    if (fin) { fin.setAttribute("href", deep); var ft = $("span", fin); if (ft && ctaText) ft.textContent = ctaText.textContent; }
   }
 
   // ---- stage meta + sticky stage nav highlight ----
@@ -427,9 +430,28 @@
     });
   }
 
-  function render() { fillStats(); paintProgress(); renderNext(); stageMeta(); paintSegments(); }
+  // ---- signed-in welcome (real session from FAYAD.user(); real saved progress) ----
+  function renderWelcome() {
+    var box = $("#hmWelcome"), u = F.user && F.user();
+    if (!box) return;
+    if (!u) { box.hidden = true; return; }
+    var name = (u.name || (u.email || "").split("@")[0] || "").trim();
+    var p = F.catalog.progress(), done = 0, total = 0;
+    F.catalog.tracks.forEach(function (t) { if (p[t.id].done !== null) { done += p[t.id].done; total += t.total; } });
+    var av = $("#hmWelcomeAv", box);
+    av.textContent = "";
+    if (u.avatar && /^https:\/\//.test(u.avatar)) { var im = document.createElement("img"); im.alt = ""; im.width = im.height = 44; im.referrerPolicy = "no-referrer"; im.src = u.avatar; av.appendChild(im); }
+    else av.textContent = (name.charAt(0) || "?").toUpperCase();
+    $("#hmWelcomeHi", box).textContent = F.i18n.t("w.hi", { name: name || "" }).replace(/[،,]\s*$/, "");
+    $("#hmWelcomeSum", box).textContent = done > 0 ? F.i18n.t("w.sum", { done: done, total: total }) : F.i18n.t("w.sumNone");
+    $("#hmWelcomeMe", box).textContent = F.i18n.t("w.me");
+    box.hidden = false;
+  }
+  function render() { renderWelcome(); fillStats(); paintProgress(); renderNext(); stageMeta(); paintSegments(); }
 
   window.addEventListener("fayad:langchange", render);
+  window.addEventListener("storage", renderWelcome);
+  window.addEventListener("fayad-auth-changed", renderWelcome);
   // progress can change in another tab, or when returning via the back button
   window.addEventListener("storage", render);
   window.addEventListener("pageshow", render);

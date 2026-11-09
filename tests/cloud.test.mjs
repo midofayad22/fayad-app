@@ -18,7 +18,7 @@ async function open(signedIn) {
     window.FAYAD_AUTH = { client: {
       auth: { getUser: async () => ({ data: { user: si ? { id: "u1" } : null } }) },
       from: () => ({ select: () => ({ eq: async () => ({ data: [], error: null }) }) }),
-      rpc: async (name, args) => { window.__calls.push([name, args]); if (name === "get_leaderboard") return { data: [{ rank: 1, display_name: "<b>x</b>", points: 99, solved: 3 }], error: null }; return { data: [{ points: 1, already: false }], error: null }; },
+      rpc: async (name, args) => { window.__calls.push([name, args]); if (name === "get_leaderboard_v2") return { data: null, error: { message: "function not found (migration 0007 not applied)" } }; if (name === "get_leaderboard") return { data: [{ rank: 1, display_name: "<b>x</b>", points: 99, solved: 3 }], error: null }; return { data: [{ points: 1, already: false }], error: null }; },
     } };
   }, signedIn);
   await ctx.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort());
@@ -31,7 +31,7 @@ test("signed in: local solves are reported by level only (no points sent) and th
   const calls = await page.evaluate(() => window.__calls.filter((c) => c[0] === "submit_solve").map((c) => c[1]));
   for (const a of calls) assert.deepEqual(Object.keys(a).sort(), ["p_game", "p_hinted", "p_level"]);
   assert.deepEqual(calls.map((a) => [a.p_game, a.p_level, a.p_hinted]), [["html", 1, false], ["html", 2, true]]);
-  assert.equal(await page.locator("#lbList li span").first().innerText(), "<b>x</b>");
+  assert.equal(await page.locator("#lbList li .gh-nm").first().innerText(), "<b>x</b>");
   assert.equal(await page.locator("#lbList b b").count(), 0);
   await ctx.close();
 });
