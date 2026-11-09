@@ -17,7 +17,7 @@ const top = (q, n = 5, o = {}) => S.search(q, { limit: n, ...o }).map((r) => r.d
 test("index is generated from real content and is fresh (rebuild with: node tools/build-search-index.mjs)", async () => {
   const fresh = await buildIndex(); assert.equal(INDEX.hash, fresh.hash, "search/index.json is stale");
   const by = (t) => INDEX.docs.filter((d) => d.type === t).length;
-  assert.equal(by("course"), 11); assert.equal(by("lesson"), 271); assert.ok(by("module") >= 40); assert.ok(by("exercise") > 100); assert.ok(by("game") >= 30);
+  assert.equal(by("course"), 11); assert.equal(by("lesson"), 292); assert.ok(by("module") >= 40); assert.ok(by("exercise") > 100); assert.ok(by("game") >= 30);
   assert.ok(new Set(INDEX.docs.map((d) => d.id)).size === INDEX.docs.length, "ids are unique");
   assert.ok(fs.statSync(new URL("../search/index.json", import.meta.url)).size < 700 * 1024, "index stays small enough to ship");
 });

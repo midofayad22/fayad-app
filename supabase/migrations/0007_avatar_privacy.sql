@@ -20,7 +20,7 @@ language sql stable security definer set search_path = '' as $$
     left join public.profiles p on p.id = s.user_id
     group by s.user_id, p.display_name, p.avatar_url, p.avatar_public
   )
-  select rank() over (order by pts desc, n desc), name, pts, n, av, (user_id = (select auth.uid()))
+  select rank() over (order by pts desc, n desc), name, pts, n, av, coalesce(user_id = (select auth.uid()), false)
   from t
   order by pts desc, n desc, name, user_id
   limit greatest(1, least(coalesce(max_rows, 10), 100));

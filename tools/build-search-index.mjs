@@ -72,7 +72,9 @@ export async function buildIndex() {
     const { track, lessons, deep } = await loadTrack(c.id);
     const title = c.title || T(track.title);
     const groups = track.modules || track.groups || [];
-    const lessonIds = lessons.map((l) => l.id);
+    // the engines address lessons by SIDEBAR position (#lesson-N follows the group order), which can differ from the authoring/array order
+    const groupIds = groups.flatMap((g) => g.lessons || (g.units || []).flatMap((u) => u.lessons));
+    const lessonIds = groupIds.length === lessons.length && new Set(groupIds).size === groupIds.length ? groupIds : lessons.map((l) => l.id);
     docs.push({ id: `course-${c.id}`, type: "course", track: c.id, url: c.path, title, desc: pair((l) => `${title[l]} · ${lessons.length}`), terms: { ar: groups.map((g) => unitTitle(g).ar).join(" · "), en: groups.map((g) => unitTitle(g).en || "").join(" · ") } });
     groups.forEach((g, gi) => {
       const ids = g.lessons || (g.units || []).flatMap((u) => u.lessons);
@@ -83,13 +85,14 @@ export async function buildIndex() {
       const modOf = groups.find((g) => (g.lessons || (g.units || []).flatMap((u) => u.lessons)).includes(l.id));
       const dd = deep && deep[l.id] ? deep[l.id] : null;
       const tx = { ar: lessonText(l, "ar", dd), en: lessonText(l, "en", dd) };
-      const url = `${c.path}#lesson-${i + 1}`;
+      const pos = lessonIds.indexOf(l.id) + 1;
+      const url = `${c.path}#lesson-${pos}`;
       const ltitle = T(l.title), ldesc = T(l.description || l.heading);
-      docs.push({ id: l.id, type: "lesson", track: c.id, n: i + 1, url, title: ltitle, parent: modOf ? unitTitle(modOf) : title, desc: { ar: clip(ldesc.ar || "", 170), en: clip(ldesc.en || "", 170) }, heads: pair((x) => tx[x].heads), terms: pair((x) => tx[x].terms), body: pair((x) => tx[x].body) });
+      docs.push({ id: l.id, type: "lesson", track: c.id, n: pos, url, title: ltitle, parent: modOf ? unitTitle(modOf) : title, desc: { ar: clip(ldesc.ar || "", 170), en: clip(ldesc.en || "", 170) }, heads: pair((x) => tx[x].heads), terms: pair((x) => tx[x].terms), body: pair((x) => tx[x].body) });
       const ex = l.practice || l.challenge || l.exercise || (dd && dd.exercise);
       if (ex) {
         const exText = {}; for (const lang of ["ar", "en"]) exText[lang] = clip(textPaths(ex, "x").map(([, n]) => n[lang] || (lang === "ar" ? n.ar : "")).filter(Boolean).map(plain).join(" "), 200);
-        docs.push({ id: `${l.id}-exercise`, type: "exercise", track: c.id, n: i + 1, url, title: { ar: `تمرين: ${ltitle.ar}`, en: ltitle.en ? `Exercise: ${ltitle.en}` : undefined }, parent: title, desc: exText, terms: pair((x) => tx[x].terms) });
+        docs.push({ id: `${l.id}-exercise`, type: "exercise", track: c.id, n: pos, url, title: { ar: `تمرين: ${ltitle.ar}`, en: ltitle.en ? `Exercise: ${ltitle.en}` : undefined }, parent: title, desc: exText, terms: pair((x) => tx[x].terms) });
       }
     });
   }

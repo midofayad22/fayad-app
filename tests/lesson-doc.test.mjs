@@ -67,3 +67,14 @@ test("home: signed-out has no welcome; signed-in shows the name and 'continue' l
   assert.equal(await t.page.locator("#hmWelcomeAv").innerText(), "S");
   await t.ctx.close();
 });
+
+test("search results open the SAME lesson the index names (anchors follow sidebar order, not array order); no duplicate ids", async () => {
+  const INDEX = JSON.parse((await import("node:fs")).readFileSync(new URL("../search/index.json", import.meta.url), "utf8"));
+  const ids = INDEX.docs.map((d) => d.id); assert.equal(new Set(ids).size, ids.length, "no duplicate search entries");
+  const { lessons } = await import("../content/com/index.js");
+  for (const id of ["com-20", "com-21", "com-25", "com-30"]) {
+    const doc = INDEX.docs.find((d) => d.id === id); const { ctx, page } = await open(doc.url.replace("/fundamentals/computer-basics/", "/fundamentals/computer-basics/"), { lang: "ar" });
+    assert.equal(await page.locator("#lesson-title").innerText(), lessons.find((l) => l.id === id).title.ar, id);
+    await ctx.close();
+  }
+});

@@ -1,5 +1,8 @@
 // English text for the prg course (merged into the content by js/engine/with-english.js; validated by tests/english-content.test.mjs).
+import { beyondEN } from "./beyond.js";
+
 export const EN = {
+ "track.groups.1.title": "Beyond the Basics: Algorithms and How Languages Work",
  "track.groups.0.title": "Programming Fundamentals",
  "track.assessment.title": "Final Assessment",
  "track.assessment.questions.0.question": "What is the main purpose of programming?",
@@ -267,3 +270,5 @@ export const EN = {
  "prg-03.example.code": "const tasks = [\n    \"Open the app\",\n    \"Log in\",\n    \"Choose a lesson\",\n    \"Start learning\"\n];\n\nconsole.log(tasks);",
  "prg-10.example.code": "const score = 85;\n\nif (score >= 50) {\n    console.log(\"Passed\");\n} else {\n    console.log(\"Try again\");\n}",
 };
+
+Object.assign(EN, beyondEN);
