@@ -8,8 +8,8 @@ import { defs as c } from "./beyond-c.js";
 
 // plain-text fields are rendered with textContent by the views, so inline <code>…</code> is flattened here
 const plain = (t) => ({ ar: flat(t.ar), en: flat(t.en) });
-const flat = (s) => s.replace(/<[^>]+>/g, "").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
-const deepPlain = (x) => (x && typeof x.ar === "string" && typeof x.en === "string" ? plain(x) : Array.isArray(x) ? x.map(deepPlain) : x && typeof x === "object" ? Object.fromEntries(Object.entries(x).map(([k, v]) => [k, deepPlain(v)])) : x);
+export const flat = (s) => s.replace(/<[^>]+>/g, "").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
+export const deepPlain = (x) => (x && typeof x.ar === "string" && typeof x.en === "string" ? plain(x) : Array.isArray(x) ? x.map(deepPlain) : x && typeof x === "object" ? Object.fromEntries(Object.entries(x).map(([k, v]) => [k, deepPlain(v)])) : x);
 
 const defs = [...a, ...b, ...c];
 export const beyondLessons = [], beyondEN = {};

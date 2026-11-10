@@ -86,6 +86,11 @@ html[dir="rtl"] .cn-lesson[data-state="current"] { box-shadow: inset -3px 0 0 va
   .cn-lesson { min-height: 46px; }
   .cn-mod-h { min-height: 56px; }
 }
+/* Desktop: the course sidebar is its own scroll container, pinned under the course header. The document never has to scroll to reach lower lessons
+   (legacy com/prg sheets used height:fit-content, which made a 30-lesson sidebar taller than the viewport). */
+@media (min-width: 901px) {
+  .sidebar[data-cn] { --cn-top: 76px; position: sticky; top: var(--cn-top); align-self: start; height: calc(100vh - var(--cn-top) - 12px); height: calc(100dvh - var(--cn-top) - 12px); max-height: none; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-gutter: stable; box-sizing: border-box; }
+}
 @media (min-width: 901px) {
   .sidebar[data-cn] .cn-top { position: sticky; top: -14px; z-index: 3; background: var(--fy-bg-soft); padding-block: 4px 10px; margin-block: -4px 0; }
 }

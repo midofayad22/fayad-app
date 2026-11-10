@@ -1,4 +1,5 @@
 import { osLessons } from "./os.js";
+import { applyDeepBodies } from "./deep.js";
 
 // Computer Basics content, shared lesson schema (see docs/lesson-schema.md).
 // Generated once from the legacy implementation by tools/convert-com-track.mjs; now hand-maintained.
@@ -1569,4 +1570,5 @@ import { EN } from "./en.js";
 import { withEnglish } from "../../js/engine/with-english.js";
 // Operating Systems in depth: appended as com-21 … com-30 (ids are frozen; the final test stays com-20 and is listed last by the groups).
 lessons.push(...osLessons);
+applyDeepBodies(lessons, EN);
 withEnglish(track, lessons, EN);

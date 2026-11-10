@@ -60,7 +60,7 @@ function lessonText(l, lang, extra) {
     } else if (!/\.(title|heading|kicker)$/.test(p) || /\.sections\./.test(p)) body.push(raw);
   }
   const good = (t) => t.length >= 2 && t.length <= 32 && t.split(" ").length <= 4;
-  return { heads: uniq(heads).join(" · "), terms: uniq(terms.filter(good)).slice(0, 18).join(" · "), body: clip(body.join(" "), 420) };
+  return { heads: uniq(heads).join(" · "), terms: uniq(terms.filter(good)).slice(0, 18).join(" · "), body: clip(body.join(" "), 320) };
 }
 const pair = (fn) => ({ ar: fn("ar"), en: fn("en") });
 const T = (x) => (typeof x === "string" ? { ar: x } : x || {});
