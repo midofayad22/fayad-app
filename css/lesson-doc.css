@@ -79,3 +79,5 @@
 .doc-node-var { border-style: dashed; }
 
 @media (max-width: 480px) { .doc-tree li { padding-inline: 4px; } .doc-node { padding: 3px 7px; font-size: .8rem; } .doc-diagram { padding: 12px; } }
+/* long inline code such as URLs must wrap instead of widening the page */
+.lesson-section p code, .lesson-section li code, .doc-table code, .doc-note code, .doc-solution code, .doc-exercise summary code { overflow-wrap: anywhere; word-break: break-word; }
