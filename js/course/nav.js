@@ -145,12 +145,12 @@ export function createCourseNav({ doc = document, mount, courseId, courseTitle =
     cont.onclick = (e) => { e.preventDefault(); const t = refs.items.get(cont.dataset.id); if (t) { onSelect(t.it); } };
     if (reveal !== false) { const m = moduleOf(cur); if (m && !open.get(m)) setOpen(m, true, true); }
     refs.mods.forEach(applyOpen);
-    if (reveal) scrollToCurrent();
+    if (reveal) { scrollToCurrent(); setTimeout(scrollToCurrent, 320); } /* again after the module-open transition settles */
   }
 
   function scrollToCurrent() {
     const r = refs.items.get(current()); if (!r || query) return;
-    const sc = root.closest(".sidebar, .cn-scroll, .sb-panel") || root; const a = r.a.getBoundingClientRect(), b = sc.getBoundingClientRect();
+    let sc = root.closest(".sidebar, .cn-scroll, .sb-panel") || root; for (let e = r.a.parentElement; e && e !== doc.body; e = e.parentElement) { if (/(auto|scroll)/.test(getComputedStyle(e).overflowY) && e.scrollHeight > e.clientHeight) { sc = e; break; } } const a = r.a.getBoundingClientRect(), b = sc.getBoundingClientRect();
     if (sc.scrollHeight > sc.clientHeight && (a.top < b.top + 70 || a.bottom > b.bottom - 20)) sc.scrollTop += a.top - b.top - b.height / 3;
   }
 

@@ -1,0 +1,26 @@
+/* FAYBIT documentation shell — shared by every course page.
+   Foundation pages (com/prg) used a 500px hero; this turns it into a compact course header so the lesson is reachable immediately,
+   and gives the course sidebar its own scroll container pinned below the sticky bars. */
+.app-header { padding: 12px 4% !important; background: var(--fy-bg-soft) !important; border-bottom: 1px solid var(--fy-border) !important; }
+.app-header .header-content { max-width: 1400px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; text-align: start; }
+.app-header .back-btn { display: none; }                      /* the FAYBIT logo in the top bar is the home button */
+.app-header .course-icon { width: 38px; height: 38px; margin: 0; border-radius: 10px; font-size: 1.05rem; flex: none; }
+.app-header .course-label { order: 2; font-size: .68rem; letter-spacing: .08em; opacity: .85; }
+.app-header h1 { order: 1; margin: 0; font-size: 1.2rem; line-height: 1.3; }
+.app-header .header-content > p { display: none; }
+.app-header .course-stats { order: 3; margin: 0; margin-inline-start: auto; display: flex; gap: 14px; flex-wrap: wrap; }
+.app-header .course-stats > div { all: unset; display: inline-flex; gap: 5px; align-items: baseline; font-size: .82rem; color: var(--fy-text-soft); }
+.app-header .course-stats strong { font-size: .95rem; font-weight: 700; color: var(--fy-text); }
+@media (max-width: 600px) { .app-header .course-stats { display: none; } .app-header h1 { font-size: 1.05rem; } }
+/* foundation pages: the sticky global bar is shorter than the generic course navbar */
+@media (min-width: 901px) { body:has(.app-header) .sidebar[data-cn] { --cn-top: 60px; } }
+
+/* The FAYBIT logo is the home button on every learning page (top bar on foundation pages, navbar on the others). */
+.fy-bar-brand, .learning-logo { border-radius: 12px; padding: 4px 8px; margin-inline-start: -8px; transition: transform .16s ease, background-color .16s ease, box-shadow .16s ease; -webkit-tap-highlight-color: transparent; cursor: pointer; }
+.fy-bar-brand:hover, .learning-logo:hover { background: color-mix(in srgb, var(--fy-course, var(--fy-brand)) 10%, transparent); transform: translateY(-1px); box-shadow: 0 4px 14px -6px color-mix(in srgb, var(--fy-course, var(--fy-brand)) 55%, transparent); }
+.fy-bar-brand:active, .learning-logo:active { transform: translateY(0) scale(.97); box-shadow: none; }
+.fy-bar-brand:focus-visible, .learning-logo:focus-visible { outline: 2px solid var(--fy-course, var(--fy-brand)); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .fy-bar-brand, .learning-logo { transition: none; } .fy-bar-brand:hover, .learning-logo:hover { transform: none; } }
+html[data-motion="reduce"] .fy-bar-brand, html[data-motion="reduce"] .learning-logo { transition: none; }
+/* the separate Back button is redundant next to the logo home button */
+.learning-actions .back-btn { display: none; }
