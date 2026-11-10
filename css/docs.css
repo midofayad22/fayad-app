@@ -24,3 +24,13 @@
 html[data-motion="reduce"] .fy-bar-brand, html[data-motion="reduce"] .learning-logo { transition: none; }
 /* the separate Back button is redundant next to the logo home button */
 .learning-actions .back-btn { display: none; }
+
+/* Touch devices: comfortable hit areas (≥40px) without enlarging the desktop UI */
+@media (pointer: coarse) {
+  .fy-btn { flex: none; width: auto; min-width: 40px; min-height: 40px; }
+  .code-ex-copy, .copy-btn, .editor-btn, .quiz-btn, .fd-qnext { min-height: 40px; min-width: 44px; padding-inline: 12px; }
+  .doc-exercise summary { min-height: 44px; }
+}
+
+/* quiz: explanation shown after the right answer */
+.answer-explain { margin: 8px 0 0; padding: 10px 12px; border-inline-start: 3px solid var(--fy-course, var(--fy-brand)); background: var(--fy-surface-2); border-radius: 8px; color: var(--fy-text); font-size: .95rem; line-height: 1.7; }
