@@ -54,6 +54,7 @@ mount("profile", async (body, { client, user }) => {
   const setAvatar = async (url) => {
     const { error } = await client.from("profiles").upsert({ id: user.id, avatar_url: url, updated_at: new Date().toISOString() }, { onConflict: "id" }); if (error) throw error;
     await client.auth.updateUser({ data: { avatar_url: url || null } });
+    F.setProfile?.({ avatar: url || "" });
   };
   save.addEventListener("click", async () => {
     if (!pending) return; save.disabled = cancel.disabled = true; ast.busy(T("pf.uploading"));
@@ -84,7 +85,7 @@ mount("profile", async (body, { client, user }) => {
     saveName.disabled = true; nst.busy();
     try {
       const { error } = await client.from("profiles").upsert({ id: user.id, display_name: n, updated_at: new Date().toISOString() }, { onConflict: "id" }); if (error) throw error;
-      await client.auth.updateUser({ data: { full_name: n } }); name = n; nameIn.value = n; paintAvatar(avatar); nst.ok(T("pf.ok.name"));
+      await client.auth.updateUser({ data: { full_name: n } }); F.setProfile?.({ name: n }); name = n; nameIn.value = n; paintAvatar(avatar); nst.ok(T("pf.ok.name"));
     } catch (e) { nst.err(/network|fetch/i.test(String(e?.message)) ? T("st.offline") : T("st.error")); } finally { saveName.disabled = false; }
   };
   saveName.addEventListener("click", doName); nameIn.addEventListener("keydown", (e) => { if (e.key === "Enter") doName(); });

@@ -285,3 +285,19 @@ b, strong { font-weight: var(--fy-fw-strong); }
 
 /* large stat numerals stay bold (keeps the WCAG large-text contrast class they were designed for) */
 .course-stats strong{font-weight:700}
+
+/* Account menu + toast (shell.js) */
+.fy-menu { position: fixed; z-index: 1200; min-width: 240px; max-width: calc(100vw - 16px); padding: 8px; border-radius: 14px; background: var(--fy-surface); border: 1px solid var(--fy-border-strong); box-shadow: 0 18px 40px -18px rgba(8, 20, 32, .45); opacity: 0; transform: translateY(-6px); transition: opacity .18s ease, transform .18s ease; }
+.fy-menu.on { opacity: 1; transform: none; }
+.fy-menu-head { display: flex; align-items: center; gap: 12px; padding: 8px 8px 12px; border-bottom: 1px solid var(--fy-border); margin-bottom: 6px; }
+.fy-avatar-lg { width: 44px; height: 44px; font-size: 1.1rem; flex: none; }
+.fy-menu-who { display: grid; min-width: 0; } .fy-menu-who b { font-size: 1rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .fy-menu-who small { color: var(--fy-text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fy-menu-item { display: flex; width: 100%; align-items: center; min-height: 44px; padding: 0 12px; border: 0; border-radius: 10px; background: none; color: var(--fy-text); font-weight: 600; font-size: .95rem; font-family: inherit; text-align: start; text-decoration: none; cursor: pointer; transition: background-color .16s ease, transform .16s ease, color .16s ease; }
+.fy-menu-item:hover { background: var(--fy-brand-soft, #e3f4f2); color: var(--fy-text); transform: translateX(2px); }
+[dir="rtl"] .fy-menu-item:hover { transform: translateX(-2px); }
+.fy-menu-item:focus-visible { outline: 2px solid var(--fy-brand); outline-offset: -2px; background: var(--fy-brand-soft, #e3f4f2); }
+.fy-menu hr { border: 0; border-top: 1px solid var(--fy-border); margin: 6px 0; }
+.fy-menu-out { color: #b91c1c; } html[data-theme="dark"] .fy-menu-out { color: #fca5a5; }
+.fy-toast { position: fixed; z-index: 1300; inset-inline: 16px; bottom: calc(20px + env(safe-area-inset-bottom)); margin-inline: auto; width: fit-content; max-width: calc(100vw - 32px); padding: 12px 18px; border-radius: 12px; background: var(--fy-text); color: var(--fy-bg); font-weight: 600; box-shadow: 0 12px 30px -12px rgba(0, 0, 0, .5); opacity: 0; transform: translateY(10px); transition: opacity .2s ease, transform .2s ease; }
+.fy-toast.on { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .fy-menu, .fy-toast, .fy-menu-item { transition: none; } .fy-menu-item:hover { transform: none; } }

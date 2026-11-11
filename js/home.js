@@ -451,7 +451,7 @@
 
   window.addEventListener("fayad:langchange", render);
   window.addEventListener("storage", renderWelcome);
-  window.addEventListener("fayad-auth-changed", renderWelcome);
+  window.addEventListener("fayad-auth-changed", renderWelcome); window.addEventListener("fayad-profile-changed", renderWelcome);
   // progress can change in another tab, or when returning via the back button
   window.addEventListener("storage", render);
   window.addEventListener("pageshow", render);

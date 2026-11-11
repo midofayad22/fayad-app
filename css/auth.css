@@ -29,8 +29,9 @@
 .au-field input:focus-visible { outline: none; border-color: var(--fy-brand); box-shadow: var(--fy-focus); }
 .au-field input[aria-invalid="true"] { border-color: #dc2626; }
 .au-pw { position: relative; }
-.au-pw input { padding-inline-end: 52px; }
-.au-pw button { position: absolute; inset-block: 0; inset-inline-end: 0; width: 48px; border: 0; background: none; color: var(--fy-text-muted); cursor: pointer; border-radius: 10px; }
+.au-pw input { padding-inline: 14px 56px; text-overflow: ellipsis; } /* direction follows the page, so the eye (inline-end) is always on the input's end side, in RTL and LTR */
+.au-pw input[type="text"], .au-pw input[type="password"] { unicode-bidi: plaintext; }
+.au-pw button { position: absolute; inset-block: 0; inset-inline-end: 4px; width: 48px; border: 0; background: none; color: var(--fy-text-muted); cursor: pointer; border-radius: 10px; }
 .au-pw svg { width: 20px; height: 20px; }
 .au-meter { height: 5px; border-radius: 99px; background: var(--fy-border); overflow: hidden; }
 .au-meter i { display: block; height: 100%; width: 0; background: #dc2626; transition: width .25s, background .25s; }
