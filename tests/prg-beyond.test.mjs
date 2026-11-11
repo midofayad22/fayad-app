@@ -25,9 +25,9 @@ const check = async (page, code) => {
   return page.locator(".fd-ex-status").getAttribute("class");
 };
 
-test("11 new lessons, each with doc components, 4 quiz questions and an exercise", () => {
+test("11 new lessons, each with doc components, 5 quiz questions and an exercise", () => {
   assert.equal(NEW.length, 11);
-  for (const l of NEW) { assert.equal(1 + l.quizMore.length, 4, l.id); assert.ok(l.exercise.solution && l.exercise.test && l.exercise.starter, l.id); assert.ok(l.body.ar.includes("doc-objectives") && l.body.ar.includes("code-ex"), l.id); }
+  for (const l of NEW) { assert.equal(1 + l.quizMore.length, 5, l.id); assert.ok(l.exercise.solution && l.exercise.test && l.exercise.starter, l.id); assert.ok(l.body.ar.includes("doc-objectives") && l.body.ar.includes("code-ex"), l.id); }
 });
 
 for (const [i, l] of NEW.entries()) test(`${l.id}: renders in AR and EN; the starter fails and the reference solution passes the sandbox check`, async () => {

@@ -119,7 +119,7 @@ async function renderAccount() {
   else { try { const { data } = await A.getSession(); user = data?.session?.user || null; } catch { unavailable = true; } }
   if (user) {
     const dl = el("dl", "ac-dl");
-    dl.append(el("dt", "", T("p.acc.name")), el("dd", "", A.getUserDisplayName(user)), el("dt", "", T("p.acc.email")), el("dd", "", A.getUserEmail(user)));
+    dl.append(el("dt", "", T("p.acc.name")), el("dd", "", (F.user && F.user()?.name) || A.getUserDisplayName(user)), el("dt", "", T("p.acc.email")), el("dd", "", A.getUserEmail(user)));
     const out = el("button", "ac-btn", T("p.acc.signout")); out.type = "button";
     out.addEventListener("click", async () => { try { await A.signOut(); } catch { /* handled by auth module */ } renderAccount(); });
     box.append(dl, el("p", "ac-note", T("p.acc.sync")), out);
@@ -158,3 +158,4 @@ window.addEventListener("fayad:langchange", render);
 window.addEventListener("storage", render);
 window.addEventListener("pageshow", render);
 window.addEventListener("fayad-auth-changed", () => { if (page === "profile") renderAccount(); });
+window.addEventListener("fayad-profile-changed", () => { if (page === "profile") renderAccount(); });

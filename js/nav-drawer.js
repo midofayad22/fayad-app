@@ -9,10 +9,10 @@ import { icon } from "/js/ui/icons.js";
 
 const L = {
   ar: { menu: "القائمة الرئيسية", close: "إغلاق القائمة", main: "التنقل الرئيسي", acct: "حسابي", platform: "المنصة", home: "الرئيسية", courses: "المسارات التعليمية", all: "كل المسارات", games: "مركز الألعاب", dash: "لوحة التقدم",
-    profile: "الملف الشخصي", ach: "الإنجازات", settings: "الإعدادات", notif: "الإشعارات", about: "عن FAYBIT", signin: "تسجيل الدخول", signup: "إنشاء حساب", guest: "زائر", guestNote: "احفظ تقدمك", newHere: "مستخدم جديد؟",
+    profile: "الملف الشخصي", ach: "الإنجازات", settings: "الإعدادات", notif: "الإشعارات", about: "عن FAYBIT", signin: "تسجيل الدخول", signout: "تسجيل الخروج", signup: "إنشاء حساب", guest: "زائر", guestNote: "احفظ تقدمك", newHere: "مستخدم جديد؟",
     cur: "الكورس الحالي", cont: "تابع من حيث توقفت", start: "ابدأ الكورس", done: "اكتمل", g1: "الأساسيات", g2: "أساسيات الويب", g3: "الأطر والمكتبات", search: "بحث", lesson: "الدرس" },
   en: { menu: "Main menu", close: "Close menu", main: "Main navigation", acct: "My account", platform: "Platform", home: "Home", courses: "Learning paths", all: "All paths", games: "Games Center", dash: "Dashboard",
-    profile: "Profile", ach: "Achievements", settings: "Settings", notif: "Notifications", about: "About FAYBIT", signin: "Sign in", signup: "Create account", guest: "Guest", guestNote: "Save your progress", newHere: "New here?",
+    profile: "Profile", ach: "Achievements", settings: "Settings", notif: "Notifications", about: "About FAYBIT", signin: "Sign in", signout: "Sign out", signup: "Create account", guest: "Guest", guestNote: "Save your progress", newHere: "New here?",
     cur: "Current course", cont: "Continue where you left off", start: "Start the course", done: "complete", g1: "Foundations", g2: "Web basics", g3: "Frameworks & libraries", search: "Search", lesson: "Lesson" },
 };
 export const NAMES = { com: ["أساسيات الكمبيوتر", "Computer Basics"], prg: ["أساسيات البرمجة", "Programming Basics"], html: ["HTML", "HTML"], css: ["CSS", "CSS"], js: ["JavaScript", "JavaScript"], ajs: ["جافاسكريبت المتقدم", "Advanced JavaScript"], bs: ["Bootstrap", "Bootstrap"], tw: ["Tailwind CSS", "Tailwind CSS"], react: ["React", "React"], vue: ["Vue", "Vue"], angular: ["Angular", "Angular"] };
@@ -24,7 +24,7 @@ const COURSE_ICON = { com: "cpu", prg: "terminal", html: "code-xml", css: "palet
 const lang = () => (document.documentElement.lang === "en" ? "en" : "ar");
 const T = (k) => L[lang()][k];
 function progress() { try { return JSON.parse(localStorage.getItem("fayad-progress-v1"))?.tracks || {}; } catch { return {}; } }
-function session() { const u = window.FAYAD && window.FAYAD.user && window.FAYAD.user(); return u ? { email: u.email, name: u.name } : null; }
+function session() { const u = window.FAYAD && window.FAYAD.user && window.FAYAD.user(); return u ? { email: u.email, name: u.name, avatar: u.avatar } : null; }
 function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
 const norm = (p) => p.replace(/\/index\.html$/, "/").replace(/\/$/, "") || "/";
 function here(href) { const u = new URL(href, location.origin); return norm(u.pathname) === norm(location.pathname) && (!u.search || u.search === location.search); }
@@ -86,7 +86,8 @@ function build() {
 
   // account area (top of the drawer, under the header): a quiet row, not a call-to-action button
   const acctBox = el("div", "nd-account");
-  if (user) { const av = el("span", "nd-av", (user.name || user.email || "?").trim()[0].toUpperCase()); av.setAttribute("aria-hidden", "true"); const w = el("span", "nd-who"); w.append(el("b", "", user.name || user.email.split("@")[0]), el("small", "", user.email)); const a = el("a", "nd-acct"); a.href = "/profile.html"; a.append(av, w); a.insertAdjacentHTML("beforeend", icon(lang() === "en" ? "chevron-right" : "chevron-left", 16, "nd-acct-go")); acctBox.append(a); }
+  if (user) { const av = el("span", "nd-av", (user.name || user.email || "?").trim()[0].toUpperCase()); av.setAttribute("aria-hidden", "true"); if (user.avatar) { const im = new Image(); im.alt = ""; im.referrerPolicy = "no-referrer"; im.onload = () => { av.textContent = ""; av.append(im); }; im.src = user.avatar; } const w = el("span", "nd-who"); w.append(el("b", "", user.name || user.email.split("@")[0]), el("small", "", user.email)); const a = el("a", "nd-acct"); a.href = "/profile.html"; a.append(av, w); a.insertAdjacentHTML("beforeend", icon(lang() === "en" ? "chevron-right" : "chevron-left", 16, "nd-acct-go")); acctBox.append(a);
+    const so = el("button", "nd-signout", T("signout")); so.type = "button"; so.addEventListener("click", async () => { so.disabled = true; try { await window.FAYAD_AUTH?.client?.auth.signOut(); } catch { /* offline */ } try { Object.keys(localStorage).filter((k) => /^sb-.*-auth-token$/.test(k) || k === "fayad-profile-v1").forEach((k) => localStorage.removeItem(k)); } catch { /* blocked */ } window.dispatchEvent(new CustomEvent("fayad-auth-changed", { detail: { event: "SIGNED_OUT", loggedIn: false, user: null, session: null } })); close(); }); acctBox.append(so); }
   else { const a = el("a", "nd-acct"); a.href = "/login.html"; const av = el("span", "nd-av nd-av-guest"); av.setAttribute("aria-hidden", "true"); av.innerHTML = icon("user", 18); const w = el("span", "nd-who"); w.append(el("b", "", T("signin")), el("small", "", T("guestNote"))); a.append(av, w); a.insertAdjacentHTML("beforeend", icon(lang() === "en" ? "chevron-right" : "chevron-left", 16, "nd-acct-go"));
     const alt = el("p", "nd-acct-alt"); const la = el("a", "", T("signup")); la.href = "/login.html#signup"; alt.append(el("span", "", T("newHere") + " "), la); acctBox.append(a, alt); }
   panel.append(head, body, acctBox); wrap.append(back, panel); return wrap;

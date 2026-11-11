@@ -97,7 +97,7 @@
           <div class="au-field">
             <label for="password" data-i18n="au.pass">كلمة المرور</label>
             <div class="au-pw">
-              <input id="password" name="password" type="password" autocomplete="current-password" minlength="8" dir="ltr" required />
+              <input id="password" name="password" type="password" autocomplete="current-password" minlength="8" required />
               <button type="button" id="togglePw" aria-pressed="false" data-i18n-attr="aria-label:au.show" aria-label="إظهار كلمة المرور"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button>
             </div>
             <div class="au-meter" data-only="signup" hidden><i id="meterFill"></i></div>
@@ -105,7 +105,7 @@
           </div>
           <div class="au-field" data-only="signup" hidden>
             <label for="confirm" data-i18n="au.confirm">تأكيد كلمة المرور</label>
-            <input id="confirm" name="confirm" type="password" autocomplete="new-password" dir="ltr" />
+            <input id="confirm" name="confirm" type="password" autocomplete="new-password" />
           </div>
 
           <p class="au-status" id="status" role="status" aria-live="polite"></p>
@@ -116,8 +116,8 @@
         <form id="resetForm" class="au-form" hidden novalidate>
           <h2 data-i18n="au.hNew">كلمة مرور جديدة</h2>
           <p class="au-sub" data-i18n="au.sNew">اختر كلمة مرور جديدة لحسابك.</p>
-          <div class="au-field"><label for="newPw" data-i18n="au.pass">كلمة المرور</label><input id="newPw" type="password" autocomplete="new-password" minlength="8" dir="ltr" required /></div>
-          <div class="au-field"><label for="newPw2" data-i18n="au.confirm">تأكيد كلمة المرور</label><input id="newPw2" type="password" autocomplete="new-password" dir="ltr" required /></div>
+          <div class="au-field"><label for="newPw" data-i18n="au.pass">كلمة المرور</label><input id="newPw" type="password" autocomplete="new-password" minlength="8" required /></div>
+          <div class="au-field"><label for="newPw2" data-i18n="au.confirm">تأكيد كلمة المرور</label><input id="newPw2" type="password" autocomplete="new-password" required /></div>
           <p class="au-status" id="status2" role="status" aria-live="polite"></p>
           <button type="submit" class="au-submit" data-i18n="au.save">حفظ كلمة المرور</button>
         </form>

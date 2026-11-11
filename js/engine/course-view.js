@@ -176,6 +176,7 @@ export function mountCourse({ doc = document, track, lessons, state, lang: initi
       el.answerOptions.appendChild(b);
     }
     el.answerFeedback.textContent = ""; el.answerFeedback.className = "answer-feedback";
+    el.answerFeedback.parentElement?.querySelectorAll(".answer-explain").forEach((n) => n.remove());
     el.quizNextButton.disabled = true;
     el.quizNextButton.textContent = state.isLastQuestion ? S("quiz.complete") : S("quiz.next");
   }
@@ -191,6 +192,8 @@ export function mountCourse({ doc = document, track, lessons, state, lang: initi
     el.answerOptions.querySelectorAll("button").forEach((b) => { b.disabled = true; });
     button.classList.add("correct", "correct-answer");
     el.answerFeedback.textContent = S("quiz.correct"); el.answerFeedback.className = "answer-feedback check-feedback correct correct-answer";
+    const why = state.questionData.explain;       // optional per-question explanation (why the answer is right), shown after a correct pick
+    if (why) { const p = doc.createElement("p"); p.className = "answer-explain"; p.setAttribute("role", "note"); p.textContent = text(why); el.answerFeedback.insertAdjacentElement("afterend", p); }
     el.quizNextButton.disabled = false;
   }
 
