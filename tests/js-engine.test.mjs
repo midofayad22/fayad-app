@@ -28,7 +28,7 @@ async function open(url = URL_NEW, seed = {}, viewport = { width: 1280, height: 
 }
 // results appear only after Run: settle() presses it, then waits until the output is neither the placeholder nor "running"
 const settle = async (page) => { await page.click("#runButton"); await page.waitForFunction(() => { const t = document.querySelector("#output").textContent; return !t.includes("جاري التشغيل") && t !== "ستظهر النتيجة هنا."; }, null, { timeout: 8000 }); };
-const solveLesson = async (page) => { for (let i = 0; i < 3; i++) { const idx = await page.evaluate(() => FAYAD.course.state.questionData.correct); await page.click(`#answerOptions button[data-index="${idx}"]`); await page.click("#quizNextButton"); } };
+const solveLesson = async (page) => { for (let i = 0, n = await page.evaluate(() => FAYAD.course.state.questionCount); i < n; i++) { const idx = await page.evaluate(() => FAYAD.course.state.questionData.correct); await page.click(`#answerOptions button[data-index="${idx}"]`); await page.click("#quizNextButton"); } };
 const stored = (page, k) => page.evaluate((key) => localStorage.getItem(key), k);
 
 test("boots without console errors; sidebar is built from data and lists every lesson", async () => {
@@ -71,7 +71,7 @@ test("legacy sections: lesson 1 shows its two articles; other lessons no longer 
   await ctx.close();
 });
 
-test("opening a lesson never completes it; completion needs 3 correct answers, then mirrors legacy + v1 storage", async () => {
+test("opening a lesson never completes it; completion needs every quiz question answered correctly, then mirrors legacy + v1 storage", async () => {
   const { ctx, page } = await open();
   await pick(page, 1);
   assert.equal(await stored(page, "fayad-js-completed-lessons"), null);
@@ -85,7 +85,7 @@ test("opening a lesson never completes it; completion needs 3 correct answers, t
   assert.equal(await stored(page, "fayad-js-completed-lessons"), "[0]");
   const v1 = JSON.parse(await stored(page, "fayad-progress-v1"));
   assert.deepEqual(v1.tracks.js.completed, ["js-01"]);
-  assert.equal(v1.tracks.js.quiz["js-01"].attempts, 4);
+  assert.equal(v1.tracks.js.quiz["js-01"].attempts, 6);
   assert.equal(await page.locator("#lessonTitle").innerText(), lessons[1].title.ar); // moved to the next lesson
   assert.equal(await page.locator('.sidebar a.cn-lesson[data-lesson="1"] .cn-mark').innerText(), "✓");
   assert.equal(await page.locator("#progressText").innerText(), "4%");
