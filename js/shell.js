@@ -27,7 +27,7 @@
     try {
       for (var i = 0; i < localStorage.length; i++) {
         var k = localStorage.key(i);
-        if (!/^sb-.*-auth-token$/.test(k)) continue;
+        if (!/^(sb-.*-auth-token|fayad-supabase-auth)$/.test(k)) continue;
         var raw = JSON.parse(localStorage.getItem(k) || "null"), u = raw && (raw.user || (raw.currentSession && raw.currentSession.user));
         if (!u) continue; var exp = raw.expires_at || (raw.currentSession && raw.currentSession.expires_at);
         if (exp && exp * 1000 < Date.now() - 7 * 864e5) continue; // access tokens refresh silently; only treat long-dead sessions as gone
@@ -97,7 +97,7 @@
     var out = item(null, ar ? "تسجيل الخروج" : "Sign out", function () {
       out.disabled = true; var cl = window.FAYAD_AUTH && window.FAYAD_AUTH.client;
       Promise.resolve(cl ? cl.auth.signOut() : null).catch(function () {}).then(function () {
-        try { Object.keys(localStorage).filter(function (k) { return /^sb-.*-auth-token$/.test(k) || k === PKEY; }).forEach(function (k) { localStorage.removeItem(k); }); } catch (e) { /* storage blocked */ }
+        try { Object.keys(localStorage).filter(function (k) { return /^(sb-.*-auth-token|fayad-supabase-auth)$/.test(k) || k === PKEY; }).forEach(function (k) { localStorage.removeItem(k); }); } catch (e) { /* storage blocked */ }
         closeMenu(false); window.dispatchEvent(new CustomEvent("fayad-auth-changed", { detail: { event: "SIGNED_OUT", loggedIn: false, user: null, session: null } })); paintAccount();
         toast(ar ? "تم تسجيل الخروج." : "You have been signed out.");
       });
@@ -338,7 +338,7 @@
 
   // Signed-in devices sync account preferences (guests never load Supabase).
   try {
-    if (localStorage.getItem("sb-vsrysitexadvmmikcmfs-auth-token"))
+    if (localStorage.getItem("fayad-supabase-auth") || localStorage.getItem("sb-vsrysitexadvmmikcmfs-auth-token"))
       {
         import("/js/prefs-sync.js").then(function (m) { m.start(); }).catch(function () {});
         import("/js/notif-badge.js").then(function (m) { m.start(); }).catch(function () {});

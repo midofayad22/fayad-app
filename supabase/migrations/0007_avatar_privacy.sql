@@ -1,4 +1,4 @@
--- Migration 0007 (PROPOSED, not applied): avatar privacy + avatar-aware public leaderboard. Additive only; no data is changed or removed.
+-- Migration 0007 (APPLIED to project vsrysitexadvmmikcmfs on 2026-11-12 as avatar_privacy_0007): avatar privacy + avatar-aware public leaderboard. Additive only; no data is changed or removed.
 -- Why a migration is needed: the public leaderboard function can only read what the database stores. Today profiles has no
 -- "show my picture to others" flag, and get_leaderboard() returns no avatar. This adds the flag (default TRUE = current behaviour
 -- for existing users until they choose otherwise) and a NEW function; the old get_leaderboard() stays untouched as a fallback.

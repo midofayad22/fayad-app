@@ -12,8 +12,8 @@ import { TOTALS } from "/js/engine/totals.js";
 import { mergeSolves, solveRows } from "/js/game/store.js";
 
 const client = () => window.FAYAD_AUTH?.client || null;
-const SESSION_KEY = "sb-vsrysitexadvmmikcmfs-auth-token";
-const hasSession = () => { try { return !!localStorage.getItem(SESSION_KEY); } catch { return false; } };
+const SESSION_KEYS = ["fayad-supabase-auth", "sb-vsrysitexadvmmikcmfs-auth-token"]; // the client persists under fayad-supabase-auth (main-auth.js); the sb- key is the legacy name
+const hasSession = () => { try { return SESSION_KEYS.some((k) => !!localStorage.getItem(k)); } catch { return false; } };
 const load = (src) => new Promise((res, rej) => { const s = document.createElement("script"); s.src = src; s.onload = res; s.onerror = rej; document.head.appendChild(s); });
 /** The auth libraries are only downloaded when this device has a saved sign-in (anonymous visitors pay nothing). */
 export async function ensureClient() {
