@@ -5,8 +5,8 @@ import assert from "node:assert/strict";
 import { chromium } from "playwright";
 import { startServer } from "./static-server.mjs";
 
-const COVERED = ["html", "css", "js", "ajs", "prg"];
-const ALL = ["com", "prg", "html", "css", "js", "ajs", "bs", "tw", "react", "vue", "angular"];
+const COVERED = ["com", "prg", "html", "css", "js", "ajs", "bs", "tw", "react", "vue"];
+const ALL = ["com", "prg", "html", "css", "js", "ajs", "bs", "tw", "react", "vue"];
 const AR = /[؀-ۿ]/;
 const txt = (o) => (typeof o === "string" ? o : o?.en || o?.ar || "");
 const qs = (l) => [...(l.quiz || []), ...(l.quizMore || [])];

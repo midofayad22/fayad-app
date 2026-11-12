@@ -1572,3 +1572,9 @@ import { withEnglish } from "../../js/engine/with-english.js";
 lessons.push(...osLessons);
 applyDeepBodies(lessons, EN);
 withEnglish(track, lessons, EN);
+
+import { applyExtraQuiz } from "../_quiz.js";
+import { EXTRA as QUIZ_A } from "./quiz-extra-a.js";
+import { EXTRA as QUIZ_B } from "./quiz-extra-b.js";
+applyExtraQuiz(lessons, QUIZ_A, "quizMore");
+applyExtraQuiz(lessons, QUIZ_B, "quizMore");
