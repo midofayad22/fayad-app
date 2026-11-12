@@ -75,7 +75,7 @@ mount("security", async (body, { client, user }) => {
       if (files?.length) await folder.remove(files.map((f) => `${user.id}/${f.name}`)).catch(() => {});
       const { error } = await client.rpc("delete_my_account", { p_confirm: DELETE_PHRASE }); if (error) throw error;
       dst.ok(T("sc.ok.del")); await client.auth.signOut({ scope: "local" }).catch(() => {});
-      try { for (const k of Object.keys(localStorage)) if (/^sb-.*-auth-token$/.test(k) || k === "fayad-prefs-pending") localStorage.removeItem(k); } catch {}
+      try { for (const k of Object.keys(localStorage)) if (/^(sb-.*-auth-token|fayad-supabase-auth)$/.test(k) || k === "fayad-prefs-pending") localStorage.removeItem(k); } catch {}
       setTimeout(() => (location.href = "/index.html"), 1500);
     } catch (err) { dst.err(T(mapErr(err))); dbtn.disabled = false; }
   });
