@@ -124,7 +124,7 @@ async function renderAccount() {
     out.addEventListener("click", async () => { try { await A.signOut(); } catch { /* handled by auth module */ } renderAccount(); });
     box.append(dl, el("p", "ac-note", T("p.acc.sync")), out);
   } else {
-    box.append(el("p", "ac-note", unavailable && A ? T("p.acc.unavail") : T("p.acc.out")));
+    box.append(el("p", "ac-note", unavailable && (A || (F.user && F.user())) ? T("p.acc.unavail") : T("p.acc.out")));
     const a = el("a", "ac-btn ac-btn-primary", T("p.acc.signin")); a.href = "/login.html"; box.append(a);
   }
 }

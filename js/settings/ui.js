@@ -93,7 +93,8 @@ export function range({ id, label, min, max, step, value, fmt, onInput }) {
 export async function accountState() {
   let c = null; try { c = await ensureClient(); } catch {}
   if (!c) return { client: null, user: null };
-  try { const { data } = await c.auth.getUser(); return { client: c, user: data?.user || null }; } catch { return { client: c, user: null }; }
+  try { const { data, error } = await c.auth.getUser(); if (!error && data?.user) return { client: c, user: data.user }; if (error && error.status >= 400 && error.status < 500) return { client: c, user: null }; /* rejected token: really signed out */ } catch { /* offline: fall back to the locally stored session below */ }
+  try { const { data } = await c.auth.getSession(); return { client: c, user: data?.session?.user || null }; } catch { return { client: c, user: null }; }
 }
 
 export function storageNote(user) {
