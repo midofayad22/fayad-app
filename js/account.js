@@ -19,6 +19,7 @@ const NAMES = { com: "Computer Fundamentals", prg: "Programming Fundamentals", h
 i18n?.extend({
   ar: {
     "ac.nav": "حسابي", "ac.home": "الرئيسية", "ac.dashboard": "لوحة التقدم", "ac.profile": "الملف الشخصي",
+    "dv.recent": "آخر نشاط", "dv.continue": "تابع من حيث توقفت", "dv.resume": "متابعة", "dv.lesson": "الدرس {n}", "dv.norec": "سيظهر هنا نشاطك بعد أول درس.", "dv.rest": "المتبقي: {n} درسًا",
     "d.title": "لوحة التقدم", "d.sub": "كل الأرقام هنا محسوبة من نشاطك الفعلي على هذا الجهاز.",
     "d.empty.t": "لم تبدأ أي درس بعد", "d.empty.p": "أكمل أول درس وستظهر هنا نقاطك وإنجازاتك وإحصاءاتك.", "h.cta": "ابدأ من الأساسيات",
     "d.stats": "إحصاءات التعلم", "d.tracks": "التقدم في كل مسار", "d.ach": "الإنجازات", "d.points": "كيف تُحسب النقاط",
@@ -39,6 +40,7 @@ i18n?.extend({
   },
   en: {
     "ac.nav": "My account", "ac.home": "Home", "ac.dashboard": "Progress", "ac.profile": "Profile",
+    "dv.recent": "Recent activity", "dv.continue": "Continue where you left off", "dv.resume": "Resume", "dv.lesson": "Lesson {n}", "dv.norec": "Your activity appears here after your first lesson.", "dv.rest": "{n} lessons remaining",
     "d.title": "Progress dashboard", "d.sub": "Every number here is computed from your real activity on this device.",
     "d.empty.t": "You haven't started a lesson yet", "d.empty.p": "Complete your first lesson and your points, achievements and statistics will appear here.", "h.cta": "Start with the fundamentals",
     "d.stats": "Learning statistics", "d.tracks": "Progress by course", "d.ach": "Achievements", "d.points": "How points work",
@@ -73,6 +75,32 @@ function statCard(value, label, sub) {
 
 function stats() { return computeStats(progress.snapshot(), tracks); }
 
+const lessonHash = (cur) => { const m = /(\d+)\s*$/.exec(cur || ""); return m ? `#lesson-${Number(m[1])}` : ""; };
+function renderContinue(s, n) {
+  const box = $("dContinue"); box.textContent = "";
+  const t = [...s.perTrack].filter((x) => x.started && !x.done).sort((a, b) => b.updatedAt - a.updatedAt)[0];
+  box.hidden = !t; if (!t) return;
+  const meta = tracks.find((x) => x.id === t.id); if (!meta) return;
+  const left = el("div", "dv-cont-t"); left.append(el("h2", "dv-cont-h", T("dv.continue")));
+  left.firstChild.id = "dContT";
+  left.append(el("strong", "", NAMES[t.id] || t.id), el("small", "", (t.current ? T("dv.lesson", { n: n.format(Number((/(\d+)\s*$/.exec(t.current) || [0, 0])[1])) }) + " · " : "") + T("dv.rest", { n: n.format(t.total - t.completed) })));
+  const bar = el("span", "ac-bar"); bar.setAttribute("role", "progressbar"); bar.setAttribute("aria-label", NAMES[t.id] || t.id); bar.setAttribute("aria-valuemin", "0"); bar.setAttribute("aria-valuemax", "100"); bar.setAttribute("aria-valuenow", String(t.percent));
+  const fill = el("span"); fill.style.width = `${t.percent}%`; bar.append(fill); left.append(bar);
+  const go = el("a", "ac-btn ac-btn-primary", T("dv.resume")); go.href = meta.path + lessonHash(t.current);
+  box.append(left, go);
+}
+function renderRecent(s, n) {
+  const ul = $("dRecent"); ul.textContent = "";
+  const rows = s.perTrack.filter((x) => x.updatedAt).sort((a, b) => b.updatedAt - a.updatedAt).slice(0, 5);
+  if (!rows.length) { ul.append(el("li", "dv-rec-empty", T("dv.norec"))); return; }
+  const loc = document.documentElement.lang === "en" ? "en" : "ar-EG-u-nu-latn";
+  for (const t of rows) {
+    const meta = tracks.find((x) => x.id === t.id); const li = el("li", "dv-rec"); const a = el("a", "", ""); a.href = meta ? meta.path + lessonHash(t.current) : "#";
+    a.append(el("strong", "", NAMES[t.id] || t.id), el("small", "", T("t.lessons", { done: n.format(t.completed), total: n.format(t.total) })), el("time", "", new Date(t.updatedAt).toLocaleDateString(loc, { day: "numeric", month: "short" })));
+    li.append(a); ul.append(li);
+  }
+}
+
 function renderDashboard() {
   const s = stats(); const n = nf(); const g = s.totals;
   $("dEmpty").hidden = g.completed > 0 || g.quizAttempts > 0 || g.tracksStarted > 0;
@@ -86,7 +114,7 @@ function renderDashboard() {
     statCard(n.format(g.quizAttempts), T("s.attempts"), g.accuracy === null ? "" : `${T("s.accuracy")}: ${n.format(g.accuracy)}%`),
     statCard(n.format(g.assessmentsPassed), T("s.assess")),
   );
-  if (s.lastActivityAt) box.append(statCard(new Date(s.lastActivityAt).toLocaleDateString(document.documentElement.lang === "en" ? "en" : "ar-EG-u-nu-latn"), T("s.last")));
+  if (s.lastActivityAt) box.append(statCard(new Date(s.lastActivityAt).toLocaleDateString(document.documentElement.lang === "en" ? "en" : "ar-EG-u-nu-latn", { day: "numeric", month: "short", year: "numeric" }), T("s.last")));
 
   const list = $("dTracks"); list.textContent = "";
   for (const t of s.perTrack) {
@@ -103,6 +131,7 @@ function renderDashboard() {
     list.append(card);
   }
 
+  renderContinue(s, n); renderRecent(s, n);
   const ach = $("dAch"); ach.textContent = "";
   for (const a of s.achievements) {
     const li = el("li", "ac-ach-item" + (a.earned ? " is-earned" : "")); li.dataset.id = a.id;

@@ -54,10 +54,14 @@
         <p data-i18n="d.empty.p">أكمل أول درس وستظهر هنا نقاطك وإنجازاتك وإحصاءاتك.</p>
         <a class="ac-btn ac-btn-primary" href="/fundamentals/computer-basics/com.html" data-i18n="h.cta">ابدأ من الأساسيات</a>
       </section>
-      <section aria-labelledby="dStatsT"><h2 class="ac-h2" id="dStatsT" data-i18n="d.stats">إحصاءات التعلم</h2><div class="ac-stats" id="dStats"></div></section>
-      <section aria-labelledby="dTracksT"><h2 class="ac-h2" id="dTracksT" data-i18n="d.tracks">التقدم في كل مسار</h2><div class="ac-tracks" id="dTracks"></div></section>
-      <section id="achievements" aria-labelledby="dAchT"><h2 class="ac-h2" id="dAchT" data-i18n="d.ach">الإنجازات</h2><ul class="ac-ach" id="dAch"></ul></section>
-      <section aria-labelledby="dPtsT"><h2 class="ac-h2" id="dPtsT" data-i18n="d.points">كيف تُحسب النقاط</h2><p class="ac-note" id="dPoints"></p></section>
+      <section class="dv-continue" id="dContinue" aria-labelledby="dContT" hidden></section>
+      <section aria-labelledby="dStatsT"><h2 class="dv-h" id="dStatsT" data-i18n="d.stats">إحصاءات التعلم</h2><div class="ac-stats dv-strip" id="dStats"></div></section>
+      <section aria-labelledby="dTracksT"><h2 class="dv-h" id="dTracksT" data-i18n="d.tracks">التقدم في كل مسار</h2><div class="ac-tracks dv-rows" id="dTracks"></div></section>
+      <div class="dv-cols">
+        <section id="achievements" aria-labelledby="dAchT"><h2 class="dv-h" id="dAchT" data-i18n="d.ach">الإنجازات</h2><ul class="ac-ach dv-ach" id="dAch"></ul></section>
+        <section aria-labelledby="dRecT"><h2 class="dv-h" id="dRecT" data-i18n="dv.recent">آخر نشاط</h2><ul class="dv-recent" id="dRecent"></ul></section>
+      </div>
+      <details class="dv-points"><summary data-i18n="d.points">كيف تُحسب النقاط</summary><p class="ac-note" id="dPoints"></p></details>
     </main>
   </body>
 </html>
