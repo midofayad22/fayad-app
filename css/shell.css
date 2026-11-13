@@ -301,3 +301,6 @@ b, strong { font-weight: var(--fy-fw-strong); }
 .fy-toast { position: fixed; z-index: 1300; inset-inline: 16px; bottom: calc(20px + env(safe-area-inset-bottom)); margin-inline: auto; width: fit-content; max-width: calc(100vw - 32px); padding: 12px 18px; border-radius: 12px; background: var(--fy-text); color: var(--fy-bg); font-weight: 600; box-shadow: 0 12px 30px -12px rgba(0, 0, 0, .5); opacity: 0; transform: translateY(10px); transition: opacity .2s ease, transform .2s ease; }
 .fy-toast.on { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .fy-menu, .fy-toast, .fy-menu-item { transition: none; } .fy-menu-item:hover { transform: none; } }
+
+/* Smooth same-origin page-to-page transitions (progressive enhancement; off for reduced motion). */
+@media (prefers-reduced-motion: no-preference) { @view-transition { navigation: auto; } ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 180ms; } }

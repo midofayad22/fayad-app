@@ -23,6 +23,7 @@
   var PKEY = "fayad-profile-v1";
   function readProfile(id) { try { var p = JSON.parse(localStorage.getItem(PKEY) || "null"); return p && p.id === id ? p : null; } catch (e) { return null; } }
   function writeProfile(p) { try { if (p) localStorage.setItem(PKEY, JSON.stringify(p)); else localStorage.removeItem(PKEY); } catch (e) { /* storage blocked */ } window.dispatchEvent(new CustomEvent("fayad-profile-changed", { detail: p })); }
+  function loginHref() { var p = location.pathname + location.search; return /^\/(login|profile|settings|dashboard)/.test(location.pathname) || p === "/" ? "/login.html" : "/login.html?next=" + encodeURIComponent(p + location.hash); }
   function readUser() {
     try {
       for (var i = 0; i < localStorage.length; i++) {
@@ -126,7 +127,7 @@
       accountBtn.appendChild(av);
       var t = (ar ? "حسابي: " : "My account: ") + label; accountBtn.setAttribute("aria-label", t); accountBtn.setAttribute("title", t);
     } else {
-      accountBtn.href = "/login.html"; accountBtn.classList.remove("has-avatar"); accountBtn.removeAttribute("aria-haspopup"); accountBtn.removeAttribute("aria-expanded"); accountBtn.innerHTML = ICON_USER;
+      accountBtn.href = loginHref(); accountBtn.classList.remove("has-avatar"); accountBtn.removeAttribute("aria-haspopup"); accountBtn.removeAttribute("aria-expanded"); accountBtn.innerHTML = ICON_USER;
       var l = ar ? "تسجيل الدخول" : "Sign in"; accountBtn.setAttribute("aria-label", l); accountBtn.setAttribute("title", l);
     }
   }
