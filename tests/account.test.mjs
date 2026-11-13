@@ -45,7 +45,7 @@ async function open(route, lang, seed) {
   await ctx.addInitScript(([l, s]) => { if (window === window.top) { localStorage.setItem("fayad-language", l); if (s && !localStorage.getItem("fayad-progress-v1")) localStorage.setItem("fayad-progress-v1", s); } }, [lang, seed || null]);
   await ctx.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort());
   const page = await ctx.newPage(); const errors = []; page.on("pageerror", (e) => errors.push(e.message));
-  await page.goto(base + route); await page.waitForSelector(route.includes("dashboard") ? "#dStats .ac-stat" : "#pSummary .ac-stat");
+  await page.goto(base + route); await page.waitForSelector(route.includes("dashboard") ? "#dStats .ac-stat" : "#pSummary .pf-fig");
   return { ctx, page, errors };
 }
 

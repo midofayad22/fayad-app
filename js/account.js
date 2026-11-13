@@ -30,6 +30,7 @@ i18n?.extend({
     "a.first-track": "أول مسار مكتمل", "a.three-tracks": "3 مسارات مكتملة", "a.quiz-25": "25 إجابة صحيحة", "a.quiz-100": "100 إجابة صحيحة", "a.assessment": "نجاح في تقييم نهائي",
     "a.earned": "تم الإنجاز", "a.locked": "قيد التقدم",
     "d.points.note": "{l} نقاط لكل درس مكتمل، و{c} لكل سؤال أُجيب عنه صحيحًا (مرة واحدة لكل سؤال)، و{t} لكل مسار مكتمل، و{a} لكل تقييم نهائي ناجح.",
+    "pf.courses": "التقدم في المسارات", "pf.details": "تفاصيل الحساب", "pf.edit": "تعديل الملف الشخصي", "pf.guest": "زائر", "pf.guestNote": "تعلّم بدون حساب؛ يُحفظ تقدمك على هذا الجهاز. أنشئ حسابًا لحفظ اسمك وصورتك.", "pf.signedIn": "تم تسجيل الدخول. اسمك وصورتك محفوظان في حسابك.", "pf.accuracy": "دقة الإجابات", "pf.none": "لم تبدأ بعد", "pf.last": "آخر نشاط", "pf.noact": "لا يوجد نشاط بعد", "pf.started": "قيد التقدم", "pf.mode": "نوع الحساب", "pf.modeGuest": "زائر (على هذا الجهاز)", "pf.modeUser": "حساب مسجّل",
     "p.title": "الملف الشخصي", "p.sub": "بيانات حسابك وتفضيلاتك.", "p.summary": "ملخص التعلم", "p.seeDash": "افتح لوحة التقدم",
     "p.data": "بيانات هذا الجهاز", "p.data.note": "يُحفظ تقدمك في متصفحك. يمكنك تنزيل نسخة منه أو مسحه بالكامل.", "p.export": "تنزيل نسخة من تقدمي", "p.reset": "مسح تقدمي على هذا الجهاز",
     "p.reset.confirm": "سيُمسح تقدمك على هذا الجهاز نهائيًا ولا يمكن التراجع. هل تريد المتابعة؟", "p.reset.done": "تم مسح التقدم على هذا الجهاز.", "p.export.done": "تم تنزيل النسخة.",
@@ -49,6 +50,7 @@ i18n?.extend({
     "a.first-track": "First course completed", "a.three-tracks": "3 courses completed", "a.quiz-25": "25 correct answers", "a.quiz-100": "100 correct answers", "a.assessment": "Passed a final assessment",
     "a.earned": "Earned", "a.locked": "In progress",
     "d.points.note": "{l} points per completed lesson, {c} per quiz question answered correctly (once per question), {t} per completed course and {a} per passed final assessment.",
+    "pf.courses": "Course progress", "pf.details": "Account details", "pf.edit": "Edit profile", "pf.guest": "Guest", "pf.guestNote": "You are learning without an account; progress stays on this device. Create an account to keep your name and picture.", "pf.signedIn": "Signed in. Your name and picture are saved to your account.", "pf.accuracy": "Answer accuracy", "pf.none": "Not started", "pf.last": "Last activity", "pf.noact": "No activity yet", "pf.started": "In progress", "pf.mode": "Account type", "pf.modeGuest": "Guest (this device)", "pf.modeUser": "Registered account",
     "p.title": "Profile", "p.sub": "Your account details and preferences.", "p.summary": "Learning summary", "p.seeDash": "Open the progress dashboard",
     "p.data": "Data on this device", "p.data.note": "Your progress is stored in your browser. You can download a copy or erase it completely.", "p.export": "Download a copy of my progress", "p.reset": "Erase my progress on this device",
     "p.reset.confirm": "This permanently erases your progress on this device and cannot be undone. Continue?", "p.reset.done": "Progress on this device was erased.", "p.export.done": "Copy downloaded.",
@@ -110,30 +112,68 @@ function renderDashboard() {
   $("dPoints").textContent = T("d.points.note", { l: POINTS.lesson, c: POINTS.correctAnswer, t: POINTS.trackComplete, a: POINTS.assessmentPassed });
 }
 
+function avatarEl(u, big) {
+  const a = el("span", "pf-avatar" + (big ? " pf-avatar-lg" : "")); a.setAttribute("aria-hidden", "true");
+  const label = (u && (u.name || u.email) || "").trim();
+  a.textContent = label ? [...label][0].toUpperCase() : "";
+  if (u && u.avatar) { const im = new Image(); im.alt = ""; im.referrerPolicy = "no-referrer"; im.onload = () => { a.textContent = ""; a.append(im); }; im.src = u.avatar; }
+  return a;
+}
+
+function addLast() {
+  const dl = $("pDetails"); if (!dl) return; dl.querySelectorAll("[data-last]").forEach((x) => x.remove());
+  const when = stats().lastActivityAt; const dt = el("dt", "", T("pf.last")), dd = el("dd", "", when ? new Date(when).toLocaleDateString(document.documentElement.lang === "en" ? "en" : "ar-EG-u-nu-latn") : T("pf.noact"));
+  dt.dataset.last = "1"; dd.dataset.last = "1"; dl.append(dt, dd);
+}
+
 async function renderAccount() {
-  const box = $("pAccount"); box.textContent = "";
-  box.append(el("h2", "ac-h2", T("p.acc.title")));
+  const box = $("pAccount"), det = $("pDetails"); box.textContent = ""; det.textContent = "";
   const A = window.FAYAD_AUTH;
   let user = null, unavailable = false;
   if (!A) unavailable = true;
   else { try { const { data } = await A.getSession(); user = data?.session?.user || null; } catch { unavailable = true; } }
-  if (user) {
-    const dl = el("dl", "ac-dl");
-    dl.append(el("dt", "", T("p.acc.name")), el("dd", "", (F.user && F.user()?.name) || A.getUserDisplayName(user)), el("dt", "", T("p.acc.email")), el("dd", "", A.getUserEmail(user)));
+  const cached = F.user && F.user();           // the shell's view of the stored session + profile row: works even when the auth service is unreachable
+  const signedIn = !!user || !!cached;
+  const name = (cached && cached.name) || (user && A.getUserDisplayName(user)) || "";
+  const email = (cached && cached.email) || (user && A.getUserEmail(user)) || "";
+  const text = el("div", "pf-id-text");
+  if (signedIn) {
+    text.append(el("h1", "", name || email), name ? el("p", "pf-email", email) : el("span"));
+    text.append(el("p", "pf-note", unavailable ? T("p.acc.unavail") : T("pf.signedIn")));
+    const row = el("div", "pf-actions");
+    const edit = el("a", "ac-btn ac-btn-primary", T("pf.edit")); edit.href = "/settings/profile.html";
     const out = el("button", "ac-btn", T("p.acc.signout")); out.type = "button";
-    out.addEventListener("click", async () => { try { await A.signOut(); } catch { /* handled by auth module */ } renderAccount(); });
-    box.append(dl, el("p", "ac-note", T("p.acc.sync")), out);
+    out.addEventListener("click", async () => { try { await A?.signOut(); } catch { /* handled by auth module */ } renderAccount(); });
+    row.append(edit, out); text.append(row);
+    det.append(el("dt", "", T("p.acc.name")), el("dd", "", name || "—"), el("dt", "", T("p.acc.email")), el("dd", "", email), el("dt", "", T("pf.mode")), el("dd", "", T("pf.modeUser")));
   } else {
-    box.append(el("p", "ac-note", unavailable && (A || (F.user && F.user())) ? T("p.acc.unavail") : T("p.acc.out")));
-    const a = el("a", "ac-btn ac-btn-primary", T("p.acc.signin")); a.href = "/login.html"; box.append(a);
+    text.append(el("h1", "", T("pf.guest")), el("p", "pf-note", unavailable && A ? T("p.acc.unavail") : T("pf.guestNote")));
+    const row = el("div", "pf-actions"); const a = el("a", "ac-btn ac-btn-primary", T("p.acc.signin")); a.href = "/login.html"; row.append(a); text.append(row);
+    det.append(el("dt", "", T("pf.mode")), el("dd", "", T("pf.modeGuest")));
   }
+  box.append(avatarEl(signedIn ? (cached || { name, email }) : null, true), text); addLast();
 }
 
 function renderProfile() {
-  const s = stats(); const n = nf(); const g = s.totals;
+  const s = stats(); const n = nf(); const g = s.totals; const en = document.documentElement.lang === "en";
   const box = $("pSummary"); box.textContent = "";
-  box.append(statCard(n.format(s.points), T("s.points")), statCard(n.format(g.completed), T("s.completed")), statCard(`${n.format(g.tracksDone)} / ${n.format(g.tracks)}`, T("s.tracks")));
-  renderAccount();
+  const fig = (v, l) => { const d = el("div", "pf-fig"); d.append(el("b", "", v), el("span", "", l)); return d; };
+  box.append(fig(n.format(s.points), T("s.points")), fig(n.format(g.completed), T("s.completed")), fig(`\u2066${n.format(g.tracksDone)} / ${n.format(g.tracks)}\u2069`, T("s.tracks")),
+    fig(g.accuracy === null ? "—" : `${n.format(g.accuracy)}%`, T("pf.accuracy")));
+  const list = $("pCourses"); list.textContent = "";
+  const order = [...s.perTrack].sort((a, b) => (b.started - a.started) || (b.percent - a.percent));
+  for (const t of order) {
+    const meta = tracks.find((x) => x.id === t.id); if (!meta) continue;
+    const li = el("li", "pf-course" + (t.started ? "" : " is-idle"));
+    const a = el("a", "pf-course-link"); a.href = meta.path; a.dataset.course = t.id;
+    const top = el("span", "pf-course-top"); top.append(el("strong", "", NAMES[t.id] || t.id), el("em", "", t.done ? T("t.done") : t.started ? `${n.format(t.percent)}%` : T("pf.none")));
+    const bar = el("span", "ac-bar"); bar.setAttribute("role", "progressbar"); bar.setAttribute("aria-label", NAMES[t.id] || t.id); bar.setAttribute("aria-valuemin", "0"); bar.setAttribute("aria-valuemax", "100"); bar.setAttribute("aria-valuenow", String(t.percent));
+    const fill = el("span"); fill.style.width = `${t.percent}%`; bar.append(fill);
+    a.append(top, bar, el("small", "", T("t.lessons", { done: n.format(t.completed), total: n.format(t.total) }))); li.append(a); list.append(li);
+  }
+  const ach = $("pAch"); ach.textContent = "";
+  for (const x of s.achievements) { const li = el("li", "pf-badge" + (x.earned ? " is-earned" : "")); li.dataset.id = x.id; li.append(el("strong", "", T("a." + x.id)), el("small", "", x.earned ? T("a.earned") : `${n.format(x.progress)} / ${n.format(x.target)}`)); ach.append(li); }
+  addLast();
 }
 
 function wireProfile() {
@@ -154,6 +194,7 @@ function render() { progress.reload(); if (page === "dashboard") renderDashboard
 i18n?.apply();
 if (page === "profile") wireProfile();
 render();
+if (page === "profile") renderAccount();
 window.addEventListener("fayad:langchange", render);
 window.addEventListener("storage", render);
 window.addEventListener("pageshow", render);
