@@ -45,6 +45,8 @@ export function buildNav(active) {
   const nav = el("nav", { class: "st-nav", "aria-label": T("st.nav") });
   nav.append(el("a", { href: href("index"), class: active === "index" ? "on" : "", "aria-current": active === "index" ? "page" : null }, T("st.title")));
   for (const p of pagesLive) nav.append(el("a", { href: href(p), class: p === active ? "on" : "", "aria-current": p === active ? "page" : null }, T("st." + p)));
+  // on phones the section list scrolls sideways: bring the current section into view so it is never hidden off-screen
+  requestAnimationFrame(() => { const on = nav.querySelector("a.on"); if (on && nav.scrollWidth > nav.clientWidth) on.scrollIntoView({ inline: "center", block: "nearest" }); });
   return nav;
 }
 

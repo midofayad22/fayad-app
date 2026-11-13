@@ -25,7 +25,7 @@ async function toWebp(file) {
   if (!blob) throw new Error("decode"); return blob;
 }
 
-const fmt = (d) => { try { return new Date(d).toLocaleString(F.i18n?.lang === "en" ? "en-GB" : "ar-EG", { dateStyle: "medium", timeStyle: "short" }); } catch { return d || "—"; } };
+const fmt = (d) => { try { return new Date(d).toLocaleString(F.i18n?.lang === "en" ? "en-GB" : "ar-EG-u-nu-latn", { dateStyle: "medium", timeStyle: "short" }); } catch { return d || "—"; } };
 const initial = (n, e) => (n || e || "?").trim().charAt(0).toUpperCase();
 
 mount("profile", async (body, { client, user }) => {
