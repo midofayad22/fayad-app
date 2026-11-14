@@ -1,0 +1,20 @@
+/* Zombie Survival (shares layout helpers with css/adventure.css) */
+.zb-stats { display: flex; gap: 14px; flex-wrap: wrap; font: 700 .9rem var(--fy-font); color: var(--fy-text); }
+.zb-board { display: grid; grid-template-columns: repeat(var(--c), minmax(0, 1fr)); width: min(380px, 100%); box-sizing: border-box; gap: 3px; padding: 6px; border-radius: 14px; background: var(--fy-surface-2, var(--fy-bg-soft)); border: 1px solid var(--fy-border-strong); }
+.zb-c { aspect-ratio: 1; border-radius: 8px; background: var(--fy-surface); display: grid; place-items: center; font: 800 1rem var(--fy-font-en); color: var(--fy-text-soft); transition: background .25s var(--fy-ease); }
+.zb-c.is-me { background: var(--fy-brand); color: var(--fy-on-brand); font-size: 1.3rem; }
+.zb-c.is-z { background: color-mix(in srgb, #65a30d 30%, var(--fy-surface)); color: #365314; border: 2px solid #65a30d; }
+.zb-c.is-z.is-slow { border-style: dashed; }
+html[data-theme="dark"] .zb-c.is-z { color: #d9f99d; }
+.zb-rules { list-style: none; margin: 0 0 10px; padding: 0; display: grid; gap: 8px; counter-reset: r; }
+.zb-rule { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 8px; border-radius: 12px; border: 1px solid var(--fy-border-strong); background: var(--fy-surface); counter-increment: r; }
+.zb-rule::before { content: counter(r); font: 800 .85rem var(--fy-font-en); width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: var(--fy-brand-soft, var(--fy-bg-soft)); color: var(--fy-brand-strong, var(--fy-brand)); }
+.zb-rule.is-run { border-color: var(--fy-brand); box-shadow: 0 0 0 3px color-mix(in srgb, var(--fy-brand) 25%, transparent); }
+.zb-rule span { font: 600 .85rem var(--fy-font); color: var(--fy-text-soft); }
+.zb-rule select { min-height: 36px; max-width: 100%; border-radius: 8px; border: 1px solid var(--fy-border-strong); background: var(--fy-surface); color: var(--fy-text); font: inherit; }
+.zb-rule select:focus-visible, .zb-b:focus-visible { outline: none; box-shadow: var(--fy-focus); }
+.zb-b { width: 34px; height: 34px; border: 0; border-radius: 8px; background: transparent; color: var(--fy-text-muted); font-size: 1.05rem; cursor: pointer; }
+.zb-b:first-of-type { margin-inline-start: auto; }
+.zb-b:hover:not(:disabled) { background: var(--fy-bg-soft); color: var(--fy-text); } .zb-b:disabled { opacity: .35; cursor: not-allowed; }
+.zb-b.rm:hover:not(:disabled) { color: #b91c1c; }
+@media (prefers-reduced-motion: reduce) { .zb-c { transition: none; } }

@@ -14,7 +14,7 @@ export const PAGES = [
   "/javascript-learning/javascript-learning.html", "/react-learning/react-learning.html", "/vue-learning/vue-learning.html",
   "/angular-learning/angular-learning.html", "/fundamentals/computer-basics/com.html", "/fundamentals/programming-basics/prg.html",
   "/advanced-javascript/advanced-javascript.html", "/bootstrap-learning/bootstrap-learning.html", "/tailwind-learning/tailwind-learning.html",
-  "/dashboard.html", "/profile.html", "/play/flex-quest.html", "/play/index.html", "/play/selector-quest.html", "/play/arena.html",
+  "/dashboard.html", "/profile.html", "/play/flex-quest.html", "/play/index.html", "/play/selector-quest.html", "/play/adventure.html", "/play/zombie.html", "/play/arena.html",
 ];
 const NOINDEX = ["/login.html", "/dashboard.html", "/profile.html"];
 
@@ -52,8 +52,9 @@ for (const route of PAGES) {
     assert.deepEqual(unexpected, [], "no uncaught page errors");
     // Check the static markup: lesson demos (HTML/CSS tracks) render sample <h1> elements at runtime or inside preview
     // markup. They move into a sandboxed iframe in the playground milestone.
+    // /profile.html renders its single h1 (the account name) at runtime, so it has no static h1.
     const staticH1 = (fs.readFileSync("." + (route === "/" ? "/index.html" : route), "utf8").match(/<h1[\s>]/g) || []).length;
-    if (route !== "/css-learning/css-learning.html") assert.equal(staticH1, 1, "exactly one static h1");
+    if (route !== "/css-learning/css-learning.html" && route !== "/profile.html") assert.equal(staticH1, 1, "exactly one static h1");
     await page.close();
   });
 }
