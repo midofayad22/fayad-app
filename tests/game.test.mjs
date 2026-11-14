@@ -89,7 +89,7 @@ test("games hub lists both games with progress from the shared store", async () 
   await page.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort());
   await page.addInitScript(() => localStorage.setItem("fayad-game-v1", JSON.stringify({ v: 1, flex: { solved: { 1: { at: 1 }, 2: { at: 1 } } }, points: 30 })));
   await page.goto(base + "/play/index.html"); await page.waitForSelector(".gh-card");
-  assert.equal(await page.locator(".gh-card").count(), 5);
+  assert.equal(await page.locator(".gh-card").count(), 6);
   assert.equal(await page.textContent("#ghPoints"), "30");
   assert.match(await page.locator(".gh-card").filter({ hasText: "Flex Quest" }).textContent(), /2/);
   await ctx.close();

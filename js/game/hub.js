@@ -9,6 +9,7 @@ const ARENA = [
 const GAMES = [
   { id: "flex", href: "/play/flex-quest.html", name: "Flex Quest", total: 10, tag: "CSS", ar: "رتّب العناصر بخصائص Flexbox حتى تطابق الهدف.", en: "Arrange items with Flexbox properties until they match the target." },
   { id: "sel", href: "/play/selector-quest.html", name: "Selector Quest", total: 10, tag: "CSS", ar: "اكتب محدد CSS يختار العناصر المطلوبة فقط.", en: "Write a CSS selector that picks only the wanted elements." },
+  { id: "adventure", href: "/play/adventure.html", name: "FAYAD Grand Adventure", total: 120, tag: "Logic", ar: "قُد البطل بالكتل عبر 120 مستوى: تسلسل وحلقات وشروط ودوال.", en: "Guide the hero with blocks through 120 levels: sequences, loops, conditions and functions." },
 ];
 const DICT = {
   ar: { "lb.you": "(أنت)", "gh.title": "مركز الألعاب", "gh.sub": "تعلّم باللعب: ألغاز قصيرة بمراحل متدرجة، والتحقق منها فوري. نقاطك تُحفظ على هذا الجهاز.", "gh.note": "مسارات التحديات المتبقية قيد الإعداد ولن تظهر هنا قبل أن تعمل وتُختبر فعلًا.", "fq.points": "نقاط اللعبة", "fq.home": "الرئيسية", "fq.dash": "لوحة التقدم", "fq.hub": "الألعاب", "gh.play": "العب", "gh.arena": "تحديات برمجية", "gh.levels": "{n} من {t} مراحل", "lb.title": "لوحة الترتيب", "lb.note": "النقاط تُحسب على الخادم من قواعد ثابتة وبحدّ للمعدّل، لكن الخادم لا يستطيع إعادة تشغيل كودك للتأكد من الحل، فالترتيب ودّي وليس مسابقة محمية بالكامل.", "lb.in": "سجّل الدخول لتظهر في اللوحة ويُحفظ تقدمك.", "lb.empty": "لا يوجد لاعبون بعد. كن الأول!", "lb.off": "تعذّر تحميل اللوحة الآن.", "lb.anon": "لاعب", "lb.pts": "نقطة" },
