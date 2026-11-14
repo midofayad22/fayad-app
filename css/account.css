@@ -139,3 +139,23 @@ main.ac-wrap { padding-block-end: calc(96px + env(safe-area-inset-bottom, 0px));
 .dv-points { margin-block-start: 28px; color: var(--fy-text-soft); } .dv-points summary { cursor: pointer; font-weight: 600; min-height: 32px; } .dv-points summary:focus-visible { outline: none; box-shadow: var(--fy-focus); border-radius: 6px; }
 @media (max-width: 860px) { .dv-rows { grid-template-columns: minmax(0, 1fr); } .dv-cols { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 560px) { .dv-continue { flex-direction: column; align-items: stretch; } .dv-continue .ac-btn { width: 100%; } .dv-strip { grid-template-columns: 1fr 1fr; } .dv-strip .ac-stat { border-inline-start: 0 !important; } .dv-strip .ac-stat:nth-child(even) { border-inline-start: 1px solid var(--fy-border) !important; } .dv-strip .ac-stat:nth-child(n+3) { border-block-start: 1px solid var(--fy-border); } }
+
+/* ---- gamification block on the dashboard (server-authoritative XP, streak, hearts, weekly ranking) ---- */
+.dv-game { margin-block-start: 8px; }
+.dv-game-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 2fr); gap: clamp(16px, 4vw, 40px); align-items: center; padding-block: 8px 4px; }
+.dv-level { display: grid; gap: 6px; } .dv-level b { font-size: 1.6rem; letter-spacing: -.01em; color: var(--fy-accent); } .dv-level small { color: var(--fy-text-soft); }
+.dv-level .ac-bar > span { background: var(--fy-accent); }
+.dv-chips { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.dv-chip { display: grid; gap: 2px; padding: 12px; border-radius: 8px; border: 1px solid var(--fy-border); background: var(--fy-surface); }
+.dv-chip b { font-size: 1.15rem; font-variant-numeric: tabular-nums; } .dv-chip span { color: var(--fy-text-soft); font-size: .82rem; }
+.dv-chip.is-xp { background: var(--fy-xp-soft); border-color: transparent; } .dv-chip.is-xp b { color: var(--fy-xp); }
+.dv-chip.is-streak { background: var(--fy-streak-soft); border-color: transparent; } .dv-chip.is-streak b { color: var(--fy-streak); }
+.dv-chip.is-heart { background: var(--fy-heart-soft); border-color: transparent; } .dv-chip.is-heart b { color: var(--fy-heart); }
+.dv-chip.is-week { background: var(--fy-accent-soft); border-color: transparent; } .dv-chip.is-week b { color: var(--fy-accent); }
+.dv-sub { margin: 20px 0 6px; font-size: .95rem; font-weight: 700; }
+.dv-board { list-style: none; margin: 0; padding: 0; counter-reset: none; }
+.dv-board li { display: grid; grid-template-columns: 2rem 1fr auto; align-items: center; gap: 8px; padding: 10px 8px; border-block-end: 1px solid var(--fy-border); border-radius: 6px; }
+.dv-board li.is-me { background: var(--fy-accent-soft); }
+.dv-board em { font-style: normal; color: var(--fy-text-soft); font-variant-numeric: tabular-nums; } .dv-rank { color: var(--fy-text-muted); font-variant-numeric: tabular-nums; }
+@media (max-width: 860px) { .dv-game-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 560px) { .dv-chips { grid-template-columns: 1fr 1fr; } }

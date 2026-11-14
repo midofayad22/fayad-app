@@ -4,6 +4,7 @@
   js/engine/stats.js. Nothing is fabricated: a new learner sees zeros and an empty state.
   Strings are built with textContent only (no innerHTML with data).
 */
+import { gamification, syncProgress } from "/js/engine/cloud.js";
 import { createProgress } from "/js/engine/progress.js";
 import { computeStats, POINTS } from "/js/engine/stats.js";
 
@@ -20,6 +21,7 @@ i18n?.extend({
   ar: {
     "ac.nav": "حسابي", "ac.home": "الرئيسية", "ac.dashboard": "لوحة التقدم", "ac.profile": "الملف الشخصي",
     "dv.recent": "آخر نشاط", "dv.continue": "تابع من حيث توقفت", "dv.resume": "متابعة", "dv.lesson": "الدرس {n}", "dv.norec": "سيظهر هنا نشاطك بعد أول درس.", "dv.rest": "المتبقي: {n} درسًا",
+    "g.title": "مستواك ونقاط الخبرة", "g.level": "المستوى {n}", "g.xp": "{a} / {b} نقطة خبرة للمستوى التالي", "g.streak": "سلسلة الأيام", "g.days": "{n} يوم", "g.hearts": "القلوب", "g.week": "هذا الأسبوع", "g.board": "ترتيب هذا الأسبوع", "g.you": "أنت", "g.guest": "سجّل الدخول لتكسب نقاط خبرة تُحسب على الخادم، وتحافظ على سلسلة أيامك، وتظهر في ترتيب الأسبوع.", "g.noboard": "لا توجد نقاط هذا الأسبوع بعد. أكمل درسًا لتبدأ الترتيب.", "g.note": "تُحسب النقاط على الخادم من دروسك واختباراتك وألعابك المسجّلة، ولا يمكن تعديلها من المتصفح.", "g.next": "قلب جديد خلال {m} دقيقة",
     "d.title": "لوحة التقدم", "d.sub": "كل الأرقام هنا محسوبة من نشاطك الفعلي على هذا الجهاز.",
     "d.empty.t": "لم تبدأ أي درس بعد", "d.empty.p": "أكمل أول درس وستظهر هنا نقاطك وإنجازاتك وإحصاءاتك.", "h.cta": "ابدأ من الأساسيات",
     "d.stats": "إحصاءات التعلم", "d.tracks": "التقدم في كل مسار", "d.ach": "الإنجازات", "d.points": "كيف تُحسب النقاط",
@@ -41,6 +43,7 @@ i18n?.extend({
   en: {
     "ac.nav": "My account", "ac.home": "Home", "ac.dashboard": "Progress", "ac.profile": "Profile",
     "dv.recent": "Recent activity", "dv.continue": "Continue where you left off", "dv.resume": "Resume", "dv.lesson": "Lesson {n}", "dv.norec": "Your activity appears here after your first lesson.", "dv.rest": "{n} lessons remaining",
+    "g.title": "Your level and XP", "g.level": "Level {n}", "g.xp": "{a} / {b} XP to the next level", "g.streak": "Day streak", "g.days": "{n} days", "g.hearts": "Hearts", "g.week": "This week", "g.board": "This week's ranking", "g.you": "You", "g.guest": "Sign in to earn server-verified XP, keep a day streak and appear in the weekly ranking.", "g.noboard": "No XP this week yet. Complete a lesson to start the ranking.", "g.note": "XP is calculated on the server from your recorded lessons, assessments and games; it cannot be edited from the browser.", "g.next": "Next heart in {m} min",
     "d.title": "Progress dashboard", "d.sub": "Every number here is computed from your real activity on this device.",
     "d.empty.t": "You haven't started a lesson yet", "d.empty.p": "Complete your first lesson and your points, achievements and statistics will appear here.", "h.cta": "Start with the fundamentals",
     "d.stats": "Learning statistics", "d.tracks": "Progress by course", "d.ach": "Achievements", "d.points": "How points work",
@@ -101,6 +104,31 @@ function renderRecent(s, n) {
   }
 }
 
+let gameSeq = 0;
+async function renderGame() {
+  const box = $("dGame"); if (!box) return; box.textContent = ""; const seq = ++gameSeq;
+  const n = nf(); const user = F.user && F.user();
+  box.hidden = false;
+  const h = el("h2", "dv-h", T("g.title")); h.id = "dGameT"; box.append(h);
+  if (!user) { box.append(el("p", "ac-note", T("g.guest"))); const a = el("a", "ac-btn ac-btn-primary", T("p.acc.signin")); a.href = "/login.html?next=" + encodeURIComponent("/dashboard.html"); box.append(a); return; }
+  const data = await gamification();
+  if (seq !== gameSeq) return;   // a newer render started while we were waiting: let it own the block
+  if (!data || !data.me) { box.append(el("p", "ac-note", T("p.acc.unavail"))); return; }
+  const m = data.me, wrap = el("div", "dv-game-grid");
+  const lvl = el("div", "dv-level"); lvl.append(el("b", "", T("g.level", { n: n.format(m.level) })), el("small", "", T("g.xp", { a: n.format(m.xp_in_level), b: n.format(m.xp_for_next) })));
+  const bar = el("span", "ac-bar"); bar.setAttribute("role", "progressbar"); bar.setAttribute("aria-label", T("g.level", { n: n.format(m.level) })); bar.setAttribute("aria-valuemin", "0"); bar.setAttribute("aria-valuemax", String(m.xp_for_next)); bar.setAttribute("aria-valuenow", String(m.xp_in_level));
+  const fill = el("span"); fill.style.width = `${Math.min(100, Math.round((m.xp_in_level / m.xp_for_next) * 100))}%`; bar.append(fill); lvl.append(bar);
+  const chips = el("div", "dv-chips");
+  const chip = (cls, v, l) => { const d = el("div", "dv-chip " + cls); d.append(el("b", "", v), el("span", "", l)); return d; };
+  chips.append(chip("is-xp", n.format(m.xp_total), "XP"), chip("is-streak", T("g.days", { n: n.format(m.streak_days) }), T("g.streak")), chip("is-heart", `${n.format(data.hearts ? data.hearts.hearts : 5)} / 5`, data.hearts && data.hearts.hearts < 5 ? T("g.next", { m: n.format(Math.max(1, Math.ceil(data.hearts.next_in_seconds / 60))) }) : T("g.hearts")), chip("is-week", n.format(m.week_xp), T("g.week")));
+  wrap.append(lvl, chips); box.append(wrap);
+  const bh = el("h3", "dv-sub", T("g.board")); box.append(bh);
+  const ol = el("ol", "dv-board");
+  if (!data.board.length) ol.append(el("li", "dv-rec-empty", T("g.noboard")));
+  for (const r of data.board) { const li = el("li", r.is_me ? "is-me" : ""); li.append(el("span", "dv-rank", n.format(r.rank)), el("strong", "", r.is_me ? `${r.display_name} · ${T("g.you")}` : r.display_name), el("em", "", `${n.format(r.xp)} XP`)); ol.append(li); }
+  box.append(ol, el("p", "ac-note", T("g.note")));
+}
+
 function renderDashboard() {
   const s = stats(); const n = nf(); const g = s.totals;
   $("dEmpty").hidden = g.completed > 0 || g.quizAttempts > 0 || g.tracksStarted > 0;
@@ -131,7 +159,7 @@ function renderDashboard() {
     list.append(card);
   }
 
-  renderContinue(s, n); renderRecent(s, n);
+  renderContinue(s, n); renderRecent(s, n); renderGame();
   const ach = $("dAch"); ach.textContent = "";
   for (const a of s.achievements) {
     const li = el("li", "ac-ach-item" + (a.earned ? " is-earned" : "")); li.dataset.id = a.id;
@@ -221,6 +249,9 @@ function wireProfile() {
 
 function render() { progress.reload(); if (page === "dashboard") renderDashboard(); else renderProfile(); }
 i18n?.apply();
+document.addEventListener("fayad:xp", () => { if (page === "dashboard") renderGame(); });
+// signed-in learners: merge with the account record once (also asks the server to credit XP), then repaint with the merged numbers
+if (page === "dashboard") setTimeout(() => { if (F.user && F.user()) syncProgress().then((r) => { if (r && r.ok) { progress.reload(); render(); } }).catch(() => {}); }, 0);
 if (page === "profile") wireProfile();
 render();
 if (page === "profile") renderAccount();

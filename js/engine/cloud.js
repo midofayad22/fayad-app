@@ -30,8 +30,23 @@ async function uid(c) { try { const { data } = await c.auth.getUser(); return da
 export async function syncProgress() {
   const c = await ensureClient(); if (!c) return { ok: false, reason: "no-client" };
   const r = await createSync({ client: c, progress: createProgress({ totals: TOTALS }), enabled: true }).sync();
-  if (r.ok) document.dispatchEvent(new CustomEvent("fayad:cloudsync", { detail: r }));
+  if (r.ok) {
+    document.dispatchEvent(new CustomEvent("fayad:cloudsync", { detail: r }));
+    // XP is computed by the server from the rows it now holds (idempotent); the browser never sends an amount.
+    try { const { error } = await c.rpc("sync_my_xp"); if (!error) document.dispatchEvent(new CustomEvent("fayad:xp")); } catch { /* offline: next sync retries */ }
+  }
   return r;
+}
+
+/** Server-authoritative gamification reads (null when signed out / offline). */
+export async function gamification() {
+  const c = await ensureClient(); if (!c) return null;
+  const tz = (() => { try { return Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC"; } catch { return "UTC"; } })();
+  try {
+    const [me, hearts, board] = await Promise.all([c.rpc("get_my_gamification", { p_tz: tz }), c.rpc("get_hearts"), c.rpc("get_weekly_leaderboard", { max_rows: 5 })]);
+    if (me.error) return null;
+    return { me: me.data?.[0] || null, hearts: hearts.data?.[0] || null, board: board.data || [] };
+  } catch { return null; }
 }
 
 export async function syncGames() {
