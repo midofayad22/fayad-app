@@ -45,6 +45,8 @@ export function buildNav(active) {
   const nav = el("nav", { class: "st-nav", "aria-label": T("st.nav") });
   nav.append(el("a", { href: href("index"), class: active === "index" ? "on" : "", "aria-current": active === "index" ? "page" : null }, T("st.title")));
   for (const p of pagesLive) nav.append(el("a", { href: href(p), class: p === active ? "on" : "", "aria-current": p === active ? "page" : null }, T("st." + p)));
+  // on phones the section list scrolls sideways: bring the current section into view so it is never hidden off-screen
+  requestAnimationFrame(() => { const on = nav.querySelector("a.on"); if (on && nav.scrollWidth > nav.clientWidth) on.scrollIntoView({ inline: "center", block: "nearest" }); });
   return nav;
 }
 
@@ -93,7 +95,8 @@ export function range({ id, label, min, max, step, value, fmt, onInput }) {
 export async function accountState() {
   let c = null; try { c = await ensureClient(); } catch {}
   if (!c) return { client: null, user: null };
-  try { const { data } = await c.auth.getUser(); return { client: c, user: data?.user || null }; } catch { return { client: c, user: null }; }
+  try { const { data, error } = await c.auth.getUser(); if (!error && data?.user) return { client: c, user: data.user }; if (error && error.status >= 400 && error.status < 500) return { client: c, user: null }; /* rejected token: really signed out */ } catch { /* offline: fall back to the locally stored session below */ }
+  try { const { data } = await c.auth.getSession(); return { client: c, user: data?.session?.user || null }; } catch { return { client: c, user: null }; }
 }
 
 export function storageNote(user) {

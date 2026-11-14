@@ -3808,3 +3808,7 @@ createApp({
 import { EN } from "./en.js";
 import { withEnglish } from "../../js/engine/with-english.js";
 withEnglish(track, lessons, EN);
+
+import { applyExtraQuiz } from "../_quiz.js";
+import { EXTRA as QUIZ_EXTRA } from "./quiz-extra.js";
+applyExtraQuiz(lessons, QUIZ_EXTRA, "quiz");

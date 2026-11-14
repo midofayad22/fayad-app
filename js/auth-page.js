@@ -24,7 +24,9 @@ let mode = "signin", busy = false;
 const isRecovery = /type=recovery/.test(location.hash);
 
 const say = (msg, kind = "", node = el.status) => { node.textContent = msg; node.className = "au-status" + (kind ? " " + kind : ""); };
-const go = (delay = 500) => setTimeout(() => { location.href = "index.html"; }, matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : delay);
+// Where to land after sign-in: ?next=<same-origin path> (set by pages that send a guest here), otherwise the home page. Same-origin only, so it cannot be used as an open redirect.
+function target() { try { const n = new URLSearchParams(location.search).get("next"); if (n && n.startsWith("/") && !n.startsWith("//") && !/^\/login\.html/.test(n)) return n; } catch { /* ignore */ } return "/index.html"; }
+const go = (delay = 350) => setTimeout(() => { location.replace(target()); }, matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : delay);
 const validEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 export function passwordIssue(pw) { if (!pw) return "au.e.pass"; if (pw.length < 8) return "au.e.len"; if (!/[A-Za-z؀-ۿ]/.test(pw) || !/[0-9٠-٩]/.test(pw)) return "au.e.weak"; return null; }
 export function mapError(e) {
@@ -59,7 +61,7 @@ el.pass.addEventListener("input", () => { if (mode === "signup") meter(); if (el
 el.email.addEventListener("input", () => { if (el.status.classList.contains("error")) say(""); });
 el.toggle.addEventListener("click", () => { const show = el.pass.type === "password"; el.pass.type = show ? "text" : "password"; el.toggle.setAttribute("aria-pressed", String(show)); el.toggle.setAttribute("aria-label", T(show ? "au.hide" : "au.show")); });
 
-function busyState(on) { busy = on; el.submit.disabled = on; if (on) el.submitText.textContent = T("au.working"); else el.submitText.textContent = T(mode === "signup" ? "au.btnUp" : "au.btnIn"); }
+function busyState(on) { busy = on; el.submit.disabled = on; el.submit.classList.toggle("is-loading", on); if (on) el.submitText.textContent = T("au.working"); else el.submitText.textContent = T(mode === "signup" ? "au.btnUp" : "au.btnIn"); }
 function remember(email) { try { localStorage.setItem("fayad_last_user_email", email); localStorage.setItem("fayad_has_used_account", "true"); } catch { /* private mode */ } }
 
 el.form.addEventListener("submit", async (ev) => {
@@ -114,7 +116,7 @@ function showRecovery() { el.form.hidden = true; document.querySelector(".au-tab
     auth.client.auth.onAuthStateChange((ev) => { if (ev === "PASSWORD_RECOVERY") showRecovery(); });
     if (isRecovery) { showRecovery(); return; }
     const { data } = await auth.client.auth.getSession();
-    if (data?.session?.user) { location.replace("index.html"); return; }
+    if (data?.session?.user) { location.replace(target()); return; }
     const email = auth.getLastUserEmail?.() || localStorage.getItem("fayad_last_user_email");
     if (email) { $("rememberedEmail").textContent = email; $("welcomeBack").hidden = false; el.email.value = email; $("useRemembered").addEventListener("click", () => { el.email.value = email; el.pass.focus(); }); }
   } catch { /* offline or blocked: the form still renders; submitting reports the error */ }

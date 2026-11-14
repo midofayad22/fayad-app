@@ -98,3 +98,16 @@ html[dir="rtl"] .st-notif.unread { box-shadow: inset -3px 0 0 var(--fy-brand); }
 .st-danger h2 { color: #b91c1c; }
 html[data-theme="dark"] .st-danger h2, html[data-theme="dark"] .st-btn-danger { color: #fca5a5; }
 html[data-theme="dark"] .st-btn-danger { border-color: #fca5a5; }
+
+/* `hidden` must win over the .st-btn display rule (Save/Cancel stay hidden until a picture is chosen) */
+.st-btn[hidden], .st-actions [hidden] { display: none !important; }
+
+/* Real switches for checkbox[role=switch] (picture privacy, notification toggles); logical properties keep RTL correct */
+input[type="checkbox"][role="switch"] { -webkit-appearance: none; appearance: none; flex: none; position: relative; width: 44px; height: 26px; margin: 0; border-radius: 999px; background: var(--fy-border-strong); cursor: pointer; transition: background-color .18s ease; }
+input[type="checkbox"][role="switch"]::after { content: ""; position: absolute; inset-block-start: 3px; inset-inline-start: 3px; width: 20px; height: 20px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(15, 23, 42, .3); transition: inset-inline-start .18s ease; }
+input[type="checkbox"][role="switch"]:checked { background: var(--fy-brand); }
+input[type="checkbox"][role="switch"]:checked::after { inset-inline-start: 21px; }
+input[type="checkbox"][role="switch"]:focus-visible { outline: none; box-shadow: var(--fy-focus); }
+input[type="checkbox"][role="switch"]:disabled { opacity: .55; cursor: progress; }
+.st-field:has(> input[role="switch"]) { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+@media (prefers-reduced-motion: reduce) { input[type="checkbox"][role="switch"], input[type="checkbox"][role="switch"]::after { transition: none; } }

@@ -45,21 +45,39 @@
       </div>
     </header>
     <main id="main" class="ac-wrap">
-      <section class="ac-hero">
-        <h1 data-i18n="p.title">الملف الشخصي</h1>
-        <p data-i18n="p.sub">بيانات حسابك وتفضيلاتك.</p>
-      </section>
-      <section class="ac-card" id="pAccount" aria-live="polite"></section>
-      <section class="ac-card" aria-labelledby="pSummaryT"><h2 class="ac-h2" id="pSummaryT" data-i18n="p.summary">ملخص التعلم</h2><div class="ac-stats" id="pSummary"></div><a class="ac-btn" href="/dashboard.html" data-i18n="p.seeDash">افتح لوحة التقدم</a></section>
-      <section class="ac-card" aria-labelledby="pDataT">
-        <h2 class="ac-h2" id="pDataT" data-i18n="p.data">بيانات هذا الجهاز</h2>
-        <p class="ac-note" data-i18n="p.data.note">يُحفظ تقدمك في متصفحك. يمكنك تنزيل نسخة منه أو مسحه بالكامل.</p>
-        <div class="ac-row">
-          <button type="button" class="ac-btn" id="pExport" data-i18n="p.export">تنزيل نسخة من تقدمي</button>
-          <button type="button" class="ac-btn ac-btn-danger" id="pReset" data-i18n="p.reset">مسح تقدمي على هذا الجهاز</button>
+      <header class="pf-head">
+        <div class="pf-id" id="pAccount" aria-live="polite"></div>
+      </header>
+
+      <section class="pf-strip" id="pSummary" aria-label="ملخص التعلم" data-i18n-attr="aria-label:p.summary"></section>
+
+      <div class="pf-cols">
+        <div class="pf-main">
+          <section aria-labelledby="pfCoursesT">
+            <div class="pf-sec-head"><h2 id="pfCoursesT" data-i18n="pf.courses">التقدم في المسارات</h2><a class="pf-more" href="/dashboard.html" data-i18n="p.seeDash">افتح لوحة التقدم</a></div>
+            <ul class="pf-courses" id="pCourses"></ul>
+          </section>
+          <section aria-labelledby="pfAchT">
+            <div class="pf-sec-head"><h2 id="pfAchT" data-i18n="d.ach">الإنجازات</h2></div>
+            <ul class="pf-ach" id="pAch"></ul>
+          </section>
         </div>
-        <p class="ac-note" id="pMsg" role="status"></p>
-      </section>
+        <aside class="pf-aside">
+          <section aria-labelledby="pfDetT">
+            <h2 id="pfDetT" class="pf-h3" data-i18n="pf.details">تفاصيل الحساب</h2>
+            <dl class="pf-dl" id="pDetails"></dl>
+          </section>
+          <section aria-labelledby="pDataT">
+            <h2 class="pf-h3" id="pDataT" data-i18n="p.data">بيانات هذا الجهاز</h2>
+            <p class="ac-note" data-i18n="p.data.note">يُحفظ تقدمك في متصفحك. يمكنك تنزيل نسخة منه أو مسحه بالكامل.</p>
+            <div class="ac-row">
+              <button type="button" class="ac-btn" id="pExport" data-i18n="p.export">تنزيل نسخة من تقدمي</button>
+              <button type="button" class="ac-btn ac-btn-danger" id="pReset" data-i18n="p.reset">مسح تقدمي على هذا الجهاز</button>
+            </div>
+            <p class="ac-note" id="pMsg" role="status"></p>
+          </section>
+        </aside>
+      </div>
     </main>
   </body>
 </html>

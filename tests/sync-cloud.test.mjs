@@ -90,5 +90,5 @@ test("TOTALS matches the real lesson counts in content/*/index.js", async () => 
     const { lessons } = await import(`../content/${id}/index.js`);
     assert.equal(lessons.length, n, id);
   }
-  assert.deepEqual(Object.keys(TOTALS).sort(), fs.readdirSync("content").sort());
+  assert.deepEqual(Object.keys(TOTALS).sort(), fs.readdirSync("content", { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name).sort());
 });
