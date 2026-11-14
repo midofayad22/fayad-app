@@ -45,27 +45,34 @@ export function run(level, program) {
   const cond = (c) => (c === "wallAhead" ? !open(0) : c === "openAhead" ? open(0) : c === "openLeft" ? open(-1) : c === "openRight" ? open(1) : false);
   const atGoal = () => x === g.goal.x && y === g.goal.y;
 
+  const stack = [];
+  const trail = () => stack.slice();
   function exec(list) {
     for (const b of list) {
       if (dead || budget <= 0) return;
       budget--;
-      if (b.op === "F") {
-        if (!open(0)) { steps.push({ x, y, dir, keys: keys.size, bump: true }); continue; }
-        x += DIRS[dir][0]; y += DIRS[dir][1];
-        const id = y * g.w + x;
-        keys.delete(id);
-        if (g.hazard.has(id)) { dead = "hazard"; }
-        steps.push({ x, y, dir, keys: keys.size });
-      } else if (b.op === "L" || b.op === "R") { dir = (dir + (b.op === "L" ? 3 : 1)) % 4; steps.push({ x, y, dir, keys: keys.size }); }
-      else if (b.op === "repeat") { for (let i = 0; i < Math.min(9, Math.max(1, b.n | 0)); i++) { exec(b.body || []); if (dead) return; } }
-      else if (b.op === "until") { let guard = 0; while (!atGoal() && !dead && budget > 0 && guard++ < 200) exec(b.body || []); }
-      else if (b.op === "if") exec(cond(b.cond) ? b.then || [] : b.else || []);
-      else if (b.op === "call") { if (fnDepth < 1) { fnDepth++; exec(program.fn || []); fnDepth--; } }
+      stack.push(b);
+      one(b);
+      stack.pop();
     }
+  }
+  function one(b) {
+    if (b.op === "F") {
+      if (!open(0)) { steps.push({ x, y, dir, keys: keys.size, bump: true, trail: trail() }); return; }
+      x += DIRS[dir][0]; y += DIRS[dir][1];
+      const id = y * g.w + x;
+      const took = keys.delete(id);
+      if (g.hazard.has(id)) { dead = "hazard"; }
+      steps.push({ x, y, dir, keys: keys.size, took, trail: trail() });
+    } else if (b.op === "L" || b.op === "R") { dir = (dir + (b.op === "L" ? 3 : 1)) % 4; steps.push({ x, y, dir, keys: keys.size, trail: trail() }); }
+    else if (b.op === "repeat") { for (let i = 0; i < Math.min(9, Math.max(1, b.n | 0)); i++) { exec(b.body || []); if (dead) return; } }
+    else if (b.op === "until") { let guard = 0; while (!atGoal() && !dead && budget > 0 && guard++ < 200) exec(b.body || []); }
+    else if (b.op === "if") exec(cond(b.cond) ? b.then || [] : b.else || []);
+    else if (b.op === "call") { if (fnDepth < 1) { fnDepth++; exec(program.fn || []); fnDepth--; } }
   }
   exec(program.main || []);
   const ok = !dead && atGoal() && keys.size === 0;
-  return { ok, reason: dead || (!atGoal() ? "not-at-goal" : keys.size ? "keys-left" : null), steps, keysLeft: keys.size, atGoal: atGoal() };
+  return { ok, reason: dead || (!atGoal() ? "not-at-goal" : keys.size ? "keys-left" : null), steps, keysLeft: keys.size, atGoal: atGoal(), exhausted: budget <= 0, goal: g.goal };
 }
 
 /** Stars: 3 = within the level's par (the reference solution size), 2 = within 1.5x par, otherwise 1. */

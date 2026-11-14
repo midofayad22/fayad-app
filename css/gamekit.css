@@ -1,0 +1,7 @@
+/* Shared game kit: drag ghost, confetti, modal shell, focus ring. Used by Adventure and Zombie Survival. */
+.gk-dragging, .gk-dragging * { cursor: grabbing !important; user-select: none; -webkit-user-select: none; }
+.gk-ghost { position: fixed; left: 0; top: 0; z-index: 1000; pointer-events: none; opacity: .94; filter: drop-shadow(0 10px 14px rgba(0,0,0,.28)); will-change: transform; max-width: 240px; }
+.gk-confetti { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 5; }
+.gk-confetti i { position: absolute; left: 50%; top: 40%; width: 9px; height: 14px; border-radius: 2px; background: var(--c); opacity: 0; animation: gk-conf 1.5s cubic-bezier(.12,.7,.3,1) forwards; }
+@keyframes gk-conf { 0% { opacity: 1; transform: translate(0,0) rotate(0); } 70% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--dx), calc(var(--dy) + 260px)) rotate(var(--r)); } }
+@media (prefers-reduced-motion: reduce) { .gk-confetti { display: none; } }
