@@ -36,3 +36,8 @@ Real Supabase flows (signup/login/upload/progress with a real account) are **not
 
 ## Next exact step
 Remaining gamification (profile XP line, settings leaderboard toggle, lose_heart in quizzes, achievements/daily challenge/leagues), then navbar/sidebar redesign, homepage storytelling, curriculum browsing, lesson docs architecture. Original Batch G note: client module `js/gamify.js` (sync_my_xp after sign-in/completion, level/XP/streak/hearts) → dashboard + profile + weekly leaderboard preview + settings toggle.
+
+## Phase 2 — in-game navigation shell (done)
+- `css/gamenav.css` + `header.gnav` in `play/adventure.html` and `play/zombie.html`: brand→FAYBIT, back button, breadcrumb to Game Center, section tabs (start / map / continue, `aria-current`), points/star pills, and the shared account/theme/language/search controls mounted via `.nav-actions`.
+- Adventure: carved signboard painted from the active world's tokens. Zombie: dark steel bar with amber hazard stripe and lime accents.
+- Mobile (≤760px): two-row touch layout; tabs hidden on the play screen; bar scrolls away on play so the stage keeps full height. Old `.ac-top` / HUD removed. No horizontal overflow at 360/430/1280.

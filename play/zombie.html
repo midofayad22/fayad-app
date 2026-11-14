@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="/css/account.css" />
     <link rel="stylesheet" href="/css/game.css" />
     <link rel="stylesheet" href="/css/gamekit.css" />
+    <link rel="stylesheet" href="/css/gamenav.css" />
     <link rel="stylesheet" href="/css/zombie.css" />
     <script src="/js/i18n.js" defer></script>
     <script src="/js/shell.js" defer></script>
@@ -62,23 +63,24 @@
         <symbol id="z-tree" viewBox="0 0 48 48"><path d="M23 42V22M23 28l-9-8M23 24l9-9M23 33l7-5" stroke="#2c2118" stroke-width="3.5" stroke-linecap="round" fill="none"/></symbol>
       </defs>
     </svg>
-    <header class="ac-top">
-      <div class="ac-wrap ac-top-in">
-        <a class="ac-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="32" height="32" /><span>FAYBIT</span></a>
-        <nav class="ac-nav" aria-label="FAYBIT">
-          <a href="/index.html" data-i18n="fq.home">الرئيسية</a>
-          <a href="/play/index.html" data-i18n="fq.hub">الألعاب</a>
-          <a href="/dashboard.html" data-i18n="fq.dash">لوحة التقدم</a>
-        </nav>
-      </div>
-    </header>
+    
     <main id="main" class="zb-app" data-screen="intro">
+      <header class="gnav zb-nav" id="gnav">
+        <div class="gnav-in">
+          <a class="gnav-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="30" height="30" /><span>FAYBIT</span></a>
+          <button class="gnav-back" type="button" id="zbBack"><span aria-hidden="true">‹</span><span id="zbBackTxt"></span></button>
+          <nav class="gnav-crumbs" aria-label="breadcrumb"><a href="/play/index.html" data-i18n="fq.hub">الألعاب</a><span class="sep" aria-hidden="true">/</span><span class="cur">Zombie Survival</span></nav>
+          <div class="gnav-sec" role="group" data-i18n-attr="aria-label:gnav.sections" aria-label="الأقسام">
+            <button type="button" class="gnav-tab" data-go="intro" data-i18n="gnav.home">البداية</button>
+            <button type="button" class="gnav-tab" data-go="map" data-i18n="zb.nights">الليالي</button>
+            <button type="button" class="gnav-tab gnav-cta" data-go="continue" data-i18n="gnav.continue">تابع اللعب</button>
+          </div>
+          <div class="gnav-stats"><span class="gnav-pill" title="points"><svg class="ic" aria-hidden="true"><use href="#z-bullet"/></svg><b id="zbPoints">0</b></span><span class="gnav-pill"><svg class="ic st" aria-hidden="true"><use href="#z-star"/></svg><b id="zbStarTotal">0</b><small>/45</small></span></div>
+          <div class="nav-actions"></div>
+        </div>
+      </header>
       <div class="zb-scene" id="zbScene" aria-hidden="true"><div class="zb-moon"></div><svg class="zb-forest" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMax slice"></svg><div class="zb-fog f1"></div><div class="zb-fog f2"></div><div class="zb-rain"></div></div>
-      <div class="zb-hud">
-        <button class="zb-back" type="button" id="zbBack"><span aria-hidden="true">‹</span><span id="zbBackTxt"></span></button>
-        <div class="zb-hud-r"><span class="zb-pill"><svg class="ic" aria-hidden="true"><use href="#z-bullet"/></svg><b id="zbPoints">0</b></span><span class="zb-pill"><svg class="ic st" aria-hidden="true"><use href="#z-star"/></svg><b id="zbStarTotal">0</b>/45</span></div>
-      </div>
-
+      
       <section class="zb-screen" id="scrIntro" aria-labelledby="zbTitle">
         <div class="zb-intro">
           <div class="zb-intro-art" aria-hidden="true"><svg class="zi-me" viewBox="0 0 48 48"><use href="#z-me"/></svg><svg class="zi-z z1" viewBox="0 0 48 48"><use href="#z-zom"/></svg><svg class="zi-z z2" viewBox="0 0 48 48"><use href="#z-zom"/></svg><svg class="zi-z z3" viewBox="0 0 48 48"><use href="#z-zom"/></svg></div>

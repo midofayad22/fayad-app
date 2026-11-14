@@ -38,6 +38,8 @@ const DICT = {
     fTitle: "Not yet", fNext: "What to do: ", hz: "Fay stepped on a trap at step {n}.", hzNext: "Change direction before the red block so Fay goes around the ✕.", ex: "The program ran for more steps than allowed.", exNext: "There may be a loop that never ends: make sure “Repeat until flag” moves toward the flag.",
     kl: "{n} key(s) were not collected.", klNext: "Make the path pass over every key before the flag.", bp: "Fay bumped into a wall {n} time(s) (the red block is the first bump).", bpNext: "Add a turn before it or move forward less.", ng: "Fay stopped {d} cells from the flag.", ngNext: "Add more moves or raise the repeat count.", again: "Try again" },
 };
+DICT.ar["gnav.home"] = "البداية"; DICT.ar["gnav.continue"] = "تابع اللعب"; DICT.ar["gnav.sections"] = "الأقسام";
+DICT.en["gnav.home"] = "Start"; DICT.en["gnav.continue"] = "Continue"; DICT.en["gnav.sections"] = "Sections";
 F?.i18n?.extend({ ar: DICT.ar, en: DICT.en });
 const lang = () => (F?.i18n?.lang === "en" ? "en" : "ar");
 const T = (k, p = {}) => String(DICT[lang()][k] ?? k).replace(/\{(\w+)\}/g, (_, x) => p[x] ?? "");
@@ -82,11 +84,16 @@ $("advBack").addEventListener("click", () => {
   else if (screen === "map") show("intro");
   else location.href = "/play/index.html";
 });
+
+/* in-game navigation: section tabs */
+function markNav() { document.querySelectorAll(".gnav-tab[data-go]").forEach((b) => { const k = b.dataset.go; b.setAttribute("aria-current", String(k === screen || (k === "map" && screen === "world"))); }); }
+document.querySelectorAll(".gnav-tab[data-go]").forEach((b) => b.addEventListener("click", () => { const k = b.dataset.go; if (k === "continue") go(firstOpen()); else if (k === "map") { renderMap(); show("map"); } else show(k); }));
 $("advStart").addEventListener("click", () => go(firstOpen()));
 $("advToMap").addEventListener("click", () => { renderMap(); show("map"); });
 
 /* ---------------- header / meta ---------------- */
 function header() {
+  markNav();
   const d = read(), st = readStars();
   $("advPoints").textContent = d.points;
   $("advStarTotal").textContent = Object.values(st).reduce((a, b) => a + b, 0);

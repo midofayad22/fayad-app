@@ -30,6 +30,8 @@ const DICT = {
     fTitle: "You did not hold out", fNext: "What to do: ", empty0: "Add at least one rule.", budget: "Too many rules.", "locked-action": "That action is not available on this night.", "bad-rule": "Invalid rule.", empty: "Add at least one rule.",
     fBite: "A zombie bit you on turn {t} while rule {r} (“{a}”) ran.", fBiteN: "Put a rule before it that deals with the adjacent zombie (melee or retreat).", fClick: "You ran out of ammo on turn {t} while shooting.", fClickN: "Add “ammo is empty → reload” before the shoot rule.", fTime: "The turns ran out with zombies still alive.", fTimeN: "“always → wait” kills nobody: put an attacking action there.", fDead: "The survivor died on turn {t}.", fDeadN: "Heal before health gets low (medkit) or retreat from the zombie.", again: "Try again", hintT: "It can be solved with {n} rules. Start with the rule “{c} → {a}”.", running: "…" },
 };
+DICT.ar["gnav.home"] = "البداية"; DICT.ar["gnav.continue"] = "تابع اللعب"; DICT.ar["gnav.sections"] = "الأقسام";
+DICT.en["gnav.home"] = "Start"; DICT.en["gnav.continue"] = "Continue"; DICT.en["gnav.sections"] = "Sections";
 F?.i18n?.extend({ ar: DICT.ar, en: DICT.en });
 const lang = () => (F?.i18n?.lang === "en" ? "en" : "ar");
 const T = (k, p = {}) => String(DICT[lang()][k] ?? k).replace(/\{(\w+)\}/g, (_, x) => p[x] ?? "");
@@ -66,9 +68,14 @@ function show(name) {
   window.scrollTo({ top: 0, behavior: "instant" }); header();
 }
 $("zbBack").addEventListener("click", () => { if (screen === "play") { renderMap(); show("map"); } else if (screen === "map") show("intro"); else location.href = "/play/index.html"; });
+
+/* in-game navigation: section tabs */
+function markNav() { document.querySelectorAll(".gnav-tab[data-go]").forEach((b) => { const k = b.dataset.go; b.setAttribute("aria-current", String(k === screen || (k === "map" && screen === "world"))); }); }
+document.querySelectorAll(".gnav-tab[data-go]").forEach((b) => b.addEventListener("click", () => { const k = b.dataset.go; if (k === "continue") go(firstOpen()); else if (k === "map") { renderMap(); show("map"); } else show(k); }));
 $("zbStart").addEventListener("click", () => go(firstOpen()));
 $("zbToMap").addEventListener("click", () => { renderMap(); show("map"); });
 function header() {
+  markNav();
   const d = read(), st = readStars(); $("zbPoints").textContent = d.points; $("zbStarTotal").textContent = Object.values(st).reduce((a, b) => a + b, 0);
   $("zbStartTxt").textContent = Object.keys(d.games[GAME]?.solved || {}).length ? T("cont") : T("start");
 }

@@ -1,0 +1,59 @@
+/* In-game navigation shell. Shared structure; each game paints it from its own tokens (.adv-nav / .zb-nav). */
+.gnav { position: sticky; top: 0; z-index: 40; margin: -14px calc(-1 * clamp(12px, 4vw, 32px)) 14px; }
+.gnav-in { display: flex; align-items: center; gap: 10px; max-width: 1180px; margin: 0 auto; padding: 8px clamp(12px, 4vw, 32px); min-height: 56px; }
+.gnav-brand { display: inline-flex; align-items: center; gap: 8px; font: 800 1.02rem/1 var(--fy-font-en, system-ui); letter-spacing: .06em; text-decoration: none; color: inherit; flex: none; }
+.gnav-brand img { width: 30px; height: 30px; }
+.gnav-back, .gnav-tab, .gnav-pill, .gnav-crumbs a { font: 700 .88rem/1 var(--fy-font, system-ui); }
+.gnav-back { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 14px; border-radius: 99px; border: 2px solid var(--g-line); background: var(--g-chip); color: var(--g-ink); cursor: pointer; flex: none; }
+.gnav-back > span:first-child { font-size: 1.35rem; line-height: 1; }
+html[dir="rtl"] .gnav-back > span:first-child { transform: scaleX(-1); }
+.gnav-crumbs { display: flex; align-items: center; gap: 6px; color: var(--g-soft); font-size: .86rem; min-width: 0; }
+.gnav-crumbs a { color: var(--g-soft); text-decoration: none; } .gnav-crumbs a:hover { color: var(--g-ink); text-decoration: underline; }
+.gnav-crumbs .cur { color: var(--g-ink); font-weight: 800; white-space: nowrap; }
+.gnav-sec { display: flex; gap: 4px; margin-inline: auto; padding: 4px; border-radius: 99px; background: var(--g-chip); border: 2px solid var(--g-line); }
+.gnav-tab { min-height: 36px; padding: 0 14px; border-radius: 99px; border: 0; background: transparent; color: var(--g-soft); cursor: pointer; transition: background .15s, color .15s; }
+.gnav-tab:hover { color: var(--g-ink); }
+.gnav-tab[aria-current="true"] { background: var(--g-on); color: var(--g-on-ink); }
+.gnav-cta { color: var(--g-cta-ink); background: var(--g-cta); } .gnav-cta:hover { color: var(--g-cta-ink); filter: brightness(1.08); }
+.gnav-stats { display: flex; gap: 6px; flex: none; }
+.gnav-pill { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 12px; border-radius: 99px; background: var(--g-chip); border: 2px solid var(--g-line); color: var(--g-ink); font-variant-numeric: tabular-nums; }
+.gnav-pill { direction: ltr; }
+.gnav-pill small { opacity: .6; font-weight: 600; } .gnav-pill .ic { width: 18px; height: 18px; }
+.gnav .nav-actions { display: flex; align-items: center; gap: 6px; flex: none; }
+.gnav .fy-controls { display: flex; gap: 6px; margin: 0; }
+.gnav .fy-btn { height: 40px; min-width: 40px; background: var(--g-chip); border: 2px solid var(--g-line); color: var(--g-ink); box-shadow: none; }
+.gnav .fy-btn:hover { border-color: var(--g-accent); background: var(--g-chip); }
+.gnav button:focus-visible, .gnav a:focus-visible { outline: 3px solid var(--g-focus); outline-offset: 2px; }
+/* on the play screen the stage needs every pixel: the bar scrolls away instead of sticking */
+[data-screen="play"] > .gnav { position: relative; }
+
+/* ---- Adventure: a carved wooden signboard hung over the world ---- */
+.adv-nav { --g-ink: var(--hero-ink); --g-soft: var(--hero-soft); --g-chip: color-mix(in srgb, var(--surface) 88%, transparent); --g-line: var(--border); --g-on: var(--acc); --g-on-ink: var(--acc-ink); --g-cta: var(--acc-2); --g-cta-ink: #3a2500; --g-accent: var(--acc); --g-focus: var(--acc-2); }
+.adv-nav { color: var(--g-ink); background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 92%, transparent), color-mix(in srgb, var(--surface-2) 82%, transparent)); backdrop-filter: blur(8px); border-bottom: 3px solid var(--border); box-shadow: 0 6px 0 -3px color-mix(in srgb, var(--acc) 35%, transparent), 0 10px 24px rgba(0,0,0,.14); border-radius: 0 0 22px 22px; }
+.adv-nav .gnav-brand, .adv-nav .gnav-crumbs, .adv-nav .gnav-crumbs .cur { color: var(--ink); } .adv-nav .gnav-crumbs a { color: var(--ink-soft); }
+.adv-nav { --g-ink: var(--ink); --g-soft: var(--ink-soft); }
+.adv-nav .gnav-pill .ic.st { color: var(--gold); }
+
+/* ---- Zombie: a dark steel bar with an amber hazard stripe ---- */
+.zb-nav { --g-ink: var(--bone); --g-soft: var(--bone-soft); --g-chip: rgba(23,38,60,.85); --g-line: var(--border); --g-on: var(--surface-3); --g-on-ink: var(--lime); --g-cta: var(--lime); --g-cta-ink: #0b1a05; --g-accent: var(--lime); --g-focus: var(--amber); color: var(--bone); background: linear-gradient(180deg, rgba(5,10,20,.94), rgba(10,20,36,.86)); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); position: sticky; }
+.zb-nav::after { content: ""; position: absolute; inset: auto 0 -1px 0; height: 4px; background: repeating-linear-gradient(135deg, var(--amber) 0 10px, #11161f 10px 20px); opacity: .85; }
+.zb-nav .gnav-brand { text-shadow: 0 0 12px rgba(182,242,58,.35); }
+.zb-nav .gnav-pill .ic { color: var(--amber); } .zb-nav .gnav-pill .ic.st { color: var(--lime); }
+.zb-nav .gnav-tab[aria-current="true"] { box-shadow: inset 0 -2px 0 var(--lime); }
+
+@media (max-width: 1020px) { .gnav-crumbs { display: none; } }
+@media (max-width: 760px) {
+  .gnav-in { flex-wrap: wrap; gap: 8px; padding-block: 8px; min-height: 0; }
+  .gnav-brand span { display: none; }
+  .gnav-back { padding: 0 12px; min-height: 40px; }
+  .gnav-stats { margin-inline-start: auto; }
+  .gnav-pill { padding: 0 9px; min-height: 36px; }
+  /* second row: sections left, account controls right — large touch targets */
+  .gnav-sec { order: 5; margin: 0; flex: 1 1 auto; }
+  .gnav-tab { flex: 1; padding: 0 8px; min-height: 40px; font-size: .84rem; }
+  .gnav .nav-actions { order: 6; }
+  .gnav .fy-btn { height: 40px; min-width: 40px; padding: 0 8px; }
+  [data-screen="play"] .gnav-sec { display: none; }
+  [data-screen="play"] .gnav .nav-actions { margin-inline-start: auto; }
+}
+@media (max-width: 400px) { .gnav .fy-controls { gap: 4px; } .gnav .fy-btn { min-width: 36px; height: 38px; } .gnav-tab { font-size: .78rem; } }

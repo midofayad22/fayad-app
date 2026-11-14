@@ -11,7 +11,6 @@
   position: relative; min-height: calc(100dvh - 64px); padding: 14px clamp(12px, 4vw, 32px) max(30px, env(safe-area-inset-bottom)); color: var(--bone); isolation: isolate; overflow-x: clip; font-family: var(--fy-font);
 }
 .zb-app[data-dawn="1"] { --n0: #1b2a44; --n1: #3a4c76; --n2: #7a6b8c; --n3: #e1a06b; }
-.zb-body .ac-top { position: static; }
 .zb-scene { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; background: radial-gradient(120% 70% at 78% 8%, #1d3a63 0%, transparent 55%), linear-gradient(180deg, var(--n0), var(--n1) 55%, var(--forest0)); transition: background 1.2s; }
 .zb-moon { position: absolute; top: 9%; inset-inline-end: 14%; width: clamp(70px, 10vw, 130px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 38% 36%, #fffbe6, #e8e2c0 55%, #c9c39a); box-shadow: 0 0 60px 20px rgba(232,226,192,.18), 0 0 160px 60px rgba(120,160,220,.12); }
 .zb-moon::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle at 62% 60%, #0003 0 14%, transparent 15%), radial-gradient(circle at 30% 70%, #0002 0 9%, transparent 10%); }
@@ -22,8 +21,6 @@
 .zb-rain { position: absolute; inset: 0; opacity: .2; background: repeating-linear-gradient(105deg, transparent 0 22px, rgba(170,200,240,.55) 22px 23px); background-size: 120px 120px; animation: zb-rain .9s linear infinite; }
 @keyframes zb-rain { to { background-position: -40px 120px; } }
 .zb-app[data-screen="play"] .zb-rain { opacity: .08; }
-.zb-hud { display: flex; align-items: center; justify-content: space-between; gap: 10px; max-width: 1100px; margin: 0 auto 12px; }
-.zb-hud-r { display: flex; gap: 8px; }
 .zb-pill, .zb-back { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 14px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); color: var(--bone); font: 700 .92rem var(--fy-font); }
 .zb-pill b { color: var(--lime); font-family: var(--fy-font-en); } .zb-back { cursor: pointer; } .zb-back:hover { border-color: var(--amber); } .zb-back span:first-child { font-size: 1.4rem; line-height: 1; } html[dir="rtl"] .zb-back span:first-child { transform: scaleX(-1); }
 .zb-back:focus-visible, .zb-btn:focus-visible, .zb-night-n:focus-visible, .zb-rule select:focus-visible, .zb-rb:focus-visible { outline: none; box-shadow: var(--focus); }
