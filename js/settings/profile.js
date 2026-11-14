@@ -95,7 +95,7 @@ mount("profile", async (body, { client, user }) => {
   const add = (k, v) => dl.append(el("dt", {}, k), el("dd", {}, v));
   add(T("pf.email"), el("bdi", { dir: "ltr" }, user.email || "—"));
   add(T("pf.status"), user.email_confirmed_at ? T("pf.verified") : T("pf.unverified"));
-  add(T("pf.since"), fmt(user.created_at)); add(T("pf.last"), fmt(user.last_sign_in_at));
+
   add(T("pf.provider"), (user.app_metadata?.providers || []).map((p) => (p === "email" ? T("pf.pw") : p)).join(" · ") || "—");
 
   /* ---- picture privacy (profiles.avatar_public; leaderboard hides the picture from others when off) ---- */

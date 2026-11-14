@@ -159,3 +159,4 @@ main.ac-wrap { padding-block-end: calc(96px + env(safe-area-inset-bottom, 0px));
 .dv-board em { font-style: normal; color: var(--fy-text-soft); font-variant-numeric: tabular-nums; } .dv-rank { color: var(--fy-text-muted); font-variant-numeric: tabular-nums; }
 @media (max-width: 860px) { .dv-game-grid { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 560px) { .dv-chips { grid-template-columns: 1fr 1fr; } }
+.pf-empty { padding: 14px 0; color: var(--fy-text-soft); }

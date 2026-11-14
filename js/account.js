@@ -33,6 +33,7 @@ i18n?.extend({
     "a.first-track": "أول مسار مكتمل", "a.three-tracks": "3 مسارات مكتملة", "a.quiz-25": "25 إجابة صحيحة", "a.quiz-100": "100 إجابة صحيحة", "a.assessment": "نجاح في تقييم نهائي",
     "a.earned": "تم الإنجاز", "a.locked": "قيد التقدم",
     "d.points.note": "{l} نقاط لكل درس مكتمل، و{c} لكل سؤال أُجيب عنه صحيحًا (مرة واحدة لكل سؤال)، و{t} لكل مسار مكتمل، و{a} لكل تقييم نهائي ناجح.",
+    "pf.nostart": "لم تبدأ أي مسار بعد.", "pf.browse": "تصفّح المسارات", "pf.more": "{n} مسارًا آخر متاحًا للبدء",
     "pf.courses": "التقدم في المسارات", "pf.details": "تفاصيل الحساب", "pf.edit": "تعديل الملف الشخصي", "pf.guest": "زائر", "pf.guestNote": "تعلّم بدون حساب؛ يُحفظ تقدمك على هذا الجهاز. أنشئ حسابًا لحفظ اسمك وصورتك.", "pf.signedIn": "تم تسجيل الدخول. اسمك وصورتك محفوظان في حسابك.", "pf.accuracy": "دقة الإجابات", "pf.none": "لم تبدأ بعد", "pf.last": "آخر نشاط", "pf.noact": "لا يوجد نشاط بعد", "pf.started": "قيد التقدم", "pf.mode": "نوع الحساب", "pf.modeGuest": "زائر (على هذا الجهاز)", "pf.modeUser": "حساب مسجّل",
     "p.title": "الملف الشخصي", "p.sub": "بيانات حسابك وتفضيلاتك.", "p.summary": "ملخص التعلم", "p.seeDash": "افتح لوحة التقدم",
     "p.data": "بيانات هذا الجهاز", "p.data.note": "يُحفظ تقدمك في متصفحك. يمكنك تنزيل نسخة منه أو مسحه بالكامل.", "p.export": "تنزيل نسخة من تقدمي", "p.reset": "مسح تقدمي على هذا الجهاز",
@@ -55,6 +56,7 @@ i18n?.extend({
     "a.first-track": "First course completed", "a.three-tracks": "3 courses completed", "a.quiz-25": "25 correct answers", "a.quiz-100": "100 correct answers", "a.assessment": "Passed a final assessment",
     "a.earned": "Earned", "a.locked": "In progress",
     "d.points.note": "{l} points per completed lesson, {c} per quiz question answered correctly (once per question), {t} per completed course and {a} per passed final assessment.",
+    "pf.nostart": "You have not started a course yet.", "pf.browse": "Browse courses", "pf.more": "{n} more courses available",
     "pf.courses": "Course progress", "pf.details": "Account details", "pf.edit": "Edit profile", "pf.guest": "Guest", "pf.guestNote": "You are learning without an account; progress stays on this device. Create an account to keep your name and picture.", "pf.signedIn": "Signed in. Your name and picture are saved to your account.", "pf.accuracy": "Answer accuracy", "pf.none": "Not started", "pf.last": "Last activity", "pf.noact": "No activity yet", "pf.started": "In progress", "pf.mode": "Account type", "pf.modeGuest": "Guest (this device)", "pf.modeUser": "Registered account",
     "p.title": "Profile", "p.sub": "Your account details and preferences.", "p.summary": "Learning summary", "p.seeDash": "Open the progress dashboard",
     "p.data": "Data on this device", "p.data.note": "Your progress is stored in your browser. You can download a copy or erase it completely.", "p.export": "Download a copy of my progress", "p.reset": "Erase my progress on this device",
@@ -218,7 +220,9 @@ function renderProfile() {
   box.append(fig(n.format(s.points), T("s.points")), fig(n.format(g.completed), T("s.completed")), fig(`\u2066${n.format(g.tracksDone)} / ${n.format(g.tracks)}\u2069`, T("s.tracks")),
     fig(g.accuracy === null ? "—" : `${n.format(g.accuracy)}%`, T("pf.accuracy")));
   const list = $("pCourses"); list.textContent = "";
-  const order = [...s.perTrack].sort((a, b) => (b.started - a.started) || (b.percent - a.percent));
+  const order = [...s.perTrack].filter((x) => x.started).sort((a, b) => b.percent - a.percent);   // never list courses the learner has not opened
+  const unopened = s.perTrack.length - order.length;
+  if (!order.length) { const li = el("li", "pf-empty"); li.append(el("span", "", T("pf.nostart"))); const a = el("a", "pf-more", T("pf.browse")); a.href = "/index.html#courses"; li.append(" ", a); list.append(li); }
   for (const t of order) {
     const meta = tracks.find((x) => x.id === t.id); if (!meta) continue;
     const li = el("li", "pf-course" + (t.started ? "" : " is-idle"));
@@ -228,6 +232,7 @@ function renderProfile() {
     const fill = el("span"); fill.style.width = `${t.percent}%`; bar.append(fill);
     a.append(top, bar, el("small", "", T("t.lessons", { done: n.format(t.completed), total: n.format(t.total) }))); li.append(a); list.append(li);
   }
+  if (order.length && unopened) { const li = el("li", "pf-empty"); const a = el("a", "pf-more", T("pf.more", { n: n.format(unopened) })); a.href = "/index.html#courses"; li.append(a); list.append(li); }
   const ach = $("pAch"); ach.textContent = "";
   for (const x of s.achievements) { const li = el("li", "pf-badge" + (x.earned ? " is-earned" : "")); li.dataset.id = x.id; li.append(el("strong", "", T("a." + x.id)), el("small", "", x.earned ? T("a.earned") : `${n.format(x.progress)} / ${n.format(x.target)}`)); ach.append(li); }
   addLast();
