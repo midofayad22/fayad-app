@@ -78,10 +78,12 @@
     <link rel="stylesheet" href="/css/theme-overrides.css" />
     <link rel="stylesheet" href="/css/shell.css" />
     <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/home-platform.css" />
     <script src="/js/i18n.js" defer></script>
     <script src="/js/shell.js" defer></script>
     <script src="/js/catalog.js" defer></script>
     <script src="/js/home.js" defer></script>
+    <script src="/js/home-platform.js" defer></script>
     <script src="/vendor/gsap-3.13.0/gsap.min.js" defer></script>
     <script src="/vendor/gsap-3.13.0/ScrollTrigger.min.js" defer></script>
     <script src="/js/home-motion.js" defer></script>
@@ -128,6 +130,7 @@
             <p class="hm-lead" data-i18n="h.desc">مسار مرتّب يبدأ بأساسيات الحاسوب والبرمجة، ثم HTML وCSS وJavaScript، وينتهي بأطر العمل. كل درس: شرح، مثال، تمرين، واختبار.</p>
             <div class="hm-actions">
               <a class="hm-cta" id="heroCta" href="fundamentals/computer-basics/com.html"><span data-i18n="h.cta">ابدأ من الأساسيات</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <a class="hm-cta2" href="play/index.html"><span data-i18n="h.cta2">العب وتعلّم</span></a>
             </div>
             <ul class="hm-stats" aria-label="FAYBIT">
               <li><b data-stat="tracks">11</b><span data-i18n="h.stat.tracks">مسارات</span></li>
@@ -156,6 +159,24 @@
           </div>
         </div>
         <div class="hm-marquee" aria-hidden="true"><ul><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Advanced JS</li><li>Bootstrap</li><li>Tailwind</li><li>React</li><li>Vue</li><li>Angular</li></ul><ul><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Advanced JS</li><li>Bootstrap</li><li>Tailwind</li><li>React</li><li>Vue</li><li>Angular</li></ul></div>
+      </section>
+
+      <section id="platform" class="hm-sec hm-plat" aria-labelledby="platTitle">
+        <div class="hm-wrap">
+          <div class="hm-head">
+            <span class="hm-eyebrow" data-i18n="pl.eyebrow">ما تقدمه FAYBIT</span>
+            <h2 id="platTitle" data-i18n="pl.title">منصة تعليم كاملة، لا مجرد دروس</h2>
+            <p data-i18n="pl.lead">كل ما تحتاجه لتتعلم البرمجة وتطبّقها في مكان واحد، بالعربية والإنجليزية.</p>
+          </div>
+          <ul class="pl-grid" role="list">
+            <li class="pl"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h6a3 3 0 013 3v11a2 2 0 00-2-2H4zM20 5h-6a3 3 0 00-3 3v11a2 2 0 012-2h7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><h3 data-i18n="pl.1.t">دروس منظّمة بالترتيب</h3><p data-i18n="pl.1.d">مسارات تبدأ من أساسيات الحاسوب وتنتهي بأطر العمل، وفي كل درس شرح ومثال وتمرين.</p></li>
+            <li class="pl"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3 data-i18n="pl.2.t">محرر تفاعلي</h3><p data-i18n="pl.2.d">عدّل الكود وشاهد النتيجة فورًا داخل الدرس في بيئة معزولة وآمنة.</p></li>
+            <li class="pl"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3 data-i18n="pl.3.t">اختبارات وتغذية راجعة</h3><p data-i18n="pl.3.d">أسئلة بعد الدروس وتصحيح فوري مع تلميحات وشرح للإجابة.</p></li>
+            <li class="pl"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 9h10a4 4 0 014 4v1a3 3 0 01-5.2 2L14 14h-4l-1.800 2A3 3 0 013 14v-1a4 4 0 014-4zM8 11v3M6.500 12.500h3M16 12h.01M18 13.500h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3 data-i18n="pl.4.t">ألعاب برمجة</h3><p data-i18n="pl.4.d">مغامرة من 120 مرحلة، وبقاء من الزومبي بالقواعد المنطقية، وتحديات للمتصفح.</p></li>
+            <li class="pl"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l2.700 5.600 6.100.9-4.400 4.300 1 6.100L12 17l-5.400 2.900 1-6.100L3.200 9.500l6.100-.9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><h3 data-i18n="pl.5.t">تقدّم ونقاط</h3><p data-i18n="pl.5.d">لوحة تقدم وسلاسل أيام ونقاط تُحفظ على جهازك ومع حسابك.</p></li>
+            <li class="pl"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><h3 data-i18n="pl.6.t">عربي وإنجليزي</h3><p data-i18n="pl.6.d">واجهة كاملة من اليمين لليسار ومن اليسار لليمين، مع وضع فاتح وداكن.</p></li>
+          </ul>
+        </div>
       </section>
 
       <section id="courses" class="hm-sec hm-path" aria-labelledby="coursesTitle">
@@ -351,12 +372,14 @@
               <span class="gm-prog" data-prog="sel"></span>
             </a>
             <a class="gm gm-zombie" href="play/zombie.html" data-game="zombie">
+              <span class="gm-art" aria-hidden="true"><svg viewBox="0 0 400 118" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="gzS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#050a14"/><stop offset="1" stop-color="#17402f"/></linearGradient></defs><rect width="400" height="118" fill="url(#gzS)"/><circle cx="318" cy="30" r="17" fill="#eaeef5"/><circle cx="311" cy="26" r="17" fill="#07101e"/><g fill="#0c211c"><path d="M30 118l18-60 18 60zM70 118l14-44 14 44zM330 118l16-52 16 52zM370 118l12-38 12 38z"/></g><rect x="0" y="100" width="400" height="18" fill="#0c211c"/><g fill="#5f8f3a"><rect x="236" y="62" width="20" height="38" rx="6"/><circle cx="246" cy="56" r="10"/><rect x="215" y="68" width="24" height="6" rx="3"/><rect x="262" y="68" width="22" height="6" rx="3"/></g><circle cx="243" cy="55" r="2.200" fill="#e5393f"/><circle cx="250" cy="55" r="2.200" fill="#e5393f"/><g fill="#3d78c8"><rect x="120" y="64" width="18" height="36" rx="6"/><circle cx="129" cy="58" r="9" fill="#f1c8a0"/><rect x="136" y="72" width="22" height="5" rx="2.500" fill="#ffb02e"/></g><path d="M160 74h40" stroke="#b6f23a" stroke-width="2" stroke-dasharray="3 5"/></svg></span>
               <span class="gm-tag" data-i18n="g.zombie.tag">منطق وشروط</span>
               <h3>Zombie Survival</h3>
               <p data-i18n="g.zombie.d">اكتب قواعد إذا/فافعل لإنقاذ الناجي من موجات الزومبي.</p>
               <span class="gm-prog" data-prog="zombie"></span>
             </a>
             <a class="gm gm-adv" href="play/adventure.html" data-game="adventure">
+              <span class="gm-art" aria-hidden="true"><svg viewBox="0 0 400 118" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="gaS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfe6ff"/><stop offset="1" stop-color="#fff2b8"/></linearGradient></defs><rect width="400" height="118" fill="url(#gaS)"/><circle cx="330" cy="30" r="20" fill="#ffd54a"/><path d="M0 84q60-40 130-14t140-10q70 6 130-18v76H0z" fill="#8ed98f"/><path d="M0 100q90-30 200-6t200-14v38H0z" fill="#2f9a62"/><g fill="#1b6b42"><path d="M60 94l14-34 14 34zM92 96l11-26 11 26z"/></g><rect x="268" y="60" width="3" height="34" fill="#7a4a1d"/><path d="M271 60l22 8-22 9z" fill="#e5393f"/><rect x="170" y="70" width="26" height="24" rx="7" fill="#12a89a"/><rect x="175" y="76" width="16" height="9" rx="4" fill="#0b2b36"/><circle cx="180" cy="80.500" r="2" fill="#6ff"/><circle cx="187" cy="80.500" r="2" fill="#6ff"/></svg></span>
               <span class="gm-tag" data-i18n="g.adv.tag">برمجة بالكتل</span>
               <h3 data-i18n="g.adv.t">FAYAD: المغامرة الكبرى</h3>
               <p data-i18n="g.adv.d">120 مرحلة في 6 عوالم: تسلسل وحلقات وشروط ودوال.</p>

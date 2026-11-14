@@ -41,21 +41,21 @@ const holds = (c, s) => {
 };
 const free = (s, x, y) => x >= 0 && y >= 0 && x < SIZE && y < SIZE && !s.zs.some((z) => z.hp > 0 && z.x === x && z.y === y);
 
-function act(s, a, log) {
-  if (a === "melee") { const t = s.zs.filter((z) => z.hp > 0 && dist(z, s) === 1).sort((p, q) => p.hp - q.hp || p.y - q.y || p.x - q.x)[0]; if (t) { t.hp--; log.push(t.hp <= 0 ? "melee-kill" : "melee"); } else log.push("whiff"); }
-  else if (a === "shoot") { if (s.ammo <= 0) log.push("click"); else { s.ammo--; const t = lineTarget(s); if (t) { t.hp--; log.push(t.hp <= 0 ? "shot-kill" : "shot"); } else log.push("miss"); } }
-  else if (a === "reload") { s.ammo = Math.min(MAG, s.maxAmmo, s.ammo + MAG); log.push("reload"); }
-  else if (a === "heal") { if (s.med > 0) { s.med--; s.hp = Math.min(MAX_HP, s.hp + 2); log.push("heal"); } else log.push("nomed"); }
+function act(s, a, log, ev) {
+  if (a === "melee") { const t = s.zs.filter((z) => z.hp > 0 && dist(z, s) === 1).sort((p, q) => p.hp - q.hp || p.y - q.y || p.x - q.x)[0]; if (t) { t.hp--; ev.push({ k: "melee", z: s.zs.indexOf(t), kill: t.hp <= 0 }); log.push(t.hp <= 0 ? "melee-kill" : "melee"); } else { ev.push({ k: "whiff" }); log.push("whiff"); } }
+  else if (a === "shoot") { if (s.ammo <= 0) { ev.push({ k: "click" }); log.push("click"); } else { s.ammo--; const t = lineTarget(s); if (t) { t.hp--; ev.push({ k: "shot", z: s.zs.indexOf(t), kill: t.hp <= 0 }); log.push(t.hp <= 0 ? "shot-kill" : "shot"); } else { ev.push({ k: "miss" }); log.push("miss"); } } }
+  else if (a === "reload") { s.ammo = Math.min(MAG, s.maxAmmo, s.ammo + MAG); ev.push({ k: "reload" }); log.push("reload"); }
+  else if (a === "heal") { if (s.med > 0) { s.med--; s.hp = Math.min(MAX_HP, s.hp + 2); ev.push({ k: "heal" }); log.push("heal"); } else { ev.push({ k: "nomed" }); log.push("nomed"); } }
   else if (a === "retreat") {
     const n = nearest(s); let best = null;
     DIRS.forEach(([dx, dy]) => { const x = s.x + dx, y = s.y + dy; if (!free(s, x, y)) return; const d = n ? dist({ x, y }, n) : 0; if (!best || d > best.d) best = { x, y, d }; });
-    if (best && (!n || best.d > dist(s, n))) { s.x = best.x; s.y = best.y; log.push("retreat"); } else log.push("cornered");
-  } else log.push("wait");
+    if (best && (!n || best.d > dist(s, n))) { s.x = best.x; s.y = best.y; ev.push({ k: "retreat" }); log.push("retreat"); } else { ev.push({ k: "cornered" }); log.push("cornered"); }
+  } else { ev.push({ k: "wait" }); log.push("wait"); }
 }
-function zombies(s, turn, log) {
+function zombies(s, turn, log, ev) {
   const order = s.zs.filter((z) => z.hp > 0).sort((a, b) => dist(a, s) - dist(b, s) || a.y - b.y || a.x - b.x);
   for (const z of order) {
-    if (dist(z, s) === 1) { s.hp--; log.push("bite"); continue; }
+    if (dist(z, s) === 1) { s.hp--; ev.push({ k: "bite", z: s.zs.indexOf(z) }); log.push("bite"); continue; }
     if (z.slow && turn % 2 === 1) continue;
     const dx = s.x - z.x, dy = s.y - z.y;
     const tries = Math.abs(dx) >= Math.abs(dy) ? [[Math.sign(dx), 0], [0, Math.sign(dy)]] : [[0, Math.sign(dy)], [Math.sign(dx), 0]];
@@ -68,13 +68,13 @@ export function snapshot(s) { return { x: s.x, y: s.y, hp: s.hp, ammo: s.ammo, m
 export function run(level, rules) {
   const s = { x: START.x, y: START.y, hp: MAX_HP, ammo: Math.min(level.ammo, MAG), maxAmmo: level.ammo, med: level.med, zs: level.zombies.map((z) => ({ ...z })) };
   s.maxAmmo = Math.max(MAG, level.ammo);
-  const frames = [{ state: snapshot(s), rule: -1, action: null, log: [] }];
+  const frames = [{ state: snapshot(s), rule: -1, action: null, log: [], ev: [], checks: [] }];
   let turn = 0;
   while (turn < MAX_TURNS && s.hp > 0 && s.zs.some((z) => z.hp > 0)) {
-    const log = [], ri = rules.findIndex((r) => holds(r.if, s));
+    const log = [], ev = [], checks = rules.map((r) => holds(r.if, s)), ri = checks.indexOf(true);
     const a = ri < 0 ? "wait" : rules[ri].do;
-    act(s, a, log); zombies(s, turn, log); turn++;
-    frames.push({ state: snapshot(s), rule: ri, action: a, log });
+    act(s, a, log, ev); zombies(s, turn, log, ev); turn++;
+    frames.push({ state: snapshot(s), rule: ri, action: a, log, ev, checks });
   }
   const dead = s.hp <= 0, cleared = !s.zs.some((z) => z.hp > 0);
   return { ok: !dead && cleared, reason: dead ? "dead" : cleared ? null : "timeout", frames, turns: turn, hp: s.hp };

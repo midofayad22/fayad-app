@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="/css/account.css" />
     <link rel="stylesheet" href="/css/game.css" />
     <link rel="stylesheet" href="/css/gamekit.css" />
+    <link rel="stylesheet" href="/css/gamenav.css" />
     <link rel="stylesheet" href="/css/adventure.css" />
     <script src="/js/i18n.js" defer></script>
     <script src="/js/shell.js" defer></script>
@@ -51,26 +52,25 @@
         <symbol id="s-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="3" fill="currentColor"/><path d="M8 11V8a4 4 0 018 0v3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
       </defs>
     </svg>
-    <header class="ac-top">
-      <div class="ac-wrap ac-top-in">
-        <a class="ac-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="32" height="32" /><span>FAYBIT</span></a>
-        <nav class="ac-nav" aria-label="FAYBIT">
-          <a href="/index.html" data-i18n="fq.home">الرئيسية</a>
-          <a href="/play/index.html" data-i18n="fq.hub">الألعاب</a>
-          <a href="/dashboard.html" data-i18n="fq.dash">لوحة التقدم</a>
-        </nav>
-      </div>
-    </header>
+    
     <main id="main" class="adv-app" data-screen="intro" data-world="1">
+      <header class="gnav adv-nav" id="gnav">
+        <div class="gnav-in">
+          <a class="gnav-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="30" height="30" /><span>FAYBIT</span></a>
+          <button class="gnav-back" type="button" id="advBack"><span aria-hidden="true">‹</span><span id="advBackTxt"></span></button>
+          <nav class="gnav-crumbs" aria-label="breadcrumb"><a href="/play/index.html" data-i18n="fq.hub">الألعاب</a><span class="sep" aria-hidden="true">/</span><span class="cur">Grand Adventure</span></nav>
+          <div class="gnav-sec" role="group" data-i18n-attr="aria-label:gnav.sections" aria-label="الأقسام">
+            <button type="button" class="gnav-tab" data-go="intro" data-i18n="gnav.home">البداية</button>
+            <button type="button" class="gnav-tab" data-go="map" data-i18n="adv.map">الخريطة</button>
+            <button type="button" class="gnav-tab gnav-cta" data-go="continue" data-i18n="gnav.continue">تابع اللعب</button>
+          </div>
+          <div class="gnav-stats"><span class="gnav-pill" title="points"><svg class="ic" aria-hidden="true"><use href="#s-key"/></svg><b id="advPoints">0</b></span><span class="gnav-pill"><svg class="ic st" aria-hidden="true"><use href="#s-star"/></svg><b id="advStarTotal">0</b><small>/360</small></span></div>
+          <div class="nav-actions"></div>
+        </div>
+      </header>
       
       <div class="adv-scene" id="advScene" aria-hidden="true"></div>
-      <div class="adv-hud">
-        <button class="adv-back" type="button" id="advBack" aria-label="back"><span aria-hidden="true">‹</span><span id="advBackTxt"></span></button>
-        <div class="adv-hud-r">
-          <span class="adv-pill" title="points"><svg class="ic" aria-hidden="true"><use href="#s-key"/></svg><b id="advPoints">0</b></span>
-          <span class="adv-pill"><svg class="ic st" aria-hidden="true"><use href="#s-star"/></svg><b id="advStarTotal">0</b>/360</span>
-        </div>
-      </div>
+      
 
       <section class="adv-screen" id="scrIntro" aria-labelledby="advTitle">
         <div class="adv-intro">

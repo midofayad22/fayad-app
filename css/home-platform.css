@@ -1,0 +1,31 @@
+/* Homepage additions: platform pillars, hero secondary CTA, game scene banners. */
+.hm-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.hm-cta2 { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 54px; padding: 0 26px; border-radius: 999px; border: 2px solid color-mix(in srgb, var(--fy-brand) 55%, transparent); color: var(--fy-brand); background: color-mix(in srgb, var(--fy-surface) 60%, transparent); font-weight: 800; text-decoration: none; transition: background-color .18s, transform .18s, border-color .18s; }
+.hm-cta2:hover { background: color-mix(in srgb, var(--fy-brand) 10%, var(--fy-surface)); border-color: var(--fy-brand); transform: translateY(-2px); }
+.hm-cta2:focus-visible { outline: none; box-shadow: var(--fy-focus); }
+@media (max-width: 640px) { .hm-cta2 { width: 100%; } }
+
+.hm-plat { padding-block: clamp(56px, 9vh, 104px); }
+.hm-plat .hm-head { max-width: 720px; }
+.pl-grid { display: grid; gap: 16px; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-block-start: 28px; }
+.pl { position: relative; display: grid; gap: 10px; align-content: start; padding: 22px; border-radius: 18px; border: 1px solid var(--fy-border-strong); background: var(--fy-surface); overflow: hidden; transition: transform .22s cubic-bezier(.22,.8,.2,1), border-color .2s, box-shadow .2s; }
+.pl::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: var(--pc, var(--fy-brand)); opacity: .9; }
+.pl:hover { transform: translateY(-4px); border-color: var(--pc, var(--fy-brand)); box-shadow: 0 18px 38px -24px var(--pc, var(--fy-brand)); }
+.pl-ic { width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; color: #fff; background: var(--pc, var(--fy-brand)); }
+.pl-ic svg { width: 28px; height: 28px; }
+.pl h3 { margin: 6px 0 0; font-size: 1.12rem; color: var(--fy-text); }
+.pl p { margin: 0; color: var(--fy-text-soft); line-height: 1.7; font-size: .97rem; }
+.pl:nth-child(1) { --pc: #0f766e; } .pl:nth-child(2) { --pc: #2563eb; } .pl:nth-child(3) { --pc: #d97706; }
+.pl:nth-child(4) { --pc: #7c3aed; } .pl:nth-child(5) { --pc: #e11d48; } .pl:nth-child(6) { --pc: #0891b2; }
+@media (max-width: 960px) { .pl-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .pl-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; } .pl { grid-template-columns: auto 1fr; column-gap: 14px; align-items: start; padding: 18px; } .pl-ic { grid-row: span 2; width: 46px; height: 46px; } .pl h3 { margin: 0; } }
+@media (prefers-reduced-motion: reduce) { .pl { transition: none; } .pl:hover { transform: none; } }
+
+/* game scene banners on the two new game cards */
+.gm-art { display: block; width: calc(100% + 44px); height: 118px; margin: -22px -22px 6px; border-radius: 14px 14px 0 0; overflow: hidden; }
+.gm-art svg { display: block; width: 100%; height: 100%; }
+.gm-zombie { background: linear-gradient(180deg, #0a1424, #111c2d); border-color: #2a4263; color: #eaeef5; }
+.gm-zombie h3 { color: #eaeef5; } .gm-zombie p, .gm-zombie .gm-prog, .gm-zombie .gm-prog + * { color: #a9b8cc; }
+.gm-zombie .gm-tag { color: #b6f23a; }
+.gm-adv { background: linear-gradient(180deg, #e9f6c9, #fbfff2); border-color: #b9dca4; }
+.gm-adv h3 { color: #14351f; } .gm-adv p { color: #3e6a50; } .gm-adv .gm-tag { color: #0b7f58; }
