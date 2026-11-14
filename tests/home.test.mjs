@@ -207,7 +207,7 @@ test("homepage sections flow continuously: never overlap, never overflow sideway
     const { ctx, page } = await open({}, lang);
     await page.setViewportSize({ width: w, height: h }); await page.waitForTimeout(1500);
     const r = await page.evaluate(() => [...document.querySelectorAll("main > .hm-sec")].map((s) => { const b = s.getBoundingClientRect(); return { id: s.id, top: b.top + scrollY, bottom: b.bottom + scrollY, h: b.height, sh: s.scrollHeight }; }));
-    assert.equal(r.length, 6);
+    assert.equal(r.length, 7);
     r.forEach((s, i) => {
       if (i === 0) assert.ok(s.h >= Math.min(h, 860) - 1, `${lang}@${w}x${h}: hero shorter than the screen (${s.h})`);
       assert.ok(s.h > 200, `${lang}@${w}x${h}: #${s.id} collapsed (${s.h})`);

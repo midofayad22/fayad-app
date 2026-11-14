@@ -41,3 +41,8 @@ Remaining gamification (profile XP line, settings leaderboard toggle, lose_heart
 - `css/gamenav.css` + `header.gnav` in `play/adventure.html` and `play/zombie.html`: brand→FAYBIT, back button, breadcrumb to Game Center, section tabs (start / map / continue, `aria-current`), points/star pills, and the shared account/theme/language/search controls mounted via `.nav-actions`.
 - Adventure: carved signboard painted from the active world's tokens. Zombie: dark steel bar with amber hazard stripe and lime accents.
 - Mobile (≤760px): two-row touch layout; tabs hidden on the play screen; bar scrolls away on play so the stage keeps full height. Old `.ac-top` / HUD removed. No horizontal overflow at 360/430/1280.
+
+## Phase 3 — homepage (done)
+- New "What FAYBIT offers" platform section (`#platform`, six pillars: structured lessons, interactive editor, quizzes, games, progress, AR/EN) — `css/home-platform.css`, `js/home-platform.js` (i18n ar/en).
+- Hero gets a secondary CTA (games hub). Zombie and Adventure game cards now carry illustrated scene banners in each game's palette.
+- Existing hero code-window, tracks tabs, how-it-works, owner and final CTA sections kept. `tests/home.test.mjs` section count 6→7.
