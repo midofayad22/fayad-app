@@ -46,3 +46,7 @@ Remaining gamification (profile XP line, settings leaderboard toggle, lose_heart
 - New "What FAYBIT offers" platform section (`#platform`, six pillars: structured lessons, interactive editor, quizzes, games, progress, AR/EN) — `css/home-platform.css`, `js/home-platform.js` (i18n ar/en).
 - Hero gets a secondary CTA (games hub). Zombie and Adventure game cards now carry illustrated scene banners in each game's palette.
 - Existing hero code-window, tracks tabs, how-it-works, owner and final CTA sections kept. `tests/home.test.mjs` section count 6→7.
+
+## Game systems overhaul (reprioritised: games before homepage/lessons; Phase 4 work stashed as "WIP phase4 doc-enhance")
+Checklist: [x] Adventure mechanics v2  [ ] Zombie tactical v2  [ ] Flex Quest  [ ] Selector Quest  [ ] HTML/CSS/JS Arenas  [ ] nav integration for those 5  [ ] final QA + deploy
+- Adventure v2: engine now has doors+keys, crates that bridge water, switches+gates, ice, timed spikes (tick parity), portals, water, optional bonus stars and new conditions (dangerAhead, crateAhead). Boards are generated offline (`tools/adventure/gen.mjs` → `levels-data.js`): worlds 1–2 are puzzle rooms solved by exhaustive search (reference = provably shortest), worlds 3–6 are loop/condition/function courses whose route carries a real barrier mechanic, 3 mastery bosses. IDs, worlds, budgets, `game_levels` rows unchanged. Hints now teach reasoning per mechanic.
