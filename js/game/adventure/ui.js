@@ -25,7 +25,23 @@ const DICT = {
     hint: "الحل المرجعي يستخدم {n} كتلة من الأنواع: {ops}.", running: "…يعمل", step: "الخطوة {n}",
     wTitle: "أحسنت!", wSub: "وصل «فاي» بأمان.", pts: "+{n} نقطة", ptsOld: "محلول سابقًا", used: "استخدمت {n} كتلة · المرجع {p}", more3: "للنجوم الثلاث جرّب {p} كتلة أو أقل.", unlocked: "فُتح المستوى {n}", worldDone: "اكتمل العالم!", next: "المستوى التالي", replay: "إعادة", toMap: "المسار",
     fTitle: "لم ينجح بعد", fNext: "ما العمل: ", hz: "وقع «فاي» في فخ عند الخطوة {n}.", hzNext: "غيّر الاتجاه قبل الكتلة المعلّمة بالأحمر لتدور حول ✕.", ex: "استغرق البرنامج خطوات أكثر من المسموح.", exNext: "ربما توجد حلقة لا تنتهي: تأكد أن كتلة «كرّر حتى العلم» تتحرك نحو العلم.",
-    kl: "بقي {n} مفتاح لم يُجمع.", klNext: "اجعل المسار يمرّ على كل مفتاح قبل العلم.", bp: "اصطدم «فاي» بالجدار {n} مرة (الكتلة المعلّمة بالأحمر أول اصطدام).", bpNext: "أضف استدارة قبلها أو قلّل التقدّم.", ng: "توقف «فاي» على بعد {d} خانات من العلم.", ngNext: "أضف تقدّمًا أو زد عدد التكرار.", again: "جرّب مجددًا" },
+    kl: "بقي {n} مفتاح لم يُجمع.", klNext: "اجعل المسار يمرّ على كل مفتاح قبل العلم.", bp: "اصطدم «فاي» بالجدار {n} مرة (الكتلة المعلّمة بالأحمر أول اصطدام).", bpNext: "أضف استدارة قبلها أو قلّل التقدّم.", ng: "توقف «فاي» على بعد {d} خانات من العلم.", ngNext: "أضف تقدّمًا أو زد عدد التكرار.", again: "جرّب مجددًا",
+    dangerAhead: "خطر أمامك (ماء أو أشواك)", crateAhead: "صندوق أمامك",
+    water: "سقط «فاي» في الماء عند الخطوة {n}.", waterNext: "ادفع صندوقًا إلى الماء ليصير جسرًا، أو اسلك طريقًا آخر.", spikes: "لسعته الأشواك عند الخطوة {n}.", spikesNext: "الأشواك الموقوتة ترتفع وتنخفض مع كل خطوة أو استدارة: انتظر باستدارة أو غيّر لحظة العبور.",
+    goalKeys: "اجمع كل الجواهر ثم أوصل «فاي» إلى العلم.", bonus: "نجوم الإتقان: {a} / {b}", bonusAll: "أتقنت المستوى: جمعت كل النجوم الاختيارية!", rule: "قاعدة هذا المستوى",
+    "tg.rocks": "صخور", "tg.gems": "جواهر", "tg.stars": "نجوم اختيارية", "tg.star": "نجمة اختيارية", "tg.spikes": "أشواك", "tg.bridge": "صندوق وجسر", "tg.door": "مفتاح وباب", "tg.timed": "أشواك موقوتة", "tg.switch": "مفتاح تشغيل", "tg.ice": "جليد", "tg.portal": "بوابتا انتقال",
+    "d.rocks": "الصخور تسدّ الطريق: ارسم مسارك حولها.", "d.gems": "لا يُفتح العلم قبل جمع كل الجواهر 💎.", "d.stars": "النجمة ✦ اختيارية: اجمعها لتنال وسام الإتقان.", "d.star": "النجمة ✦ اختيارية: اجمعها لتنال وسام الإتقان.", "d.spikes": "الأشواك ✕ مميتة: لا تقف عليها.", "d.bridge": "ادفع الصندوق إلى الماء بالتقدّم نحوه فيصير جسرًا.", "d.door": "الباب يحتاج مفتاحًا، والمفتاح يُستهلك عند فتح الباب.", "d.timed": "الأشواك الموقوتة تتبدّل مع كل حركة أو استدارة: اختر لحظة العبور.", "d.switch": "قف على المفتاح لفتح البوابات؛ ضغطة ثانية تغلقها.", "d.ice": "على الجليد تنزلق حتى تصطدم بشيء: استفد من ذلك.", "d.portal": "البوابتان 1 و2 متصلتان: ادخل إحداهما واخرج من الأخرى بنفس الاتجاه.",
+    "h.rocks.1": "ابدأ من الراية وتخيّل الطريق للخلف: أين تسدّك الصخور؟", "h.rocks.2": "عدّ الخانات في كل اتجاه قبل أن تستدير.",
+    "h.gems.1": "رتّب الزيارات: أيّ جوهرة أقرب إليك أولًا؟", "h.gems.2": "تجنّب العودة على نفس الطريق: ابحث عن مسار يمرّ بالجميع.",
+    "h.stars.1": "النجمة اختيارية: احسب كم خطوة تزيد للوصول إليها.", "h.stars.2": "حلّ المستوى أولًا ثم أعد المحاولة بالنجمة.", "h.star.1": "النجمة اختيارية: احسب كم خطوة تزيد للوصول إليها.", "h.star.2": "حلّ المستوى أولًا ثم أعد المحاولة بالنجمة.",
+    "h.spikes.1": "ارسم الخانات الآمنة فقط ثم صلها ببعضها.", "h.spikes.2": "الطريق الأقصر يمرّ غالبًا على فخ: اسأل نفسك أين الالتفاف؟",
+    "h.bridge.1": "الصندوق يدخل الماء فقط إذا دفعته في خط مستقيم.", "h.bridge.2": "قف خلف الصندوق، لا بجانبه، ثم تقدّم.",
+    "h.door.1": "من أين تحصل على المفتاح؟ المفتاح يسبق الباب دائمًا.", "h.door.2": "لا تعبر الباب قبل أن تلتقط المفتاح.",
+    "h.timed.1": "راقب الأشواك: ترتفع في الخطوات الفردية أو الزوجية فقط.", "h.timed.2": "استدارتان متتاليتان (يمين ثم يسار) تؤخّرانك خطوتين دون تغيير اتجاهك.",
+    "h.switch.1": "ما الذي يفتح البوابة؟ ابحث عن المفتاح الأرضي أولًا.", "h.switch.2": "الضغطة الثانية على المفتاح تغلق البوابة: لا تقف عليه مرتين.",
+    "h.ice.1": "على الجليد لا تتحكم بالتوقف: ابحث عن حجر يوقفك.", "h.ice.2": "اعكس تفكيرك: من أين يجب أن تنزلق لتصل؟",
+    "h.portal.1": "البوابة تنقلك بنفس الاتجاه: اختر الاتجاه قبل الدخول.", "h.portal.2": "ما الذي يفصل المنطقتين إلا البوابة؟",
+    hintLast: "الحل المرجعي يستخدم {n} كتلة من الأنواع: {ops}.", hintNoMore: "لا مزيد من التلميحات." },
   en: { "fq.home": "Home", "fq.hub": "Games", "fq.dash": "Progress dashboard", "fq.points": "Game points", "fq.hint": "Hint", "common.skip": "Skip to content",
     "adv.eyebrow": "Block coding · 120 levels", "adv.sub": "Help Fay cross 6 worlds. Build a program from blocks, watch it run, and learn sequences, loops, conditions and functions.", "adv.start": "Start the adventure", "adv.continue": "Continue where you left off", "adv.map": "Map", "adv.worlds": "Adventure worlds", "adv.level": "Level",
     "adv.how1": "Drag blocks into the program (or tap one to add it)", "adv.how2": "Press Run and watch the active block", "adv.how3": "Fewer blocks = three stars", "adv.run": "Run", "adv.stop": "Stop", "adv.undo": "Undo", "adv.clear": "Clear program", "adv.speed": "Speed", "adv.blocks": "Blocks",
@@ -36,7 +52,23 @@ const DICT = {
     hint: "The reference solution uses {n} blocks of these types: {ops}.", running: "running…", step: "Step {n}",
     wTitle: "Well done!", wSub: "Fay arrived safely.", pts: "+{n} points", ptsOld: "Already solved", used: "You used {n} blocks · reference {p}", more3: "For three stars try {p} blocks or fewer.", unlocked: "Level {n} unlocked", worldDone: "World cleared!", next: "Next level", replay: "Replay", toMap: "Trail",
     fTitle: "Not yet", fNext: "What to do: ", hz: "Fay stepped on a trap at step {n}.", hzNext: "Change direction before the red block so Fay goes around the ✕.", ex: "The program ran for more steps than allowed.", exNext: "There may be a loop that never ends: make sure “Repeat until flag” moves toward the flag.",
-    kl: "{n} key(s) were not collected.", klNext: "Make the path pass over every key before the flag.", bp: "Fay bumped into a wall {n} time(s) (the red block is the first bump).", bpNext: "Add a turn before it or move forward less.", ng: "Fay stopped {d} cells from the flag.", ngNext: "Add more moves or raise the repeat count.", again: "Try again" },
+    kl: "{n} key(s) were not collected.", klNext: "Make the path pass over every key before the flag.", bp: "Fay bumped into a wall {n} time(s) (the red block is the first bump).", bpNext: "Add a turn before it or move forward less.", ng: "Fay stopped {d} cells from the flag.", ngNext: "Add more moves or raise the repeat count.", again: "Try again",
+    dangerAhead: "danger ahead (water or spikes)", crateAhead: "crate ahead",
+    water: "Fay fell into the water at step {n}.", waterNext: "Push a crate into the water to make a bridge, or take another way.", spikes: "The spikes caught Fay at step {n}.", spikesNext: "Timed spikes rise and fall with every step or turn: wait with a turn or change when you cross.",
+    goalKeys: "Collect every gem, then bring Fay to the flag.", bonus: "Mastery stars: {a} / {b}", bonusAll: "Mastered: every optional star collected!", rule: "This level's rule",
+    "tg.rocks": "Rocks", "tg.gems": "Gems", "tg.stars": "Optional stars", "tg.star": "Optional star", "tg.spikes": "Spikes", "tg.bridge": "Crate and bridge", "tg.door": "Key and door", "tg.timed": "Timed spikes", "tg.switch": "Switch", "tg.ice": "Ice", "tg.portal": "Portals",
+    "d.rocks": "Rocks block the way: plan a route around them.", "d.gems": "The flag stays closed until every gem 💎 is collected.", "d.stars": "The ✦ star is optional: collect it for a mastery badge.", "d.star": "The ✦ star is optional: collect it for a mastery badge.", "d.spikes": "Spikes ✕ are deadly: never stand on them.", "d.bridge": "Walk into the crate to push it into the water and make a bridge.", "d.door": "A door needs a key, and the key is used up when it opens.", "d.timed": "Timed spikes flip with every move or turn: choose when you cross.", "d.switch": "Stand on the switch to open the gates; a second press closes them.", "d.ice": "On ice you slide until something stops you: use that.", "d.portal": "Portals 1 and 2 are linked: enter one and leave the other with the same heading.",
+    "h.rocks.1": "Start from the flag and imagine the way back: where do the rocks block you?", "h.rocks.2": "Count the cells in each direction before you turn.",
+    "h.gems.1": "Order your visits: which gem is closest first?", "h.gems.2": "Avoid backtracking: look for a route that passes them all.",
+    "h.stars.1": "The star is optional: count how many extra steps it costs.", "h.stars.2": "Solve the level first, then retry with the star.", "h.star.1": "The star is optional: count how many extra steps it costs.", "h.star.2": "Solve the level first, then retry with the star.",
+    "h.spikes.1": "Mark only the safe cells, then connect them.", "h.spikes.2": "The shortest route often crosses a trap: where is the way around?",
+    "h.bridge.1": "A crate only drops into water when you push it in a straight line.", "h.bridge.2": "Stand behind the crate, not beside it, then move forward.",
+    "h.door.1": "Where is the key? It always comes before the door.", "h.door.2": "Do not cross the door before you pick up the key.",
+    "h.timed.1": "Watch the spikes: they are up only on odd or even steps.", "h.timed.2": "Two turns in a row (right then left) delay you two steps without changing your heading.",
+    "h.switch.1": "What opens the gate? Find the floor switch first.", "h.switch.2": "A second press closes the gate: do not step on it twice.",
+    "h.ice.1": "On ice you cannot choose where to stop: find something solid to stop you.", "h.ice.2": "Think backwards: where must you slide from to arrive?",
+    "h.portal.1": "A portal keeps your heading: pick the direction before you enter.", "h.portal.2": "What separates the two areas besides the portal?",
+    hintLast: "The reference solution uses {n} blocks of these types: {ops}.", hintNoMore: "No more hints." },
 };
 DICT.ar["gnav.home"] = "البداية"; DICT.ar["gnav.continue"] = "تابع اللعب"; DICT.ar["gnav.sections"] = "الأقسام";
 DICT.en["gnav.home"] = "Start"; DICT.en["gnav.continue"] = "Continue"; DICT.en["gnav.sections"] = "Sections";
@@ -57,7 +89,7 @@ const icon = (op) => { const s = document.createElementNS(NS, "svg"); s.setAttri
 const el = (tag, cls = "", txt = "") => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt) e.textContent = txt; return e; };
 
 /* ---------------- state ---------------- */
-let idx = 0, prog = { main: [], fn: [] }, sel = prog.main, hist = [], hinted = false, running = false, token = 0, speed = 1, justUnlocked = 0, screen = "intro";
+let hintN = 0, idx = 0, prog = { main: [], fn: [] }, sel = prog.main, hist = [], hinted = false, running = false, token = 0, speed = 1, justUnlocked = 0, screen = "intro";
 const lvl = () => LEVELS[idx];
 const main = $("main");
 const SCREENS = { intro: $("scrIntro"), map: $("scrMap"), world: $("scrWorld"), play: $("scrPlay") };
@@ -140,11 +172,11 @@ function buildBoard() {
   rows.forEach((row, y) => [...row].forEach((ch, x) => {
     const c = el("div", "adv-c" + ((x + y) % 2 ? " alt" : "")); c.dataset.p = y * C + x;
     const h = (x * 73856093 ^ y * 19349663 ^ l.id * 83492791) >>> 0; if (ch === "." && h % 7 === 0) c.classList.add("d" + (1 + (h % 2)));
-    if (ch === "#") c.classList.add("is-wall");
-    else if (ch === "G") { c.classList.add("is-goal"); c.appendChild(svg("s-flag", "e")); }
-    else if (ch === "k") { c.classList.add("is-key"); c.appendChild(svg("s-key", "e")); }
-    else if (ch === "x") { c.classList.add("is-trap"); c.appendChild(svg("s-trap", "e")); }
+    const T1 = { "#": ["is-wall"], G: ["is-goal", "s-flag"], k: ["is-gem", "s-gem"], K: ["is-brass", "s-key"], x: ["is-trap", "s-trap"], "~": ["is-water"], c: ["is-crate", "s-crate"], i: ["is-ice"],
+      D: ["is-door", "s-door"], s: ["is-switch", "s-switch"], "=": ["is-gate", "s-gate"], T: ["is-tt tt-odd", "s-trap"], t: ["is-tt tt-even", "s-trap"], 1: ["is-portal p1", "s-portal"], 2: ["is-portal p2", "s-portal"], "*": ["is-bonus", "s-star"] }[ch];
+    if (T1) { T1[0].split(" ").forEach((k) => c.classList.add(k)); if (T1[1]) { const sv = svg(T1[1], "e" + (ch === "c" ? " crate" : "")); c.appendChild(sv); } }
     else if ("^>v<".includes(ch)) start = { x, y, dir: "^>v<".indexOf(ch) };
+    if (ch === "~") { c.appendChild(el("i", "wv")); }
     grid.appendChild(c);
   }));
   const hero = el("div", "adv-hero idle"); hero.appendChild(svg("s-hero")); board.append(grid, hero);
@@ -216,7 +248,7 @@ function blockEl(b, list, i) {
   const head = el("div", "adv-bh"); head.tabIndex = 0; head.setAttribute("aria-label", T(b.op));
   head.append(el("span", "gr", "⋮⋮"), icon(b.op), el("span", "", T(b.op)));
   if (b.op === "repeat") { const s = el("select"); s.setAttribute("aria-label", T("repeat")); for (let n = 2; n <= 9; n++) { const o = el("option", "", "×" + n); o.value = n; if (n === b.n) o.selected = true; s.appendChild(o); } s.addEventListener("change", () => { hist.push(snap()); b.n = +s.value; afterEdit(); }); head.appendChild(s); }
-  if (b.op === "if") { const s = el("select"); s.setAttribute("aria-label", T("if")); for (const c of ["wallAhead", "openAhead", "openLeft", "openRight"]) { const o = el("option", "", T(c)); o.value = c; if (c === b.cond) o.selected = true; s.appendChild(o); } s.addEventListener("change", () => { hist.push(snap()); b.cond = s.value; afterEdit(); }); head.appendChild(s); }
+  if (b.op === "if") { const s = el("select"); s.setAttribute("aria-label", T("if")); for (const c of ["wallAhead", "openAhead", "openLeft", "openRight", "dangerAhead", "crateAhead"]) { const o = el("option", "", T(c)); o.value = c; if (c === b.cond) o.selected = true; s.appendChild(o); } s.addEventListener("change", () => { hist.push(snap()); b.cond = s.value; afterEdit(); }); head.appendChild(s); }
   const x = el("button", "adv-x", "×"); x.type = "button"; x.setAttribute("aria-label", "remove"); x.disabled = running; x.addEventListener("click", () => mutate(() => { if ([b.body, b.then, b.else].includes(sel) || within(b, sel)) sel = list; list.splice(list.indexOf(b), 1); }));
   head.appendChild(x); node.appendChild(head); dragBlock(head, b, list, i, node);
   head.addEventListener("keydown", (e) => {
@@ -238,12 +270,19 @@ function updateSize() { const l = lvl(), n = sizeOf(prog); $("advSize").textCont
 
 /* ---------------- level setup ---------------- */
 function paintStars(host, n, total = 3) { host.textContent = ""; for (let k = 1; k <= total; k++) { const s = svg("s-star"); if (k > n) s.setAttribute("class", "off"); host.appendChild(s); } host.setAttribute("aria-label", n + "/" + total); }
+function paintTags(l) {
+  let box = $("advTags"); if (!box) { box = el("div", "adv-tags"); box.id = "advTags"; $("advGoalTxt").after(box); }
+  box.textContent = ""; const tags = [...new Set(l.tags)];
+  tags.forEach((t) => { const c = el("span", "adv-tag tg-" + t); c.append(el("b", "", T("tg." + t)), el("small", "", T("d." + t))); box.appendChild(c); });
+  if (l.bonus) box.appendChild(el("span", "adv-tag tg-star", ""));
+  box.hidden = !box.children.length;
+}
 function go(id) {
   stopRun(); idx = id - 1; curWorld = lvl().world; prog = { main: [], fn: [] }; sel = prog.main; hist = []; hinted = false;
   const l = lvl(), w = WORLDS[l.world - 1];
   $("advWorld").textContent = T("world", { n: w.id }) + " · " + WD[lang()][w.id - 1].split(":")[0]; $("advNo").textContent = l.n + " / 20";
-  const hasKeys = l.grid.some((r) => r.includes("k")), hasTrap = l.grid.some((r) => r.includes("x"));
-  $("advGoalTxt").textContent = (hasKeys ? T("goalKeys") : T("goal")) + (hasTrap ? " " + T("goalTrap") : "");
+  const hasKeys = l.grid.some((r) => r.includes("k"));
+  $("advGoalTxt").textContent = hasKeys ? T("goalKeys") : T("goal"); hintN = 0; paintTags(l);
   paintStars($("advStars"), readStars()[l.id] || 0); $("advMsg").textContent = ""; $("advLive").textContent = ""; $("advLive").setAttribute("aria-live", "off"); $("advModal").hidden = true;
   show("play", l.world); buildBoard(); renderProg();
   SCREENS.play.style.animation = "none"; void SCREENS.play.offsetWidth; SCREENS.play.style.animation = "";
@@ -255,24 +294,41 @@ function stopRun() { token++; if (running) { running = false; $("advRun").hidden
 function clearHi() { document.querySelectorAll(".adv-blk.is-run,.adv-blk.is-run-p,.adv-blk.is-bad").forEach((n) => n.classList.remove("is-run", "is-run-p", "is-bad")); }
 function hi(trail, cls) { clearHi(); trail.forEach((b, k) => blockEls.get(b)?.classList.add(k === trail.length - 1 ? cls : "is-run-p")); const t = blockEls.get(trail[trail.length - 1]); if (t && !reduced()) t.scrollIntoView({ block: "nearest", behavior: "smooth" }); }
 function spark(x, y, bad) { const f = el("div", "adv-fx" + (bad ? " bad" : "")); f.style.setProperty("--fx", x); f.style.setProperty("--fy", y); for (let i = 0; i < 6; i++) f.appendChild(el("i")); $("advBoard").appendChild(f); setTimeout(() => f.remove(), 800); }
+const cellAt = (x, y) => H.grid.children[y * H.C + x];
+function applyEv(ev, ms) {
+  for (const e of ev) {
+    if (e.t === "gem" || e.t === "key" || e.t === "star") { const c = cellAt(e.x, e.y); c.querySelectorAll(".e:not(.crate)").forEach((n) => n.remove()); c.classList.remove("is-gem", "is-brass", "is-bonus"); spark(e.x, e.y, false); if (e.t === "star") $("advBoard").classList.add("got-star"); }
+    else if (e.t === "door") { const c = cellAt(e.x, e.y); c.classList.add("open"); c.querySelector(".e")?.remove(); spark(e.x, e.y, false); }
+    else if (e.t === "push" || e.t === "fill") {
+      const from = cellAt(e.from[0], e.from[1]), to = cellAt(e.to[0], e.to[1]), cr = from.querySelector(".crate");
+      if (cr) { if (e.t === "push") { to.appendChild(cr); cr.classList.add("slid"); } else { cr.remove(); } }
+      if (e.t === "fill") { to.classList.remove("is-water"); to.classList.add("is-bridge"); to.querySelector(".wv")?.remove(); spark(e.to[0], e.to[1], false); }
+    } else if (e.t === "switch") { $("advBoard").classList.toggle("gates-open", e.on); cellAt(e.x, e.y).classList.toggle("pressed", e.on); }
+  }
+}
 async function play() {
   const l = lvl();
   if (!sizeOf(prog)) { feedback("bad", T("fTitle"), T("empty0")); return; }
   const v = validate(l, prog); if (!v.ok) { feedback("bad", T("fTitle"), v.reason === "budget" ? T("budget", { b: l.budget }) : T(v.reason)); return; }
   const res = run(l, prog), my = ++token; resetBoard(); setTools(true); $("advMsg").textContent = ""; $("advLive").textContent = T("running");
-  const ms = reduced() ? 0 : Math.round(430 / speed), C = H.C; let n = 0;
+  const ms = reduced() ? 0 : Math.round(430 / speed); let n = 0; const board = $("advBoard"), h = H.hero;
   for (const s of res.steps.slice(1)) {
     if (my !== token) return; n++;
     hi(s.trail, s.bump ? "is-bad" : "is-run");
     const ddir = (s.dir - H.dir + 4) % 4; if (ddir) { H.ang += ddir === 1 ? 90 : ddir === 3 ? -90 : 180; H.dir = s.dir; }
-    const h = H.hero; h.classList.remove("idle", "is-hop", "is-bump"); void h.offsetWidth;
-    if (s.bump) { h.classList.add("is-bump"); $("advBoard").classList.add("is-shake"); setTimeout(() => $("advBoard").classList.remove("is-shake"), 400); }
-    else { if (s.x !== undefined) h.classList.add("is-hop"); }
-    placeHero(s.x, s.y, ms);
+    h.classList.remove("idle", "is-hop", "is-bump"); void h.offsetWidth;
+    board.classList.toggle("odd", s.tick % 2 === 1);
+    const portal = s.ev.find((e) => e.t === "portal");
+    if (s.bump) { h.classList.add("is-bump"); board.classList.add("is-shake"); setTimeout(() => board.classList.remove("is-shake"), 400); }
+    else h.classList.add("is-hop");
+    const first = portal ? portal.from : s.path ? s.path[0] : [s.x, s.y];
+    if (!s.bump || s.dir !== undefined) placeHero(first[0], first[1], ms);
+    applyEv(s.ev.filter((e) => e.t !== "portal" && e.t !== "slide"), ms);
     $("advLive").textContent = T("step", { n }) + " · " + T(s.trail[s.trail.length - 1].op);
-    if (s.took) { const cell = H.grid.children[s.y * C + s.x]; cell.classList.remove("is-key"); cell.querySelector(".e")?.remove(); spark(s.x, s.y, false); }
-    if (res.reason === "hazard" && s === res.steps[res.steps.length - 1]) { spark(s.x, s.y, true); await sleep(ms * 0.8); h.classList.add("is-dead"); }
     if (ms) await sleep(ms); if (my !== token) return;
+    if (s.path) for (const [px, py] of s.path.slice(1)) { h.classList.add("is-slide"); placeHero(px, py, Math.round(ms * 0.45)); if (ms) await sleep(Math.round(ms * 0.45)); if (my !== token) return; h.classList.remove("is-slide"); }
+    if (portal) { h.classList.add("is-port"); spark(portal.from[0], portal.from[1], false); if (ms) await sleep(ms * 0.35); placeHero(s.x, s.y, 0); spark(s.x, s.y, false); setTimeout(() => h.classList.remove("is-port"), 320); }
+    if (["hazard", "water", "spikes"].includes(res.reason) && s === res.steps[res.steps.length - 1]) { spark(s.x, s.y, true); await sleep(ms * 0.8); h.classList.add(res.reason === "water" ? "is-drown" : "is-dead"); }
   }
   if (my !== token) return; clearHi(); $("advLive").textContent = ""; setTools(false);
   if (res.ok) win(res); else fail(res);
@@ -281,7 +337,8 @@ function feedback(kind, title, ...lines) { const b = $("advMsg"); b.textContent 
 function fail(res) {
   const l = lvl(), bumps = res.steps.filter((s) => s.bump);
   let title = T("fTitle"), what, next, bad = null;
-  if (res.reason === "hazard") { const s = res.steps[res.steps.length - 1]; what = T("hz", { n: res.steps.length - 1 }); next = T("hzNext"); bad = s.trail.at(-1); }
+  if (res.reason === "water" || res.reason === "spikes") { const s = res.steps[res.steps.length - 1]; what = T(res.reason, { n: res.steps.length - 1 }); next = T(res.reason + "Next"); bad = s.trail.at(-1); }
+  else if (res.reason === "hazard") { const s = res.steps[res.steps.length - 1]; what = T("hz", { n: res.steps.length - 1 }); next = T("hzNext"); bad = s.trail.at(-1); }
   else if (res.exhausted) { what = T("ex"); next = T("exNext"); }
   else if (res.reason === "keys-left") { what = T("kl", { n: res.keysLeft }); next = T("klNext"); }
   else if (bumps.length) { what = T("bp", { n: bumps.length }); next = T("bpNext"); bad = bumps[0].trail.at(-1); }
@@ -290,7 +347,9 @@ function fail(res) {
   feedback("bad", title, what, T("fNext") + next);
   $("advLive").setAttribute("aria-live", "off");
 }
+let lastBonus = 0;
 function win(res) {
+  lastBonus = res.bonus || 0;
   const l = lvl(), s = stars(l, prog), before = isDone(l.id), nextWas = l.id < 120 && unlocked(l.id + 1);
   const r = award(GAME, l.id, hinted, l.base); saveStars(l.id, s);
   const h = H.hero; h.classList.remove("idle", "is-hop"); h.classList.add("is-win"); paintStars($("advStars"), readStars()[l.id]); header();
@@ -306,7 +365,7 @@ function modal(l, s, earned, before, newUnlock, doneWorld) {
   for (let k = 1; k <= 3; k++) { const st = svg("s-star"); st.setAttribute("class", k <= s ? "on" : ""); st.style.setProperty("--k", k - 1); bs.appendChild(st); } sh.appendChild(bs);
   const rw = el("div", "adv-reward"), pc = el("span", "adv-chip"); if (earned) { const nb = el("b", "", "0"); pc.append(document.createTextNode("+"), nb, document.createTextNode(" " + (lang() === "en" ? "points" : "نقطة"))); countUp(nb, earned, 900); } else pc.textContent = T("ptsOld"); rw.appendChild(pc);
   if (newUnlock) rw.appendChild(el("span", "adv-chip new", doneWorld && l.id < 120 ? T("worldDone") + " · " + T("world", { n: l.world + 1 }) : T("unlocked", { n: l.id + 1 })));
-  sh.appendChild(rw); sh.appendChild(el("p", "", T("used", { n: sizeOf(prog), p: l.par }) + (s < 3 ? " — " + T("more3", { p: l.par }) : "")));
+  sh.appendChild(rw); if (l.bonus) sh.appendChild(el("p", "adv-bonus", lastBonus >= l.bonus ? T("bonusAll") : T("bonus", { a: lastBonus, b: l.bonus }))); sh.appendChild(el("p", "", T("used", { n: sizeOf(prog), p: l.par }) + (s < 3 ? " — " + T("more3", { p: l.par }) : "")));
   const row = el("div", "row");
   if (l.id < 120) { const nx = el("button", "adv-btn adv-btn-primary", T("next")); nx.type = "button"; nx.addEventListener("click", () => go(l.id + 1)); row.appendChild(nx); }
   const rp = el("button", "adv-btn", T("replay")); rp.type = "button"; rp.addEventListener("click", () => { m.hidden = true; resetBoard(); });
@@ -324,8 +383,11 @@ $("advUndo").addEventListener("click", undo);
 $("advClear").addEventListener("click", () => { if (!sizeOf(prog)) return; mutate(() => { prog = { main: [], fn: [] }; sel = prog.main; }); });
 $("advSpeed").addEventListener("click", () => { speed = speed === 1 ? 2 : speed === 2 ? 3 : 1; $("advSpeed").textContent = speed + "×"; });
 $("advHint").addEventListener("click", () => {
-  hinted = true; const used = new Set(); const walk = (a) => a.forEach((b) => { used.add(b.op); [b.body, b.then, b.else].forEach((s) => s && walk(s)); }); walk(lvl().solution.main); walk(lvl().solution.fn || []);
-  feedback("good", T("fq.hint"), T("hint", { n: lvl().par, ops: [...used].map((o) => T(o)).join("، ") }));
+  hinted = true; const l = lvl(), tags = [...new Set(l.tags)], list = [];
+  tags.forEach((t) => [1, 2].forEach((k) => { const key = `h.${t}.${k}`; if (DICT[lang()][key]) list.push(T(key)); }));
+  const used = new Set(); const walk = (a) => a.forEach((b) => { used.add(b.op); [b.body, b.then, b.else].forEach((x) => x && walk(x)); }); walk(l.solution.main); walk(l.solution.fn || []);
+  list.push(T("hintLast", { n: l.par, ops: [...used].map((o) => T(o)).join("، ") }));
+  feedback("good", T("fq.hint") + ` ${Math.min(hintN + 1, list.length)}/${list.length}`, list[Math.min(hintN, list.length - 1)]); hintN++;
 });
 document.addEventListener("keydown", (e) => { if ((e.ctrlKey || e.metaKey) && e.key === "z" && screen === "play" && !e.target.closest("select,input")) { e.preventDefault(); undo(); } });
 document.addEventListener("fayad:langchange", () => { header(); if (screen === "map") renderMap(); else if (screen === "world") renderTrail(curWorld); else if (screen === "play") { go(lvl().id); } });
