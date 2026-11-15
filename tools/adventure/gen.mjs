@@ -8,47 +8,11 @@
 */
 import { writeFileSync } from "node:fs";
 import { run, solve, sizeOf, parseGrid } from "../../js/game/adventure/engine.js";
-import { rng, BUILD } from "./legacy.mjs";
+import { rng } from "./legacy.mjs";
+import { trivial } from "./naive.mjs";
+import { chainLevel, windingPath, corridorFeature, FOLLOWER } from "./chains.mjs";
 
-/* ---------------- compression of an action string into blocks ---------------- */
-const atom = (c) => (c === "C" ? { op: "call" } : { op: c });
-function compress(seq, allowRepeat) {
-  const n = seq.length, memo = new Map();
-  function best(i, j) {
-    const k = i * 1000 + j; if (memo.has(k)) return memo.get(k);
-    let res;
-    if (j - i === 1) res = { size: 1, prog: [atom(seq[i])] };
-    else {
-      res = null;
-      for (let m = i + 1; m < j; m++) { const a = best(i, m), b = best(m, j), sz = a.size + b.size; if (!res || sz < res.size) res = { size: sz, prog: [...a.prog, ...b.prog] }; }
-      if (allowRepeat) {
-        const len = j - i;
-        for (let p = 1; p <= len / 2; p++) {
-          if (len % p) continue; const times = len / p; if (times < 2 || times > 9) continue;
-          const body = seq.slice(i, i + p); let same = true; for (let t = 1; t < times && same; t++) same = seq.slice(i + t * p, i + (t + 1) * p) === body;
-          if (!same) continue; const inner = best(i, i + p), sz = 1 + inner.size;
-          if (sz < res.size) res = { size: sz, prog: [{ op: "repeat", n: times, body: inner.prog }] };
-        }
-      }
-    }
-    memo.set(k, res); return res;
-  }
-  return best(0, n);
-}
-function program(seq, { repeat, fn }) {
-  let bestP = compress(seq, repeat); let out = { main: bestP.prog, fn: [] }, size = bestP.size;
-  if (fn) {
-    const seen = new Set();
-    for (let len = 3; len <= Math.min(24, seq.length >> 1); len++) for (let i = 0; i + len <= seq.length; i++) {
-      const sub = seq.slice(i, i + len); if (seen.has(sub)) continue; seen.add(sub);
-      let main = "", cnt = 0, p = 0; while (p < seq.length) { if (seq.startsWith(sub, p)) { main += "C"; p += len; cnt++; } else main += seq[p++]; }
-      if (cnt < 2) continue;
-      const m = compress(main, repeat), f = compress(sub, repeat), total = m.size + f.size;
-      if (total < size) { size = total; out = { main: m.prog, fn: f.prog }; }
-    }
-  }
-  return out;
-}
+import { compress, program } from "./compress.mjs";
 
 /* ---------------- puzzle rooms ---------------- */
 const pickR = (r, a) => a[Math.floor(r() * a.length)];
@@ -101,7 +65,7 @@ function room(spec, r) {
   return g.map((row) => row.join(""));
 }
 const NEED = { door: "door", water: "fill", gate: "switch", portal: "portal", ice: "slide" };
-function puzzle(spec, seed) {
+function puzzle(spec, seed, world = 1) {
   for (let attempt = 0; attempt < 400; attempt++) {
     const r = rng(seed + attempt * 7919), grid = room(spec, r); if (!grid) continue;
     const level = { grid, blocks: ["F", "L", "R"] };
@@ -114,60 +78,11 @@ function puzzle(spec, seed) {
     if ((spec.parts || []).includes("timed")) { const flat = grid.map((row) => row.replace(/[Tt]/g, ".")); const s2 = solve({ grid: flat }); if (!s2 || s2.length >= sol.length) continue; }
     if (spec.spikes) { const flat = grid.map((row) => row.replace(/x/g, ".")); const s2 = solve({ grid: flat }); if (!s2 || s2.length >= sol.length) continue; }
     void G;
+    if (!(world === 1 && spec.minLen < 7) && trivial(grid, world).length) continue;
     return { grid, seq: sol };
   }
   throw new Error("puzzle failed " + JSON.stringify(spec));
 }
-
-/* ---------------- decorators for structured courses ---------------- */
-function visits(grid, prog) {
-  const res = run({ grid }, prog), seq = []; let last = null;
-  res.steps.forEach((s, i) => { const k = s.x + "," + s.y; if (k !== last) { seq.push({ x: s.x, y: s.y, t: i, k }); last = k; } });
-  const count = {}; seq.forEach((v) => (count[v.k] = (count[v.k] || 0) + 1));
-  return { seq, count, steps: res.steps };
-}
-const setCh = (grid, x, y, ch) => grid.map((row, j) => (j === y ? row.slice(0, x) + ch + row.slice(x + 1) : row));
-function decorate(grid, prog, kind, r) {
-  const { seq, count, steps } = visits(grid, prog);
-  const plain = (v) => grid[v.y][v.x] === "." && count[v.k] === 1;
-  const idx = seq.map((v, i) => i).filter((i) => i > 0 && i < seq.length - 1 && plain(seq[i]));
-  const H = grid.length, W = grid[0].length, first = seq[0], last = seq.at(-1);
-  let g = grid;
-  /* a "gate cell" is a path cell that is the ONLY path cell on its column or row and separates start from goal:
-     the whole line through it becomes the barrier, so the mechanic cannot be walked around */
-  const crossings = () => idx.filter((i) => i > 1).map((i) => {
-    const v = seq[i], prev = seq[i - 1], next = seq[i + 1], out = [];
-    const colOnly = seq.filter((u) => u.x === v.x).length === 1, rowOnly = seq.filter((u) => u.y === v.y).length === 1;
-    if (colOnly && (prev.x - v.x) * (next.x - v.x) < 0 && (first.x - v.x) * (last.x - v.x) < 0) out.push({ i, axis: "x" });
-    if (rowOnly && (prev.y - v.y) * (next.y - v.y) < 0 && (first.y - v.y) * (last.y - v.y) < 0) out.push({ i, axis: "y" });
-    return out;
-  }).flat();
-  const line = (c, ch, keep) => { const v = seq[c.i]; let o = g; if (c.axis === "x") for (let y = 0; y < H; y++) { if (o[y][v.x] !== "#" && y !== v.y) o = setCh(o, v.x, y, ch); } else for (let x = 0; x < W; x++) { if (o[v.y][x] !== "#" && x !== v.x) o = setCh(o, x, v.y, ch); } return o; };
-  if (kind === "door" || kind === "gate") {
-    const cs = crossings(); if (!cs.length) return null;
-    const c = cs[Math.floor(r() * cs.length)], before = idx.filter((i) => i < c.i - 0 && i >= 1); if (!before.length) return null;
-    const a = before[Math.floor(r() * before.length)], v = seq[c.i];
-    g = line(c, kind === "door" ? "#" : "=");
-    g = setCh(g, v.x, v.y, kind === "door" ? "D" : "="); g = setCh(g, seq[a].x, seq[a].y, kind === "door" ? "K" : "s");
-  } else if (kind === "timed") {
-    const cand = idx.filter((i) => steps[seq[i].t + 1] && (steps[seq[i].t + 1].x !== seq[i].x || steps[seq[i].t + 1].y !== seq[i].y));
-    if (!cand.length) return null; const i = cand[Math.floor(r() * cand.length)];
-    g = setCh(g, seq[i].x, seq[i].y, seq[i].t % 2 ? "t" : "T");
-  } else if (kind === "bridge") {
-    const cs = crossings().filter((c) => { const a = seq[c.i - 2], b = seq[c.i - 1], v = seq[c.i]; return a && b.x - a.x === v.x - b.x && b.y - a.y === v.y - b.y && plain(b) && c.i < seq.length - 2; });
-    if (!cs.length) return null; const c = cs[Math.floor(r() * cs.length)], v = seq[c.i], b = seq[c.i - 1];
-    g = line(c, "~"); g = setCh(g, v.x, v.y, "~"); g = setCh(g, b.x, b.y, "c");
-  } else if (kind === "star") {
-    const free = [];
-    seq.forEach((v) => { for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) { const x = v.x + dx, y = v.y + dy; if (x >= 0 && y >= 0 && x < W && y < H && (grid[y][x] === "." || grid[y][x] === "#") && !count[x + "," + y]) free.push([x, y]); } });
-    if (!free.length) return null; const [x, y] = free[Math.floor(r() * free.length)];
-    g = setCh(g, x, y, "*");
-  }
-  const res = run({ grid: g }, prog); if (!res.ok) return null;
-  return g;
-}
-/** water decoys instead of spikes in open fields (same cells, different look and meaning) */
-const swapHazards = (grid, r) => grid.map((row) => row.replace(/x/g, () => (r() < 0.5 ? "~" : "x")));
 
 /* ---------------- level plans ---------------- */
 const W_BLOCKS = [["F", "L", "R"], ["F", "L", "R"], ["F", "L", "R", "repeat"], ["F", "L", "R", "repeat", "until", "if"], ["F", "L", "R", "repeat", "call"], ["F", "L", "R", "repeat", "until", "if", "call"]];
@@ -190,32 +105,53 @@ const PLAN2 = (i) => i < 3 ? P({ w: 7, h: 6, rock: 0.1, spikes: 4, gems: 1, minL
   : P({ w: 11, h: 6, rock: 0.1, parts: ["door", "gate", "water"], stars: 1, minLen: 24, maxLen: 44, tags: ["door", "switch", "bridge", "stars"] });
 
 const cyc = (base, extra) => (i) => [...base[i % base.length], ...(i >= 8 ? extra[(i * 3 + 1) % extra.length] : [])];
-const STRUCT_DECOR = [
-  null, null,
-  cyc([["star"], ["door"], ["bridge"], ["timed"], ["gate"]], [["star"], [], ["star"], []]),
-  cyc([["door"], ["bridge"], ["gate"], ["timed"], ["star"]], [["star"], [], ["timed"], ["star"]]),
-  cyc([["bridge"], ["door"], ["timed"], ["gate"], ["star", "door"]], [["star"], ["timed"], [], ["star"]]),
-  cyc([["bridge", "door"], ["gate", "timed"], ["door", "star"], ["bridge", "gate"], ["timed", "door"]], [["star"], [], ["star"], []]),
-];
 
-function structured(wi, i, seedBase) {
-  for (let attempt = 0; attempt < 80; attempt++) {
-    const r = rng(seedBase + attempt * 7919);
-    const b = BUILD[wi](i, r); let grid = b.grid; const prog = b.program;
-    if (!run({ grid }, prog).ok) continue;
-    const wants = (i % 4 === 0 && wi < 2) ? [] : STRUCT_DECOR[wi](i);
-    const tags = []; let ok = true;
-    for (const k of wants) {
-      let done = null, used = k;
-      for (const kk of [k, "door", "gate", "star", "timed"]) { for (let t = 0; t < 12 && !done; t++) done = decorate(grid, prog, kk, r); if (done) { used = kk; break; } }
-      if (!done) { ok = false; break; } grid = done; tags.push(used === "gate" ? "switch" : used);
+/* ---------------- structured families (worlds 3-6) ---------------- */
+const TAG = { door: "door", bridge: "bridge", spikes: "spikes", timed: "timed", gem: "gems", star: "stars" };
+const rint = (r, a, b) => a + Math.floor(r() * (b - a + 1));
+function chainRec(wi, i, seed, patternFn) {
+  const rej = {};
+  for (let attempt = 0; attempt < 120; attempt++) {
+    const r = rng(seed + attempt * 7919), pattern = patternFn(r), grid = chainLevel(pattern, r, { extra: i % 3 === 1 ? ["*"] : [] });
+    const seq = solve({ grid }, { limit: 260000 }); if (!seq || seq.length < 14 || seq.length > 120) { rej.seq = (rej.seq || 0) + 1; continue; }
+    let prog = program(seq, { repeat: true, fn: wi >= 4 });
+    if (wi === 2 && i < 8) { // first loop levels: the reference is  prefix + `repeat n [ flat body ]`
+      let best = null;
+      for (let a = 0; a <= 6; a++) { const t = seq.slice(a); for (let q = 2; q <= t.length / 2; q++) { if (t.length % q || t.length / q > 9) continue; if (t.slice(0, q).repeat(t.length / q) === t) { const cost = a + q + 1; if (!best || cost < best.cost) best = { a, q, k: t.length / q, cost }; break; } } }
+      if (!best) { rej.per = (rej.per || 0) + 1; continue; }
+      prog = { main: [...[...seq.slice(0, best.a)].map((c) => ({ op: c })), { op: "repeat", n: best.k, body: [...seq.slice(best.a, best.a + best.q)].map((c) => ({ op: c })) }], fn: [] };
     }
-    if (!ok) continue;
-    if (wi >= 2 && r() < 0.5) grid = swapHazards(grid, r);
-    if (!run({ grid }, prog).ok || grid.length > 24 || grid[0].length > 24) continue;
-    return { grid, program: prog, tags };
+    const raw = seq.length, size = sizeOf(prog); const calls = JSON.stringify(prog).split('"call"').length - 1, reps = JSON.stringify(prog).split('"repeat"').length - 1;
+    if (wi === 2 && !(reps >= 1 && size <= raw * 0.62)) continue;
+    if (wi === 4) { const base = sizeOf(program(seq, { repeat: true, fn: false })); if (!(calls >= 1 && size < base && size <= raw * 0.88)) { rej.fn = (rej.fn || 0) + 1; rej.last = [raw, size, base, calls]; continue; } }
+    if (wi === 5 && !(size <= raw * 0.85)) continue;
+    if (grid.length > 24 || grid[0].length > 24 || trivial(grid, wi + 1).length) continue;
+    const res = run({ grid }, prog); if (!res.ok) continue;
+    const evs = new Set(res.steps.flatMap((s) => s.ev.map((e) => e.t)));
+    if (pattern.includes("door") && !evs.has("door")) continue; if (pattern.includes("bridge") && !evs.has("fill")) continue;
+    return { grid, program: prog, tags: [...new Set([...pattern.map((k) => TAG[k]), ...(parseGrid(grid).star.size ? ["stars"] : [])])], raw };
   }
-  throw new Error(`structured world ${wi + 1} level ${i + 1} failed`);
+  throw new Error(`chain world ${wi + 1} level ${i + 1} failed ${JSON.stringify(rej)}`);
+}
+const K3 = ["spikes", "door", "bridge", "timed", "gem"];
+const pat3 = (i) => (r) => { const a = K3[(i + rint(r, 0, 1) * 2) % 5], b = K3[(i * 2 + 1) % 5], c = K3[(i + 3) % 5]; const k = rint(r, 3, 5);
+  return i < 8 ? Array(k).fill(a) : i < 16 ? Array(rint(r, 2, 3)).fill(0).flatMap(() => [a, b === a ? c : b]) : Array(2).fill(0).flatMap(() => [a, b === a ? c : b, c === a || c === b ? "door" : c]); };
+const pat5 = (i) => (r) => { const A = ["door", "gem"][(i + rint(r, 0, 1)) % 2], rest = ["bridge", "timed", "spikes", "door", "gem"].filter((x) => x !== A); const B = rest[(i + rint(r, 0, 2)) % rest.length], C = rest[(i * 2 + 3) % rest.length] === B ? rest[(i + 1) % rest.length] : rest[(i * 2 + 3) % rest.length];
+  const t = [[0, 1, 0, 2, 0], [0, 1, 2, 0, 1, 0], [1, 0, 2, 0, 1, 0], [0, 0, 1, 0, 2, 0]][i % 4]; return t.map((x) => [A, B, C][x]); };
+const pat6 = (i) => (r) => { const pool = ["door", "bridge", "gem", "spikes", "timed", "door"]; const n = [pool[i % 6], pool[(i + 2) % 6], pool[(i + 4) % 6]]; const t = [[0, 1, 2, 0, 1, 2], [0, 1, 0, 2, 0, 1], [0, 1, 2, 2, 1, 0, 1]][rint(r, 0, 2)]; return t.map((x) => n[x]); };
+
+function corridorRec(i, seed) {
+  const feats = [["star"], ["door"], ["bridge"], ["gate", "star"], ["timed"], ["door", "bridge"], ["gem", "star"], ["gate", "bridge"], ["timed", "door"], ["door", "star"]][i % 10], extra = i >= 12 ? [["star"], ["gem"], ["timed"], ["bridge"]][i % 4] : [];
+  for (let attempt = 0; attempt < 200; attempt++) {
+    const r = rng(seed + attempt * 7919), w = rint(r, 8, 8 + Math.min(8, 2 + (i >> 1))), h = rint(r, 8, 8 + Math.min(8, 2 + (i >> 1)));
+    const p = windingPath(w, h, 12 + i * 2, r); if (!p) continue;
+    let grid = p.grid, ok = true; const tags = [];
+    for (const k of [...(i < 2 ? [] : feats), ...extra]) { const g = corridorFeature(grid, p.cells, k, r); if (!g) { ok = false; break; } grid = g; tags.push(k === "gate" ? "switch" : k === "gem" ? "gems" : k === "star" ? "stars" : k); }
+    if (!ok) continue;
+    if (!run({ grid }, FOLLOWER).ok || trivial(grid, 4).length) continue;
+    return { grid, program: FOLLOWER, tags: tags.length ? [...new Set(tags)] : ["rocks"] };
+  }
+  throw new Error("corridor " + (i + 1) + " failed");
 }
 
 /* ---------------- assemble ---------------- */
@@ -224,14 +160,18 @@ for (let wi = 0; wi < 6; wi++) for (let i = 0; i < 20; i++) {
   const id = wi * 20 + i + 1, seed = 0xfa7ad * (wi + 1) + i * 977;
   let rec;
   if (wi === 0 || wi === 1) {
-    const spec = (wi === 0 ? PLAN1 : PLAN2)(i), p = puzzle(spec, seed);
+    const spec = (wi === 0 ? PLAN1 : PLAN2)(i); spec.w += (i * 7 + wi) % 3; spec.h += ((i >> 1) + wi) % 2; const p = puzzle(spec, seed, wi + 1);
     rec = { grid: p.grid, program: { main: [...p.seq].map((c) => ({ op: c })), fn: [] }, tags: spec.tags, kind: "room" };
-  } else if (wi === 5 && (i === 9 || i === 14 || i === 19)) {
-    const spec = P({ w: 10 + (i > 9), h: 6, rock: 0.1, parts: i === 9 ? ["door", "water"] : i === 14 ? ["gate", "portal", "door"] : ["door", "gate", "water"], ice: 6, stars: 1, gems: 1, minLen: 22, maxLen: 50 });
-    const p = puzzle(spec, seed), pr = program(p.seq, { repeat: true, fn: true });
-    rec = { grid: p.grid, program: pr, tags: i === 9 ? ["door", "bridge", "stars"] : i === 14 ? ["switch", "portal", "door", "stars"] : ["door", "switch", "bridge", "stars"], kind: "boss", slack: 3 };
+  } else if (wi === 3) {
+    const c = corridorRec(i, seed); rec = { grid: c.grid, program: c.program, tags: c.tags, kind: "course" };
+  } else if (wi === 2 || wi === 4 || (wi === 5 && i % 2 === 0 && i !== 14)) {
+    const c = chainRec(wi, i, seed, wi === 2 ? pat3(i) : wi === 4 ? pat5(i) : pat6(i)); rec = { grid: c.grid, program: c.program, tags: c.tags, kind: "course" };
   } else {
-    const s = structured(wi, i, seed); rec = { grid: s.grid, program: s.program, tags: s.tags, kind: "course" };
+    const boss = i === 9 || i === 14 || i === 19;
+    const spec = P({ w: 9 + (i % 3), h: 5 + (i % 2), rock: 0.1 + (i % 4) * 0.02, parts: boss ? (i === 9 ? ["door", "water"] : i === 14 ? ["gate", "portal", "door"] : ["door", "gate", "water"]) : [["door", "gate"], ["water", "portal"], ["ice", "door"], ["gate", "timed"], ["portal", "door"]][(i >> 1) % 5], ice: 6, stars: boss || i % 3 === 0 ? 1 : 0, gems: i % 4 === 1 ? 1 : 0, minLen: boss ? 22 : 18, maxLen: boss ? 52 : 44 });
+    const p = puzzle(spec, seed, wi + 1), pr = program(p.seq, { repeat: true, fn: true });
+    const T = { door: "door", gate: "switch", water: "bridge", portal: "portal", ice: "ice", timed: "timed" };
+    rec = { grid: p.grid, program: pr, tags: [...spec.parts.map((x) => T[x]), ...(spec.stars ? ["stars"] : []), ...(spec.gems ? ["gems"] : [])], kind: boss ? "boss" : "room", slack: 3 };
   }
   const check = run({ grid: rec.grid }, rec.program); if (!check.ok) throw new Error("level " + id + " reference fails: " + check.reason);
   const G = parseGrid(rec.grid);
