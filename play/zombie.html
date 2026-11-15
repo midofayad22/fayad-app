@@ -15,7 +15,7 @@
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#0D9488" />
-    <meta name="description" content="Zombie Survival: اكتب قواعد «إذا… فافعل…» لإنقاذ الناجي عبر 15 ليلة من الزومبي." />
+    <meta name="description" content="Zombie Survival: اكتب كود JavaScript حقيقيًا يقود ناجيًا عبر 15 ليلة تكتيكية: ذخيرة محدودة، فخاخ، متاريس، حلفاء وأنواع زومبي مختلفة." />
     <title>Zombie Survival — FAYBIT</title>
     <link rel="stylesheet" href="/css/tokens.css" />
     <link rel="stylesheet" href="/css/theme.css" />
@@ -60,6 +60,13 @@
         <symbol id="z-skull" viewBox="0 0 24 24"><path d="M12 3C7.6 3 5 6 5 10c0 2.4 1 3.6 2 4.6V18h2v-2h1.5v2h3v-2H15v2h2v-3.4c1-1 2-2.2 2-4.6 0-4-2.6-7-7-7z" fill="currentColor"/><circle cx="9.3" cy="10.5" r="1.8" fill="#0009"/><circle cx="14.7" cy="10.5" r="1.8" fill="#0009"/></symbol>
         <symbol id="z-crate" viewBox="0 0 48 48"><rect x="8" y="14" width="32" height="26" rx="2" fill="#7a5530"/><path d="M8 14l32 26M40 14L8 40" stroke="#4a3219" stroke-width="3"/><rect x="8" y="14" width="32" height="26" rx="2" fill="none" stroke="#4a3219" stroke-width="3"/></symbol>
         <symbol id="z-barrel" viewBox="0 0 48 48"><rect x="12" y="10" width="24" height="31" rx="5" fill="#a83232"/><rect x="12" y="17" width="24" height="3.5" fill="#6b1d1d"/><rect x="12" y="30" width="24" height="3.5" fill="#6b1d1d"/><path d="M24 22l3 6h-6z" fill="#ffb02e"/></symbol>
+        <symbol id="z-wall" viewBox="0 0 48 48"><rect x="3" y="6" width="42" height="38" rx="6" fill="#3a4658"/><path d="M3 20h42M3 33h42M16 6v14M32 20v13M18 33v11" stroke="#252e3c" stroke-width="2.4"/><rect x="3" y="6" width="42" height="7" rx="4" fill="#56667d"/></symbol>
+        <symbol id="z-bar" viewBox="0 0 48 48"><rect x="4" y="9" width="40" height="8" rx="2" fill="#8a5a2b"/><rect x="4" y="21" width="40" height="8" rx="2" fill="#a06a35"/><rect x="4" y="33" width="40" height="8" rx="2" fill="#8a5a2b"/><path d="M10 6v38M38 6v38" stroke="#4a3219" stroke-width="3.5"/><circle cx="10" cy="13" r="1.6" fill="#d8c28a"/><circle cx="38" cy="25" r="1.6" fill="#d8c28a"/></symbol>
+        <symbol id="z-spike" viewBox="0 0 48 48"><rect x="6" y="28" width="36" height="12" rx="3" fill="#2b2f36"/><path d="M9 30l5-16 5 16M19 30l5-20 5 20M29 30l5-16 5 16" fill="#cfd6df" stroke="#7d8896" stroke-width="1.4" stroke-linejoin="round"/><path d="M22 18l2-6 2 6" fill="#e5393f"/></symbol>
+        <symbol id="z-exit" viewBox="0 0 48 48"><rect x="8" y="6" width="32" height="38" rx="5" fill="#1d3f2b" stroke="#46e08a" stroke-width="3"/><rect x="14" y="12" width="20" height="32" rx="2" fill="#0d1f16"/><path d="M19 28h10m-4-5l5 5-5 5" stroke="#46e08a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="12" y="2" width="24" height="7" rx="2" fill="#46e08a"/></symbol>
+        <symbol id="z-ammobox" viewBox="0 0 48 48"><rect x="7" y="16" width="34" height="24" rx="4" fill="#5b6b3a"/><rect x="7" y="16" width="34" height="8" rx="3" fill="#7d8f4e"/><g fill="#ffb02e"><rect x="14" y="26" width="5" height="9" rx="2"/><rect x="22" y="26" width="5" height="9" rx="2"/><rect x="30" y="26" width="5" height="9" rx="2"/></g></symbol>
+        <symbol id="z-medbox" viewBox="0 0 48 48"><rect x="6" y="14" width="36" height="26" rx="5" fill="#f4f6f8"/><path d="M24 19v16M16 27h16" stroke="#d92d3a" stroke-width="5" stroke-linecap="round"/></symbol>
+        <symbol id="z-noise" viewBox="0 0 48 48"><circle cx="24" cy="24" r="6" fill="#ffb02e"/><circle cx="24" cy="24" r="12" fill="none" stroke="#ffb02e" stroke-width="2.5" opacity=".7"/><circle cx="24" cy="24" r="19" fill="none" stroke="#ffb02e" stroke-width="2" opacity=".35"/></symbol>
         <symbol id="z-tree" viewBox="0 0 48 48"><path d="M23 42V22M23 28l-9-8M23 24l9-9M23 33l7-5" stroke="#2c2118" stroke-width="3.5" stroke-linecap="round" fill="none"/></symbol>
       </defs>
     </svg>
@@ -84,11 +91,11 @@
       <section class="zb-screen" id="scrIntro" aria-labelledby="zbTitle">
         <div class="zb-intro">
           <div class="zb-intro-art" aria-hidden="true"><svg class="zi-me" viewBox="0 0 48 48"><use href="#z-me"/></svg><svg class="zi-z z1" viewBox="0 0 48 48"><use href="#z-zom"/></svg><svg class="zi-z z2" viewBox="0 0 48 48"><use href="#z-zom"/></svg><svg class="zi-z z3" viewBox="0 0 48 48"><use href="#z-zom"/></svg></div>
-          <p class="zb-eyebrow" data-i18n="zb.eyebrow">منطق وشروط · 15 ليلة</p>
+          <p class="zb-eyebrow" data-i18n="zb.eyebrow">JavaScript تكتيكي · 15 ليلة</p>
           <h1 id="zbTitle">Zombie Survival</h1>
-          <p class="zb-lead" data-i18n="zb.sub">لا تتحكم بالناجي مباشرة. اكتب قواعد «إذا… فافعل…» يتبعها كل دور: أول قاعدة تتحقق هي التي تُنفَّذ، فرتّبها جيدًا لتصمد حتى الفجر.</p>
+          <p class="zb-lead" data-i18n="zb.sub">اكتب دالة act(s) بجافاسكربت حقيقية: تُنادى كل دور وترى حالة اللعبة وتُعيد فعلًا. الذخيرة محدودة والزومبي أنواع.</p>
           <div class="zb-cta"><button class="zb-btn zb-btn-primary" type="button" id="zbStart"><span id="zbStartTxt"></span></button><button class="zb-btn" type="button" id="zbToMap" data-i18n="zb.nights">الليالي</button></div>
-          <ol class="zb-how"><li><b>1</b><span data-i18n="zb.how1">اكتب قاعدة: شرط ثم إجراء</span></li><li><b>2</b><span data-i18n="zb.how2">رتّب القواعد: الأولى تتحقق تُنفَّذ</span></li><li><b>3</b><span data-i18n="zb.how3">شاهد الليلة وصحّح قاعدتك</span></li></ol>
+          <ol class="zb-how"><li><b>1</b><span data-i18n="zb.how1">اقرأ حالة اللعبة s وقرّر</span></li><li><b>2</b><span data-i18n="zb.how2">أعد فعلًا نصيًا مثل "shoot N"</span></li><li><b>3</b><span data-i18n="zb.how3">شاهد النتيجة وحسّن استراتيجيتك</span></li></ol>
         </div>
       </section>
 
@@ -100,28 +107,30 @@
 
       <section class="zb-screen" id="scrPlay" aria-label="level" hidden>
         <div class="zb-brief">
-          <div><span class="zb-night-k" data-i18n="zb.night">الليلة</span><h2 class="zb-night"><b id="zbNo">1</b> / 15</h2></div>
+          <div><span class="zb-night-k" data-i18n="zb.night">الليلة</span><h2 class="zb-night"><b id="zbNo">1</b> / 15 <span class="zb-lname" id="zbName"></span></h2></div>
+          <div class="zb-brief-s"><span class="zb-concept" id="zbConcept"></span><span id="zbStars" class="zb-stars" role="img"></span></div>
           <p class="zb-goal" id="zbGoal"></p>
-          <div class="zb-brief-s"><span id="zbStars" class="zb-stars" role="img"></span><span class="zb-size" id="zbSize"></span></div>
+          <p class="zb-bonus" id="zbBonus"></p>
         </div>
         <div class="zb-grid">
           <div class="zb-stage">
-            <div class="zb-stats" aria-live="off"><span class="zb-stat hp" id="zbHp"></span><span class="zb-stat ammo" id="zbAmmo"></span><span class="zb-stat med" id="zbMed"></span></div>
+            <div class="zb-stats" aria-live="off"><span class="zb-stat hp" id="zbHp"></span><span class="zb-stat ammo" id="zbAmmo"></span><span class="zb-stat med" id="zbMed"></span><span class="zb-stat turn" id="zbTurn"></span></div>
             <div class="zb-board-wrap"><div class="zb-board" id="zbBoard" dir="ltr" role="img" aria-label="board"></div><div class="zb-vignette" id="zbVig"></div></div>
-            <p class="zb-log" id="zbLog" role="status" aria-live="off"></p>
+            <p class="zb-log" id="zbLog" role="status" aria-live="polite"></p>
           </div>
           <div class="zb-editor">
             <div class="zb-tools">
               <button class="zb-btn zb-btn-primary zb-run" type="button" id="zbRun"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg><span data-i18n="adv.run">تشغيل</span></button>
               <button class="zb-btn zb-run" type="button" id="zbStop" hidden><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor"/></svg><span data-i18n="adv.stop">إيقاف</span></button>
-              <button class="zb-btn zb-ico" type="button" id="zbUndo" aria-label="undo" data-i18n-attr="aria-label:adv.undo"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7L4 12l5 5M4 12h10a6 6 0 010 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 -3)"/></svg></button>
+              <button class="zb-btn zb-ico" type="button" id="zbReset" aria-label="reset code" data-i18n-attr="aria-label:zb.reset">↺</button>
               <button class="zb-btn zb-ico" type="button" id="zbSpeed" aria-label="speed" data-i18n-attr="aria-label:adv.speed">1×</button>
               <button class="zb-btn zb-ico" type="button" id="zbHint" aria-label="hint" data-i18n-attr="aria-label:fq.hint">?</button>
             </div>
-            <p class="zb-rules-h"><span data-i18n="zb.rules">قواعد الناجي</span><small data-i18n="zb.rulesNote">تُقرأ من الأعلى إلى الأسفل — أول شرط صحيح يُنفَّذ</small></p>
-            <ol class="zb-rules" id="zbRules"></ol>
-            <button class="zb-btn zb-add" type="button" id="zbAdd" data-i18n="zb.add">+ قاعدة</button>
+            <label class="zb-code-h" for="zbCode"><span data-i18n="zb.code">كودك — دالة act(s) تُنادى كل دور</span></label>
+            <textarea id="zbCode" class="zb-code" spellcheck="false" autocapitalize="off" autocomplete="off" dir="ltr" rows="12"></textarea>
+            <div class="zb-chips" id="zbChips" role="group" aria-label="snippets" dir="ltr"></div>
             <div class="zb-feedback" id="zbMsg" role="status" aria-live="polite"></div>
+            <details class="zb-api" id="zbApi"><summary data-i18n="zb.api">مرجع الـ API (ما تراه وما تستطيع فعله)</summary><div id="zbApiBody"></div></details>
           </div>
         </div>
       </section>
