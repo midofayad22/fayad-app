@@ -97,13 +97,16 @@ test("locked levels fall back to the first open level; locked blocks are disable
   await ctx.close();
 });
 
-test("a nested repeat can be built by tapping and wins (world 3, level 41)", async () => {
-  const { page, ctx } = await open("#41", { solved: 40 });
+test("a loop level can be built by tapping (prefix blocks + one repeat) and wins", async () => {
+  const pick = LEVELS.find((l) => l.world === 3 && l.solution.main.at(-1).op === "repeat" && flat(l.solution.main.at(-1).body) && l.solution.main.slice(0, -1).every((b) => "FLR".includes(b.op)));
+  assert.ok(pick, "expected a prefix+repeat level in world 3");
+  const { page, ctx } = await open("#" + pick.id, { solved: pick.id - 1 });
   await page.waitForSelector("#advBoard .adv-c");
-  const top = LEVELS[40].solution.main[0]; assert.ok(top.op === "repeat" && flat(top.body));
+  const top = pick.solution.main.at(-1);
+  for (const b of pick.solution.main.slice(0, -1)) await page.click(`#advPalette .adv-op-${b.op}`);
   await page.click("#advPalette .adv-op-repeat"); await page.selectOption("#advProg .adv-bh select", String(top.n));
   for (const b of top.body) await page.click(`#advPalette .adv-op-${b.op}`);
-  await page.click("#advRun"); await page.waitForSelector("#advModal:not([hidden]) .adv-sheet");
+  await page.click("#advRun"); await page.waitForSelector("#advModal:not([hidden]) .adv-sheet", { timeout: 20000 });
   assert.ok((await page.locator("#advModal .adv-bigstars svg.on").count()) >= 1);
   await ctx.close();
 });

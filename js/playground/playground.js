@@ -80,10 +80,14 @@ const exportsHolder = {};
     );
   }
 
+  // The console-only JavaScript frame needs no network at all. A CSP here is inherited by the blob: Worker that runs the learner code:
+  // fetch / XHR / WebSocket / EventSource / importScripts of remote URLs are blocked, only the inline bootstrap and the blob worker may run.
+  var JS_FRAME_CSP = '<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; script-src \'unsafe-inline\' \'unsafe-eval\' blob:; worker-src blob:; connect-src \'none\'; img-src \'none\'; style-src \'none\'; form-action \'none\'; base-uri \'none\'">';
+
   function jsFrameSource(token, code, timeoutMs, format) {
     var wsrc = workerSource(format);
     return (
-      "<!doctype html><meta charset=utf-8><body><script>(function(){" +
+      "<!doctype html><meta charset=utf-8>" + JS_FRAME_CSP + "<body><script>(function(){" +
       "var T=" + JSON.stringify(token) + ",TO=" + Number(timeoutMs) + ";" +
       "function send(m){m.fayad=1;m.token=T;parent.postMessage(m,'*')}" +
       "var w,timer,finished=false;" +

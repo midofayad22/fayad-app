@@ -48,5 +48,6 @@ Remaining gamification (profile XP line, settings leaderboard toggle, lose_heart
 - Existing hero code-window, tracks tabs, how-it-works, owner and final CTA sections kept. `tests/home.test.mjs` section count 6→7.
 
 ## Game systems overhaul (reprioritised: games before homepage/lessons; Phase 4 work stashed as "WIP phase4 doc-enhance")
-Checklist: [x] Adventure mechanics v2  [ ] Zombie tactical v2  [ ] Flex Quest  [ ] Selector Quest  [ ] HTML/CSS/JS Arenas  [ ] nav integration for those 5  [ ] final QA + deploy
+Checklist: [x] Adventure mechanics v2  [x] Zombie tactical v2 — 15 levels, learner writes real JavaScript act(s); sandboxed execution (iframe+Worker+CSP), engine replay; reports: `docs/overhaul/zombie-levels.md`, `docs/overhaul/zombie-security.md`; tests: zombie-levels/sandbox/ui (desktop, 360/390/430/820, animated + reduced-motion, EN no-Arabic)
+[ ] Flex Quest  [ ] Selector Quest  [ ] HTML/CSS/JS Arenas  [ ] nav integration for those 5  [ ] final QA + deploy
 - Adventure v2: engine now has doors+keys, crates that bridge water, switches+gates, ice, timed spikes (tick parity), portals, water, optional bonus stars and new conditions (dangerAhead, crateAhead). Boards are generated offline (`tools/adventure/gen.mjs` → `levels-data.js`): worlds 1–2 are puzzle rooms solved by exhaustive search (reference = provably shortest), worlds 3–6 are loop/condition/function courses whose route carries a real barrier mechanic, 3 mastery bosses. IDs, worlds, budgets, `game_levels` rows unchanged. Hints now teach reasoning per mechanic.
