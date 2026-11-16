@@ -15,7 +15,7 @@
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#0D9488" />
-    <meta name="description" content="Zombie Survival: اكتب كود JavaScript حقيقيًا يقود ناجيًا عبر 15 ليلة تكتيكية: ذخيرة محدودة، فخاخ، متاريس، حلفاء وأنواع زومبي مختلفة." />
+    <meta name="description" content="Zombie Survival: 15 مهمة نجاة تتعلم فيها HTML وCSS وJavaScript الحقيقية: Flexbox وGrid وposition وtransition ونماذج HTML الدلالية وأحداث DOM، مع معاينة حية وتحقق فوري." />
     <title>Zombie Survival — FAYBIT</title>
     <link rel="stylesheet" href="/css/tokens.css" />
     <link rel="stylesheet" href="/css/theme.css" />
@@ -23,118 +23,69 @@
     <link rel="stylesheet" href="/css/shell.css" />
     <link rel="stylesheet" href="/css/account.css" />
     <link rel="stylesheet" href="/css/game.css" />
-    <link rel="stylesheet" href="/css/gamekit.css" />
-    <link rel="stylesheet" href="/css/gamenav.css" />
-    <link rel="stylesheet" href="/css/zombie.css" />
+    <link rel="stylesheet" href="/css/lab.css" />
     <script src="/js/i18n.js" defer></script>
     <script src="/js/shell.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
     <script src="/js/main-auth.js" defer></script>
-    <script type="module" src="/js/game/zombie/ui.js"></script>
+    <script type="module" src="/js/game/zombie/page.js"></script>
   </head>
-  <body class="ac-body zb-body" data-page="game">
+  <body class="ac-body lab-body lab-zombie" data-page="game">
     <a class="fy-skip" href="#main" data-i18n="common.skip">تخطي إلى المحتوى</a>
-    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-      <defs>
-        <symbol id="z-me" viewBox="0 0 48 48">
-          <ellipse cx="24" cy="43" rx="12" ry="3.4" fill="#000" opacity=".4"/>
-          <rect x="14" y="26" width="20" height="15" rx="6" fill="#2f5d8a"/><rect x="14" y="26" width="20" height="6" rx="3" fill="#4b86bd"/>
-          <circle cx="24" cy="17" r="10" fill="#f2c9a0"/><path d="M14 16c0-7 5-10 10-10s10 3 10 10c-3-3-6-4-10-4s-7 1-10 4z" fill="#3b2a1d"/>
-          <circle cx="20" cy="18" r="1.6" fill="#1b1b1b"/><circle cx="28" cy="18" r="1.6" fill="#1b1b1b"/>
-          <rect x="31" y="22" width="14" height="5" rx="2" fill="#2b2f36"/><rect x="42" y="20" width="3" height="3" fill="#2b2f36"/><circle cx="31" cy="26" r="3" fill="#f2c9a0"/>
-          <path d="M18 6l4-4h4l4 4z" fill="#ffb02e" opacity=".0"/>
-        </symbol>
-        <symbol id="z-zom" viewBox="0 0 48 48">
-          <ellipse cx="24" cy="43" rx="12" ry="3.4" fill="#000" opacity=".4"/>
-          <path d="M13 41c0-9 3-15 11-15s11 6 11 15z" fill="#4a5a38"/><path d="M13 41c0-6 2-10 5-12l-3 12z" fill="#3a472b"/>
-          <circle cx="24" cy="17" r="10.5" fill="#86b04a"/><path d="M14 14c2-5 6-7 10-7s8 2 10 7c-3-2-6-2-10-2s-7 0-10 2z" fill="#4a5a38"/>
-          <circle cx="19.5" cy="17" r="3" fill="#f6ffc0"/><circle cx="28.5" cy="17" r="3" fill="#f6ffc0"/><circle cx="20" cy="17.4" r="1.3" fill="#a3121b"/><circle cx="28" cy="17.4" r="1.3" fill="#a3121b"/>
-          <path d="M18 23.5c2 2 10 2 12 0l-1 3c-3 1.4-7 1.4-10 0z" fill="#3b1313"/><path d="M20 24l1 2m3-2v3m3-3l-1 2" stroke="#e8e6c9" stroke-width="1.2"/>
-          <rect x="4" y="22" width="14" height="5" rx="2.5" fill="#86b04a" transform="rotate(-8 11 24)"/><rect x="30" y="22" width="14" height="5" rx="2.5" fill="#86b04a" transform="rotate(8 37 24)"/>
-        </symbol>
-        <symbol id="z-bullet" viewBox="0 0 24 24"><path d="M9 3h6l1 4v13H8V7z" fill="currentColor"/><rect x="8" y="17" width="8" height="3" fill="#0004"/></symbol>
-        <symbol id="z-med" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="3" fill="#f4f6f8"/><path d="M12 9v8M8 13h8" stroke="#d92d3a" stroke-width="3" stroke-linecap="round"/><path d="M9 6V4h6v2" fill="none" stroke="#f4f6f8" stroke-width="2"/></symbol>
-        <symbol id="z-heart" viewBox="0 0 24 24"><path d="M12 21C5 15.5 3 12 3 8.8A4.8 4.8 0 0112 7a4.8 4.8 0 019 1.8C21 12 19 15.5 12 21z" fill="currentColor"/></symbol>
-        <symbol id="z-star" viewBox="0 0 24 24"><path d="M12 2.4l2.9 6.2 6.7.8-4.9 4.6 1.3 6.7L12 17.4 6 20.7l1.3-6.7L2.4 9.4l6.7-.8z" fill="currentColor" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></symbol>
-        <symbol id="z-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="3" fill="currentColor"/><path d="M8 11V8a4 4 0 018 0v3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
-        <symbol id="z-skull" viewBox="0 0 24 24"><path d="M12 3C7.6 3 5 6 5 10c0 2.4 1 3.6 2 4.6V18h2v-2h1.5v2h3v-2H15v2h2v-3.4c1-1 2-2.2 2-4.6 0-4-2.6-7-7-7z" fill="currentColor"/><circle cx="9.3" cy="10.5" r="1.8" fill="#0009"/><circle cx="14.7" cy="10.5" r="1.8" fill="#0009"/></symbol>
-        <symbol id="z-crate" viewBox="0 0 48 48"><rect x="8" y="14" width="32" height="26" rx="2" fill="#7a5530"/><path d="M8 14l32 26M40 14L8 40" stroke="#4a3219" stroke-width="3"/><rect x="8" y="14" width="32" height="26" rx="2" fill="none" stroke="#4a3219" stroke-width="3"/></symbol>
-        <symbol id="z-barrel" viewBox="0 0 48 48"><rect x="12" y="10" width="24" height="31" rx="5" fill="#a83232"/><rect x="12" y="17" width="24" height="3.5" fill="#6b1d1d"/><rect x="12" y="30" width="24" height="3.5" fill="#6b1d1d"/><path d="M24 22l3 6h-6z" fill="#ffb02e"/></symbol>
-        <symbol id="z-wall" viewBox="0 0 48 48"><rect x="3" y="6" width="42" height="38" rx="6" fill="#3a4658"/><path d="M3 20h42M3 33h42M16 6v14M32 20v13M18 33v11" stroke="#252e3c" stroke-width="2.4"/><rect x="3" y="6" width="42" height="7" rx="4" fill="#56667d"/></symbol>
-        <symbol id="z-bar" viewBox="0 0 48 48"><rect x="4" y="9" width="40" height="8" rx="2" fill="#8a5a2b"/><rect x="4" y="21" width="40" height="8" rx="2" fill="#a06a35"/><rect x="4" y="33" width="40" height="8" rx="2" fill="#8a5a2b"/><path d="M10 6v38M38 6v38" stroke="#4a3219" stroke-width="3.5"/><circle cx="10" cy="13" r="1.6" fill="#d8c28a"/><circle cx="38" cy="25" r="1.6" fill="#d8c28a"/></symbol>
-        <symbol id="z-spike" viewBox="0 0 48 48"><rect x="6" y="28" width="36" height="12" rx="3" fill="#2b2f36"/><path d="M9 30l5-16 5 16M19 30l5-20 5 20M29 30l5-16 5 16" fill="#cfd6df" stroke="#7d8896" stroke-width="1.4" stroke-linejoin="round"/><path d="M22 18l2-6 2 6" fill="#e5393f"/></symbol>
-        <symbol id="z-exit" viewBox="0 0 48 48"><rect x="8" y="6" width="32" height="38" rx="5" fill="#1d3f2b" stroke="#46e08a" stroke-width="3"/><rect x="14" y="12" width="20" height="32" rx="2" fill="#0d1f16"/><path d="M19 28h10m-4-5l5 5-5 5" stroke="#46e08a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="12" y="2" width="24" height="7" rx="2" fill="#46e08a"/></symbol>
-        <symbol id="z-ammobox" viewBox="0 0 48 48"><rect x="7" y="16" width="34" height="24" rx="4" fill="#5b6b3a"/><rect x="7" y="16" width="34" height="8" rx="3" fill="#7d8f4e"/><g fill="#ffb02e"><rect x="14" y="26" width="5" height="9" rx="2"/><rect x="22" y="26" width="5" height="9" rx="2"/><rect x="30" y="26" width="5" height="9" rx="2"/></g></symbol>
-        <symbol id="z-medbox" viewBox="0 0 48 48"><rect x="6" y="14" width="36" height="26" rx="5" fill="#f4f6f8"/><path d="M24 19v16M16 27h16" stroke="#d92d3a" stroke-width="5" stroke-linecap="round"/></symbol>
-        <symbol id="z-noise" viewBox="0 0 48 48"><circle cx="24" cy="24" r="6" fill="#ffb02e"/><circle cx="24" cy="24" r="12" fill="none" stroke="#ffb02e" stroke-width="2.5" opacity=".7"/><circle cx="24" cy="24" r="19" fill="none" stroke="#ffb02e" stroke-width="2" opacity=".35"/></symbol>
-        <symbol id="z-tree" viewBox="0 0 48 48"><path d="M23 42V22M23 28l-9-8M23 24l9-9M23 33l7-5" stroke="#2c2118" stroke-width="3.5" stroke-linecap="round" fill="none"/></symbol>
-      </defs>
-    </svg>
-    
-    <main id="main" class="zb-app" data-screen="intro">
-      <header class="gnav zb-nav" id="gnav">
-        <div class="gnav-in">
-          <a class="gnav-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="30" height="30" /><span>FAYBIT</span></a>
-          <button class="gnav-back" type="button" id="zbBack"><span aria-hidden="true">‹</span><span id="zbBackTxt"></span></button>
-          <nav class="gnav-crumbs" aria-label="breadcrumb"><a href="/play/index.html" data-i18n="fq.hub">الألعاب</a><span class="sep" aria-hidden="true">/</span><span class="cur">Zombie Survival</span></nav>
-          <div class="gnav-sec" role="group" data-i18n-attr="aria-label:gnav.sections" aria-label="الأقسام">
-            <button type="button" class="gnav-tab" data-go="intro" data-i18n="gnav.home">البداية</button>
-            <button type="button" class="gnav-tab" data-go="map" data-i18n="zb.nights">الليالي</button>
-            <button type="button" class="gnav-tab gnav-cta" data-go="continue" data-i18n="gnav.continue">تابع اللعب</button>
+    <header class="ac-top">
+      <div class="ac-wrap ac-top-in">
+        <a class="ac-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="32" height="32" /><span>FAYBIT</span></a>
+        <nav class="ac-nav" aria-label="FAYBIT">
+          <a href="/index.html" data-i18n="fq.home">الرئيسية</a>
+          <a href="/play/index.html" data-i18n="fq.hub">الألعاب</a>
+          <a href="/dashboard.html" data-i18n="fq.dash">لوحة التقدم</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="ar-main">
+      <div class="ar-head">
+        <div><h1 id="arTrack" class="ar-h1">Zombie Survival</h1><p class="ar-sub" id="arSub"></p></div>
+        <span class="fq-chip"><span data-i18n="fq.points">نقاط اللعبة</span>: <b id="arPoints">0</b></span>
+      </div>
+      <div class="ar-levels" id="arLevels" role="list"></div>
+      <div class="ar-grid" id="arGrid" hidden>
+        <section class="ar-brief" aria-labelledby="arTitle">
+          <span class="ar-badge" id="arBadge"></span>
+          <h2 id="arTitle"></h2>
+          <p class="ar-goal"><b data-i18n="ar.goal">الهدف التعليمي:</b> <span id="arGoal"></span></p>
+          <p id="arBrief"></p>
+          <details class="lab-lesson" open><summary data-i18n="lab.lesson">درس قصير</summary><dl id="labTeach" class="lab-teach"></dl></details>
+          <h3 class="ar-h3" data-i18n="ar.checks">المتطلبات</h3>
+          <ul class="ar-checks" id="arChecks"></ul>
+          <div class="ar-hints" id="arHints"></div>
+          <div class="lab-sol" id="labSolution" hidden></div>
+        </section>
+        <section class="ar-work" aria-label="Editor">
+          <div class="ar-tabs" id="arTabs" role="tablist"></div>
+          <div class="ar-editors" id="arEditors"></div>
+          <div class="ar-actions">
+            <button class="ac-btn ac-btn-primary" type="button" id="arRun">▶ <span data-i18n="ar.run">تشغيل</span></button>
+            <button class="ac-btn" type="button" id="arHint" data-i18n="fq.hint">تلميح</button>
+            <button class="ac-btn" type="button" id="arSol" hidden data-i18n="lab.sol">اعرض الحل</button>
+            <button class="ac-btn" type="button" id="arReset" data-i18n="fq.reset">إعادة الضبط</button>
+            <span class="ar-status" id="arStatus" role="status"></span>
           </div>
-          <div class="gnav-stats"><span class="gnav-pill" title="points"><svg class="ic" aria-hidden="true"><use href="#z-bullet"/></svg><b id="zbPoints">0</b></span><span class="gnav-pill"><svg class="ic st" aria-hidden="true"><use href="#z-star"/></svg><b id="zbStarTotal">0</b><small>/45</small></span></div>
-          <div class="nav-actions"></div>
+        </section>
+        <section class="ar-out" aria-label="Preview">
+          <div class="ar-out-bar"><span data-i18n="ar.preview">المعاينة</span></div>
+          <div class="ar-preview" id="arPreview"><p class="ar-empty" id="arEmpty" data-i18n="ar.empty">شغّل الكود لترى النتيجة هنا</p></div>
+          <div class="ar-console" id="arConsole" aria-live="polite"></div>
+        </section>
+      </div>
+      <div class="ar-win" id="arWin" role="dialog" aria-modal="true" aria-labelledby="arWinT" hidden>
+        <div class="ar-win-card">
+          <div class="ar-confetti" aria-hidden="true"></div>
+          <h2 id="arWinT"></h2>
+          <p id="arWinPts"></p>
+          <p id="arWinExplain"></p>
+          <div class="ar-win-actions"><button class="ac-btn" type="button" id="arWinStay" data-i18n="ar.replay">أعد المحاولة</button><button class="ac-btn ac-btn-primary" type="button" id="arWinNext" data-i18n="fq.next">المرحلة التالية</button></div>
         </div>
-      </header>
-      <div class="zb-scene" id="zbScene" aria-hidden="true"><div class="zb-moon"></div><svg class="zb-forest" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMax slice"></svg><div class="zb-fog f1"></div><div class="zb-fog f2"></div><div class="zb-rain"></div></div>
-      
-      <section class="zb-screen" id="scrIntro" aria-labelledby="zbTitle">
-        <div class="zb-intro">
-          <div class="zb-intro-art" aria-hidden="true"><svg class="zi-me" viewBox="0 0 48 48"><use href="#z-me"/></svg><svg class="zi-z z1" viewBox="0 0 48 48"><use href="#z-zom"/></svg><svg class="zi-z z2" viewBox="0 0 48 48"><use href="#z-zom"/></svg><svg class="zi-z z3" viewBox="0 0 48 48"><use href="#z-zom"/></svg></div>
-          <p class="zb-eyebrow" data-i18n="zb.eyebrow">JavaScript تكتيكي · 15 ليلة</p>
-          <h1 id="zbTitle">Zombie Survival</h1>
-          <p class="zb-lead" data-i18n="zb.sub">اكتب دالة act(s) بجافاسكربت حقيقية: تُنادى كل دور وترى حالة اللعبة وتُعيد فعلًا. الذخيرة محدودة والزومبي أنواع.</p>
-          <div class="zb-cta"><button class="zb-btn zb-btn-primary" type="button" id="zbStart"><span id="zbStartTxt"></span></button><button class="zb-btn" type="button" id="zbToMap" data-i18n="zb.nights">الليالي</button></div>
-          <ol class="zb-how"><li><b>1</b><span data-i18n="zb.how1">اقرأ حالة اللعبة s وقرّر</span></li><li><b>2</b><span data-i18n="zb.how2">أعد فعلًا نصيًا مثل "shoot N"</span></li><li><b>3</b><span data-i18n="zb.how3">شاهد النتيجة وحسّن استراتيجيتك</span></li></ol>
-        </div>
-      </section>
-
-      <section class="zb-screen" id="scrMap" aria-labelledby="zbMapT" hidden>
-        <h2 id="zbMapT" class="zb-h" data-i18n="zb.nights">الليالي</h2>
-        <p class="zb-lead" data-i18n="zb.mapSub">كل ليلة أصعب: زومبي أكثر، ذخيرة أقل، وإجراءات جديدة تُفتح.</p>
-        <ol class="zb-nights" id="zbNights"></ol>
-      </section>
-
-      <section class="zb-screen" id="scrPlay" aria-label="level" hidden>
-        <div class="zb-brief">
-          <div><span class="zb-night-k" data-i18n="zb.night">الليلة</span><h2 class="zb-night"><b id="zbNo">1</b> / 15 <span class="zb-lname" id="zbName"></span></h2></div>
-          <div class="zb-brief-s"><span class="zb-concept" id="zbConcept"></span><span id="zbStars" class="zb-stars" role="img"></span></div>
-          <p class="zb-goal" id="zbGoal"></p>
-          <p class="zb-bonus" id="zbBonus"></p>
-        </div>
-        <div class="zb-grid">
-          <div class="zb-stage">
-            <div class="zb-stats" aria-live="off"><span class="zb-stat hp" id="zbHp"></span><span class="zb-stat ammo" id="zbAmmo"></span><span class="zb-stat med" id="zbMed"></span><span class="zb-stat turn" id="zbTurn"></span></div>
-            <div class="zb-board-wrap"><div class="zb-board" id="zbBoard" dir="ltr" role="img" aria-label="board"></div><div class="zb-vignette" id="zbVig"></div></div>
-            <p class="zb-log" id="zbLog" role="status" aria-live="polite"></p>
-          </div>
-          <div class="zb-editor">
-            <div class="zb-tools">
-              <button class="zb-btn zb-btn-primary zb-run" type="button" id="zbRun"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg><span data-i18n="adv.run">تشغيل</span></button>
-              <button class="zb-btn zb-run" type="button" id="zbStop" hidden><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor"/></svg><span data-i18n="adv.stop">إيقاف</span></button>
-              <button class="zb-btn zb-ico" type="button" id="zbReset" aria-label="reset code" data-i18n-attr="aria-label:zb.reset">↺</button>
-              <button class="zb-btn zb-ico" type="button" id="zbSpeed" aria-label="speed" data-i18n-attr="aria-label:adv.speed">1×</button>
-              <button class="zb-btn zb-ico" type="button" id="zbHint" aria-label="hint" data-i18n-attr="aria-label:fq.hint">?</button>
-            </div>
-            <label class="zb-code-h" for="zbCode"><span data-i18n="zb.code">كودك — دالة act(s) تُنادى كل دور</span></label>
-            <textarea id="zbCode" class="zb-code" spellcheck="false" autocapitalize="off" autocomplete="off" dir="ltr" rows="12"></textarea>
-            <div class="zb-chips" id="zbChips" role="group" aria-label="snippets" dir="ltr"></div>
-            <div class="zb-feedback" id="zbMsg" role="status" aria-live="polite"></div>
-            <details class="zb-api" id="zbApi"><summary data-i18n="zb.api">مرجع الـ API (ما تراه وما تستطيع فعله)</summary><div id="zbApiBody"></div></details>
-          </div>
-        </div>
-      </section>
+      </div>
     </main>
-    <div class="zb-modal" id="zbModal" hidden role="dialog" aria-modal="true" aria-labelledby="zbModalT"></div>
   </body>
 </html>

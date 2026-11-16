@@ -1,0 +1,19 @@
+/* Web Lab (shared by the HTML/CSS/JS games): mini lesson, solution box, per-game identity. Uses game.css (.ar-*) for layout. */
+.lab-teach { display: grid; gap: 4px 12px; margin: 8px 0 0; grid-template-columns: max-content 1fr; font-size: .92rem; }
+.lab-teach dt { font-weight: 800; color: var(--ac-accent, #0d9488); white-space: nowrap; }
+.lab-teach dd { margin: 0; line-height: 1.7; }
+.lab-teach .lab-code { font-family: ui-monospace, Menlo, Consolas, monospace; direction: ltr; unicode-bidi: plaintext; text-align: start; font-size: .84rem; }
+.lab-lesson { margin: 10px 0; padding: 8px 12px; border-radius: 12px; border: 1px solid var(--ac-line, #d8e2e0); background: color-mix(in srgb, var(--ac-surface, #fff) 94%, #0d9488 6%); }
+.lab-lesson summary { cursor: pointer; font-weight: 800; }
+@media (max-width: 560px) { .lab-teach { grid-template-columns: 1fr; } .lab-teach dd { margin-bottom: 8px; } }
+.lab-sol { margin-top: 10px; padding: 10px; border-radius: 12px; border: 2px dashed #e9c46a; }
+.lab-sol pre { margin: 4px 0 10px; padding: 10px; border-radius: 8px; background: #0f1d17; color: #cdeedd; overflow: auto; max-width: 100%; font-size: .82rem; white-space: pre-wrap; }
+.lab-sol h4 { margin: 0 0 6px; }
+/* Zombie identity: night-green field, hazard accents */
+.lab-zombie .ar-main { background: radial-gradient(120% 60% at 50% -10%, rgba(80,160,110,.18), transparent 60%); }
+.lab-zombie .ar-h1::before { content: "☣ "; color: #7bd88f; }
+.lab-zombie .ar-preview { background: #0a1511; border-color: #2c5a43; }
+.lab-zombie .ar-badge { box-shadow: 0 0 0 2px rgba(123,216,143,.35); }
+.lab-body .ar-preview { min-height: 320px; }
+.lab-body .ar-preview iframe { height: 320px; }
+@media (min-width: 1101px) { .lab-body .ar-grid { grid-template-columns: minmax(250px, 320px) minmax(0, 1fr) minmax(0, 1.15fr); } }

@@ -13,7 +13,7 @@ const rects = (s) => `${$$(s)}.map(function(e){return e.getBoundingClientRect()}
 export const SCENE = `<style>
 *{box-sizing:border-box}
 body{margin:0;padding:10px;min-height:100vh;color:#e4f6e8;font:14px/1.5 system-ui,sans-serif;background:radial-gradient(120% 90% at 50% 0,#1c3a2b,#0a1511 70%)}
-.field{position:relative;padding:8px 64px}
+.field{position:relative;padding:8px 36px}
 .zone{border:2px dashed #4f8a67;border-radius:12px;background:rgba(255,255,255,.05);padding:8px;min-height:90px;max-width:100%}
 .zombie{position:absolute;left:4px;top:50%;width:40px;height:54px;margin-top:-27px;transition:left 1.4s ease,transform 1s,opacity 1s;
  background:radial-gradient(circle at 50% 24%,#a6d35f 0 13px,transparent 14px),linear-gradient(#4a5d3a,#33422a) 50% 100%/26px 28px no-repeat}
@@ -23,7 +23,7 @@ body{margin:0;padding:10px;min-height:100vh;color:#e4f6e8;font:14px/1.5 system-u
 .wall,.crate,.bag,.board,.cell{border:2px solid #4a3219;border-radius:6px;background:repeating-linear-gradient(#8a5a2b 0 8px,#a06a35 8px 16px);color:#2c1c0b;font-weight:700;text-align:center}
 .wall{width:46px;height:46px}.crate{width:56px;height:40px}.bag{width:70px;height:30px;border-radius:14px;background:#c9ae6c;border-color:#7a6430}
 .board{min-width:30px;height:46px}.cell{height:46px;background:#274a39;border-color:#58a07a;color:#cdeedd;padding-top:10px}
-.gate,.tower,.yard,.med{border:2px solid #58a07a;border-radius:8px;background:#274a39;padding:10px;text-align:center;font-weight:700}
+.gate,.tower,.yard,.med{border:2px solid #58a07a;border-radius:8px;background:#274a39;padding:8px 4px;font-size:12px;text-align:center;font-weight:700}
 .gate{background:#6b2630;border-color:#d1485a}.yard{background:#1d3a2c}.med{background:#2a4f6b;border-color:#6fb4e6}
 .turret{width:36px;height:36px;border-radius:50% 50% 6px 6px;background:#9aa8b8;border:2px solid #4b5766}
 .sign{padding:6px 10px;background:#e9c46a;color:#3b2a00;border-radius:6px;font-weight:700}.ladder{height:30px;border-radius:4px;background:repeating-linear-gradient(90deg,#b98a4a 0 6px,transparent 6px 16px);border:2px solid #7a5a2b}
@@ -35,7 +35,8 @@ button{font:inherit;font-weight:700;padding:8px 14px;border-radius:8px;border:2p
 input,textarea,select{font:inherit;padding:6px 8px;border-radius:6px;border:1px solid #58a07a;background:#0f1d17;color:#e4f6e8}
 form{display:grid;gap:8px;max-width:360px}label{font-weight:700}header,nav,main,footer{display:block;padding:6px 0}
 .fy-win .zombie{transform:rotate(80deg) translate(0,20px);opacity:.25}
-.fy-lose .zombie{left:calc(100% - 118px)}
+.fy-lose .zombie{left:calc(100% - 96px)}
+@media (max-width:420px){body{padding:6px}.field{padding:8px 24px}.zombie{width:30px;transform-origin:left center}.survivor{width:26px;right:2px}.gate,.tower,.yard,.med{font-size:10px;padding:6px 1px}.zone{padding:6px}}
 @media (prefers-reduced-motion:reduce){.zombie{transition:none}}
 </style>`;
 const FIELD = (zone, zoneAttrs = 'class="zone" id="zone"') => `<div class="field"><div class="zombie"></div><div ${zoneAttrs}>${zone}</div><div class="survivor"></div></div>`;
@@ -72,7 +73,7 @@ export const MISSIONS = [
     files: { html: FIELD(walls(3), 'class="zone" id="zone" style="min-height:150px"'), css: ".zone {\n  display: flex;\n  /* أكمل — continue */\n}" },
     checks: [
       { ar: "الجدار الأول عند الطرف الأيسر", en: "First wall at the left edge", test: `var r=${rects(".wall")},z=${$(".zone")}.getBoundingClientRect();return r[0].left-z.left<12` },
-      { ar: "الجدار الأخير عند الطرف الأيمن والأوسط بينهما بالتساوي", en: "Last wall at the right edge, the middle one evenly between", test: `var r=${rects(".wall")},z=${$(".zone")}.getBoundingClientRect();return z.right-r[2].right<12&&Math.abs((r[1].left-r[0].right)-(r[2].left-r[1].right))<2&&r[1].left-r[0].right>20` },
+      { ar: "الجدار الأخير عند الطرف الأيمن والأوسط بينهما بالتساوي", en: "Last wall at the right edge, the middle one evenly between", test: `var r=${rects(".wall")},z=${$(".zone")}.getBoundingClientRect();return z.right-r[2].right<12&&Math.abs((r[1].left-r[0].right)-(r[2].left-r[1].right))<2&&r[1].left-r[0].right>8` },
       { ar: "قواعد الجدران ملاصقة لأرض المنطقة", en: "Walls stand on the zone's floor", test: `var r=${rects(".wall")},z=${$(".zone")}.getBoundingClientRect();return r.every(function(x){return z.bottom-x.bottom<12})` }],
     hints: [{ ar: "الفكرة: توزيع أفقي بين الأطراف + محاذاة رأسية للأسفل.", en: "Idea: horizontal spread between the ends + vertical alignment to the bottom." }, { ar: "justify-content: space-between وalign-items: flex-end.", en: "justify-content: space-between and align-items: flex-end." }, { ar: "مثال: align-items: center يضع العناصر في منتصف الارتفاع.", en: "Example: align-items: center puts the items in the vertical middle." }],
     explain: t("space-between وزّع الفراغ بين الجدران فقط، وflex-end على المحور المتقاطع أنزلها إلى قاع الحاوية.", "space-between put all the free space between the walls, and flex-end on the cross axis dropped them to the container's bottom."),
@@ -125,7 +126,7 @@ export const MISSIONS = [
       mistake: t("تحديد width ثابت للألواح يعطّل النمو.", "A fixed width on the boards defeats growing.") },
     files: { html: FIELD('<div class="board"></div><div class="board big"></div><div class="board"></div>'), css: ".zone {\n  display: flex;\n}\n" },
     checks: [
-      { ar: "الألواح تملأ عرض المنطقة", en: "Boards fill the zone width", test: `var r=${rects(".board")},z=${$(".zone")}.getBoundingClientRect();return Math.abs((r[2].right-r[0].left)-(z.width-20))<3` },
+      { ar: "الألواح تملأ عرض المنطقة", en: "Boards fill the zone width", test: `var r=${rects(".board")},z=${$(".zone")},c=getComputedStyle(z);return Math.abs((r[2].right-r[0].left)-(z.clientWidth-parseFloat(c.paddingLeft)-parseFloat(c.paddingRight)))<3` },
       { ar: "الأوسط ضعف الجانبي تقريبًا", en: "The middle one is about twice a side", test: `var r=${rects(".board")};var k=r[1].width/r[0].width;return k>1.8&&k<2.15&&Math.abs(r[0].width-r[2].width)<1.5` },
       { ar: "لا فراغات بين الألواح", en: "No gaps between boards", test: `var r=${rects(".board")};return Math.abs(r[1].left-r[0].right)<1&&Math.abs(r[2].left-r[1].right)<1` }],
     hints: [{ ar: "الفكرة: وزّع المساحة الفارغة بنسب 1:2:1.", en: "Idea: share the free space in the ratio 1:2:1." }, { ar: "flex-grow أو الاختصار flex.", en: "flex-grow, or the flex shorthand." }, { ar: "مثال: .a { flex: 1 } .b { flex: 3 } يعطي b ثلاثة أضعاف a.", en: "Example: .a { flex: 1 } .b { flex: 3 } gives b three times a." }],
@@ -205,7 +206,7 @@ export const MISSIONS = [
     explain: t("غيّرنا display للسلم فعاد للتخطيط، واستعملنا visibility لللافتة فاختفت دون أن ينتقل ما حولها.", "We changed the ladder's display so it re-entered the layout, and used visibility on the sign so it vanished without moving its neighbours."),
     solution: { css: ".ladder {\n  display: block;\n}\n.sign {\n  visibility: hidden;\n}" }, alts: [{ css: ".ladder { display: flex; }\n.sign { visibility: hidden; opacity: 0; }" }] },
 
-  { id: "zb-10", level: "advanced", tech: "css", runtime: "html", edit: ["css"], head: SCENE + `<style>.zone.gatezone{overflow:hidden;height:70px;padding:0}.gate{display:block;height:60px;transform:translateY(-62px)}</style>`,
+  { id: "zb-10", level: "advanced", tech: "css", runtime: "html", edit: ["css"], head: SCENE + `<style>.zone.gatezone{overflow:hidden;height:70px;padding:0}.gate{display:block;height:60px;transform:translateY(-46px)}</style>`,
     title: t("بوابة تنزلق", "A Sliding Gate"), goal: t("transition و transform", "transition and transform"),
     brief: t("البوابة (class gate) مرفوعة. عند إضافة الصنف closed يجب أن تنزل إلى مكانها (translateY(0)) بحركة ناعمة تستغرق ثانية أو أقل ولا تقفز فجأة.", "The gate (class gate) is raised. When the class closed is added it must slide down to its place (translateY(0)) smoothly, not jump."),
     teach: { what: t("transition تجعل تغيّر خاصية CSS يحدث تدريجيًا بدل أن يكون فوريًا، وtransform يحرك العنصر دون التأثير في التخطيط.", "transition makes a CSS change happen gradually instead of instantly; transform moves an element without affecting layout."),
