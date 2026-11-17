@@ -15,7 +15,7 @@
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#0D9488" />
-    <meta name="description" content="Zombie Survival: 15 مهمة نجاة تتعلم فيها HTML وCSS وJavaScript الحقيقية: Flexbox وGrid وposition وtransition ونماذج HTML الدلالية وأحداث DOM، مع معاينة حية وتحقق فوري." />
+    <meta name="description" content="Zombie Survival: لعبة بقاء حقيقية تدافع فيها عن ملجأ وناجين من أنواع زومبي مختلفة، وتستخدم HTML وCSS وJavaScript الحقيقية كأدوات للنجاة: 15 مهمة في 5 مواقع." />
     <title>Zombie Survival — FAYBIT</title>
     <link rel="stylesheet" href="/css/tokens.css" />
     <link rel="stylesheet" href="/css/theme.css" />
@@ -23,14 +23,14 @@
     <link rel="stylesheet" href="/css/shell.css" />
     <link rel="stylesheet" href="/css/account.css" />
     <link rel="stylesheet" href="/css/game.css" />
-    <link rel="stylesheet" href="/css/lab.css" />
+    <link rel="stylesheet" href="/css/zombie-game.css" />
     <script src="/js/i18n.js" defer></script>
     <script src="/js/shell.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
     <script src="/js/main-auth.js" defer></script>
     <script type="module" src="/js/game/zombie/page.js"></script>
   </head>
-  <body class="ac-body lab-body lab-zombie" data-page="game">
+  <body class="ac-body zg-body" data-page="game">
     <a class="fy-skip" href="#main" data-i18n="common.skip">تخطي إلى المحتوى</a>
     <header class="ac-top">
       <div class="ac-wrap ac-top-in">
@@ -42,50 +42,81 @@
         </nav>
       </div>
     </header>
-    <main id="main" class="ar-main">
-      <div class="ar-head">
-        <div><h1 id="arTrack" class="ar-h1">Zombie Survival</h1><p class="ar-sub" id="arSub"></p></div>
-        <span class="fq-chip"><span data-i18n="fq.points">نقاط اللعبة</span>: <b id="arPoints">0</b></span>
-      </div>
-      <div class="ar-levels" id="arLevels" role="list"></div>
-      <div class="ar-grid" id="arGrid" hidden>
-        <section class="ar-brief" aria-labelledby="arTitle">
-          <span class="ar-badge" id="arBadge"></span>
-          <h2 id="arTitle"></h2>
-          <p class="ar-goal"><b data-i18n="ar.goal">الهدف التعليمي:</b> <span id="arGoal"></span></p>
-          <p id="arBrief"></p>
-          <details class="lab-lesson" open><summary data-i18n="lab.lesson">درس قصير</summary><dl id="labTeach" class="lab-teach"></dl></details>
-          <h3 class="ar-h3" data-i18n="ar.checks">المتطلبات</h3>
-          <ul class="ar-checks" id="arChecks"></ul>
-          <div class="ar-hints" id="arHints"></div>
-          <div class="lab-sol" id="labSolution" hidden></div>
-        </section>
-        <section class="ar-work" aria-label="Editor">
-          <div class="ar-tabs" id="arTabs" role="tablist"></div>
-          <div class="ar-editors" id="arEditors"></div>
-          <div class="ar-actions">
-            <button class="ac-btn ac-btn-primary" type="button" id="arRun">▶ <span data-i18n="ar.run">تشغيل</span></button>
-            <button class="ac-btn" type="button" id="arHint" data-i18n="fq.hint">تلميح</button>
-            <button class="ac-btn" type="button" id="arSol" hidden data-i18n="lab.sol">اعرض الحل</button>
-            <button class="ac-btn" type="button" id="arReset" data-i18n="fq.reset">إعادة الضبط</button>
-            <span class="ar-status" id="arStatus" role="status"></span>
-          </div>
-        </section>
-        <section class="ar-out" aria-label="Preview">
-          <div class="ar-out-bar"><span data-i18n="ar.preview">المعاينة</span></div>
-          <div class="ar-preview" id="arPreview"><p class="ar-empty" id="arEmpty" data-i18n="ar.empty">شغّل الكود لترى النتيجة هنا</p></div>
-          <div class="ar-console" id="arConsole" aria-live="polite"></div>
-        </section>
-      </div>
-      <div class="ar-win" id="arWin" role="dialog" aria-modal="true" aria-labelledby="arWinT" hidden>
-        <div class="ar-win-card">
-          <div class="ar-confetti" aria-hidden="true"></div>
-          <h2 id="arWinT"></h2>
-          <p id="arWinPts"></p>
-          <p id="arWinExplain"></p>
-          <div class="ar-win-actions"><button class="ac-btn" type="button" id="arWinStay" data-i18n="ar.replay">أعد المحاولة</button><button class="ac-btn ac-btn-primary" type="button" id="arWinNext" data-i18n="fq.next">المرحلة التالية</button></div>
+    <main id="main" class="zg-main">
+      <section id="zbMap" class="zg-map" aria-labelledby="zbMapT">
+        <div class="zg-wrap">
+          <p class="zg-eyebrow" data-i18n="zg.eyebrow">لعبة بقاء</p>
+          <h1 id="zbMapT" class="zg-h1">Zombie Survival</h1>
+          <p class="zg-lead" id="zbLead"></p>
+          <div class="zg-howto" id="zbHow"></div>
+          <ol class="zg-locs" id="zbLocs"></ol>
         </div>
-      </div>
+      </section>
+      <section id="zbPlay" class="zg-play" hidden aria-label="Mission">
+        <div class="zg-wrap">
+          <div class="zg-bar">
+            <button type="button" class="zg-btn ghost" id="zbBack" data-i18n="zg.map">← الخريطة</button>
+            <div class="zg-title"><span id="zbLocName" class="zg-loc"></span><h2 id="zbTitle"></h2></div>
+            <div class="zg-pts"><span data-i18n="zg.points">نقاط</span> <b id="zbPoints">0</b></div>
+          </div>
+          <div class="zg-hud" id="zbHud" role="status" aria-live="off">
+            <div class="zg-stat hp"><span class="lbl" data-i18n="zg.hp">صحة الملجأ</span><div class="bar"><i id="zbHpBar"></i></div><b id="zbHp">–</b></div>
+            <div class="zg-stat sv"><span class="lbl" data-i18n="zg.sv">الناجون</span><div class="pips" id="zbSv"></div></div>
+            <div class="zg-stat am"><span class="lbl" data-i18n="zg.ammo">الذخيرة</span><b id="zbAmmo">0</b></div>
+            <div class="zg-stat su" id="zbSupBox"><span class="lbl" data-i18n="zg.sup">إمدادات</span><b id="zbSup">0</b></div>
+            <div class="zg-stat zz"><span class="lbl" data-i18n="zg.zombies">زومبي</span><b id="zbZ">0</b></div>
+            <div class="zg-stat dn"><span class="lbl" data-i18n="zg.dawn">حتى الفجر</span><b id="zbDawn">–</b></div>
+          </div>
+          <div class="zg-grid">
+            <div class="zg-left">
+              <div class="zg-stagewrap">
+                <div class="zg-stage" id="zbStage" aria-label="Game world"></div>
+                <div class="zg-banner" id="zbBanner" aria-live="polite"></div>
+              </div>
+              <div class="zg-controls">
+                <button type="button" class="zg-btn go" id="zbStart" data-i18n="zg.start">▶ ابدأ الموجة</button>
+                <button type="button" class="zg-btn" id="zbReset" data-i18n="zg.reset">↺ أعد العالم</button>
+                <span class="zg-tip" id="zbTip"></span>
+              </div>
+              <ul class="zg-legend" id="zbLegend" aria-label="Threats"></ul>
+            </div>
+            <div class="zg-right">
+              <div class="zg-tabs" role="tablist">
+                <button type="button" role="tab" class="on" data-tab="brief" data-i18n="zg.tBrief">الإحاطة</button>
+                <button type="button" role="tab" data-tab="build" data-i18n="zg.tBuild">البناء (كود)</button>
+                <button type="button" role="tab" data-tab="learn" data-i18n="zg.tLearn">تعلّم</button>
+              </div>
+              <div class="zg-panel" data-panel="brief">
+                <p id="zbBrief" class="zg-brief"></p>
+                <h3 data-i18n="zg.obj">الأهداف</h3>
+                <ul class="zg-obj" id="zbObj"></ul>
+              </div>
+              <div class="zg-panel" data-panel="build" hidden>
+                <div class="ar-tabs" id="zbTabs" role="tablist"></div>
+                <div id="zbEditors"></div>
+                <p class="zg-note" id="zbRunNote"></p>
+              </div>
+              <div class="zg-panel" data-panel="learn" hidden>
+                <p class="zg-goal" id="zbGoal"></p>
+                <dl class="zg-teach" id="zbTeach"></dl>
+                <div class="zg-hints"><div id="zbHints"></div>
+                  <div class="zg-row"><button type="button" class="zg-btn" id="zbHint" data-i18n="zg.hint">تلميح</button><button type="button" class="zg-btn" id="zbSol" hidden data-i18n="zg.sol">اعرض الحل</button></div>
+                  <div class="zg-sol" id="zbSolution" hidden></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="zg-result" id="zbResult" hidden role="dialog" aria-modal="true" aria-labelledby="zbResT">
+          <div class="zg-card">
+            <h2 id="zbResT"></h2>
+            <div class="zg-stars" id="zbStars" role="img"></div>
+            <p id="zbResWhy"></p>
+            <ul class="zg-stats" id="zbResStats"></ul>
+            <p class="zg-explain" id="zbResExplain"></p>
+            <div class="zg-row"><button type="button" class="zg-btn go" id="zbNext" hidden data-i18n="zg.next">المهمة التالية</button><button type="button" class="zg-btn" id="zbRetry" data-i18n="zg.retry">أعد المحاولة</button><button type="button" class="zg-btn ghost" id="zbEdit" data-i18n="zg.edit">عدّل الكود</button></div>
+          </div>
+        </div>
+      </section>
     </main>
   </body>
 </html>
