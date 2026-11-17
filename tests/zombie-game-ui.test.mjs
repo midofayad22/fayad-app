@@ -73,7 +73,7 @@ test("preview reacts to code: starter leaves the lane open, edited CSS moves the
 });
 test("REAL PLAY mission 1: build with code, shoot with the mouse, hold until dawn, win, points + stars saved", { timeout: 150000 }, async () => {
   const { ctx, page, errs } = await open(1100, 900, { m: 1 });
-  await page.waitForSelector("#zbStage iframe"); await applySolution(page, MISSIONS[0]); await page.waitForTimeout(900);
+  await page.waitForSelector("#zbStage iframe", { state: "attached", timeout: 8000 }).catch(async (e) => { console.log("DBG", m.id, i, page.url(), await page.locator("#zbPlay").isVisible(), await page.locator("#zbStage").innerHTML().then((h) => h.slice(0, 200))); throw e; }); await applySolution(page, MISSIONS[0]); await page.waitForTimeout(900);
   await page.click("#zbStart"); await page.waitForTimeout(1500);
   assert.ok(await page.locator("#zbStart").isDisabled(), "start disabled while running");
   const r = await playByMouse(page, MISSIONS[0]);
@@ -100,7 +100,7 @@ test("English UI has no Arabic in the HUD, legend, objectives and briefing", asy
 });
 test("REAL PLAY on a phone (touch taps) at 390px: mission 1 won", { timeout: 150000 }, async () => {
   const { ctx, page, errs } = await open(390, 844, { m: 1, touch: true });
-  await page.waitForSelector("#zbStage iframe"); await applySolution(page, MISSIONS[0]); await page.waitForTimeout(900);
+  await page.waitForSelector("#zbStage iframe", { state: "attached", timeout: 8000 }).catch(async (e) => { console.log("DBG", m.id, i, page.url(), await page.locator("#zbPlay").isVisible(), await page.locator("#zbStage").innerHTML().then((h) => h.slice(0, 200))); throw e; }); await applySolution(page, MISSIONS[0]); await page.waitForTimeout(900);
   await page.evaluate(() => window.scrollTo(0, 0)); await page.click("#zbStart");
   await page.evaluate(() => document.querySelector("#zbStage").scrollIntoView({ block: "center" }));
   await playByMouse(page, MISSIONS[0], { touch: true });
@@ -111,9 +111,9 @@ test("EVERY mission can be won by actually playing it in the browser", { timeout
   const ids = process.env.ZB_ONLY ? process.env.ZB_ONLY.split(",") : MISSIONS.map((m) => m.id), out = {}; let next = 0;
   await Promise.all(Array.from({ length: 5 }, async () => {
     while (next < ids.length) {
-      const m = MISSIONS.find((x) => x.id === ids[next++]), i = MISSIONS.indexOf(m);
+      const id = ids[next++], m = MISSIONS.find((x) => x.id === id), i = MISSIONS.indexOf(m);
       const { ctx, page } = await open(1100, 900, { m: i + 1, solved: i });
-      await page.waitForSelector("#zbStage iframe"); await applySolution(page, m); await page.waitForTimeout(1200);
+      await page.waitForSelector("#zbStage iframe", { state: "attached", timeout: 8000 }).catch(async (e) => { console.log("DBG", m.id, i, page.url(), await page.locator("#zbPlay").isVisible(), await page.locator("#zbStage").innerHTML().then((h) => h.slice(0, 200))); throw e; }); await applySolution(page, m); await page.waitForTimeout(1200);
       await page.click("#zbStart"); const r = await playByMouse(page, m);
       await page.waitForSelector("#zbResult:not([hidden])", { timeout: 20000 }).catch(() => {});
       out[m.id] = { win: await page.locator("#zbResult").getAttribute("data-win"), shots: r.shots, why: await page.locator("#zbResWhy").innerText().catch(() => "") }; await ctx.close();
