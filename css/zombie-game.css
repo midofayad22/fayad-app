@@ -1,5 +1,9 @@
 /* Zombie Survival — own visual identity (night, hazard amber, blood red, field green). Not the generic arena layout. */
-.zg-body { background: #0a120d; color: #e6f2e8; }
+.zg-body { background: #0a120d; color: #e6f2e8; min-height: 100vh; }
+html:has(.zg-body) { background: #0a120d; }
+.zg-main { color: #e6f2e8; }
+.zg-main :where(h1,h2,h3,h4,p,li,b,span,dt,dd,summary,label,a,button) { color: inherit; }
+.zg-body .ac-top { background: #0f1a14; border-bottom: 1px solid rgba(255,255,255,.1); } .zg-body .ac-top a, .zg-body .ac-brand { color: #e6f2e8; }
 .zg-main { min-height: 70vh; background: radial-gradient(120% 60% at 50% -10%, rgba(70,150,100,.22), transparent 60%), linear-gradient(#0a120d, #0d1812 60%, #0a120d); padding: 18px 0 60px; }
 .zg-wrap { width: min(1180px, 100% - 32px); margin-inline: auto; }
 .zg-eyebrow { color: #ffb02e; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; font-size: .78rem; margin: 6px 0 0; }
@@ -10,7 +14,7 @@
 .zg-locs { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; counter-reset: l; }
 .zg-loc-card { display: grid; grid-template-columns: 150px 1fr; gap: 0; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); position: relative; }
 .zg-loc-card .art { background: #111; display: grid; }
-.zg-loc-card .art svg { width: 100%; height: 100%; object-fit: cover; min-height: 110px; }
+.zg-loc-card .art svg { width: 100%; height: 100%; min-height: 110px; display: block; }
 .zg-loc-card .body { padding: 12px 16px; }
 .zg-loc-card h3 { margin: 0 0 2px; font-size: 1.2rem; }
 .zg-loc-card .idn { margin: 0 0 10px; color: #aac4b0; font-size: .92rem; line-height: 1.7; }
