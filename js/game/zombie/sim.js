@@ -139,8 +139,8 @@ window.addEventListener("load", function () {
           else if (d.obs > 0) { // blocked head-on: attack the obstacle
             z.atk = true; z.slipped = false;
             var o = b, el = o.el, hp = hpOf.get(el);
-            if (hp == null) hp = el.classList.contains("wall") ? 1e9 : Number(el.getAttribute("data-hp") || (el.classList.contains("door") || el.classList.contains("gate") ? 50 : 40));
-            hp -= d.obs * dt; hpOf.set(el, hp); el.style.setProperty("--dmg", String(Math.max(0, 1 - hp / Number(el.getAttribute("data-hp") || 40))));
+            if (hp == null) hp = el.classList.contains("wall") ? 1e9 : Number(el.getAttribute("data-hp") || (el.classList.contains("door") || el.classList.contains("gate") ? 100 : 70));
+            hp -= d.obs * dt; hpOf.set(el, hp); el.style.setProperty("--dmg", String(Math.max(0, 1 - hp / Number(el.getAttribute("data-hp") || 70))));
             el.classList.add("hit");
             if (hp <= 0) { el.setAttribute("data-broken", ""); evt("obstaclebroken", el, { by: z.type }); note("broke", z.type); }
           } else { // runner / spitter cannot attack walls: walk along them to find the gap
@@ -193,7 +193,7 @@ window.addEventListener("load", function () {
     var surv = survivors.filter(function (s) { return !s.hasAttribute("data-dead"); }).length;
     survivors.forEach(function (s) { s.classList.toggle("dead", s.hasAttribute("data-dead")); });
     if (shelter) shelter.style.setProperty("--hp", String(Math.max(0, shelterHp / shelterMax)));
-    var over = shelterHp <= 0 || (allSpawned && alive === 0) || t >= (CFG.time || 90);
+    var over = shelterHp <= 0 || (allSpawned && alive === 0) || t >= (CFG.time || 90); // dawn: if the shelter holds until the clock ends, the convoy arrives
     hudT += dt;
     if (hudT >= 0.4 || over) { hudT = 0; hud(alive, surv, waves); }
     if (over && !ended) finish(alive, surv);
@@ -204,9 +204,9 @@ window.addEventListener("load", function () {
   }
   function finish(alive, surv) {
     ended = true;
-    var hpOk = shelterHp > 0, need = Number(CFG.need != null ? CFG.need : totalSurv), win = hpOk && surv >= need && alive === 0 && (CFG.waves || []).every(function (w, i) { return (spawned[i] || 0) >= w.n; });
+    var hpOk = shelterHp > 0, need = Number(CFG.need != null ? CFG.need : totalSurv), win = hpOk && surv >= need;
     var cause = null;
-    if (!win) cause = !hpOk ? (firstLoss && (firstLoss.code === "slipped" || firstLoss.code === "shelter" || firstLoss.code === "broke") ? { code: firstLoss.code, type: lastDamager || firstLoss.type } : { code: "shelter", type: lastDamager }) : surv < need ? { code: "survivor", type: (firstLoss && firstLoss.code === "survivor" ? firstLoss.type : lastDamager) } : { code: "timeout" };
+    if (!win) cause = !hpOk ? (firstLoss && (firstLoss.code === "slipped" || firstLoss.code === "shelter" || firstLoss.code === "broke") ? { code: firstLoss.code, type: lastDamager || firstLoss.type } : { code: "shelter", type: lastDamager }) : surv < need ? { code: "survivor", type: (firstLoss && firstLoss.code === "survivor" ? firstLoss.type : lastDamager) } : { code: "survivor" };
     var res = { win: win, t: Math.round(t * 10) / 10, hp: Math.max(0, Math.round(shelterHp * 10) / 10), hpMax: shelterMax, sv: surv, svT: totalSurv, need: need, ammo: ammo, ammoUsed: ammoUsed, kills: kills, sup: Math.max(0, supplies - suppliesUsed), cause: cause, note: firstLoss };
     console.log("@@END " + JSON.stringify(res));
     document.body.classList.add(win ? "zb-won" : "zb-lost");
