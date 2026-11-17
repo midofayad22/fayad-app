@@ -1,0 +1,81 @@
+/* Zombie Survival — own visual identity (night, hazard amber, blood red, field green). Not the generic arena layout. */
+.zg-body { background: #0a120d; color: #e6f2e8; min-height: 100vh; }
+html:has(.zg-body) { background: #0a120d; }
+.zg-main { color: #e6f2e8; }
+.zg-main :where(h1,h2,h3,h4,p,li,b,span,dt,dd,summary,label,a,button) { color: inherit; }
+.zg-body .ac-top { background: #0f1a14; border-bottom: 1px solid rgba(255,255,255,.1); } .zg-body .ac-top a, .zg-body .ac-brand { color: #e6f2e8; }
+.zg-main { min-height: 70vh; background: radial-gradient(120% 60% at 50% -10%, rgba(70,150,100,.22), transparent 60%), linear-gradient(#0a120d, #0d1812 60%, #0a120d); padding: 18px 0 60px; }
+.zg-wrap { width: min(1180px, 100% - 32px); margin-inline: auto; }
+.zg-eyebrow { color: #ffb02e; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; font-size: .78rem; margin: 6px 0 0; }
+.zg-h1 { font-size: clamp(2rem, 6vw, 3.4rem); margin: 4px 0 8px; font-weight: 900; text-shadow: 0 0 24px rgba(229,57,63,.45); }
+.zg-h1::before { content: "☣ "; color: #7bd88f; }
+.zg-lead { max-width: 62ch; color: #b9d3bf; margin: 0 0 12px; line-height: 1.8; }
+.zg-howto { background: rgba(255,255,255,.05); border: 1px solid rgba(123,216,143,.25); border-radius: 14px; padding: 12px 16px; line-height: 1.8; color: #cfe5d4; margin-bottom: 18px; }
+.zg-locs { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; counter-reset: l; }
+.zg-loc-card { display: grid; grid-template-columns: 150px 1fr; gap: 0; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); position: relative; }
+.zg-loc-card .art { background: #111; display: grid; }
+.zg-loc-card .art svg { width: 100%; height: 100%; min-height: 110px; display: block; }
+.zg-loc-card .body { padding: 12px 16px; }
+.zg-loc-card h3 { margin: 0 0 2px; font-size: 1.2rem; }
+.zg-loc-card .idn { margin: 0 0 10px; color: #aac4b0; font-size: .92rem; line-height: 1.7; }
+.zg-loc-card.locked { opacity: .55; filter: grayscale(.5); }
+.zg-loc-card.loc-farm { border-inline-start: 5px solid #7bd88f; } .zg-loc-card.loc-gas { border-inline-start: 5px solid #ffb02e; } .zg-loc-card.loc-clinic { border-inline-start: 5px solid #4aa3c7; }
+.zg-loc-card.loc-school { border-inline-start: 5px solid #e9c46a; } .zg-loc-card.loc-bunker { border-inline-start: 5px solid #e5393f; }
+.zg-loc-card .ms { display: flex; gap: 8px; flex-wrap: wrap; }
+.zg-ms { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,.18); background: #14241b; color: inherit; font: inherit; cursor: pointer; min-height: 44px; text-align: start; }
+.zg-ms b { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: #2c5a43; font-size: .85rem; }
+.zg-ms:hover:not(:disabled) { border-color: #7bd88f; transform: translateY(-1px); } .zg-ms.done b { background: #1d8a4f; } .zg-ms.done .s { color: #ffd166; } .zg-ms.lock { cursor: not-allowed; opacity: .6; }
+.zg-ms .n { font-weight: 700; font-size: .9rem; }
+@media (max-width: 640px) { .zg-loc-card { grid-template-columns: 1fr; } .zg-loc-card .art svg { height: 90px; } }
+
+.zg-bar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+.zg-title { flex: 1; min-width: 160px; } .zg-title h2 { margin: 0; font-size: 1.3rem; } .zg-loc { color: #ffb02e; font-size: .8rem; font-weight: 800; letter-spacing: .06em; }
+.zg-pts { font-weight: 700; color: #ffd166; }
+.zg-btn { font: inherit; font-weight: 800; padding: 10px 16px; min-height: 44px; border-radius: 12px; border: 2px solid #3f7a5a; background: #173326; color: #e6f2e8; cursor: pointer; }
+.zg-btn:hover:not(:disabled) { background: #1f4632; } .zg-btn:disabled { opacity: .5; cursor: not-allowed; }
+.zg-btn.go { background: linear-gradient(#e5393f, #b3262c); border-color: #ff7b7b; color: #fff; box-shadow: 0 0 18px rgba(229,57,63,.35); }
+.zg-btn.ghost { background: transparent; }
+.zg-hud { display: grid; grid-template-columns: 1.6fr 1fr repeat(4, .8fr); gap: 8px; margin-bottom: 10px; }
+.zg-stat { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 6px 10px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.zg-stat .lbl { font-size: .7rem; color: #9fc0aa; letter-spacing: .04em; } .zg-stat b { font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+.zg-stat .bar { height: 10px; border-radius: 6px; background: #0a120d; overflow: hidden; } .zg-stat .bar i { display: block; height: 100%; width: 100%; background: linear-gradient(90deg,#2fbf71,#7bd88f); transition: width .3s; }
+.zg-stat .bar i.mid { background: linear-gradient(90deg,#e0a82e,#ffd166); } .zg-stat .bar i.low { background: linear-gradient(90deg,#c1272d,#ff6b6b); animation: pulse .8s infinite alternate; }
+.zg-stat .pips { display: flex; gap: 4px; flex-wrap: wrap; } .zg-stat .pips i { width: 12px; height: 18px; border-radius: 6px 6px 3px 3px; background: #3b86c9; } .zg-stat .pips i.off { background: #4a2a2a; opacity: .6; }
+.zg-stat .zero { color: #ff6b6b; animation: pulse .6s infinite alternate; } .zg-stat.am b::before { content: "▮ "; color: #ffd166; } .zg-stat.dn b { color: #ffd166; }
+@keyframes pulse { to { opacity: .55; } }
+@media (max-width: 760px) { .zg-hud { grid-template-columns: 1fr 1fr 1fr; } .zg-stat.hp { grid-column: 1 / -1; } }
+.zg-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 14px; align-items: start; }
+@media (max-width: 960px) { .zg-grid { grid-template-columns: 1fr; } }
+.zg-stagewrap { position: relative; border-radius: 16px; overflow: hidden; border: 2px solid #2c5a43; background: #0a120d; box-shadow: 0 10px 40px rgba(0,0,0,.5); }
+.zg-stage { width: 100%; aspect-ratio: 2 / 1; } .zg-stage iframe { width: 100%; height: 100%; border: 0; display: block; }
+.zg-banner { position: absolute; inset-inline: 0; top: 10px; text-align: center; pointer-events: none; font-weight: 900; font-size: clamp(1rem, 3.4vw, 1.5rem); text-shadow: 0 2px 8px #000; }
+.zg-banner:not([hidden]) { animation: pop .4s ease-out; } .zg-banner.won { color: #7bffa5; } .zg-banner.lost { color: #ff6b6b; } .zg-banner.prep { color: #ffd166; } .zg-banner.running { color: #ff7b7b; }
+@keyframes pop { from { transform: scale(.8); opacity: 0; } }
+.zg-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 10px 0; } .zg-tip { color: #9fc0aa; font-size: .85rem; flex: 1; min-width: 180px; }
+.zg-legend { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; } .zg-legend .h { font-weight: 800; color: #ffb02e; }
+.zg-legend li:not(.h) { display: grid; grid-template-columns: 14px auto 1fr; gap: 8px; align-items: start; padding: 6px 10px; background: rgba(255,255,255,.05); border-radius: 10px; font-size: .88rem; line-height: 1.5; }
+.zg-legend .dot { width: 12px; height: 12px; border-radius: 50%; margin-top: 5px; } .zg-legend b { white-space: nowrap; } .zg-legend span { color: #b9d3bf; }
+@media (max-width: 560px) { .zg-legend li:not(.h) { grid-template-columns: 14px 1fr; } .zg-legend span { grid-column: 2; } }
+.zg-right { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 10px 14px 14px; }
+.zg-tabs { display: flex; gap: 4px; margin-bottom: 8px; } .zg-tabs button { flex: 1; font: inherit; font-weight: 800; padding: 10px 6px; min-height: 44px; border: 0; border-bottom: 3px solid transparent; background: none; color: #9fc0aa; cursor: pointer; }
+.zg-tabs button.on { color: #fff; border-color: #e5393f; }
+.zg-brief { line-height: 1.9; margin: 4px 0 8px; } .zg-right h3 { margin: 12px 0 6px; font-size: 1rem; color: #ffb02e; }
+.zg-obj { margin: 0; padding-inline-start: 20px; line-height: 1.9; } .zg-obj li.ok { color: #7bffa5; } .zg-obj li.no { color: #ffb4b4; }
+.zg-note { color: #9fc0aa; font-size: .82rem; margin: 8px 0 0; }
+.zg-goal { font-weight: 800; color: #ffd166; margin: 4px 0 8px; }
+.zg-teach { display: grid; grid-template-columns: max-content 1fr; gap: 4px 12px; margin: 0 0 10px; font-size: .92rem; } .zg-teach dt { font-weight: 800; color: #7bd88f; white-space: nowrap; } .zg-teach dd { margin: 0; line-height: 1.7; }
+.zg-teach dd.code { font-family: ui-monospace, Menlo, Consolas, monospace; direction: ltr; unicode-bidi: plaintext; text-align: start; font-size: .82rem; }
+@media (max-width: 560px) { .zg-teach { grid-template-columns: 1fr; } .zg-teach dd { margin-bottom: 8px; } }
+.zg-hints p { margin: 6px 0; line-height: 1.7; padding: 8px 10px; border-radius: 10px; background: rgba(255,176,46,.1); border: 1px solid rgba(255,176,46,.3); }
+.zg-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.zg-sol { margin-top: 10px; padding: 10px; border: 2px dashed #e9c46a; border-radius: 12px; } .zg-sol pre { margin: 4px 0 10px; padding: 10px; border-radius: 8px; background: #08100b; color: #cdeedd; overflow: auto; max-width: 100%; font-size: .8rem; white-space: pre-wrap; } .zg-sol h4 { margin: 0 0 6px; }
+.zg-right .ar-ta, .zg-right .cm-editor { min-height: 190px; max-height: 360px; width: 100%; background: #08100b; color: #dff5e5; border-radius: 10px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .85rem; direction: ltr; }
+.zg-right .ar-tabs { display: flex; gap: 6px; margin-bottom: 6px; } .zg-right .ar-tab { font: inherit; font-weight: 700; padding: 6px 12px; border-radius: 8px; border: 1px solid #3f7a5a; background: #14241b; color: #cfe5d4; cursor: pointer; } .zg-right .ar-tab.is-on { background: #2c5a43; }
+.zg-result { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; background: rgba(0,0,0,.72); padding: 16px; }
+.zg-result[hidden] { display: none; }
+.zg-card { width: min(520px, 100%); max-height: 92vh; overflow: auto; background: #101d15; border: 2px solid #3f7a5a; border-radius: 18px; padding: 20px; animation: pop .3s ease-out; }
+.zg-result[data-win="1"] .zg-card { border-color: #7bffa5; box-shadow: 0 0 40px rgba(123,255,165,.3); } .zg-result[data-win="0"] .zg-card { border-color: #ff6b6b; box-shadow: 0 0 40px rgba(255,107,107,.3); }
+.zg-card h2 { margin: 0 0 8px; } .zg-stars { font-size: 2.2rem; letter-spacing: .2rem; color: #3b4a40; } .zg-stars i { font-style: normal; } .zg-stars i.on { color: #ffd166; text-shadow: 0 0 12px #ffb02e; animation: pop .5s ease-out backwards; }
+.zg-stats { list-style: none; margin: 8px 0; padding: 0; color: #b9d3bf; } .zg-explain { line-height: 1.8; color: #cfe5d4; }
+@media (max-width: 960px) { .zg-controls { position: sticky; bottom: 0; z-index: 5; background: linear-gradient(transparent, #0a120d 30%); padding: 14px 0 8px; margin: 6px 0; } .zg-controls .zg-btn.go { flex: 1; } }
+@media (prefers-reduced-motion: reduce) { .zg-banner:not([hidden]), .zg-card, .zg-stat .zero, .zg-stat .bar i.low, .zg-stars i.on { animation: none; } }
