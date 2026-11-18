@@ -181,6 +181,21 @@ export function run(level, program) {
     bonus: total - s.stars.size, bonusTotal: total, held: s.held };
 }
 
+/** Replay a plain action string ("FFLRF…") — used by the real-JavaScript mode, whose sandbox only reports the actions the learner's code asked for.
+    The host re-simulates them here, so the sandbox is never trusted with the outcome. Same result shape as run(). */
+export function runActions(level, actions) {
+  const g = parseGrid(level.grid), s = initState(g);
+  const steps = [{ x: s.x, y: s.y, dir: s.dir, keys: s.gems.size, held: 0, tick: 0, ev: [] }];
+  let n = 0;
+  for (const a of String(actions).slice(0, MAX_STEPS)) {
+    if (s.dead || !"FLR".includes(a)) break;
+    const r = act(g, s, a); r.trail = [{ op: a }]; steps.push(r); n++;
+  }
+  const total = g.star.size, ok = !s.dead && atGoal(g, s) && s.gems.size === 0;
+  return { ok, reason: s.dead || (!atGoal(g, s) ? "not-at-goal" : s.gems.size ? "keys-left" : null), steps, keysLeft: s.gems.size, atGoal: atGoal(g, s), exhausted: n >= MAX_STEPS, goal: g.goal,
+    bonus: total - s.stars.size, bonusTotal: total, held: s.held };
+}
+
 /** Stars: 3 = within the level's par (the reference solution size), 2 = within 1.5x par, otherwise 1. */
 export function stars(level, program) {
   const s = sizeOf(program);

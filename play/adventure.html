@@ -126,6 +126,14 @@
               <button class="adv-btn adv-ico" type="button" id="advSpeed" aria-label="speed" data-i18n-attr="aria-label:adv.speed">1×</button>
               <button class="adv-btn adv-ico" type="button" id="advHint" aria-label="hint" data-i18n-attr="aria-label:fq.hint">?</button>
             </div>
+            <div class="adv-mode" role="tablist" id="advMode" aria-label="mode">
+              <button type="button" role="tab" id="advModeBlocks" class="on" aria-selected="true" data-i18n="adv.mBlocks">كتل</button>
+              <button type="button" role="tab" id="advModeCode" aria-selected="false">JavaScript</button>
+            </div>
+            <div class="adv-code" id="advCode" hidden>
+              <textarea id="advCodeTa" class="adv-ta" dir="ltr" spellcheck="false" autocomplete="off" aria-label="JavaScript"></textarea>
+              <details class="adv-api"><summary data-i18n="adv.api">الأوامر المتاحة</summary><ul id="advApi" dir="ltr"></ul></details>
+            </div>
             <div class="adv-palette" id="advPalette" role="toolbar" data-i18n-attr="aria-label:adv.blocks" aria-label="الكتل"></div>
             <div class="adv-prog" id="advProg" dir="ltr"></div>
             <div class="adv-feedback" id="advMsg" role="status" aria-live="polite"></div>

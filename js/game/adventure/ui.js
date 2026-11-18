@@ -5,7 +5,9 @@
 */
 import { read, award } from "/js/game/store.js";
 import { LEVELS, WORLDS } from "./levels.js";
-import { run, validate, stars, sizeOf } from "./engine.js";
+import { run, runActions, validate, stars, sizeOf } from "./engine.js";
+import { runCode, lockedUse, codeSize, toJS, API } from "./code.js";
+import { upgradeEditor } from "/js/engine/editor.js";
 import { sceneSVG, particles } from "./art.js";
 import { armDrag, confetti, countUp, pulse, reduced, sleep } from "/js/game/kit.js";
 
@@ -16,8 +18,8 @@ const WD = {
 };
 const DICT = {
   ar: { "fq.home": "الرئيسية", "fq.hub": "الألعاب", "fq.dash": "لوحة التقدم", "fq.points": "نقاط اللعبة", "fq.hint": "تلميح", "common.skip": "تخطي إلى المحتوى",
-    "adv.eyebrow": "برمجة بالكتل · 120 مستوى", "adv.sub": "ساعد «فاي» على عبور 6 عوالم. ابنِ برنامجًا من الكتل، شاهده يتحرك، وتعلّم التسلسل والحلقات والشروط والدوال.", "adv.start": "ابدأ المغامرة", "adv.continue": "تابع من حيث توقفت", "adv.map": "الخريطة", "adv.worlds": "عوالم المغامرة", "adv.level": "المستوى",
-    "adv.how1": "اسحب الكتل إلى البرنامج (أو المسها لإضافتها)", "adv.how2": "اضغط تشغيل وراقب الكتلة المُنفَّذة", "adv.how3": "أقل كتل = ثلاث نجوم", "adv.run": "تشغيل", "adv.stop": "إيقاف", "adv.undo": "تراجع", "adv.clear": "مسح البرنامج", "adv.speed": "السرعة", "adv.blocks": "الكتل",
+    "adv.eyebrow": "كتل أو JavaScript حقيقي · 120 مستوى", "adv.sub": "ساعد «فاي» على عبور 6 عوالم. ابنِ برنامجًا من الكتل، شاهده يتحرك، وتعلّم التسلسل والحلقات والشروط والدوال.", "adv.start": "ابدأ المغامرة", "adv.continue": "تابع من حيث توقفت", "adv.map": "الخريطة", "adv.worlds": "عوالم المغامرة", "adv.level": "المستوى",
+    "adv.how1": "اسحب الكتل إلى البرنامج (أو المسها لإضافتها)", "adv.how2": "اضغط تشغيل وراقب الكتلة المُنفَّذة", "adv.how3": "أقل كتل أو أسطر = ثلاث نجوم. بدّل إلى JavaScript لترى كتلك كودًا حقيقيًا", "adv.run": "تشغيل", "adv.stop": "إيقاف", "adv.undo": "تراجع", "adv.clear": "مسح البرنامج", "adv.speed": "السرعة", "adv.blocks": "الكتل",
     F: "تقدّم", L: "استدر يسارًا", R: "استدر يمينًا", repeat: "كرّر", until: "كرّر حتى العلم", if: "إذا", call: "نفّذ الدالة", main: "البرنامج", fn: "الدالة", cMotion: "حركة", cControl: "تحكّم", cFunc: "دوال",
     empty: "اسحب كتلة إلى هنا، أو المس كتلة من الأعلى لإضافتها", emptyFn: "عرّف الدالة هنا ثم استدعها بكتلة «نفّذ الدالة»", wallAhead: "جدار أمامك", openAhead: "الطريق أمامك مفتوح", openLeft: "يسارك مفتوح", openRight: "يمينك مفتوح", else: "وإلا", then: "عندئذٍ",
     world: "العالم {n}", goal: "أوصل «فاي» إلى العلم.", goalKeys: "اجمع المفاتيح كلها ثم أوصل «فاي» إلى العلم.", goalTrap: "تجنّب الفخاخ ✕.", size: "الكتل: {n}", sizeB: "الكتل: {n} / {b}", par: "ثلاث نجوم: {p} كتلة أو أقل", locked: "مقفل: أنهِ المستوى السابق",
@@ -43,8 +45,8 @@ const DICT = {
     "h.portal.1": "البوابة تنقلك بنفس الاتجاه: اختر الاتجاه قبل الدخول.", "h.portal.2": "ما الذي يفصل المنطقتين إلا البوابة؟",
     hintLast: "الحل المرجعي يستخدم {n} كتلة من الأنواع: {ops}.", hintNoMore: "لا مزيد من التلميحات." },
   en: { "fq.home": "Home", "fq.hub": "Games", "fq.dash": "Progress dashboard", "fq.points": "Game points", "fq.hint": "Hint", "common.skip": "Skip to content",
-    "adv.eyebrow": "Block coding · 120 levels", "adv.sub": "Help Fay cross 6 worlds. Build a program from blocks, watch it run, and learn sequences, loops, conditions and functions.", "adv.start": "Start the adventure", "adv.continue": "Continue where you left off", "adv.map": "Map", "adv.worlds": "Adventure worlds", "adv.level": "Level",
-    "adv.how1": "Drag blocks into the program (or tap one to add it)", "adv.how2": "Press Run and watch the active block", "adv.how3": "Fewer blocks = three stars", "adv.run": "Run", "adv.stop": "Stop", "adv.undo": "Undo", "adv.clear": "Clear program", "adv.speed": "Speed", "adv.blocks": "Blocks",
+    "adv.eyebrow": "Blocks or real JavaScript · 120 levels", "adv.sub": "Help Fay cross 6 worlds. Build a program from blocks, watch it run, and learn sequences, loops, conditions and functions.", "adv.start": "Start the adventure", "adv.continue": "Continue where you left off", "adv.map": "Map", "adv.worlds": "Adventure worlds", "adv.level": "Level",
+    "adv.how1": "Drag blocks into the program (or tap one to add it)", "adv.how2": "Press Run and watch the active block", "adv.how3": "Fewer blocks or lines = three stars. Switch to JavaScript to see your blocks as real code", "adv.run": "Run", "adv.stop": "Stop", "adv.undo": "Undo", "adv.clear": "Clear program", "adv.speed": "Speed", "adv.blocks": "Blocks",
     F: "Move forward", L: "Turn left", R: "Turn right", repeat: "Repeat", until: "Repeat until flag", if: "If", call: "Run function", main: "Program", fn: "Function", cMotion: "Motion", cControl: "Control", cFunc: "Functions",
     empty: "Drag a block here, or tap a block above to add it", emptyFn: "Define the function here, then call it with “Run function”", wallAhead: "wall ahead", openAhead: "path ahead is open", openLeft: "left is open", openRight: "right is open", else: "else", then: "then",
     world: "World {n}", goal: "Bring Fay to the flag.", goalKeys: "Collect every key, then bring Fay to the flag.", goalTrap: "Avoid the traps ✕.", size: "Blocks: {n}", sizeB: "Blocks: {n} / {b}", par: "Three stars: {p} blocks or fewer", locked: "Locked: finish the previous level",
@@ -70,6 +72,14 @@ const DICT = {
     "h.portal.1": "A portal keeps your heading: pick the direction before you enter.", "h.portal.2": "What separates the two areas besides the portal?",
     hintLast: "The reference solution uses {n} blocks of these types: {ops}.", hintNoMore: "No more hints." },
 };
+Object.assign(DICT.ar, { "adv.mBlocks": "كتل", "adv.api": "الأوامر المتاحة (JavaScript حقيقي)", codeEmpty: "اكتب كودًا أولًا: جرّب forward();", codeRun: "تشغيل الكود",
+  codeLock_for: "حلقة for لم تُفتح بعد في هذا العالم (تُفتح في عالم الحلقات). استعمل تكرار الأوامر بدلًا منها.", codeLock_while: "حلقة while تُفتح في عالم الشروط.", codeLock_if: "الجملة الشرطية if تُفتح في عالم الشروط.", codeLock_function: "الدوال تُفتح في عالم الدوال.", codeLock_api: "الكود هنا يتحكم في «فاي» فقط: لا window ولا document.",
+  codeErr: "خطأ في الكود: ", codeErrNext: "صحّح السطر ثم أعد التشغيل. الأوامر المتاحة مكتوبة أسفل المحرر.", codeTimeout: "الكود لم ينتهِ (ربما حلقة لا تتوقف). تأكد أن شرط الحلقة سيتغير بعد كل دورة.", codeBudget: "الكود أطول من اللازم لهذا المستوى (الحد {b}). اختصره بحلقة أو دالة.", codeSize: "حجم الكود {n}",
+  codeStarter: "// Write the commands in order, e.g.:\n// forward();\n// turnLeft();\n" });
+Object.assign(DICT.en, { "adv.mBlocks": "Blocks", "adv.api": "Available commands (real JavaScript)", codeEmpty: "Write some code first: try forward();", codeRun: "Run code",
+  codeLock_for: "The for loop is not unlocked in this world yet (it opens in the Loops world). Repeat the commands instead.", codeLock_while: "The while loop unlocks in the Conditions world.", codeLock_if: "The if statement unlocks in the Conditions world.", codeLock_function: "Functions unlock in the Functions world.", codeLock_api: "This code only controls Fay: no window or document.",
+  codeErr: "Code error: ", codeErrNext: "Fix the line, then run again. The available commands are listed under the editor.", codeTimeout: "The code never finished (maybe a loop that never stops). Make sure the loop condition changes on every pass.", codeBudget: "The code is longer than this level allows (limit {b}). Shorten it with a loop or function.", codeSize: "Code size {n}",
+  codeStarter: "// write the commands in order, for example:\n// forward();\n// turnLeft();\n" });
 DICT.ar["gnav.home"] = "البداية"; DICT.ar["gnav.continue"] = "تابع اللعب"; DICT.ar["gnav.sections"] = "الأقسام";
 DICT.en["gnav.home"] = "Start"; DICT.en["gnav.continue"] = "Continue"; DICT.en["gnav.sections"] = "Sections";
 F?.i18n?.extend({ ar: DICT.ar, en: DICT.en });
@@ -89,7 +99,7 @@ const icon = (op) => { const s = document.createElementNS(NS, "svg"); s.setAttri
 const el = (tag, cls = "", txt = "") => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt) e.textContent = txt; return e; };
 
 /* ---------------- state ---------------- */
-let hintN = 0, idx = 0, prog = { main: [], fn: [] }, sel = prog.main, hist = [], hinted = false, running = false, token = 0, speed = 1, justUnlocked = 0, screen = "intro";
+let codeMode = false, codeUp = false, codeRes = null, hintN = 0, idx = 0, prog = { main: [], fn: [] }, sel = prog.main, hist = [], hinted = false, running = false, token = 0, speed = 1, justUnlocked = 0, screen = "intro";
 const lvl = () => LEVELS[idx];
 const main = $("main");
 const SCREENS = { intro: $("scrIntro"), map: $("scrMap"), world: $("scrWorld"), play: $("scrPlay") };
@@ -266,7 +276,7 @@ function renderProg() {
   box.appendChild(zone(prog.main, lvl().hasFn ? T("main") : "", "main")); if (lvl().hasFn) box.appendChild(zone(prog.fn, T("fn"), "fn"));
   palette(); updateSize(); $("advUndo").disabled = !hist.length || running; $("advClear").disabled = running;
 }
-function updateSize() { const l = lvl(), n = sizeOf(prog); $("advSize").textContent = (l.budget ? T("sizeB", { n, b: l.budget }) : T("size", { n })) + " · " + T("par", { p: l.par }); }
+function updateSize() { const l = lvl(), n = codeMode ? codeSize($("advCodeTa").value) : sizeOf(prog); $("advSize").textContent = (l.budget ? T("sizeB", { n, b: l.budget }) : T("size", { n })) + " · " + T("par", { p: l.par }); }
 
 /* ---------------- level setup ---------------- */
 function paintStars(host, n, total = 3) { host.textContent = ""; for (let k = 1; k <= total; k++) { const s = svg("s-star"); if (k > n) s.setAttribute("class", "off"); host.appendChild(s); } host.setAttribute("aria-label", n + "/" + total); }
@@ -284,7 +294,7 @@ function go(id) {
   const hasKeys = l.grid.some((r) => r.includes("k"));
   $("advGoalTxt").textContent = hasKeys ? T("goalKeys") : T("goal"); hintN = 0; paintTags(l);
   paintStars($("advStars"), readStars()[l.id] || 0); $("advMsg").textContent = ""; $("advLive").textContent = ""; $("advLive").setAttribute("aria-live", "off"); $("advModal").hidden = true;
-  show("play", l.world); buildBoard(); renderProg();
+  codeRes = null; $("advCodeTa").value = T("codeStarter"); show("play", l.world); buildBoard(); renderProg(); setMode(codeMode);
   SCREENS.play.style.animation = "none"; void SCREENS.play.offsetWidth; SCREENS.play.style.animation = "";
 }
 
@@ -307,10 +317,23 @@ function applyEv(ev, ms) {
   }
 }
 async function play() {
-  const l = lvl();
-  if (!sizeOf(prog)) { feedback("bad", T("fTitle"), T("empty0")); return; }
-  const v = validate(l, prog); if (!v.ok) { feedback("bad", T("fTitle"), v.reason === "budget" ? T("budget", { b: l.budget }) : T(v.reason)); return; }
-  const res = run(l, prog), my = ++token; resetBoard(); setTools(true); $("advMsg").textContent = ""; $("advLive").textContent = T("running");
+  const l = lvl(); let res;
+  if (codeMode) {
+    const src = $("advCodeTa").value, plain = src.replace(/\/\/.*$/gm, "").trim();
+    if (!plain) { feedback("bad", T("fTitle"), T("codeEmpty")); return; }
+    const lock = lockedUse(l, src); if (lock) { feedback("bad", T("fTitle"), T("codeLock_" + lock.code)); return; }
+    if (l.budget && codeSize(src) > l.budget) { feedback("bad", T("fTitle"), T("codeBudget", { b: l.budget })); return; }
+    running = true; $("advRun").disabled = true; $("advLive").textContent = T("running");
+    const out = await runCode(l, src); running = false; $("advRun").disabled = false; $("advLive").textContent = "";
+    res = runActions(l, out.actions); res.codeError = out.error; res.codeSize = codeSize(src); if (out.error) res.ok = false;
+    if (out.error === "timeout" || (res.exhausted && !res.ok && !out.error)) res.codeTimeout = true;
+    codeRes = res;
+  } else {
+    if (!sizeOf(prog)) { feedback("bad", T("fTitle"), T("empty0")); return; }
+    const v = validate(l, prog); if (!v.ok) { feedback("bad", T("fTitle"), v.reason === "budget" ? T("budget", { b: l.budget }) : T(v.reason)); return; }
+    res = run(l, prog);
+  }
+  const my = ++token; resetBoard(); setTools(true); $("advMsg").textContent = ""; $("advLive").textContent = T("running");
   const ms = reduced() ? 0 : Math.round(430 / speed); let n = 0; const board = $("advBoard"), h = H.hero;
   for (const s of res.steps.slice(1)) {
     if (my !== token) return; n++;
@@ -335,6 +358,8 @@ async function play() {
 }
 function feedback(kind, title, ...lines) { const b = $("advMsg"); b.textContent = ""; const d = el("div", "adv-fb " + kind); d.appendChild(el("b", "", title)); lines.filter(Boolean).forEach((t) => d.appendChild(el("p", "", t))); b.appendChild(d); d.scrollIntoView?.({ block: "nearest", behavior: reduced() ? "auto" : "smooth" }); }
 function fail(res) {
+  if (res.codeError && res.codeError !== "timeout") { feedback("bad", T("fTitle"), T("codeErr") + res.codeError, T("fNext") + T("codeErrNext")); return; }
+  if (res.codeTimeout) { feedback("bad", T("fTitle"), T("codeTimeout")); return; }
   const l = lvl(), bumps = res.steps.filter((s) => s.bump);
   let title = T("fTitle"), what, next, bad = null;
   if (res.reason === "water" || res.reason === "spikes") { const s = res.steps[res.steps.length - 1]; what = T(res.reason, { n: res.steps.length - 1 }); next = T(res.reason + "Next"); bad = s.trail.at(-1); }
@@ -350,7 +375,7 @@ function fail(res) {
 let lastBonus = 0;
 function win(res) {
   lastBonus = res.bonus || 0;
-  const l = lvl(), s = stars(l, prog), before = isDone(l.id), nextWas = l.id < 120 && unlocked(l.id + 1);
+  const l = lvl(), s = res.codeSize != null ? (res.codeSize <= l.par ? 3 : res.codeSize <= Math.ceil(l.par * 1.5) ? 2 : 1) : stars(l, prog), before = isDone(l.id), nextWas = l.id < 120 && unlocked(l.id + 1);
   const r = award(GAME, l.id, hinted, l.base); saveStars(l.id, s);
   const h = H.hero; h.classList.remove("idle", "is-hop"); h.classList.add("is-win"); paintStars($("advStars"), readStars()[l.id]); header();
   confetti($("advBoard").parentElement);
@@ -380,6 +405,21 @@ function modal(l, s, earned, before, newUnlock, doneWorld) {
 $("advRun").addEventListener("click", play);
 $("advStop").addEventListener("click", () => { stopRun(); resetBoard(); renderProg(); $("advLive").textContent = ""; });
 $("advUndo").addEventListener("click", undo);
+function setMode(on) {
+  codeMode = !!on; $("advModeBlocks").classList.toggle("on", !on); $("advModeCode").classList.toggle("on", on);
+  $("advModeBlocks").setAttribute("aria-selected", String(!on)); $("advModeCode").setAttribute("aria-selected", String(on));
+  $("advCode").hidden = !on; $("advPalette").hidden = on; $("advProg").hidden = on; $("advUndo").hidden = on; $("advClear").hidden = on;
+  if (on && !codeUp) { codeUp = true; upgradeEditor($("advCodeTa"), { language: "js", onRun: () => play() }); }
+  const ul = $("advApi"); ul.textContent = ""; API.forEach((a) => { const li = el("li"); li.append(el("code", "", a.n), el("span", "", " — " + a[lang()])); ul.appendChild(li); });
+  updateSize();
+}
+$("advModeBlocks").addEventListener("click", () => { if (running || !codeMode) return; setMode(false); resetBoard(); });
+$("advModeCode").addEventListener("click", () => {
+  if (running || codeMode) return;
+  if (sizeOf(prog) && $("advCodeTa").value.replace(/\/\/.*$/gm, "").trim() === "") $("advCodeTa").value = toJS(prog); // the blocks you built, as real JavaScript
+  setMode(true); resetBoard();
+});
+$("advCodeTa").addEventListener("input", () => { if (!running) { resetBoard(); $("advMsg").textContent = ""; } updateSize(); });
 $("advClear").addEventListener("click", () => { if (!sizeOf(prog)) return; mutate(() => { prog = { main: [], fn: [] }; sel = prog.main; }); });
 $("advSpeed").addEventListener("click", () => { speed = speed === 1 ? 2 : speed === 2 ? 3 : 1; $("advSpeed").textContent = speed + "×"; });
 $("advHint").addEventListener("click", () => {
