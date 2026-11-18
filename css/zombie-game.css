@@ -1,6 +1,6 @@
 /* Zombie Survival — own visual identity (night, hazard amber, blood red, field green). Not the generic arena layout. */
 .zg-body { background: #0a120d; color: #e6f2e8; min-height: 100vh; }
-html:has(.zg-body) { background: #0a120d; }
+html:has(.zg-body), html[data-theme] body.zg-body { background: #0a120d !important; }
 .zg-main { color: #e6f2e8; }
 .zg-main :where(h1,h2,h3,h4,p,li,b,span,dt,dd,summary,label,a,button) { color: inherit; }
 .zg-body .ac-top { background: #0f1a14; border-bottom: 1px solid rgba(255,255,255,.1); } .zg-body .ac-top a, .zg-body .ac-brand { color: #e6f2e8; }
@@ -43,12 +43,14 @@ html:has(.zg-body) { background: #0a120d; }
 .zg-stat .pips { display: flex; gap: 4px; flex-wrap: wrap; } .zg-stat .pips i { width: 12px; height: 18px; border-radius: 6px 6px 3px 3px; background: #3b86c9; } .zg-stat .pips i.off { background: #4a2a2a; opacity: .6; }
 .zg-stat .zero { color: #ff6b6b; animation: pulse .6s infinite alternate; } .zg-stat.am b::before { content: "▮ "; color: #ffd166; } .zg-stat.dn b { color: #ffd166; }
 @keyframes pulse { to { opacity: .55; } }
-@media (max-width: 760px) { .zg-hud { grid-template-columns: 1fr 1fr 1fr; } .zg-stat.hp { grid-column: 1 / -1; } }
+@media (max-width: 760px) { .zg-hud { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; } .zg-stat.hp { grid-column: 1 / -1; } .zg-stat { padding: 5px 6px; border-radius: 10px; } .zg-stat .lbl { font-size: .62rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .zg-stat b { font-size: 1rem; } .zg-stat .pips i { width: 9px; height: 15px; } }
 .zg-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 14px; align-items: start; }
-@media (max-width: 960px) { .zg-grid { grid-template-columns: 1fr; } }
+@media (max-width: 960px) { .zg-grid { grid-template-columns: minmax(0, 1fr); } }
+.zg-grid > *, .zg-right { min-width: 0; } .zg-tabs button { min-width: 0; }
 .zg-stagewrap { position: relative; border-radius: 16px; overflow: hidden; border: 2px solid #2c5a43; background: #0a120d; box-shadow: 0 10px 40px rgba(0,0,0,.5); }
 .zg-stage { width: 100%; aspect-ratio: 2 / 1; } .zg-stage iframe { width: 100%; height: 100%; border: 0; display: block; }
-.zg-banner { position: absolute; inset-inline: 0; top: 10px; text-align: center; pointer-events: none; font-weight: 900; font-size: clamp(1rem, 3.4vw, 1.5rem); text-shadow: 0 2px 8px #000; }
+.zg-banner { position: absolute; inset-inline: 10px; bottom: 8px; width: fit-content; margin-inline: auto; padding: 4px 14px; border-radius: 999px; background: rgba(6,12,9,.78); border: 1px solid rgba(255,255,255,.18); text-align: center; pointer-events: none; font-weight: 800; font-size: clamp(.8rem, 2.6vw, 1.05rem); text-shadow: 0 1px 4px #000; }
+.zg-banner.won, .zg-banner.lost { bottom: auto; top: 12px; font-size: clamp(1.1rem, 4vw, 1.7rem); padding: 6px 20px; }
 .zg-banner:not([hidden]) { animation: pop .4s ease-out; } .zg-banner.won { color: #7bffa5; } .zg-banner.lost { color: #ff6b6b; } .zg-banner.prep { color: #ffd166; } .zg-banner.running { color: #ff7b7b; }
 @keyframes pop { from { transform: scale(.8); opacity: 0; } }
 .zg-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 10px 0; } .zg-tip { color: #9fc0aa; font-size: .85rem; flex: 1; min-width: 180px; }

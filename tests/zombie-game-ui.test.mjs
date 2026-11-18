@@ -112,11 +112,12 @@ test("EVERY mission can be won by actually playing it in the browser", { timeout
   await Promise.all(Array.from({ length: 5 }, async () => {
     while (next < ids.length) {
       const id = ids[next++], m = MISSIONS.find((x) => x.id === id), i = MISSIONS.indexOf(m);
-      const { ctx, page } = await open(1100, 900, { m: i + 1, solved: i });
+      const { ctx, page } = await open(process.env.ZB_TOUCH ? 430 : 1100, 900, { m: i + 1, solved: i, touch: !!process.env.ZB_TOUCH });
       await page.waitForSelector("#zbStage iframe", { state: "attached", timeout: 8000 }).catch(async (e) => { console.log("DBG", m.id, i, page.url(), await page.locator("#zbPlay").isVisible(), await page.locator("#zbStage").innerHTML().then((h) => h.slice(0, 200))); throw e; }); await applySolution(page, m); await page.waitForTimeout(1200);
-      await page.click("#zbStart"); const r = await playByMouse(page, m);
+      await page.click("#zbStart"); const r = await playByMouse(page, m, { touch: !!process.env.ZB_TOUCH });
       await page.waitForSelector("#zbResult:not([hidden])", { timeout: 20000 }).catch(() => {});
-      out[m.id] = { win: await page.locator("#zbResult").getAttribute("data-win"), shots: r.shots, why: await page.locator("#zbResWhy").innerText().catch(() => "") }; await ctx.close();
+      if (!(await page.locator("#zbResult").isVisible().catch(() => false))) await page.screenshot({ path: `/tmp/x/fail-${m.id}.png` }).catch(() => {});
+      out[m.id] = { win: await page.locator("#zbResult").getAttribute("data-win", { timeout: 3000 }).catch(() => "none"), shots: r.shots, why: await page.locator("#zbResWhy").innerText().catch(() => "") }; await ctx.close();
     }
   }));
   fs.writeFileSync("/tmp/x/zb-ui-all.json", JSON.stringify(out, null, 1));

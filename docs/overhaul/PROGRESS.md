@@ -51,3 +51,17 @@ Remaining gamification (profile XP line, settings leaderboard toggle, lose_heart
 Checklist: [x] Adventure mechanics v2  [x] Zombie web-lab (supersedes the JS-only tactical v2 per the Mon-16-Nov brief) — 15 missions teaching real HTML/CSS/JS in the sandbox; docs: `docs/overhaul/zombie-missions.md`, `docs/overhaul/zombie-security.md`; tests: zombie-missions, zombie-lab-ui
 [ ] Flex Quest  [ ] Selector Quest  [ ] HTML/CSS/JS Arenas  [ ] nav integration for those 5  [ ] final QA + deploy
 - Adventure v2: engine now has doors+keys, crates that bridge water, switches+gates, ice, timed spikes (tick parity), portals, water, optional bonus stars and new conditions (dangerAhead, crateAhead). Boards are generated offline (`tools/adventure/gen.mjs` → `levels-data.js`): worlds 1–2 are puzzle rooms solved by exhaustive search (reference = provably shortest), worlds 3–6 are loop/condition/function courses whose route carries a real barrier mechanic, 3 mastery bosses. IDs, worlds, budgets, `game_levels` rows unchanged. Hints now teach reasoning per mechanic.
+
+## Zombie Survival — survival redesign + final polish (done, see `zombie-redesign.md`, `zombie-missions.md`)
+- Replaced the web-lab format: live DOM-driven simulation (5 zombie types), 5 locations, 15 missions, HUD, map, results, stars. Old `zombie-missions`/`zombie-lab-ui` tests removed; replaced by `zombie-structure`, `zombie-sim`, `zombie-game-ui`.
+- Polish: mobile HUD (6 stats in 2 rows), banner pill, forced dark survival theme (also under `html[data-theme]`), fixed mission-15 mobile overflow (grid min-content blowout made the tab bar 932px wide).
+- Barrels (zb-4/5/6/13) and a medkit (zb-12) added with legend entries; zb-4 retuned (ammo 5, shelter 8) because the starter won at real speed.
+- Verified: sim at 1× (all starters lose, solutions + alternatives win), real-mouse playthrough of all 15 missions, touch play on several missions (see commit message for the exact run).
+- Known gaps: no sound; crawlers only in zb-6; server `submit_solve` still trusts the client (security milestone).
+
+## Adventure — real JavaScript mode (done)
+- Kept the 120 levels, IDs, engine, block editor, progress and points. Added a second way to play every level: **real JavaScript** (`for`/`while`/`if`/`function` + a 9-command hero API) in the sandboxed playground (`js/game/adventure/code.js`, pure helpers in `code-lang.js`).
+- The sandbox returns only the action string it asked for; the host replays it with the real engine (`runActions`), so the outcome is never trusted. World rules apply to code too (no `for` before the loops world, no `while`/`if` before conditions, no functions before the functions world, no `window`/`document`).
+- Switching Blocks → JavaScript shows your blocks as real code. Stars use code size like block count.
+- Tests: `adventure-code` (all 120 reference solutions translated to JS and run in the real sandbox: all win, code size == par; errors/endless loops/locked constructs), `adventure-code-ui` (real browser: win + persistence, explanations, worlds 3/4/5 levels, mobile 390). Existing adventure suites still pass.
+- Not done (honest): HTML/CSS-driven level mechanics (platforms laid out by CSS/Flex/Grid) — covered by Flex Quest / CSS Arena instead; no new art pass.
