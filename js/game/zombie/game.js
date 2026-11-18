@@ -115,6 +115,8 @@ function preview() { clearTimeout(previewTimer); mountRunner(worldFiles(m, learn
 function start() {
   if (mode === "running") return; mode = "running"; res = null; $("zbResult").hidden = true; setBanner("running"); $("zbStart").disabled = true; $("zbTip").textContent = T("tip");
   mountRunner(worldFiles(m, learner(), "play", SIM_CACHE)); setTab("brief", true);
+  // on phones the editor may have scrolled the stage out of view: bring the battlefield back so the player can see and tap it
+  try { const sw = document.querySelector(".zg-stagewrap"); const r = sw.getBoundingClientRect(); if (r.top < 0 || r.bottom > innerHeight) sw.scrollIntoView({ block: "center", behavior: "auto" }); } catch {}
 }
 function onLine(text, my) {
   if (my !== token) return;
@@ -138,8 +140,10 @@ function paintObjectives(bn) {
   if (m.supplies) add(lang() === "ar" ? `الإمدادات (${m.supplies}): كل فخ تُفعّله يستهلك واحدًا` : `Supplies (${m.supplies}): every trap you arm uses one`);
 }
 function bonusText(b) { const a = []; if (b.ammo) a.push(lang() === "ar" ? `+${b.ammo} ذخيرة` : `+${b.ammo} ammo`); if (b.hp) a.push(lang() === "ar" ? `+${b.hp} صحة للملجأ` : `+${b.hp} shelter health`); return (lang() === "ar" ? "مكافأة HTML صحيح: " : "Valid-HTML bonus: ") + a.join(" · "); }
+const PICKUPS = { barrel: { c: "#ff7a3c", ar: ["برميل وقود", "اضغط عليه عندما يقترب الزومبي: ينفجر ويؤذي كل من حوله (مرة واحدة)."], en: ["Fuel barrel", "Tap it when zombies are close: it explodes and hurts everything around it (once)."] }, medkit: { c: "#e5393f", ar: ["حقيبة إسعاف", "اضغط عليها لإصلاح الملجأ (+6 صحة)."], en: ["Medkit", "Tap it to repair the shelter (+6 health)."] } };
 function paintLegend() {
   const ul = $("zbLegend"); ul.textContent = ""; const h = document.createElement("li"); h.className = "h"; h.textContent = T("threat"); ul.appendChild(h);
+  Object.keys(PICKUPS).filter((k) => (m.files.html || "").includes('class="' + k + '"')).forEach((k) => { const li = document.createElement("li"); li.innerHTML = `<i class="dot" style="background:${PICKUPS[k].c}"></i><b></b><span></span>`; li.querySelector("b").textContent = PICKUPS[k][lang()][0]; li.querySelector("span").textContent = PICKUPS[k][lang()][1]; ul.appendChild(li); });
   threats(m).forEach(({ type, n }) => { const li = document.createElement("li"); li.innerHTML = `<i class="dot" style="background:${TYPE[type].color}"></i><b></b><span></span>`; li.querySelector("b").textContent = `${typeName(type)} ×${n}`; li.querySelector("span").textContent = L(TYPE[type].d); ul.appendChild(li); });
 }
 function paintTeach() { const dl = $("zbTeach"); dl.textContent = ""; Q.forEach((k) => { const dt = document.createElement("dt"); dt.textContent = QL[lang()][k]; const dd = document.createElement("dd"); dd.textContent = L(m.teach[k]); if (k === "how" || k === "mistake") dd.className = "code"; dl.append(dt, dd); }); }
