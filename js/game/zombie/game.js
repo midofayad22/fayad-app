@@ -116,7 +116,7 @@ function start() {
   if (mode === "running") return; mode = "running"; res = null; $("zbResult").hidden = true; setBanner("running"); $("zbStart").disabled = true; $("zbTip").textContent = T("tip");
   mountRunner(worldFiles(m, learner(), "play", SIM_CACHE)); setTab("brief", true);
   // on phones the editor may have scrolled the stage out of view: bring the battlefield back so the player can see and tap it
-  try { const sw = document.querySelector(".zg-stagewrap"); const r = sw.getBoundingClientRect(); if (r.top < 0 || r.bottom > innerHeight) sw.scrollIntoView({ block: "center", behavior: "auto" }); } catch {}
+  requestAnimationFrame(() => requestAnimationFrame(() => { try { const sw = document.querySelector(".zg-stagewrap"); const r = sw.getBoundingClientRect(); if (r.top < 130 || r.bottom > innerHeight) sw.scrollIntoView({ block: "center", behavior: "auto" }); } catch {} }));
 }
 function onLine(text, my) {
   if (my !== token) return;

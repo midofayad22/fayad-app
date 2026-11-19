@@ -7,7 +7,7 @@ const ARENA = [
   { id: "js", name: "JavaScript", ar: "منطق وتصحيح أخطاء وإغلاقات وDOM ووعود وخوارزميات سريعة.", en: "Logic, debugging, closures, the DOM, promises and fast algorithms." },
 ].map((t) => ({ ...t, arena: true, href: `/play/arena.html?track=${t.id}`, total: 10, tag: "10 · " }));
 const GAMES = [
-  { id: "flex", href: "/play/flex-quest.html", name: "Flex Quest", total: 10, tag: "CSS", ar: "رتّب العناصر بخصائص Flexbox حتى تطابق الهدف.", en: "Arrange items with Flexbox properties until they match the target." },
+  { id: "flex", href: "/play/flex-quest.html", name: "Flex Quest", total: 24, tag: "CSS", ar: "اكتب CSS Flexbox حقيقيًا في 24 مرحلة وشاهد الصناديق تتحرك.", en: "Write real Flexbox CSS across 24 levels and watch the crates move." },
   { id: "sel", href: "/play/selector-quest.html", name: "Selector Quest", total: 10, tag: "CSS", ar: "اكتب محدد CSS يختار العناصر المطلوبة فقط.", en: "Write a CSS selector that picks only the wanted elements." },
   { id: "adventure", href: "/play/adventure.html", name: "FAYAD Grand Adventure", total: 120, tag: "JavaScript", ar: "قُد البطل بالكتل عبر 120 مستوى: تسلسل وحلقات وشروط ودوال.", en: "Guide the hero with blocks through 120 levels: sequences, loops, conditions and functions." },
   { id: "zombie", href: "/play/zombie.html", name: "Zombie Survival", total: 15, tag: "HTML · CSS · JS", ar: "دافع عن الناجين بكود حقيقي: Flexbox وGrid وposition وtransition، ونماذج HTML الدلالية، وأحداث JavaScript — 15 مهمة.", en: "Defend the survivors with real code: Flexbox, Grid, position, transitions, semantic HTML forms and JavaScript events — 15 missions." },

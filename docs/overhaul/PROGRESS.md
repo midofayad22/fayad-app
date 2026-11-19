@@ -65,3 +65,13 @@ Checklist: [x] Adventure mechanics v2  [x] Zombie web-lab (supersedes the JS-onl
 - Switching Blocks → JavaScript shows your blocks as real code. Stars use code size like block count.
 - Tests: `adventure-code` (all 120 reference solutions translated to JS and run in the real sandbox: all win, code size == par; errors/endless loops/locked constructs), `adventure-code-ui` (real browser: win + persistence, explanations, worlds 3/4/5 levels, mobile 390). Existing adventure suites still pass.
 - Not done (honest): HTML/CSS-driven level mechanics (platforms laid out by CSS/Flex/Grid) — covered by Flex Quest / CSS Arena instead; no new art pass.
+
+## Zombie touch-test investigation (closed)
+- The 4 touch failures were 2 causes: (a) harness: taps fired while the layout was still settling after Start (fixed: test waits for a stable stage box, game scrolls after two animation frames); (b) a **real mobile UX defect**: after editing code the stage could sit under the sticky site header, so taps hit the header nav (fixed: Start scrolls the stage into the clear area when it is within 130px of the top). Touch play now wins zb-4, 5, 6, 9, 12, 13, 14, 15 (and zb-1 earlier) in a real browser at 430px.
+
+## Flex Quest — rebuilt (done)
+- 24 levels in 4 chapters; levels 1–10 keep the original ids/targets (progress preserved, game id `flex`), 11–24 new: gap, wrap, align-content, wrap-reverse, order, align-self, flex-grow (+ratios), flex-basis, flex-shrink, auto margins, flex-flow, nav-bar and final combo.
+- Real CSS editor (CodeMirror with textarea fallback), live sandboxed board (srcdoc iframe + CSP, learner writes CSS only, crates slide to new places with FLIP unless reduced motion), target board from a hidden reference, per-crate match chips, 3 hints, show-solution (costs the no-hint star/bonus), "other valid ways", stars, points (10/12 + 5 no hint), map with unlock rule (n-1 solved).
+- Win = size + position of every crate equal to the reference within 1.5px, so any valid CSS wins (alts verified: 17 of 24 levels have alternatives).
+- Tests (`tests/flex-quest.test.mjs`, real browser): all 24 levels (starters never win; reference + alternatives always win), real typing/win/persist/next, hint ladder + hostile CSS (@import, body override), locked URL, EN without Arabic, 360/390/430/820/1366 layouts, touch. Old select-based flex test removed from `game.test.mjs`; old `js/game/flex-quest.js` deleted.
+- Honest gaps: the page still uses the platform header; canonical URL still the old domain (SEO phase); gameplay is CSS-only by design (no JS).
