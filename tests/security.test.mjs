@@ -18,6 +18,6 @@ test("vercel.json is valid, sets safe headers and long-lived caching only for ve
   assert.match(h("/service-worker.js")["Cache-Control"], /max-age=0/);
 });
 test("no eval or new Function in site-origin scripts", () => {
-  const bad = files.filter((f) => /^js\/.*\.js$|^(about|content)\/.*\.js$/.test(f) && !/^js\/playground\//.test(f) && /\beval\s*\(|new Function\s*\(/.test(fs.readFileSync(f, "utf8")));
+  const bad = files.filter((f) => /^js\/.*\.js$|^(about|content)\/.*\.js$/.test(f) && !/^js\/playground\//.test(f) && f !== "js/game/zombie/sim.js" /* fetched as text and injected INTO the sandboxed opaque-origin frame; never executed on the site origin */ && /\beval\s*\(|new Function\s*\(/.test(fs.readFileSync(f, "utf8")));
   assert.deepEqual(bad, []);
 });

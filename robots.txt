@@ -1,5 +1,11 @@
 User-agent: *
 Allow: /
 Disallow: /legacy/
+Disallow: /settings/
+Disallow: /dashboard.html
+Disallow: /profile.html
+Disallow: /login.html
+Disallow: /offline.html
+Disallow: /play/arena.html
 
-Sitemap: https://fayad-learning.vercel.app/sitemap.xml
+Sitemap: https://faybit.vercel.app/sitemap.xml

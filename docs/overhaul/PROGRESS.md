@@ -65,3 +65,52 @@ Checklist: [x] Adventure mechanics v2  [x] Zombie web-lab (supersedes the JS-onl
 - Switching Blocks → JavaScript shows your blocks as real code. Stars use code size like block count.
 - Tests: `adventure-code` (all 120 reference solutions translated to JS and run in the real sandbox: all win, code size == par; errors/endless loops/locked constructs), `adventure-code-ui` (real browser: win + persistence, explanations, worlds 3/4/5 levels, mobile 390). Existing adventure suites still pass.
 - Not done (honest): HTML/CSS-driven level mechanics (platforms laid out by CSS/Flex/Grid) — covered by Flex Quest / CSS Arena instead; no new art pass.
+
+## Zombie touch-test investigation (closed)
+- The 4 touch failures were 2 causes: (a) harness: taps fired while the layout was still settling after Start (fixed: test waits for a stable stage box, game scrolls after two animation frames); (b) a **real mobile UX defect**: after editing code the stage could sit under the sticky site header, so taps hit the header nav (fixed: Start scrolls the stage into the clear area when it is within 130px of the top). Touch play now wins zb-4, 5, 6, 9, 12, 13, 14, 15 (and zb-1 earlier) in a real browser at 430px.
+
+## Flex Quest — rebuilt (done)
+- 24 levels in 4 chapters; levels 1–10 keep the original ids/targets (progress preserved, game id `flex`), 11–24 new: gap, wrap, align-content, wrap-reverse, order, align-self, flex-grow (+ratios), flex-basis, flex-shrink, auto margins, flex-flow, nav-bar and final combo.
+- Real CSS editor (CodeMirror with textarea fallback), live sandboxed board (srcdoc iframe + CSP, learner writes CSS only, crates slide to new places with FLIP unless reduced motion), target board from a hidden reference, per-crate match chips, 3 hints, show-solution (costs the no-hint star/bonus), "other valid ways", stars, points (10/12 + 5 no hint), map with unlock rule (n-1 solved).
+- Win = size + position of every crate equal to the reference within 1.5px, so any valid CSS wins (alts verified: 17 of 24 levels have alternatives).
+- Tests (`tests/flex-quest.test.mjs`, real browser): all 24 levels (starters never win; reference + alternatives always win), real typing/win/persist/next, hint ladder + hostile CSS (@import, body override), locked URL, EN without Arabic, 360/390/430/820/1366 layouts, touch. Old select-based flex test removed from `game.test.mjs`; old `js/game/flex-quest.js` deleted.
+- Honest gaps: the page still uses the platform header; canonical URL still the old domain (SEO phase); gameplay is CSS-only by design (no JS).
+
+## Selector Quest — rebuilt (done)
+- "Radar room" identity (phosphor-green console, amber targets), 24 levels in 4 chapters; levels 1–10 keep ids/scenes/targets (progress preserved, game id `sel`); 11–24 add attribute selectors, nth-child/last/of-type, `~`, lists, `:is`, `:has`, chained `:not`, and 4 **specificity-war** levels.
+- Real DOM scene + live DOM tree; the typed selector goes only to `querySelectorAll` (and, in war levels, `CSSStyleSheet.insertRule` one rule at a time so nothing can escape the rule); hits glow green, extras red, misses pulse in the tree; plain-language reading of the selector ("ul > li.a" → element ul · direct child of · li and class a); specificity chip.
+- War levels use the real browser cascade: rival rules paint red/blue/orange, the learner's rule is appended last and paints lime; failure message names the rival rule that still wins with both specificities.
+- Match markers are `data-sq-*` attributes (not classes) so `[class=a]`, `:not([class])` etc. behave truthfully. Selectors containing `data-sq` are refused.
+- Stars: solve, no hint/solution, specificity not above the reference. Alternatives: 38 alternative selectors across levels, each verified.
+- Tests (`tests/selector-quest.test.mjs`, real browser): specificity calculator, all 24 levels (reference wins; `*` and a non-matching selector never win), every alternative on a fresh page, real play + persistence, war + injection attempts, hint ladder, locks, EN without Arabic, 360/390/430/820/1366 layouts, touch. Old Selector tests removed from `game.test.mjs`; old `js/game/selector-quest.js` deleted.
+
+## HTML Arena (expanded + own identity)
+- 10 new bilingual challenges html-11…20 (labelled search form, fieldset/radio group, landmarks, full data table, icon button/aria-label, details/summary, quotes/abbr/mark/time, picture/webp fallback, product card, 5-bug document). Ids 1–10 and index-based progress untouched; new ones are tier "expert" so level order stays non-decreasing.
+- `css/arena-skins.css`: per-track skin via `body[data-track]` (HTML = orange blueprint grid, mono square level tiles, ▢/◼ checks). CSS/JS skins follow in their own milestones.
+- Hub total for HTML Arena = 20.
+- Tests: `tests/arena.test.mjs` (20 starters fail / 20 solutions pass), `tests/arena-ui.test.mjs` (real browser: all 20 played, hints, EN, 360/390/430/820/1366 no overflow, touch tap on Run; `AR_TRACK=css|js` reuses it).
+
+## CSS Arena (expanded + own identity)
+- 10 new challenges css-11…20 (border-box, sticky, custom properties, hover+transition, keyframes + prefers-reduced-motion, ::after, ellipsis, aspect-ratio/object-fit, gradient pill, 4-bug debug mission). Ids/progress of 1–10 untouched; new ones tier "expert".
+- Real-browser play (reducedMotion emulated) caught a defect: css-15 could not be solved under reduced motion because checks read computed `animation-*`. Checks now read the rule, so the solution (which disables motion under that media query) passes for everyone.
+- Skin: "paint studio" (colour-wash header, round level tiles, gradient brief edge, checkerboard preview). Hub total = 20.
+- Tests: `tests/arena.test.mjs` (css) and `AR_TRACK=css tests/arena-ui.test.mjs` pass: all 20 played, EN, five widths no overflow, touch.
+
+## JavaScript Arena (expanded + own identity)
+- 10 new challenges js-11…20 (default/rest params, destructuring, once() closure, pipe/reduce, var-in-loop, event delegation (DOM), safe JSON try/catch, Set/Map dedupe+count, two-key non-mutating sort, parallel fetch that survives failures). 1–10 untouched; new ones tier "expert".
+- Skin: "control room" (terminal tiles, scanline header, green console). Hub total = 20 for all three Arenas.
+- Tests: `tests/arena.test.mjs` + `AR_TRACK=js tests/arena-ui.test.mjs` pass (all 20 played in the browser, EN, five widths, touch). Regression: game, routes, english-zero-arabic = 30 pass.
+- All three Arenas done. Next: security/competition milestone (server-side validation), then integration/SEO/redesign/QA.
+
+## Security phase
+- Migration `0011_security_hardening.sql` (additive, applied to the project): registers the new game levels, revokes excess table privileges, hardens `submit_solve` (lock + insert-confirmed payout), integrity trigger for `assessment_results`.
+- Probe `supabase/tests/security_probe.sql` executed against the live project: all attack cases denied/neutralised, no data changed. Details and the list of remaining gaps: `docs/overhaul/SECURITY.md`.
+- Test fix: `tests/security.test.mjs` exempts `zombie/sim.js` (injected into the sandboxed frame, never runs on the site origin).
+
+## SEO foundation (Phase 2, part 1)
+- Origin migration `fayad-learning.vercel.app` → `faybit.vercel.app` (both already attached to the Vercel project) across canonicals, og:url/og:image, JSON-LD, sitemap, robots, course-page generator. `vercel.json`: permanent host-based redirect old → new, path preserved (only takes effect on the production deployment after merge; previews are unaffected).
+- Sitemap regenerated by `tools/gen-sitemap.mjs` (21 self-canonical indexable URLs, git lastmod); robots disallows settings/dashboard/profile/login/legacy/offline/`arena.html`; `login.html` now noindex.
+- Game pages got OG/Twitter tags; every indexable page got BreadcrumbList; the 9 track pages got `Course` JSON-LD (no ratings/prices). Idempotent script: `tools/seo-apply.mjs`.
+- Arenas now have crawlable URLs with their own title/description/H1-intro: `/play/{html,css,js}-arena.html` (old `arena.html?track=` keeps working, noindex).
+- Tests: new `tests/seo.test.mjs` (8 checks incl. unique titles/descriptions, JSON-LD validity, sitemap↔canonical consistency, redirect). Regression: routes, english-zero-arabic, game, global-shell, home, no-legacy, overflow pass (`zombie/sim.js` exempted from the eval guard: injected only into the sandbox).
+- Owner actions: add `faybit.vercel.app` as a Search Console property (the existing verification meta belongs to the old property), submit the new sitemap, use Change of Address if both are verified. Not done: lessons render client-side from JSON, so individual lesson URLs are not separately indexable (next SEO step: prerendered lesson content); Core Web Vitals not measured yet.

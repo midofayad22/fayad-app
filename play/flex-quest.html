@@ -6,7 +6,14 @@
     <link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <script src="/js/prefs.js"></script>
-    <link rel="canonical" href="https://fayad-learning.vercel.app/play/flex-quest.html" />
+    <link rel="canonical" href="https://faybit.vercel.app/play/flex-quest.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Flex Quest — FAYBIT" />
+    <meta property="og:description" content="Flex Quest: لعبة ألغاز Flexbox. اكتب CSS حقيقيًا وشاهد الصناديق تتحرك لتطابق الهدف." />
+    <meta property="og:url" content="https://faybit.vercel.app/play/flex-quest.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
     <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16.png" />
@@ -15,7 +22,7 @@
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#0D9488" />
-    <meta name="description" content="Flex Quest: لعبة ألغاز Flexbox. رتّب العناصر لتطابق الهدف وتعلّم خصائص CSS أثناء اللعب." />
+    <meta name="description" content="Flex Quest: لعبة ألغاز Flexbox. اكتب CSS حقيقيًا وشاهد الصناديق تتحرك لتطابق الهدف." />
     <title>Flex Quest — FAYBIT</title>
     <link rel="stylesheet" href="/css/tokens.css" />
     <link rel="stylesheet" href="/css/theme.css" />
@@ -23,11 +30,13 @@
     <link rel="stylesheet" href="/css/shell.css" />
     <link rel="stylesheet" href="/css/account.css" />
     <link rel="stylesheet" href="/css/game.css" />
+    <link rel="stylesheet" href="/css/flex-quest.css" />
     <script src="/js/i18n.js" defer></script>
     <script src="/js/shell.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
     <script src="/js/main-auth.js" defer></script>
-    <script type="module" src="/js/game/flex-quest.js"></script>
+    <script type="module" src="/js/game/flex/game.js"></script>
+      <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"الألعاب","item":"https://faybit.vercel.app/play/index.html"},{"@type":"ListItem","position":3,"name":"Flex Quest","item":"https://faybit.vercel.app/play/flex-quest.html"}]}]}</script>
   </head>
   <body class="ac-body" data-page="game">
     <a class="fy-skip" href="#main" data-i18n="common.skip">تخطي إلى المحتوى</a>
@@ -41,32 +50,53 @@
         </nav>
       </div>
     </header>
-    <main id="main" class="ac-wrap fq">
-      <section class="ac-hero">
-        <h1>Flex Quest</h1>
-        <p data-i18n="fq.sub">اجعل العناصر تتطابق مع الهدف بضبط خصائص Flexbox. كل مرحلة تُعلّمك خاصية جديدة.</p>
-      </section>
-      <div class="fq-bar" aria-live="polite">
-        <span class="fq-chip"><b id="fqLevelNo">1</b> / <span id="fqTotal">10</span></span>
-        <span class="fq-chip"><span data-i18n="fq.points">نقاط اللعبة</span>: <b id="fqPoints">0</b></span>
-        <div class="fq-dots" id="fqDots" role="list"></div>
-      </div>
-      <section class="fq-play" aria-labelledby="fqTask">
-        <h2 id="fqTask" class="fq-task"></h2>
-        <div class="fq-boards">
-          <figure><figcaption data-i18n="fq.target">الهدف</figcaption><div class="fq-board fq-target" id="fqTarget" aria-hidden="true"></div></figure>
-          <figure><figcaption data-i18n="fq.yours">لوحتك</figcaption><div class="fq-board" id="fqBoard" role="img" data-i18n-attr="aria-label:fq.yours" aria-label="لوحتك"></div></figure>
+    <main id="main" class="fqg">
+      <!-- Harbor map -->
+      <section id="fqMap" class="fqg-map">
+        <div class="fqg-hero">
+          <svg class="fqg-logo" viewBox="0 0 64 64" aria-hidden="true"><rect x="6" y="30" width="16" height="16" rx="3" fill="#22d3ee"/><rect x="24" y="22" width="16" height="24" rx="3" fill="#f4c95d"/><rect x="42" y="34" width="16" height="12" rx="3" fill="#f472b6"/><path d="M4 52h56" stroke="#3d6c92" stroke-width="3" stroke-linecap="round"/></svg>
+          <div><h1>Flex Quest</h1><p data-i18n="fq.sub">أنت مشرف رصيف: اكتب CSS حقيقيًا وشاهد الصناديق تتحرك حتى تطابق الخطة.</p></div>
+          <div class="fqg-pts"><span data-i18n="fq.points">نقاط اللعبة</span><b id="fqPoints">0</b></div>
         </div>
-        <div class="fq-controls" id="fqControls"></div>
-        <pre class="fq-code" id="fqCode" dir="ltr"></pre>
-        <div class="fq-actions">
-          <button class="ac-btn" type="button" id="fqHint" data-i18n="fq.hint">تلميح</button>
-          <button class="ac-btn" type="button" id="fqReset" data-i18n="fq.reset">إعادة الضبط</button>
-          <button class="ac-btn ac-btn-primary" type="button" id="fqNext" hidden data-i18n="fq.next">المرحلة التالية</button>
-        </div>
-        <p class="fq-msg" id="fqMsg" role="status"></p>
+        <div id="fqChapters" class="fqg-chapters"></div>
+        <p class="ac-note" data-i18n="fq.note">نقاط اللعبة تُحفظ على هذا الجهاز وتُحسب منفصلة عن نقاط الدروس: 10 نقاط لكل مرحلة تُحلّ لأول مرة (12 للمراحل المتقدمة)، و5 إضافية إن حللتها دون تلميح.</p>
       </section>
-      <p class="ac-note" data-i18n="fq.note">نقاط اللعبة تُحفظ على هذا الجهاز فقط وتُحسب منفصلة عن نقاط الدروس: 10 نقاط لكل مرحلة تُحلّ لأول مرة، و5 إضافية إن حللتها بدون تلميح.</p>
+      <!-- Level -->
+      <section id="fqPlay" class="fqg-play" hidden>
+        <div class="fqg-bar">
+          <button type="button" class="fqg-back" id="fqBack" data-i18n="fq.map">← الخريطة</button>
+          <div class="fqg-title"><small id="fqChap"></small><h2 id="fqTitle"></h2></div>
+          <span class="fqg-stars" id="fqStarsNow" aria-label="stars"></span>
+        </div>
+        <p class="fqg-brief" id="fqBrief"></p>
+        <div class="fqg-boards">
+          <figure class="fqg-fig"><figcaption data-i18n="fq.target">الخطة (الهدف)</figcaption><div class="fqg-slot" id="fqTarget"></div></figure>
+          <figure class="fqg-fig"><figcaption><span data-i18n="fq.yours">لوحتك</span> <span class="fqg-count" id="fqCount" role="status"></span></figcaption><div class="fqg-slot" id="fqMine"></div>
+            <div class="fqg-chips" id="fqChips" aria-hidden="true"></div></figure>
+        </div>
+        <div class="fqg-work">
+          <div class="fqg-editor">
+            <label for="fqCss" class="fqg-lbl">CSS</label>
+            <textarea id="fqCss" dir="ltr" spellcheck="false" autocomplete="off" aria-label="CSS"></textarea>
+            <div class="fqg-actions">
+              <button type="button" class="fqg-btn" id="fqHint" data-i18n="fq.hint">تلميح</button>
+              <button type="button" class="fqg-btn" id="fqSol" data-i18n="fq.sol">أرني الحل</button>
+              <button type="button" class="fqg-btn ghost" id="fqReset" data-i18n="fq.reset">إعادة الضبط</button>
+            </div>
+          </div>
+          <aside class="fqg-side">
+            <div class="fqg-card"><h3 data-i18n="fq.learn">تعلّم</h3><p id="fqTeach"></p></div>
+            <div class="fqg-card" id="fqHintBox" hidden><h3 data-i18n="fq.hint">تلميح</h3><ol id="fqHints"></ol></div>
+          </aside>
+        </div>
+        <div class="fqg-win" id="fqWin" hidden role="status" aria-live="polite">
+          <div class="fqg-win-head"><b data-i18n="fq.won">وصلت الشحنة! 🚢</b><span class="fqg-stars" id="fqWinStars"></span><span id="fqWinPts"></span></div>
+          <p id="fqWinWhy"></p>
+          <details id="fqAlts" class="fqg-alts"><summary data-i18n="fq.alts">طرق أخرى صحيحة</summary><div id="fqAltList" dir="ltr"></div></details>
+          <div class="fqg-win-act"><button type="button" class="fqg-btn primary" id="fqNext" data-i18n="fq.next">المرحلة التالية</button><button type="button" class="fqg-btn ghost" id="fqToMap" data-i18n="fq.map">← الخريطة</button></div>
+        </div>
+        <p class="fqg-msg" id="fqMsg" role="status"></p>
+      </section>
     </main>
   </body>
 </html>

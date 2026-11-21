@@ -8,15 +8,15 @@ import { startServer } from "./static-server.mjs";
 const require = createRequire(import.meta.url);
 const { chromium } = require("playwright");
 
-const ORIGIN = "https://fayad-learning.vercel.app";
+const ORIGIN = "https://faybit.vercel.app";
 export const PAGES = [
   "/", "/login.html", "/about/about.html", "/html-learning/html-learning.html", "/css-learning/css-learning.html",
   "/javascript-learning/javascript-learning.html", "/react-learning/react-learning.html", "/vue-learning/vue-learning.html",
   "/angular-learning/angular-learning.html", "/fundamentals/computer-basics/com.html", "/fundamentals/programming-basics/prg.html",
   "/advanced-javascript/advanced-javascript.html", "/bootstrap-learning/bootstrap-learning.html", "/tailwind-learning/tailwind-learning.html",
-  "/dashboard.html", "/profile.html", "/play/flex-quest.html", "/play/index.html", "/play/selector-quest.html", "/play/adventure.html", "/play/zombie.html", "/play/arena.html",
+  "/dashboard.html", "/profile.html", "/play/flex-quest.html", "/play/index.html", "/play/selector-quest.html", "/play/adventure.html", "/play/zombie.html", "/play/arena.html", "/play/html-arena.html", "/play/css-arena.html", "/play/js-arena.html",
 ];
-const NOINDEX = ["/login.html", "/dashboard.html", "/profile.html"];
+const NOINDEX = ["/play/arena.html", "/login.html", "/dashboard.html", "/profile.html"];
 
 let server, browser, base;
 before(async () => { server = await startServer(); base = `http://127.0.0.1:${server.address().port}`; browser = await chromium.launch(); });
@@ -72,7 +72,7 @@ test("static assets exist and icons have the declared sizes", async () => {
 
 test("robots.txt and sitemap.xml list every public route", async () => {
   const robots = fs.readFileSync("robots.txt", "utf8");
-  assert.match(robots, /Sitemap: https:\/\/fayad-learning\.vercel\.app\/sitemap\.xml/);
+  assert.match(robots, /Sitemap: https:\/\/faybit\.vercel\.app\/sitemap\.xml/);
   const sitemap = fs.readFileSync("sitemap.xml", "utf8");
   for (const route of PAGES.filter((r) => !NOINDEX.includes(r))) {
     assert.ok(sitemap.includes(`<loc>${ORIGIN}${route}</loc>`), `sitemap missing ${route}`);

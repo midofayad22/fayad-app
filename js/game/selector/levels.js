@@ -1,0 +1,93 @@
+/*
+  Selector Quest — 24 levels. Levels 1–10 keep their original ids, scenes and targets (progress preserved, game id "sel").
+  A level is solved when the elements the learner's selector matches inside the scene are EXACTLY the target elements.
+  `war` levels are about specificity: rival rules paint elements red/blue, the learner's rule paints lime and is applied LAST, so it only wins
+  where its specificity is at least as high — the real browser cascade decides (see game.js).
+*/
+const b = (ar, en) => ({ ar, en });
+const H = (a1, e1, a2, e2, a3, e3) => [b(a1, e1), b(a2, e2), b(a3, e3)];
+
+export const CHAPTERS = [
+  { id: 1, name: b("الأساسيات: النوع والفئة والمعرّف", "Basics: type, class, id"), blurb: b("أول ما يتعلمه كل صائد محددات.", "What every selector hunter learns first.") },
+  { id: 2, name: b("العلاقات داخل الشجرة", "Relationships in the tree"), blurb: b("الأبناء والأحفاد والإخوة والحالات.", "Children, descendants, siblings and states.") },
+  { id: 3, name: b("الخصائص والمواضع والمنطق", "Attributes, positions & logic"), blurb: b("محددات أدق: [attr] و nth و :is و :has.", "Sharper selectors: [attr], nth, :is and :has.") },
+  { id: 4, name: b("حرب الأولوية (Specificity)", "Specificity war"), blurb: b("قواعد منافسة تلوّن العناصر: اكتب محددًا يفوز.", "Rival rules paint elements: write a selector that wins.") },
+];
+
+export const LEVELS = [
+  { id: 1, chapter: 1, html: "<p>p</p><p>p</p><span>span</span><p>p</p>", want: "p", alts: [], brief: b("اختر كل فقرات <p> فقط.", "Select every <p> and nothing else."),
+    hints: H("اسم العنصر وحده يكفي.", "The element name alone is enough.", "اكتب اسم الوسم بلا نقطة ولا #.", "Write the tag name with no dot or #.", "p", "p"),
+    teach: b("محدد النوع (type selector) يطابق كل العناصر بهذا الاسم: p يختار كل <p>.", "A type selector matches every element with that name: p picks every <p>.") },
+  { id: 2, chapter: 1, html: '<p class="a">p.a</p><p>p</p><span class="a">span.a</span><p class="a">p.a</p>', want: ".a", alts: ["[class=a]", "[class~=a]"], brief: b("اختر كل العناصر التي تحمل الفئة a، أيًا كان نوعها.", "Select every element with class a, whatever its type."),
+    hints: H("الفئات تبدأ بنقطة.", "Classes start with a dot.", "اكتب النقطة ثم اسم الفئة.", "Write a dot then the class name.", ".a", ".a"),
+    teach: b("محدد الفئة (class selector) .a يطابق أي عنصر class=\"a\" مهما كان نوعه.", "The class selector .a matches any element with class=\"a\", whatever its type.") },
+  { id: 3, chapter: 1, html: '<p>p</p><p id="x">p#x</p><p>p</p><span id="y">span#y</span>', want: "#x", alts: ["p#x", "[id=x]"], brief: b("اختر العنصر الذي معرّفه x فقط.", "Select only the element whose id is x."),
+    hints: H("المعرّفات تبدأ بعلامة #.", "Ids start with #.", "# ثم الاسم.", "# then the name.", "#x", "#x"),
+    teach: b("محدد المعرّف (id selector) #x يختار عنصرًا واحدًا فريدًا. وهو الأعلى أولوية بين المحددات البسيطة.", "The id selector #x picks one unique element. It has the highest specificity among simple selectors.") },
+  { id: 4, chapter: 1, html: '<p class="a">p.a</p><span class="a">span.a</span><p>p</p><p class="a">p.a</p>', want: "p.a", alts: ["p[class=a]", "p[class~=a]"], brief: b("اختر الفقرات <p> التي تحمل الفئة a فقط، لا الـ span.", "Select only the <p> elements with class a, not the span."),
+    hints: H("ادمج النوع والفئة بلا مسافة.", "Combine type and class with no space.", "النوع ثم النقطة والفئة.", "The type then the dot and the class.", "p.a", "p.a"),
+    teach: b("بلا مسافة بين الجزأين يعني «كلاهما معًا»: عنصر p وله فئة a.", "No space between the parts means 'both at once': a p that also has class a.") },
+  { id: 5, chapter: 2, html: "<div>div</div><ul><li>li</li><li>li</li></ul><ol><li>li</li></ol>", want: "ul li", alts: ["ul > li", "div ~ ul li"], brief: b("اختر عناصر <li> الموجودة داخل <ul> فقط (لا داخل <ol>).", "Select the <li> inside <ul> only (not the ones inside <ol>)."),
+    hints: H("المسافة تعني «داخل».", "A space means 'inside'.", "الأب ثم مسافة ثم الابن.", "Parent, a space, then the child.", "ul li", "ul li"),
+    teach: b("محدد الأحفاد (descendant): المسافة تعني «في أي مستوى داخل». ul li يختار كل li تحت ul.", "Descendant selector: a space means 'at any depth inside'. ul li picks every li under a ul.") },
+  { id: 6, chapter: 2, html: "<ul><li>li<ol><li>li</li><li>li</li></ol></li><li>li</li></ul>", want: "ul > li", alts: ["ul>li"], brief: b("اختر عناصر li المباشرة لـ <ul> فقط، لا المتداخلة داخل <ol>.", "Select only the direct li children of the <ul>, not the nested ones inside the <ol>."),
+    hints: H("ul li ستختار الجميع (الأحفاد).", "ul li would pick everyone (descendants).", "العلامة > تعني «ابن مباشر».", "The > sign means 'direct child'.", "ul > li", "ul > li"),
+    teach: b("محدد الأبناء (child) > يطابق المستوى الأول فقط، بينما المسافة تطابق كل المستويات.", "The child combinator > matches the first level only, while a space matches every level.") },
+  { id: 7, chapter: 2, html: "<ul><li>li</li><li>li</li><li>li</li></ul><ol><li>li</li><li>li</li></ol>", want: "li:first-child", alts: ["li:nth-child(1)", "ul > li:first-child, ol > li:first-child"], brief: b("اختر أول li في كل قائمة.", "Select the first li of every list."),
+    hints: H("هناك حالة (pseudo-class) للأول.", "There is a pseudo-class for the first one.", "تبدأ بنقطتين رأسيتين.", "It starts with a colon.", "li:first-child", "li:first-child"),
+    teach: b(":first-child يطابق العنصر إن كان أول ابن لأبيه. كل قائمة لها أبناؤها فيُختار الأول في كل منها.", ":first-child matches an element if it is the first child of its parent. Each list has its own, so one per list is picked.") },
+  { id: 8, chapter: 2, html: "<button disabled>button</button><button>button</button><input disabled><input>", want: ":disabled", alts: ["[disabled]", "button:disabled, input:disabled"], brief: b("اختر عناصر النموذج المعطّلة فقط.", "Select only the disabled form controls."),
+    hints: H("هناك حالة جاهزة للعناصر المعطّلة.", "There is a ready-made state for disabled controls.", "نقطتان رأسيتان ثم الكلمة.", "A colon then the word.", ":disabled", ":disabled"),
+    teach: b(":disabled يختار عناصر النماذج المعطّلة. وهناك أيضًا :checked و:focus و:hover وغيرها.", ":disabled picks disabled form controls. There are also :checked, :focus, :hover and more.") },
+  { id: 9, chapter: 2, html: '<ul><li class="a">li.a</li><li>li</li><li class="a">li.a</li><li>li</li></ul>', want: "li:not(.a)", alts: ["li:not([class])", "li:not(.a):not(.b)"], brief: b("اختر عناصر li التي لا تحمل الفئة a.", "Select the li elements that do NOT have class a."),
+    hints: H("نحتاج النفي.", "We need negation.", ":not( ... ) وبداخلها ما نريد استبعاده.", ":not( ... ) with what we want to exclude inside.", "li:not(.a)", "li:not(.a)"),
+    teach: b(":not(X) يطابق ما لا يطابق X. مفيد لاستثناء حالات دون كتابة فئات جديدة.", ":not(X) matches whatever does not match X. Handy for excluding cases without new classes.") },
+  { id: 10, chapter: 2, html: "<h2>h2</h2><p>p</p><p>p</p><h3>h3</h3><p>p</p>", want: "h2 + p", alts: ["h2 ~ p:first-of-type", "h2 + p:first-of-type"], brief: b("اختر الفقرة التي تأتي مباشرة بعد <h2> فقط.", "Select only the paragraph that comes right after the <h2>."),
+    hints: H("نبحث عن أخ مجاور.", "We want an adjacent sibling.", "العلامة + تعني «التالي مباشرة».", "The + sign means 'immediately next'.", "h2 + p", "h2 + p"),
+    teach: b("المحدد المجاور (adjacent sibling) + يختار العنصر الذي يلي الأول مباشرة وبنفس الأب.", "The adjacent sibling combinator + picks the element right after the first, with the same parent.") },
+  { id: 11, chapter: 3, html: '<a href="https://faybit.example">a</a><a href="/local">a</a><a href="https://other.example">a</a><a>a</a>', want: 'a[href^="https"]', alts: ['a[href*="https"]', 'a[href^=https]', 'a[href*="://"]'], brief: b("اختر الروابط الخارجية: التي يبدأ href فيها بـ https.", "Select the external links: those whose href starts with https."),
+    hints: H("الأقواس المربعة تفحص الخصائص (attributes).", "Square brackets test attributes.", "العلامة ^= تعني «يبدأ بـ».", "The ^= operator means 'starts with'.", 'a[href^="https"]', 'a[href^="https"]'),
+    teach: b("محددات الخصائص: [attr] موجودة، [attr=v] تساوي، [attr^=v] تبدأ، [attr$=v] تنتهي، [attr*=v] تحتوي.", "Attribute selectors: [attr] exists, [attr=v] equals, [attr^=v] starts with, [attr$=v] ends with, [attr*=v] contains.") },
+  { id: 12, chapter: 3, html: '<a target="_blank">a</a><a>a</a><a target="_self">a</a><a target="_blank">a</a>', want: 'a[target="_blank"]', alts: ["a[target=_blank]", '[target="_blank"]'], brief: b("اختر الروابط التي تُفتح في نافذة جديدة (target=\"_blank\").", "Select the links that open in a new tab (target=\"_blank\")."),
+    hints: H("الخاصية target بقيمة محددة.", "The target attribute with a specific value.", "[attr=value] تعني تساوي تمامًا.", "[attr=value] means exactly equal.", 'a[target="_blank"]', 'a[target="_blank"]'),
+    teach: b("[attr=value] يطابق التساوي التام. فرّق بينه وبين [attr*=value] التي تطابق الاحتواء.", "[attr=value] is an exact match. Do not confuse it with [attr*=value], which means contains.") },
+  { id: 13, chapter: 3, html: "<ul><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li></ul>", want: "li:nth-child(even)", alts: ["li:nth-child(2n)"], brief: b("لوّن الصفوف الزوجية: اختر li رقم 2 و4 و6.", "Zebra stripes: select li number 2, 4 and 6."),
+    hints: H("nth-child تختار حسب الترتيب.", "nth-child selects by position.", "توجد كلمة جاهزة للزوجي.", "There is a ready word for even.", "li:nth-child(even)", "li:nth-child(even)"),
+    teach: b(":nth-child(even) أو (2n) للزوجي، (odd) أو (2n+1) للفردي، (3) للثالث تمامًا، (n+3) من الثالث فصاعدًا.", ":nth-child(even) or (2n) for even, (odd) or (2n+1) for odd, (3) for exactly the third, (n+3) from the third on.") },
+  { id: 14, chapter: 3, html: "<ul><li>li</li><li>li</li><li>li</li></ul><ul><li>li</li><li>li</li></ul>", want: "li:last-child", alts: ["li:nth-last-child(1)"], brief: b("اختر آخر li في كل قائمة.", "Select the last li of every list."),
+    hints: H("عكس first-child.", "The opposite of first-child.", "last-child.", "last-child.", "li:last-child", "li:last-child"),
+    teach: b(":last-child و:nth-last-child(n) يعدّان من النهاية.", ":last-child and :nth-last-child(n) count from the end.") },
+  { id: 15, chapter: 3, html: "<p>p</p><h2>h2</h2><p>p</p><span>span</span><p>p</p>", want: "h2 ~ p", alts: [], brief: b("اختر كل الفقرات التي تأتي بعد <h2> (وليس قبله).", "Select every paragraph that comes after the <h2> (not before it)."),
+    hints: H("ليست الفقرة المجاورة فقط بل كل ما بعدها.", "Not only the adjacent one but everything after.", "العلامة ~ تعني «أي أخ لاحق».", "The ~ sign means 'any later sibling'.", "h2 ~ p", "h2 ~ p"),
+    teach: b("المحدد العام للإخوة ~ يطابق كل الإخوة اللاحقين، بينما + يطابق التالي مباشرة فقط.", "The general sibling combinator ~ matches every later sibling, while + matches only the very next one.") },
+  { id: 16, chapter: 3, html: "<h1>h1</h1><h2>h2</h2><h3>h3</h3><p>p</p>", want: "h1, h2", alts: [":is(h1, h2)", "h1,h2"], brief: b("اختر h1 وh2 معًا بقاعدة واحدة، دون h3.", "Select h1 and h2 together with one selector, not h3."),
+    hints: H("الفاصلة تجمع محددين.", "A comma joins two selectors.", "اكتب كلًّا منهما وافصل بفاصلة.", "Write each and separate them with a comma.", "h1, h2", "h1, h2"),
+    teach: b("الفاصلة تُنشئ قائمة محددات: العنصر يُختار إن طابق أيًّا منها.", "A comma makes a selector list: an element is picked if it matches any of them.") },
+  { id: 17, chapter: 3, html: "<nav><a>a</a><button>button</button><p>p</p></nav><section><a>a</a><button>button</button></section>", want: "nav :is(a, button)", alts: ["nav a, nav button", "nav > :is(a, button)"], brief: b("داخل <nav> فقط: اختر الروابط والأزرار، لا الفقرة ولا ما في <section>.", "Inside <nav> only: pick the links and buttons, not the paragraph nor anything in <section>."),
+    hints: H("نحتاج «أيٌّ من هذين» داخل nav.", "We need 'either of these' inside nav.", ":is(a, button) تختصر التكرار.", ":is(a, button) removes the repetition.", "nav :is(a, button)", "nav :is(a, button)"),
+    teach: b(":is(A, B) يطابق أيًّا من A أو B، وهو يختصر nav a, nav button في سطر واحد.", ":is(A, B) matches either A or B, shortening nav a, nav button into one line.") },
+  { id: 18, chapter: 3, html: "<div><p>p</p></div><div><span>span</span></div><div><p>p</p><span>span</span></div>", want: "div:has(p)", alts: ["div:has(> p)", "div:has(p, p)"], brief: b("اختر الـ <div> التي تحتوي فقرة <p> بداخلها (الأب لا الابن).", "Select the <div> that contain a <p> (the parent, not the child)."),
+    hints: H("نختار الأب بحسب ما بداخله.", "We choose the parent by what is inside.", "الحالة :has().", "The :has() pseudo-class.", "div:has(p)", "div:has(p)"),
+    teach: b(":has() «محدد الأب»: يختار عنصرًا بحسب ما يحتويه. كان مستحيلًا في CSS القديمة.", ":has() is the 'parent selector': it picks an element by what it contains. It was impossible in old CSS.") },
+  { id: 19, chapter: 3, html: "<div>div</div><p>p</p><p>p</p><span>span</span><p>p</p>", want: "p:nth-of-type(2)", alts: ["p:nth-of-type(even)", "p:nth-of-type(2n)"], brief: b("اختر الفقرة <p> الثانية بين الفقرات (وليس العنصر الثاني بين الإخوة).", "Select the second <p> among the paragraphs (not the second element among the siblings)."),
+    hints: H("nth-child يعدّ كل الإخوة، وهذا ليس ما نريد.", "nth-child counts all siblings, which is not what we want.", "nth-of-type يعدّ من نفس النوع.", "nth-of-type counts only the same type.", "p:nth-of-type(2)", "p:nth-of-type(2)"),
+    teach: b(":nth-of-type(n) يعدّ العناصر من النوع نفسه فقط، بينما :nth-child يعدّ كل الإخوة أيًا كان نوعها.", ":nth-of-type(n) counts only elements of the same type, while :nth-child counts all siblings whatever their type.") },
+  { id: 20, chapter: 3, html: '<input type="text"><input type="email"><input type="text" disabled><input type="checkbox">', want: 'input:not([type="checkbox"]):not(:disabled)', alts: ["input:enabled:not([type=checkbox])", 'input:not([type="checkbox"], :disabled)', "input:is([type=text], [type=email]):not([disabled])"], brief: b("حقول الإدخال الصالحة للكتابة: ليست checkbox وليست معطّلة.", "Writable inputs: not a checkbox and not disabled."),
+    hints: H("نفيان متتاليان.", "Two negations in a row.", "حالة لـ checkbox وحالة للمعطّل.", "One for checkbox and one for disabled.", 'input:not([type="checkbox"]):not(:disabled)', 'input:not([type="checkbox"]):not(:disabled)'),
+    teach: b("يمكنك سلسلة :not() عدة مرات. كل واحدة تستبعد حالة. وتُجمع أولوياتها.", "You can chain :not() several times. Each excludes one case, and their specificities add up.") },
+  { id: 21, chapter: 4, html: '<p class="a">p.a</p><p class="a" id="x">p.a#x</p><p>p</p>', want: "#x", alts: [".a#x", "p#x", "p.a#x"], war: [{ sel: "p.a", color: "red" }], brief: b("القاعدة الحمراء p.a تلوّن العنصرين. اكتب محددًا يلوّن العنصر ذا المعرّف x فقط بالأخضر الليموني، ويتغلب على الأحمر.", "The red rule p.a paints two elements. Write a selector that paints only the element with id x lime and beats the red rule."),
+    hints: H("القاعدة الحمراء أولويتها (0,1,1).", "The red rule has specificity (0,1,1).", "المعرّف أقوى من الفئة.", "An id beats a class.", "#x", "#x"),
+    teach: b("Specificity (الأولوية): (معرّفات، فئات/خصائص/حالات، أنواع). المعرّف (1,0,0) يتفوق على أي عدد من الفئات. عند التعادل تفوز القاعدة الأخيرة.", "Specificity: (ids, classes/attributes/pseudo-classes, types). An id (1,0,0) beats any number of classes. On a tie the last rule wins.") },
+  { id: 22, chapter: 4, html: '<div id="box"><p class="a">p.a</p><p>p</p></div><p>p</p>', want: "#box p", alts: ["#box > p", "div#box p", "#box :is(p)"], war: [{ sel: "#box p", color: "red" }], brief: b("القاعدة الحمراء #box p تلوّن الفقرتين داخل #box. اكتب محددًا يلوّنهما بالليموني (ويترك الفقرة خارج الصندوق).", "The red rule #box p paints both paragraphs inside #box. Write a selector that paints them lime (and leaves the outside paragraph alone)."),
+    hints: H("div p أضعف من #box p.", "div p is weaker than #box p.", "تحتاج معرّفًا مثلها على الأقل.", "You need at least an id like it.", "#box p", "#box p"),
+    teach: b("عند التعادل في الأولوية تفوز القاعدة المكتوبة أخيرًا. #box p يعادل القاعدة الحمراء وهي مكتوبة بعده.", "On a specificity tie the rule written last wins. #box p ties the red rule and comes after it.") },
+  { id: 23, chapter: 4, html: '<ul><li class="a">li.a</li><li>li</li><li class="a">li.a</li></ul>', want: "ul li.a", alts: ["ul > li.a", "ul li:is(.a)", "ul li[class]"], war: [{ sel: "ul li", color: "red" }, { sel: "li.a", color: "blue" }], brief: b("قاعدتان تتنافسان: ul li أحمر وli.a أزرق. اكتب محددًا يلوّن عناصر .a وحدها بالليموني.", "Two rules compete: ul li is red and li.a is blue. Write a selector that paints only the .a items lime."),
+    hints: H("الأزرق (0,1,1) أقوى من الأحمر (0,0,2).", "Blue (0,1,1) beats red (0,0,2).", "لا يكفي .a وحدها: أولويتها (0,1,0).", ".a alone is not enough: it is (0,1,0).", "ul li.a", "ul li.a"),
+    teach: b("اجمع أجزاء المحدد لترفع أولويته: li.a (0,1,1) لكن ul li.a (0,1,2) فيتفوق عليها.", "Add parts to raise specificity: li.a is (0,1,1) but ul li.a is (0,1,2) so it beats it.") },
+  { id: 24, chapter: 4, html: '<nav><a class="active">a.active</a><a>a</a></nav><div id="main"><a>a</a></div>', want: "nav a.active, nav a", alts: ["nav a.active, nav a:not(.active)", "nav a:is(.active, :not(.active))"], war: [{ sel: "nav a", color: "red" }, { sel: "a.active", color: "blue" }, { sel: "#main a", color: "orange" }], brief: b("ثلاث قواعد متنافسة. اكتب محددًا يلوّن روابط <nav> كلها بالليموني (النشطة والعادية) دون رابط #main.", "Three rival rules. Write a selector that paints all links in <nav> lime (active and normal) without touching the link in #main."),
+    hints: H("الرابط النشط يحتاج أولوية أعلى من a.active.", "The active link needs more than a.active.", "استعمل قائمة بفاصلة: لكل حالة جزؤها.", "Use a comma list: one part per case.", "nav a.active, nav a", "nav a.active, nav a"),
+    teach: b("في قائمة المحددات يُحسب لكل جزء أولويته: nav a.active (0,1,2) يهزم a.active، وnav a يعادل القاعدة الحمراء ويفوز بالترتيب.", "In a selector list each part has its own specificity: nav a.active (0,1,2) beats a.active, and nav a ties the red rule and wins by order.") },
+];
+export const BASE_POINTS = (id) => (id <= 10 ? 10 : 12);
+export const LIME = "rgb(163, 230, 53)";
+export const PAINT = { red: "rgb(239, 68, 68)", blue: "rgb(59, 130, 246)", orange: "rgb(249, 115, 22)" };

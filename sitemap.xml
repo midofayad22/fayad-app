@@ -1,86 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://fayad-learning.vercel.app/</loc>
-    <lastmod>2026-10-25</lastmod>
+    <loc>https://faybit.vercel.app/</loc>
+    <lastmod>2026-11-16</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://fayad-learning.vercel.app/html-learning/html-learning.html</loc>
-    <lastmod>2026-10-25</lastmod>
+    <loc>https://faybit.vercel.app/about/about.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://faybit.vercel.app/advanced-javascript/advanced-javascript.html</loc>
+    <lastmod>2026-11-11</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fayad-learning.vercel.app/css-learning/css-learning.html</loc>
-    <lastmod>2026-10-25</lastmod>
+    <loc>https://faybit.vercel.app/angular-learning/angular-learning.html</loc>
+    <lastmod>2026-11-11</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fayad-learning.vercel.app/javascript-learning/javascript-learning.html</loc>
-    <lastmod>2026-10-25</lastmod>
+    <loc>https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html</loc>
+    <lastmod>2026-11-11</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fayad-learning.vercel.app/react-learning/react-learning.html</loc>
-    <lastmod>2026-10-25</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://fayad-learning.vercel.app/vue-learning/vue-learning.html</loc>
-    <lastmod>2026-10-25</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://fayad-learning.vercel.app/angular-learning/angular-learning.html</loc>
-    <lastmod>2026-10-25</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://fayad-learning.vercel.app/fundamentals/computer-basics/com.html</loc>
-    <lastmod>2026-10-25</lastmod>
+    <loc>https://faybit.vercel.app/css-learning/css-learning.html</loc>
+    <lastmod>2026-11-11</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fayad-learning.vercel.app/fundamentals/programming-basics/prg.html</loc>
-    <lastmod>2026-10-25</lastmod>
+    <loc>https://faybit.vercel.app/fundamentals/computer-basics/com.html</loc>
+    <lastmod>2026-11-11</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fayad-learning.vercel.app/about/about.html</loc>
-    <lastmod>2026-10-25</lastmod>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://fayad-learning.vercel.app/advanced-javascript/advanced-javascript.html</loc>
-    <lastmod>2026-10-29</lastmod>
+    <loc>https://faybit.vercel.app/fundamentals/programming-basics/prg.html</loc>
+    <lastmod>2026-11-11</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fayad-learning.vercel.app/bootstrap-learning/bootstrap-learning.html</loc>
-    <lastmod>2026-10-29</lastmod>
+    <loc>https://faybit.vercel.app/html-learning/html-learning.html</loc>
+    <lastmod>2026-11-11</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fayad-learning.vercel.app/tailwind-learning/tailwind-learning.html</loc>
-    <lastmod>2026-10-29</lastmod>
+    <loc>https://faybit.vercel.app/javascript-learning/javascript-learning.html</loc>
+    <lastmod>2026-11-11</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fayad-learning.vercel.app/play/flex-quest.html</loc>
+    <loc>https://faybit.vercel.app/play/adventure.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://fayad-learning.vercel.app/play/index.html</loc>
+    <loc>https://faybit.vercel.app/play/css-arena.html</loc>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://fayad-learning.vercel.app/play/selector-quest.html</loc>
+    <loc>https://faybit.vercel.app/play/flex-quest.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://fayad-learning.vercel.app/play/adventure.html</loc>
+    <loc>https://faybit.vercel.app/play/html-arena.html</loc>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://fayad-learning.vercel.app/play/zombie.html</loc>
+    <loc>https://faybit.vercel.app/play/index.html</loc>
+    <lastmod>2026-11-09</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://fayad-learning.vercel.app/play/arena.html</loc>
+    <loc>https://faybit.vercel.app/play/js-arena.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://faybit.vercel.app/play/selector-quest.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://faybit.vercel.app/play/zombie.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://faybit.vercel.app/react-learning/react-learning.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://faybit.vercel.app/tailwind-learning/tailwind-learning.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://faybit.vercel.app/vue-learning/vue-learning.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.8</priority>
   </url>
 </urlset>
