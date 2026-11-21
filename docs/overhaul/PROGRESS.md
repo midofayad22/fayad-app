@@ -89,3 +89,9 @@ Checklist: [x] Adventure mechanics v2  [x] Zombie web-lab (supersedes the JS-onl
 - `css/arena-skins.css`: per-track skin via `body[data-track]` (HTML = orange blueprint grid, mono square level tiles, ▢/◼ checks). CSS/JS skins follow in their own milestones.
 - Hub total for HTML Arena = 20.
 - Tests: `tests/arena.test.mjs` (20 starters fail / 20 solutions pass), `tests/arena-ui.test.mjs` (real browser: all 20 played, hints, EN, 360/390/430/820/1366 no overflow, touch tap on Run; `AR_TRACK=css|js` reuses it).
+
+## CSS Arena (expanded + own identity)
+- 10 new challenges css-11…20 (border-box, sticky, custom properties, hover+transition, keyframes + prefers-reduced-motion, ::after, ellipsis, aspect-ratio/object-fit, gradient pill, 4-bug debug mission). Ids/progress of 1–10 untouched; new ones tier "expert".
+- Real-browser play (reducedMotion emulated) caught a defect: css-15 could not be solved under reduced motion because checks read computed `animation-*`. Checks now read the rule, so the solution (which disables motion under that media query) passes for everyone.
+- Skin: "paint studio" (colour-wash header, round level tiles, gradient brief edge, checkerboard preview). Hub total = 20.
+- Tests: `tests/arena.test.mjs` (css) and `AR_TRACK=css tests/arena-ui.test.mjs` pass: all 20 played, EN, five widths no overflow, touch.
