@@ -34,6 +34,7 @@ let list = [], idx = 0, ch = null, hints = 0, runner = null, runToken = 0, solve
 const areas = {};
 
 async function init() {
+  document.body.dataset.track = track.id;
   $("arTrack").textContent = track.name;
   try { list = await loadChallenges(track.id); } catch { list = []; }
   if (!list.length) { $("arSub").textContent = T("missing"); return; }

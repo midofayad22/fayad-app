@@ -1,0 +1,19 @@
+/* Arena identities: each track has its own look inside the platform theme. */
+body[data-track] .ar-head { position: relative; padding: 18px 20px; border-radius: 20px; border: 1px solid var(--fy-border-strong); overflow: hidden; background: var(--fy-surface); }
+body[data-track] .ar-head::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .9; }
+body[data-track] .ar-head > * { position: relative; }
+body[data-track] .ar-h1::before { display: inline-block; margin-inline-end: 10px; font: 800 .55em/1 ui-monospace, Menlo, Consolas, monospace; padding: 6px 10px; border-radius: 8px; vertical-align: middle; direction: ltr; }
+body[data-track] .ar-levels { padding: 10px 12px; border-radius: 16px; background: var(--fy-surface-2); border: 1px dashed var(--fy-border-strong); }
+@media (max-width: 480px) { body[data-track] .ar-lv { width: 44px; height: 44px; } }
+
+/* HTML Arena: blueprint workshop */
+body[data-track="html"] { --ar-accent: #f97316; }
+body[data-track="html"] .ar-head::before { background-image: linear-gradient(color-mix(in srgb, var(--ar-accent) 14%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--ar-accent) 14%, transparent) 1px, transparent 1px); background-size: 22px 22px; }
+body[data-track="html"] .ar-h1::before { content: "</>"; background: var(--ar-accent); color: #1b0a00; }
+body[data-track="html"] .ar-brief { border-inline-start: 6px solid var(--ar-accent); }
+body[data-track="html"] .ar-lv { border-radius: 4px; border-style: dashed; font-family: ui-monospace, Menlo, Consolas, monospace; }
+body[data-track="html"] .ar-lv.is-done { border-style: solid; }
+body[data-track="html"] .ar-checks li::before { content: "▢"; }
+body[data-track="html"] .ar-checks li.ok::before { content: "◼"; }
+body[data-track="html"] .ar-preview { background-image: repeating-linear-gradient(0deg, transparent 0 23px, color-mix(in srgb, var(--ar-accent) 10%, transparent) 23px 24px); background-color: #fff; }
+@media (prefers-reduced-motion: reduce) { body[data-track] * { transition: none !important; animation: none !important; } }

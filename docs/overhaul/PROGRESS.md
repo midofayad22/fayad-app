@@ -83,3 +83,9 @@ Checklist: [x] Adventure mechanics v2  [x] Zombie web-lab (supersedes the JS-onl
 - Match markers are `data-sq-*` attributes (not classes) so `[class=a]`, `:not([class])` etc. behave truthfully. Selectors containing `data-sq` are refused.
 - Stars: solve, no hint/solution, specificity not above the reference. Alternatives: 38 alternative selectors across levels, each verified.
 - Tests (`tests/selector-quest.test.mjs`, real browser): specificity calculator, all 24 levels (reference wins; `*` and a non-matching selector never win), every alternative on a fresh page, real play + persistence, war + injection attempts, hint ladder, locks, EN without Arabic, 360/390/430/820/1366 layouts, touch. Old Selector tests removed from `game.test.mjs`; old `js/game/selector-quest.js` deleted.
+
+## HTML Arena (expanded + own identity)
+- 10 new bilingual challenges html-11…20 (labelled search form, fieldset/radio group, landmarks, full data table, icon button/aria-label, details/summary, quotes/abbr/mark/time, picture/webp fallback, product card, 5-bug document). Ids 1–10 and index-based progress untouched; new ones are tier "expert" so level order stays non-decreasing.
+- `css/arena-skins.css`: per-track skin via `body[data-track]` (HTML = orange blueprint grid, mono square level tiles, ▢/◼ checks). CSS/JS skins follow in their own milestones.
+- Hub total for HTML Arena = 20.
+- Tests: `tests/arena.test.mjs` (20 starters fail / 20 solutions pass), `tests/arena-ui.test.mjs` (real browser: all 20 played, hints, EN, 360/390/430/820/1366 no overflow, touch tap on Run; `AR_TRACK=css|js` reuses it).
