@@ -18,21 +18,6 @@ async function open() {
   return { page, errors, ctx };
 }
 
-test("selector quest: wrong selector does not solve, exact selector does, invalid selector is handled", async () => {
-  const ctx = await browser.newContext({ serviceWorkers: "block" }); const page = await ctx.newPage();
-  await page.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort());
-  const errors = []; page.on("pageerror", (e) => errors.push(e.message));
-  await page.goto(base + "/play/selector-quest.html"); await page.waitForSelector("#sqInput");
-  await page.fill("#sqInput", "span"); assert.equal(await page.textContent("#fqPoints"), "0");
-  await page.fill("#sqInput", "p[["); assert.ok((await page.textContent("#sqCount")).length > 3);
-  await page.fill("#sqInput", "p");
-  await page.waitForFunction(() => document.getElementById("fqPoints").textContent === "15");
-  const answers = ["p", ".a", "#x", "p.a", "ul li", "ul > li", "li:first-child", ":disabled", "li:not(.a)", "h2 + p"];
-  for (let i = 1; i < answers.length; i++) { await page.click("#fqNext"); await page.fill("#sqInput", answers[i]); await page.waitForFunction((n) => document.querySelectorAll(".fq-dot")[n].classList.contains("is-done"), i); }
-  assert.equal(await page.textContent("#fqPoints"), "150");
-  assert.deepEqual(errors, []); await ctx.close();
-});
-
 test("games hub lists both games with progress from the shared store", async () => {
   const ctx = await browser.newContext({ serviceWorkers: "block" }); const page = await ctx.newPage();
   await page.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort());

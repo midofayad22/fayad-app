@@ -75,3 +75,11 @@ Checklist: [x] Adventure mechanics v2  [x] Zombie web-lab (supersedes the JS-onl
 - Win = size + position of every crate equal to the reference within 1.5px, so any valid CSS wins (alts verified: 17 of 24 levels have alternatives).
 - Tests (`tests/flex-quest.test.mjs`, real browser): all 24 levels (starters never win; reference + alternatives always win), real typing/win/persist/next, hint ladder + hostile CSS (@import, body override), locked URL, EN without Arabic, 360/390/430/820/1366 layouts, touch. Old select-based flex test removed from `game.test.mjs`; old `js/game/flex-quest.js` deleted.
 - Honest gaps: the page still uses the platform header; canonical URL still the old domain (SEO phase); gameplay is CSS-only by design (no JS).
+
+## Selector Quest — rebuilt (done)
+- "Radar room" identity (phosphor-green console, amber targets), 24 levels in 4 chapters; levels 1–10 keep ids/scenes/targets (progress preserved, game id `sel`); 11–24 add attribute selectors, nth-child/last/of-type, `~`, lists, `:is`, `:has`, chained `:not`, and 4 **specificity-war** levels.
+- Real DOM scene + live DOM tree; the typed selector goes only to `querySelectorAll` (and, in war levels, `CSSStyleSheet.insertRule` one rule at a time so nothing can escape the rule); hits glow green, extras red, misses pulse in the tree; plain-language reading of the selector ("ul > li.a" → element ul · direct child of · li and class a); specificity chip.
+- War levels use the real browser cascade: rival rules paint red/blue/orange, the learner's rule is appended last and paints lime; failure message names the rival rule that still wins with both specificities.
+- Match markers are `data-sq-*` attributes (not classes) so `[class=a]`, `:not([class])` etc. behave truthfully. Selectors containing `data-sq` are refused.
+- Stars: solve, no hint/solution, specificity not above the reference. Alternatives: 38 alternative selectors across levels, each verified.
+- Tests (`tests/selector-quest.test.mjs`, real browser): specificity calculator, all 24 levels (reference wins; `*` and a non-matching selector never win), every alternative on a fresh page, real play + persistence, war + injection attempts, hint ladder, locks, EN without Arabic, 360/390/430/820/1366 layouts, touch. Old Selector tests removed from `game.test.mjs`; old `js/game/selector-quest.js` deleted.
