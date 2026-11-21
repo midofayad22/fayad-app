@@ -101,3 +101,8 @@ Checklist: [x] Adventure mechanics v2  [x] Zombie web-lab (supersedes the JS-onl
 - Skin: "control room" (terminal tiles, scanline header, green console). Hub total = 20 for all three Arenas.
 - Tests: `tests/arena.test.mjs` + `AR_TRACK=js tests/arena-ui.test.mjs` pass (all 20 played in the browser, EN, five widths, touch). Regression: game, routes, english-zero-arabic = 30 pass.
 - All three Arenas done. Next: security/competition milestone (server-side validation), then integration/SEO/redesign/QA.
+
+## Security phase
+- Migration `0011_security_hardening.sql` (additive, applied to the project): registers the new game levels, revokes excess table privileges, hardens `submit_solve` (lock + insert-confirmed payout), integrity trigger for `assessment_results`.
+- Probe `supabase/tests/security_probe.sql` executed against the live project: all attack cases denied/neutralised, no data changed. Details and the list of remaining gaps: `docs/overhaul/SECURITY.md`.
+- Test fix: `tests/security.test.mjs` exempts `zombie/sim.js` (injected into the sandboxed frame, never runs on the site origin).
