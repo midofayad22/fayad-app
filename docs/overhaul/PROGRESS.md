@@ -95,3 +95,9 @@ Checklist: [x] Adventure mechanics v2  [x] Zombie web-lab (supersedes the JS-onl
 - Real-browser play (reducedMotion emulated) caught a defect: css-15 could not be solved under reduced motion because checks read computed `animation-*`. Checks now read the rule, so the solution (which disables motion under that media query) passes for everyone.
 - Skin: "paint studio" (colour-wash header, round level tiles, gradient brief edge, checkerboard preview). Hub total = 20.
 - Tests: `tests/arena.test.mjs` (css) and `AR_TRACK=css tests/arena-ui.test.mjs` pass: all 20 played, EN, five widths no overflow, touch.
+
+## JavaScript Arena (expanded + own identity)
+- 10 new challenges js-11…20 (default/rest params, destructuring, once() closure, pipe/reduce, var-in-loop, event delegation (DOM), safe JSON try/catch, Set/Map dedupe+count, two-key non-mutating sort, parallel fetch that survives failures). 1–10 untouched; new ones tier "expert".
+- Skin: "control room" (terminal tiles, scanline header, green console). Hub total = 20 for all three Arenas.
+- Tests: `tests/arena.test.mjs` + `AR_TRACK=js tests/arena-ui.test.mjs` pass (all 20 played in the browser, EN, five widths, touch). Regression: game, routes, english-zero-arabic = 30 pass.
+- All three Arenas done. Next: security/competition milestone (server-side validation), then integration/SEO/redesign/QA.

@@ -5,7 +5,7 @@ const ARENA = [
   { id: "html", name: "HTML", ar: "ابنِ صفحات سليمة الدلالة وسهلة الوصول وأصلح أخطاءها.", en: "Build semantic, accessible pages and fix their bugs." },
   { id: "css", name: "CSS", ar: "تخطيطات Flexbox وGrid وتصميم متجاوب وحركة بقياسات حقيقية.", en: "Flexbox and Grid layouts, responsive design and motion, graded by real measurements." },
   { id: "js", name: "JavaScript", ar: "منطق وتصحيح أخطاء وإغلاقات وDOM ووعود وخوارزميات سريعة.", en: "Logic, debugging, closures, the DOM, promises and fast algorithms." },
-].map((t) => ({ ...t, arena: true, href: `/play/arena.html?track=${t.id}`, total: t.id === "js" ? 10 : 20, tag: (t.id === "js" ? 10 : 20) + " · " }));
+].map((t) => ({ ...t, arena: true, href: `/play/arena.html?track=${t.id}`, total: 20, tag: "20 · " }));
 const GAMES = [
   { id: "flex", href: "/play/flex-quest.html", name: "Flex Quest", total: 24, tag: "CSS", ar: "اكتب CSS Flexbox حقيقيًا في 24 مرحلة وشاهد الصناديق تتحرك.", en: "Write real Flexbox CSS across 24 levels and watch the crates move." },
   { id: "sel", href: "/play/selector-quest.html", name: "Selector Quest", total: 24, tag: "CSS", ar: "اكتب محددات CSS حقيقية على DOM فعلي وراقب الرادار يضيء ما أصبته.", en: "Write real CSS selectors on a live DOM and watch the radar light up what you hit." },
