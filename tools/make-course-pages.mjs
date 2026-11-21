@@ -38,7 +38,7 @@ for (const id of process.argv.slice(2)) {
   const ogTitle = cfg.fresh ? title : (/<meta property="og:title" content="([^"]*)"/.exec(old) || [null, title])[1];
   const ogDesc = cfg.fresh ? desc : (/<meta property="og:description" content="([^"]*)"/.exec(old) || [null, desc])[1];
   const file = `${cfg.dir}/${cfg.dir}.html`;
-  const url = `https://fayad-learning.vercel.app/${file}`;
+  const url = `https://faybit.vercel.app/${file}`;
   const page = `<!doctype html>
 <html lang="ar" dir="rtl">
   <head>
@@ -62,7 +62,7 @@ for (const id of process.argv.slice(2)) {
     <meta property="og:title" content="${ogTitle}" />
     <meta property="og:description" content="${ogDesc}" />
     <meta property="og:url" content="${url}" />
-    <meta property="og:image" content="https://fayad-learning.vercel.app/assets/brand/og-image.png" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />

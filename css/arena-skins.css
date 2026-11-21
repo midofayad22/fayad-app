@@ -38,3 +38,9 @@ body[data-track="js"] .ar-checks li::before { content: "$"; font-family: ui-mono
 body[data-track="js"] .ar-checks li.ok::before { content: "✓"; }
 body[data-track="js"] .ar-console { background: #050b10; color: #86efac; border: 1px solid #14532d; font-family: ui-monospace, Menlo, Consolas, monospace; }
 @media (prefers-reduced-motion: reduce) { body[data-track] * { transition: none !important; animation: none !important; } }
+
+/* crawlable intro under the game (static text for search + a quick topic list for learners) */
+.ar-intro { margin-top: 28px; padding: 18px 20px; border: 1px solid var(--fy-border); border-radius: 16px; background: var(--fy-surface); }
+.ar-intro h2 { margin: 0 0 6px; font-size: 1.1rem; }
+.ar-intro p { margin: 0 0 8px; color: var(--fy-text-soft); }
+.ar-intro ul { margin: 0; padding-inline-start: 20px; display: grid; gap: 2px; color: var(--fy-text-soft); }

@@ -29,7 +29,7 @@ const T = (k, p = {}) => String(DICT[lang()][k] ?? k).replace(/\{(\w+)\}/g, (_, 
 const L = (o) => (o && (o[lang()] ?? o.ar)) || "";
 
 const q = new URLSearchParams(location.search);
-const track = TRACKS.find((t) => t.id === q.get("track")) || TRACKS[0];
+const track = TRACKS.find((t) => t.id === (q.get("track") || document.body.dataset.arenaTrack)) || TRACKS[0];
 let list = [], idx = 0, ch = null, hints = 0, runner = null, runToken = 0, solved = false;
 const areas = {};
 
