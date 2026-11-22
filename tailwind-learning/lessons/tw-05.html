@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <title>الأحجام: العرض والارتفاع — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="الأحجام: العرض والارتفاع: w وh وsize وmax-w وmin-h والكسور والقيم الخاصة. — Tailwind CSS." />
+    <link rel="canonical" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-05.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-05.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-05.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-05.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="الأحجام: العرض والارتفاع — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="الأحجام: العرض والارتفاع: w وh وsize وmax-w وmin-h والكسور والقيم الخاصة. — Tailwind CSS." />
+    <meta property="og:url" content="https://faybit.vercel.app/tailwind-learning/lessons/tw-05.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"الأحجام: العرض والارتفاع","item":"https://faybit.vercel.app/tailwind-learning/lessons/tw-05.html"}]},{"@type":"LearningResource","name":"الأحجام: العرض والارتفاع","description":"الأحجام: العرض والارتفاع: w وh وsize وmax-w وmin-h والكسور والقيم الخاصة. — Tailwind CSS.","url":"https://faybit.vercel.app/tailwind-learning/lessons/tw-05.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/tailwind-learning/lessons/index.html">الدروس</a><a href="/en/tailwind-learning/lessons/tw-05.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">الدرس 5 من 20</p>
+      <h1 class="lp-h1">الأحجام: العرض والارتفاع</h1>
+      <p class="lp-lead">w وh وsize وmax-w وmin-h والكسور والقيم الخاصة.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-5">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>العرض والارتفاع</h2><p>نفس مقياس المسافات: <code>w-16</code> = 4rem. كسور: <code>w-1/2</code> <code>w-2/3</code>. كلمات: <code>w-full</code> <code>w-screen</code> <code>w-fit</code> <code>w-auto</code>. وللمربع <code>size-12</code> (عرض وارتفاع معًا).</p></article><article class="content-card"><h2>الحدود</h2><p><code>max-w-sm|md|lg|xl|2xl…</code> لتحديد أقصى عرض للمحتوى النصي، و<code>min-h-screen</code> لارتفاع لا يقل عن الشاشة، و<code>aspect-video</code> لنسبة 16/9.</p></article></div>
+<article class="body-card key-card"><p>استخدم max-w بدل w الثابت ليتجاوب العنصر مع الشاشات الصغيرة.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="space-y-3 p-4"&gt;
+&lt;div id="half" class="w-1/2 bg-sky-200 p-2"&gt;w-1/2&lt;/div&gt;
+&lt;div class="size-16 bg-amber-300"&gt;&lt;/div&gt;
+&lt;div id="mx" class="max-w-xs bg-slate-200 p-2"&gt;max-w-xs: لا يتجاوز 20rem مهما كبرت الشاشة.&lt;/div&gt;
+&lt;div class="aspect-video w-48 bg-emerald-200"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p><code>size-16</code> يعطي عنصرًا مربعًا 4rem × 4rem. <code>aspect-video</code> يحافظ على نسبة العرض للارتفاع.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">اجعل العنصر الأول &lt;code&gt;w-2/3&lt;/code&gt; وأضف عنصرًا بـ &lt;code&gt;h-24 w-full&lt;/code&gt;.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ماذا يعني w-1/2؟</strong></p><ul><li>عرض 50% من الأب</li><li>عرض 1 بكسل</li><li>نصف الارتفاع</li><li>نصف الشاشة دائمًا</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>عرض 50% من الأب</strong></p></details></li><li><p><strong>أي فئة تجعل العرض والارتفاع متساويين بسطر واحد؟</strong></p><ul><li>size-12</li><li>wh-12</li><li>square-12</li><li>box-12</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>size-12</strong></p></details></li><li><p><strong>لماذا نفضل max-w على w ثابت؟</strong></p><ul><li>ليتقلص العنصر على الشاشات الصغيرة</li><li>لأنها أسرع</li><li>لأنها تغير اللون</li><li>لا فرق</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>ليتقلص العنصر على الشاشات الصغيرة</strong></p></details></li><li><p><strong>ماذا تعطي الفئة aspect-video؟</strong></p><ul><li>نسبة عرض إلى ارتفاع 16/9</li><li>ارتفاعاً بحجم الشاشة</li><li>عرضاً 100%</li><li>تشغيل فيديو</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>نسبة عرض إلى ارتفاع 16/9</strong></p><p>aspect-video تضبط النسبة 16:9 للعنصر.</p></details></li><li><p><strong>أي فئة تجعل الارتفاع على الأقل بحجم الشاشة؟</strong></p><ul><li>h-min</li><li>min-h-screen</li><li>max-h-full</li><li>h-fit</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>min-h-screen</strong></p><p>min-h-screen يضمن ملء الشاشة مع السماح بالنمو.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-5">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/tailwind-learning/lessons/tw-04.html"><small>الدرس السابق</small><strong>الطباعة</strong></a>
+        <a rel="next" href="/tailwind-learning/lessons/tw-06.html"><small>الدرس التالي</small><strong>Flexbox</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/tailwind-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="vue" />
+    <title>v-for — Vue.js | FAYBIT</title>
+    <meta name="description" content="تعلّم كيف تعرض عناصر متعددة من Array باستخدام v-for." />
+    <link rel="canonical" href="https://faybit.vercel.app/vue-learning/lessons/vue-09.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/vue-learning/lessons/vue-09.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/vue-learning/lessons/vue-09.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/vue-learning/lessons/vue-09.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="v-for — Vue.js | FAYBIT" />
+    <meta property="og:description" content="تعلّم كيف تعرض عناصر متعددة من Array باستخدام v-for." />
+    <meta property="og:url" content="https://faybit.vercel.app/vue-learning/lessons/vue-09.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Vue.js","item":"https://faybit.vercel.app/vue-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"v-for","item":"https://faybit.vercel.app/vue-learning/lessons/vue-09.html"}]},{"@type":"LearningResource","name":"v-for","description":"تعلّم كيف تعرض عناصر متعددة من Array باستخدام v-for.","url":"https://faybit.vercel.app/vue-learning/lessons/vue-09.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Vue.js — FAYBIT","url":"https://faybit.vercel.app/vue-learning/vue-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Vue.js"><a href="/vue-learning/lessons/index.html">الدروس</a><a href="/en/vue-learning/lessons/vue-09.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/vue-learning/lessons/index.html">Vue.js</a></nav>
+      <p class="lp-eyebrow">الدرس 9 من 22</p>
+      <h1 class="lp-h1">v-for</h1>
+      <p class="lp-lead">تعلّم كيف تعرض عناصر متعددة من Array باستخدام v-for.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-9">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<h2>v-for</h2>
+<p>
+تستخدم <code>v-for</code> لتكرار عنصر HTML لكل عنصر موجود
+داخل Array أو Collection.
+</p>
+<p>
+وهي من أكثر Directives استخدامًا عند إنشاء القوائم.
+</p>
+</div></article>
+<article class="body-card key-card"><div class="info-label">v-for تعرض القوائم</div><p>يمكنك استخدام v-for لتكرار عنصر HTML اعتمادًا على عناصر Array.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>الكود</h2></div>
+</div>
+<pre dir="ltr"><code>
+&lt;div id="app"&gt;
+&lt;ul&gt;
+&lt;li v-for="item in items"&gt;
+{{ item }}
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;script&gt;
+const { createApp } = Vue;
+createApp({
+data() {
+return {
+items: ["HTML", "CSS", "JavaScript"]
+};
+}
+}).mount("#app");
+&lt;/script&gt;
+</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static">
+<div style="padding:20px;font-family:Arial;">
+<ul style="margin:0;padding-right:20px;">
+<li>HTML</li>
+<li>CSS</li>
+<li>JavaScript</li>
+</ul>
+</div>
+</div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>
+<p>
+<code>v-for="item in items"</code> تمر على جميع عناصر
+<code>items</code>.
+</p>
+<p>
+في كل مرة يتم إنشاء نسخة من العنصر الموجود داخل الـ Template.
+</p>
+<p>
+عند استخدام Arrays مع v-for من الأفضل استخدام <code>key</code>
+عندما يكون ذلك مناسبًا.
+</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span></div>
+</div>
+<p class="practice-description">استخدم v-for لعرض جميع عناصر Array داخل قائمة.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما Directive المستخدمة لإنشاء Lists؟</strong></p><ul><li>v-for</li><li>v-list</li><li>v-repeat</li><li>v-loop-html</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>v-for</strong></p></details></li><li><p><strong>ماذا يفعل v-for؟</strong></p><ul><li>يكرر عنصرًا اعتمادًا على بيانات</li><li>يغير لون الصفحة</li><li>ينشئ قاعدة بيانات</li><li>يشغل CSS فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يكرر عنصرًا اعتمادًا على بيانات</strong></p></details></li><li><p><strong>إذا كان لدينا items Array، كيف نمر على عناصرها؟</strong></p><ul><li>v-for=&quot;item in items&quot;</li><li>v-loop=&quot;items&quot;</li><li>v-array=&quot;items&quot;</li><li>v-each=&quot;items&quot;</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>v-for=&quot;item in items&quot;</strong></p></details></li><li><p><strong>ما الناتج؟
+items = ['A','B','C']
+&lt;li v-for=&quot;x in items&quot;&gt;{{ x }}&lt;/li&gt;</strong></p><ul><li>عنصر li واحد</li><li>ثلاثة عناصر li تعرض A وB وC</li><li>لا شيء</li><li>خطأ</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>ثلاثة عناصر li تعرض A وB وC</strong></p><p>v-for يكرر العنصر لكل عنصر في المصفوفة.</p></details></li><li><p><strong>لماذا نضيف :key عند استخدام v-for؟</strong></p><ul><li>ليساعد Vue على تتبع كل عنصر وتحديث القائمة بكفاءة</li><li>ليغيّر لون العناصر</li><li>ليمنع تكرار العناصر</li><li>هو مطلوب لعمل {{ }}</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>ليساعد Vue على تتبع كل عنصر وتحديث القائمة بكفاءة</strong></p><p>المفتاح الفريد يسمح لـ Vue بمعرفة العنصر المتغير وإعادة استخدام الباقي.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-9">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/vue-learning/lessons/vue-08.html"><small>الدرس السابق</small><strong>v-if و v-else</strong></a>
+        <a rel="next" href="/vue-learning/lessons/vue-10.html"><small>الدرس التالي</small><strong>v-on والأحداث</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/vue-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <title>@apply و @layer وإعادة الاستخدام — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="متى نستخرج مكونًا، وكيف نكتب فئات مخصصة مع @apply." />
+    <link rel="canonical" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-18.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-18.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-18.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-18.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="@apply و @layer وإعادة الاستخدام — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="متى نستخرج مكونًا، وكيف نكتب فئات مخصصة مع @apply." />
+    <meta property="og:url" content="https://faybit.vercel.app/tailwind-learning/lessons/tw-18.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"@apply و @layer وإعادة الاستخدام","item":"https://faybit.vercel.app/tailwind-learning/lessons/tw-18.html"}]},{"@type":"LearningResource","name":"@apply و @layer وإعادة الاستخدام","description":"متى نستخرج مكونًا، وكيف نكتب فئات مخصصة مع @apply.","url":"https://faybit.vercel.app/tailwind-learning/lessons/tw-18.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/tailwind-learning/lessons/index.html">الدروس</a><a href="/en/tailwind-learning/lessons/tw-18.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">الدرس 18 من 20</p>
+      <h1 class="lp-h1">@apply و @layer وإعادة الاستخدام</h1>
+      <p class="lp-lead">متى نستخرج مكونًا، وكيف نكتب فئات مخصصة مع @apply.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-18">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>الأفضل: مكوّنات</h2><p>أول حل للتكرار هو <strong>مكوّن</strong> (قالب أو دالة في إطار عملك) لا فئة CSS جديدة. عندما لا يتوفر مكوّن (مثل HTML خام) استخدم <code>@layer components</code> مع <code>@apply</code>.</p></article><article class="content-card"><h2>الصيغة</h2><p><code>@layer components { .btn { @apply rounded-lg px-4 py-2 font-semibold; } }</code>. حافظ على قلة هذه الفئات وإلا فقدت فائدة Utility-First.</p></article></div>
+<article class="body-card key-card"><p>استخدم @apply بحذر: المكوّنات أولًا ثم الفئات المخصصة للضرورة.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;style type="text/tailwindcss"&gt;
+@layer components {
+.btn {
+@apply rounded-lg px-4 py-2 font-semibold transition;
+}
+.btn-primary {
+@apply bg-sky-600 text-white hover:bg-sky-700;
+}
+}
+&lt;/style&gt;
+&lt;div class="flex gap-3 p-4"&gt;
+&lt;button id="x" class="btn btn-primary"&gt;أساسي&lt;/button&gt;
+&lt;button class="btn bg-slate-200 text-slate-800 hover:bg-slate-300"&gt;ثانوي&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>الفئتان <code>btn</code> و<code>btn-primary</code> جمعتا أدوات Tailwind في اسم واحد. ويمكن تجاوزها بفئات أدوات مباشرة عند الحاجة كما في الزر الثاني.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">أضف &lt;code&gt;.btn-danger&lt;/code&gt; بخلفية &lt;code&gt;bg-rose-600&lt;/code&gt; واستخدمه.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما أول حل لتكرار مجموعة الفئات؟</strong></p><ul><li>استخراج مكوّن</li><li>نسخ ولصق دائمًا</li><li>حذف التصميم</li><li>كتابة JavaScript</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>استخراج مكوّن</strong></p></details></li><li><p><strong>أي طبقة نضع فيها فئات المكونات المخصصة؟</strong></p><ul><li>@layer components</li><li>@layer reset</li><li>@media</li><li>@import url</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>@layer components</strong></p></details></li><li><p><strong>ماذا تفعل @apply؟</strong></p><ul><li>تدرج أدوات Tailwind داخل قاعدة CSS مخصصة</li><li>تحمل خطًا</li><li>تنشئ مكوّن React</li><li>تحذف الأدوات</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تدرج أدوات Tailwind داخل قاعدة CSS مخصصة</strong></p></details></li><li><p><strong>ما عيب الإكثار من فئات @apply؟</strong></p><ul><li>تفقد ميزة Utility-First</li><li>تتوقف الألوان عن العمل</li><li>يمنع المتصفح التحميل</li><li>لا يمكن استخدامها في v4</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تفقد ميزة Utility-First</strong></p><p>نعود لتسمية الفئات وإدارة ملف CSS كما كان.</p></details></li><li><p><strong>أين نكتب قاعدة @apply لزر مخصص؟</strong></p><ul><li>داخل @layer components في قاعدة CSS</li><li>داخل خاصية class في HTML</li><li>داخل وسم script</li><li>في اسم الملف</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>داخل @layer components في قاعدة CSS</strong></p><p>@apply يُستخدم داخل قواعد CSS وليس داخل HTML.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-18">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/tailwind-learning/lessons/tw-17.html"><small>الدرس السابق</small><strong>التخصيص بـ @theme</strong></a>
+        <a rel="next" href="/tailwind-learning/lessons/tw-19.html"><small>الدرس التالي</small><strong>النماذج وحالات الحقول</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/tailwind-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

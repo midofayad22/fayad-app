@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>Symbols والـ Tagged Templates — JavaScript المتقدم | FAYBIT</title>
+    <meta name="description" content="مفاتيح فريدة غير قابلة للتصادم، وقوالب نصية يمكنك معالجتها بدالة خاصة." />
+    <link rel="canonical" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-14.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-14.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-14.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-14.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Symbols والـ Tagged Templates — JavaScript المتقدم | FAYBIT" />
+    <meta property="og:description" content="مفاتيح فريدة غير قابلة للتصادم، وقوالب نصية يمكنك معالجتها بدالة خاصة." />
+    <meta property="og:url" content="https://faybit.vercel.app/advanced-javascript/lessons/ajs-14.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript المتقدم","item":"https://faybit.vercel.app/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Symbols والـ Tagged Templates","item":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-14.html"}]},{"@type":"LearningResource","name":"Symbols والـ Tagged Templates","description":"مفاتيح فريدة غير قابلة للتصادم، وقوالب نصية يمكنك معالجتها بدالة خاصة.","url":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-14.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript المتقدم — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript المتقدم"><a href="/advanced-javascript/lessons/index.html">الدروس</a><a href="/en/advanced-javascript/lessons/ajs-14.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/advanced-javascript/lessons/index.html">JavaScript المتقدم</a></nav>
+      <p class="lp-eyebrow">الدرس 14 من 22</p>
+      <h1 class="lp-h1">Symbols والـ Tagged Templates</h1>
+      <p class="lp-lead">مفاتيح فريدة غير قابلة للتصادم، وقوالب نصية يمكنك معالجتها بدالة خاصة.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-14">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>Symbol</h2><p>كل <code>Symbol()</code> قيمة فريدة تمامًا. تصلح كمفاتيح خصائص لا تتصادم مع غيرها ولا تظهر في <code>for...in</code> أو <code>Object.keys</code>.</p></article><article class="content-card"><h2>Tagged Templates</h2><p>عند كتابة <code>tag`نص ${قيمة}`</code> تستدعى الدالة <code>tag</code> بمصفوفة الأجزاء النصية ثم القيم. تُستخدم لتهريب HTML وبناء استعلامات آمنة ولغات مخصصة.</p></article></div>
+<article class="body-card key-card"><p>Symbols للمفاتيح الفريدة، والـ tagged templates تتيح معالجة القيم المدرجة قبل بناء النص.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>const id = Symbol("id");
+const user = { name: "Lina", [id]: 101 };
+console.log(Object.keys(user), user[id]);
+console.log(Symbol("a") === Symbol("a"), Symbol.for("a") === Symbol.for("a"));
+const escapeHtml = (s) =&gt; String(s).replace(/[&amp;&lt;&gt;"']/g, (c) =&gt; ({ "&amp;": "&amp;amp;", "&lt;": "&amp;lt;", "&gt;": "&amp;gt;", '"': "&amp;quot;", "'": "&amp;#39;" }[c]));
+const html = (strings, ...values) =&gt;
+strings.reduce((out, s, i) =&gt; out + s + (i &lt; values.length ? escapeHtml(values[i]) : ""), "");
+const input = "&lt;script&gt;alert(1)&lt;/script&gt;";
+console.log(html`&lt;p&gt;${input}&lt;/p&gt;`);</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">[ 'name' ] 101
+false true
+&lt;p&gt;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;&lt;/p&gt;</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>المفتاح <code>id</code> لم يظهر في <code>keys</code>. دالة <code>html</code> تهرّب كل قيمة مدرجة تلقائيًا، فيصبح بناء HTML من مدخلات المستخدم أكثر أمانًا.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>جرّب بنفسك</h2></div>
+</div>
+<p class="practice-description">اكتب tag باسم &lt;code&gt;upper&lt;/code&gt; تحول القيم المدرجة إلى أحرف كبيرة.</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ماذا يميز Symbol()؟</strong></p><ul><li>كل استدعاء يرجع قيمة فريدة</li><li>هو نص عادي</li><li>يساوي دائمًا Symbol('a')</li><li>يُحفظ في الشبكة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>كل استدعاء يرجع قيمة فريدة</strong></p></details></li><li><p><strong>ماذا تستلم دالة الـ tag كوسيط أول؟</strong></p><ul><li>مصفوفة الأجزاء النصية</li><li>القيم فقط</li><li>كائن DOM</li><li>رقم السطر</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>مصفوفة الأجزاء النصية</strong></p></details></li><li><p><strong>أي استخدام مناسب للـ tagged templates؟</strong></p><ul><li>تهريب HTML وبناء استعلامات آمنة</li><li>تغيير ألوان الصفحة</li><li>تحميل الملفات</li><li>ضغط الصور</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تهريب HTML وبناء استعلامات آمنة</strong></p></details></li><li><p><strong>ما ناتج الكود؟ const s = Symbol(); const o = { [s]: 1, a: 2 }; console.log(Object.keys(o), JSON.stringify(o));</strong></p><ul><li>[&quot;a&quot;] و {&quot;a&quot;:2}</li><li>[&quot;a&quot;, &quot;s&quot;] و {&quot;a&quot;:2,&quot;s&quot;:1}</li><li>[] و {}</li><li>[&quot;a&quot;] و {&quot;a&quot;:2,&quot;s&quot;:1}</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>[&quot;a&quot;] و {&quot;a&quot;:2}</strong></p><p>المفاتيح من نوع Symbol لا تظهر في Object.keys ولا في for...in ويتجاهلها JSON.stringify. لذلك تبقى الخاصية a وحدها.</p></details></li><li><p><strong>ما ناتج الكود؟ function tag(strings, ...vals) { return strings.length + &quot;:&quot; + vals.join(&quot;-&quot;); } console.log(tag`a${1}b${2}c`);</strong></p><ul><li>2:1-2</li><li>3:1-2</li><li>5:1-2</li><li>3:12</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>3:1-2</strong></p><p>القوالب تُقسم عند كل تعبير مدرج إلى نصوص ثابتة هي &quot;a&quot; و &quot;b&quot; و &quot;c&quot; أي 3 عناصر، وتصل القيم 1 و 2 في وسائط الـ rest. join بالشرطة يعطي 1-2.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-14">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/advanced-javascript/lessons/ajs-13.html"><small>الدرس السابق</small><strong>Map و Set و WeakMap و WeakRef</strong></a>
+        <a rel="next" href="/advanced-javascript/lessons/ajs-15.html"><small>الدرس التالي</small><strong>حلقة الأحداث: Microtasks و Macrotasks</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/advanced-javascript/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

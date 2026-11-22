@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="js" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Arrays — JavaScript | FAYBIT</title>
+    <meta name="description" content="Learn how arrays store multiple values in a single variable and how to access their elements." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-11.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-11.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/javascript-learning/lessons/js-11.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/javascript-learning/lessons/js-11.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Arrays — JavaScript | FAYBIT" />
+    <meta property="og:description" content="Learn how arrays store multiple values in a single variable and how to access their elements." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/javascript-learning/lessons/js-11.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript","item":"https://faybit.vercel.app/en/javascript-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Arrays","item":"https://faybit.vercel.app/en/javascript-learning/lessons/js-11.html"}]},{"@type":"LearningResource","name":"Arrays","description":"Learn how arrays store multiple values in a single variable and how to access their elements.","url":"https://faybit.vercel.app/en/javascript-learning/lessons/js-11.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript — FAYBIT","url":"https://faybit.vercel.app/javascript-learning/javascript-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript"><a href="/en/javascript-learning/lessons/index.html">Lessons</a><a href="/javascript-learning/lessons/js-11.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/javascript-learning/lessons/index.html">JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 11 of 25</p>
+      <h1 class="lp-h1">Arrays</h1>
+      <p class="lp-lead">Learn how arrays store multiple values in a single variable and how to access their elements.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-11">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>const fruits = [
+"Apple",
+"Banana",
+"Orange"
+];
+document.getElementById("jsResult").textContent =
+fruits[0];</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>
+<p>An <strong>Array</strong> is a data structure that stores multiple values in a single variable.</p>
+<p>Elements inside an Array have a numeric index that starts at <strong>0</strong>.</p>
+<p>To access the first element we use <strong>array[0]</strong>.</p>
+<p>Arrays are very important when working with collections of data.</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Write JavaScript</h2></div>
+</div>
+<p class="practice-description">Change the code below, then run it to see the result.</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What does an Array store?</strong></p><ul><li>Multiple values in a single variable</li><li>Only one value</li><li>Only CSS</li><li>Only HTML</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Multiple values in a single variable</strong></p></details></li><li><p><strong>What is the index of the first element in an Array?</strong></p><ul><li>0</li><li>1</li><li>-1</li><li>10</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>0</strong></p></details></li><li><p><strong>How do you access the first element in fruits?</strong></p><ul><li>fruits[0]</li><li>fruits[1]</li><li>fruits.first</li><li>fruits()</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>fruits[0]</strong></p></details></li><li><p><strong>What does this code print? const a = [1, 2, 3]; a[5] = 9; console.log(a.length);</strong></p><ul><li>4</li><li>3</li><li>6</li><li>5</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>6</strong></p><p>length is the highest index plus one, so assigning to index 5 makes it 6 and leaves empty gaps in between. The element is not placed in the next free slot.</p></details></li><li><p><strong>How do you reach the last element of an array arr whatever its length?</strong></p><ul><li>arr[arr.length]</li><li>arr[arr.length - 1]</li><li>arr[-1]</li><li>arr.last</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>arr[arr.length - 1]</strong></p><p>Indexing starts at 0, so the last index is length minus one. arr[arr.length] gives undefined, arr[-1] is not a valid index in JavaScript, and last does not exist.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-11">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/javascript-learning/lessons/js-10.html"><small>Previous lesson</small><strong>Arrow Functions</strong></a>
+        <a rel="next" href="/en/javascript-learning/lessons/js-12.html"><small>Next lesson</small><strong>Array Methods</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/javascript-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

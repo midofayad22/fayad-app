@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>Alerts, Badges, Progress, and Spinners — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="Status components: alert, badge, progress, and spinner." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-15.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-15.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-15.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-15.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Alerts, Badges, Progress, and Spinners — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="Status components: alert, badge, progress, and spinner." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-15.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Alerts, Badges, Progress, and Spinners","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-15.html"}]},{"@type":"LearningResource","name":"Alerts, Badges, Progress, and Spinners","description":"Status components: alert, badge, progress, and spinner.","url":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-15.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/en/bootstrap-learning/lessons/index.html">Lessons</a><a href="/bootstrap-learning/lessons/bs-15.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">Lesson 15 of 20</p>
+      <h1 class="lp-h1">Alerts, Badges, Progress, and Spinners</h1>
+      <p class="lp-lead">Status components: alert, badge, progress, and spinner.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-15">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Alerts and Badges</h2><p><code>.alert.alert-{color}</code> with <code>role="alert"</code>, and for dismissing use <code>alert-dismissible</code> and <code>btn-close</code> with <code>data-bs-dismiss="alert"</code>. The badge is <code>.badge.text-bg-{color}</code>.</p></article><article class="content-card"><h2>Progress and Spinner</h2><p>The progress bar: <code>.progress</code> containing <code>.progress-bar</code> with a width set by <code>style="width: 60%"</code>, along with <code>role="progressbar"</code>, <code>aria-valuenow</code>, <code>aria-valuemin</code>, and <code>aria-valuemax</code>. The spinner: <code>.spinner-border</code> with <code>.visually-hidden</code> for the "Loading" text.</p></article></div>
+<article class="body-card key-card"><p>Don't rely on color alone: add text and aria attributes for progress and loading.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="container py-3"&gt;
+&lt;div class="alert alert-warning alert-dismissible fade show" role="alert"&gt;
+&lt;strong&gt;Heads up!&lt;/strong&gt; Complete your profile.
+&lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;Lessons &lt;span class="badge text-bg-primary"&gt;12&lt;/span&gt;&lt;/p&gt;
+&lt;div class="progress mb-3" role="progressbar" aria-label="Course progress" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"&gt;
+&lt;div class="progress-bar progress-bar-striped" style="width: 60%"&gt;60%&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="spinner-border text-primary" role="status"&gt;&lt;span class="visually-hidden"&gt;Loading...&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>Click the close button and the alert disappears (thanks to the JavaScript file). <code>visually-hidden</code> hides the text visually but keeps it for screen readers.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Change the alert to &lt;code&gt;alert-success&lt;/code&gt; and set the progress to 85%.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which attribute closes the alert when clicked?</strong></p><ul><li>data-bs-dismiss=&quot;alert&quot;</li><li>onclick=&quot;close&quot;</li><li>href=&quot;#close&quot;</li><li>data-close</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>data-bs-dismiss=&quot;alert&quot;</strong></p></details></li><li><p><strong>What is the purpose of visually-hidden?</strong></p><ul><li>Hiding text visually while keeping it for screen readers</li><li>Deleting the element</li><li>Hiding it from everyone</li><li>Shrinking the font</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Hiding text visually while keeping it for screen readers</strong></p></details></li><li><p><strong>Which attribute sets the width of the progress bar?</strong></p><ul><li>style=&quot;width: 60%&quot;</li><li>data-width</li><li>col-60</li><li>value</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>style=&quot;width: 60%&quot;</strong></p></details></li><li><p><strong>Which aria attribute holds the current value of a progress bar?</strong></p><ul><li>aria-valuemax</li><li>aria-valuenow</li><li>aria-label</li><li>aria-current</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>aria-valuenow</strong></p><p>aria-valuenow is the current value, while min and max set the limits.</p></details></li><li><p><strong>Which set makes a dismissible alert?</strong></p><ul><li>alert-dismissible with btn-close and data-bs-dismiss=&quot;alert&quot;</li><li>alert-close only</li><li>badge with data-bs-toggle</li><li>btn-close with no attribute</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>alert-dismissible with btn-close and data-bs-dismiss=&quot;alert&quot;</strong></p><p>The class prepares the space and data-bs-dismiss closes the alert.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-15">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/bootstrap-learning/lessons/bs-14.html"><small>Previous lesson</small><strong>Tables and Lists</strong></a>
+        <a rel="next" href="/en/bootstrap-learning/lessons/bs-16.html"><small>Next lesson</small><strong>Modal and Offcanvas</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/bootstrap-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

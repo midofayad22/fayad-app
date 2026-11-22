@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>الأداء والذاكرة — JavaScript المتقدم | FAYBIT</title>
+    <meta name="description" content="تعقيد الخوارزميات، تجنب التسريبات الشائعة، وقياس الأداء قبل التحسين." />
+    <link rel="canonical" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-22.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-22.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-22.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-22.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="الأداء والذاكرة — JavaScript المتقدم | FAYBIT" />
+    <meta property="og:description" content="تعقيد الخوارزميات، تجنب التسريبات الشائعة، وقياس الأداء قبل التحسين." />
+    <meta property="og:url" content="https://faybit.vercel.app/advanced-javascript/lessons/ajs-22.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript المتقدم","item":"https://faybit.vercel.app/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"الأداء والذاكرة","item":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-22.html"}]},{"@type":"LearningResource","name":"الأداء والذاكرة","description":"تعقيد الخوارزميات، تجنب التسريبات الشائعة، وقياس الأداء قبل التحسين.","url":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-22.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript المتقدم — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript المتقدم"><a href="/advanced-javascript/lessons/index.html">الدروس</a><a href="/en/advanced-javascript/lessons/ajs-22.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/advanced-javascript/lessons/index.html">JavaScript المتقدم</a></nav>
+      <p class="lp-eyebrow">الدرس 22 من 22</p>
+      <h1 class="lp-h1">الأداء والذاكرة</h1>
+      <p class="lp-lead">تعقيد الخوارزميات، تجنب التسريبات الشائعة، وقياس الأداء قبل التحسين.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-22">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>فكّر في التعقيد</h2><p>البحث في مصفوفة <code>O(n)</code> بينما <code>Set.has</code> و<code>Map.get</code> تقريبًا <code>O(1)</code>. استبدال بحث داخل حلقة بـ Set قد يحول <code>O(n²)</code> إلى <code>O(n)</code>.</p></article><article class="content-card"><h2>تسريبات الذاكرة الشائعة</h2><ul><li>مستمعو أحداث لم تُزَل.</li><li>مؤقتات <code>setInterval</code> لم تُلغَ.</li><li>Closures تمسك بكائنات ضخمة.</li><li>Maps عامة تكبر بلا حد (استخدم WeakMap أو حدًّا للحجم).</li></ul></article></div>
+<article class="body-card key-card"><p>قِس أولًا ثم حسّن. التحسين المبكر دون قياس يضيّع الوقت.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>const N = 2000;
+const a = Array.from({ length: N }, (_, i) =&gt; i);
+const b = Array.from({ length: N }, (_, i) =&gt; i * 2);
+function slow() {
+let n = 0;
+for (const x of a) if (b.includes(x)) n++;
+return n;
+}
+function fast() {
+const set = new Set(b);
+let n = 0;
+for (const x of a) if (set.has(x)) n++;
+return n;
+}
+console.log(slow() === fast(), fast());
+const cache = new Map();
+function remember(key, value, max = 3) {
+cache.set(key, value);
+if (cache.size &gt; max) cache.delete(cache.keys().next().value);
+}
+["a", "b", "c", "d", "e"].forEach((k, i) =&gt; remember(k, i));
+console.log([...cache.keys()]);</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">true 1000
+[ 'c', 'd', 'e' ]</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>النسختان تعطيان نفس النتيجة لكن الثانية أسرع كثيرًا مع الأحجام الكبيرة. الـ cache المحدود يحذف أقدم مفتاح (Map تحافظ على ترتيب الإدخال) فلا ينمو بلا حد.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>جرّب بنفسك</h2></div>
+</div>
+<p class="practice-description">اكتب دالة تعيد العناصر المشتركة بين مصفوفتين باستخدام &lt;code&gt;Set&lt;/code&gt;.</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما فائدة Set.has مقارنة بـ includes؟</strong></p><ul><li>بحث أسرع (تقريبًا ثابت الزمن) في المجموعات الكبيرة</li><li>تحذف التكرار تلقائيًا من الإخراج</li><li>تعمل على النصوص فقط</li><li>لا فرق أبدًا</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>بحث أسرع (تقريبًا ثابت الزمن) في المجموعات الكبيرة</strong></p></details></li><li><p><strong>أي مما يلي سبب شائع لتسرب الذاكرة؟</strong></p><ul><li>مستمعو أحداث لم تُزَل</li><li>استخدام const</li><li>كتابة تعليقات</li><li>استخدام map</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>مستمعو أحداث لم تُزَل</strong></p></details></li><li><p><strong>ما القاعدة الصحيحة للتحسين؟</strong></p><ul><li>قِس أولًا ثم حسّن الأبطأ فعلًا</li><li>حسّن كل سطر مبكرًا</li><li>لا تحسّن أبدًا</li><li>اكتب كل شيء بحلقات متداخلة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>قِس أولًا ثم حسّن الأبطأ فعلًا</strong></p></details></li><li><p><strong>حلقة تكتب style لعنصر ثم تقرأ offsetHeight في كل دورة. ما المشكلة وما الحل؟</strong></p><ul><li>لا مشكلة، فالقراءة سريعة دائماً</li><li>التبديل بين الكتابة والقراءة يجبر المتصفح على إعادة حساب التخطيط في كل دورة، فنجمّع القراءات ثم الكتابات</li><li>offsetHeight لا تعمل داخل الحلقات</li><li>الحل هو استخدام var بدل let</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>التبديل بين الكتابة والقراءة يجبر المتصفح على إعادة حساب التخطيط في كل دورة، فنجمّع القراءات ثم الكتابات</strong></p><p>قراءة خاصية تخطيط بعد تعديل مرتبط بها تفرض إعادة حساب متزامنة تسمى layout thrashing. تجميع كل القراءات أولاً ثم الكتابات يجعل المتصفح يحسب مرة واحدة.</p></details></li><li><p><strong>قائمة فيها 1000 عنصر يجب أن يستجيب كل منها للنقر. ما الأسلوب الأكفأ؟</strong></p><ul><li>إضافة مستمع منفصل لكل عنصر</li><li>استخدام setInterval لفحص النقرات</li><li>مستمع واحد على الحاوية يفحص event.target (event delegation)</li><li>إعادة بناء الصفحة بعد كل نقرة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>مستمع واحد على الحاوية يفحص event.target (event delegation)</strong></p><p>الأحداث تفقع إلى الحاوية، فمستمع واحد يخدم كل العناصر ويعمل أيضاً مع العناصر المضافة لاحقاً. هذا يوفر ذاكرة ووقتاً مقارنة بألف مستمع.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-22">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/advanced-javascript/lessons/ajs-21.html"><small>الدرس السابق</small><strong>أنماط التصميم: Observer و Pub/Sub</strong></a>
+        <span></span>
+      </nav>
+      <p class="lp-all"><a href="/advanced-javascript/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

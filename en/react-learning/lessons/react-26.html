@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="react" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Reusable Components — React | FAYBIT</title>
+    <meta name="description" content="Learn how to design flexible Components that can be used in more than one place in the app." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/react-learning/lessons/react-26.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/react-learning/lessons/react-26.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/react-learning/lessons/react-26.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/react-learning/lessons/react-26.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Reusable Components — React | FAYBIT" />
+    <meta property="og:description" content="Learn how to design flexible Components that can be used in more than one place in the app." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/react-learning/lessons/react-26.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"React","item":"https://faybit.vercel.app/en/react-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Reusable Components","item":"https://faybit.vercel.app/en/react-learning/lessons/react-26.html"}]},{"@type":"LearningResource","name":"Reusable Components","description":"Learn how to design flexible Components that can be used in more than one place in the app.","url":"https://faybit.vercel.app/en/react-learning/lessons/react-26.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"React — FAYBIT","url":"https://faybit.vercel.app/react-learning/react-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="React"><a href="/en/react-learning/lessons/index.html">Lessons</a><a href="/react-learning/lessons/react-26.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/react-learning/lessons/index.html">React</a></nav>
+      <p class="lp-eyebrow">Lesson 26 of 30</p>
+      <h1 class="lp-h1">Reusable Components</h1>
+      <p class="lp-lead">Learn how to design flexible Components that can be used in more than one place in the app.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-26">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<p>
+A reusable component should be flexible enough to accept different data.
+</p>
+<p>
+You can use Props and children to specify the content or behavior that changes from one use to another.
+</p>
+<p>
+The goal is to reduce repetition while keeping the component clear.
+</p>
+</div></article>
+<article class="body-card key-card"><p>Design a generic Component when there is truly shared behavior or UI.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>The code</h2></div>
+</div>
+<pre dir="ltr"><code>function Button({ children }) {
+return (
+&lt;button className="button"&gt;
+{children}
+&lt;/button&gt;
+);
+}</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>Button is a simple example of a Component that can be used with different text or functionality.</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span></div>
+</div>
+<p class="practice-description">Try passing different text using children.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is a Reusable Component?</strong></p><ul><li>A Component that can be used in multiple places</li><li>A Component that works only once</li><li>CSS file</li><li>Database</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A Component that can be used in multiple places</strong></p></details></li><li><p><strong>What can be used to make a Button flexible?</strong></p><ul><li>Props and children</li><li>CSS only</li><li>SQL</li><li>Database</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Props and children</strong></p></details></li><li><p><strong>What is the goal of Reusability?</strong></p><ul><li>Reducing repetition</li><li>Increasing repetition</li><li>Deleting Components</li><li>Deleting JavaScript</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Reducing repetition</strong></p></details></li><li><p><strong>What is a variant prop on Button for?</strong></p><ul><li>Deleting the button</li><li>Encrypting text</li><li>No use</li><li>Changing the look without a new component</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Changing the look without a new component</strong></p><p>Props make a component flexible.</p></details></li><li><p><strong>What does &lt;Card&gt;&lt;h2&gt;Hi&lt;/h2&gt;&lt;/Card&gt; render if Card returns &lt;div&gt;{children}&lt;/div&gt;?</strong></p><ul><li>An error</li><li>Only the h2</li><li>A div containing the h2</li><li>Nothing</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A div containing the h2</strong></p><p>children is the content wrapped by the component.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-26">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/react-learning/lessons/react-25.html"><small>Previous lesson</small><strong>React Architecture</strong></a>
+        <a rel="next" href="/en/react-learning/lessons/react-27.html"><small>Next lesson</small><strong>Project Structure</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/react-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Parameters &amp; Arguments — Programming Basics | FAYBIT</title>
+    <meta name="description" content="FUNCTIONS A Parameter is a variable that a Function receives so that it can work with different data. An Argument is the actual value we pass to a…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-13.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-13.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-13.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-13.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Parameters &amp; Arguments — Programming Basics | FAYBIT" />
+    <meta property="og:description" content="FUNCTIONS A Parameter is a variable that a Function receives so that it can work with different data. An Argument is the actual value we pass to a…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-13.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Programming Basics","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Parameters & Arguments","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-13.html"}]},{"@type":"LearningResource","name":"Parameters & Arguments","description":"FUNCTIONS A Parameter is a variable that a Function receives so that it can work with different data. An Argument is the actual value we pass to a…","url":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-13.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Programming Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Programming Basics"><a href="/en/fundamentals/programming-basics/lessons/index.html">Lessons</a><a href="/fundamentals/programming-basics/lessons/prg-13.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/programming-basics/lessons/index.html">Programming Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 13 of 31 · FUNCTIONS</p>
+      <h1 class="lp-h1">Parameters &amp; Arguments</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-13">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">FUNCTIONS</span>
+<h2>Make Functions more flexible</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content"><section class="lesson-section"><h3>Parameters</h3><p>A Parameter is a variable that a Function receives so that it can work with different data.</p><h3>Arguments</h3><p>An Argument is the actual value we pass to a Function when we call it.</p></section></div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong>Core idea</strong>
+<p>Parameters make a Function reusable with different data, instead of writing a new Function for each case.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Worked example</span>
+<h3>See the idea in code</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>function greet(name) {
+console.log("Hello " + name);
+}
+greet("Ali");
+greet("Mona");</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Practice</span>
+<h3>Challenge yourself</h3>
+</div>
+</div>
+<p></p>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>In the example, what is name?</strong></p><ul><li>Argument</li><li>Parameter</li><li>Operator</li><li>Loop</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Parameter</strong></p></details></li><li><p><strong>What is the output? function greet(name, greeting) { return greeting + &quot;, &quot; + name; } console.log(greet(&quot;Ali&quot;, &quot;Hi&quot;));</strong></p><ul><li>Ali, Hi</li><li>Hi, Ali</li><li>Hi Ali</li><li>undefined</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Hi, Ali</strong></p><p>Arguments match parameters by position: &quot;Ali&quot; goes to name and &quot;Hi&quot; to greeting. The concatenation order inside the function gives Hi, Ali.</p></details></li><li><p><strong>What does the code print? function f(a, b) { return a + b; } console.log(f(2));</strong></p><ul><li>2</li><li>An error that stops the program</li><li>0</li><li>NaN</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>NaN</strong></p><p>The parameter b received no argument so it is undefined, and 2 + undefined gives NaN. JavaScript does not throw an error when arguments are missing.</p></details></li><li><p><strong>What is the output? function p(x, y = 10) { return x + y; } console.log(p(1));</strong></p><ul><li>11</li><li>1</li><li>NaN</li><li>10</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>11</strong></p><p>The default value y = 10 is used when no second argument is passed, so the result is 1 + 10 = 11. NaN would appear only without a default.</p></details></li><li><p><strong>What is v? function change(n) { n = 99; } let v = 5; change(v); console.log(v);</strong></p><ul><li>99</li><li>5</li><li>undefined</li><li>An error</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>5</strong></p><p>Numbers are passed as a copy of the value, so changing n inside the function does not change the outer v. It stays 5.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-13">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/programming-basics/lessons/prg-12.html"><small>Previous lesson</small><strong>Functions</strong></a>
+        <a rel="next" href="/en/fundamentals/programming-basics/lessons/prg-14.html"><small>Next lesson</small><strong>Scope</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/programming-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

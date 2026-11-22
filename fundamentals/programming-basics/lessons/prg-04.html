@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <title>الخوارزميات — أساسيات البرمجة | FAYBIT</title>
+    <meta name="description" content="ALGORITHMS الخوارزمية هي مجموعة خطوات مرتبة ومحددة تستخدم لحل مشكلة أو تنفيذ مهمة. لا يشترط أن تكون الخوارزمية مكتوبة بلغة برمجة. يمكن كتابتها بالكلمات أو…" />
+    <link rel="canonical" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-04.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-04.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-04.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-04.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="الخوارزميات — أساسيات البرمجة | FAYBIT" />
+    <meta property="og:description" content="ALGORITHMS الخوارزمية هي مجموعة خطوات مرتبة ومحددة تستخدم لحل مشكلة أو تنفيذ مهمة. لا يشترط أن تكون الخوارزمية مكتوبة بلغة برمجة. يمكن كتابتها بالكلمات أو…" />
+    <meta property="og:url" content="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-04.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"أساسيات البرمجة","item":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"الخوارزميات","item":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-04.html"}]},{"@type":"LearningResource","name":"الخوارزميات","description":"ALGORITHMS الخوارزمية هي مجموعة خطوات مرتبة ومحددة تستخدم لحل مشكلة أو تنفيذ مهمة. لا يشترط أن تكون الخوارزمية مكتوبة بلغة برمجة. يمكن كتابتها بالكلمات أو…","url":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-04.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"أساسيات البرمجة — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="أساسيات البرمجة"><a href="/fundamentals/programming-basics/lessons/index.html">الدروس</a><a href="/en/fundamentals/programming-basics/lessons/prg-04.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/fundamentals/programming-basics/lessons/index.html">أساسيات البرمجة</a></nav>
+      <p class="lp-eyebrow">الدرس 4 من 31</p>
+      <h1 class="lp-h1">الخوارزميات</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-4">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">ALGORITHMS</span>
+<h2>حوّل الحل إلى خطوات واضحة</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content">
+<section class="lesson-section">
+<h3>ما هي Algorithm؟</h3>
+<p>
+الخوارزمية هي مجموعة خطوات مرتبة ومحددة
+تستخدم لحل مشكلة أو تنفيذ مهمة.
+</p>
+<p>
+لا يشترط أن تكون الخوارزمية مكتوبة بلغة برمجة.
+يمكن كتابتها بالكلمات أو رسمها باستخدام Flowchart
+ثم تحويلها لاحقًا إلى كود.
+</p>
+</section>
+<section class="lesson-section">
+<h3>مثال</h3>
+<div class="info-grid">
+<div class="info-box">
+<h4>Input</h4>
+<p>رقمان يريد المستخدم جمعهما.</p>
+</div>
+<div class="info-box">
+<h4>Process</h4>
+<p>إجراء عملية الجمع.</p>
+</div>
+<div class="info-box">
+<h4>Output</h4>
+<p>عرض الناتج للمستخدم.</p>
+</div>
+</div>
+</section>
+</div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong> الفكرة الأساسية </strong>
+<p>الخوارزمية تصف طريقة الحل، بينما الكود يترجم هذه الطريقة إلى لغة يستطيع الكمبيوتر تنفيذها.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>مثال عملي</span>
+<h3>شاهد الفكرة في كود</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>let a = 10;
+let b = 20;
+let sum = a + b;
+console.log(sum);</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>تطبيق</span>
+<h3>تحدَّ نفسك</h3>
+</div>
+</div>
+<p></p>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما الذي تصفه الخوارزمية؟</strong></p><ul><li>لون الموقع</li><li>خطوات حل المشكلة</li><li>نوع الشاشة</li><li>حجم الملف</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>خطوات حل المشكلة</strong></p></details></li><li><p><strong>أي مما يلي يُعد خوارزمية صحيحة؟</strong></p><ul><li>كن حذراً عند عبور الشارع</li><li>انظر يساراً، ثم يميناً؛ إذا لم تكن هناك سيارات فاعبر، وإلا انتظر وأعد النظر</li><li>اعبر بأفضل طريقة ممكنة</li><li>فكر في الأمان</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>انظر يساراً، ثم يميناً؛ إذا لم تكن هناك سيارات فاعبر، وإلا انتظر وأعد النظر</strong></p><p>الخوارزمية خطوات محددة ومرتبة قابلة للتنفيذ وتنتهي بنتيجة. العبارات الأخرى نصائح غامضة لا يمكن تنفيذها حرفياً.</p></details></li><li><p><strong>الخوارزمية: ابدأ best بأول رقم، ثم لكل رقم آخر إذا كان أكبر من best فاجعله best. ما قيمة best للمدخل 4 و 11 و 7 و 11 و 2؟</strong></p><ul><li>4</li><li>7</li><li>22</li><li>11</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>11</strong></p><p>تبدأ best بـ 4 ثم تصبح 11 عند الرقم الثاني، ولا يتغير بعد ذلك لأن لا رقم أكبر من 11 (الثاني 11 ليس أكبر منه). الخطوة الأولى لا تعني أن أول رقم هو الأكبر.</p></details></li><li><p><strong>بدأنا بـ n = 5 وكررنا: أضف 1 إلى n حتى يصبح n سالباً. ما المشكلة في هذه الخوارزمية؟</strong></p><ul><li>لا تنتهي أبداً، فهي تخالف شرط أن تنتهي الخوارزمية بعد عدد محدود من الخطوات</li><li>تحتاج ذاكرة صغيرة جداً</li><li>الرقم 5 غير مسموح</li><li>الجمع غير مسموح في الخوارزميات</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لا تنتهي أبداً، فهي تخالف شرط أن تنتهي الخوارزمية بعد عدد محدود من الخطوات</strong></p><p>إضافة 1 تزيد n دائماً فلا يصل إلى قيمة سالبة، فتتكرر الخطوات بلا نهاية. الخوارزمية الصحيحة يجب أن تتوقف.</p></details></li><li><p><strong>للبحث عن اسم في قائمة مرتبة من 1000 اسم، لماذا البحث الثنائي أفضل من فحص الأسماء واحداً واحداً؟</strong></p><ul><li>لأنه يفحص نحو 10 أسماء فقط في أسوأ حالة بدل 1000، إذ يستبعد نصف القائمة كل مرة</li><li>لأنه يعمل مع القوائم غير المرتبة أيضاً</li><li>لأنه يخمّن مكان الاسم دون فحص</li><li>لأنه دائماً يجد الاسم من أول خطوة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لأنه يفحص نحو 10 أسماء فقط في أسوأ حالة بدل 1000، إذ يستبعد نصف القائمة كل مرة</strong></p><p>البحث الثنائي يقسم المساحة إلى النصف في كل خطوة، لذا 1000 تحتاج نحو 10 خطوات، لكنه يشترط أن تكون القائمة مرتبة. أما ادعاء أنه يعمل على القوائم غير المرتبة فخاطئ.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-4">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/fundamentals/programming-basics/lessons/prg-03.html"><small>الدرس السابق</small><strong>التفكير البرمجي</strong></a>
+        <a rel="next" href="/fundamentals/programming-basics/lessons/prg-05.html"><small>الدرس التالي</small><strong>لغات البرمجة</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/fundamentals/programming-basics/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <title>الانتقالات والتحويلات والحركة — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="transition وtransform وanimate لحركات خفيفة وسلسة." />
+    <link rel="canonical" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-15.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-15.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-15.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-15.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="الانتقالات والتحويلات والحركة — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="transition وtransform وanimate لحركات خفيفة وسلسة." />
+    <meta property="og:url" content="https://faybit.vercel.app/tailwind-learning/lessons/tw-15.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"الانتقالات والتحويلات والحركة","item":"https://faybit.vercel.app/tailwind-learning/lessons/tw-15.html"}]},{"@type":"LearningResource","name":"الانتقالات والتحويلات والحركة","description":"transition وtransform وanimate لحركات خفيفة وسلسة.","url":"https://faybit.vercel.app/tailwind-learning/lessons/tw-15.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/tailwind-learning/lessons/index.html">الدروس</a><a href="/en/tailwind-learning/lessons/tw-15.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">الدرس 15 من 20</p>
+      <h1 class="lp-h1">الانتقالات والتحويلات والحركة</h1>
+      <p class="lp-lead">transition وtransform وanimate لحركات خفيفة وسلسة.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-15">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>الانتقالات</h2><p><code>transition</code> (أو <code>transition-colors</code>) مع <code>duration-300</code> و<code>ease-in-out</code> و<code>delay-100</code>. أضفها على الحالة الأساسية لا على hover فقط.</p></article><article class="content-card"><h2>التحويلات والحركات</h2><p><code>scale-105</code> <code>rotate-6</code> <code>-translate-y-1</code> <code>translate-x-2</code>. حركات جاهزة: <code>animate-spin</code> <code>animate-pulse</code> <code>animate-bounce</code> <code>animate-ping</code>. احترم من يفضل تقليل الحركة بـ <code>motion-safe:</code> و<code>motion-reduce:</code>.</p></article></div>
+<article class="body-card key-card"><p>غلّف الحركات بـ motion-safe: لاحترام تفضيل تقليل الحركة.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="flex items-center gap-4 p-6"&gt;
+&lt;div id="card" class="rounded-xl bg-white p-4 shadow transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg"&gt;مرّر هنا&lt;/div&gt;
+&lt;div class="size-8 rounded-full border-4 border-sky-200 border-t-sky-600 motion-safe:animate-spin"&gt;&lt;/div&gt;
+&lt;div class="size-4 rounded-full bg-emerald-500 motion-safe:animate-pulse"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>البطاقة ترتفع قليلًا وتزداد ظلالًا بسلاسة عند الحوم. الدائرة تدور فقط إن لم يفعّل المستخدم «تقليل الحركة».</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">غيّر &lt;code&gt;duration-300&lt;/code&gt; إلى &lt;code&gt;duration-700&lt;/code&gt; وقارن السرعة.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أي فئة تحدد مدة الانتقال؟</strong></p><ul><li>duration-300</li><li>time-300</li><li>speed-300</li><li>delay-only</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>duration-300</strong></p></details></li><li><p><strong>لماذا نستخدم motion-safe:؟</strong></p><ul><li>لاحترام تفضيل المستخدم لتقليل الحركة</li><li>لتسريع الحركة</li><li>لإخفاء العنصر</li><li>لتغيير اللون</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لاحترام تفضيل المستخدم لتقليل الحركة</strong></p></details></li><li><p><strong>ماذا يفعل hover:-translate-y-1؟</strong></p><ul><li>يرفع العنصر قليلًا عند الحوم</li><li>يخفيه</li><li>يعكسه</li><li>يدوره</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يرفع العنصر قليلًا عند الحوم</strong></p></details></li><li><p><strong>أين نضع فئة transition لتعمل الحركة ذهاباً وإياباً؟</strong></p><ul><li>على الحالة الأساسية للعنصر</li><li>داخل hover فقط</li><li>على body فقط</li><li>في وسم head</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>على الحالة الأساسية للعنصر</strong></p><p>وضعها على الأساس يحرك الدخول والخروج من الحالة.</p></details></li><li><p><strong>أي فئة مناسبة لمؤشر تحميل دوّار؟</strong></p><ul><li>animate-ping</li><li>animate-bounce</li><li>animate-pulse-fast</li><li>animate-spin</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>animate-spin</strong></p><p>animate-spin يدور العنصر باستمرار، ونغلفه بـ motion-safe.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-15">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/tailwind-learning/lessons/tw-14.html"><small>الدرس السابق</small><strong>الوضع الداكن</strong></a>
+        <a rel="next" href="/tailwind-learning/lessons/tw-16.html"><small>الدرس التالي</small><strong>القيم الاعتباطية Arbitrary Values</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/tailwind-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

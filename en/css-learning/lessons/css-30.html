@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="css" />
+    <meta name="robots" content="noindex, follow" />
+    <title>CSS Best Practices — CSS | FAYBIT</title>
+    <meta name="description" content="Learn how to organize, maintain, and write cleaner CSS." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/css-learning/lessons/css-30.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/css-learning/lessons/css-30.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/css-learning/lessons/css-30.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/css-learning/lessons/css-30.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="CSS Best Practices — CSS | FAYBIT" />
+    <meta property="og:description" content="Learn how to organize, maintain, and write cleaner CSS." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/css-learning/lessons/css-30.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"CSS","item":"https://faybit.vercel.app/en/css-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"CSS Best Practices","item":"https://faybit.vercel.app/en/css-learning/lessons/css-30.html"}]},{"@type":"LearningResource","name":"CSS Best Practices","description":"Learn how to organize, maintain, and write cleaner CSS.","url":"https://faybit.vercel.app/en/css-learning/lessons/css-30.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"CSS — FAYBIT","url":"https://faybit.vercel.app/css-learning/css-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="CSS"><a href="/en/css-learning/lessons/index.html">Lessons</a><a href="/css-learning/lessons/css-30.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/css-learning/lessons/index.html">CSS</a></nav>
+      <p class="lp-eyebrow">Lesson 30 of 30</p>
+      <h1 class="lp-h1">CSS Best Practices</h1>
+      <p class="lp-lead">Learn how to organize, maintain, and write cleaner CSS.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-30">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>Your first CSS code</h2></div>
+</div>
+<pre dir="ltr"><code>:root {
+--primary: #0f807a;
+}
+.button {
+background: var(--primary);
+border-radius: 10px;
+}</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Write CSS and see the result</h2></div>
+</div>
+<p class="practice-description">Change the code below, then run it to see the result.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Why should CSS be organized?</strong></p><ul><li>To make code easier to maintain</li><li>To make HTML unnecessary</li><li>To remove JavaScript</li><li>To make CSS stop working</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>To make code easier to maintain</strong></p></details></li><li><p><strong>Which technique helps avoid repeating the same color value?</strong></p><ul><li>CSS Variables</li><li>Extra HTML</li><li>More IDs</li><li>Inline JavaScript</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>CSS Variables</strong></p></details></li><li><p><strong>What is one goal of clean CSS?</strong></p><ul><li>Easy maintenance and readability</li><li>Removing all selectors</li><li>Replacing HTML</li><li>Avoiding all responsive design</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Easy maintenance and readability</strong></p></details></li><li><p><strong>A team adds !important to every rule to make sure it wins. What is the problem?</strong></p><ul><li>No problem</li><li>All rules end up equally strong and it becomes a specificity war that is hard to change</li><li>The browser ignores it</li><li>It slows down the server</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>All rules end up equally strong and it becomes a specificity war that is hard to change</strong></p><p>Overusing !important removes the ability to override later except with another !important. It is better to organize selectors and specificity.</p></details></li><li><p><strong>Which class name is best practice?</strong></p><ul><li>.big-red-left</li><li>.card-title</li><li>.x1</li><li>.div2</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>.card-title</strong></p><p>A name should describe purpose rather than appearance, so it stays correct if the design changes. Random names are also hard to understand.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-30">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/css-learning/lessons/css-29.html"><small>Previous lesson</small><strong>Advanced Selectors</strong></a>
+        <span></span>
+      </nav>
+      <p class="lp-all"><a href="/en/css-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

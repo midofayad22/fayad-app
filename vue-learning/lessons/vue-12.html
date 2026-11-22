@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="vue" />
+    <title>ربط Class و Style — Vue.js | FAYBIT</title>
+    <meta name="description" content="تعلّم كيف تتحكم في CSS Classes وStyles بشكل ديناميكي في Vue." />
+    <link rel="canonical" href="https://faybit.vercel.app/vue-learning/lessons/vue-12.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/vue-learning/lessons/vue-12.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/vue-learning/lessons/vue-12.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/vue-learning/lessons/vue-12.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="ربط Class و Style — Vue.js | FAYBIT" />
+    <meta property="og:description" content="تعلّم كيف تتحكم في CSS Classes وStyles بشكل ديناميكي في Vue." />
+    <meta property="og:url" content="https://faybit.vercel.app/vue-learning/lessons/vue-12.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Vue.js","item":"https://faybit.vercel.app/vue-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"ربط Class و Style","item":"https://faybit.vercel.app/vue-learning/lessons/vue-12.html"}]},{"@type":"LearningResource","name":"ربط Class و Style","description":"تعلّم كيف تتحكم في CSS Classes وStyles بشكل ديناميكي في Vue.","url":"https://faybit.vercel.app/vue-learning/lessons/vue-12.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Vue.js — FAYBIT","url":"https://faybit.vercel.app/vue-learning/vue-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Vue.js"><a href="/vue-learning/lessons/index.html">الدروس</a><a href="/en/vue-learning/lessons/vue-12.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/vue-learning/lessons/index.html">Vue.js</a></nav>
+      <p class="lp-eyebrow">الدرس 12 من 22</p>
+      <h1 class="lp-h1">ربط Class و Style</h1>
+      <p class="lp-lead">تعلّم كيف تتحكم في CSS Classes وStyles بشكل ديناميكي في Vue.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-12">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<h2>ربط Class و Style</h2>
+<p>
+تسمح Vue بربط CSS Classes وInline Styles بالبيانات.
+</p>
+<p>
+هذا مفيد عندما تريد تغيير شكل العنصر بناءً على حالة معينة.
+</p>
+</div></article>
+<article class="body-card key-card"><div class="info-label">تحكم في الشكل باستخدام البيانات</div><p>يمكنك تغيير Class أو Style بشكل ديناميكي بناءً على البيانات.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>الكود</h2></div>
+</div>
+<pre dir="ltr"><code>
+&lt;div id="app"&gt;
+&lt;p :class="{ active: isActive }"&gt;
+حالة العنصر
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+const { createApp } = Vue;
+createApp({
+data() {
+return {
+isActive: true
+};
+}
+}).mount("#app");
+&lt;/script&gt;
+</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static">
+<div style="padding:20px;font-family:Arial;">
+<p style="margin:0;font-weight:bold;">حالة العنصر — Active</p>
+</div>
+</div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>
+<p>
+<code>:class</code> تستخدم لربط CSS Class بالبيانات.
+</p>
+<p>
+في المثال، Class باسم <code>active</code> تظهر عندما تكون
+<code>isActive</code> تساوي <code>true</code>.
+</p>
+<p>
+يمكن أيضًا استخدام <code>:style</code> لربط Inline Styles.
+</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span></div>
+</div>
+<p class="practice-description">اربط Class باسم active بحيث تتم إضافته عندما تكون isActive صحيحة.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>كيف نربط CSS Class بشكل ديناميكي؟</strong></p><ul><li>:class</li><li>@class</li><li>#class</li><li>v-css-only</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>:class</strong></p></details></li><li><p><strong>متى تظهر active في المثال؟</strong></p><ul><li>عندما تكون isActive صحيحة</li><li>دائمًا</li><li>عندما تكون CSS محذوفة</li><li>عندما يتغير عنوان الصفحة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>عندما تكون isActive صحيحة</strong></p></details></li><li><p><strong>أي Directive تستخدم لربط Inline Style؟</strong></p><ul><li>:style</li><li>@style</li><li>#style</li><li>v-css</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>:style</strong></p></details></li><li><p><strong>ما class الناتج؟
+&lt;div :class=&quot;{ red: isRed, big: isBig }&quot;&gt;
+isRed=true, isBig=false</strong></p><ul><li>red big</li><li>big</li><li>red</li><li>لا شيء</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>red</strong></p><p>في صيغة الكائن تُضاف الأسماء التي قيمتها صحيحة فقط.</p></details></li><li><p><strong>كيف نكتب خاصية CSS ذات اسم مركب مثل font-size في :style؟</strong></p><ul><li>:style=&quot;{ font-size: size }&quot;</li><li>:style=&quot;{ fontSize: size + 'px' }&quot;</li><li>:style=&quot;font-size=size&quot;</li><li>style=&quot;{{ size }}&quot;</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>:style=&quot;{ fontSize: size + 'px' }&quot;</strong></p><p>داخل كائن JavaScript نستخدم camelCase مثل fontSize أو نضع الاسم بين علامتي اقتباس.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-12">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/vue-learning/lessons/vue-11.html"><small>الدرس السابق</small><strong>v-model</strong></a>
+        <a rel="next" href="/vue-learning/lessons/vue-13.html"><small>الدرس التالي</small><strong>المكونات Components</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/vue-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

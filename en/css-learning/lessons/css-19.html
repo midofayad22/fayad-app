@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="css" />
+    <meta name="robots" content="noindex, follow" />
+    <title>CSS Grid — CSS | FAYBIT</title>
+    <meta name="description" content="Learn how CSS Grid creates powerful two-dimensional layouts." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/css-learning/lessons/css-19.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/css-learning/lessons/css-19.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/css-learning/lessons/css-19.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/css-learning/lessons/css-19.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="CSS Grid — CSS | FAYBIT" />
+    <meta property="og:description" content="Learn how CSS Grid creates powerful two-dimensional layouts." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/css-learning/lessons/css-19.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"CSS","item":"https://faybit.vercel.app/en/css-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"CSS Grid","item":"https://faybit.vercel.app/en/css-learning/lessons/css-19.html"}]},{"@type":"LearningResource","name":"CSS Grid","description":"Learn how CSS Grid creates powerful two-dimensional layouts.","url":"https://faybit.vercel.app/en/css-learning/lessons/css-19.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"CSS — FAYBIT","url":"https://faybit.vercel.app/css-learning/css-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="CSS"><a href="/en/css-learning/lessons/index.html">Lessons</a><a href="/css-learning/lessons/css-19.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/css-learning/lessons/index.html">CSS</a></nav>
+      <p class="lp-eyebrow">Lesson 19 of 30</p>
+      <h1 class="lp-h1">CSS Grid</h1>
+      <p class="lp-lead">Learn how CSS Grid creates powerful two-dimensional layouts.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-19">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>Your first CSS code</h2></div>
+</div>
+<pre dir="ltr"><code>.container {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 20px;
+}</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Write CSS and see the result</h2></div>
+</div>
+<p class="practice-description">Change the code below, then run it to see the result.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which property enables CSS Grid?</strong></p><ul><li>display: grid</li><li>grid: true</li><li>layout: grid</li><li>enable-grid</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>display: grid</strong></p></details></li><li><p><strong>Which property defines grid columns?</strong></p><ul><li>grid-template-columns</li><li>grid-columns-only</li><li>columns-grid</li><li>grid-layout-columns</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>grid-template-columns</strong></p></details></li><li><p><strong>What does gap control in a grid?</strong></p><ul><li>Space between grid items</li><li>Grid color</li><li>Column width only</li><li>Element height</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Space between grid items</strong></p></details></li><li><p><strong>A container has display: grid; grid-template-columns: repeat(3, 1fr) and 6 children. How do they appear?</strong></p><ul><li>3 equal-width columns in 2 rows</li><li>6 columns in 1 row</li><li>One column of 6 rows</li><li>2 rows of 2 columns</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>3 equal-width columns in 2 rows</strong></p><p>repeat(3, 1fr) creates three columns with equal shares, and the six items flow automatically into two rows.</p></details></li><li><p><strong>What does grid-template-columns: 200px 1fr mean?</strong></p><ul><li>Two columns, each 200px wide</li><li>A fixed 200px column and a second that takes the remaining space</li><li>The first column is 1fr and the second is 200px</li><li>One column 201px wide</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A fixed 200px column and a second that takes the remaining space</strong></p><p>The fr unit divides the space left after fixed columns, so the second column takes all the rest. It is a common pattern for a sidebar layout.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-19">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/css-learning/lessons/css-18.html"><small>Previous lesson</small><strong>Flexbox</strong></a>
+        <a rel="next" href="/en/css-learning/lessons/css-20.html"><small>Next lesson</small><strong>Responsive Design</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/css-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>أخطاء مخصصة واستراتيجيات المعالجة — JavaScript المتقدم | FAYBIT</title>
+    <meta name="description" content="صمّم أنواع أخطاء واضحة مع السبب الأصلي، وقرر أين تلتقط الأخطاء." />
+    <link rel="canonical" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-19.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-19.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-19.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-19.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="أخطاء مخصصة واستراتيجيات المعالجة — JavaScript المتقدم | FAYBIT" />
+    <meta property="og:description" content="صمّم أنواع أخطاء واضحة مع السبب الأصلي، وقرر أين تلتقط الأخطاء." />
+    <meta property="og:url" content="https://faybit.vercel.app/advanced-javascript/lessons/ajs-19.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript المتقدم","item":"https://faybit.vercel.app/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"أخطاء مخصصة واستراتيجيات المعالجة","item":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-19.html"}]},{"@type":"LearningResource","name":"أخطاء مخصصة واستراتيجيات المعالجة","description":"صمّم أنواع أخطاء واضحة مع السبب الأصلي، وقرر أين تلتقط الأخطاء.","url":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-19.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript المتقدم — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript المتقدم"><a href="/advanced-javascript/lessons/index.html">الدروس</a><a href="/en/advanced-javascript/lessons/ajs-19.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/advanced-javascript/lessons/index.html">JavaScript المتقدم</a></nav>
+      <p class="lp-eyebrow">الدرس 19 من 22</p>
+      <h1 class="lp-h1">أخطاء مخصصة واستراتيجيات المعالجة</h1>
+      <p class="lp-lead">صمّم أنواع أخطاء واضحة مع السبب الأصلي، وقرر أين تلتقط الأخطاء.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-19">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>Custom Errors</h2><p>ارثِ من <code>Error</code> وحدد <code>name</code> وخصائص إضافية. استخدم الخيار <code>cause</code> للاحتفاظ بالخطأ الأصلي عند الالتفاف حوله.</p></article><article class="content-card"><h2>أين نلتقط؟</h2><p>التقط الخطأ حيث تستطيع <strong>فعل شيء مفيد</strong> به (إعادة محاولة، رسالة للمستخدم)، وإلا اتركه يصعد. لا تبتلع الأخطاء بصمت.</p></article></div>
+<article class="body-card key-card"><p>أضف السياق عند إعادة الرمي بدل إخفاء الخطأ الأصلي.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>class ValidationError extends Error {
+constructor(field, message, options) {
+super(message, options);
+this.name = "ValidationError";
+this.field = field;
+}
+}
+function parseAge(input) {
+const n = Number(input);
+if (!Number.isInteger(n) || n &lt; 0) {
+throw new ValidationError("age", "invalid age: " + input);
+}
+return n;
+}
+function load(input) {
+try { return parseAge(input); }
+catch (e) { throw new Error("load failed", { cause: e }); }
+}
+try { load("abc"); }
+catch (e) {
+console.log(e.message, "|", e.cause.name, e.cause.field);
+console.log(e instanceof Error, e.cause instanceof ValidationError);
+}
+console.log(load("42"));</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">load failed | ValidationError age
+true true
+42</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>الخطأ المغلّف يحتفظ بالسبب الأصلي في <code>cause</code> فيسهل التتبع. <code>instanceof</code> تتيح التفرقة بين الأنواع داخل <code>catch</code>.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>جرّب بنفسك</h2></div>
+</div>
+<p class="practice-description">عرّف &lt;code&gt;NotFoundError extends Error&lt;/code&gt; وارمِه والتقطه واطبع &lt;code&gt;e.name&lt;/code&gt;.</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما فائدة الخيار cause؟</strong></p><ul><li>حفظ الخطأ الأصلي عند إعادة الرمي</li><li>إيقاف البرنامج</li><li>تحويل الخطأ لنص</li><li>تجاهل الخطأ</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>حفظ الخطأ الأصلي عند إعادة الرمي</strong></p></details></li><li><p><strong>ما أفضل مكان لالتقاط الخطأ؟</strong></p><ul><li>حيث يمكنك معالجته بشكل مفيد</li><li>في كل سطر</li><li>في النطاق العام فقط دائمًا</li><li>لا تلتقطه أبدًا</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>حيث يمكنك معالجته بشكل مفيد</strong></p></details></li><li><p><strong>لماذا نعرف أنواع أخطاء مخصصة؟</strong></p><ul><li>للتفرقة بينها بـ instanceof وإضافة بيانات</li><li>لتسريع الكود</li><li>لأنها إلزامية</li><li>لإخفاء الرسائل</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>للتفرقة بينها بـ instanceof وإضافة بيانات</strong></p></details></li><li><p><strong>ما ناتج الكود؟ class MyErr extends Error { constructor(m) { super(m); this.name = &quot;MyErr&quot;; } } const e = new MyErr(&quot;x&quot;); console.log(e instanceof Error, String(e));</strong></p><ul><li>false و Error: x</li><li>true و Error: x</li><li>true و MyErr: x</li><li>true و x</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>true و MyErr: x</strong></p><p>الكلاس يمتد من Error فهو instanceof Error، و String يستخدم name و message فيعطي MyErr: x. لو لم نضبط name لظهر Error: x.</p></details></li><li><p><strong>أي أسلوب أفضل في catch عندما لا نعرف نوع الخطأ؟</strong></p><ul><li>ابتلاع الخطأ بكتلة catch فارغة حتى لا يتوقف البرنامج</li><li>التحقق من النوع بـ instanceof والتعامل مع المعروف وإعادة رمي غير المعروف</li><li>تحويل كل الأخطاء إلى رسالة نصية عامة</li><li>طباعة الخطأ فقط ثم المتابعة كأن شيئاً لم يحدث</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>التحقق من النوع بـ instanceof والتعامل مع المعروف وإعادة رمي غير المعروف</strong></p><p>نعالج الأخطاء التي نفهمها ونعرف كيف نتعافى منها، ونعيد رمي الباقي ليصل إلى مستوى أعلى يتعامل معه. ابتلاعها يخفي العلل الحقيقية ويصعّب اكتشافها.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-19">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/advanced-javascript/lessons/ajs-18.html"><small>الدرس السابق</small><strong>AbortController والـ Async Iterators</strong></a>
+        <a rel="next" href="/advanced-javascript/lessons/ajs-20.html"><small>الدرس التالي</small><strong>التعابير النمطية المتقدمة</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/advanced-javascript/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

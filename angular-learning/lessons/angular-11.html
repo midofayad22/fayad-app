@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="angular" />
+    <meta name="robots" content="noindex, follow" />
+    <title>التوجيهات Directives — Angular | FAYBIT</title>
+    <meta name="description" content="تعرف على كيفية تغيير Directives لسلوك أو شكل أو طريقة عرض العناصر." />
+    <link rel="canonical" href="https://faybit.vercel.app/angular-learning/lessons/angular-11.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/angular-learning/lessons/angular-11.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/angular-learning/lessons/angular-11.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/angular-learning/lessons/angular-11.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="التوجيهات Directives — Angular | FAYBIT" />
+    <meta property="og:description" content="تعرف على كيفية تغيير Directives لسلوك أو شكل أو طريقة عرض العناصر." />
+    <meta property="og:url" content="https://faybit.vercel.app/angular-learning/lessons/angular-11.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Angular","item":"https://faybit.vercel.app/angular-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"التوجيهات Directives","item":"https://faybit.vercel.app/angular-learning/lessons/angular-11.html"}]},{"@type":"LearningResource","name":"التوجيهات Directives","description":"تعرف على كيفية تغيير Directives لسلوك أو شكل أو طريقة عرض العناصر.","url":"https://faybit.vercel.app/angular-learning/lessons/angular-11.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Angular — FAYBIT","url":"https://faybit.vercel.app/angular-learning/angular-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Angular"><a href="/angular-learning/lessons/index.html">الدروس</a><a href="/en/angular-learning/lessons/angular-11.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/angular-learning/lessons/index.html">Angular</a></nav>
+      <p class="lp-eyebrow">الدرس 11 من 32</p>
+      <h1 class="lp-h1">التوجيهات Directives</h1>
+      <p class="lp-lead">تعرف على كيفية تغيير Directives لسلوك أو شكل أو طريقة عرض العناصر.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/angular-learning/angular-learning.html#lesson-11">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>تضيف Directives سلوكًا خاصًا إلى HTML. ويمكن استخدام الأساليب الهيكلية للتحكم في العناصر التي يتم عرضها، بينما تستطيع Attribute Directives تعديل سلوك أو مظهر العناصر.</div></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>مثال على الكود</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;p *ngIf="isLoggedIn"&gt;
+Welcome back!
+&lt;/p&gt;</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>جرب بنفسك</h2></div>
+</div>
+<p class="practice-description">عدّل المثال بالأسفل وشغّل الكود لاستكشاف صيغة Angular بنفسك.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ماذا يمكن أن تفعل Angular Directives؟</strong></p><ul><li>تغيير سلوك أو بنية العناصر</li><li>إنشاء قواعد بيانات</li><li>استبدال JavaScript بالكامل</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تغيير سلوك أو بنية العناصر</strong></p></details></li><li><p><strong>ما هو الموضوع الرئيسي لهذا الدرس؟</strong></p><ul><li>التوجيهات Directives</li><li>العرض الشرطي</li><li>عرض القوائم</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>التوجيهات Directives</strong></p></details></li><li><p><strong>أي عبارة تصف هذا الموضوع بشكل أفضل؟</strong></p><ul><li>تضيف Directives سلوكًا خاصًا إلى HTML. ويمكن استخدام الأساليب الهيكلية للتحكم في العناصر التي يتم عرضها، بينما تستطيع Attribute Directives تعديل سلوك أو مظهر العناصر.</li><li>يُستخدم العرض الشرطي عندما يجب أن تتغير الواجهة بناءً على حالة معينة. ومن أمثلته صفحات تسجيل الدخول وحالات Loading والصلاحيات والنتائج الفارغة ورسائل الخطأ.</li><li>يُعد عرض القوائم أساسيًا عند عرض Products أو Users أو Messages أو Tasks أو أي مجموعة من البيانات. يستطيع Angular تكرار الـTemplate لكل عنصر والتعامل مع التغييرات بكفاءة.</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تضيف Directives سلوكًا خاصًا إلى HTML. ويمكن استخدام الأساليب الهيكلية للتحكم في العناصر التي يتم عرضها، بينما تستطيع Attribute Directives تعديل سلوك أو مظهر العناصر.</strong></p></details></li><li><p><strong>ما الهدف العملي من هذا الدرس؟</strong></p><ul><li>تعرف على كيفية تغيير Directives لسلوك أو شكل أو طريقة عرض العناصر.</li><li>تعرف على كيفية عرض Angular لمحتوى مختلف بناءً على حالة التطبيق.</li><li>تعرف على كيفية عرض العناصر المتكررة من Arrays وCollections.</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تعرف على كيفية تغيير Directives لسلوك أو شكل أو طريقة عرض العناصر.</strong></p></details></li><li><p><strong>أي مفهوم في Angular يرتبط مباشرة بهذا الدرس؟</strong></p><ul><li>Directive</li><li>العرض الشرطي</li><li>عرض القوائم</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Directive</strong></p></details></li><li><p><strong>أي صيغة أو API ترتبط بشكل أكبر بهذا الدرس؟</strong></p><ul><li>*ngIf</li><li>@if</li><li>@for</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>*ngIf</strong></p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/angular-learning/angular-learning.html#lesson-11">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/angular-learning/lessons/angular-10.html"><small>الدرس السابق</small><strong>ربط البيانات ثنائي الاتجاه</strong></a>
+        <a rel="next" href="/angular-learning/lessons/angular-12.html"><small>الدرس التالي</small><strong>العرض الشرطي</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/angular-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

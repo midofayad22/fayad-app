@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>Design Patterns: Observer and Pub/Sub — Advanced JavaScript | FAYBIT</title>
+    <meta name="description" content="Connect parts of the application without direct dependencies between them using event patterns." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-21.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-21.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-21.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-21.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Design Patterns: Observer and Pub/Sub — Advanced JavaScript | FAYBIT" />
+    <meta property="og:description" content="Connect parts of the application without direct dependencies between them using event patterns." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-21.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Advanced JavaScript","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Design Patterns: Observer and Pub/Sub","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-21.html"}]},{"@type":"LearningResource","name":"Design Patterns: Observer and Pub/Sub","description":"Connect parts of the application without direct dependencies between them using event patterns.","url":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-21.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Advanced JavaScript — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Advanced JavaScript"><a href="/en/advanced-javascript/lessons/index.html">Lessons</a><a href="/advanced-javascript/lessons/ajs-21.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/advanced-javascript/lessons/index.html">Advanced JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 21 of 22</p>
+      <h1 class="lp-h1">Design Patterns: Observer and Pub/Sub</h1>
+      <p class="lp-lead">Connect parts of the application without direct dependencies between them using event patterns.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-21">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Observer / Pub-Sub</h2><p>The source (Subject) publishes events and listeners subscribe to them without the source knowing who they are. This reduces coupling and makes testing and extension easier.</p></article><article class="content-card"><h2>Beware of Leaks</h2><p>Every subscription must have a way to cancel it (<code>unsubscribe</code>), otherwise the references remain in memory.</p></article></div>
+<article class="body-card key-card"><p>Every subscribe returns an unsubscribe function.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>function createStore(initial) {
+let state = initial;
+const listeners = new Set();
+return {
+get: () =&gt; state,
+set(next) {
+state = { ...state, ...next };
+listeners.forEach((fn) =&gt; fn(state));
+},
+subscribe(fn) {
+listeners.add(fn);
+return () =&gt; listeners.delete(fn);
+},
+};
+}
+const store = createStore({ count: 0 });
+const off = store.subscribe((s) =&gt; console.log("A sees", s.count));
+store.subscribe((s) =&gt; console.log("B sees", s.count));
+store.set({ count: 1 });
+off();
+store.set({ count: 2 });</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">A sees 1
+B sees 1
+B sees 2</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>After calling <code>off()</code>, subscriber A no longer receives updates. Using a <code>Set</code> prevents registering the same function twice.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Try it yourself</h2></div>
+</div>
+<p class="practice-description">Create a simple &lt;code&gt;emitter&lt;/code&gt; with &lt;code&gt;on(event, fn)&lt;/code&gt; and &lt;code&gt;emit(event, data)&lt;/code&gt;.</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is the main advantage of the Pub/Sub pattern?</strong></p><ul><li>Reducing coupling between the publisher and the listeners</li><li>Speeding up the network</li><li>Encrypting data</li><li>Eliminating errors</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Reducing coupling between the publisher and the listeners</strong></p></details></li><li><p><strong>Why do we return a function from subscribe?</strong></p><ul><li>To unsubscribe and prevent memory leaks</li><li>To print the result</li><li>To repeat the event</li><li>To change the state</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>To unsubscribe and prevent memory leaks</strong></p></details></li><li><p><strong>Why do we use a Set to store listeners?</strong></p><ul><li>To prevent duplicate listeners and make removal easy</li><li>Because Array does not exist</li><li>To encrypt them</li><li>To sort them alphabetically</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>To prevent duplicate listeners and make removal easy</strong></p></details></li><li><p><strong>What does this code print? const s = new Set(); const l = () =&gt; console.log(&quot;x&quot;); s.add(l); s.add(l); s.forEach(f =&gt; f());</strong></p><ul><li>x once, because a Set does not duplicate the same item</li><li>x twice</li><li>Nothing</li><li>An error on the second add</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>x once, because a Set does not duplicate the same item</strong></p><p>The listener registered twice is the same function, and a Set keeps one copy, so it is not run twice for the same event. That is why a Set suits storing subscribers.</p></details></li><li><p><strong>A UI component subscribed to a global event and was then removed from the page without unsubscribing. What is the result?</strong></p><ul><li>The subscription is cancelled automatically when the component is removed</li><li>The event is ignored by the platform</li><li>The callback stays registered, runs for a dead component and keeps its memory from being freed</li><li>The event throws an error every time</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The callback stays registered, runs for a dead component and keeps its memory from being freed</strong></p><p>The publisher holds a reference to the callback and everything it captured from the component, so the garbage collector cannot free it and it keeps running. That is why we call the unsubscribe function during cleanup.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-21">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/advanced-javascript/lessons/ajs-20.html"><small>Previous lesson</small><strong>Advanced Regular Expressions</strong></a>
+        <a rel="next" href="/en/advanced-javascript/lessons/ajs-22.html"><small>Next lesson</small><strong>Performance and Memory</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/advanced-javascript/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

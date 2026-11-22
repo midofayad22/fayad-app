@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="react" />
+    <title>React.memo — React | FAYBIT</title>
+    <meta name="description" content="تعلم كيف يمكن لـReact.memo تقليل بعض عمليات إعادة Render غير الضرورية." />
+    <link rel="canonical" href="https://faybit.vercel.app/react-learning/lessons/react-22.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/react-learning/lessons/react-22.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/react-learning/lessons/react-22.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/react-learning/lessons/react-22.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="React.memo — React | FAYBIT" />
+    <meta property="og:description" content="تعلم كيف يمكن لـReact.memo تقليل بعض عمليات إعادة Render غير الضرورية." />
+    <meta property="og:url" content="https://faybit.vercel.app/react-learning/lessons/react-22.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"React","item":"https://faybit.vercel.app/react-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"React.memo","item":"https://faybit.vercel.app/react-learning/lessons/react-22.html"}]},{"@type":"LearningResource","name":"React.memo","description":"تعلم كيف يمكن لـReact.memo تقليل بعض عمليات إعادة Render غير الضرورية.","url":"https://faybit.vercel.app/react-learning/lessons/react-22.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"React — FAYBIT","url":"https://faybit.vercel.app/react-learning/react-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="React"><a href="/react-learning/lessons/index.html">الدروس</a><a href="/en/react-learning/lessons/react-22.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/react-learning/lessons/index.html">React</a></nav>
+      <p class="lp-eyebrow">الدرس 22 من 30</p>
+      <h1 class="lp-h1">React.memo</h1>
+      <p class="lp-lead">تعلم كيف يمكن لـReact.memo تقليل بعض عمليات إعادة Render غير الضرورية.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-22">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<p>
+React.memo هي API تساعد على إعادة استخدام نتيجة Render
+للمكون عندما لا تتغير Props الخاصة به.
+</p>
+<p>
+إذا أعيد Render للمكون الأب وكانت Props للمكون الابن مساوية
+حسب المقارنة المستخدمة، يمكن لـReact تخطي Render للابن.
+</p>
+<p>
+React.memo ليست حلًا سحريًا، ويجب استخدامها عندما يكون لها
+تأثير مفيد على الأداء.
+</p>
+</div></article>
+<article class="body-card key-card"><p>React.memo يمكن أن تمنع بعض عمليات Render غير الضرورية عندما لا تتغير Props.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>الكود</h2></div>
+</div>
+<pre dir="ltr"><code>const UserCard = React.memo(function UserCard({ name }) {
+return &lt;h2&gt;{name}&lt;/h2&gt;;
+});</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>تكون مفيدة خصوصًا عندما يكون Component مكلفًا في Render ويتلقى Props مستقرة.</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span></div>
+</div>
+<p class="practice-description">غيّر اسم UserCard وجرب استخدامه مع Props مختلفة.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما الذي يمكن أن تساعد React.memo في تقليله؟</strong></p><ul><li>Unnecessary re-renders</li><li>HTML files</li><li>CSS files</li><li>Database tables</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Unnecessary re-renders</strong></p></details></li><li><p><strong>على ماذا تعتمد React.memo بشكل أساسي؟</strong></p><ul><li>مقارنة Props</li><li>لون العنصر</li><li>اسم ملف CSS</li><li>حجم الصورة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>مقارنة Props</strong></p></details></li><li><p><strong>هل React.memo مطلوبة لكل Component؟</strong></p><ul><li>لا</li><li>نعم</li><li>فقط للصور</li><li>فقط للنماذج</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لا</strong></p></details></li><li><p><strong>لماذا يعاد رسم ابن مغلّف بـ memo رغم ثبات النص؟ &lt;Child style={{a:1}} /&gt;</strong></p><ul><li>memo معطلة</li><li>style ممنوعة</li><li>لا يمكن حدوث ذلك</li><li>الكائن الجديد في كل رسم يغيّر المرجع</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>الكائن الجديد في كل رسم يغيّر المرجع</strong></p><p>memo تقارن props مقارنة سطحية فالكائن الجديد يُعد تغييراً.</p></details></li><li><p><strong>كيف تغلّف مكوناً بـ memo؟</strong></p><ul><li>Card.memo()</li><li>useMemo(Card)</li><li>const Card = React.memo(function Card(props){ ... })</li><li>const Card = memo.Card</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>const Card = React.memo(function Card(props){ ... })</strong></p><p>React.memo يأخذ المكون ويعيد نسخة محسّنة.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-22">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/react-learning/lessons/react-21.html"><small>الدرس السابق</small><strong>تحسين الأداء Performance</strong></a>
+        <a rel="next" href="/react-learning/lessons/react-23.html"><small>الدرس التالي</small><strong>useMemo وuseCallback</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/react-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

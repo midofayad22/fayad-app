@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <title>Project: Pricing Cards and Best Practices — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="A responsive pricing cards page, with a common mistake to avoid: dynamic class names." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-20.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-20.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-20.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-20.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Project: Pricing Cards and Best Practices — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="A responsive pricing cards page, with a common mistake to avoid: dynamic class names." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-20.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Project: Pricing Cards and Best Practices","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-20.html"}]},{"@type":"LearningResource","name":"Project: Pricing Cards and Best Practices","description":"A responsive pricing cards page, with a common mistake to avoid: dynamic class names.","url":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-20.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/en/tailwind-learning/lessons/index.html">Lessons</a><a href="/tailwind-learning/lessons/tw-20.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">Lesson 20 of 20</p>
+      <h1 class="lp-h1">Project: Pricing Cards and Best Practices</h1>
+      <p class="lp-lead">A responsive pricing cards page, with a common mistake to avoid: dynamic class names.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-20">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>The Project</h2><p>We build three cards: Basic, Professional (featured), and Enterprise. A <code>grid gap-6 md:grid-cols-3</code> grid, the featured card with a <code>ring-2</code> ring, buttons with hover and focus states, and dark mode support.</p></article><article class="content-card"><h2>Avoid Dynamic Names</h2><p>Tailwind looks for <strong>complete class names as text</strong> in your files. So the code <code>`bg-${color}-500`</code> will generate nothing. Instead, write the full names or map them: <code>{ red: "bg-red-500", blue: "bg-blue-500" }</code>.</p></article><article class="content-card"><h2>Review Checklist</h2><ul><li>A consistent class order (for example by adding the Prettier plugin).</li><li>Use <code>@theme</code> for repeated values.</li><li>Test contrast, dark mode, and focus.</li><li>Add a real build for production instead of the browser build.</li></ul></article></div>
+<article class="body-card key-card"><p>Write class names in full in your code and don't build them by concatenating strings.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;section class="grid gap-6 p-6 md:grid-cols-3"&gt;
+&lt;article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"&gt;
+&lt;h2 class="text-lg font-bold text-slate-900"&gt;Primary&lt;/h2&gt;
+&lt;p class="mt-2 text-4xl font-extrabold text-slate-900"&gt;0&lt;span class="text-base font-medium text-slate-500"&gt; / month&lt;/span&gt;&lt;/p&gt;
+&lt;ul class="mt-4 space-y-2 text-sm text-slate-600"&gt;&lt;li&gt;Free lessons&lt;/li&gt;&lt;li&gt;Progress tracking&lt;/li&gt;&lt;/ul&gt;
+&lt;button class="mt-6 w-full rounded-lg bg-slate-900 py-2 font-semibold text-white hover:bg-slate-700"&gt;Start&lt;/button&gt;
+&lt;/article&gt;
+&lt;article id="pro" class="rounded-2xl border border-sky-500 bg-white p-6 shadow-lg ring-2 ring-sky-500"&gt;
+&lt;p class="text-xs font-bold uppercase tracking-wide text-sky-700"&gt;Most popular&lt;/p&gt;
+&lt;h2 class="mt-1 text-lg font-bold text-slate-900"&gt;Professional&lt;/h2&gt;
+&lt;p class="mt-2 text-4xl font-extrabold text-slate-900"&gt;9&lt;span class="text-base font-medium text-slate-500"&gt; / month&lt;/span&gt;&lt;/p&gt;
+&lt;ul class="mt-4 space-y-2 text-sm text-slate-600"&gt;&lt;li&gt;All basic features&lt;/li&gt;&lt;li&gt;Completion certificates&lt;/li&gt;&lt;/ul&gt;
+&lt;button class="mt-6 w-full rounded-lg bg-sky-600 py-2 font-semibold text-white hover:bg-sky-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"&gt;Subscribe&lt;/button&gt;
+&lt;/article&gt;
+&lt;article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"&gt;
+&lt;h2 class="text-lg font-bold text-slate-900"&gt;Organizations&lt;/h2&gt;
+&lt;p class="mt-2 text-4xl font-extrabold text-slate-900"&gt;Contact us&lt;/p&gt;
+&lt;ul class="mt-4 space-y-2 text-sm text-slate-600"&gt;&lt;li&gt;Team management&lt;/li&gt;&lt;li&gt;Dedicated support&lt;/li&gt;&lt;/ul&gt;
+&lt;button class="mt-6 w-full rounded-lg bg-slate-900 py-2 font-semibold text-white hover:bg-slate-700"&gt;Contact us&lt;/button&gt;
+&lt;/article&gt;
+&lt;/section&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>The grid becomes a single column on phones and three columns from <code>md</code>. The featured card stands out with a ring and a larger shadow. Try converting it to dark mode by adding <code>dark:</code> to each color.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Add &lt;code&gt;dark:bg-slate-800 dark:text-white&lt;/code&gt; to the cards and make a complete dark version.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Why doesn't the code bg-${color}-500 work in Tailwind?</strong></p><ul><li>Because Tailwind detects complete class names as text and doesn't execute code</li><li>Because the names are short</li><li>Because color is reserved</li><li>It always works</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Because Tailwind detects complete class names as text and doesn't execute code</strong></p></details></li><li><p><strong>How do we solve the dynamic colors problem?</strong></p><ul><li>Write complete class names or use a map with complete names</li><li>Use eval</li><li>Delete the colors</li><li>Change the browser</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Write complete class names or use a map with complete names</strong></p></details></li><li><p><strong>What is better for production?</strong></p><ul><li>A real Tailwind build instead of the browser build</li><li>The browser build always</li><li>Not using Tailwind</li><li>Loading all the colors</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A real Tailwind build instead of the browser build</strong></p></details></li><li><p><strong>Which classes make three columns from md with spacing?</strong></p><ul><li>grid gap-6 md:grid-cols-3</li><li>flex gap-6 md:cols-3</li><li>grid md:gap-3-cols</li><li>columns-3 md:grid</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>grid gap-6 md:grid-cols-3</strong></p><p>grid with grid-cols-3 at md and gap-6 for spacing.</p></details></li><li><p><strong>What is the benefit of adding the Tailwind Prettier plugin?</strong></p><ul><li>Sorting classes in a consistent order</li><li>Removing the need for HTML</li><li>Converting classes into images</li><li>Speeding up the internet</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Sorting classes in a consistent order</strong></p><p>A uniform class order makes reading and review easier.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-20">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/tailwind-learning/lessons/tw-19.html"><small>Previous lesson</small><strong>Forms and Field States</strong></a>
+        <span></span>
+      </nav>
+      <p class="lp-all"><a href="/en/tailwind-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

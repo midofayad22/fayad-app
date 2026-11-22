@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>النماذج Forms — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="عناصر النماذج الأساسية: الحقول والتسميات والقوائم وخانات الاختيار." />
+    <link rel="canonical" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-12.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-12.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-12.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-12.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="النماذج Forms — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="عناصر النماذج الأساسية: الحقول والتسميات والقوائم وخانات الاختيار." />
+    <meta property="og:url" content="https://faybit.vercel.app/bootstrap-learning/lessons/bs-12.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"النماذج Forms","item":"https://faybit.vercel.app/bootstrap-learning/lessons/bs-12.html"}]},{"@type":"LearningResource","name":"النماذج Forms","description":"عناصر النماذج الأساسية: الحقول والتسميات والقوائم وخانات الاختيار.","url":"https://faybit.vercel.app/bootstrap-learning/lessons/bs-12.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/bootstrap-learning/lessons/index.html">الدروس</a><a href="/en/bootstrap-learning/lessons/bs-12.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">الدرس 12 من 20</p>
+      <h1 class="lp-h1">النماذج Forms</h1>
+      <p class="lp-lead">عناصر النماذج الأساسية: الحقول والتسميات والقوائم وخانات الاختيار.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-12">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>العناصر</h2><p><code>.form-label</code> للتسمية، <code>.form-control</code> للحقول النصية، <code>.form-select</code> للقوائم، <code>.form-check</code> مع <code>.form-check-input</code> و<code>.form-check-label</code> لخانات الاختيار والراديو، <code>.form-switch</code> للمفاتيح، <code>.form-range</code> للمنزلق. أحجام: <code>form-control-lg</code> و<code>-sm</code>.</p></article><article class="content-card"><h2>الربط</h2><p>اربط كل تسمية بحقلها عبر <code>for</code> و<code>id</code> — هذا أساس إمكانية الوصول.</p></article></div>
+<article class="body-card key-card"><p>كل حقل يحتاج label مرتبطة بـ for/id.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;form class="container py-3" style="max-width:480px"&gt;
+&lt;div class="mb-3"&gt;
+&lt;label for="email" class="form-label"&gt;البريد الإلكتروني&lt;/label&gt;
+&lt;input type="email" class="form-control" id="email" placeholder="name@example.com"&gt;
+&lt;/div&gt;
+&lt;div class="mb-3"&gt;
+&lt;label for="level" class="form-label"&gt;المستوى&lt;/label&gt;
+&lt;select class="form-select" id="level"&gt;&lt;option&gt;مبتدئ&lt;/option&gt;&lt;option&gt;متوسط&lt;/option&gt;&lt;/select&gt;
+&lt;/div&gt;
+&lt;div class="form-check form-switch mb-3"&gt;
+&lt;input class="form-check-input" type="checkbox" role="switch" id="news" checked&gt;
+&lt;label class="form-check-label" for="news"&gt;استقبال الأخبار&lt;/label&gt;
+&lt;/div&gt;
+&lt;button type="button" class="btn btn-primary"&gt;حفظ&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>كل مجموعة حقل في <code>mb-3</code> لتباعد منتظم. المفتاح هو خانة اختيار بـ <code>form-switch</code> و<code>role="switch"</code>.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">أضف حقل كلمة مرور مع label وربطها بـ &lt;code&gt;for&lt;/code&gt;.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أي فئة تنسق حقل الإدخال النصي؟</strong></p><ul><li>form-control</li><li>input-box</li><li>form-input</li><li>text-field</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>form-control</strong></p></details></li><li><p><strong>كيف نربط label بالحقل؟</strong></p><ul><li>for في label يساوي id في الحقل</li><li>بوضعهما في نفس السطر فقط</li><li>بنفس اللون</li><li>لا حاجة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>for في label يساوي id في الحقل</strong></p></details></li><li><p><strong>أي فئة تصنع مفتاح تبديل؟</strong></p><ul><li>form-switch</li><li>form-toggle</li><li>btn-switch</li><li>switch-box</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>form-switch</strong></p></details></li><li><p><strong>أي فئة تنسّق قائمة منسدلة select؟</strong></p><ul><li>form-control-select</li><li>form-select</li><li>select-menu</li><li>form-dropdown</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>form-select</strong></p><p>form-select خاصة بعنصر select بينما form-control للحقول النصية.</p></details></li><li><p><strong>ما البنية الصحيحة لخانة اختيار checkbox؟</strong></p><ul><li>input.form-control فقط</li><li>div.form-check يحوي input.form-check-input و label.form-check-label</li><li>label.form-switch فقط</li><li>div.checkbox يحوي span</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>div.form-check يحوي input.form-check-input و label.form-check-label</strong></p><p>هذه الفئات الثلاث معاً تعطي المحاذاة والتنسيق الصحيحين.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-12">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/bootstrap-learning/lessons/bs-11.html"><small>الدرس السابق</small><strong>شريط التنقل Navbar و Nav</strong></a>
+        <a rel="next" href="/bootstrap-learning/lessons/bs-13.html"><small>الدرس التالي</small><strong>التحقق ومجموعات الإدخال والتسميات العائمة</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/bootstrap-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

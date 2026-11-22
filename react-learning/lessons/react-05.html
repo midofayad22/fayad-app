@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="react" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Props — React | FAYBIT</title>
+    <meta name="description" content="تعلم كيف تسمح Props بتمرير البيانات من Component إلى Component آخر." />
+    <link rel="canonical" href="https://faybit.vercel.app/react-learning/lessons/react-05.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/react-learning/lessons/react-05.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/react-learning/lessons/react-05.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/react-learning/lessons/react-05.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Props — React | FAYBIT" />
+    <meta property="og:description" content="تعلم كيف تسمح Props بتمرير البيانات من Component إلى Component آخر." />
+    <meta property="og:url" content="https://faybit.vercel.app/react-learning/lessons/react-05.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"React","item":"https://faybit.vercel.app/react-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Props","item":"https://faybit.vercel.app/react-learning/lessons/react-05.html"}]},{"@type":"LearningResource","name":"Props","description":"تعلم كيف تسمح Props بتمرير البيانات من Component إلى Component آخر.","url":"https://faybit.vercel.app/react-learning/lessons/react-05.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"React — FAYBIT","url":"https://faybit.vercel.app/react-learning/react-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="React"><a href="/react-learning/lessons/index.html">الدروس</a><a href="/en/react-learning/lessons/react-05.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/react-learning/lessons/index.html">React</a></nav>
+      <p class="lp-eyebrow">الدرس 5 من 30</p>
+      <h1 class="lp-h1">Props</h1>
+      <p class="lp-lead">تعلم كيف تسمح Props بتمرير البيانات من Component إلى Component آخر.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-5">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<p>
+Props هي البيانات التي يمررها Component إلى Component آخر.
+</p>
+<p>
+غالبًا يتم استخدام Props لجعل المكون قابلًا لإعادة الاستخدام،
+لأن نفس المكون يستطيع استقبال بيانات مختلفة كل مرة.
+</p>
+<p>
+Props تكون للقراءة داخل المكون، ولا ينبغي تعديلها مباشرة.
+</p>
+</div></article>
+<article class="body-card key-card"><p>Props هي وسيلة أساسية لتمرير البيانات إلى Components.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>الكود</h2></div>
+</div>
+<pre dir="ltr"><code>function Welcome({ name }) {
+return &lt;h1&gt;مرحبًا {name}&lt;/h1&gt;;
+}
+function App() {
+return &lt;Welcome name="FAYBIT" /&gt;;
+}</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>يمكنك إرسال name أو title أو image أو أي قيمة أخرى إلى Component.</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span></div>
+</div>
+<p class="practice-description">غيّر قيمة name وجرب تمرير اسم مختلف إلى Welcome.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما الاستخدام الأساسي لـ Props؟</strong></p><ul><li>تمرير البيانات إلى Components</li><li>إنشاء ملفات CSS</li><li>إنشاء قواعد بيانات</li><li>تشغيل الخادم</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تمرير البيانات إلى Components</strong></p></details></li><li><p><strong>من أين تأتي Props غالبًا؟</strong></p><ul><li>من Component الأب</li><li>من CSS</li><li>من HTML فقط</li><li>من قاعدة البيانات مباشرة دائمًا</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>من Component الأب</strong></p></details></li><li><p><strong>هل يجب تعديل Props مباشرة داخل Component؟</strong></p><ul><li>لا</li><li>نعم دائمًا</li><li>نعم باستخدام CSS</li><li>فقط داخل HTML</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لا</strong></p></details></li><li><p><strong>ما ناتج هذا الكود؟ function Hi({name}){ return &lt;p&gt;Hi {name}&lt;/p&gt;; } ... &lt;Hi name=&quot;Sara&quot; /&gt;</strong></p><ul><li>خطأ</li><li>Hi name</li><li>Hi Sara</li><li>Hi</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Hi Sara</strong></p><p>القيمة المرسلة في الوسم name تصل للمكون كـ prop وتُعرض داخل JSX.</p></details></li><li><p><strong>ما الخطأ هنا؟ function A(props){ props.title = 'x'; return &lt;h1&gt;{props.title}&lt;/h1&gt;; }</strong></p><ul><li>لا يوجد خطأ</li><li>الـ props للقراءة فقط ولا تُعدّل مباشرة</li><li>h1 غير مسموح</li><li>يجب استخدام var</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>الـ props للقراءة فقط ولا تُعدّل مباشرة</strong></p><p>لتغيير القيمة نستخدم state أو نمرر قيمة جديدة من المكون الأب.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-5">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/react-learning/lessons/react-04.html"><small>الدرس السابق</small><strong>JSX</strong></a>
+        <a rel="next" href="/react-learning/lessons/react-06.html"><small>الدرس التالي</small><strong>State</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/react-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

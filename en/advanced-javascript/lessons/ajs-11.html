@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>Iterators and Iterables — Advanced JavaScript | FAYBIT</title>
+    <meta name="description" content="The protocol behind for...of, spread, and destructuring." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-11.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-11.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-11.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-11.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Iterators and Iterables — Advanced JavaScript | FAYBIT" />
+    <meta property="og:description" content="The protocol behind for...of, spread, and destructuring." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-11.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Advanced JavaScript","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Iterators and Iterables","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-11.html"}]},{"@type":"LearningResource","name":"Iterators and Iterables","description":"The protocol behind for...of, spread, and destructuring.","url":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-11.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Advanced JavaScript — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Advanced JavaScript"><a href="/en/advanced-javascript/lessons/index.html">Lessons</a><a href="/advanced-javascript/lessons/ajs-11.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/advanced-javascript/lessons/index.html">Advanced JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 11 of 22</p>
+      <h1 class="lp-h1">Iterators and Iterables</h1>
+      <p class="lp-lead">The protocol behind for...of, spread, and destructuring.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-11">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>The Protocol</h2><p>An <strong>Iterable</strong> object has <code>[Symbol.iterator]()</code> which returns an <strong>Iterator</strong>, an object with a <code>next()</code> function that returns <code>{ value, done }</code>.</p></article><article class="content-card"><h2>Why Does It Matter?</h2><p>Any Iterable object works with <code>for...of</code>, <code>...spread</code>, <code>Array.from</code>, and <code>new Set</code>. You can make your own objects iterable.</p></article></div>
+<article class="body-card key-card"><p>Build an Iterator when loading is lazy or the data is huge.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>const range = {
+from: 1, to: 4,
+[Symbol.iterator]() {
+let cur = this.from;
+const end = this.to;
+return {
+next: () =&gt; cur &lt;= end ? { value: cur++, done: false } : { value: undefined, done: true },
+};
+},
+};
+console.log([...range]);
+for (const n of range) if (n % 2 === 0) console.log("even", n);
+const [first, second] = range;
+console.log(first, second);
+console.log(Math.max(...range));</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">[ 1, 2, 3, 4 ]
+even 2
+even 4
+1 2
+4</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>As soon as <code>Symbol.iterator</code> exists, the object works with spread, destructuring, and for...of without writing anything extra.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Try it yourself</h2></div>
+</div>
+<p class="practice-description">Make the object &lt;code&gt;{ items: ['a','b'] }&lt;/code&gt; iterable by returning &lt;code&gt;this.items[Symbol.iterator]()&lt;/code&gt;.</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What does next() return?</strong></p><ul><li>An object with value and done</li><li>A number only</li><li>An array</li><li>Always a Promise</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>An object with value and done</strong></p></details></li><li><p><strong>What makes an object Iterable?</strong></p><ul><li>Having the [Symbol.iterator] function</li><li>Having a length property</li><li>Being an array only</li><li>Having next in it</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Having the [Symbol.iterator] function</strong></p></details></li><li><p><strong>Which of these work with Iterables?</strong></p><ul><li>spread, for...of, and destructuring</li><li>typeof only</li><li>delete only</li><li>with only</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>spread, for...of, and destructuring</strong></p></details></li><li><p><strong>What does this code print? console.log([...&quot;a😀&quot;].length, &quot;a😀&quot;.length);</strong></p><ul><li>2 and 3</li><li>3 and 2</li><li>2 and 2</li><li>3 and 3</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>2 and 3</strong></p><p>A string is iterable by full code points, so the emoji counts as one element, giving 2. length counts UTF-16 units and the emoji takes two, giving 3.</p></details></li><li><p><strong>What is the result of for (const x of { a: 1 }) { }?</strong></p><ul><li>It iterates over the key a</li><li>It iterates over the value 1</li><li>It throws a TypeError because a plain object is not iterable</li><li>It silently does nothing</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>It throws a TypeError because a plain object is not iterable</strong></p><p>for...of requires an iterable, meaning an object with Symbol.iterator, and a plain object has none. To loop over its keys use Object.keys or Object.entries.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-11">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/advanced-javascript/lessons/ajs-10.html"><small>Previous lesson</small><strong>Proxy and Reflect</strong></a>
+        <a rel="next" href="/en/advanced-javascript/lessons/ajs-12.html"><small>Next lesson</small><strong>Generators</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/advanced-javascript/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

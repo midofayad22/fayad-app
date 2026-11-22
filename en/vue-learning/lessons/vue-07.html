@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="vue" />
+    <meta name="robots" content="noindex, follow" />
+    <title>v-bind — Vue.js | FAYBIT</title>
+    <meta name="description" content="Learn how to bind HTML attributes to data using v-bind." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/vue-learning/lessons/vue-07.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/vue-learning/lessons/vue-07.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/vue-learning/lessons/vue-07.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/vue-learning/lessons/vue-07.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="v-bind — Vue.js | FAYBIT" />
+    <meta property="og:description" content="Learn how to bind HTML attributes to data using v-bind." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/vue-learning/lessons/vue-07.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Vue.js","item":"https://faybit.vercel.app/en/vue-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"v-bind","item":"https://faybit.vercel.app/en/vue-learning/lessons/vue-07.html"}]},{"@type":"LearningResource","name":"v-bind","description":"Learn how to bind HTML attributes to data using v-bind.","url":"https://faybit.vercel.app/en/vue-learning/lessons/vue-07.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Vue.js — FAYBIT","url":"https://faybit.vercel.app/vue-learning/vue-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Vue.js"><a href="/en/vue-learning/lessons/index.html">Lessons</a><a href="/vue-learning/lessons/vue-07.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/vue-learning/lessons/index.html">Vue.js</a></nav>
+      <p class="lp-eyebrow">Lesson 7 of 22</p>
+      <h1 class="lp-h1">v-bind</h1>
+      <p class="lp-lead">Learn how to bind HTML attributes to data using v-bind.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-7">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<h2>v-bind</h2>
+<p>
+The <code>v-bind</code> Directive is used to bind an HTML Attribute
+to a value in Vue data.
+</p>
+<p>
+You can use the shorthand <code>:</code> instead of writing
+<code>v-bind:</code>.
+</p>
+</div></article>
+<article class="body-card key-card"><div class="info-label">Use : to bind Attributes</div><p>You can bind src, href, class, style, and other Attributes to Vue data.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>The code</h2></div>
+</div>
+<pre dir="ltr"><code>
+&lt;div id="app"&gt;
+&lt;img :src="imageUrl" alt="Vue Logo"&gt;
+&lt;/div&gt;
+&lt;script&gt;
+const { createApp } = Vue;
+createApp({
+data() {
+return {
+imageUrl: "https://vuejs.org/images/logo.png"
+};
+}
+}).mount("#app");
+&lt;/script&gt;
+</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static">
+<div style="padding:20px;font-family:Arial;">
+<p>The image source was bound to the data using <strong>v-bind</strong>.</p>
+</div>
+</div></div>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>
+<p>
+<code>:src</code> is shorthand for <code>v-bind:src</code>.
+</p>
+<p>
+Vue takes the value of <code>imageUrl</code> and puts it inside the
+<code>src</code> Attribute.
+</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span></div>
+</div>
+<p class="practice-description">Bind the image's src to a variable defined in Vue.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is the shorthand for v-bind?</strong></p><ul><li>:</li><li>@</li><li>#</li><li>$</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>:</strong></p></details></li><li><p><strong>What does v-bind do?</strong></p><ul><li>Binds an Attribute to Vue data</li><li>Creates a database</li><li>Adds JavaScript to the system</li><li>Deletes the element</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Binds an Attribute to Vue data</strong></p></details></li><li><p><strong>Which syntax is correct for binding src?</strong></p><ul><li>:src=&quot;imageUrl&quot;</li><li>@src=&quot;imageUrl&quot;</li><li>#src=&quot;imageUrl&quot;</li><li>$src=&quot;imageUrl&quot;</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>:src=&quot;imageUrl&quot;</strong></p></details></li><li><p><strong>What is wrong with this line if we want to bind the image to the variable imgUrl?
+&lt;img src=&quot;imgUrl&quot;&gt;</strong></p><ul><li>There is no error</li><li>{{ imgUrl }} must be used inside src</li><li>The : is missing, so src is just static text</li><li>Images do not support binding</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The : is missing, so src is just static text</strong></p><p>Without v-bind or :, imgUrl is treated as literal text; the correct form is :src=&quot;imgUrl&quot;.</p></details></li><li><p><strong>Which line binds the disabled attribute to isLocked?</strong></p><ul><li>&lt;button disabled=&quot;isLocked&quot;&gt;</li><li>&lt;button {{ disabled }}&gt;</li><li>&lt;button v-disabled=&quot;isLocked&quot;&gt;</li><li>&lt;button :disabled=&quot;isLocked&quot;&gt;</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>&lt;button :disabled=&quot;isLocked&quot;&gt;</strong></p><p>We use :attr for a dynamic value; here the button is disabled when isLocked is true.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-7">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/vue-learning/lessons/vue-06.html"><small>Previous lesson</small><strong>Computed Properties</strong></a>
+        <a rel="next" href="/en/vue-learning/lessons/vue-08.html"><small>Next lesson</small><strong>v-if and v-else</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/vue-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

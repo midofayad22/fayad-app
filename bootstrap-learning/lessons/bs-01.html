@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>مقدمة: ما هو Bootstrap وكيف نبدأ — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="إطار CSS/JS جاهز لبناء واجهات متجاوبة بسرعة، مع الصفحة الأولى بخطوات الإعداد الصحيحة." />
+    <link rel="canonical" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-01.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-01.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-01.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-01.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="مقدمة: ما هو Bootstrap وكيف نبدأ — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="إطار CSS/JS جاهز لبناء واجهات متجاوبة بسرعة، مع الصفحة الأولى بخطوات الإعداد الصحيحة." />
+    <meta property="og:url" content="https://faybit.vercel.app/bootstrap-learning/lessons/bs-01.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"مقدمة: ما هو Bootstrap وكيف نبدأ","item":"https://faybit.vercel.app/bootstrap-learning/lessons/bs-01.html"}]},{"@type":"LearningResource","name":"مقدمة: ما هو Bootstrap وكيف نبدأ","description":"إطار CSS/JS جاهز لبناء واجهات متجاوبة بسرعة، مع الصفحة الأولى بخطوات الإعداد الصحيحة.","url":"https://faybit.vercel.app/bootstrap-learning/lessons/bs-01.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/bootstrap-learning/lessons/index.html">الدروس</a><a href="/en/bootstrap-learning/lessons/bs-01.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">الدرس 1 من 20</p>
+      <h1 class="lp-h1">مقدمة: ما هو Bootstrap وكيف نبدأ</h1>
+      <p class="lp-lead">إطار CSS/JS جاهز لبناء واجهات متجاوبة بسرعة، مع الصفحة الأولى بخطوات الإعداد الصحيحة.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-1">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>ما هو Bootstrap؟</h2><p><strong>Bootstrap</strong> مكتبة مفتوحة المصدر توفر ملف CSS جاهزًا (أزرار، شبكة، نماذج، مكونات) وملف JavaScript للمكونات التفاعلية. تكتب <strong>فئات (classes)</strong> على عناصر HTML بدل كتابة CSS من الصفر. هذا الكورس مبني على الإصدار <strong>5.3</strong> (المثبت محليًا في المعاينة: 5.3.8).</p></article><article class="content-card"><h2>الإعداد الأساسي</h2><p>أي صفحة Bootstrap تحتاج: <code>&lt;!doctype html&gt;</code> و<code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code> (أساس التجاوب)، ورابط ملف CSS، ثم ملف <code>bootstrap.bundle.min.js</code> في آخر الصفحة إن استخدمت المكونات التفاعلية. المعاينة هنا تضيف هذه الملفات لك تلقائيًا.</p></article></div>
+<article class="body-card key-card"><p>اكتب الفئات على العناصر، ولا تنسَ وسم viewport وإلا لن يتجاوب التصميم على الهاتف.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="container py-4"&gt;
+&lt;h1 class="display-6"&gt;مرحبًا Bootstrap&lt;/h1&gt;
+&lt;p class="lead"&gt;هذه صفحتي الأولى بدون كتابة CSS.&lt;/p&gt;
+&lt;button type="button" class="btn btn-primary"&gt;زر أساسي&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p><code>container</code> يمركز المحتوى ويحدد عرضه، و<code>py-4</code> يضيف حشوة رأسية، و<code>display-6</code> و<code>lead</code> فئات للنصوص، و<code>btn btn-primary</code> يحول العنصر إلى زر ملوّن.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">غيّر لون الزر إلى &lt;code&gt;btn-success&lt;/code&gt; وأضف زرًا ثانيًا بفئة &lt;code&gt;btn-outline-secondary&lt;/code&gt;.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما الوسم الضروري لعمل التصميم المتجاوب على الهاتف؟</strong></p><ul><li>meta viewport</li><li>meta charset فقط</li><li>link rel=icon</li><li>script defer</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>meta viewport</strong></p></details></li><li><p><strong>كيف نستخدم Bootstrap أساسًا؟</strong></p><ul><li>بإضافة فئات جاهزة إلى عناصر HTML</li><li>بكتابة Sass يدويًا دائمًا</li><li>بتحويل HTML إلى PDF</li><li>بتثبيت برنامج على الجهاز</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>بإضافة فئات جاهزة إلى عناصر HTML</strong></p></details></li><li><p><strong>أي ملف يلزم للمكونات التفاعلية مثل Modal وDropdown؟</strong></p><ul><li>bootstrap.bundle.min.js</li><li>bootstrap.min.css فقط</li><li>favicon.ico</li><li>robots.txt</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>bootstrap.bundle.min.js</strong></p></details></li><li><p><strong>أين يُوضع ملف bootstrap.bundle.min.js في الصفحة عادة؟</strong></p><ul><li>في آخر الصفحة قبل إغلاق body</li><li>داخل وسم title</li><li>قبل وسم doctype</li><li>داخل ملف CSS</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>في آخر الصفحة قبل إغلاق body</strong></p><p>يوضع في آخر الصفحة ليعمل بعد تحميل العناصر التي سيتحكم بها.</p></details></li><li><p><strong>أي كود يحوّل عنصراً إلى زر أزرق جاهز؟</strong></p><ul><li>&lt;button class=&quot;button blue&quot;&gt;</li><li>&lt;button class=&quot;primary&quot;&gt;</li><li>&lt;button class=&quot;btn btn-primary&quot;&gt;</li><li>&lt;button style=&quot;btn-primary&quot;&gt;</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>&lt;button class=&quot;btn btn-primary&quot;&gt;</strong></p><p>الزر يحتاج الفئة الأساسية btn مع فئة اللون btn-primary.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-1">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <span></span>
+        <a rel="next" href="/bootstrap-learning/lessons/bs-02.html"><small>الدرس التالي</small><strong>الحاويات والنقاط الفاصلة</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/bootstrap-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

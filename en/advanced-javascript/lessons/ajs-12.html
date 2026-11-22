@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>Generators — Advanced JavaScript | FAYBIT</title>
+    <meta name="description" content="Functions that can be paused and resumed to produce lazy values and infinite streams." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-12.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-12.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-12.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-12.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Generators — Advanced JavaScript | FAYBIT" />
+    <meta property="og:description" content="Functions that can be paused and resumed to produce lazy values and infinite streams." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-12.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Advanced JavaScript","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Generators","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-12.html"}]},{"@type":"LearningResource","name":"Generators","description":"Functions that can be paused and resumed to produce lazy values and infinite streams.","url":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-12.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Advanced JavaScript — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Advanced JavaScript"><a href="/en/advanced-javascript/lessons/index.html">Lessons</a><a href="/advanced-javascript/lessons/ajs-12.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/advanced-javascript/lessons/index.html">Advanced JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 12 of 22</p>
+      <h1 class="lp-h1">Generators</h1>
+      <p class="lp-lead">Functions that can be paused and resumed to produce lazy values and infinite streams.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-12">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>function* and yield</h2><p>A generator function <code>function*</code> returns an Iterator. At <code>yield</code> it pauses and hands out a value, and the next call resumes from the same place with its saved state.</p></article><article class="content-card"><h2>Laziness and Streams</h2><p>A value is only computed when requested, so you can define an infinite sequence and take only the part you need. Values can also be passed into the generator via <code>next(value)</code>.</p></article></div>
+<article class="body-card key-card"><p>yield pauses execution and saves state, and next(value) sends a value back into the generator.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>function* naturals() {
+let n = 1;
+while (true) yield n++;
+}
+function* take(iter, count) {
+let i = 0;
+for (const v of iter) {
+if (i++ &gt;= count) return;
+yield v;
+}
+}
+console.log([...take(naturals(), 5)]);
+function* conversation() {
+const name = yield "name?";
+const lang = yield "language?";
+return name + " likes " + lang;
+}
+const g = conversation();
+console.log(g.next().value);
+console.log(g.next("Sara").value);
+console.log(g.next("JS"));</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">[ 1, 2, 3, 4, 5 ]
+name?
+language?
+{ value: 'Sara likes JS', done: true }</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>The <code>naturals</code> sequence is infinite but does not hang the program because <code>take</code> requests only 5 values. In the conversation, the answers are sent via <code>next</code>.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Try it yourself</h2></div>
+</div>
+<p class="practice-description">Write a generator &lt;code&gt;fib&lt;/code&gt; that produces Fibonacci numbers, and take the first 6 numbers.</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What happens at yield?</strong></p><ul><li>The function pauses, hands out the value, and saves its state</li><li>The function ends permanently</li><li>It throws an error</li><li>It restarts from the beginning</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The function pauses, hands out the value, and saves its state</strong></p></details></li><li><p><strong>Why can an infinite sequence be defined with a generator?</strong></p><ul><li>Because values are computed only on demand</li><li>Because memory is infinite</li><li>Because the generator copies arrays</li><li>It cannot</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Because values are computed only on demand</strong></p></details></li><li><p><strong>What does next('x') do?</strong></p><ul><li>Returns 'x' as the result of the paused yield expression</li><li>Deletes the generator</li><li>Adds an element to the array</li><li>Changes the function's name</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Returns 'x' as the result of the paused yield expression</strong></p></details></li><li><p><strong>What does this code print? function* g() { yield 1; yield 2; return 3; } console.log([...g()]);</strong></p><ul><li>[1, 2, 3]</li><li>[1, 2]</li><li>[3]</li><li>[1, 2, undefined]</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>[1, 2]</strong></p><p>Spread and loops stop when done becomes true and ignore the return value. So only the values produced by yield appear.</p></details></li><li><p><strong>With the same generator function* g() { yield 1; yield 2; return 3; } and it = g() after one it.next(), what do the next three calls return, in order?</strong></p><ul><li>{value:2,done:false} then {value:3,done:true} then {value:undefined,done:true}</li><li>{value:2,done:false} then {value:3,done:false} then {value:undefined,done:true}</li><li>{value:2,done:true} then {value:3,done:true} then an error</li><li>{value:2,done:false} then {value:undefined,done:true} then {value:undefined,done:true}</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>{value:2,done:false} then {value:3,done:true} then {value:undefined,done:true}</strong></p><p>return delivers its value once with done: true, after which the generator stays finished and yields an undefined value. That is why 3 appears with done true and then undefined.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-12">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/advanced-javascript/lessons/ajs-11.html"><small>Previous lesson</small><strong>Iterators and Iterables</strong></a>
+        <a rel="next" href="/en/advanced-javascript/lessons/ajs-13.html"><small>Next lesson</small><strong>Map, Set, WeakMap, and WeakRef</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/advanced-javascript/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

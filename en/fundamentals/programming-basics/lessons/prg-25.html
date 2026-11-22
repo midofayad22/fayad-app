@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <title>How Languages Work: Compilers and Interpreters — Programming Basics | FAYBIT</title>
+    <meta name="description" content="COMPILERS Explain the difference between a compiler and an interpreter . Know the stages of processing source code. Understand bytecode and a virtual…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-25.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-25.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-25.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-25.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="How Languages Work: Compilers and Interpreters — Programming Basics | FAYBIT" />
+    <meta property="og:description" content="COMPILERS Explain the difference between a compiler and an interpreter . Know the stages of processing source code. Understand bytecode and a virtual…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-25.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Programming Basics","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"How Languages Work: Compilers and Interpreters","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-25.html"}]},{"@type":"LearningResource","name":"How Languages Work: Compilers and Interpreters","description":"COMPILERS Explain the difference between a compiler and an interpreter . Know the stages of processing source code. Understand bytecode and a virtual…","url":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-25.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Programming Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Programming Basics"><a href="/en/fundamentals/programming-basics/lessons/index.html">Lessons</a><a href="/fundamentals/programming-basics/lessons/prg-25.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/programming-basics/lessons/index.html">Programming Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 25 of 31 · COMPILERS</p>
+      <h1 class="lp-h1">How Languages Work: Compilers and Interpreters</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-25">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">COMPILERS</span>
+<h2>From the text you write to what the CPU runs</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content"><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Explain the difference between a <span class="term">compiler</span> and an <span class="term">interpreter</span>.</li><li>Know the stages of processing source code.</li><li>Understand bytecode and a virtual machine.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>Lessons: What is programming (prg-01), How code runs (prg-02), Programming languages (prg-05).</li></ul>
+</section>
+<section class="lesson-section "><h3>The CPU does not understand JavaScript</h3>
+<p>The CPU only runs simple binary instructions (machine code). Program text is written for humans, so some program has to translate it. There are two main ways:</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Aspect</th><th scope="col">Compiler</th><th scope="col">Interpreter</th></tr></thead><tbody><tr><th scope="row">How</th><td>Translates the whole program before running into an executable</td><td>Reads and executes the code step by step</td></tr><tr><th scope="row">Speed</th><td>Usually faster execution</td><td>Usually slower but starts instantly</td></tr><tr><th scope="row">Errors</th><td>Reported before running</td><td>May appear while running</td></tr><tr><th scope="row">Examples</th><td>C, Rust and Go</td><td>Python and Ruby (traditionally)</td></tr></tbody></table></div>
+</section>
+<section class="lesson-section "><h3>The processing stages</h3>
+<figure class="doc-diagram" role="group" aria-label="Diagram"><figcaption>From text to execution</figcaption><ol class="doc-flow"><li><strong>Source code</strong><span><code>let x = 2 + 3 * 4</code></span></li><li><strong>Lexer (lexical analysis)</strong><span>splits the text into tokens</span></li><li><strong>Parser (syntax analysis)</strong><span>builds an AST that represents the structure</span></li><li><strong>Semantic analysis</strong><span>checks types and names</span></li><li><strong>Code generation or execution</strong><span>machine code, bytecode, or direct tree execution</span></li></ol></figure>
+</section>
+<section class="lesson-section "><h3>The journey of one statement through every stage</h3>
+<p>In this section we build a small language called <span class="term">FAY</span>. Take this statement from our language: <code>let area = 3 * (2 + 4)</code>. Watch how the <strong>shape of the data</strong> changes at every stage, and how each stage takes only the output of the previous one:</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Stage</th><th scope="col">Receives</th><th scope="col">Produces</th><th scope="col">What changed?</th></tr></thead><tbody><tr><th scope="row">1. Source code</th><td>—</td><td>text: <code>let area = 3 * (2 + 4)</code></td><td>a string of characters with no meaning to the machine</td></tr><tr><th scope="row">2. Tokenizer</th><td>the text</td><td>a list: <code>let</code> <code>area</code> <code>=</code> <code>3</code> <code>*</code> <code>(</code> <code>2</code> <code>+</code> <code>4</code> <code>)</code></td><td>characters grouped into typed units</td></tr><tr><th scope="row">3. Parser</th><td>the token list</td><td>an AST</td><td>structure and precedence appeared; the brackets vanished because the tree carries their meaning</td></tr><tr><th scope="row">4. Interpreter</th><td>the tree</td><td>an environment: <code>area = 18</code></td><td>the arithmetic ran and the value was stored in memory</td></tr><tr><th scope="row">5. Output</th><td>the environment</td><td><code>print area</code> gives <code>18</code></td><td>something the user sees</td></tr></tbody></table></div>
+</section>
+<section class="lesson-section "><h3>Bytecode and a virtual machine</h3>
+<p><span class="term">Bytecode</span> is a simple intermediate instruction set that no real CPU understands, but a program called a <span class="term">virtual machine</span> does. That is the idea behind the JVM and CPython. A stack machine is among the simplest kinds; it runs the expression <code>2 + 3</code> like this:</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">text</span></figcaption><pre dir="ltr"><code>PUSH 2
+PUSH 3
+ADD      ; pops 3 and 2, pushes 5</code></pre></figure>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>function run(program) {
+const stack = [];
+for (const line of program) {
+const [op, arg] = line.split(" ");
+if (op === "push") stack.push(Number(arg));
+else if (op === "add") stack.push(stack.pop() + stack.pop());
+else if (op === "mul") stack.push(stack.pop() * stack.pop());
+}
+return stack.pop();
+}
+console.log(run(["push 2", "push 3", "add"])); // 5</code></pre></figure>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>Saying a language itself is “compiled” or “interpreted”: that describes an implementation, not the language.</li><li>Believing an interpreter is necessarily slow.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> Why do syntax errors in a compiled language reach you before the program runs?</summary><div class="doc-solution"><strong>Show solution</strong><p>Because the compiler analyses the whole program during translation, so it finds syntax and semantic errors before producing the executable.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>A compiler translates before running; an interpreter executes while reading.</li><li>Stages: lexer, parser, analysis, execution.</li><li>Bytecode runs on a virtual machine.</li></ul><p class="doc-next"><strong>Next step:</strong> We build the first stage ourselves: the tokenizer.</p>
+</section></div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong>Core idea</strong>
+<p>Every language goes through stages from text to execution, and understanding them removes the mystery.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Worked example</span>
+<h3>See the idea in code</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>// a tiny stack machine
+const program = ["push 4", "push 5", "mul"];
+const stack = [];
+for (const line of program) {
+const [op, arg] = line.split(" ");
+if (op === "push") stack.push(Number(arg));
+if (op === "mul") stack.push(stack.pop() * stack.pop());
+}
+console.log(stack.pop());</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Practice</span>
+<h3>Challenge yourself</h3>
+</div>
+</div>
+<p></p>
+<div class="fd-exercise"><h4>Interactive exercise</h4><p class="fd-ex-prompt">Complete the stack machine: write run(program) supporting push n, add, mul and sub (subtraction: deeper item minus top item) and returning the final value.</p><p class="fd-ex-status" role="status"></p></div>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is the main difference between a compiler and an interpreter?</strong></p><ul><li>A compiler translates before running; an interpreter executes while reading</li><li>A compiler is cheaper</li><li>There is no difference</li><li>An interpreter needs no code</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A compiler translates before running; an interpreter executes while reading</strong></p><p>This is the core difference, although modern implementations mix both.</p></details></li><li><p><strong>What runs bytecode?</strong></p><ul><li>A virtual machine</li><li>The hard disk</li><li>The keyboard</li><li>The screen</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A virtual machine</strong></p><p>A virtual machine is a program that simulates a simple processor.</p></details></li><li><p><strong>Which stage splits the text into tokens?</strong></p><ul><li>The lexer</li><li>The parser</li><li>The linker</li><li>The debugger</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The lexer</strong></p><p>The lexical analyser is the first stage.</p></details></li><li><p><strong>What does the stack machine produce for push 4, push 5, mul?</strong></p><ul><li>20</li><li>9</li><li>45</li><li>1</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>20</strong></p><p>4 × 5 = 20.</p></details></li><li><p><strong>What is the stack machine's final result? push 10, push 3, push 2, mul, sub (sub subtracts the top item from the deeper one)</strong></p><ul><li>5</li><li>4</li><li>-4</li><li>60</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>4</strong></p><p>After the pushes the stack is [10,3,2]; mul replaces 3 and 2 with 6 giving [10,6]; then sub gives 10 - 6 = 4. Operand order matters because subtraction is not commutative.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-25">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/programming-basics/lessons/prg-24.html"><small>Previous lesson</small><strong>Programming Paradigms</strong></a>
+        <a rel="next" href="/en/fundamentals/programming-basics/lessons/prg-26.html"><small>Next lesson</small><strong>The Tokenizer (Lexer)</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/programming-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

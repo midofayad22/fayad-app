@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>How Does a Computer Work? — Computer Basics | FAYBIT</title>
+    <meta name="description" content="Trace the journey of data between input, memory, the processor and output. Explain the Fetch-Decode-Execute cycle and what clock cycles mean. Describe…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-02.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-02.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-02.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-02.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="How Does a Computer Work? — Computer Basics | FAYBIT" />
+    <meta property="og:description" content="Trace the journey of data between input, memory, the processor and output. Explain the Fetch-Decode-Execute cycle and what clock cycles mean. Describe…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-02.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Computer Basics","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"How Does a Computer Work?","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-02.html"}]},{"@type":"LearningResource","name":"How Does a Computer Work?","description":"Trace the journey of data between input, memory, the processor and output. Explain the Fetch-Decode-Execute cycle and what clock cycles mean. Describe…","url":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-02.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Computer Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Computer Basics"><a href="/en/fundamentals/computer-basics/lessons/index.html">Lessons</a><a href="/fundamentals/computer-basics/lessons/com-02.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/computer-basics/lessons/index.html">Computer Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 2 of 30</p>
+      <h1 class="lp-h1">How Does a Computer Work?</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-2">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>How Does a Computer Work?</h2>
+<div><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Trace the journey of data between input, memory, the processor and output.</li><li>Explain the <span class="term">Fetch-Decode-Execute</span> cycle and what clock cycles mean.</li><li>Describe what happens from pressing the power button to seeing the desktop.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>The lesson “What is a computer?” (com-01).</li></ul>
+</section>
+<section class="lesson-section "><h3>Introduction: between the click and the result</h3>
+<p>When you click your browser icon, about a second passes before the window appears. In that second billions of tiny steps happen: reading from disk, moving data into memory, executing instructions on the processor, and drawing on the screen. This lesson gives you the big picture before later lessons examine each component on its own.</p>
+</section>
+<section class="lesson-section "><h3>The core components and their roles</h3>
+<p>Four parts work together, linked by what is called a <span class="term">Bus</span>: electrical pathways that carry data, addresses and control signals. The parts are the <span class="term">CPU</span>, which executes instructions; <span class="term">RAM</span>, which holds what we are working on right now; <span class="term">Storage</span>, which keeps everything permanently; and the input and output devices.</p>
+<figure class="doc-diagram" role="group" aria-label="Diagram"><figcaption>Data path inside the machine</figcaption><ol class="doc-layers"><li><strong>Input and output devices</strong><span>keyboard, mouse, display — the slowest part, facing the human</span></li><li><strong>Storage</strong><span>SSD or HDD — large and permanent but far slower than memory</span></li><li><strong>Memory (RAM)</strong><span>fast and temporary — holds the running programs and data</span></li><li><strong>The CPU</strong><span>the fastest part, with a tiny built-in memory called Cache</span></li></ol></figure>
+</section>
+<section class="lesson-section "><h3>The Fetch-Decode-Execute cycle</h3>
+<p>The processor does not understand whole programs; it carries out very simple instructions one after another, such as “add these two numbers” or “copy a value from memory”. Each instruction goes through three steps that repeat without stopping:</p>
+<ol><li><strong>Fetch:</strong> the CPU fetches the next instruction from memory; a special counter called the <span class="term">Program Counter</span> tracks where it is.</li><li><strong>Decode:</strong> the control unit works out what the instruction means and what is required.</li><li><strong>Execute:</strong> the <span class="term">ALU</span> (arithmetic logic unit) performs the operation, and the result is stored in a register or in memory.</li></ol>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">text</span></figcaption><pre dir="ltr"><code>1: LOAD  A, 5      ; put 5 in register A
+2: LOAD  B, 3      ; put 3 in register B
+3: ADD   A, B      ; A = A + B
+4: STORE total, A  ; write A to memory at 'total'</code></pre></figure>
+<p>This is a simplified assembly language that shows the idea: four instructions, each passing through the three steps, and at the end memory holds the value 8. A high-level statement such as <code>total = 5 + 3</code> is translated into a sequence like this.</p>
+</section>
+<section class="lesson-section "><h3>The clock and speed</h3>
+<p>The processor works to a steady rhythm set by an internal clock, and each beat is a <span class="term">Clock Cycle</span>. A 3.5 GHz processor ticks about 3.5 billion times per second, so one cycle lasts roughly 0.29 nanoseconds. Even so, instructions completed per second is not exactly the frequency: some instructions need several cycles and others run alongside each other. We return to this in the CPU lesson.</p>
+</section>
+<section class="lesson-section "><h3>From the power button to the desktop</h3>
+<figure class="doc-diagram" role="group" aria-label="Diagram"><figcaption>The boot sequence</figcaption><ol class="doc-flow"><li><strong>Power on</strong><span>power reaches the motherboard, which runs a program stored on it called firmware (UEFI or BIOS)</span></li><li><strong>POST check</strong><span>the firmware checks that the CPU, memory and storage are present</span></li><li><strong>Bootloader</strong><span>the firmware finds a small program on disk that loads the operating system</span></li><li><strong>Operating system</strong><span>the kernel is copied into RAM and starts the core services</span></li><li><strong>Desktop</strong><span>the interface appears and you can open programs</span></li></ol></figure>
+<p>When you open a program afterwards, the same pattern repeats on a smaller scale: the program is copied from disk into memory, then the processor begins fetching its instructions. That is why the first launch is sometimes slower than the second: part of the files stay cached in memory.</p>
+</section>
+<section class="lesson-section "><h3>Real-world applications</h3>
+<ul><li><strong>Diagnosing slowness:</strong> knowing that the CPU, memory and disk share the work tells you that a machine that slows down with many programs open usually lacks memory rather than CPU power.</li><li><strong>Choosing upgrades:</strong> replacing a spinning hard disk with an SSD speeds up boot more than changing the CPU in many older computers.</li><li><strong>Dual boot and repair:</strong> understanding firmware and the bootloader explains how Linux is installed beside Windows and how to repair a machine that will not start.</li></ul>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>“The CPU stores my files”: the CPU stores nothing permanently; files live on disk and the CPU only processes what reaches it temporarily.</li><li>“The CPU reads the program straight from disk”: the program must be copied into memory first, because the disk is far too slow for the processor.</li><li>“The machine is slow, so the CPU is weak”: slowness can come from memory, disk, network or software; a system is only as fast as its slowest link.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Calculation:</strong> a processor runs at 4 GHz. How many nanoseconds does one cycle take, and how many cycles occur in one millisecond?</summary><div class="doc-solution"><strong>Show solution</strong><p>4 GHz means 4 billion cycles per second, so one cycle = 1 ÷ 4,000,000,000 = 0.25 nanoseconds. In one millisecond (a thousandth of a second) there are 4,000,000,000 ÷ 1000 = 4,000,000 cycles.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Reasoning:</strong> why is a program not loaded from disk straight into the processor, skipping memory?</summary><div class="doc-solution"><strong>Show solution</strong><p>A processor executes billions of instructions per second, while a good SSD needs tens of microseconds to serve one request and a spinning disk several milliseconds. If the CPU waited on the disk for each instruction it would sit idle most of the time. Memory is hundreds of times faster, so it acts as a middleman that feeds the CPU what it needs.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Hands-on:</strong> open Task Manager or Activity Monitor and watch CPU, memory and disk usage before launching your browser and after opening several tabs. What do you expect to see?</summary><div class="doc-solution"><strong>Show solution</strong><p>On launch, disk usage rises briefly as files are read; memory then climbs noticeably with each tab, while the CPU spikes momentarily as pages load and then settles. If memory gets close to full you will see the disk working continuously, a sign that the system is using it as a temporary substitute for memory.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>Data moves from input and storage into memory and then the CPU, and the result returns to output or storage.</li><li>The CPU runs its instructions through the Fetch-Decode-Execute cycle at the pace of the clock.</li><li>Booting is a chain: firmware, then the bootloader, then the operating system.</li><li>System performance is set by the balance of its parts, not one part.</li></ul><p class="doc-next"><strong>Next step:</strong> Hardware and Software: we separate the physical machine from the programs and see how they cooperate.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>Core concept</strong>
+<p>A computer is an interconnected system; the speed and performance of the system depend on several components working together, not just one.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Hands-on practice</span>
+<h3>Try it yourself</h3>
+</div>
+</div>
+<p>Open a program on your device and observe what happens: clicking the icon, the program loading, and then its interface appearing.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which component is primarily responsible for executing instructions?</strong></p><ul><li>The monitor</li><li>The keyboard</li><li>CPU</li><li>The speakers</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>CPU</strong></p></details></li><li><p><strong>What is the order of the steps every instruction goes through in the processor?</strong></p><ul><li>Execute, then Fetch, then Decode</li><li>Decode, then Execute, then Fetch</li><li>Fetch, then Execute, then Decode</li><li>Fetch, then Decode, then Execute</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Fetch, then Decode, then Execute</strong></p><p>The CPU fetches the instruction, decodes it, then executes it, and the cycle repeats without stopping.</p></details></li><li><p><strong>What does the Program Counter do?</strong></p><ul><li>It counts the open programs</li><li>It tracks where the next instruction to fetch is in memory</li><li>It measures the clock speed</li><li>It stores permanent files</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>It tracks where the next instruction to fetch is in memory</strong></p><p>The counter points to the address of the next instruction so it can be fetched in the Fetch step.</p></details></li><li><p><strong>A processor runs at 3.5 GHz. Roughly what does that mean?</strong></p><ul><li>It ticks about 3.5 billion clock cycles per second</li><li>It runs 3.5 million instructions per second</li><li>It needs 3.5 seconds to start a program</li><li>It has 3.5 GB of memory</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>It ticks about 3.5 billion clock cycles per second</strong></p><p>GHz measures clock cycles, each about 0.29 nanoseconds, which is not necessarily the number of instructions.</p></details></li><li><p><strong>Which sequence describes the boot process after pressing the power button?</strong></p><ul><li>Operating system, POST, firmware, bootloader</li><li>Firmware, POST, bootloader, operating system</li><li>Bootloader, operating system, POST, firmware</li><li>Desktop, operating system, firmware</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Firmware, POST, bootloader, operating system</strong></p><p>The firmware checks the hardware (POST), finds the bootloader, which loads the OS, and then the desktop appears.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-2">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/computer-basics/lessons/com-01.html"><small>Previous lesson</small><strong>What Is a Computer?</strong></a>
+        <a rel="next" href="/en/fundamentals/computer-basics/lessons/com-03.html"><small>Next lesson</small><strong>Hardware and Software</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/computer-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

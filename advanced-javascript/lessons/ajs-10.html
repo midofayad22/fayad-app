@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>Proxy و Reflect — JavaScript المتقدم | FAYBIT</title>
+    <meta name="description" content="اعترض العمليات على الكائنات لبناء التحقق والتسجيل والقيم الافتراضية." />
+    <link rel="canonical" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-10.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-10.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-10.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-10.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Proxy و Reflect — JavaScript المتقدم | FAYBIT" />
+    <meta property="og:description" content="اعترض العمليات على الكائنات لبناء التحقق والتسجيل والقيم الافتراضية." />
+    <meta property="og:url" content="https://faybit.vercel.app/advanced-javascript/lessons/ajs-10.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript المتقدم","item":"https://faybit.vercel.app/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Proxy و Reflect","item":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-10.html"}]},{"@type":"LearningResource","name":"Proxy و Reflect","description":"اعترض العمليات على الكائنات لبناء التحقق والتسجيل والقيم الافتراضية.","url":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-10.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript المتقدم — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript المتقدم"><a href="/advanced-javascript/lessons/index.html">الدروس</a><a href="/en/advanced-javascript/lessons/ajs-10.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/advanced-javascript/lessons/index.html">JavaScript المتقدم</a></nav>
+      <p class="lp-eyebrow">الدرس 10 من 22</p>
+      <h1 class="lp-h1">Proxy و Reflect</h1>
+      <p class="lp-lead">اعترض العمليات على الكائنات لبناء التحقق والتسجيل والقيم الافتراضية.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-10">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>Proxy</h2><p><code>new Proxy(target, handler)</code> يغلف كائنًا ويعترض عمليات مثل <code>get</code> و<code>set</code> و<code>has</code> و<code>deleteProperty</code> عبر دوال تسمى <strong>traps</strong>.</p></article><article class="content-card"><h2>Reflect</h2><p><code>Reflect</code> يوفر نفس العمليات الافتراضية كدوال، فتستدعيها داخل الـ trap للحفاظ على السلوك الأصلي.</p></article></div>
+<article class="body-card key-card"><p>ارجع دائمًا بـ Reflect.set/get داخل الـ traps للحفاظ على السلوك الصحيح.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>const validator = {
+set(target, key, value, receiver) {
+if (key === "age" &amp;&amp; !Number.isInteger(value)) {
+throw new TypeError("age must be an integer");
+}
+return Reflect.set(target, key, value, receiver);
+},
+get(target, key, receiver) {
+return key in target ? Reflect.get(target, key, receiver) : "n/a";
+},
+};
+const person = new Proxy({}, validator);
+person.age = 30;
+console.log(person.age, person.name);
+try { person.age = "x"; } catch (e) { console.log(e.message); }
+const logs = [];
+const tracked = new Proxy({ n: 1 }, {
+set(t, k, v) { logs.push(k + "=" + v); t[k] = v; return true; },
+});
+tracked.n = 2; tracked.m = 3;
+console.log(logs);</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">30 n/a
+age must be an integer
+[ 'n=2', 'm=3' ]</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>الـ Proxy الأول يتحقق من القيم قبل الكتابة ويعيد قيمة افتراضية للمفاتيح غير الموجودة. الثاني يسجل كل تعديل دون تغيير الكائن الأصلي.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>جرّب بنفسك</h2></div>
+</div>
+<p class="practice-description">أنشئ Proxy يرمي خطأ عند محاولة حذف أي خاصية (trap اسمه &lt;code&gt;deleteProperty&lt;/code&gt;).</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما الـ trap؟</strong></p><ul><li>دالة في handler تعترض عملية على الكائن</li><li>نوع من الأخطاء</li><li>حلقة</li><li>مكتبة خارجية</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>دالة في handler تعترض عملية على الكائن</strong></p></details></li><li><p><strong>لماذا نستخدم Reflect داخل الـ traps؟</strong></p><ul><li>لتنفيذ السلوك الافتراضي بشكل صحيح</li><li>لإبطاء الكود</li><li>لتعطيل Proxy</li><li>لإنشاء كلاسات</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لتنفيذ السلوك الافتراضي بشكل صحيح</strong></p></details></li><li><p><strong>أي مما يلي استخدام مناسب للـ Proxy؟</strong></p><ul><li>التحقق من القيم وتسجيل التغييرات</li><li>تلوين الصفحة</li><li>تحميل الصور</li><li>تشفير كلمات المرور</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>التحقق من القيم وتسجيل التغييرات</strong></p></details></li><li><p><strong>ما ناتج الكود؟ const p = new Proxy({}, { set(t, k, v) { t[k] = v * 2; return true; } }); p.x = 5; console.log(p.x);</strong></p><ul><li>5</li><li>undefined</li><li>خطأ لأن set لا تعدل القيمة</li><li>10</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>10</strong></p><p>الـ trap المسمى set يعترض عملية الإسناد ويحدد ما يُخزّن في الهدف، فيخزن 10. القراءة p.x لا تملك trap فتمر إلى الهدف مباشرة.</p></details></li><li><p><strong>ما ناتج الكود؟ const p = new Proxy({}, { get: (t, k) =&gt; (k in t ? t[k] : 0) }); console.log(p.a, p.b + 1);</strong></p><ul><li>0 و 1</li><li>undefined و NaN</li><li>0 و NaN</li><li>0 و 0</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>0 و 1</strong></p><p>الـ trap المسمى get يعيد 0 لأي مفتاح غير موجود بدل undefined، فتكون p.a تساوي 0 و p.b + 1 تساوي 1. هذا يوضح كيف يغير Proxy سلوك القراءة.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-10">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/advanced-javascript/lessons/ajs-09.html"><small>الدرس السابق</small><strong>Property Descriptors والتجميد</strong></a>
+        <a rel="next" href="/advanced-javascript/lessons/ajs-11.html"><small>الدرس التالي</small><strong>Iterators و Iterables</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/advanced-javascript/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

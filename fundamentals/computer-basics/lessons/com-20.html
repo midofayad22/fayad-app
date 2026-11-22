@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>معمارية نظام التشغيل: النواة والفضاءان — أساسيات الكمبيوتر | FAYBIT</title>
+    <meta name="description" content="تشرح طبقات الحاسوب من التطبيق حتى العتاد. تفرّق بين Kernel و User Space ولماذا يوجد الفصل. تقارن بين النواة المتكاملة والنواة الدقيقة. درس «أنظمة التشغيل»…" />
+    <link rel="canonical" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-20.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-20.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-20.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-20.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="معمارية نظام التشغيل: النواة والفضاءان — أساسيات الكمبيوتر | FAYBIT" />
+    <meta property="og:description" content="تشرح طبقات الحاسوب من التطبيق حتى العتاد. تفرّق بين Kernel و User Space ولماذا يوجد الفصل. تقارن بين النواة المتكاملة والنواة الدقيقة. درس «أنظمة التشغيل»…" />
+    <meta property="og:url" content="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-20.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"أساسيات الكمبيوتر","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"معمارية نظام التشغيل: النواة والفضاءان","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-20.html"}]},{"@type":"LearningResource","name":"معمارية نظام التشغيل: النواة والفضاءان","description":"تشرح طبقات الحاسوب من التطبيق حتى العتاد. تفرّق بين Kernel و User Space ولماذا يوجد الفصل. تقارن بين النواة المتكاملة والنواة الدقيقة. درس «أنظمة التشغيل»…","url":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-20.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"أساسيات الكمبيوتر — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="أساسيات الكمبيوتر"><a href="/fundamentals/computer-basics/lessons/index.html">الدروس</a><a href="/en/fundamentals/computer-basics/lessons/com-20.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/fundamentals/computer-basics/lessons/index.html">أساسيات الكمبيوتر</a></nav>
+      <p class="lp-eyebrow">الدرس 20 من 30</p>
+      <h1 class="lp-h1">معمارية نظام التشغيل: النواة والفضاءان</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-20">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>معمارية نظام التشغيل: النواة والفضاءان</h2>
+<div><section class="lesson-section doc-objectives"><h3>أهداف الدرس</h3><ul><li>تشرح طبقات الحاسوب من التطبيق حتى العتاد.</li><li>تفرّق بين <span class="term">Kernel</span> و<span class="term">User Space</span> ولماذا يوجد الفصل.</li><li>تقارن بين النواة المتكاملة والنواة الدقيقة.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>المتطلبات السابقة</h3><ul><li>درس «أنظمة التشغيل» (com-10) ودرس «Hardware و Software».</li></ul>
+</section>
+<section class="lesson-section "><h3>لماذا نحتاج إلى معمارية؟</h3>
+<p>لو استطاع كل برنامج أن يكتب في أي عنوان من الذاكرة ويتحدث مباشرة مع القرص والشبكة، لكفى خطأ واحد في متصفحك ليُسقط الجهاز كله. لذلك يقسّم نظام التشغيل العالم إلى مستويين من الصلاحية: مستوى موثوق قليل الشيفرة يملك كل شيء، ومستوى عادي تعمل فيه التطبيقات بقيود.</p>
+<figure class="doc-diagram" role="group" aria-label="مخطط"><figcaption>الطبقات من الأعلى إلى الأسفل</figcaption><ol class="doc-layers"><li><strong>التطبيقات</strong><span>متصفح، محرر نصوص، لعبة — تعمل في User Space</span></li><li><strong>المكتبات وواجهات النظام</strong><span>مثل libc وWin32 — تُسهّل طلب خدمات النواة</span></li><li><strong>النواة Kernel</strong><span>العمليات، الذاكرة، الملفات، السواقات — تعمل في Kernel Space</span></li><li><strong>العتاد Hardware</strong><span>المعالج، الذاكرة، القرص، الشبكة</span></li></ol></figure>
+</section>
+<section class="lesson-section "><h3>وضع المستخدم ووضع النواة</h3>
+<p>المعالج الحديث نفسه يدعم وضعين على الأقل: <span class="term">User Mode</span> (صلاحيات محدودة) و<span class="term">Kernel Mode</span> (صلاحيات كاملة). التعليمات الحساسة، مثل تغيير جداول الذاكرة أو الوصول المباشر للعتاد، يرفض المعالج تنفيذها خارج وضع النواة ويُطلق استثناءً يتولّاه النظام.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">الجانب</th><th scope="col">User Space</th><th scope="col">Kernel Space</th></tr></thead><tbody><tr><th scope="row">من يعمل فيه</th><td>التطبيقات والمكتبات</td><td>النواة والسواقات</td></tr><tr><th scope="row">الوصول للعتاد</th><td>غير مباشر عبر النواة</td><td>مباشر</td></tr><tr><th scope="row">أثر الخطأ</th><td>ينهار البرنامج وحده غالبًا</td><td>قد ينهار النظام كله</td></tr></tbody></table></div>
+</section>
+<section class="lesson-section "><h3>أشكال النواة</h3>
+<ul><li><strong>Monolithic Kernel</strong>: معظم الخدمات (الملفات، الشبكة، السواقات) داخل النواة. أسرع لكن خطأ في سواقة قد يُسقط النظام. مثال: Linux.</li><li><strong>Microkernel</strong>: النواة تحتفظ بالحد الأدنى (جدولة، ذاكرة، اتصال بين العمليات) وتعمل الخدمات الباقية كعمليات عادية. أكثر عزلًا وأبطأ قليلًا. أمثلة: MINIX وQNX.</li><li><strong>Hybrid</strong>: مزيج عملي بين الاثنين، كما في Windows NT وmacOS.</li></ul>
+<div class="doc-mistakes"><h4>أخطاء شائعة</h4><ul><li>الخلط بين «نظام التشغيل» و«النواة»: النواة جزء من النظام وليست كله.</li><li>الاعتقاد أن التطبيق يتصل بالقرص مباشرة؛ هو يطلب ذلك من النواة.</li></ul></div>
+<details class="doc-exercise"><summary><span>تمرين</span> لماذا تسبب سواقة معيبة في Linux انهيار النظام بينما يسبب انهيار المتصفح إغلاق المتصفح فقط؟</summary><div class="doc-solution"><strong>عرض الحل</strong><p>السواقة تعمل داخل Kernel Space بصلاحيات كاملة ومساحة ذاكرة مشتركة مع النواة، فلا يوجد حاجز يحمي بقية النظام. المتصفح يعمل في User Space بعزل ذاكرة، فتكتشف النواة الخطأ وتُنهي تلك العملية فقط.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>الخلاصة</h3><ul><li>النظام يفصل بين User Space المقيّد وKernel Space الكامل الصلاحيات.</li><li>المعالج نفسه يفرض هذا الفصل عبر أوضاع التنفيذ.</li><li>تصاميم النواة تختلف في المقايضة بين السرعة والعزل.</li></ul><p class="doc-next"><strong>الخطوة التالية:</strong> كيف يطلب التطبيق خدمة من النواة؟ الدرس القادم عن System Calls.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>المفهوم الأساسي</strong>
+<p>النواة هي الجزء الوحيد الموثوق الذي يتحدث مع العتاد؛ والتطبيقات تعمل في عزلة وتطلب الخدمات منها.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>تطبيق عملي</span>
+<h3>جرّب بنفسك</h3>
+</div>
+</div>
+<p>افتح مدير المهام (Windows) أو أمر top (Linux/macOS) وحدد عملية واحدة من التطبيقات وعملية واحدة تابعة للنظام، ثم اكتب ما يميّز كلًّا منهما.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أي مكون مسؤول بشكل أساسي عن تنفيذ تعليمات البرامج؟</strong></p><ul><li>CPU</li><li>Monitor</li><li>Keyboard</li><li>SSD</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>CPU</strong></p></details></li><li><p><strong>أي مكوّن يخزّن البيانات مؤقتاً بسرعة عالية أثناء عمل البرامج؟</strong></p><ul><li>RAM</li><li>القرص الصلب فقط</li><li>مزوّد الطاقة</li><li>لوحة المفاتيح</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>RAM</strong></p><p>RAM ذاكرة سريعة مؤقتة تفقد محتواها عند انقطاع الكهرباء.</p></details></li><li><p><strong>ما الفرق بين الإنترنت والويب؟</strong></p><ul><li>هما اسمان للشيء نفسه</li><li>الويب هو الكابلات والإنترنت هو المتصفح</li><li>الإنترنت شبكة الشبكات والويب خدمة تعمل فوقها</li><li>الويب أقدم من الإنترنت</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>الإنترنت شبكة الشبكات والويب خدمة تعمل فوقها</strong></p><p>البريد والألعاب تستعمل الإنترنت دون أن تكون جزءاً من الويب.</p></details></li><li><p><strong>كيف يخزّن الحاسوب النصوص والصور والصوت في النهاية؟</strong></p><ul><li>كأرقام ثنائية من 0 و1</li><li>كحروف عربية فقط</li><li>كرسومات صغيرة داخل المعالج</li><li>كل نوع بنظام مختلف تماماً غير رقمي</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>كأرقام ثنائية من 0 و1</strong></p><p>كل البيانات تُمثّل بالبتات، والبرامج تفسّرها نصاً أو صورة أو صوتاً.</p></details></li><li><p><strong>أي سطر يصف علاقة نظام التشغيل بالعتاد والبرامج؟</strong></p><ul><li>يمنع البرامج من استخدام العتاد نهائياً</li><li>يعمل وسيطاً يدير العتاد ويتيح للبرامج استخدامه</li><li>هو جزء من اللوحة الأم لا يمكن تغييره</li><li>يعمل فقط عند الاتصال بالإنترنت</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يعمل وسيطاً يدير العتاد ويتيح للبرامج استخدامه</strong></p><p>نظام التشغيل يدير الموارد ويقدّم واجهة موحدة للبرامج.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-20">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/fundamentals/computer-basics/lessons/com-19.html"><small>الدرس السابق</small><strong>الحوسبة الحديثة</strong></a>
+        <a rel="next" href="/fundamentals/computer-basics/lessons/com-21.html"><small>الدرس التالي</small><strong>استدعاءات النظام والـ Shell</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/fundamentals/computer-basics/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

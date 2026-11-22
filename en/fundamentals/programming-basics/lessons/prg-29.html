@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <title>Syntax Errors and Debugging a Parser — Programming Basics | FAYBIT</title>
+    <meta name="description" content="DEBUGGING Tell lexical, syntax and runtime errors apart. Understand how the parser detects an error and names its position. Trace a problem by inspecting…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-29.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-29.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-29.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-29.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Syntax Errors and Debugging a Parser — Programming Basics | FAYBIT" />
+    <meta property="og:description" content="DEBUGGING Tell lexical, syntax and runtime errors apart. Understand how the parser detects an error and names its position. Trace a problem by inspecting…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-29.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Programming Basics","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Syntax Errors and Debugging a Parser","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-29.html"}]},{"@type":"LearningResource","name":"Syntax Errors and Debugging a Parser","description":"DEBUGGING Tell lexical, syntax and runtime errors apart. Understand how the parser detects an error and names its position. Trace a problem by inspecting…","url":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-29.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Programming Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Programming Basics"><a href="/en/fundamentals/programming-basics/lessons/index.html">Lessons</a><a href="/fundamentals/programming-basics/lessons/prg-29.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/programming-basics/lessons/index.html">Programming Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 29 of 31 · DEBUGGING</p>
+      <h1 class="lp-h1">Syntax Errors and Debugging a Parser</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-29">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">DEBUGGING</span>
+<h2>How a language detects a mistake and how you trace its source</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content"><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Tell lexical, syntax and runtime errors apart.</li><li>Understand how the parser detects an error and names its position.</li><li>Trace a problem by inspecting the output of each stage.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>The tokenizer and parser lessons (prg-26, prg-27) and the Debugging lesson (prg-17).</li></ul>
+</section>
+<section class="lesson-section "><h3>Three kinds of errors</h3>
+<p>Each stage of our interpreter sees the world in its own way, so it catches a different kind of problem. Knowing which stage rejected the code means you already have half of the answer.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Kind</th><th scope="col">Caught by</th><th scope="col">Example</th><th scope="col">Message</th></tr></thead><tbody><tr><th scope="row">Lexical</th><td>Tokenizer</td><td><code>3 $ 4</code></td><td><code>Unexpected character '$' at 2</code></td></tr><tr><th scope="row">Syntax</th><td>Parser</td><td><code>(1 + 2</code></td><td><code>Expected ')' at the end</code></td></tr><tr><th scope="row">Runtime</th><td>Interpreter</td><td><code>print y</code> with no y defined</td><td><code>Undefined variable 'y'</code></td></tr></tbody></table></div>
+</section>
+<section class="lesson-section "><h3>How does the parser detect an error?</h3>
+<p>The parser expects a particular token at every position. The <code>expect</code> function checks the next token: if it is the one expected it continues, otherwise it throws an error naming what it expected and where. Parsing <code>(1 + 2</code> goes like this:</p>
+<figure class="doc-diagram" role="group" aria-label="Diagram"><figcaption>Tracing the parse of <code>(1 + 2</code></figcaption><ol class="doc-flow"><li><strong>factor sees <code>(</code></strong><span>calls <code>expression()</code> to read what is inside the bracket</span></li><li><strong>expression reads <code>1 + 2</code></strong><span>builds the addition tree, then the tokens run out</span></li><li><strong>factor calls <code>expect(")")</code></strong><span>there is no next token, so it throws: <code>Expected ')' at the end</code></span></li></ol></figure>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>function expect(v) {
+if (!isOp(v)) throw new Error("Expected '" + v + "' " + where());
+return next();
+}</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>A systematic way to trace a problem</h3>
+<ol><li><strong>Print the tokens</strong>: was the text split as you expected? If not, the problem is in the tokenizer.</li><li><strong>Print the tree</strong> with <code>JSON.stringify(ast)</code>: does its shape match what you meant? If not, the problem is in the parser.</li><li><strong>Trace the evaluation</strong>: if the tree is right but the result is wrong, the problem is in the interpreter.</li></ol>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>const tokens = tokenize("2 + 3 * 4");
+console.log(tokens.map((t) =&gt; t.value).join(" "));   // 2 + 3 * 4
+const ast = parse(tokens);
+console.log(JSON.stringify(ast[0].value));          // inspect the tree</code></pre></figure>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>Changing the interpreter to cure a bug caused by the parser: you fix the symptom, not the cause.</li><li>Generic error messages such as “Error” with no position or expectation, which cost hours of searching.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> Which stage catches <code>let = 5</code>, and what is a suitable message?</summary><div class="doc-solution"><strong>Show solution</strong><p>The parser: after <code>let</code> it expects a name and finds <code>=</code>. A suitable message: <code>Expected a name after 'let'</code>.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>Each stage has its own kind of error.</li><li>A good message names what was expected and the position.</li><li>Trace a problem by inspecting each stage's output in order.</li></ul><p class="doc-next"><strong>Next step:</strong> Now we actually run the tree: the interpreter and variables.</p>
+</section></div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong>Core idea</strong>
+<p>Know which stage rejected the code and inspect each stage's output in order instead of guessing.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Worked example</span>
+<h3>See the idea in code</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>const tokens = ["(", "1", "+", "2"];
+let depth = 0;
+for (const t of tokens) {
+if (t === "(") depth++;
+if (t === ")") depth--;
+}
+console.log(depth === 0 ? "balanced" : "unbalanced by " + depth);</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Practice</span>
+<h3>Challenge yourself</h3>
+</div>
+</div>
+<p></p>
+<div class="fd-exercise"><h4>Interactive exercise</h4><p class="fd-ex-prompt">Write checkParens(tokens) that inspects an array of tokens and returns { ok: true } when the brackets are balanced, otherwise { ok: false, pos, message } where pos is the index of the first problem. A stray closing bracket: message Unexpected ')' at pos. An unclosed opening bracket: message Unclosed '(' at pos with the position of that bracket.</p><p class="fd-ex-status" role="status"></p></div>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which stage detects the unknown character $?</strong></p><ul><li>The tokenizer</li><li>The parser</li><li>The interpreter</li><li>None</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The tokenizer</strong></p><p>A lexical error appears while splitting characters.</p></details></li><li><p><strong>What causes the message Expected ')' at the end?</strong></p><ul><li>An opening bracket with no closing one</li><li>An unknown character</li><li>Division by zero</li><li>An undefined variable</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>An opening bracket with no closing one</strong></p><p>The parser reached the end of the tokens while waiting for ).</p></details></li><li><p><strong>The tree is right but the result is wrong. Where do you look?</strong></p><ul><li>In the interpreter</li><li>In the tokenizer</li><li>In the keyboard</li><li>In the screen</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>In the interpreter</strong></p><p>The tree is the boundary between the parser and the interpreter.</p></details></li><li><p><strong>Why name the position in an error message?</strong></p><ul><li>So the user can reach the problem quickly</li><li>To decorate the message</li><li>To slow the program</li><li>No reason</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>So the user can reach the problem quickly</strong></p><p>Specific information saves searching time.</p></details></li><li><p><strong>Your calculator gives a wrong result for an expression and you do not know which stage is to blame. What is the best way to find out?</strong></p><ul><li>Print each stage's output in order (tokens, then tree, then result) and find the first place that differs from what you expect</li><li>Rewrite all three stages together</li><li>Change the expression until it works</li><li>Always look only in the last stage</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Print each stage's output in order (tokens, then tree, then result) and find the first place that differs from what you expect</strong></p><p>Each stage takes the previous stage's output, so the first stage whose output is wrong is the culprit. Checking only the end can mislead you because the bug may start earlier.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-29">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/programming-basics/lessons/prg-28.html"><small>Previous lesson</small><strong>Project: A Tiny Calculator Language</strong></a>
+        <a rel="next" href="/en/fundamentals/programming-basics/lessons/prg-30.html"><small>Next lesson</small><strong>The Interpreter: Environment, Variables and Statements</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/programming-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

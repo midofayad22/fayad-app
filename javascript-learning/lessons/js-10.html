@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="js" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Arrow Functions — JavaScript | FAYBIT</title>
+    <meta name="description" content="تعلّم الصيغة الحديثة لكتابة الدوال باستخدام Arrow Functions." />
+    <link rel="canonical" href="https://faybit.vercel.app/javascript-learning/lessons/js-10.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/javascript-learning/lessons/js-10.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-10.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/javascript-learning/lessons/js-10.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Arrow Functions — JavaScript | FAYBIT" />
+    <meta property="og:description" content="تعلّم الصيغة الحديثة لكتابة الدوال باستخدام Arrow Functions." />
+    <meta property="og:url" content="https://faybit.vercel.app/javascript-learning/lessons/js-10.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript","item":"https://faybit.vercel.app/javascript-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Arrow Functions","item":"https://faybit.vercel.app/javascript-learning/lessons/js-10.html"}]},{"@type":"LearningResource","name":"Arrow Functions","description":"تعلّم الصيغة الحديثة لكتابة الدوال باستخدام Arrow Functions.","url":"https://faybit.vercel.app/javascript-learning/lessons/js-10.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript — FAYBIT","url":"https://faybit.vercel.app/javascript-learning/javascript-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript"><a href="/javascript-learning/lessons/index.html">الدروس</a><a href="/en/javascript-learning/lessons/js-10.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/javascript-learning/lessons/index.html">JavaScript</a></nav>
+      <p class="lp-eyebrow">الدرس 10 من 25</p>
+      <h1 class="lp-h1">Arrow Functions</h1>
+      <p class="lp-lead">تعلّم الصيغة الحديثة لكتابة الدوال باستخدام Arrow Functions.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-10">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>const add = (a, b) =&gt; {
+return a + b;
+};
+document.getElementById("jsResult").textContent =
+add(5, 3);</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>
+<p><strong>Arrow Function</strong> هي صيغة مختصرة وحديثة لكتابة الدوال.</p>
+<p>يتم استخدام الرمز <strong>=&gt;</strong> بين Parameters وجسم الدالة.</p>
+<p>يمكن اختصار الدالة أكثر إذا كانت تحتوي على تعبير واحد.</p>
+<p>Arrow Functions شائعة جدًا في JavaScript الحديثة.</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>اكتب JavaScript</h2></div>
+</div>
+<p class="practice-description">غيّر الكود الموجود بالأسفل ثم شغّله لترى النتيجة.</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أي رمز يستخدم في Arrow Function؟</strong></p><ul><li>=&gt;</li><li>-&gt;</li><li>::</li><li>==&gt;</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>=&gt;</strong></p></details></li><li><p><strong>أي صيغة صحيحة؟</strong></p><ul><li>const add = (a, b) =&gt; a + b;</li><li>const add =&gt; (a, b)</li><li>arrow add(a, b)</li><li>function =&gt; add</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>const add = (a, b) =&gt; a + b;</strong></p></details></li><li><p><strong>ما فائدة Arrow Functions؟</strong></p><ul><li>كتابة الدوال بصيغة حديثة ومختصرة</li><li>إنشاء HTML</li><li>تغيير ألوان CSS</li><li>إدارة قواعد البيانات فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>كتابة الدوال بصيغة حديثة ومختصرة</strong></p></details></li><li><p><strong>ما ناتج الكود؟ const f = () =&gt; { a: 1 }; console.log(f());</strong></p><ul><li>{ a: 1 }</li><li>1</li><li>undefined</li><li>خطأ في الصياغة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>undefined</strong></p><p>الأقواس المعقوفة بعد السهم تُفسَّر كجسم دالة وليست كائناً، و a: 1 تصبح label، ولا يوجد return. لإعادة كائن نضعه بين أقواس عادية: () =&gt; ({ a: 1 }).</p></details></li><li><p><strong>ما ناتج الكود؟ const sq = n =&gt; n * n; console.log([1, 2, 3].map(sq));</strong></p><ul><li>[1, 4, 9]</li><li>[1, 2, 3]</li><li>14</li><li>[2, 4, 6]</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>[1, 4, 9]</strong></p><p>الدالة السهمية بدون أقواس معقوفة تعيد نتيجة التعبير تلقائياً، و map تطبقها على كل عنصر وتعيد مصفوفة جديدة بمربعاتها.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-10">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/javascript-learning/lessons/js-09.html"><small>الدرس السابق</small><strong>Return</strong></a>
+        <a rel="next" href="/javascript-learning/lessons/js-11.html"><small>الدرس التالي</small><strong>المصفوفات Arrays</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/javascript-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

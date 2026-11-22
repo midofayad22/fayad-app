@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <title>States: hover, focus, active, and disabled — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="Changing appearance based on element state using variants." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-12.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-12.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-12.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-12.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="States: hover, focus, active, and disabled — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="Changing appearance based on element state using variants." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-12.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"States: hover, focus, active, and disabled","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-12.html"}]},{"@type":"LearningResource","name":"States: hover, focus, active, and disabled","description":"Changing appearance based on element state using variants.","url":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-12.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/en/tailwind-learning/lessons/index.html">Lessons</a><a href="/tailwind-learning/lessons/tw-12.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">Lesson 12 of 20</p>
+      <h1 class="lp-h1">States: hover, focus, active, and disabled</h1>
+      <p class="lp-lead">Changing appearance based on element state using variants.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-12">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>variants</h2><p>Put the prefix before the class: <code>hover:bg-sky-700</code> <code>focus:ring-2</code> <code>focus-visible:outline-2</code> <code>active:scale-95</code> <code>disabled:opacity-50</code>. They can be combined with responsive prefixes: <code>md:hover:bg-sky-700</code>.</p></article><article class="content-card"><h2>Accessibility</h2><p>Use <code>focus-visible</code> to show the focus indicator during keyboard navigation, and make sure <code>hover</code> is not the only way to reveal information (because touch has no hover).</p></article></div>
+<article class="body-card key-card"><p>Combine hover, focus-visible, active, and disabled for every interactive element.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="space-x-3 p-4"&gt;
+&lt;button id="btn" class="rounded-lg bg-sky-600 px-4 py-2 font-semibold text-white transition hover:bg-sky-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 active:scale-95"&gt;Interactive&lt;/button&gt;
+&lt;button class="rounded-lg bg-slate-300 px-4 py-2 font-semibold text-slate-600 disabled:cursor-not-allowed disabled:opacity-50" disabled&gt;Disabled&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>Hover over the first button or click it. The second button is disabled, so it appears at 50% opacity thanks to <code>disabled:opacity-50</code>.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Add &lt;code&gt;hover:-translate-y-0.5&lt;/code&gt; to the first button.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What does hover:bg-sky-700 do?</strong></p><ul><li>Changes the background when the pointer hovers</li><li>Changes it always</li><li>Changes it on press</li><li>Hides the element</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Changes the background when the pointer hovers</strong></p></details></li><li><p><strong>Why do we sometimes prefer focus-visible over focus?</strong></p><ul><li>The indicator shows during keyboard navigation, not on every click</li><li>Faster</li><li>Doesn't work with buttons</li><li>Changes the color</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The indicator shows during keyboard navigation, not on every click</strong></p></details></li><li><p><strong>What does disabled:opacity-50 do?</strong></p><ul><li>Reduces the opacity of the disabled element</li><li>Disables the element</li><li>Removes the element</li><li>Changes the font</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Reduces the opacity of the disabled element</strong></p></details></li><li><p><strong>Which class slightly shrinks a button while pressed?</strong></p><ul><li>active:scale-95</li><li>hover:scale-95</li><li>focus:scale-0</li><li>pressed:shrink</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>active:scale-95</strong></p><p>active: applies during the press and scale-95 shrinks it to 95%.</p></details></li><li><p><strong>Why shouldn't hover be the only way to reveal information?</strong></p><ul><li>Because touch screens have no hover</li><li>Because hover is slow</li><li>Because hover disables colors</li><li>Because Tailwind does not support it</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Because touch screens have no hover</strong></p><p>Touch users would miss the information, so provide an alternative.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-12">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/tailwind-learning/lessons/tw-11.html"><small>Previous lesson</small><strong>Responsive Design</strong></a>
+        <a rel="next" href="/en/tailwind-learning/lessons/tw-13.html"><small>Next lesson</small><strong>group, peer, and Other Variants</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/tailwind-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

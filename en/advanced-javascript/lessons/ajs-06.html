@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>Prototypes and the Inheritance Chain — Advanced JavaScript | FAYBIT</title>
+    <meta name="description" content="How inheritance actually works in JavaScript through prototype objects." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-06.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-06.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-06.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-06.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Prototypes and the Inheritance Chain — Advanced JavaScript | FAYBIT" />
+    <meta property="og:description" content="How inheritance actually works in JavaScript through prototype objects." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-06.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Advanced JavaScript","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Prototypes and the Inheritance Chain","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-06.html"}]},{"@type":"LearningResource","name":"Prototypes and the Inheritance Chain","description":"How inheritance actually works in JavaScript through prototype objects.","url":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-06.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Advanced JavaScript — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Advanced JavaScript"><a href="/en/advanced-javascript/lessons/index.html">Lessons</a><a href="/advanced-javascript/lessons/ajs-06.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/advanced-javascript/lessons/index.html">Advanced JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 6 of 22</p>
+      <h1 class="lp-h1">Prototypes and the Inheritance Chain</h1>
+      <p class="lp-lead">How inheritance actually works in JavaScript through prototype objects.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-6">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Prototype Chain</h2><p>Every object has an internal link to another object, its <code>prototype</code>. When reading a property that does not exist, the engine searches the chain up to <code>Object.prototype</code> and then <code>null</code>.</p></article><article class="content-card"><h2>Tools</h2><ul><li><code>Object.create(proto)</code> creates an object with a direct link.</li><li><code>Object.getPrototypeOf(obj)</code> reads the link.</li><li><code>hasOwn</code> distinguishes an own property from an inherited one.</li></ul></article></div>
+<article class="body-card key-card"><p>Inheritance in JavaScript is delegation along the chain, not copying of properties.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>const animal = {
+speak() { return this.name + " makes a sound"; },
+};
+const dog = Object.create(animal);
+dog.name = "Rex";
+console.log(dog.speak());
+console.log(Object.hasOwn(dog, "speak"), "speak" in dog);
+console.log(Object.getPrototypeOf(dog) === animal);
+function Person(name) { this.name = name; }
+Person.prototype.hi = function () { return "hi " + this.name; };
+const p = new Person("Mona");
+console.log(p.hi(), p instanceof Person);</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">Rex makes a sound
+false true
+true
+hi Mona true</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p><code>speak</code> does not exist on <code>dog</code> itself, so <code>hasOwn</code> returns false, but the <code>in</code> operator searches the chain and returns true. Constructor functions put methods on <code>prototype</code> to share them among all objects.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Try it yourself</h2></div>
+</div>
+<p class="practice-description">Create an object &lt;code&gt;child&lt;/code&gt; that inherits from &lt;code&gt;parent&lt;/code&gt;, which has the function &lt;code&gt;hello&lt;/code&gt;, then call it.</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>How does the engine look for a property that does not exist on the object?</strong></p><ul><li>It follows the prototype chain until null</li><li>It throws an error immediately</li><li>It searches only the global scope</li><li>It creates it automatically</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>It follows the prototype chain until null</strong></p></details></li><li><p><strong>What does Object.hasOwn do?</strong></p><ul><li>Checks that the property exists on the object itself, not inherited</li><li>Deletes the property</li><li>Copies the object</li><li>Searches the whole chain</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Checks that the property exists on the object itself, not inherited</strong></p></details></li><li><p><strong>Where are shared methods placed in constructor functions?</strong></p><ul><li>On Constructor.prototype</li><li>Inside each object</li><li>In the global scope</li><li>In localStorage</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>On Constructor.prototype</strong></p></details></li><li><p><strong>What does this code print? function A() {} A.prototype.hi = function () {}; const a = new A(); console.log(a.hasOwnProperty(&quot;hi&quot;), &quot;hi&quot; in a);</strong></p><ul><li>true true</li><li>false true</li><li>true false</li><li>false false</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>false true</strong></p><p>hi lives on A.prototype and is not an own property of a, so hasOwnProperty gives false. The in operator also searches the prototype chain, so it gives true.</p></details></li><li><p><strong>What does console.log(&quot;toString&quot; in Object.create(null)) print?</strong></p><ul><li>true, because every object inherits toString</li><li>undefined</li><li>A TypeError</li><li>false, because the object has no prototype and inherits nothing</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>false, because the object has no prototype and inherits nothing</strong></p><p>Object.create(null) creates an object with no prototype, so properties of Object.prototype such as toString never reach it. That makes it a clean dictionary free of inherited keys.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-6">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/advanced-javascript/lessons/ajs-05.html"><small>Previous lesson</small><strong>Memoization, Debounce, and Throttle</strong></a>
+        <a rel="next" href="/en/advanced-javascript/lessons/ajs-07.html"><small>Next lesson</small><strong>Classes: Privacy and static</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/advanced-javascript/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

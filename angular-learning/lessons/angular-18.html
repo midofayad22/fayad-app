@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="angular" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Dependency Injection — حقن الاعتمادات — Angular | FAYBIT</title>
+    <meta name="description" content="افهم كيف يوفر Angular الـServices والاعتمادات التي تحتاج إليها الـClasses." />
+    <link rel="canonical" href="https://faybit.vercel.app/angular-learning/lessons/angular-18.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/angular-learning/lessons/angular-18.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/angular-learning/lessons/angular-18.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/angular-learning/lessons/angular-18.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Dependency Injection — حقن الاعتمادات — Angular | FAYBIT" />
+    <meta property="og:description" content="افهم كيف يوفر Angular الـServices والاعتمادات التي تحتاج إليها الـClasses." />
+    <meta property="og:url" content="https://faybit.vercel.app/angular-learning/lessons/angular-18.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Angular","item":"https://faybit.vercel.app/angular-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Dependency Injection — حقن الاعتمادات","item":"https://faybit.vercel.app/angular-learning/lessons/angular-18.html"}]},{"@type":"LearningResource","name":"Dependency Injection — حقن الاعتمادات","description":"افهم كيف يوفر Angular الـServices والاعتمادات التي تحتاج إليها الـClasses.","url":"https://faybit.vercel.app/angular-learning/lessons/angular-18.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Angular — FAYBIT","url":"https://faybit.vercel.app/angular-learning/angular-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Angular"><a href="/angular-learning/lessons/index.html">الدروس</a><a href="/en/angular-learning/lessons/angular-18.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/angular-learning/lessons/index.html">Angular</a></nav>
+      <p class="lp-eyebrow">الدرس 18 من 32</p>
+      <h1 class="lp-h1">Dependency Injection — حقن الاعتمادات</h1>
+      <p class="lp-lead">افهم كيف يوفر Angular الـServices والاعتمادات التي تحتاج إليها الـClasses.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/angular-learning/angular-learning.html#lesson-18">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>يسمح Dependency Injection للـClass باستقبال الأشياء التي يحتاج إليها بدلًا من إنشائها بنفسه. وهذا يحسن إعادة الاستخدام والاختبار وفصل المسؤوليات.</div></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>مثال على الكود</h2></div>
+</div>
+<pre dir="ltr"><code>constructor(
+private userService: UserService
+) {}</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>جرب بنفسك</h2></div>
+</div>
+<p class="practice-description">عدّل المثال بالأسفل وشغّل الكود لاستكشاف صيغة Angular بنفسك.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>في ماذا يساعد Dependency Injection؟</strong></p><ul><li>توفير الاعتمادات المطلوبة للـClass</li><li>كتابة CSS Animations</li><li>إنشاء عناصر HTML</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>توفير الاعتمادات المطلوبة للـClass</strong></p></details></li><li><p><strong>ما هو الموضوع الرئيسي لهذا الدرس؟</strong></p><ul><li>Dependency Injection — حقن الاعتمادات</li><li>التوجيه Routing</li><li>معاملات المسارات Route Parameters</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Dependency Injection — حقن الاعتمادات</strong></p></details></li><li><p><strong>أي عبارة تصف هذا الموضوع بشكل أفضل؟</strong></p><ul><li>يسمح Dependency Injection للـClass باستقبال الأشياء التي يحتاج إليها بدلًا من إنشائها بنفسه. وهذا يحسن إعادة الاستخدام والاختبار وفصل المسؤوليات.</li><li>يقوم Angular Router بربط URLs بالمكونات. ويسمح للتطبيق بالتصرف كتطبيق يحتوي على صفحات متعددة مع بقائه Single-Page Application. ويمكن أيضًا استخدام Guards وParameters وChild Routes وLazy Loading.</li><li>تسمح Route Parameters بوضع قيم ديناميكية داخل الـURL. ومن الأمثلة الشائعة User ID أو Product ID. ويمكن استخدام ActivatedRoute لقراءة هذه القيم داخل الـComponent.</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يسمح Dependency Injection للـClass باستقبال الأشياء التي يحتاج إليها بدلًا من إنشائها بنفسه. وهذا يحسن إعادة الاستخدام والاختبار وفصل المسؤوليات.</strong></p></details></li><li><p><strong>ما الهدف العملي من هذا الدرس؟</strong></p><ul><li>افهم كيف يوفر Angular الـServices والاعتمادات التي تحتاج إليها الـClasses.</li><li>تعرف على كيفية استخدام Angular Router للتنقل بين صفحات وواجهات التطبيق.</li><li>تعرف على كيفية تمرير قيم ديناميكية من خلال URLs باستخدام Route Parameters.</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>افهم كيف يوفر Angular الـServices والاعتمادات التي تحتاج إليها الـClasses.</strong></p></details></li><li><p><strong>أي مفهوم في Angular يرتبط مباشرة بهذا الدرس؟</strong></p><ul><li>Dependency Injection</li><li>Routing</li><li>معاملات المسار</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Dependency Injection</strong></p></details></li><li><p><strong>أي صيغة أو API ترتبط بشكل أكبر بهذا الدرس؟</strong></p><ul><li>constructor injection</li><li>Router</li><li>ActivatedRoute</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>constructor injection</strong></p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/angular-learning/angular-learning.html#lesson-18">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/angular-learning/lessons/angular-17.html"><small>الدرس السابق</small><strong>الخدمات Services</strong></a>
+        <a rel="next" href="/angular-learning/lessons/angular-19.html"><small>الدرس التالي</small><strong>التوجيه Routing</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/angular-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

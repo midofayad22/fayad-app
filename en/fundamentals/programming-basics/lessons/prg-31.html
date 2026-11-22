@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <title>Final Project: The Complete FAY Language — Programming Basics | FAYBIT</title>
+    <meta name="description" content="FINAL PROJECT Understand how the five stages connect and what passes between them. Read a complete interpreter of about 90 lines and know the role of each…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-31.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-31.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-31.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-31.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Final Project: The Complete FAY Language — Programming Basics | FAYBIT" />
+    <meta property="og:description" content="FINAL PROJECT Understand how the five stages connect and what passes between them. Read a complete interpreter of about 90 lines and know the role of each…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-31.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Programming Basics","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Final Project: The Complete FAY Language","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-31.html"}]},{"@type":"LearningResource","name":"Final Project: The Complete FAY Language","description":"FINAL PROJECT Understand how the five stages connect and what passes between them. Read a complete interpreter of about 90 lines and know the role of each…","url":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-31.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Programming Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Programming Basics"><a href="/en/fundamentals/programming-basics/lessons/index.html">Lessons</a><a href="/fundamentals/programming-basics/lessons/prg-31.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/programming-basics/lessons/index.html">Programming Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 31 of 31 · FINAL PROJECT</p>
+      <h1 class="lp-h1">Final Project: The Complete FAY Language</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-31">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">FINAL PROJECT</span>
+<h2>Source → Tokenizer → Parser → AST → Interpreter → Output</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content"><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Understand how the five stages connect and what passes between them.</li><li>Read a complete interpreter of about 90 lines and know the role of each part.</li><li>Add a new feature (the <code>print</code> command) through the stages concerned.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>Lessons 25 to 30 of this section.</li></ul>
+</section>
+<section class="lesson-section "><h3>The FAY language: what does it support?</h3>
+<ul><li>Integers and decimals: <code>42</code> and <code>3.5</code>.</li><li>The operators <code>+ - * / %</code>, brackets and unary minus <code>-x</code>.</li><li>Variables: <code>let price = 20</code>.</li><li>Statements separated by newlines or <code>;</code>.</li><li>And at the end of the project: the <code>print</code> command (you add it).</li></ul>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">text</span></figcaption><pre dir="ltr"><code>let price = 20
+let qty = 3
+let total = price * qty - 10
+print total          # you will add this command
+print total % 7</code></pre></figure>
+<figure class="doc-diagram" role="group" aria-label="Diagram"><figcaption>The full pipeline</figcaption><ol class="doc-flow"><li><strong>Source</strong><span>the program text</span></li><li><strong>Tokenizer</strong><span>text to tokens with positions</span></li><li><strong>Parser</strong><span>tokens to a tree of statements (AST)</span></li><li><strong>Interpreter</strong><span>AST plus an environment, executed</span></li><li><strong>Output</strong><span>an array of output lines</span></li></ol></figure>
+</section>
+<section class="lesson-section "><h3>Stage 1: the tokenizer</h3>
+<p>One regular expression with alternative groups splits the text: whitespace (skipped), numbers, names, line breaks, operators, and anything else is an error. We store each token's position for error messages.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>function tokenize(src) {
+const tokens = [];
+const re = /([ \t\r]+)|(\d+(?:\.\d+)?)|([A-Za-z_]\w*)|([\n;])|([-+*\/%()=])|([\s\S])/g;
+let m;
+while ((m = re.exec(src))) {
+const pos = m.index;
+if (m[1]) continue;
+if (m[2]) tokens.push({ type: "num", value: Number(m[2]), pos });
+else if (m[3]) tokens.push({ type: "id", value: m[3], pos });
+else if (m[4]) tokens.push({ type: "nl", value: "\n", pos });
+else if (m[5]) tokens.push({ type: "op", value: m[5], pos });
+else throw new Error("Unexpected character '" + m[6] + "' at " + pos);
+}
+return tokens;
+}
+</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>Stage 2: the parser</h3>
+<p>The same style you learned: one function per rule. We added <code>program</code> and <code>statement</code> above <code>expression</code>, <code>term</code> and <code>factor</code>, and an <code>expect</code> function for error messages. Notice that <code>print</code> is not there yet: that is your exercise.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>function parse(tokens) {
+let i = 0;
+const peek = () =&gt; tokens[i];
+const next = () =&gt; tokens[i++];
+const isOp = (v) =&gt; peek() &amp;&amp; peek().type === "op" &amp;&amp; peek().value === v;
+const where = () =&gt; (peek() ? "at " + peek().pos : "at the end");
+function expect(v) {
+if (!isOp(v)) throw new Error("Expected '" + v + "' " + where());
+return next();
+}
+function program() {
+const out = [];
+while (peek()) {
+if (peek().type === "nl") { next(); continue; }
+out.push(statement());
+if (peek() &amp;&amp; peek().type !== "nl") throw new Error("Unexpected '" + peek().value + "' " + where());
+}
+return out;
+}
+function statement() {
+const t = peek();
+if (t.type === "id" &amp;&amp; t.value === "let") {
+next();
+const name = next();
+if (!name || name.type !== "id") throw new Error("Expected a name after 'let'");
+expect("=");
+return { kind: "let", name: name.value, value: expression() };
+}
+return { kind: "expr", value: expression() };
+}
+function expression() {
+let node = term();
+while (isOp("+") || isOp("-")) node = { kind: "bin", op: next().value, left: node, right: term() };
+return node;
+}
+function term() {
+let node = factor();
+while (isOp("*") || isOp("/") || isOp("%")) node = { kind: "bin", op: next().value, left: node, right: factor() };
+return node;
+}
+function factor() {
+const t = next();
+if (!t) throw new Error("Unexpected end of input");
+if (t.type === "num") return { kind: "num", value: t.value };
+if (t.type === "id") return { kind: "var", name: t.value };
+if (t.type === "op" &amp;&amp; t.value === "-") return { kind: "neg", value: factor() };
+if (t.type === "op" &amp;&amp; t.value === "(") { const e = expression(); expect(")"); return e; }
+throw new Error("Unexpected '" + t.value + "' at " + t.pos);
+}
+return program();
+}
+</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>Stage 3: the interpreter</h3>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>function interpret(ast) {
+const env = new Map();
+const output = [];
+function ev(n) {
+switch (n.kind) {
+case "num": return n.value;
+case "var":
+if (!env.has(n.name)) throw new Error("Undefined variable '" + n.name + "'");
+return env.get(n.name);
+case "neg": return -ev(n.value);
+case "bin": {
+const a = ev(n.left), b = ev(n.right);
+if (n.op === "+") return a + b;
+if (n.op === "-") return a - b;
+if (n.op === "*") return a * b;
+if (n.op === "%") return a % b;
+if (b === 0) throw new Error("Division by zero");
+return a / b;
+}
+}
+}
+for (const s of ast) {
+if (s.kind === "let") env.set(s.name, ev(s.value));
+else ev(s.value);
+}
+return output;
+}
+const runFay = (src) =&gt; interpret(parse(tokenize(src)));
+</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>How do you add a new feature?</h3>
+<p>To add <code>print</code>, ask at every stage: does the tokenizer know the word? (Yes: it is an ordinary <code>id</code>, so no change.) Does the parser know the shape of the statement? (No: add a branch in <code>statement</code> that produces <code>{kind:"print", value}</code>.) Does the interpreter know its meaning? (No: add a branch that appends the result to <code>output</code>.) This is the most important lesson: every feature passes through only the stages it affects.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Feature</th><th scope="col">Tokenizer</th><th scope="col">Parser</th><th scope="col">Interpreter</th></tr></thead><tbody><tr><th scope="row">New operator <code>^</code></th><td>learns the symbol</td><td>a new rule</td><td>a new case</td></tr><tr><th scope="row">The <code>print</code> command</th><td>no change</td><td>a branch in statement</td><td>a branch in the loop</td></tr><tr><th scope="row">Comment <code>#</code></th><td>skips to the end of the line</td><td>no change</td><td>no change</td></tr></tbody></table></div>
+</section>
+<section class="lesson-section "><h3>Projects to continue after the exercise</h3>
+<ol><li>Add <code>#</code> comments (tokenizer only).</li><li>Add a power operator <code>^</code> with higher precedence than multiplication.</li><li>Add a simple <code>if</code> that compares two values.</li><li>Improve the error messages to show the line and column.</li></ol>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>Adding the feature to the interpreter only and expecting it to work.</li><li>Changing the code without testing both valid and invalid inputs.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> Why do we not need to change the tokenizer when adding <code>print</code>?</summary><div class="doc-solution"><strong>Show solution</strong><p>Because <code>print</code> is made of letters the tokenizer already produces as an ordinary name (<code>id</code>). Recognising it as a special word happens in the parser, when it sees an <code>id</code> whose value is <code>print</code> at the start of a statement.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>You built a complete interpreter: Source, Tokenizer, Parser, AST, Interpreter, Output.</li><li>Each stage is responsible for one thing and hands over a different shape of data.</li><li>A new feature passes through only the affected stages.</li></ul><p class="doc-next"><strong>Next step:</strong> Review lessons 21 to 31, then try the course's final assessment.</p>
+</section></div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong>Core idea</strong>
+<p>A language is a pipeline of small stages, and every feature passes through the stages it affects.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Worked example</span>
+<h3>See the idea in code</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>// the whole pipeline in one line (the functions come from the lesson)
+const tokens = "let a = 2 + 3".match(/[A-Za-z_]\w*|\d+|[-+*/%()=]/g);
+console.log(tokens);</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Practice</span>
+<h3>Challenge yourself</h3>
+</div>
+</div>
+<p></p>
+<div class="fd-exercise"><h4>Interactive exercise</h4><p class="fd-ex-prompt">The interpreter in front of you works but does not know the print command. Add it so that runFay("let a = 2\nlet b = a * 5\nprint b + 1") returns ["11"], while errors keep working (undefined variable, incomplete expression).</p><p class="fd-ex-status" role="status"></p></div>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is the correct order of the stages?</strong></p><ul><li>Tokenizer, then parser, then interpreter</li><li>Interpreter, then parser, then tokenizer</li><li>Parser, then tokenizer, then interpreter</li><li>There is no order</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Tokenizer, then parser, then interpreter</strong></p><p>Each stage takes the output of the one before.</p></details></li><li><p><strong>Which stage knows that print is a special statement?</strong></p><ul><li>The parser</li><li>The tokenizer</li><li>The screen</li><li>None</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The parser</strong></p><p>It sees an id with the value print at the start of a statement and produces a print node.</p></details></li><li><p><strong>To add # comments, which stage changes?</strong></p><ul><li>The tokenizer</li><li>The interpreter</li><li>Only the parser</li><li>All three</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The tokenizer</strong></p><p>A comment is dropped before the parser sees any token.</p></details></li><li><p><strong>Why do we store each token's position?</strong></p><ul><li>For precise error messages</li><li>To speed up the screen</li><li>To reduce memory</li><li>No need</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>For precise error messages</strong></p><p>The parser names the position of the offending token.</p></details></li><li><p><strong>You want FAY to support negative numbers like -5 + 2, and the lexer already produces the - token. Where is the minimal change?</strong></p><ul><li>The lexer, by adding a new token for negation</li><li>The interpreter only, not the parser</li><li>The parser (factor): if a factor starts with -, read the next factor and produce a negation node</li><li>No change is needed</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The parser (factor): if a factor starts with -, read the next factor and produce a negation node</strong></p><p>The token already exists; the problem is that the grammar does not accept - at the start of a factor, so the change belongs in the parser rules (and the interpreter then evaluates the negation node). Changing the lexer would not add a grammar rule.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-31">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/programming-basics/lessons/prg-30.html"><small>Previous lesson</small><strong>The Interpreter: Environment, Variables and Statements</strong></a>
+        <span></span>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/programming-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="react" />
+    <meta name="robots" content="noindex, follow" />
+    <title>useEffect — React | FAYBIT</title>
+    <meta name="description" content="Learn how to use useEffect to handle Side Effects such as fetching data and subscriptions." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/react-learning/lessons/react-14.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/react-learning/lessons/react-14.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/react-learning/lessons/react-14.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/react-learning/lessons/react-14.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="useEffect — React | FAYBIT" />
+    <meta property="og:description" content="Learn how to use useEffect to handle Side Effects such as fetching data and subscriptions." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/react-learning/lessons/react-14.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"React","item":"https://faybit.vercel.app/en/react-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"useEffect","item":"https://faybit.vercel.app/en/react-learning/lessons/react-14.html"}]},{"@type":"LearningResource","name":"useEffect","description":"Learn how to use useEffect to handle Side Effects such as fetching data and subscriptions.","url":"https://faybit.vercel.app/en/react-learning/lessons/react-14.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"React — FAYBIT","url":"https://faybit.vercel.app/react-learning/react-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="React"><a href="/en/react-learning/lessons/index.html">Lessons</a><a href="/react-learning/lessons/react-14.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/react-learning/lessons/index.html">React</a></nav>
+      <p class="lp-eyebrow">Lesson 14 of 30</p>
+      <h1 class="lp-h1">useEffect</h1>
+      <p class="lp-lead">Learn how to use useEffect to handle Side Effects such as fetching data and subscriptions.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-14">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<p>
+useEffect is used to run Side Effects tied to rendering a Component or to changes in certain data.
+</p>
+<p>
+Common uses include fetching data from an API, handling subscriptions, or updating the page title.
+</p>
+<p>
+The Dependency Array determines when the Effect runs again.
+</p>
+</div></article>
+<article class="body-card key-card"><p>useEffect is suited to operations that happen outside the direct computation of the interface.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>The code</h2></div>
+</div>
+<pre dir="ltr"><code>import { useEffect } from "react";
+useEffect(() =&gt; {
+console.log("Effect ran");
+}, []);</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>An Effect can run once after Mount using an empty dependency array, or whenever specific values change.</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span></div>
+</div>
+<p class="practice-description">Change the text inside console.log.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is a common use of useEffect?</strong></p><ul><li>Handling Side Effects</li><li>Creating CSS selectors</li><li>Defining HTML tags</li><li>Creating a Database</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Handling Side Effects</strong></p></details></li><li><p><strong>What does [] mean in a dependency array?</strong></p><ul><li>There are no dependencies</li><li>Run every second</li><li>Run on every CSS change</li><li>Cancel the Effect</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>There are no dependencies</strong></p></details></li><li><p><strong>Which example suits useEffect?</strong></p><ul><li>Fetching data from an API</li><li>Setting a button's color</li><li>Creating an HTML file</li><li>Defining a CSS class</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Fetching data from an API</strong></p></details></li><li><p><strong>When does this effect run? useEffect(() =&gt; { document.title = n; }, [n]);</strong></p><ul><li>After first render and whenever n changes</li><li>Never</li><li>On every click on the page</li><li>Only once</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>After first render and whenever n changes</strong></p><p>The dependency array decides when the effect reruns.</p></details></li><li><p><strong>What is the function returned inside useEffect for?</strong></p><ul><li>Disabling the effect</li><li>Changing props</li><li>Returning a value to the component</li><li>Cleanup, such as clearing a timer or subscription</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Cleanup, such as clearing a timer or subscription</strong></p><p>Cleanup runs before the effect reruns or when the component unmounts.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-14">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/react-learning/lessons/react-13.html"><small>Previous lesson</small><strong>useState</strong></a>
+        <a rel="next" href="/en/react-learning/lessons/react-15.html"><small>Next lesson</small><strong>useRef</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/react-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <title>Borders, Shadows, and Rings — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="border, rounded, shadow, ring, and outline (with the changes in version 4)." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-09.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-09.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-09.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-09.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Borders, Shadows, and Rings — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="border, rounded, shadow, ring, and outline (with the changes in version 4)." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-09.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Borders, Shadows, and Rings","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-09.html"}]},{"@type":"LearningResource","name":"Borders, Shadows, and Rings","description":"border, rounded, shadow, ring, and outline (with the changes in version 4).","url":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-09.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/en/tailwind-learning/lessons/index.html">Lessons</a><a href="/tailwind-learning/lessons/tw-09.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">Lesson 9 of 20</p>
+      <h1 class="lp-h1">Borders, Shadows, and Rings</h1>
+      <p class="lp-lead">border, rounded, shadow, ring, and outline (with the changes in version 4).</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-9">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Borders and Corners</h2><p><code>border</code> <code>border-2</code> <code>border-t</code> <code>border-slate-300</code> <code>divide-y</code> between items. Corners: <code>rounded</code> <code>rounded-lg</code> <code>rounded-full</code>.</p></article><article class="content-card"><h2>Shadows and Rings</h2><p><code>shadow-xs</code> <code>shadow-sm</code> <code>shadow-md</code> <code>shadow-lg</code>. The ring <code>ring-2 ring-sky-500</code> is drawn outside the element without affecting layout, and is common for focus states. In v4 the default <code>ring</code> is 1px wide, and to hide the default focus outline use <code>outline-hidden</code> (instead of the old outline-none) together with a visible alternative.</p></article></div>
+<article class="body-card key-card"><p>Don't hide the focus indicator without a visible alternative (ring) for accessibility.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="space-y-4 p-4"&gt;
+&lt;div id="b" class="rounded-lg border-2 border-sky-500 p-3"&gt;border-2 rounded-lg&lt;/div&gt;
+&lt;div class="rounded-xl p-3 shadow-md"&gt;shadow-md&lt;/div&gt;
+&lt;button class="rounded-lg bg-white px-4 py-2 ring-2 ring-sky-500 ring-offset-2"&gt;ring-2&lt;/button&gt;
+&lt;ul class="divide-y divide-slate-200 rounded-lg border border-slate-200"&gt;
+&lt;li class="p-3"&gt;Item 1&lt;/li&gt;&lt;li class="p-3"&gt;Item 2&lt;/li&gt;&lt;li class="p-3"&gt;Item 3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p><code>divide-y</code> adds a dividing line between children without writing a border for each item. The ring does not change the button's dimensions because it is an outer shadow.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Change the border to &lt;code&gt;border-4 border-dashed&lt;/code&gt;.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is the advantage of ring compared to border?</strong></p><ul><li>It does not affect the element's dimensions</li><li>Always faster</li><li>Colors the background</li><li>Works with text only</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>It does not affect the element's dimensions</strong></p></details></li><li><p><strong>What does divide-y do?</strong></p><ul><li>Places a dividing line between child elements vertically</li><li>Splits the screen</li><li>Hides borders</li><li>Colors the background</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Places a dividing line between child elements vertically</strong></p></details></li><li><p><strong>What should you watch out for when hiding the default outline?</strong></p><ul><li>You must provide a visible alternative such as ring for focus</li><li>Nothing</li><li>The button breaks</li><li>The font changes</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>You must provide a visible alternative such as ring for focus</strong></p></details></li><li><p><strong>Which class replaced outline-none in v4?</strong></p><ul><li>outline-off</li><li>outline-0-none</li><li>outline-hidden</li><li>focus-none</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>outline-hidden</strong></p><p>outline-hidden hides the default outline while keeping it for high contrast modes.</p></details></li><li><p><strong>What is the default ring width in v4?</strong></p><ul><li>1px</li><li>3px</li><li>0px</li><li>5px</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>1px</strong></p><p>In v4 the default is 1px, and ring-2 gives a thicker ring.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-9">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/tailwind-learning/lessons/tw-08.html"><small>Previous lesson</small><strong>Positioning, the Container, and Layer Order</strong></a>
+        <a rel="next" href="/en/tailwind-learning/lessons/tw-10.html"><small>Next lesson</small><strong>Backgrounds, Gradients, and Images</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/tailwind-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

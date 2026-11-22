@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <title>Transitions, Transforms, and Animation — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="transition, transform, and animate for light, smooth motion." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-15.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-15.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-15.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-15.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Transitions, Transforms, and Animation — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="transition, transform, and animate for light, smooth motion." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-15.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Transitions, Transforms, and Animation","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-15.html"}]},{"@type":"LearningResource","name":"Transitions, Transforms, and Animation","description":"transition, transform, and animate for light, smooth motion.","url":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-15.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/en/tailwind-learning/lessons/index.html">Lessons</a><a href="/tailwind-learning/lessons/tw-15.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">Lesson 15 of 20</p>
+      <h1 class="lp-h1">Transitions, Transforms, and Animation</h1>
+      <p class="lp-lead">transition, transform, and animate for light, smooth motion.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-15">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Transitions</h2><p><code>transition</code> (or <code>transition-colors</code>) with <code>duration-300</code>, <code>ease-in-out</code>, and <code>delay-100</code>. Add them on the base state, not only on hover.</p></article><article class="content-card"><h2>Transforms and Animations</h2><p><code>scale-105</code> <code>rotate-6</code> <code>-translate-y-1</code> <code>translate-x-2</code>. Ready-made animations: <code>animate-spin</code> <code>animate-pulse</code> <code>animate-bounce</code> <code>animate-ping</code>. Respect users who prefer reduced motion with <code>motion-safe:</code> and <code>motion-reduce:</code>.</p></article></div>
+<article class="body-card key-card"><p>Wrap animations in motion-safe: to respect the reduced-motion preference.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="flex items-center gap-4 p-6"&gt;
+&lt;div id="card" class="rounded-xl bg-white p-4 shadow transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg"&gt;Hover here&lt;/div&gt;
+&lt;div class="size-8 rounded-full border-4 border-sky-200 border-t-sky-600 motion-safe:animate-spin"&gt;&lt;/div&gt;
+&lt;div class="size-4 rounded-full bg-emerald-500 motion-safe:animate-pulse"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>The card rises slightly and gains a deeper shadow smoothly on hover. The circle spins only if the user has not enabled "reduce motion".</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Change &lt;code&gt;duration-300&lt;/code&gt; to &lt;code&gt;duration-700&lt;/code&gt; and compare the speed.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which class sets the transition duration?</strong></p><ul><li>duration-300</li><li>time-300</li><li>speed-300</li><li>delay-only</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>duration-300</strong></p></details></li><li><p><strong>Why do we use motion-safe:?</strong></p><ul><li>To respect the user's preference for reduced motion</li><li>To speed up the animation</li><li>To hide the element</li><li>To change the color</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>To respect the user's preference for reduced motion</strong></p></details></li><li><p><strong>What does hover:-translate-y-1 do?</strong></p><ul><li>Lifts the element slightly on hover</li><li>Hides it</li><li>Flips it</li><li>Rotates it</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Lifts the element slightly on hover</strong></p></details></li><li><p><strong>Where do you put the transition class so the motion works both ways?</strong></p><ul><li>On the element's base state</li><li>Only inside hover</li><li>Only on body</li><li>In the head tag</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>On the element's base state</strong></p><p>Placing it on the base animates both entering and leaving the state.</p></details></li><li><p><strong>Which class suits a spinning loading indicator?</strong></p><ul><li>animate-ping</li><li>animate-bounce</li><li>animate-pulse-fast</li><li>animate-spin</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>animate-spin</strong></p><p>animate-spin rotates continuously, and we wrap it in motion-safe.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-15">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/tailwind-learning/lessons/tw-14.html"><small>Previous lesson</small><strong>Dark Mode</strong></a>
+        <a rel="next" href="/en/tailwind-learning/lessons/tw-16.html"><small>Next lesson</small><strong>Arbitrary Values</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/tailwind-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

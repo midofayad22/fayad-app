@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="vue" />
+    <title>Events و Emits — Vue.js | FAYBIT</title>
+    <meta name="description" content="تعلّم كيف يتواصل Child Component مع Parent باستخدام Custom Events و Emits." />
+    <link rel="canonical" href="https://faybit.vercel.app/vue-learning/lessons/vue-15.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/vue-learning/lessons/vue-15.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/vue-learning/lessons/vue-15.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/vue-learning/lessons/vue-15.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Events و Emits — Vue.js | FAYBIT" />
+    <meta property="og:description" content="تعلّم كيف يتواصل Child Component مع Parent باستخدام Custom Events و Emits." />
+    <meta property="og:url" content="https://faybit.vercel.app/vue-learning/lessons/vue-15.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Vue.js","item":"https://faybit.vercel.app/vue-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Events و Emits","item":"https://faybit.vercel.app/vue-learning/lessons/vue-15.html"}]},{"@type":"LearningResource","name":"Events و Emits","description":"تعلّم كيف يتواصل Child Component مع Parent باستخدام Custom Events و Emits.","url":"https://faybit.vercel.app/vue-learning/lessons/vue-15.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Vue.js — FAYBIT","url":"https://faybit.vercel.app/vue-learning/vue-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Vue.js"><a href="/vue-learning/lessons/index.html">الدروس</a><a href="/en/vue-learning/lessons/vue-15.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/vue-learning/lessons/index.html">Vue.js</a></nav>
+      <p class="lp-eyebrow">الدرس 15 من 22</p>
+      <h1 class="lp-h1">Events و Emits</h1>
+      <p class="lp-lead">تعلّم كيف يتواصل Child Component مع Parent باستخدام Custom Events و Emits.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-15">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<h2>Events و Emits</h2>
+<p>
+Props تستخدم غالبًا لتمرير البيانات من Parent إلى Child.
+</p>
+<p>
+وعندما يحتاج Child إلى إخبار Parent بحدوث شيء، يمكنه إطلاق
+Custom Event باستخدام <code>emit</code>.
+</p>
+</div></article>
+<article class="body-card key-card"><div class="info-label">emit ترسل أحداثًا إلى Parent</div><p>يمكن للـ Child إطلاق Custom Event، ويستطيع Parent الاستماع إليه.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>الكود</h2></div>
+</div>
+<pre dir="ltr"><code>
+&lt;div id="app"&gt;
+&lt;button-counter @increase="handleIncrease"&gt;&lt;/button-counter&gt;
+&lt;p&gt;العدد: {{ count }}&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+const { createApp } = Vue;
+const ButtonCounter = {
+emits: ["increase"],
+template: `
+&lt;button @click="$emit('increase')"&gt;
+زيادة
+&lt;/button&gt;
+`
+};
+createApp({
+components: {
+ButtonCounter
+},
+data() {
+return {
+count: 0
+};
+},
+methods: {
+handleIncrease() {
+this.count++;
+}
+}
+}).mount("#app");
+&lt;/script&gt;
+</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static">
+<div style="padding:20px;font-family:Arial;">
+<p>العدد: 0</p>
+</div>
+</div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>
+<p>
+<code>emits</code> تحدد Custom Events التي يمكن للـ Component إطلاقها.
+</p>
+<p>
+<code>$emit("increase")</code> تطلق Event باسم
+<code>increase</code>.
+</p>
+<p>
+Parent يستمع إلى الحدث باستخدام
+<code>@increase</code>.
+</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span></div>
+</div>
+<p class="practice-description">أنشئ Child Component يرسل Event إلى Parent عند الضغط على زر.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما وظيفة emit في Vue؟</strong></p><ul><li>إرسال Custom Event من Child إلى Parent</li><li>إنشاء CSS</li><li>إنشاء Database</li><li>تغيير URL</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>إرسال Custom Event من Child إلى Parent</strong></p></details></li><li><p><strong>أين يحدث التواصل العكسي من Child إلى Parent؟</strong></p><ul><li>باستخدام Events و Emits</li><li>باستخدام CSS</li><li>باستخدام HTML comments</li><li>باستخدام الصور</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>باستخدام Events و Emits</strong></p></details></li><li><p><strong>كيف يستمع Parent إلى Custom Event اسمه increase؟</strong></p><ul><li>@increase</li><li>:increase</li><li>#increase</li><li>$increase</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>@increase</strong></p></details></li><li><p><strong>أي سطر يطلق حدثاً اسمه save مع قيمة 5 في Options API؟</strong></p><ul><li>this.emit('save', 5)</li><li>this.$emit('save', 5)</li><li>this.save(5)</li><li>this.$props.save(5)</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>this.$emit('save', 5)</strong></p><p>الدالة $emit تأخذ اسم الحدث ثم القيم التي نريد إرسالها للأب.</p></details></li><li><p><strong>الابن يطلق emit('done') لكن الأب لا يتفاعل. ما السبب الأرجح؟</strong></p><ul><li>الأب لم يضف @done على وسم الابن</li><li>الابن لا يملك قالباً</li><li>emit لا يعمل إلا مع أحداث click</li><li>يجب استخدام v-model بدلاً منه</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>الأب لم يضف @done على وسم الابن</strong></p><p>الأب يستمع للحدث المخصص عبر @done=&quot;handler&quot; على المكون الابن.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-15">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/vue-learning/lessons/vue-14.html"><small>الدرس السابق</small><strong>Props</strong></a>
+        <a rel="next" href="/vue-learning/lessons/vue-16.html"><small>الدرس التالي</small><strong>Composition API</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/vue-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

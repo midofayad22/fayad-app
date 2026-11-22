@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="angular" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Interpolation — Angular | FAYBIT</title>
+    <meta name="description" content="Learn how Angular interpolation displays component data inside HTML templates." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/angular-learning/lessons/angular-07.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/angular-learning/lessons/angular-07.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/angular-learning/lessons/angular-07.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/angular-learning/lessons/angular-07.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Interpolation — Angular | FAYBIT" />
+    <meta property="og:description" content="Learn how Angular interpolation displays component data inside HTML templates." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/angular-learning/lessons/angular-07.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Angular","item":"https://faybit.vercel.app/en/angular-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Interpolation","item":"https://faybit.vercel.app/en/angular-learning/lessons/angular-07.html"}]},{"@type":"LearningResource","name":"Interpolation","description":"Learn how Angular interpolation displays component data inside HTML templates.","url":"https://faybit.vercel.app/en/angular-learning/lessons/angular-07.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Angular — FAYBIT","url":"https://faybit.vercel.app/angular-learning/angular-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Angular"><a href="/en/angular-learning/lessons/index.html">Lessons</a><a href="/angular-learning/lessons/angular-07.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/angular-learning/lessons/index.html">Angular</a></nav>
+      <p class="lp-eyebrow">Lesson 7 of 32</p>
+      <h1 class="lp-h1">Interpolation</h1>
+      <p class="lp-lead">Learn how Angular interpolation displays component data inside HTML templates.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/angular-learning/angular-learning.html#lesson-7">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>Interpolation uses double curly braces to display expressions inside a template. Angular evaluates the expression and updates the displayed value when the related state changes.</div></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>Code Example</h2></div>
+</div>
+<pre dir="ltr"><code>export class AppComponent {
+title = 'Fayad Angular';
+}
+&lt;h1&gt;{{ title }}&lt;/h1&gt;</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Try It Yourself</h2></div>
+</div>
+<p class="practice-description">Modify the example below and run your code to explore the Angular syntax.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which syntax is used for Angular interpolation?</strong></p><ul><li>{{ value }}</li><li>[[ value ]]</li><li>&lt;% value %&gt;</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>{{ value }}</strong></p></details></li><li><p><strong>What is the main focus of this lesson?</strong></p><ul><li>Interpolation</li><li>Property Binding</li><li>Event Binding</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Interpolation</strong></p></details></li><li><p><strong>Which statement best describes this topic?</strong></p><ul><li>Interpolation uses double curly braces to display expressions inside a template. Angular evaluates the expression and updates the displayed value when the related state changes.</li><li>Property binding uses square brackets to dynamically set DOM properties from component state. This is useful when values such as image URLs, disabled states, classes, or other properties change dynamically.</li><li>Event binding uses parentheses to listen for DOM events. When an event happens, Angular can call a component method or execute an expression.</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Interpolation uses double curly braces to display expressions inside a template. Angular evaluates the expression and updates the displayed value when the related state changes.</strong></p></details></li><li><p><strong>What is a practical goal of this lesson?</strong></p><ul><li>Learn how Angular interpolation displays component data inside HTML templates.</li><li>Learn how property binding connects component values to HTML element properties.</li><li>Learn how Angular responds to user actions such as clicks, input, submit, and keyboard events.</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Learn how Angular interpolation displays component data inside HTML templates.</strong></p></details></li><li><p><strong>Which Angular concept is directly related to this lesson?</strong></p><ul><li>Interpolation</li><li>Property binding</li><li>Event binding</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Interpolation</strong></p></details></li><li><p><strong>Which syntax or API is most closely associated with this lesson?</strong></p><ul><li>{{ value }}</li><li>[src]</li><li>(click)</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>{{ value }}</strong></p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/angular-learning/angular-learning.html#lesson-7">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/angular-learning/lessons/angular-06.html"><small>Previous lesson</small><strong>Data Binding</strong></a>
+        <a rel="next" href="/en/angular-learning/lessons/angular-08.html"><small>Next lesson</small><strong>Property Binding</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/angular-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <meta name="robots" content="noindex, follow" />
+    <title>الخلفيات والتدرجات والصور — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="الخلفيات والتدرجات والصور: bg وتدرجات bg-linear وobject-fit وتصفية الصور. — Tailwind CSS." />
+    <link rel="canonical" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-10.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-10.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-10.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-10.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="الخلفيات والتدرجات والصور — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="الخلفيات والتدرجات والصور: bg وتدرجات bg-linear وobject-fit وتصفية الصور. — Tailwind CSS." />
+    <meta property="og:url" content="https://faybit.vercel.app/tailwind-learning/lessons/tw-10.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"الخلفيات والتدرجات والصور","item":"https://faybit.vercel.app/tailwind-learning/lessons/tw-10.html"}]},{"@type":"LearningResource","name":"الخلفيات والتدرجات والصور","description":"الخلفيات والتدرجات والصور: bg وتدرجات bg-linear وobject-fit وتصفية الصور. — Tailwind CSS.","url":"https://faybit.vercel.app/tailwind-learning/lessons/tw-10.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/tailwind-learning/lessons/index.html">الدروس</a><a href="/en/tailwind-learning/lessons/tw-10.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">الدرس 10 من 20</p>
+      <h1 class="lp-h1">الخلفيات والتدرجات والصور</h1>
+      <p class="lp-lead">bg وتدرجات bg-linear وobject-fit وتصفية الصور.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-10">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>التدرجات (v4)</h2><p>في v4 صارت التدرجات: <code>bg-linear-to-r from-indigo-500 to-purple-500</code> (بدل <code>bg-gradient-to-r</code> في v3). نقطة وسطى: <code>via-sky-500</code>. وهناك <code>bg-radial</code> و<code>bg-conic</code>.</p></article><article class="content-card"><h2>الصور</h2><p><code>object-cover</code> و<code>object-contain</code> لضبط ملء الصورة داخل إطارها، <code>object-center</code> للموضع، و<code>rounded-full</code> للصور الدائرية، <code>blur-sm</code> و<code>grayscale</code> للمؤثرات.</p></article></div>
+<article class="body-card key-card"><p>تدرجات v4: bg-linear-to-{اتجاه} مع from/via/to.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="space-y-3 p-4"&gt;
+&lt;div id="grad" class="h-24 rounded-xl bg-linear-to-r from-indigo-500 via-sky-500 to-emerald-400"&gt;&lt;/div&gt;
+&lt;div class="flex items-center gap-3"&gt;
+&lt;svg class="size-16 rounded-full bg-slate-200 object-cover" viewBox="0 0 10 10"&gt;&lt;circle cx="5" cy="5" r="3" fill="#0b6b78"/&gt;&lt;/svg&gt;
+&lt;p class="text-slate-700"&gt;الصور الحقيقية تستخدم &lt;code&gt;object-cover&lt;/code&gt; داخل إطار بحجم ثابت.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="h-16 rounded-xl bg-slate-900 bg-radial from-sky-400/40 to-transparent"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>التدرج الأول يمر بثلاثة ألوان من اليسار لليمين. التدرج الدائري <code>bg-radial</code> متاح في v4.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">اجعل التدرج رأسيًا بـ &lt;code&gt;bg-linear-to-b&lt;/code&gt;.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما صيغة التدرج الخطي في Tailwind v4؟</strong></p><ul><li>bg-linear-to-r</li><li>bg-gradient-to-r فقط</li><li>gradient-right</li><li>linear-r</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>bg-linear-to-r</strong></p></details></li><li><p><strong>ما وظيفة object-cover؟</strong></p><ul><li>ملء إطار الصورة مع قص الزائد دون تشويه</li><li>تمديد الصورة بشكل مشوه</li><li>إخفاء الصورة</li><li>تكرار الصورة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>ملء إطار الصورة مع قص الزائد دون تشويه</strong></p></details></li><li><p><strong>أي فئات تحدد ألوان بداية ونهاية التدرج؟</strong></p><ul><li>from-* و to-*</li><li>start-* و end-*</li><li>bg-start و bg-end</li><li>color-1 و color-2</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>from-* و to-*</strong></p></details></li><li><p><strong>كتب مطور bg-gradient-to-r ولم يظهر التدرج في v4. ما الإصلاح؟</strong></p><ul><li>bg-gradient-r</li><li>bg-grad-to-r</li><li>gradient-to-right</li><li>bg-linear-to-r</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>bg-linear-to-r</strong></p><p>الصيغة الجديدة في v4 هي bg-linear-to-*.</p></details></li><li><p><strong>ما دور via-sky-500 في التدرج؟</strong></p><ul><li>لون محطة وسطى بين البداية والنهاية</li><li>لون البداية</li><li>لون النهاية</li><li>لون حدود العنصر</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لون محطة وسطى بين البداية والنهاية</strong></p><p>via تضيف لوناً في المنتصف بين from و to.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-10">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/tailwind-learning/lessons/tw-09.html"><small>الدرس السابق</small><strong>الحدود والظلال والحلقات</strong></a>
+        <a rel="next" href="/tailwind-learning/lessons/tw-11.html"><small>الدرس التالي</small><strong>التصميم المتجاوب</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/tailwind-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

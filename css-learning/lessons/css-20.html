@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="css" />
+    <meta name="robots" content="noindex, follow" />
+    <title>التصميم المتجاوب — CSS | FAYBIT</title>
+    <meta name="description" content="تعلم كيف يجعل CSS المواقع تتكيف مع أحجام الشاشات المختلفة." />
+    <link rel="canonical" href="https://faybit.vercel.app/css-learning/lessons/css-20.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/css-learning/lessons/css-20.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/css-learning/lessons/css-20.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/css-learning/lessons/css-20.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="التصميم المتجاوب — CSS | FAYBIT" />
+    <meta property="og:description" content="تعلم كيف يجعل CSS المواقع تتكيف مع أحجام الشاشات المختلفة." />
+    <meta property="og:url" content="https://faybit.vercel.app/css-learning/lessons/css-20.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"CSS","item":"https://faybit.vercel.app/css-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"التصميم المتجاوب","item":"https://faybit.vercel.app/css-learning/lessons/css-20.html"}]},{"@type":"LearningResource","name":"التصميم المتجاوب","description":"تعلم كيف يجعل CSS المواقع تتكيف مع أحجام الشاشات المختلفة.","url":"https://faybit.vercel.app/css-learning/lessons/css-20.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"CSS — FAYBIT","url":"https://faybit.vercel.app/css-learning/css-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="CSS"><a href="/css-learning/lessons/index.html">الدروس</a><a href="/en/css-learning/lessons/css-20.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/css-learning/lessons/index.html">CSS</a></nav>
+      <p class="lp-eyebrow">الدرس 20 من 30</p>
+      <h1 class="lp-h1">التصميم المتجاوب</h1>
+      <p class="lp-lead">تعلم كيف يجعل CSS المواقع تتكيف مع أحجام الشاشات المختلفة.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-20">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>أول كود CSS لك</h2></div>
+</div>
+<pre dir="ltr"><code>@media (max-width: 600px) {
+.container {
+grid-template-columns: 1fr;
+}
+}</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>اكتب CSS وشاهد النتيجة</h2></div>
+</div>
+<p class="practice-description">غيّر الكود الموجود بالأسفل ثم شغّله لترى النتيجة.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما هو Responsive Design؟</strong></p><ul><li>تصميم يتكيف مع أحجام الشاشات المختلفة</li><li>تصميم للهواتف فقط</li><li>تصميم بدون CSS</li><li>تصميم لأجهزة الكمبيوتر فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تصميم يتكيف مع أحجام الشاشات المختلفة</strong></p></details></li><li><p><strong>أي ميزة في CSS تستخدم غالبًا لتحديد Breakpoints؟</strong></p><ul><li>Media Queries</li><li>Animations</li><li>Variables</li><li>Borders</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Media Queries</strong></p></details></li><li><p><strong>ماذا يعني max-width: 600px داخل Media Query؟</strong></p><ul><li>تطبيق التنسيقات عندما يكون عرض الشاشة 600px أو أقل</li><li>جعل الصفحة بعرض 600px بالضبط</li><li>جعل كل عنصر بعرض 600px</li><li>تحديد أقل عرض للشاشة إلى 600px</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تطبيق التنسيقات عندما يكون عرض الشاشة 600px أو أقل</strong></p></details></li><li><p><strong>صفحتك متجاوبة لكن الجوال يعرضها مصغرة كأنها لسطح المكتب. ما السبب المحتمل؟</strong></p><ul><li>غياب وسم meta viewport في head</li><li>استخدام flexbox</li><li>استخدام الوحدة rem</li><li>كثرة الصور</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>غياب وسم meta viewport في head</strong></p><p>بدون وسم meta viewport تفترض متصفحات الجوال عرضاً يقارب 980px وتصغر الصفحة، فلا تنطبق استعلامات الوسائط كما تتوقع. الوسم يضبط العرض على عرض الجهاز.</p></details></li><li><p><strong>لماذا نكتب img { max-width: 100%; height: auto; } في تصميم متجاوب؟</strong></p><ul><li>لتكبير كل الصور فوق حجمها الأصلي</li><li>لمنع الصورة من تجاوز حاويتها مع حفظ نسبتها</li><li>لإخفاء الصور على الجوال</li><li>لتكرار الصورة في الخلفية</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لمنع الصورة من تجاوز حاويتها مع حفظ نسبتها</strong></p><p>max-width: 100% يمنع العرض من تجاوز الحاوية، وheight: auto يضبط الارتفاع تناسبياً فلا تتشوه الصورة.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-20">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/css-learning/lessons/css-19.html"><small>الدرس السابق</small><strong>CSS Grid</strong></a>
+        <a rel="next" href="/css-learning/lessons/css-21.html"><small>الدرس التالي</small><strong>Pseudo-classes</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/css-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

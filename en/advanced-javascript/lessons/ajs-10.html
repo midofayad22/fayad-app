@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>Proxy and Reflect — Advanced JavaScript | FAYBIT</title>
+    <meta name="description" content="Intercept operations on objects to build validation, logging, and default values." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-10.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-10.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-10.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-10.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Proxy and Reflect — Advanced JavaScript | FAYBIT" />
+    <meta property="og:description" content="Intercept operations on objects to build validation, logging, and default values." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-10.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Advanced JavaScript","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Proxy and Reflect","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-10.html"}]},{"@type":"LearningResource","name":"Proxy and Reflect","description":"Intercept operations on objects to build validation, logging, and default values.","url":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-10.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Advanced JavaScript — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Advanced JavaScript"><a href="/en/advanced-javascript/lessons/index.html">Lessons</a><a href="/advanced-javascript/lessons/ajs-10.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/advanced-javascript/lessons/index.html">Advanced JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 10 of 22</p>
+      <h1 class="lp-h1">Proxy and Reflect</h1>
+      <p class="lp-lead">Intercept operations on objects to build validation, logging, and default values.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-10">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Proxy</h2><p><code>new Proxy(target, handler)</code> wraps an object and intercepts operations such as <code>get</code>, <code>set</code>, <code>has</code>, and <code>deleteProperty</code> through functions called <strong>traps</strong>.</p></article><article class="content-card"><h2>Reflect</h2><p><code>Reflect</code> provides the same default operations as functions, so you call them inside the trap to preserve the original behavior.</p></article></div>
+<article class="body-card key-card"><p>Always return via Reflect.set/get inside traps to preserve correct behavior.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>const validator = {
+set(target, key, value, receiver) {
+if (key === "age" &amp;&amp; !Number.isInteger(value)) {
+throw new TypeError("age must be an integer");
+}
+return Reflect.set(target, key, value, receiver);
+},
+get(target, key, receiver) {
+return key in target ? Reflect.get(target, key, receiver) : "n/a";
+},
+};
+const person = new Proxy({}, validator);
+person.age = 30;
+console.log(person.age, person.name);
+try { person.age = "x"; } catch (e) { console.log(e.message); }
+const logs = [];
+const tracked = new Proxy({ n: 1 }, {
+set(t, k, v) { logs.push(k + "=" + v); t[k] = v; return true; },
+});
+tracked.n = 2; tracked.m = 3;
+console.log(logs);</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">30 n/a
+age must be an integer
+[ 'n=2', 'm=3' ]</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>The first Proxy validates values before writing and returns a default value for missing keys. The second logs every modification without changing the original object.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Try it yourself</h2></div>
+</div>
+<p class="practice-description">Create a Proxy that throws an error when any property deletion is attempted (a trap named &lt;code&gt;deleteProperty&lt;/code&gt;).</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is a trap?</strong></p><ul><li>A function in the handler that intercepts an operation on the object</li><li>A type of error</li><li>A loop</li><li>An external library</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A function in the handler that intercepts an operation on the object</strong></p></details></li><li><p><strong>Why do we use Reflect inside traps?</strong></p><ul><li>To perform the default behavior correctly</li><li>To slow down the code</li><li>To disable the Proxy</li><li>To create classes</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>To perform the default behavior correctly</strong></p></details></li><li><p><strong>Which of the following is a suitable use of Proxy?</strong></p><ul><li>Validating values and logging changes</li><li>Coloring the page</li><li>Loading images</li><li>Encrypting passwords</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Validating values and logging changes</strong></p></details></li><li><p><strong>What does this code print? const p = new Proxy({}, { set(t, k, v) { t[k] = v * 2; return true; } }); p.x = 5; console.log(p.x);</strong></p><ul><li>5</li><li>undefined</li><li>An error because set cannot change the value</li><li>10</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>10</strong></p><p>The set trap intercepts the assignment and decides what is stored on the target, so 10 is stored. Reading p.x has no trap and passes straight to the target.</p></details></li><li><p><strong>What does this code print? const p = new Proxy({}, { get: (t, k) =&gt; (k in t ? t[k] : 0) }); console.log(p.a, p.b + 1);</strong></p><ul><li>0 and 1</li><li>undefined and NaN</li><li>0 and NaN</li><li>0 and 0</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>0 and 1</strong></p><p>The get trap returns 0 for any missing key instead of undefined, so p.a is 0 and p.b + 1 is 1. This shows how a Proxy changes read behavior.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-10">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/advanced-javascript/lessons/ajs-09.html"><small>Previous lesson</small><strong>Property Descriptors and Freezing</strong></a>
+        <a rel="next" href="/en/advanced-javascript/lessons/ajs-11.html"><small>Next lesson</small><strong>Iterators and Iterables</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/advanced-javascript/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

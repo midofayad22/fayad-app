@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="js" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Objects — JavaScript | FAYBIT</title>
+    <meta name="description" content="Learn how Objects store related data using Properties and Values." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-13.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-13.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/javascript-learning/lessons/js-13.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/javascript-learning/lessons/js-13.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Objects — JavaScript | FAYBIT" />
+    <meta property="og:description" content="Learn how Objects store related data using Properties and Values." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/javascript-learning/lessons/js-13.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript","item":"https://faybit.vercel.app/en/javascript-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Objects","item":"https://faybit.vercel.app/en/javascript-learning/lessons/js-13.html"}]},{"@type":"LearningResource","name":"Objects","description":"Learn how Objects store related data using Properties and Values.","url":"https://faybit.vercel.app/en/javascript-learning/lessons/js-13.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript — FAYBIT","url":"https://faybit.vercel.app/javascript-learning/javascript-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript"><a href="/en/javascript-learning/lessons/index.html">Lessons</a><a href="/javascript-learning/lessons/js-13.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/javascript-learning/lessons/index.html">JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 13 of 25</p>
+      <h1 class="lp-h1">Objects</h1>
+      <p class="lp-lead">Learn how Objects store related data using Properties and Values.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-13">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>const user = {
+name: "FAYBIT",
+age: 20,
+student: true
+};
+document.getElementById("jsResult").textContent =
+user.name;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>
+<p>An <strong>Object</strong> is used to group related data in a single structure.</p>
+<p>An Object contains <strong>Properties</strong>, and each Property has a value.</p>
+<p>In the example, <strong>name</strong>, <strong>age</strong>, and <strong>student</strong> are Properties.</p>
+<p>You can access a Property using dot notation, such as <strong>user.name</strong>.</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Write JavaScript</h2></div>
+</div>
+<p class="practice-description">Change the code below, then run it to see the result.</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What does an Object usually contain?</strong></p><ul><li>Properties and Values</li><li>Only CSS</li><li>Only HTML</li><li>Only numbers</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Properties and Values</strong></p></details></li><li><p><strong>How do you access name inside user?</strong></p><ul><li>user.name</li><li>user-&gt;name</li><li>user[name()]</li><li>name.user</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>user.name</strong></p></details></li><li><p><strong>What is name in user.name?</strong></p><ul><li>Property</li><li>Loop</li><li>Function</li><li>Array</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Property</strong></p></details></li><li><p><strong>What does this code print? const u = { name: &quot;A&quot; }; const key = &quot;name&quot;; console.log(u.key, u[key]);</strong></p><ul><li>A and A</li><li>undefined and A</li><li>name and A</li><li>A and undefined</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>undefined and A</strong></p><p>u.key looks for a property literally named key and does not find it. Brackets evaluate the variable first, so u[key] becomes u[&quot;name&quot;].</p></details></li><li><p><strong>What does this code print? const u = { name: &quot;A&quot; }; console.log(u.age);</strong></p><ul><li>A ReferenceError</li><li>null</li><li>0</li><li>undefined</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>undefined</strong></p><p>Reading a missing property from an object does not throw; it returns undefined. An error appears only when reading an undeclared variable or accessing a property of undefined.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-13">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/javascript-learning/lessons/js-12.html"><small>Previous lesson</small><strong>Array Methods</strong></a>
+        <a rel="next" href="/en/javascript-learning/lessons/js-14.html"><small>Next lesson</small><strong>Object Methods</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/javascript-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

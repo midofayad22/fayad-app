@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>أساسيات الإنترنت والشبكات — أساسيات الكمبيوتر | FAYBIT</title>
+    <meta name="description" content="تفرّق بين LAN و WAN و Internet وتصف دور Router و Switch . تشرح IP Address و DNS و Packet والمنافذ ونموذج Client-Server . تفرّق بين Latency و Bandwidth…" />
+    <link rel="canonical" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-15.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-15.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-15.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-15.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="أساسيات الإنترنت والشبكات — أساسيات الكمبيوتر | FAYBIT" />
+    <meta property="og:description" content="تفرّق بين LAN و WAN و Internet وتصف دور Router و Switch . تشرح IP Address و DNS و Packet والمنافذ ونموذج Client-Server . تفرّق بين Latency و Bandwidth…" />
+    <meta property="og:url" content="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-15.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"أساسيات الكمبيوتر","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"أساسيات الإنترنت والشبكات","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-15.html"}]},{"@type":"LearningResource","name":"أساسيات الإنترنت والشبكات","description":"تفرّق بين LAN و WAN و Internet وتصف دور Router و Switch . تشرح IP Address و DNS و Packet والمنافذ ونموذج Client-Server . تفرّق بين Latency و Bandwidth…","url":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-15.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"أساسيات الكمبيوتر — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="أساسيات الكمبيوتر"><a href="/fundamentals/computer-basics/lessons/index.html">الدروس</a><a href="/en/fundamentals/computer-basics/lessons/com-15.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/fundamentals/computer-basics/lessons/index.html">أساسيات الكمبيوتر</a></nav>
+      <p class="lp-eyebrow">الدرس 15 من 30</p>
+      <h1 class="lp-h1">أساسيات الإنترنت والشبكات</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-15">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>أساسيات الإنترنت والشبكات</h2>
+<div><section class="lesson-section doc-objectives"><h3>أهداف الدرس</h3><ul><li>تفرّق بين <span class="term">LAN</span> و<span class="term">WAN</span> و<span class="term">Internet</span> وتصف دور <span class="term">Router</span> و<span class="term">Switch</span>.</li><li>تشرح <span class="term">IP Address</span> و<span class="term">DNS</span> و<span class="term">Packet</span> والمنافذ ونموذج <span class="term">Client-Server</span>.</li><li>تفرّق بين <span class="term">Latency</span> و<span class="term">Bandwidth</span> وتقرأ ناتج <code>ping</code> و<code>nslookup</code>.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>المتطلبات السابقة</h3><ul><li>درس البت والبايت (com-13) لحساب سرعات النقل، ودرس نظام التشغيل (com-10).</li></ul>
+</section>
+<section class="lesson-section "><h3>مقدمة: حاسوبان يتحدثان</h3>
+<p><span class="term">Network</span> أو الشبكة مجموعة أجهزة متصلة لتتبادل البيانات، عبر كابل أو موجات لاسلكية. ما إن يتصل جهازان حتى تظهر أسئلة: كيف يُعرَّف كل منهما؟ وكيف يصل الكلام إلى المقصود وحده؟ وما اللغة المشتركة؟ الإجابات هي بنية الإنترنت، وتُحل بطبقات من القواعد تسمى <span class="term">Protocol</span> أي بروتوكولات.</p>
+</section>
+<section class="lesson-section "><h3>أنواع الشبكات ومكوّناتها</h3>
+<ul><li><strong><span class="term">LAN</span>:</strong> شبكة محلية في نطاق صغير كالبيت أو المكتب أو المدرسة.</li><li><strong><span class="term">WAN</span>:</strong> شبكة واسعة تربط مواقع متباعدة عبر مدن أو دول، وغالبًا بخطوط يؤجرها مزودو الخدمة.</li><li><strong><span class="term">Internet</span>:</strong> ليس شبكة واحدة، بل شبكة من آلاف الشبكات المستقلة المتصلة بعضها ببعض وفق بروتوكولات مشتركة.</li></ul>
+<figure class="doc-diagram" role="group" aria-label="مخطط"><figcaption>شبكة منزلية نموذجية</figcaption><ol class="doc-layers"><li><strong>الهواتف والحواسيب</strong><span>أجهزة تتصل عبر Wi-Fi أو كابل</span></li><li><strong>المبدّل Switch / نقطة الوصول</strong><span>يوصل أجهزة الشبكة المحلية ويوجّه الإطارات بينها</span></li><li><strong>الموجّه Router</strong><span>بوابة الشبكة المحلية إلى الشبكات الأخرى</span></li><li><strong>مزوّد الخدمة ISP</strong><span>يربط بيتك ببقية الإنترنت</span></li><li><strong>الإنترنت</strong><span>شبكات ومراكز بيانات حول العالم</span></li></ol></figure>
+<p>الفرق: <span class="term">Switch</span> يربط الأجهزة <em>داخل</em> الشبكة نفسها ويوصل الرسالة للجهاز المقصود فقط بحسب عنوانه المادي <span class="term">MAC Address</span>، بينما <span class="term">Router</span> يربط <em>بين</em> الشبكات ويختار الطريق التالي للرسالة بحسب عنوان IP. وفي المنازل يجمع جهاز واحد عدة وظائف: موجّه ونقطة وصول ومبدّل صغير.</p>
+</section>
+<section class="lesson-section "><h3>العناوين وDNS</h3>
+<p>لكل جهاز على الشبكة <span class="term">IP Address</span>: رقم يعرّفه ويحدد مكانه. في <span class="term">IPv4</span> يتكون العنوان من 32 بتًا تُكتب أربعة أعداد من 0 إلى 255 تفصل بينها نقاط، مثل <code>192.168.1.20</code>. وعدد العناوين الممكنة 2 أس 32 = 4,294,967,296، وهو لا يكفي لكل أجهزة العالم، فظهر <span class="term">IPv6</span> بعناوين 128 بتًا. وتخصص نطاقات خاصة مثل <code>192.168.x.x</code> للشبكات المحلية، فيتكرر استعمالها في بيوت كثيرة، ويتولى الموجّه الترجمة بينها وبين عنوانك العام عبر <span class="term">NAT</span>.</p>
+<p>البشر يتذكرون الأسماء لا الأرقام، وهنا يأتي <span class="term">DNS</span> (Domain Name System): نظام موزع يشبه دليل الهاتف يحوّل الاسم مثل <code>example.com</code> إلى عنوان IP. فحين تكتب العنوان في المتصفح يسأل جهازك خادم DNS (يعيّنه مزود الخدمة عادة)، فيعود بالرقم، ثم يتصل المتصفح بالعنوان الرقمي.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">bash</span></figcaption><pre dir="ltr"><code>nslookup example.com
+ping -c 3 example.com</code></pre></figure>
+<figure class="code-ex code-ex-out"><figcaption><span class="code-ex-lang">الناتج</span></figcaption><pre dir="ltr"><code>Name:    example.com
+Address: 192.0.2.10
+PING example.com (192.0.2.10): 56 data bytes
+64 bytes from 192.0.2.10: icmp_seq=0 ttl=57 time=38.2 ms
+64 bytes from 192.0.2.10: icmp_seq=1 ttl=57 time=39.1 ms
+64 bytes from 192.0.2.10: icmp_seq=2 ttl=57 time=37.8 ms
+--- 3 packets transmitted, 3 received, 0% packet loss
+round-trip min/avg/max = 37.8/38.4/39.1 ms</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>الحزم والعميل والخادم والمنافذ</h3>
+<p>لا تُرسل البيانات في قطعة واحدة؛ تُقسَّم إلى <span class="term">Packet</span> (حزم) صغيرة، لكل منها رأس يحمل عنوان المرسل والمستقبل ورقم تسلسلها. وتسير الحزم كل منها بحسب أفضل طريق متاح، وقد تصل متأخرة أو بترتيب مختلف، فيعيد الطرف المستقبل ترتيبها ويطلب إعادة ما ضاع. وهذه ميزة: إن تعطل جزء من الشبكة أمكن للحزم أن تسلك طريقًا آخر. وتبلغ الحزمة النموذجية في الإيثرنت نحو 1500 بايت، يحمل منها المحتوى نحو 1460 بعد الرؤوس. فملف حجمه 1,000,000 بايت يحتاج نحو 685 حزمة.</p>
+<p>وتتواصل التطبيقات بنمط <span class="term">Client-Server</span>: <span class="term">Client</span> (العميل) يطلب، كالمتصفح على هاتفك، و<span class="term">Server</span> (الخادم) حاسوب يعمل باستمرار ويستجيب بالموارد. ولأن الجهاز الواحد يشغّل خدمات كثيرة في الوقت نفسه، يوجد <span class="term">Port</span> (منفذ): رقم من 0 إلى 65,535 يحدد أي تطبيق على الجهاز هو المقصود، كما أن رقم الشقة يكمل عنوان العمارة.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">المنفذ</th><th scope="col">الخدمة</th><th scope="col">الاستعمال</th></tr></thead><tbody><tr><th scope="row">80</th><td>HTTP</td><td>صفحات الويب بلا تشفير</td></tr><tr><th scope="row">443</th><td>HTTPS</td><td>صفحات الويب المشفرة</td></tr><tr><th scope="row">22</th><td>SSH</td><td>دخول آمن عن بعد</td></tr><tr><th scope="row">53</th><td>DNS</td><td>تحويل الأسماء إلى عناوين</td></tr></tbody></table></div>
+<figure class="doc-diagram" role="group" aria-label="مخطط"><figcaption>ماذا يحدث حين تفتح موقعًا؟</figcaption><ol class="doc-flow"><li><strong>سؤال DNS</strong><span>يحوّل الجهاز الاسم إلى عنوان IP</span></li><li><strong>الاتصال</strong><span>يفتح المتصفح اتصالًا بالخادم على المنفذ 443</span></li><li><strong>الطلب</strong><span>يُقسَّم الطلب إلى حزم تعبر الموجّهات</span></li><li><strong>الاستجابة</strong><span>يرسل الخادم الصفحة في حزم تعود إلى جهازك</span></li><li><strong>العرض</strong><span>يعيد المتصفح تجميعها ويعرضها</span></li></ol></figure>
+</section>
+<section class="lesson-section "><h3>زمن التأخير مقابل عرض النطاق</h3>
+<p>يخلط كثيرون بين المفهومين. <span class="term">Bandwidth</span> هو كمية البيانات التي يمكن نقلها في الثانية، كعرض الطريق، ويُقاس بـ Mbps. أما <span class="term">Latency</span> فهو الزمن الذي تستغرقه رسالة صغيرة لتصل، كطول الطريق، ويقاس بالميلي ثانية، وهو ما يعطيه <code>ping</code>. لا يمكن لعرض أكبر أن يلغي زمنًا فرضته المسافة؛ فالضوء في الألياف الضوئية يقطع نحو 200,000 كم/ث، فمسافة 6,000 كم تحتاج 30 ms في اتجاه واحد، أي 60 ms ذهابًا وإيابًا على الأقل.</p>
+<p>ولهذا يهمك الأمران في أمور مختلفة: تنزيل ملف ضخم يعتمد على عرض النطاق، أما المكالمات المرئية والألعاب الفورية فتعتمد على زمن التأخير. وتُسمى <span class="term">Jitter</span> الاختلاف المتذبذب في زمن التأخير، وهو ما يسبب تقطع الصوت.</p>
+</section>
+<section class="lesson-section "><h3>تطبيقات من الواقع</h3>
+<ul><li><strong>تشخيص الأعطال:</strong> إن عمل <code>ping</code> إلى عنوان رقمي ولم يعمل إلى اسم فالمشكلة غالبًا في DNS.</li><li><strong>الشبكات المنزلية:</strong> وضع جهاز الألعاب بكابل بدل Wi-Fi يقلل زمن التأخير ويثبّته.</li><li><strong>الخدمات السحابية:</strong> تضع الشركات خوادمها قرب مستخدميها لتقصير المسافة.</li></ul>
+<div class="doc-mistakes"><h4>أخطاء شائعة</h4><ul><li>«الإنترنت هو الويب»: الويب خدمة تعمل فوق الإنترنت، وهناك خدمات أخرى كالبريد والمكالمات.</li><li>«سرعة أكبر تعني تأخيرًا أقل»: عرض النطاق وزمن التأخير مستقلان إلى حد كبير.</li><li>«الموجّه والمبدّل شيء واحد»: المبدّل يعمل داخل الشبكة، والموجّه يربط بين الشبكات.</li><li>«عنوان IP الخاص بجهازي يراه كل العالم»: عنوان <code>192.168.x.x</code> محلي فقط، والمواقع ترى عنوان الموجّه العام.</li></ul></div>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>حساب:</strong> تنزل ملفًا حجمه 600 MB على اتصال 50 Mbps. كم يستغرق نظريًا؟ ثم ما التأخير الإضافي إذا كان الملف يُطلب في 100 طلب صغير متتالٍ وزمن التأخير 40 ms لكل طلب؟</summary><div class="doc-solution"><strong>عرض الحل</strong><p>600 MB = 600 × 8 = 4,800 Mb. الزمن = 4,800 ÷ 50 = 96 ثانية. وبالبايت: 50 ÷ 8 = 6.25 MB/s، و600 ÷ 6.25 = 96 ثانية أيضًا. أما 100 طلب متتالٍ فيضيف 100 × 40 ms = 4,000 ms = 4 ثوانٍ انتظار، فيصبح المجموع نحو 100 ثانية. ومن ذلك نرى أن التأخير يؤثر أكثر حين تكون الطلبات كثيرة وصغيرة.</p></div></details>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>استدلال:</strong> يفتح الموقع <code>http://203.0.113.5</code> في المتصفح لكن <code>example.com</code> لا يفتح. ما الاحتمال الأرجح، وكيف تتأكد؟</summary><div class="doc-solution"><strong>عرض الحل</strong><p>الاتصال بالإنترنت سليم لأن العنوان الرقمي يعمل، فالمشكلة في تحويل الاسم أي DNS. للتأكد نفّذ <code>nslookup example.com</code>: إن لم يرجع عنوانًا أو ظهر خطأ فخادم DNS معطل أو مضبوط خطأ. الحل أن تغيّر خادم DNS في إعدادات الشبكة إلى خادم عام آخر، أو تعيد تشغيل الموجّه، ثم تعيد الاختبار.</p></div></details>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>تطبيق عملي:</strong> اكتشف عنوان IP المحلي لجهازك وقِس زمن التأخير إلى موقع.</summary><div class="doc-solution"><strong>عرض الحل</strong><p>في Windows اكتب <code>ipconfig</code> في موجه الأوامر وابحث عن «IPv4 Address»، وفي Linux استعمل <code>ip addr</code>، وغالبًا ستجده بصيغة <code>192.168.x.x</code>. ثم نفّذ <code>ping example.com</code> وسجّل متوسط الزمن. أعد القياس على Wi-Fi وبكابل إن أمكن وقارن، ثم جرّب موقعًا في قارة بعيدة ولاحظ زيادة الزمن بحسب المسافة. تذكّر أن الأرقام التي ستراها تخص شبكتك وليست مثل المثال.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>الخلاصة</h3><ul><li>LAN شبكة محلية، وWAN واسعة، والإنترنت شبكة من الشبكات؛ المبدّل يربط داخلها والموجّه يربط بينها.</li><li>عنوان IP يحدد الجهاز، وDNS يحوّل الأسماء إلى عناوين، والحزم تحمل البيانات، والمنافذ تحدد التطبيق.</li><li>العميل يطلب والخادم يستجيب.</li><li>عرض النطاق هو الكمية في الثانية، وزمن التأخير هو سرعة وصول الرسالة، وكلاهما مستقل عن الآخر.</li></ul><p class="doc-next"><strong>الخطوة التالية:</strong> المتصفح والويب: كيف يستعمل المتصفح هذه الشبكة ليعرض الصفحات.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>المفهوم الأساسي</strong>
+<p>الإنترنت ليس جهازًا واحدًا؛ بل شبكة عالمية من الشبكات والأجهزة المتصلة ببعضها.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>تطبيق عملي</span>
+<h3>جرّب بنفسك</h3>
+</div>
+</div>
+<p>ابحث عن الفرق بين Local Network وInternet وحاول شرحه بكلماتك.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما الإنترنت؟</strong></p><ul><li>جهاز كمبيوتر واحد</li><li>شبكة عالمية من الشبكات</li><li>برنامج للرسم</li><li>نوع من وحدات التخزين</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>شبكة عالمية من الشبكات</strong></p></details></li><li><p><strong>ما الفرق بين Switch و Router؟</strong></p><ul><li>Switch يربط بين شبكات ويستخدم IP، وRouter يربط داخل الشبكة</li><li>السويتش يربط الأجهزة داخل شبكة واحدة بعنوان MAC، والراوتر يربط بين الشبكات بعنوان IP</li><li>لا فرق</li><li>الراوتر يخزّن الملفات</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>السويتش يربط الأجهزة داخل شبكة واحدة بعنوان MAC، والراوتر يربط بين الشبكات بعنوان IP</strong></p><p>في المنزل يجمع صندوق واحد غالباً دور الراوتر ونقطة الوصول وسويتش صغير.</p></details></li><li><p><strong>ما وظيفة DNS؟</strong></p><ul><li>تشفير الاتصال</li><li>تسريع الشبكة</li><li>تحويل اسم مثل example.com إلى عنوان IP</li><li>منع الإعلانات</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تحويل اسم مثل example.com إلى عنوان IP</strong></p><p>الناس يتذكرون الأسماء لا الأرقام، فيسأل جهازك خادم DNS ثم يتصل بالعنوان الرقمي.</p></details></li><li><p><strong>أي عنوان مما يلي ضمن النطاقات الخاصة المخصصة للشبكات المحلية؟</strong></p><ul><li>8.8.8.8</li><li>300.1.1.1</li><li>192.168.1.20</li><li>256.256.256.256</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>192.168.1.20</strong></p><p>النطاق 192.168.x.x خاص ويُعاد استخدامه في بيوت كثيرة، والـ NAT يترجمه إلى عنوانك العام.</p></details></li><li><p><strong>أظهر ping: 3 packets transmitted, 3 received, time=38.2 ms. ماذا يعني ذلك؟</strong></p><ul><li>لا فقدان للحزم والرحلة ذهاباً وإياباً نحو 38 ms</li><li>فُقدت جميع الحزم</li><li>سرعة التنزيل 38 ميغابت</li><li>عدد القفزات 38</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لا فقدان للحزم والرحلة ذهاباً وإياباً نحو 38 ms</strong></p><p>الحقل time هو زمن الذهاب والإياب (latency)، و0% packet loss يعني وصول كل الحزم.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-15">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/fundamentals/computer-basics/lessons/com-14.html"><small>الدرس السابق</small><strong>كيف يعمل البرنامج؟</strong></a>
+        <a rel="next" href="/fundamentals/computer-basics/lessons/com-16.html"><small>الدرس التالي</small><strong>المتصفح والويب</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/fundamentals/computer-basics/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

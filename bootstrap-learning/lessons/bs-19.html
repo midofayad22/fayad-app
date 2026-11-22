@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>الوضع الداكن و RTL والتخصيص بمتغيرات CSS — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="data-bs-theme وbootstrap.rtl.css وتغيير مظهر Bootstrap بدون Sass." />
+    <link rel="canonical" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-19.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-19.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-19.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-19.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="الوضع الداكن و RTL والتخصيص بمتغيرات CSS — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="data-bs-theme وbootstrap.rtl.css وتغيير مظهر Bootstrap بدون Sass." />
+    <meta property="og:url" content="https://faybit.vercel.app/bootstrap-learning/lessons/bs-19.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"الوضع الداكن و RTL والتخصيص بمتغيرات CSS","item":"https://faybit.vercel.app/bootstrap-learning/lessons/bs-19.html"}]},{"@type":"LearningResource","name":"الوضع الداكن و RTL والتخصيص بمتغيرات CSS","description":"data-bs-theme وbootstrap.rtl.css وتغيير مظهر Bootstrap بدون Sass.","url":"https://faybit.vercel.app/bootstrap-learning/lessons/bs-19.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/bootstrap-learning/lessons/index.html">الدروس</a><a href="/en/bootstrap-learning/lessons/bs-19.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">الدرس 19 من 20</p>
+      <h1 class="lp-h1">الوضع الداكن و RTL والتخصيص بمتغيرات CSS</h1>
+      <p class="lp-lead">data-bs-theme وbootstrap.rtl.css وتغيير مظهر Bootstrap بدون Sass.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-19">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>Color modes</h2><p>منذ 5.3 ضع <code>data-bs-theme="dark"</code> على <code>&lt;html&gt;</code> أو على أي عنصر ليتحول هو وأبناؤه للوضع الداكن. استخدم الفئات المتكيفة (<code>bg-body</code>, <code>text-body</code>, <code>bg-body-tertiary</code>, <code>-subtle</code>) بدل <code>bg-white</code> و<code>text-dark</code>.</p></article><article class="content-card"><h2>RTL</h2><p>للغة العربية: <code>&lt;html lang="ar" dir="rtl"&gt;</code> مع ملف <code>bootstrap.rtl.min.css</code> بدلًا من العادي. الفئات المنطقية (<code>ms-*</code>, <code>me-*</code>, <code>text-start</code>) تنعكس تلقائيًا.</p></article><article class="content-card"><h2>التخصيص بالمتغيرات</h2><p>كل مكون يعرّف متغيرات CSS مثل <code>--bs-btn-bg</code>، ويمكنك تعديلها على فئة خاصة بك، أو تغيير <code>--bs-primary</code> و<code>--bs-body-font-family</code> عالميًا. هذا أسهل من Sass في المشاريع الصغيرة.</p></article></div>
+<article class="body-card key-card"><p>اضبط data-bs-theme على العنصر، وغيّر المظهر بمتغيرات --bs-* بدل تجاوز CSS بقوة.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;style&gt;
+.btn-brand {
+--bs-btn-bg: #0b6b78;
+--bs-btn-border-color: #0b6b78;
+--bs-btn-hover-bg: #095561;
+--bs-btn-hover-border-color: #095561;
+--bs-btn-color: #fff;
+--bs-btn-hover-color: #fff;
+}
+&lt;/style&gt;
+&lt;div class="container py-3"&gt;
+&lt;div class="p-3 border rounded mb-3 bg-body text-body"&gt;وضع النظام الحالي&lt;/div&gt;
+&lt;div class="p-3 border rounded mb-3 bg-body text-body" data-bs-theme="dark"&gt;وضع داكن على هذا العنصر فقط&lt;/div&gt;
+&lt;button class="btn btn-brand"&gt;زر بلون العلامة&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>العنصر الثاني داكن فقط لأن السمة موضوعة عليه. الزر خصص لونه بتعيين متغيرات المكون في فئة واحدة دون تعديل الكود الأساسي.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">اجعل الفئة &lt;code&gt;btn-brand&lt;/code&gt; تستخدم لونًا مختلفًا وجرّب data-bs-theme على الزر.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>كيف نفعّل الوضع الداكن لعنصر محدد؟</strong></p><ul><li>data-bs-theme=&quot;dark&quot; على العنصر</li><li>class=&quot;dark&quot; فقط</li><li>style=&quot;dark&quot;</li><li>theme.css</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>data-bs-theme=&quot;dark&quot; على العنصر</strong></p></details></li><li><p><strong>أي ملف نحتاجه للاتجاه من اليمين لليسار؟</strong></p><ul><li>bootstrap.rtl.min.css</li><li>bootstrap-arabic.js</li><li>rtl.json</li><li>bootstrap.dark.css</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>bootstrap.rtl.min.css</strong></p></details></li><li><p><strong>ما أسهل طريقة لتخصيص زر دون Sass؟</strong></p><ul><li>تعيين متغيرات --bs-btn-* في فئة خاصة</li><li>تعديل ملف bootstrap.min.css</li><li>استخدام !important في كل مكان</li><li>حذف الفئة btn</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تعيين متغيرات --bs-btn-* في فئة خاصة</strong></p></details></li><li><p><strong>ما الإعداد الصحيح لصفحة عربية بدعم RTL؟</strong></p><ul><li>&lt;html lang=&quot;ar&quot; dir=&quot;rtl&quot;&gt; مع bootstrap.rtl.min.css</li><li>&lt;html dir=&quot;ltr&quot;&gt; مع ملف CSS العادي</li><li>وسم meta اسمه rtl فقط</li><li>الفئة rtl على body فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>&lt;html lang=&quot;ar&quot; dir=&quot;rtl&quot;&gt; مع bootstrap.rtl.min.css</strong></p><p>نحتاج الاتجاه في html وملف RTL المخصص معاً.</p></details></li><li><p><strong>أي فئة بدل bg-white تتكيف مع الوضع الداكن؟</strong></p><ul><li>bg-light-fixed</li><li>bg-body</li><li>bg-white-dark</li><li>bg-static</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>bg-body</strong></p><p>bg-body يتبع لون خلفية الوضع الحالي بدل لون ثابت.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-19">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/bootstrap-learning/lessons/bs-18.html"><small>الدرس السابق</small><strong>Tooltips و Popovers و Toasts</strong></a>
+        <a rel="next" href="/bootstrap-learning/lessons/bs-20.html"><small>الدرس التالي</small><strong>مشروع: صفحة هبوط متجاوبة</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/bootstrap-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

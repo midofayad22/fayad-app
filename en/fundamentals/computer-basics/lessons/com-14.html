@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>How Does a Program Work? — Computer Basics | FAYBIT</title>
+    <meta name="description" content="Explain how Source Code becomes Machine Code and tell compiled languages from interpreted ones. Follow a program's journey from storage to RAM and then to…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-14.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-14.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-14.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-14.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="How Does a Program Work? — Computer Basics | FAYBIT" />
+    <meta property="og:description" content="Explain how Source Code becomes Machine Code and tell compiled languages from interpreted ones. Follow a program's journey from storage to RAM and then to…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-14.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Computer Basics","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"How Does a Program Work?","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-14.html"}]},{"@type":"LearningResource","name":"How Does a Program Work?","description":"Explain how Source Code becomes Machine Code and tell compiled languages from interpreted ones. Follow a program's journey from storage to RAM and then to…","url":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-14.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Computer Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Computer Basics"><a href="/en/fundamentals/computer-basics/lessons/index.html">Lessons</a><a href="/fundamentals/computer-basics/lessons/com-14.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/computer-basics/lessons/index.html">Computer Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 14 of 30</p>
+      <h1 class="lp-h1">How Does a Program Work?</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-14">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>How Does a Program Work?</h2>
+<div><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Explain how <span class="term">Source Code</span> becomes <span class="term">Machine Code</span> and tell compiled languages from interpreted ones.</li><li>Follow a program's journey from storage to <span class="term">RAM</span> and then to the processor.</li><li>Distinguish a <span class="term">Program</span> from a <span class="term">Process</span> and understand the role of a <span class="term">Library</span> and shared libraries.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>The CPU (com-04), RAM (com-05), operating-system (com-10) and binary (com-12) lessons.</li></ul>
+</section>
+<section class="lesson-section "><h3>Introduction: from idea to numbers</h3>
+<p>A <span class="term">Program</span> is an ordered set of instructions telling the computer what to do. But the processor understands neither Python nor Java; it understands only its own <span class="term">Instruction Set</span>, a collection of binary numbers meaning things like “add”, “move” or “jump”. These numbers are <span class="term">Machine Code</span>. Since writing them by hand is laborious, programmers write in a human-friendly language and have it translated.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">c</span></figcaption><pre dir="ltr"><code>int total = a + b;</code></pre></figure>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">text</span></figcaption><pre dir="ltr"><code>mov  eax, [a]     ; load a into register eax
+add  eax, [b]     ; add b to it
+mov  [total], eax ; store the result</code></pre></figure>
+<p>The first block is C source; the second is its counterpart in <span class="term">Assembly</span>, a readable form of machine instructions (it differs between processor families). Each Assembly line corresponds to roughly one numeric instruction.</p>
+</section>
+<section class="lesson-section "><h3>Translation: compiled or interpreted?</h3>
+<p>There are two main ways to translate. A <span class="term">Compiler</span> translates the whole program in advance into an executable file that then runs fast without needing the source, as in C, C++, Rust and Go. An <span class="term">Interpreter</span> reads the program and executes it while it runs, command by command or through an intermediate step, as in Python and JavaScript; it is easier to experiment with and usually slower.</p>
+<figure class="doc-diagram" role="group" aria-label="Diagram"><figcaption>Pipeline of a compiled program</figcaption><ol class="doc-flow"><li><strong>Source code</strong><span>a text file the developer writes, such as <code>main.c</code></span></li><li><strong>Compiler</strong><span>checks the grammar and converts instructions to machine code</span></li><li><strong>Linker</strong><span>joins libraries and produces an executable file</span></li><li><strong>Executable file</strong><span>an <code>.exe</code> or ELF file on the drive</span></li></ol></figure>
+<p>Between the two sit hybrids: Java and C# compile to <span class="term">Bytecode</span>, an intermediate code that runs on a virtual machine, and modern engines use <span class="term">JIT</span> compilation, converting frequently used parts into machine code while running to speed them up. So “compiled” versus “interpreted” describes less the language itself and more how it is executed.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Aspect</th><th scope="col">Compiled (C, Rust)</th><th scope="col">Interpreted (Python, JS)</th></tr></thead><tbody><tr><th scope="row">Speed</th><td>usually higher</td><td>usually lower</td></tr><tr><th scope="row">Distribution</th><td>one executable per platform</td><td>needs an interpreter on the device</td></tr><tr><th scope="row">Edit cycle</th><td>compile then run</td><td>run directly</td></tr><tr><th scope="row">Finding errors</th><td>many before running</td><td>many while running</td></tr></tbody></table></div>
+</section>
+<section class="lesson-section "><h3>From drive to processor</h3>
+<p>The executable on the drive is inert data and does nothing. When you double-click its icon, the operating system's <span class="term">Loader</span> reads it and loads its parts into <span class="term">RAM</span>, because the processor does not execute straight from the slow drive. The system then sets a pointer called the <span class="term">Program Counter</span> to the first instruction, and the processor begins the <span class="term">Fetch-Decode-Execute</span> cycle: fetch the instruction from memory, decode it to learn what is asked, then execute it, repeating billions of times per second.</p>
+<figure class="doc-diagram" role="group" aria-label="Diagram"><figcaption>The journey of launching a program</figcaption><ol class="doc-flow"><li><strong>Request</strong><span>you click the icon and the OS asks for the file</span></li><li><strong>Loading</strong><span>code and data are copied from the drive into memory</span></li><li><strong>Setup</strong><span>a <span class="term">Process</span> is created with its memory and a starting pointer</span></li><li><strong>Execution</strong><span>the CPU fetches, decodes and executes instructions</span></li><li><strong>Exit</strong><span>on exit the OS reclaims the memory</span></li></ol></figure>
+</section>
+<section class="lesson-section "><h3>Program versus process, and libraries</h3>
+<p>A program is a file on the drive, while a <span class="term">Process</span> is that program while it runs: it has an identifier <span class="term">PID</span>, its own memory space and a state. Launch the browser twice and you get two processes from one program, each with its own separate data. The operating system switches the processor among processes so fast that they appear to run together.</p>
+<p>Nobody writes everything alone. A <span class="term">Library</span> is ready-made code for common jobs such as drawing, networking or reading files. Some libraries are built into the executable (static linking); others are shared and loaded at run time (<code>.dll</code> files on Windows, <code>.so</code> on Linux), so several programs use one copy in memory. Programs ask the system for services such as opening a file through a <span class="term">System Call</span>, the controlled doorway into the kernel.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">bash</span></figcaption><pre dir="ltr"><code>python3 -c "print('hello')" &amp;   # start a program in the background
+ps -o pid,comm | head -n 4       # list a few processes</code></pre></figure>
+<figure class="code-ex code-ex-out"><figcaption><span class="code-ex-lang">Output</span></figcaption><pre dir="ltr"><code>hello
+PID COMMAND
+1021 bash
+1544 ps</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>Real-world applications</h3>
+<ul><li><strong>Task Manager:</strong> shows processes and their CPU and memory use, and lets you end a frozen program.</li><li><strong>Updates:</strong> updating one shared library fixes a flaw in several programs at once.</li><li><strong>Choosing a language:</strong> operating systems and games are often written in compiled languages, while websites and automation scripts use interpreted ones.</li></ul>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>“A program runs straight from the drive”: it is loaded into memory first and then executed by the processor.</li><li>“A language is inherently compiled or interpreted”: many languages have implementations of both kinds or a mix.</li><li>“Program and process are the same thing”: one program can yield several processes.</li><li>“An executable runs on any device”: it is tied to an operating system and a processor type.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Calculation:</strong> a 3 GHz processor executes one instruction per cycle. How many instructions per second, and how long does a 6-billion-instruction program take?</summary><div class="doc-solution"><strong>Show solution</strong><p>3 GHz means 3,000,000,000 cycles per second, so it executes 3 billion instructions per second. A 6-billion-instruction program needs 6,000,000,000 ÷ 3,000,000,000 = 2 seconds. That is a theoretical minimum; real processors can execute more than one instruction per cycle but also wait for memory at times, so the figure differs.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Reasoning:</strong> why does a large program open slowly the first time and faster the next?</summary><div class="doc-solution"><strong>Show solution</strong><p>The first time, the operating system reads the program's files and libraries from the drive into memory, which is the slowest step. The system keeps copies of what it read in a cache in spare RAM, so when you reopen the program soon after, it finds the files in memory and skips the drive read. With an HDD the difference is clearer, as its access is much slower than RAM.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Hands-on:</strong> watch the processes on your machine, create a new one and track it.</summary><div class="doc-solution"><strong>Show solution</strong><p>Open Task Manager on Windows with Ctrl+Shift+Esc, or the terminal on Linux and start the <code>top</code> command. Note the PID of a program such as the browser. Then start a second instance and watch new processes appear with different PIDs and different memory. Close one instance and confirm the other keeps running, which shows they are independent processes of one program.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>The processor runs only machine code, and every other language is translated or interpreted into it.</li><li>A compiler converts ahead of time, an interpreter executes while running, and hybrids exist such as bytecode and JIT.</li><li>A program is loaded from the drive into RAM, then the CPU fetches and executes its instructions.</li><li>A process is a program in action, and libraries reuse code.</li></ul><p class="doc-next"><strong>Next step:</strong> Internet and networks: how computers talk to each other.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>Core concept</strong>
+<p>A program is a set of organized instructions, and the computer executes them step by step using the processor.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Hands-on practice</span>
+<h3>Try it yourself</h3>
+</div>
+</div>
+<p>Open any simple JavaScript file and try to identify where the instructions that the computer executes are located.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What does a program contain?</strong></p><ul><li>Instructions</li><li>Electricity only</li><li>Images only</li><li>Fans</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Instructions</strong></p></details></li><li><p><strong>What is the main difference between a compiler and an interpreter?</strong></p><ul><li>A compiler translates the whole program in advance into an executable, an interpreter runs it as it goes, command by command</li><li>A compiler is always slower</li><li>An interpreter always produces an exe file</li><li>There is no difference</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A compiler translates the whole program in advance into an executable, an interpreter runs it as it goes, command by command</strong></p><p>C and Rust are compiled and usually faster; Python and JavaScript are interpreted and easier to experiment with.</p></details></li><li><p><strong>What is the difference between a program and a process?</strong></p><ul><li>They are two names for the same thing</li><li>The program is what runs and the process is a file on disk</li><li>A program is a file on disk, while a process is it while running, with a PID and its own memory</li><li>A process lives only on disk</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A program is a file on disk, while a process is it while running, with a PID and its own memory</strong></p><p>You can launch the same program twice and get two processes, each with its own PID.</p></details></li><li><p><strong>Why does the loader copy a program into RAM before running it?</strong></p><ul><li>Because the processor does not execute straight from the slow drive</li><li>Because RAM is cheaper</li><li>To delete the file from disk</li><li>Because the drive cannot keep data</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Because the processor does not execute straight from the slow drive</strong></p><p>The file on disk is inert data; the loader copies it into memory and then the program counter starts.</p></details></li><li><p><strong>What is bytecode in Java?</strong></p><ul><li>Machine code ready for the processor directly</li><li>Text typed by the user</li><li>A code that encrypts passwords</li><li>An intermediate code that runs on a virtual machine</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>An intermediate code that runs on a virtual machine</strong></p><p>Java and C# compile to bytecode, which a virtual machine runs, often with JIT compilation.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-14">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/computer-basics/lessons/com-13.html"><small>Previous lesson</small><strong>Bits and Bytes</strong></a>
+        <a rel="next" href="/en/fundamentals/computer-basics/lessons/com-15.html"><small>Next lesson</small><strong>Internet and Networking Basics</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/computer-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>الأمن السيبراني — أساسيات الكمبيوتر | FAYBIT</title>
+    <meta name="description" content="تشرح ثلاثية CIA : السرية والسلامة والإتاحة، وتصنّف بها أي حادثة أمنية. تتعرف على التهديدات الشائعة وتربط كل منها بدفاع مناسب. تميّز بين Hashing و…" />
+    <link rel="canonical" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-17.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-17.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-17.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-17.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="الأمن السيبراني — أساسيات الكمبيوتر | FAYBIT" />
+    <meta property="og:description" content="تشرح ثلاثية CIA : السرية والسلامة والإتاحة، وتصنّف بها أي حادثة أمنية. تتعرف على التهديدات الشائعة وتربط كل منها بدفاع مناسب. تميّز بين Hashing و…" />
+    <meta property="og:url" content="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-17.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"أساسيات الكمبيوتر","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"الأمن السيبراني","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-17.html"}]},{"@type":"LearningResource","name":"الأمن السيبراني","description":"تشرح ثلاثية CIA : السرية والسلامة والإتاحة، وتصنّف بها أي حادثة أمنية. تتعرف على التهديدات الشائعة وتربط كل منها بدفاع مناسب. تميّز بين Hashing و…","url":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-17.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"أساسيات الكمبيوتر — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="أساسيات الكمبيوتر"><a href="/fundamentals/computer-basics/lessons/index.html">الدروس</a><a href="/en/fundamentals/computer-basics/lessons/com-17.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/fundamentals/computer-basics/lessons/index.html">أساسيات الكمبيوتر</a></nav>
+      <p class="lp-eyebrow">الدرس 17 من 30</p>
+      <h1 class="lp-h1">الأمن السيبراني</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-17">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>الأمن السيبراني</h2>
+<div><section class="lesson-section doc-objectives"><h3>أهداف الدرس</h3><ul><li>تشرح ثلاثية <span class="term">CIA</span>: السرية والسلامة والإتاحة، وتصنّف بها أي حادثة أمنية.</li><li>تتعرف على التهديدات الشائعة وتربط كل منها بدفاع مناسب.</li><li>تميّز بين <span class="term">Hashing</span> و<span class="term">Encryption</span> وتنفّذ تدقيقًا ذاتيًا لحساباتك.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>المتطلبات السابقة</h3><ul><li>دروس «الإنترنت والشبكات» و«المتصفح والويب».</li></ul>
+</section>
+<section class="lesson-section "><h3>مقدمة: حماية ما يهمك</h3>
+<p><span class="term">Cybersecurity</span> هو مجموعة الممارسات التي تحمي الأجهزة والحسابات والبيانات من الوصول غير المصرّح به أو التلف أو التعطيل. هذا الدرس دفاعي بالكامل: هدفه أن تعرف ما الذي تحميه، ومن أي خطر، وبأي وسيلة. وأكثر الاختراقات في الواقع لا تبدأ بعبقري يكسر التشفير، بل بكلمة مرور ضعيفة أو رسالة خادعة أو تحديث مؤجَّل.</p>
+</section>
+<section class="lesson-section "><h3>ثلاثية CIA: ثلاثة أهداف للأمن</h3>
+<p>كل حادثة أمنية تقريبًا تمسّ هدفًا من ثلاثة، ولذا تُستعمل هذه الثلاثية لتحليلها:</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">الهدف</th><th scope="col">معناه</th><th scope="col">مثال على خرقه</th><th scope="col">وسيلة حماية</th></tr></thead><tbody><tr><th scope="row">Confidentiality السرية</th><td>لا يطّلع على البيانات إلا المصرّح لهم</td><td>تسرّب قاعدة بيانات عملاء</td><td>التشفير وصلاحيات الوصول</td></tr><tr><th scope="row">Integrity السلامة</th><td>البيانات لم تُعدَّل خفية</td><td>تغيير رقم في تحويل مالي</td><td>التجزئة والتوقيع الرقمي</td></tr><tr><th scope="row">Availability الإتاحة</th><td>الخدمة متاحة عند الحاجة</td><td>موقع يتعطل بسبب فدية</td><td>النسخ الاحتياطي والتكرار</td></tr></tbody></table></div>
+</section>
+<section class="lesson-section "><h3>التهديدات الشائعة</h3>
+<ul><li><strong><span class="term">Phishing</span>:</strong> رسالة تنتحل جهة موثوقة لتدفعك إلى إدخال كلمة مرورك في صفحة مزيفة أو فتح مرفق.</li><li><strong><span class="term">Malware</span>:</strong> اسم عام للبرمجيات الخبيثة، كالفيروسات وبرامج التجسس، وتدخل غالبًا عبر برنامج مقرصن أو مرفق.</li><li><strong><span class="term">Ransomware</span>:</strong> نوع منه يشفّر ملفاتك ثم يطلب فدية لفك التشفير؛ يستهدف الإتاحة.</li><li><strong><span class="term">Social Engineering</span>:</strong> خداع الإنسان بدل كسر التقنية، كمكالمة تدّعي أنها من الدعم الفني وتستعجلك.</li><li><strong>كلمات المرور الضعيفة أو المكررة:</strong> إن تسرّبت كلمتك من موقع واحد جُرّبت على مواقع أخرى تلقائيًا.</li></ul>
+</section>
+<section class="lesson-section "><h3>خطوط الدفاع</h3>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">التهديد</th><th scope="col">الدفاع الأساسي</th><th scope="col">لماذا ينفع</th></tr></thead><tbody><tr><th scope="row">Phishing</th><td>فحص المرسل والرابط، وMFA</td><td>حتى لو سُرقت كلمتك فالمهاجم يحتاج عاملًا ثانيًا</td></tr><tr><th scope="row">Malware</th><td>التحديثات وتثبيت البرامج من مصادر رسمية</td><td>التحديثات تسد ثغرات معروفة</td></tr><tr><th scope="row">Ransomware</th><td>نسخ احتياطي 3-2-1</td><td>تستعيد ملفاتك دون دفع</td></tr><tr><th scope="row">Social Engineering</th><td>التحقق عبر قناة ثانية وعدم الاستعجال</td><td>يقتل عنصر الضغط الذي تعتمد عليه</td></tr><tr><th scope="row">كلمات مرور ضعيفة</th><td>مدير كلمات مرور وكلمة فريدة لكل حساب</td><td>تسرّب موقع لا يفتح غيره</td></tr></tbody></table></div>
+<h4>كلمات المرور</h4>
+<p>الطول أهم من التعقيد الشكلي: عبارة من أربع كلمات عشوائية أو أكثر أصعب على التخمين من كلمة قصيرة مليئة بالرموز. والأهم أن تكون <strong>فريدة</strong> لكل حساب، ولا يستطيع أحد حفظ عشرات الكلمات الفريدة، فيتولى <span class="term">Password Manager</span> توليدها وحفظها، وتحفظ أنت كلمة رئيسية واحدة قوية.</p>
+<h4>المصادقة متعددة العوامل</h4>
+<p><span class="term">MFA</span> تضيف إلى «ما تعرفه» (كلمة المرور) عاملًا من «ما تملكه» كتطبيق مصادقة أو مفتاح أمان، أو «ما أنت عليه» كبصمة الإصبع. تطبيق المصادقة أو المفتاح أقوى عمومًا من الرمز المرسل برسالة نصية، لأن الرسائل أسهل اعتراضًا أو تحويلًا.</p>
+<h4>النسخ الاحتياطي 3-2-1</h4>
+<p>احتفظ بـ <strong>3</strong> نسخ من بياناتك المهمة، على <strong>2</strong> نوعين مختلفين من الوسائط، مع نسخة <strong>1</strong> خارج مكانك الفعلي (سحابة أو قرص في مكان آخر). وجرّب الاستعادة فعلًا؛ نسخة لم تُختبر قد لا تعمل وقت الحاجة.</p>
+</section>
+<section class="lesson-section "><h3>التجزئة والتشفير: فكرتان مختلفتان</h3>
+<p><span class="term">Encryption</span> تحويل البيانات إلى شكل غير مقروء بمفتاح، ويمكن عكسه بالمفتاح الصحيح؛ يُستعمل عند نقل البيانات كما في HTTPS وعند تخزينها. أما <span class="term">Hashing</span> فتحويل في اتجاه واحد: يعطي أي مدخل بصمة بطول ثابت ولا يمكن استرجاع المدخل منها. الموقع المحترم لا يخزّن كلمتك نفسها بل بصمتها مع قيمة عشوائية تسمى <span class="term">Salt</span>، فإذا تسرّبت قاعدة البيانات لم تظهر الكلمات مباشرة.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">bash</span></figcaption><pre dir="ltr"><code>echo -n "hello" | sha256sum
+echo -n "hello!" | sha256sum</code></pre></figure>
+<figure class="code-ex code-ex-out"><figcaption><span class="code-ex-lang">الناتج</span></figcaption><pre dir="ltr"><code>2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824  -
+ce06092fb948d9ffac7d1a376e404b26b7575bcc11ee05a4615fef4fec3a308b  -</code></pre></figure>
+<p>المدخلان يختلفان بعلامة تعجب واحدة لكن البصمتين تختلفان كليًا، وهذا ما يجعل التجزئة ممتازة لكشف أي تعديل في ملف (السلامة). شغّل الأمر على جهازك وتأكد من القيمتين بنفسك.</p>
+</section>
+<section class="lesson-section "><h3>أقل صلاحية ممكنة</h3>
+<p>مبدأ <span class="term">Least Privilege</span> يعني أن يملك كل مستخدم أو برنامج الصلاحيات التي يحتاجها فقط. استعمل حسابًا عاديًا للعمل اليومي ولا تعمل بصلاحيات المدير إلا عند الحاجة، ولا تمنح تطبيقًا الوصول إلى الكاميرا أو الموقع إن لم تكن وظيفته تتطلب ذلك. فإذا اختُرق حساب محدود الصلاحيات كان الضرر محدودًا أيضًا.</p>
+</section>
+<section class="lesson-section "><h3>تطبيقات من الواقع</h3>
+<ul><li><strong>البنوك:</strong> تطلب رمزًا ثانيًا عند عملية حساسة، وهذا MFA عمليًا.</li><li><strong>الشركات:</strong> تعمّم تحديثات الأنظمة وتدرّب الموظفين على كشف رسائل التصيّد.</li><li><strong>تنزيل البرامج:</strong> مقارنة بصمة SHA-256 التي ينشرها المطوّر ببصمة الملف الذي نزّلته تؤكد أنه لم يتلف أو يُعدَّل.</li><li><strong>المنازل:</strong> تغيير كلمة مرور الراوتر الافتراضية وتحديث برنامجه يسدان أكثر المداخل شيوعًا.</li></ul>
+<div class="doc-mistakes"><h4>أخطاء شائعة</h4><ul><li>«لا أحد يهتم باختراق حسابي العادي»: الهجمات تُنفَّذ آليًا على ملايين الحسابات، والحساب العادي يُستعمل لسرقة هوية أو لإرسال رسائل لأصدقائك.</li><li>«التشفير والتجزئة شيء واحد»: التشفير قابل للعكس بمفتاح، والتجزئة اتجاه واحد لا يُسترجع منه المدخل.</li><li>«مضاد الفيروسات يكفي»: هو طبقة واحدة، ولا ينقذك من كلمة مرور مسروقة أو من خداعك أنت بنفسك.</li><li>«الوضع الخاص في المتصفح يخفيني»: يمنع حفظ السجل محليًا فقط، أما الموقع ومزوّد الإنترنت فيرون نشاطك كالمعتاد.</li></ul></div>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>تصنيف:</strong> صنّف كل حادثة بحسب CIA: (أ) موظف يرسل ملفًا سريًا إلى بريد خاطئ، (ب) برنامج فدية يشفّر خوادم مستشفى، (ج) شخص يعدّل درجاته في قاعدة بيانات مدرسة.</summary><div class="doc-solution"><strong>عرض الحل</strong><p>(أ) خرق للسرية لأن من لا يحق له اطّلع على الملف. (ب) خرق للإتاحة لأن الأنظمة لا تعمل، وقد تمسّ السرية أيضًا إن سُرقت نسخ قبل التشفير. (ج) خرق للسلامة لأن البيانات عُدّلت دون تصريح. ملاحظة: قد تمسّ الحادثة الواحدة أكثر من هدف، والمهم أن تحدد الأهم أثرًا.</p></div></details>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>استدلال:</strong> لماذا لا تكفي كلمة مرور قوية جدًا إن استعملتها في عشرة مواقع؟</summary><div class="doc-solution"><strong>عرض الحل</strong><p>قوة الكلمة تحمي من التخمين، لكنها لا تحمي من تسرّب الموقع نفسه. إن اخترق مهاجم أضعف تلك المواقع أمنًا حصل على كلمتك كما هي (أو على بصمة يمكن كسرها إن كانت ضعيفة التجزئة) فيجربها آليًا على بقية الحسابات، وهذا يسمى حشو بيانات الاعتماد. التفرّد يحصر الضرر في موقع واحد، ولهذا نوصي بمدير كلمات مرور مع MFA.</p></div></details>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>تدقيق ذاتي (على جهازك):</strong> نفّذ خمس فحوص على حياتك الرقمية وسجّل نتيجة كل منها.</summary><div class="doc-solution"><strong>عرض الحل</strong><p>1) عدّ حساباتك المهمة (بريد، بنك، شبكات اجتماعية) وتأكد أن لكل منها كلمة فريدة، وأن بريدك الأساسي محمي بأقوى كلمة. 2) فعّل MFA على البريد والبنك أولًا، وفضّل تطبيق المصادقة. 3) افتح إعدادات النظام وتحقق من تفعيل التحديث التلقائي للنظام والمتصفح. 4) اسأل: ما أهم ملفاتي؟ وهل لها ثلاث نسخ بحسب 3-2-1؟ ثم جرّب استعادة ملف واحد. 5) راجع أذونات التطبيقات في هاتفك (الكاميرا والموقع والميكروفون) واسحب ما لا يحتاجه التطبيق. دوّن الثغرات بحسب الأهمية وأصلح واحدة كل يوم.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>الخلاصة</h3><ul><li>الأمن يهدف إلى السرية والسلامة والإتاحة، وكل حادثة تمسّ واحدًا منها على الأقل.</li><li>أغلب التهديدات تستهدف الإنسان، فالحذر والتحقق دفاع أساسي.</li><li>كلمات مرور فريدة وطويلة وMFA وتحديثات ونسخ 3-2-1 تغطي معظم المخاطر اليومية.</li><li>التشفير يُعكس بمفتاح، والتجزئة اتجاه واحد، ومبدأ أقل صلاحية يحدّ من الضرر.</li></ul><p class="doc-next"><strong>الخطوة التالية:</strong> تاريخ الكمبيوتر: نعود إلى الوراء لنرى كيف وصلنا إلى هذه الأجهزة.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>المفهوم الأساسي</strong>
+<p>الأمن السيبراني ليس مسؤولية الشركات فقط؛ بل يبدأ من عادات المستخدم اليومية.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>تطبيق عملي</span>
+<h3>جرّب بنفسك</h3>
+</div>
+</div>
+<p>راجع حساباتك المهمة وتأكد من استخدام كلمات مرور مختلفة وتفعيل المصادقة متعددة العوامل.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أي ممارسة تزيد من أمان حساباتك؟</strong></p><ul><li>استخدام كلمة المرور نفسها في كل المواقع</li><li>مشاركة كلمة المرور</li><li>تفعيل MFA</li><li>فتح أي رابط مجهول</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تفعيل MFA</strong></p></details></li><li><p><strong>تسرّبت قاعدة بيانات عملاء شركة وقرأها غرباء. أي هدف من ثلاثية CIA انكسر؟</strong></p><ul><li>السرية</li><li>السلامة</li><li>التوافر</li><li>المصادقة فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>السرية</strong></p><p>قراءة بيانات من غير مصرّح لهم هي خرق للسرية.</p></details></li><li><p><strong>ملفاتك أصبحت مشفّرة وتظهر رسالة تطلب مبلغاً لفتحها. ما الدفاع الأفضل مسبقاً؟</strong></p><ul><li>دفع المبلغ بسرعة</li><li>نسخ احتياطي 3-2-1 مجرَّب الاستعادة</li><li>استخدام كلمة مرور أقصر</li><li>إطفاء الجهاز دائماً</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>نسخ احتياطي 3-2-1 مجرَّب الاستعادة</strong></p><p>إذا كانت لديك نسخ احتياطية سليمة تستعيد ملفاتك دون دفع.</p></details></li><li><p><strong>اتصل شخص يدّعي أنه دعم فني ويطلب رمز التحقق فوراً وإلا أُغلق حسابك. ما التصرف الصحيح؟</strong></p><ul><li>أعطيه الرمز كي لا يُغلق الحساب</li><li>أرسل الرمز برسالة نصية</li><li>أتوقف وأتحقق عبر قناة رسمية أخرى</li><li>أغيّر كلمة المرور إلى اسمي</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>أتوقف وأتحقق عبر قناة رسمية أخرى</strong></p><p>الاستعجال والخوف سمتان للهندسة الاجتماعية، والحل التحقق من قناة ثانية.</p></details></li><li><p><strong>ما الفرق بين التجزئة (Hashing) والتشفير؟</strong></p><ul><li>كلاهما يمكن عكسه بالمفتاح</li><li>التجزئة لا يمكن عكسها والتشفير يمكن فكه بالمفتاح</li><li>التشفير ينتج دائماً طولاً ثابتاً</li><li>التجزئة تحتاج مفتاحاً سرياً لفكها</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>التجزئة لا يمكن عكسها والتشفير يمكن فكه بالمفتاح</strong></p><p>التجزئة اتجاه واحد وتصلح لكشف التغيير وتخزين كلمات المرور، أما التشفير فيعكس بالمفتاح.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-17">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/fundamentals/computer-basics/lessons/com-16.html"><small>الدرس السابق</small><strong>المتصفح والويب</strong></a>
+        <a rel="next" href="/fundamentals/computer-basics/lessons/com-18.html"><small>الدرس التالي</small><strong>تاريخ الكمبيوتر</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/fundamentals/computer-basics/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

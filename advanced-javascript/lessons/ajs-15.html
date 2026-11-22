@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>حلقة الأحداث: Microtasks و Macrotasks — JavaScript المتقدم | FAYBIT</title>
+    <meta name="description" content="حلقة الأحداث: Microtasks و Macrotasks: افهم ترتيب تنفيذ الكود المتزامن واللامتزامن بدقة. — JavaScript المتقدم." />
+    <link rel="canonical" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-15.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-15.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-15.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-15.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="حلقة الأحداث: Microtasks و Macrotasks — JavaScript المتقدم | FAYBIT" />
+    <meta property="og:description" content="حلقة الأحداث: Microtasks و Macrotasks: افهم ترتيب تنفيذ الكود المتزامن واللامتزامن بدقة. — JavaScript المتقدم." />
+    <meta property="og:url" content="https://faybit.vercel.app/advanced-javascript/lessons/ajs-15.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript المتقدم","item":"https://faybit.vercel.app/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"حلقة الأحداث: Microtasks و Macrotasks","item":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-15.html"}]},{"@type":"LearningResource","name":"حلقة الأحداث: Microtasks و Macrotasks","description":"حلقة الأحداث: Microtasks و Macrotasks: افهم ترتيب تنفيذ الكود المتزامن واللامتزامن بدقة. — JavaScript المتقدم.","url":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-15.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript المتقدم — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript المتقدم"><a href="/advanced-javascript/lessons/index.html">الدروس</a><a href="/en/advanced-javascript/lessons/ajs-15.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/advanced-javascript/lessons/index.html">JavaScript المتقدم</a></nav>
+      <p class="lp-eyebrow">الدرس 15 من 22</p>
+      <h1 class="lp-h1">حلقة الأحداث: Microtasks و Macrotasks</h1>
+      <p class="lp-lead">افهم ترتيب تنفيذ الكود المتزامن واللامتزامن بدقة.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-15">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>Call Stack وطوابير المهام</h2><p>JavaScript تنفذ على خيط واحد. الكود المتزامن يعمل أولًا على الـ Call Stack. عند فراغه تنفذ الـ Event Loop كل <strong>Microtasks</strong> (Promise.then وqueueMicrotask) ثم مهمة واحدة من <strong>Macrotasks</strong> (setTimeout وأحداث DOM) وتكرر.</p></article></div>
+<article class="body-card key-card"><p>Microtasks تنفذ كلها قبل أي Macrotask، حتى لو كان setTimeout بصفر.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>console.log("1 sync");
+setTimeout(() =&gt; console.log("5 timeout"), 0);
+Promise.resolve().then(() =&gt; console.log("3 promise"));
+queueMicrotask(() =&gt; console.log("4 microtask"));
+(async () =&gt; {
+console.log("2 inside async (sync part)");
+await null;
+console.log("4b after await");
+})();
+console.log("2b sync end");</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">1 sync
+2 inside async (sync part)
+2b sync end
+3 promise
+4 microtask
+4b after await
+5 timeout</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>الجزء الأول من دالة async ينفذ فورًا. كل ما بعد <code>await</code> ينتقل إلى طابور الـ microtasks، وتنفذ كلها قبل أن يصل الدور إلى <code>setTimeout</code>.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>جرّب بنفسك</h2></div>
+</div>
+<p class="practice-description">توقع ثم اختبر ترتيب الطباعة: &lt;code&gt;setTimeout&lt;/code&gt; ثم &lt;code&gt;Promise.then&lt;/code&gt; ثم سطر عادي.</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أي شيء ينفذ أولًا بعد انتهاء الكود المتزامن؟</strong></p><ul><li>الـ Microtasks</li><li>setTimeout</li><li>أحداث الشبكة</li><li>لا شيء</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>الـ Microtasks</strong></p></details></li><li><p><strong>هل setTimeout(fn, 0) ينفذ فورًا؟</strong></p><ul><li>لا، يُجدول كـ Macrotask بعد الكود الحالي والـ Microtasks</li><li>نعم فورًا</li><li>لا ينفذ أبدًا</li><li>ينفذ قبل Promise</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لا، يُجدول كـ Macrotask بعد الكود الحالي والـ Microtasks</strong></p></details></li><li><p><strong>أين يستأنف الكود بعد await؟</strong></p><ul><li>كـ Microtask</li><li>كـ Macrotask</li><li>في خيط جديد</li><li>في الشبكة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>كـ Microtask</strong></p></details></li><li><p><strong>ما ترتيب الطباعة؟ console.log(&quot;1&quot;); setTimeout(() =&gt; console.log(&quot;2&quot;)); Promise.resolve().then(() =&gt; console.log(&quot;3&quot;)); console.log(&quot;4&quot;);</strong></p><ul><li>1 ثم 2 ثم 3 ثم 4</li><li>1 ثم 4 ثم 2 ثم 3</li><li>1 ثم 3 ثم 4 ثم 2</li><li>1 ثم 4 ثم 3 ثم 2</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>1 ثم 4 ثم 3 ثم 2</strong></p><p>الكود المتزامن يعمل أولاً فتُطبع 1 و 4، ثم تُفرغ طابور microtasks فتُطبع 3، وأخيراً تأتي macrotask الخاصة بالمؤقت فتُطبع 2.</p></details></li><li><p><strong>ما ترتيب الطباعة؟ async function f() { console.log(&quot;a&quot;); await null; console.log(&quot;b&quot;); } f(); console.log(&quot;c&quot;);</strong></p><ul><li>a ثم c ثم b</li><li>a ثم b ثم c</li><li>c ثم a ثم b</li><li>a ثم c فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>a ثم c ثم b</strong></p><p>الدالة async تعمل بشكل متزامن حتى أول await فتطبع a، ثم تتوقف ويعود التحكم للمستدعي فتُطبع c. الجزء بعد await يُجدول كـ microtask فيطبع b أخيراً.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-15">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/advanced-javascript/lessons/ajs-14.html"><small>الدرس السابق</small><strong>Symbols والـ Tagged Templates</strong></a>
+        <a rel="next" href="/advanced-javascript/lessons/ajs-16.html"><small>الدرس التالي</small><strong>Promise.all و allSettled و race و any</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/advanced-javascript/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

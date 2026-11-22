@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>Symbols and Tagged Templates — Advanced JavaScript | FAYBIT</title>
+    <meta name="description" content="Unique, collision-proof keys, and template strings you can process with a custom function." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-14.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-14.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-14.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-14.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Symbols and Tagged Templates — Advanced JavaScript | FAYBIT" />
+    <meta property="og:description" content="Unique, collision-proof keys, and template strings you can process with a custom function." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-14.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Advanced JavaScript","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Symbols and Tagged Templates","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-14.html"}]},{"@type":"LearningResource","name":"Symbols and Tagged Templates","description":"Unique, collision-proof keys, and template strings you can process with a custom function.","url":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-14.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Advanced JavaScript — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Advanced JavaScript"><a href="/en/advanced-javascript/lessons/index.html">Lessons</a><a href="/advanced-javascript/lessons/ajs-14.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/advanced-javascript/lessons/index.html">Advanced JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 14 of 22</p>
+      <h1 class="lp-h1">Symbols and Tagged Templates</h1>
+      <p class="lp-lead">Unique, collision-proof keys, and template strings you can process with a custom function.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-14">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Symbol</h2><p>Every <code>Symbol()</code> is a completely unique value. They work as property keys that do not collide with others and do not show up in <code>for...in</code> or <code>Object.keys</code>.</p></article><article class="content-card"><h2>Tagged Templates</h2><p>When you write <code>tag`text ${value}`</code>, the function <code>tag</code> is called with an array of the string parts followed by the values. They are used for escaping HTML, building safe queries, and custom languages.</p></article></div>
+<article class="body-card key-card"><p>Symbols are for unique keys, and tagged templates let you process interpolated values before building the string.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>const id = Symbol("id");
+const user = { name: "Lina", [id]: 101 };
+console.log(Object.keys(user), user[id]);
+console.log(Symbol("a") === Symbol("a"), Symbol.for("a") === Symbol.for("a"));
+const escapeHtml = (s) =&gt; String(s).replace(/[&amp;&lt;&gt;"']/g, (c) =&gt; ({ "&amp;": "&amp;amp;", "&lt;": "&amp;lt;", "&gt;": "&amp;gt;", '"': "&amp;quot;", "'": "&amp;#39;" }[c]));
+const html = (strings, ...values) =&gt;
+strings.reduce((out, s, i) =&gt; out + s + (i &lt; values.length ? escapeHtml(values[i]) : ""), "");
+const input = "&lt;script&gt;alert(1)&lt;/script&gt;";
+console.log(html`&lt;p&gt;${input}&lt;/p&gt;`);</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">[ 'name' ] 101
+false true
+&lt;p&gt;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;&lt;/p&gt;</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>The key <code>id</code> did not appear in <code>keys</code>. The <code>html</code> function automatically escapes every interpolated value, making it safer to build HTML from user input.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Try it yourself</h2></div>
+</div>
+<p class="practice-description">Write a tag named &lt;code&gt;upper&lt;/code&gt; that converts the interpolated values to uppercase.</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What distinguishes Symbol()?</strong></p><ul><li>Every call returns a unique value</li><li>It is a plain string</li><li>It always equals Symbol('a')</li><li>It is stored on the network</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Every call returns a unique value</strong></p></details></li><li><p><strong>What does the tag function receive as its first argument?</strong></p><ul><li>The array of string parts</li><li>The values only</li><li>A DOM object</li><li>The line number</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The array of string parts</strong></p></details></li><li><p><strong>Which use suits tagged templates?</strong></p><ul><li>Escaping HTML and building safe queries</li><li>Changing page colors</li><li>Downloading files</li><li>Compressing images</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Escaping HTML and building safe queries</strong></p></details></li><li><p><strong>What does this code print? const s = Symbol(); const o = { [s]: 1, a: 2 }; console.log(Object.keys(o), JSON.stringify(o));</strong></p><ul><li>[&quot;a&quot;] and {&quot;a&quot;:2}</li><li>[&quot;a&quot;, &quot;s&quot;] and {&quot;a&quot;:2,&quot;s&quot;:1}</li><li>[] and {}</li><li>[&quot;a&quot;] and {&quot;a&quot;:2,&quot;s&quot;:1}</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>[&quot;a&quot;] and {&quot;a&quot;:2}</strong></p><p>Symbol keys do not show in Object.keys or for...in, and JSON.stringify ignores them. So only the property a remains.</p></details></li><li><p><strong>What does this code print? function tag(strings, ...vals) { return strings.length + &quot;:&quot; + vals.join(&quot;-&quot;); } console.log(tag`a${1}b${2}c`);</strong></p><ul><li>2:1-2</li><li>3:1-2</li><li>5:1-2</li><li>3:12</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>3:1-2</strong></p><p>The template is split at each interpolation into the static strings &quot;a&quot;, &quot;b&quot; and &quot;c&quot;, which is 3 elements, and the values 1 and 2 arrive in the rest arguments. Joining with a dash gives 1-2.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-14">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/advanced-javascript/lessons/ajs-13.html"><small>Previous lesson</small><strong>Map, Set, WeakMap, and WeakRef</strong></a>
+        <a rel="next" href="/en/advanced-javascript/lessons/ajs-15.html"><small>Next lesson</small><strong>The Event Loop: Microtasks and Macrotasks</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/advanced-javascript/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="react" />
+    <meta name="robots" content="noindex, follow" />
+    <title>useContext — React | FAYBIT</title>
+    <meta name="description" content="Learn how useContext lets you share data between Components without passing Props through every level." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/react-learning/lessons/react-16.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/react-learning/lessons/react-16.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/react-learning/lessons/react-16.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/react-learning/lessons/react-16.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="useContext — React | FAYBIT" />
+    <meta property="og:description" content="Learn how useContext lets you share data between Components without passing Props through every level." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/react-learning/lessons/react-16.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"React","item":"https://faybit.vercel.app/en/react-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"useContext","item":"https://faybit.vercel.app/en/react-learning/lessons/react-16.html"}]},{"@type":"LearningResource","name":"useContext","description":"Learn how useContext lets you share data between Components without passing Props through every level.","url":"https://faybit.vercel.app/en/react-learning/lessons/react-16.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"React — FAYBIT","url":"https://faybit.vercel.app/react-learning/react-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="React"><a href="/en/react-learning/lessons/index.html">Lessons</a><a href="/react-learning/lessons/react-16.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/react-learning/lessons/index.html">React</a></nav>
+      <p class="lp-eyebrow">Lesson 16 of 30</p>
+      <h1 class="lp-h1">useContext</h1>
+      <p class="lp-lead">Learn how useContext lets you share data between Components without passing Props through every level.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-16">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<p>
+When several Components need the same data, passing Props through many levels can become tedious.
+</p>
+<p>
+Context provides a way to share certain data across the Components tree.
+</p>
+<p>
+useContext is used to read the value stored in a Context inside a Component.
+</p>
+</div></article>
+<article class="body-card key-card"><p>Context is suited to shared data that many Components need.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>The code</h2></div>
+</div>
+<pre dir="ltr"><code>const ThemeContext = createContext("light");
+function App() {
+return (
+&lt;ThemeContext.Provider value="dark"&gt;
+&lt;Page /&gt;
+&lt;/ThemeContext.Provider&gt;
+);
+}</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>Such as a Theme, user information, or global app settings.</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span></div>
+</div>
+<p class="practice-description">Change the value of ThemeContext from light to dark.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What problem does useContext help solve?</strong></p><ul><li>Sharing data between Components</li><li>Writing CSS</li><li>Creating HTML</li><li>Creating a Database</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Sharing data between Components</strong></p></details></li><li><p><strong>What does Context provide?</strong></p><ul><li>A value that Components inside a Provider can access</li><li>CSS Animation</li><li>HTML file</li><li>SQL table</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A value that Components inside a Provider can access</strong></p></details></li><li><p><strong>Which data is suitable for Context?</strong></p><ul><li>A Theme or global user data</li><li>Always just the color of a single button</li><li>A CSS file</li><li>A single image</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A Theme or global user data</strong></p></details></li><li><p><strong>What does a Provider supply?</strong></p><ul><li>CSS files</li><li>Page routes</li><li>An internet connection</li><li>The context value to all components beneath it</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The context value to all components beneath it</strong></p><p>Components inside the Provider read its value via useContext.</p></details></li><li><p><strong>What does useContext(ThemeContext) return outside any Provider?</strong></p><ul><li>Always null</li><li>The component name</li><li>Always an error</li><li>The default value passed to createContext</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The default value passed to createContext</strong></p><p>With no Provider the default value is used.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-16">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/react-learning/lessons/react-15.html"><small>Previous lesson</small><strong>useRef</strong></a>
+        <a rel="next" href="/en/react-learning/lessons/react-17.html"><small>Next lesson</small><strong>Custom Hooks</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/react-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="css" />
+    <meta name="robots" content="noindex, follow" />
+    <title>حساب حجم الصندوق Box Sizing — CSS | FAYBIT</title>
+    <meta name="description" content="تعلم كيف تغير خاصية box-sizing طريقة حساب العرض والارتفاع." />
+    <link rel="canonical" href="https://faybit.vercel.app/css-learning/lessons/css-11.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/css-learning/lessons/css-11.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/css-learning/lessons/css-11.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/css-learning/lessons/css-11.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="حساب حجم الصندوق Box Sizing — CSS | FAYBIT" />
+    <meta property="og:description" content="تعلم كيف تغير خاصية box-sizing طريقة حساب العرض والارتفاع." />
+    <meta property="og:url" content="https://faybit.vercel.app/css-learning/lessons/css-11.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"CSS","item":"https://faybit.vercel.app/css-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"حساب حجم الصندوق Box Sizing","item":"https://faybit.vercel.app/css-learning/lessons/css-11.html"}]},{"@type":"LearningResource","name":"حساب حجم الصندوق Box Sizing","description":"تعلم كيف تغير خاصية box-sizing طريقة حساب العرض والارتفاع.","url":"https://faybit.vercel.app/css-learning/lessons/css-11.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"CSS — FAYBIT","url":"https://faybit.vercel.app/css-learning/css-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="CSS"><a href="/css-learning/lessons/index.html">الدروس</a><a href="/en/css-learning/lessons/css-11.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/css-learning/lessons/index.html">CSS</a></nav>
+      <p class="lp-eyebrow">الدرس 11 من 30</p>
+      <h1 class="lp-h1">حساب حجم الصندوق Box Sizing</h1>
+      <p class="lp-lead">تعلم كيف تغير خاصية box-sizing طريقة حساب العرض والارتفاع.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-11">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>أول كود CSS لك</h2></div>
+</div>
+<pre dir="ltr"><code>* {
+box-sizing: border-box;
+}
+.box {
+width: 300px;
+padding: 30px;
+}</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>اكتب CSS وشاهد النتيجة</h2></div>
+</div>
+<p class="practice-description">غيّر الكود الموجود بالأسفل ثم شغّله لترى النتيجة.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ماذا يتضمن border-box؟</strong></p><ul><li>الـ Padding والـ Border داخل الحجم المحدد</li><li>المحتوى فقط</li><li>الـ Margin فقط</li><li>الـ Padding فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>الـ Padding والـ Border داخل الحجم المحدد</strong></p></details></li><li><p><strong>أي خاصية تتحكم في طريقة حساب حجم الصندوق؟</strong></p><ul><li>box-sizing</li><li>box-size</li><li>size-model</li><li>element-sizing</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>box-sizing</strong></p></details></li><li><p><strong>أي قيمة تستخدم غالبًا لتسهيل التحكم في أحجام العناصر؟</strong></p><ul><li>border-box</li><li>content-only</li><li>margin-box</li><li>size-box</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>border-box</strong></p></details></li><li><p><strong>box-sizing: border-box; width: 300px; padding: 20px; border: 5px solid. كم عرض منطقة المحتوى؟</strong></p><ul><li>250px</li><li>300px</li><li>340px</li><li>260px</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>250px</strong></p><p>في border-box يشمل العرض المحتوى والحشو والإطار، فالمحتوى = 300 - 40 - 10 = 250px، والصندوق كله يبقى 300px.</p></details></li><li><p><strong>عمودان كل منهما width: 50% وpadding: 20px بحجم content-box داخل حاوية. ماذا يحدث؟</strong></p><ul><li>يتسعان تماماً بجانب بعضهما</li><li>يتجاوز مجموعهما 100 بالمئة فينزل أحدهما أو يفيض</li><li>يتقلص الحشو تلقائياً</li><li>يتجاهل المتصفح الحشو</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يتجاوز مجموعهما 100 بالمئة فينزل أحدهما أو يفيض</strong></p><p>الحشو يُضاف فوق 50 بالمئة في content-box فيصبح مجموع العرضين أكبر من الحاوية. الحل box-sizing: border-box.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-11">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/css-learning/lessons/css-10.html"><small>الدرس السابق</small><strong>نموذج الصندوق Box Model</strong></a>
+        <a rel="next" href="/css-learning/lessons/css-12.html"><small>الدرس التالي</small><strong>تنسيق النصوص</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/css-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

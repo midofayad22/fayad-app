@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>Dark Mode, RTL, and Customization with CSS Variables — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="data-bs-theme, bootstrap.rtl.css, and changing Bootstrap's look without Sass." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-19.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-19.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-19.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-19.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Dark Mode, RTL, and Customization with CSS Variables — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="data-bs-theme, bootstrap.rtl.css, and changing Bootstrap's look without Sass." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-19.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Dark Mode, RTL, and Customization with CSS Variables","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-19.html"}]},{"@type":"LearningResource","name":"Dark Mode, RTL, and Customization with CSS Variables","description":"data-bs-theme, bootstrap.rtl.css, and changing Bootstrap's look without Sass.","url":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-19.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/en/bootstrap-learning/lessons/index.html">Lessons</a><a href="/bootstrap-learning/lessons/bs-19.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">Lesson 19 of 20</p>
+      <h1 class="lp-h1">Dark Mode, RTL, and Customization with CSS Variables</h1>
+      <p class="lp-lead">data-bs-theme, bootstrap.rtl.css, and changing Bootstrap's look without Sass.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-19">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Color modes</h2><p>Since 5.3, put <code>data-bs-theme="dark"</code> on <code>&lt;html&gt;</code> or on any element to switch it and its children to dark mode. Use the adaptive classes (<code>bg-body</code>, <code>text-body</code>, <code>bg-body-tertiary</code>, <code>-subtle</code>) instead of <code>bg-white</code> and <code>text-dark</code>.</p></article><article class="content-card"><h2>RTL</h2><p>For Arabic: <code>&lt;html lang="ar" dir="rtl"&gt;</code> with the <code>bootstrap.rtl.min.css</code> file instead of the regular one. The logical classes (<code>ms-*</code>, <code>me-*</code>, <code>text-start</code>) flip automatically.</p></article><article class="content-card"><h2>Customizing with variables</h2><p>Each component defines CSS variables such as <code>--bs-btn-bg</code>, and you can modify them on your own class, or change <code>--bs-primary</code> and <code>--bs-body-font-family</code> globally. This is easier than Sass in small projects.</p></article></div>
+<article class="body-card key-card"><p>Set data-bs-theme on the element, and change the look with --bs-* variables instead of forcefully overriding CSS.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;style&gt;
+.btn-brand {
+--bs-btn-bg: #0b6b78;
+--bs-btn-border-color: #0b6b78;
+--bs-btn-hover-bg: #095561;
+--bs-btn-hover-border-color: #095561;
+--bs-btn-color: #fff;
+--bs-btn-hover-color: #fff;
+}
+&lt;/style&gt;
+&lt;div class="container py-3"&gt;
+&lt;div class="p-3 border rounded mb-3 bg-body text-body"&gt;Current system mode&lt;/div&gt;
+&lt;div class="p-3 border rounded mb-3 bg-body text-body" data-bs-theme="dark"&gt;Dark mode on this element only&lt;/div&gt;
+&lt;button class="btn btn-brand"&gt;Brand-colored button&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>The second element is dark only because the attribute is set on it. The button customizes its color by setting the component's variables in a single class without modifying the base code.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Make the &lt;code&gt;btn-brand&lt;/code&gt; class use a different color and try data-bs-theme on the button.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>How do we enable dark mode for a specific element?</strong></p><ul><li>data-bs-theme=&quot;dark&quot; on the element</li><li>class=&quot;dark&quot; only</li><li>style=&quot;dark&quot;</li><li>theme.css</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>data-bs-theme=&quot;dark&quot; on the element</strong></p></details></li><li><p><strong>Which file do we need for right-to-left direction?</strong></p><ul><li>bootstrap.rtl.min.css</li><li>bootstrap-arabic.js</li><li>rtl.json</li><li>bootstrap.dark.css</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>bootstrap.rtl.min.css</strong></p></details></li><li><p><strong>What is the easiest way to customize a button without Sass?</strong></p><ul><li>Setting --bs-btn-* variables in your own class</li><li>Editing the bootstrap.min.css file</li><li>Using !important everywhere</li><li>Deleting the btn class</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Setting --bs-btn-* variables in your own class</strong></p></details></li><li><p><strong>What is the correct setup for an Arabic page with RTL support?</strong></p><ul><li>&lt;html lang=&quot;ar&quot; dir=&quot;rtl&quot;&gt; with bootstrap.rtl.min.css</li><li>&lt;html dir=&quot;ltr&quot;&gt; with the regular CSS file</li><li>Only a meta tag named rtl</li><li>Only an rtl class on body</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>&lt;html lang=&quot;ar&quot; dir=&quot;rtl&quot;&gt; with bootstrap.rtl.min.css</strong></p><p>You need the direction on html and the dedicated RTL file together.</p></details></li><li><p><strong>Which class replaces bg-white and adapts to dark mode?</strong></p><ul><li>bg-light-fixed</li><li>bg-body</li><li>bg-white-dark</li><li>bg-static</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>bg-body</strong></p><p>bg-body follows the current mode's background instead of a fixed color.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-19">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/bootstrap-learning/lessons/bs-18.html"><small>Previous lesson</small><strong>Tooltips, Popovers, and Toasts</strong></a>
+        <a rel="next" href="/en/bootstrap-learning/lessons/bs-20.html"><small>Next lesson</small><strong>Project: A Responsive Landing Page</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/bootstrap-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

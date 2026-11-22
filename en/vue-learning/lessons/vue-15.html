@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="vue" />
+    <title>Events and Emits — Vue.js | FAYBIT</title>
+    <meta name="description" content="Learn how a child component communicates with its parent using custom events and emits." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/vue-learning/lessons/vue-15.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/vue-learning/lessons/vue-15.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/vue-learning/lessons/vue-15.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/vue-learning/lessons/vue-15.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Events and Emits — Vue.js | FAYBIT" />
+    <meta property="og:description" content="Learn how a child component communicates with its parent using custom events and emits." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/vue-learning/lessons/vue-15.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Vue.js","item":"https://faybit.vercel.app/en/vue-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Events and Emits","item":"https://faybit.vercel.app/en/vue-learning/lessons/vue-15.html"}]},{"@type":"LearningResource","name":"Events and Emits","description":"Learn how a child component communicates with its parent using custom events and emits.","url":"https://faybit.vercel.app/en/vue-learning/lessons/vue-15.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Vue.js — FAYBIT","url":"https://faybit.vercel.app/vue-learning/vue-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Vue.js"><a href="/en/vue-learning/lessons/index.html">Lessons</a><a href="/vue-learning/lessons/vue-15.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/vue-learning/lessons/index.html">Vue.js</a></nav>
+      <p class="lp-eyebrow">Lesson 15 of 22</p>
+      <h1 class="lp-h1">Events and Emits</h1>
+      <p class="lp-lead">Learn how a child component communicates with its parent using custom events and emits.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-15">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<h2>Events and Emits</h2>
+<p>
+Props are mostly used to pass data from a parent to a child.
+</p>
+<p>
+When a child needs to tell the parent that something happened, it can fire a custom event using <code>emit</code>.
+</p>
+</div></article>
+<article class="body-card key-card"><div class="info-label">emit sends events to the parent</div><p>A child can fire a custom event, and the parent can listen to it.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>The code</h2></div>
+</div>
+<pre dir="ltr"><code>
+&lt;div id="app"&gt;
+&lt;button-counter @increase="handleIncrease"&gt;&lt;/button-counter&gt;
+&lt;p&gt;Count: {{ count }}&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+const { createApp } = Vue;
+const ButtonCounter = {
+emits: ["increase"],
+template: `
+&lt;button @click="$emit('increase')"&gt;
+Increase
+&lt;/button&gt;
+`
+};
+createApp({
+components: {
+ButtonCounter
+},
+data() {
+return {
+count: 0
+};
+},
+methods: {
+handleIncrease() {
+this.count++;
+}
+}
+}).mount("#app");
+&lt;/script&gt;
+</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static">
+<div style="padding:20px;font-family:Arial;">
+<p>Count: 0</p>
+</div>
+</div></div>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>
+<p>
+<code>emits</code> declares the custom events that the component can fire.
+</p>
+<p>
+<code>$emit("increase")</code> fires an event named <code>increase</code>.
+</p>
+<p>
+The parent listens to the event using <code>@increase</code>.
+</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span></div>
+</div>
+<p class="practice-description">Create a child component that sends an event to the parent when a button is clicked.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What does emit do in Vue?</strong></p><ul><li>Sends a custom event from the child to the parent</li><li>Creates CSS</li><li>Creates a database</li><li>Changes the URL</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Sends a custom event from the child to the parent</strong></p></details></li><li><p><strong>How does reverse communication from child to parent happen?</strong></p><ul><li>Using events and emits</li><li>Using CSS</li><li>Using HTML comments</li><li>Using images</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Using events and emits</strong></p></details></li><li><p><strong>How does the parent listen to a custom event named increase?</strong></p><ul><li>@increase</li><li>:increase</li><li>#increase</li><li>$increase</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>@increase</strong></p></details></li><li><p><strong>Which line fires an event named save with the value 5 in the Options API?</strong></p><ul><li>this.emit('save', 5)</li><li>this.$emit('save', 5)</li><li>this.save(5)</li><li>this.$props.save(5)</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>this.$emit('save', 5)</strong></p><p>$emit takes the event name followed by the values to send to the parent.</p></details></li><li><p><strong>The child emits 'done' but the parent does not react. What is the most likely cause?</strong></p><ul><li>The parent did not add @done on the child tag</li><li>The child has no template</li><li>emit only works with click events</li><li>v-model must be used instead</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The parent did not add @done on the child tag</strong></p><p>The parent listens to the custom event with @done=&quot;handler&quot; on the child component.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-15">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/vue-learning/lessons/vue-14.html"><small>Previous lesson</small><strong>Props</strong></a>
+        <a rel="next" href="/en/vue-learning/lessons/vue-16.html"><small>Next lesson</small><strong>Composition API</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/vue-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

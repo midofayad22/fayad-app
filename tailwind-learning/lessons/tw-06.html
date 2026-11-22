@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Flexbox — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="Flexbox: تخطيطات الصف والعمود والمحاذاة والتوزيع. — Tailwind CSS." />
+    <link rel="canonical" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-06.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-06.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-06.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-06.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Flexbox — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="Flexbox: تخطيطات الصف والعمود والمحاذاة والتوزيع. — Tailwind CSS." />
+    <meta property="og:url" content="https://faybit.vercel.app/tailwind-learning/lessons/tw-06.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Flexbox","item":"https://faybit.vercel.app/tailwind-learning/lessons/tw-06.html"}]},{"@type":"LearningResource","name":"Flexbox","description":"Flexbox: تخطيطات الصف والعمود والمحاذاة والتوزيع. — Tailwind CSS.","url":"https://faybit.vercel.app/tailwind-learning/lessons/tw-06.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/tailwind-learning/lessons/index.html">الدروس</a><a href="/en/tailwind-learning/lessons/tw-06.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">الدرس 6 من 20</p>
+      <h1 class="lp-h1">Flexbox</h1>
+      <p class="lp-lead">تخطيطات الصف والعمود والمحاذاة والتوزيع.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-6">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>الأساسيات</h2><p><code>flex</code> للحاوية، <code>flex-col</code> للاتجاه الرأسي، <code>flex-wrap</code> للالتفاف، <code>items-start|center|end|stretch</code> للمحور العرضي، <code>justify-start|center|between|around|evenly</code> للمحور الرئيسي، و<code>gap-*</code> للمسافات.</p></article><article class="content-card"><h2>على العناصر</h2><p><code>flex-1</code> لتمدد العنصر ليملأ المتاح، <code>shrink-0</code> لمنع الانكماش، <code>grow</code>، <code>order-*</code>، <code>ms-auto</code> لدفع العنصر إلى النهاية.</p></article></div>
+<article class="body-card key-card"><p>flex + items-center + justify-between + gap تغطي معظم الحالات.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;nav id="nav" class="flex items-center justify-between gap-4 bg-slate-900 px-4 py-3 text-white"&gt;
+&lt;span class="font-bold"&gt;FAYBIT&lt;/span&gt;
+&lt;div class="flex gap-4 text-sm"&gt;&lt;a href="#"&gt;الدورات&lt;/a&gt;&lt;a href="#"&gt;المدونة&lt;/a&gt;&lt;/div&gt;
+&lt;button class="rounded bg-sky-500 px-3 py-1 text-sm font-semibold"&gt;دخول&lt;/button&gt;
+&lt;/nav&gt;
+&lt;div class="mt-4 flex flex-col gap-2 p-4 sm:flex-row"&gt;
+&lt;div class="flex-1 bg-slate-100 p-3"&gt;يتمدد&lt;/div&gt;
+&lt;div class="shrink-0 bg-slate-200 p-3"&gt;ثابت&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>الشريط يوزع العناصر على الأطراف ويحاذيها عموديًا. الحاوية الثانية عمودية على الشاشة الصغيرة وأفقية من <code>sm</code>.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">اجعل الشريط &lt;code&gt;justify-center&lt;/code&gt; ثم أرجعه &lt;code&gt;justify-between&lt;/code&gt;.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أي فئة تحاذي العناصر عموديًا في flex أفقي؟</strong></p><ul><li>items-center</li><li>justify-center</li><li>text-center</li><li>place-center فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>items-center</strong></p></details></li><li><p><strong>ماذا تفعل flex-1؟</strong></p><ul><li>تجعل العنصر يتمدد ليملأ المساحة المتاحة</li><li>تثبت عرضه 1px</li><li>تعكس الاتجاه</li><li>تخفيه</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تجعل العنصر يتمدد ليملأ المساحة المتاحة</strong></p></details></li><li><p><strong>ماذا يعني sm:flex-row؟</strong></p><ul><li>يصبح الاتجاه أفقيًا من نقطة sm فما فوق</li><li>أفقي دائمًا</li><li>رأسي دائمًا</li><li>مخفي على sm</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يصبح الاتجاه أفقيًا من نقطة sm فما فوق</strong></p></details></li><li><p><strong>عنصر عليه items-center justify-between ولا يحدث شيء. ما السبب المرجح؟</strong></p><ul><li>نسيان فئة flex على الحاوية</li><li>نقص فئة gap</li><li>استخدام Tailwind v4</li><li>غياب فئة shrink-0</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>نسيان فئة flex على الحاوية</strong></p><p>فئات المحاذاة لا تعمل قبل تفعيل flex أو grid على الحاوية.</p></details></li><li><p><strong>كيف تدفع آخر عنصر في flex إلى النهاية؟</strong></p><ul><li>me-0</li><li>flex-1 only</li><li>ms-auto</li><li>shrink-0</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>ms-auto</strong></p><p>الهامش التلقائي يمتص المساحة الفارغة قبل العنصر.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-6">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/tailwind-learning/lessons/tw-05.html"><small>الدرس السابق</small><strong>الأحجام: العرض والارتفاع</strong></a>
+        <a rel="next" href="/tailwind-learning/lessons/tw-07.html"><small>الدرس التالي</small><strong>Grid</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/tailwind-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

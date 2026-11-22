@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Grid — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="شبكات ثنائية الأبعاد بأعمدة وصفوف وامتداد الخلايا." />
+    <link rel="canonical" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-07.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-07.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-07.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-07.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Grid — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="شبكات ثنائية الأبعاد بأعمدة وصفوف وامتداد الخلايا." />
+    <meta property="og:url" content="https://faybit.vercel.app/tailwind-learning/lessons/tw-07.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Grid","item":"https://faybit.vercel.app/tailwind-learning/lessons/tw-07.html"}]},{"@type":"LearningResource","name":"Grid","description":"شبكات ثنائية الأبعاد بأعمدة وصفوف وامتداد الخلايا.","url":"https://faybit.vercel.app/tailwind-learning/lessons/tw-07.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/tailwind-learning/lessons/index.html">الدروس</a><a href="/en/tailwind-learning/lessons/tw-07.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">الدرس 7 من 20</p>
+      <h1 class="lp-h1">Grid</h1>
+      <p class="lp-lead">شبكات ثنائية الأبعاد بأعمدة وصفوف وامتداد الخلايا.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-7">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>الأعمدة والصفوف</h2><p><code>grid grid-cols-3 gap-4</code> ثلاثة أعمدة متساوية. <code>col-span-2</code> يمتد عمودين، و<code>row-span-2</code> صفين. أعمدة تلقائية متجاوبة: <code>grid-cols-[repeat(auto-fit,minmax(10rem,1fr))]</code>.</p></article><article class="content-card"><h2>المحاذاة</h2><p><code>place-items-center</code> لتوسيط الخلايا، <code>justify-items</code> و<code>items-*</code>، و<code>auto-rows-fr</code> لصفوف متساوية الارتفاع.</p></article></div>
+<article class="body-card key-card"><p>grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 نمط شائع لشبكة متجاوبة.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div id="g" class="grid grid-cols-2 gap-3 p-4 md:grid-cols-4"&gt;
+&lt;div class="col-span-2 bg-sky-200 p-4"&gt;col-span-2&lt;/div&gt;
+&lt;div class="bg-sky-100 p-4"&gt;1&lt;/div&gt;
+&lt;div class="bg-sky-100 p-4"&gt;2&lt;/div&gt;
+&lt;div class="bg-sky-100 p-4"&gt;3&lt;/div&gt;
+&lt;div class="bg-sky-100 p-4"&gt;4&lt;/div&gt;
+&lt;div class="col-span-2 bg-sky-200 p-4 md:col-span-4"&gt;كامل العرض من md&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>على الشاشة الصغيرة عمودان، ومن <code>md</code> أربعة أعمدة. العنصر الأخير يمتد على كل الأعمدة الأربعة بـ <code>md:col-span-4</code>.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">غيّر &lt;code&gt;md:grid-cols-4&lt;/code&gt; إلى &lt;code&gt;md:grid-cols-3&lt;/code&gt; وراقب إعادة التوزيع.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما الفئة التي تنشئ ثلاثة أعمدة متساوية؟</strong></p><ul><li>grid grid-cols-3</li><li>grid-3</li><li>cols-3</li><li>flex-3</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>grid grid-cols-3</strong></p></details></li><li><p><strong>ماذا تفعل col-span-2؟</strong></p><ul><li>تجعل الخلية تمتد عمودين</li><li>تضاعف عدد الأعمدة</li><li>تخفي عمودين</li><li>تغير الحدود</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تجعل الخلية تمتد عمودين</strong></p></details></li><li><p><strong>ما فائدة gap في grid؟</strong></p><ul><li>المسافة بين الخلايا</li><li>لون الخلايا</li><li>عدد الصفوف</li><li>عرض الصفحة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>المسافة بين الخلايا</strong></p></details></li><li><p><strong>الشاشة 800px والفئات grid-cols-1 sm:grid-cols-2 lg:grid-cols-4. كم عموداً يظهر؟</strong></p><ul><li>2</li><li>1</li><li>4</li><li>3</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>2</strong></p><p>sm يعمل من 640px، و lg لا يبدأ إلا عند 1024px.</p></details></li><li><p><strong>أي فئة تمركز محتوى الخلايا في grid أفقياً وعمودياً؟</strong></p><ul><li>items-grid</li><li>place-items-center</li><li>justify-center-all</li><li>grid-center</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>place-items-center</strong></p><p>place-items-center تجمع align-items و justify-items.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-7">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/tailwind-learning/lessons/tw-06.html"><small>الدرس السابق</small><strong>Flexbox</strong></a>
+        <a rel="next" href="/tailwind-learning/lessons/tw-08.html"><small>الدرس التالي</small><strong>التموضع والـ container وترتيب الطبقات</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/tailwind-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

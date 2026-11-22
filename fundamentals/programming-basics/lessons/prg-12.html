@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Functions — أساسيات البرمجة | FAYBIT</title>
+    <meta name="description" content="FUNCTIONS Function هي كتلة من الكود مصممة لتنفيذ مهمة محددة ويمكن استدعاؤها عند الحاجة. استخدام Functions يساعد على تنظيم المشروع وتقليل تكرار الكود. يمكن…" />
+    <link rel="canonical" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-12.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-12.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-12.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-12.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Functions — أساسيات البرمجة | FAYBIT" />
+    <meta property="og:description" content="FUNCTIONS Function هي كتلة من الكود مصممة لتنفيذ مهمة محددة ويمكن استدعاؤها عند الحاجة. استخدام Functions يساعد على تنظيم المشروع وتقليل تكرار الكود. يمكن…" />
+    <meta property="og:url" content="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-12.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"أساسيات البرمجة","item":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Functions","item":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-12.html"}]},{"@type":"LearningResource","name":"Functions","description":"FUNCTIONS Function هي كتلة من الكود مصممة لتنفيذ مهمة محددة ويمكن استدعاؤها عند الحاجة. استخدام Functions يساعد على تنظيم المشروع وتقليل تكرار الكود. يمكن…","url":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-12.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"أساسيات البرمجة — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="أساسيات البرمجة"><a href="/fundamentals/programming-basics/lessons/index.html">الدروس</a><a href="/en/fundamentals/programming-basics/lessons/prg-12.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/fundamentals/programming-basics/lessons/index.html">أساسيات البرمجة</a></nav>
+      <p class="lp-eyebrow">الدرس 12 من 31</p>
+      <h1 class="lp-h1">Functions</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-12">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">FUNCTIONS</span>
+<h2>اكتب مرة واستخدم الكود عدة مرات</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content">
+<section class="lesson-section">
+<h3>ما هي Function؟</h3>
+<p>
+Function هي كتلة من الكود مصممة لتنفيذ
+مهمة محددة ويمكن استدعاؤها عند الحاجة.
+</p>
+<p>
+استخدام Functions يساعد على تنظيم المشروع
+وتقليل تكرار الكود.
+</p>
+</section>
+<section class="lesson-section">
+<div class="info-grid">
+<div class="info-box">
+<h4>Reusable</h4>
+<p>يمكن إعادة استخدام الدالة أكثر من مرة.</p>
+</div>
+<div class="info-box">
+<h4>Organized</h4>
+<p>تجعل المشروع مقسمًا إلى أجزاء واضحة.</p>
+</div>
+</div>
+</section>
+</div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong> الفكرة الأساسية </strong>
+<p>Function تجمع مجموعة تعليمات تحت اسم واحد لتصبح سهلة الاستخدام وإعادة الاستخدام.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>مثال عملي</span>
+<h3>شاهد الفكرة في كود</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>function greet() {
+console.log("Welcome to FAYBIT");
+}
+greet();</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>تطبيق</span>
+<h3>تحدَّ نفسك</h3>
+</div>
+</div>
+<p></p>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما فائدة Function؟</strong></p><ul><li>تكرار وتنظيم مجموعة تعليمات</li><li>تغيير لون الشاشة</li><li>زيادة سرعة الإنترنت</li><li>حذف البرنامج</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تكرار وتنظيم مجموعة تعليمات</strong></p></details></li><li><p><strong>ما الذي يطبعه الكود؟ function double(n) { return n * 2; } console.log(double(double(3)));</strong></p><ul><li>6</li><li>12</li><li>9</li><li>undefined</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>12</strong></p><p>الاستدعاء الداخلي double(3) يعيد 6 ثم يُمرر إلى الاستدعاء الخارجي فيعيد 12. القيمة المُعادة تستخدم مباشرة كمدخل للاستدعاء التالي.</p></details></li><li><p><strong>الدالة: function add(a, b) { a + b; } ثم console.log(add(2, 3)). لماذا تظهر undefined؟</strong></p><ul><li>لأن الدالة تحتاج ثلاثة معاملات</li><li>لأن الجمع لا يعمل داخل الدوال</li><li>لأن الدالة لا تحتوي على return فتعيد undefined</li><li>لأن اسم add محجوز</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لأن الدالة لا تحتوي على return فتعيد undefined</strong></p><p>الدالة حسبت الجمع لكنها لم تُرجعه. بدون return تُعيد الدالة undefined دائماً مهما كانت العمليات داخلها.</p></details></li><li><p><strong>نسخت حساب الضريبة في خمسة أماكن من برنامجك، ثم تغيّر معدل الضريبة. لماذا كانت الدالة أفضل؟</strong></p><ul><li>لأن الدوال تجعل البرنامج أسرع بخمس مرات</li><li>لأن الحساب يكتب مرة واحدة ويُستدعى حيث يلزم، فيكفي تعديل مكان واحد</li><li>لأن الدوال لا تحتوي على أخطاء</li><li>لأن النسخ غير مسموح في JavaScript</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لأن الحساب يكتب مرة واحدة ويُستدعى حيث يلزم، فيكفي تعديل مكان واحد</strong></p><p>الدالة تمنع التكرار وتجعل التعديل في مكان واحد. النسخ المتعدد يترك نسخاً قديمة منسية فيظهر سلوك غير متسق.</p></details></li><li><p><strong>ماذا يطبع الكود؟ function f() { return 1; console.log(&quot;x&quot;); } console.log(f());</strong></p><ul><li>x ثم 1</li><li>1 ثم x</li><li>1 فقط</li><li>x فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>1 فقط</strong></p><p>return ينهي تنفيذ الدالة فوراً، فلا يصل التنفيذ إلى سطر console.log(&quot;x&quot;) أبداً. يُطبع 1 فقط من الاستدعاء الخارجي.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-12">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/fundamentals/programming-basics/lessons/prg-11.html"><small>الدرس السابق</small><strong>Loops</strong></a>
+        <a rel="next" href="/fundamentals/programming-basics/lessons/prg-13.html"><small>الدرس التالي</small><strong>Parameters &amp; Arguments</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/fundamentals/programming-basics/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

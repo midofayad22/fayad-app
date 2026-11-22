@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="angular" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Form Validation — Angular | FAYBIT</title>
+    <meta name="description" content="Learn how Angular validates user input before accepting form data." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/angular-learning/lessons/angular-22.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/angular-learning/lessons/angular-22.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/angular-learning/lessons/angular-22.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/angular-learning/lessons/angular-22.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Form Validation — Angular | FAYBIT" />
+    <meta property="og:description" content="Learn how Angular validates user input before accepting form data." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/angular-learning/lessons/angular-22.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Angular","item":"https://faybit.vercel.app/en/angular-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Form Validation","item":"https://faybit.vercel.app/en/angular-learning/lessons/angular-22.html"}]},{"@type":"LearningResource","name":"Form Validation","description":"Learn how Angular validates user input before accepting form data.","url":"https://faybit.vercel.app/en/angular-learning/lessons/angular-22.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Angular — FAYBIT","url":"https://faybit.vercel.app/angular-learning/angular-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Angular"><a href="/en/angular-learning/lessons/index.html">Lessons</a><a href="/angular-learning/lessons/angular-22.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/angular-learning/lessons/index.html">Angular</a></nav>
+      <p class="lp-eyebrow">Lesson 22 of 32</p>
+      <h1 class="lp-h1">Form Validation</h1>
+      <p class="lp-lead">Learn how Angular validates user input before accepting form data.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/angular-learning/angular-learning.html#lesson-22">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>Validation ensures that submitted data follows rules such as required fields, minimum length, maximum length, email format, and custom business rules. Angular exposes control states such as valid, invalid, touched, dirty, and pending.</div></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>Code Example</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;input
+required
+minlength="3"
+name="username"
+[(ngModel)]="username"
+#usernameModel="ngModel"&gt;
+&lt;p *ngIf="usernameModel.invalid"&gt;
+Username is invalid.
+&lt;/p&gt;</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Try It Yourself</h2></div>
+</div>
+<p class="practice-description">Modify the example below and run your code to explore the Angular syntax.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Why is form validation important?</strong></p><ul><li>To make sure input follows required rules</li><li>To change the browser</li><li>To create components</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>To make sure input follows required rules</strong></p></details></li><li><p><strong>What is the main focus of this lesson?</strong></p><ul><li>Form Validation</li><li>HTTP Client</li><li>Observables</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Form Validation</strong></p></details></li><li><p><strong>Which statement best describes this topic?</strong></p><ul><li>Validation ensures that submitted data follows rules such as required fields, minimum length, maximum length, email format, and custom business rules. Angular exposes control states such as valid, invalid, touched, dirty, and pending.</li><li>HttpClient is Angular's standard tool for making HTTP requests. It can perform GET, POST, PUT, PATCH, and DELETE requests and works naturally with Observables.</li><li>An Observable represents a stream of values that can arrive over time. Angular uses Observables heavily with HttpClient, Router events, forms, and RxJS. Components can subscribe to an Observable to react to emitted values.</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Validation ensures that submitted data follows rules such as required fields, minimum length, maximum length, email format, and custom business rules. Angular exposes control states such as valid, invalid, touched, dirty, and pending.</strong></p></details></li><li><p><strong>What is a practical goal of this lesson?</strong></p><ul><li>Learn how Angular validates user input before accepting form data.</li><li>Learn how Angular applications communicate with APIs and backend services.</li><li>Understand the role of Observables in handling asynchronous data streams.</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Learn how Angular validates user input before accepting form data.</strong></p></details></li><li><p><strong>Which Angular concept is directly related to this lesson?</strong></p><ul><li>Form validation</li><li>HttpClient</li><li>Observable</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Form validation</strong></p></details></li><li><p><strong>Which syntax or API is most closely associated with this lesson?</strong></p><ul><li>Validators</li><li>HttpClient</li><li>Observable&lt;T&gt;</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Validators</strong></p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/angular-learning/angular-learning.html#lesson-22">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/angular-learning/lessons/angular-21.html"><small>Previous lesson</small><strong>Forms</strong></a>
+        <a rel="next" href="/en/angular-learning/lessons/angular-23.html"><small>Next lesson</small><strong>HTTP Client</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/angular-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

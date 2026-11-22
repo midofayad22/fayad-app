@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Scope — Programming Basics | FAYBIT</title>
+    <meta name="description" content="SCOPE Scope determines where a variable can be accessed and used. A variable declared inside a Function usually cannot be accessed from outside it. Core…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-14.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-14.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-14.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-14.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Scope — Programming Basics | FAYBIT" />
+    <meta property="og:description" content="SCOPE Scope determines where a variable can be accessed and used. A variable declared inside a Function usually cannot be accessed from outside it. Core…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-14.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Programming Basics","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Scope","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-14.html"}]},{"@type":"LearningResource","name":"Scope","description":"SCOPE Scope determines where a variable can be accessed and used. A variable declared inside a Function usually cannot be accessed from outside it. Core…","url":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-14.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Programming Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Programming Basics"><a href="/en/fundamentals/programming-basics/lessons/index.html">Lessons</a><a href="/fundamentals/programming-basics/lessons/prg-14.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/programming-basics/lessons/index.html">Programming Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 14 of 31 · SCOPE</p>
+      <h1 class="lp-h1">Scope</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-14">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">SCOPE</span>
+<h2>Where can a variable be used?</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content"><section class="lesson-section"><h3>What is Scope?</h3><p>Scope determines where a variable can be accessed and used.</p><p>A variable declared inside a Function usually cannot be accessed from outside it.</p></section></div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong>Core idea</strong>
+<p>Scope helps prevent data from interfering and reduces problems caused by using variables in inappropriate places.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Worked example</span>
+<h3>See the idea in code</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>function test() {
+let message = "Hello";
+console.log(message);
+}
+test();</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Practice</span>
+<h3>Challenge yourself</h3>
+</div>
+</div>
+<p></p>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What does Scope determine?</strong></p><ul><li>Where a variable can be accessed</li><li>Program speed</li><li>Code color</li><li>Screen size</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Where a variable can be accessed</strong></p></details></li><li><p><strong>What happens? function f() { let secret = 1; } f(); console.log(secret);</strong></p><ul><li>It prints 1</li><li>It prints undefined</li><li>It prints null</li><li>A ReferenceError, because secret exists only inside the function</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A ReferenceError, because secret exists only inside the function</strong></p><p>A local variable ends with its function and outside code cannot see it. Reading it from outside gives a ReferenceError, not undefined.</p></details></li><li><p><strong>What is printed? let x = 1; function f() { let x = 2; return x; } console.log(f(), x);</strong></p><ul><li>2 1</li><li>2 2</li><li>1 1</li><li>1 2</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>2 1</strong></p><p>The x inside the function is a separate variable that shadows the outer one only during the call, so the function returns 2. The outer x stays 1 because the function never changed it.</p></details></li><li><p><strong>Why are local variables preferred over many global variables?</strong></p><ul><li>Because they reduce name clashes and accidental changes from other parts</li><li>Because global variables are not allowed in the language</li><li>Because local ones are always thousands of times faster</li><li>Because global ones are deleted automatically after a second</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Because they reduce name clashes and accidental changes from other parts</strong></p><p>Any part of the program can change a global variable, so it is hard to trace who changed it. Local scope limits the effect and makes code easier to understand and test.</p></details></li><li><p><strong>What is count at the end? let count = 0; function inc() { count++; } inc(); inc(); console.log(count);</strong></p><ul><li>0</li><li>1</li><li>2</li><li>An error because the function cannot see count</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>2</strong></p><p>A function can read and modify a variable defined in an outer scope. It was called twice, so count rose from 0 to 2.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-14">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/programming-basics/lessons/prg-13.html"><small>Previous lesson</small><strong>Parameters &amp; Arguments</strong></a>
+        <a rel="next" href="/en/fundamentals/programming-basics/lessons/prg-15.html"><small>Next lesson</small><strong>Arrays</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/programming-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

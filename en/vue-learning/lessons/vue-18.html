@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="vue" />
+    <meta name="robots" content="noindex, follow" />
+    <title>watch — Vue.js | FAYBIT</title>
+    <meta name="description" content="Learn how to observe changes in reactive data using watch." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/vue-learning/lessons/vue-18.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/vue-learning/lessons/vue-18.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/vue-learning/lessons/vue-18.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/vue-learning/lessons/vue-18.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="watch — Vue.js | FAYBIT" />
+    <meta property="og:description" content="Learn how to observe changes in reactive data using watch." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/vue-learning/lessons/vue-18.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Vue.js","item":"https://faybit.vercel.app/en/vue-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"watch","item":"https://faybit.vercel.app/en/vue-learning/lessons/vue-18.html"}]},{"@type":"LearningResource","name":"watch","description":"Learn how to observe changes in reactive data using watch.","url":"https://faybit.vercel.app/en/vue-learning/lessons/vue-18.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Vue.js — FAYBIT","url":"https://faybit.vercel.app/vue-learning/vue-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Vue.js"><a href="/en/vue-learning/lessons/index.html">Lessons</a><a href="/vue-learning/lessons/vue-18.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/vue-learning/lessons/index.html">Vue.js</a></nav>
+      <p class="lp-eyebrow">Lesson 18 of 22</p>
+      <h1 class="lp-h1">watch</h1>
+      <p class="lp-lead">Learn how to observe changes in reactive data using watch.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-18">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<h2>watch</h2>
+<p>
+<code>watch()</code> is used to observe changes to a specific reactive value.
+</p>
+<p>
+It is useful when a change in a certain value should trigger a side effect or an additional operation.
+</p>
+</div></article>
+<article class="body-card key-card"><div class="info-label">Watch data changes</div><p>Use watch when you need to run additional logic when a reactive value changes.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>The code</h2></div>
+</div>
+<pre dir="ltr"><code>
+&lt;div id="app"&gt;
+&lt;input v-model="search"&gt;
+&lt;p&gt;Search: {{ search }}&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+const { createApp, ref, watch } = Vue;
+createApp({
+setup() {
+const search = ref("");
+watch(search, (newValue) =&gt; {
+console.log("Search:", newValue);
+});
+return {
+search
+};
+}
+}).mount("#app");
+&lt;/script&gt;
+</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static">
+<div style="padding:20px;font-family:Arial;">
+<input placeholder="Search here" style="padding:8px 10px;border:1px solid #ccc;border-radius:6px;">
+<p>Search:</p>
+</div>
+</div></div>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>
+<p>
+<code>watch()</code> tracks a reactive source.
+</p>
+<p>
+When the value changes, the callback runs.
+</p>
+<p>
+<code>newValue</code> contains the new value after the change.
+</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span></div>
+</div>
+<p class="practice-description">Create a watcher that observes the search value and prints the new value.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What does watch observe?</strong></p><ul><li>Reactive data changes</li><li>CSS changes only</li><li>HTML comments</li><li>Page images only</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Reactive data changes</strong></p></details></li><li><p><strong>When does the watch callback run?</strong></p><ul><li>When the watched value changes</li><li>Always only once</li><li>When the page color changes</li><li>When the browser closes</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>When the watched value changes</strong></p></details></li><li><p><strong>What is the main benefit of watch?</strong></p><ul><li>Running additional logic when data changes</li><li>Creating components</li><li>Creating CSS</li><li>Creating routes only</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Running additional logic when data changes</strong></p></details></li><li><p><strong>What does this log when q changes from 'a' to 'ab'?
+watch(q,(n,o)=&gt;console.log(o,n))</strong></p><ul><li>ab a</li><li>a ab</li><li>a</li><li>nothing</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>a ab</strong></p><p>The callback receives (new, old); we print old a then new ab.</p></details></li><li><p><strong>When do we prefer watch over computed?</strong></p><ul><li>To derive text from other data</li><li>To run a side effect such as a network request when a value changes</li><li>To simply show a value in the template</li><li>To define a click handler</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>To run a side effect such as a network request when a value changes</strong></p><p>computed is for derived values, while watch suits side effects triggered by a change.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-18">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/vue-learning/lessons/vue-17.html"><small>Previous lesson</small><strong>ref and reactive</strong></a>
+        <a rel="next" href="/en/vue-learning/lessons/vue-19.html"><small>Next lesson</small><strong>Lifecycle Hooks</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/vue-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

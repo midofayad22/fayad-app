@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>Scope, Hoisting, and the TDZ — Advanced JavaScript | FAYBIT</title>
+    <meta name="description" content="Understand how the engine looks up variables, what actually happens during hoisting, and why the Temporal Dead Zone exists." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-01.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-01.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-01.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-01.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Scope, Hoisting, and the TDZ — Advanced JavaScript | FAYBIT" />
+    <meta property="og:description" content="Understand how the engine looks up variables, what actually happens during hoisting, and why the Temporal Dead Zone exists." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-01.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Advanced JavaScript","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Scope, Hoisting, and the TDZ","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-01.html"}]},{"@type":"LearningResource","name":"Scope, Hoisting, and the TDZ","description":"Understand how the engine looks up variables, what actually happens during hoisting, and why the Temporal Dead Zone exists.","url":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-01.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Advanced JavaScript — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Advanced JavaScript"><a href="/en/advanced-javascript/lessons/index.html">Lessons</a><a href="/advanced-javascript/lessons/ajs-01.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/advanced-javascript/lessons/index.html">Advanced JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 1 of 22</p>
+      <h1 class="lp-h1">Scope, Hoisting, and the TDZ</h1>
+      <p class="lp-lead">Understand how the engine looks up variables, what actually happens during hoisting, and why the Temporal Dead Zone exists.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-1">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Scope Chain</h2><p>Every function and every <code>{ }</code> block (with <code>let</code> and <code>const</code>) creates a scope. When a variable is read, the engine looks in the current scope, then in the parent scope, and so on up to the global scope. This chain is called the <strong>Scope Chain</strong>.</p></article><article class="content-card"><h2>Hoisting and the TDZ</h2><p>Declarations are hoisted to the top of their scope, but in different states: <code>var</code> starts with the value <code>undefined</code>, while <code>let</code> and <code>const</code> stay uninitialized until the declaration line, and any access before it throws a <code>ReferenceError</code>. This period is called the <strong>Temporal Dead Zone</strong>.</p></article></div>
+<article class="body-card key-card"><p>var is hoisted with the value undefined, while let/const are hoisted but cannot be used before the declaration line.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>console.log(typeof hoisted);
+var hoisted = 1;
+console.log(hoisted);
+try {
+console.log(late);
+} catch (e) {
+console.log(e.name);
+}
+let late = 2;
+const x = "global";
+function outer() {
+const x = "outer";
+function inner() {
+return x;
+}
+return inner();
+}
+console.log(outer());</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">undefined
+1
+ReferenceError
+outer</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>The variable <code>hoisted</code> exists before its line with the value <code>undefined</code>. Reading <code>late</code> before its declaration throws a <code>ReferenceError</code>. And <code>inner</code> sees the <code>x</code> belonging to <code>outer</code> because it is the nearest scope in the chain.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Try it yourself</h2></div>
+</div>
+<p class="practice-description">Create a function that tries to read a &lt;code&gt;const&lt;/code&gt; variable before its declaration inside a block, catch the error, and print its name.</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is the value of a hoisted var before its declaration line?</strong></p><ul><li>undefined</li><li>null</li><li>ReferenceError</li><li>0</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>undefined</strong></p></details></li><li><p><strong>What happens when you read a let variable before its declaration?</strong></p><ul><li>A ReferenceError is thrown</li><li>It is undefined</li><li>It is null</li><li>It is created automatically</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A ReferenceError is thrown</strong></p></details></li><li><p><strong>What is meant by the Scope Chain?</strong></p><ul><li>The chain of scopes the engine searches for a variable, from nearest to farthest</li><li>The execution order of functions</li><li>The list of errors</li><li>The order of files</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The chain of scopes the engine searches for a variable, from nearest to farthest</strong></p></details></li><li><p><strong>What does this code print? console.log(typeof f, typeof g); function f() {} var g = function () {};</strong></p><ul><li>undefined undefined</li><li>function function</li><li>A ReferenceError at g</li><li>function undefined</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>function undefined</strong></p><p>The declaration f is hoisted with its whole body, so its type is function. g is a var, so only the declaration is hoisted with the value undefined, and the function is assigned only when execution reaches that line.</p></details></li><li><p><strong>What happens? let x = 1; { console.log(x); let x = 2; }</strong></p><ul><li>It prints 1 because it uses the outer x</li><li>It prints undefined</li><li>It throws a ReferenceError because the inner x is in the TDZ until its declaration line</li><li>It prints 2</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>It throws a ReferenceError because the inner x is in the TDZ until its declaration line</strong></p><p>The inner let shadows the outer x for the whole block, but it cannot be read before its declaration, which is the TDZ. So the outer x is not used and the value is not undefined.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-1">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <span></span>
+        <a rel="next" href="/en/advanced-javascript/lessons/ajs-02.html"><small>Next lesson</small><strong>Closures</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/advanced-javascript/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

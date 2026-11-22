@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>Modern Computing — Computer Basics | FAYBIT</title>
+    <meta name="description" content="Explain how much computing moved to the Cloud and data centres, and tell a Virtual Machine from a Container . Compare SaaS , PaaS and IaaS models and pick…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-19.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-19.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-19.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-19.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Modern Computing — Computer Basics | FAYBIT" />
+    <meta property="og:description" content="Explain how much computing moved to the Cloud and data centres, and tell a Virtual Machine from a Container . Compare SaaS , PaaS and IaaS models and pick…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-19.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Computer Basics","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Modern Computing","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-19.html"}]},{"@type":"LearningResource","name":"Modern Computing","description":"Explain how much computing moved to the Cloud and data centres, and tell a Virtual Machine from a Container . Compare SaaS , PaaS and IaaS models and pick…","url":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-19.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Computer Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Computer Basics"><a href="/en/fundamentals/computer-basics/lessons/index.html">Lessons</a><a href="/fundamentals/computer-basics/lessons/com-19.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/computer-basics/lessons/index.html">Computer Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 19 of 30</p>
+      <h1 class="lp-h1">Modern Computing</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-19">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>Modern Computing</h2>
+<div><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Explain how much computing moved to the <span class="term">Cloud</span> and data centres, and tell a <span class="term">Virtual Machine</span> from a <span class="term">Container</span>.</li><li>Compare <span class="term">SaaS</span>, <span class="term">PaaS</span> and <span class="term">IaaS</span> models and pick the right one for a given case.</li><li>Analyse the trade-offs of modern computing: latency, cost, privacy and energy.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>The lessons on the CPU, RAM, storage, networks and the history of computing.</li></ul>
+</section>
+<section class="lesson-section "><h3>Introduction: the computer is no longer only in front of you</h3>
+<p>When you order a ride through an app, stream a film or edit a document with colleagues, the device in your hand does a small part of the work, and the larger part runs on distant computers you never see. Modern computing is this distribution: handheld devices, servers in data centres, tiny devices everywhere, all connected. It is not entirely new; everything in it is built from the components you studied, only arranged differently.</p>
+</section>
+<section class="lesson-section "><h3>Mobile, cloud and data centres</h3>
+<p>A smartphone is a full computer built around a single chip called a <span class="term">SoC</span> (System on a Chip) that combines the processor, graphics and other parts to save power and space, and it runs on a battery, so everything in it is designed around efficiency. Behind your apps stands a <span class="term">Data Center</span>: a building housing thousands of servers with fast networks, cooling and backup power. The <span class="term">Cloud</span> is renting the capacity of such centres over the internet on demand instead of buying and operating the hardware yourself.</p>
+<figure class="doc-diagram" role="group" aria-label="Diagram"><figcaption>What happens when you open a streaming app</figcaption><ol class="doc-flow"><li><strong>Your device</strong><span>the phone sends the request, shows the interface and decodes the video</span></li><li><strong>The network</strong><span>packets travel across the carrier network to the nearest server</span></li><li><strong>Data centre</strong><span>servers check your account and query databases</span></li><li><strong>Storage and delivery</strong><span>video is served from copies close to you to cut delay</span></li></ol></figure>
+</section>
+<section class="lesson-section "><h3>Virtualisation and containers</h3>
+<p>The cloud does not use a physical server per customer; it divides one server. In <span class="term">Virtualization</span> a program called a <span class="term">Hypervisor</span> runs several <strong>virtual machines</strong> on one piece of hardware, each with its own complete operating system that believes it has a separate computer. <span class="term">Containers</span> are lighter: they share the same operating system kernel but are isolated from each other in the files, processes and network they can see. A container starts quickly and uses less, but its isolation is weaker than a full virtual machine because the kernel is shared. This difference connects to what we will learn in the operating systems section.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Aspect</th><th scope="col">Virtual machine</th><th scope="col">Container</th></tr></thead><tbody><tr><th scope="row">Operating system</th><td>a full OS per machine</td><td>kernel shared with the host</td></tr><tr><th scope="row">Start time</th><td>from many seconds up to minutes</td><td>seconds or less</td></tr><tr><th scope="row">Size</th><td>large (gigabytes)</td><td>usually much smaller</td></tr><tr><th scope="row">Isolation</th><td>stronger</td><td>lighter and relatively weaker</td></tr></tbody></table></div>
+</section>
+<section class="lesson-section "><h3>Service models: SaaS, PaaS and IaaS</h3>
+<p>Cloud services differ in how much you manage and how much the provider does. The closer to SaaS, the less you control and the less you maintain.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Model</th><th scope="col">What you get</th><th scope="col">What you manage</th><th scope="col">Example</th></tr></thead><tbody><tr><th scope="row">IaaS</th><td>virtual servers, network and storage</td><td>the OS, software and data</td><td>renting a virtual machine</td></tr><tr><th scope="row">PaaS</th><td>a ready platform to run your app</td><td>only your code and data</td><td>a platform hosting a web app</td></tr><tr><th scope="row">SaaS</th><td>a finished application</td><td>your account, settings and data</td><td>web email and an online document editor</td></tr></tbody></table></div>
+</section>
+<section class="lesson-section "><h3>IoT and edge computing</h3>
+<p><span class="term">IoT</span> (Internet of Things) means everyday devices with a small computer, sensors and connectivity: a smartwatch, a home thermostat, sensors on a farm. They generate huge amounts of data, and sending all of it to the cloud is costly and slow. So <span class="term">Edge Computing</span> appeared: processing part of the data close to its source, on the device itself or on a local server, and sending only the important results. A smart camera detects motion by itself and uploads a short clip instead of streaming hours of video.</p>
+</section>
+<section class="lesson-section "><h3>AI and machine learning, conceptually</h3>
+<p>In traditional programming you write the rules; in <span class="term">Machine Learning</span> you give the system many examples and it extracts the pattern by itself: it is trained on thousands of labelled images so it can recognise a new one. Training is heavy work needing graphics processors and large amounts of memory, so it usually happens in data centres. Using a trained model is lighter and may run on a phone. These models predict what resembles the examples they saw, so they can be wrong and need human review in important situations.</p>
+</section>
+<section class="lesson-section "><h3>Trade-offs: there is no free option</h3>
+<ul><li><strong><span class="term">Latency</span>:</strong> the farther the computer is from you, the longer the response takes; the edge reduces it.</li><li><strong>Cost:</strong> the cloud turns buying hardware into pay-as-you-go, cheap for occasional needs but possibly expensive under constant load.</li><li><strong>Privacy:</strong> your data sits on another party's servers, so you must know where it is stored, who can reach it and how it is encrypted.</li><li><strong>Energy:</strong> data centres use large amounts of electricity and cooling, so efficiency is measured as work done per unit of energy.</li><li><strong>Dependence on connectivity:</strong> if the network drops, services that rely entirely on the cloud stop working.</li></ul>
+</section>
+<section class="lesson-section "><h3>Real-world applications</h3>
+<ul><li><strong>Online shops:</strong> add virtual servers during a sale season and remove them afterwards.</li><li><strong>Smart farming:</strong> sensors measure moisture, decide on watering locally and send a summary to the cloud.</li><li><strong>Collaboration:</strong> a whole team edits one document because the single copy lives in the cloud.</li><li><strong>Development:</strong> programmers wrap their app in a container so it runs the same way on any machine.</li></ul>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>“The cloud is a mysterious place with no hardware”: it is real servers in real buildings owned by someone else.</li><li>“A container is a small virtual machine”: a container shares the host kernel, while a virtual machine carries a full OS.</li><li>“The cloud is always cheaper and safer”: it depends on workload and setup, and many leaks come from the customer's own misconfiguration.</li><li>“AI understands as a human does”: a model finds statistical patterns in data and can give a confident but wrong answer.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Choosing a model:</strong> a small company wants (a) email and documents for its staff, (b) to host a web app its developer wrote, (c) to run an old program that needs a specific operating system. Pick SaaS, PaaS or IaaS for each.</summary><div class="doc-solution"><strong>Show solution</strong><p>(a) SaaS, because a finished application is needed and there is no reason to manage servers. (b) PaaS, because the team wants to focus on code while the platform handles running and updates. (c) IaaS, because you need control of the operating system itself, so you rent a virtual machine and install what you need. Rule: choose the highest level that meets your need to reduce maintenance load.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Trade-off:</strong> a surveillance camera records around the clock. Compare sending all the video to the cloud with processing it at the edge in terms of latency, cost and privacy.</summary><div class="doc-solution"><strong>Show solution</strong><p>Sending everything uses large bandwidth and costly storage, adds delay before any alert arrives, and exposes all footage to transport and remote-storage risks. Edge processing detects the event locally, alerts immediately and uploads only a few clips, so cost drops and privacy improves. The price is that the local device needs more processing power plus maintenance and updates, and its model may be less accurate than a larger cloud one. The practical answer is often a mix of both.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Hands-on:</strong> pick three services you use daily (email, video, photo storage). For each: where do the parts run, does it work without internet, and is it SaaS or another type?</summary><div class="doc-solution"><strong>Show solution</strong><p>Most will be SaaS since you use a finished application. Try airplane mode and open each: some will show what was stored earlier on your device (cache and local copies) and others will not work at all. This shows which part runs locally and which in the cloud. Then open the privacy settings and see what is uploaded to the server. Write a small table per service: what is kept locally, what in the cloud, and what a network outage does.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>Computing today is spread across mobile devices, data centres, IoT devices and a nearby edge layer.</li><li>Virtual machines and containers divide hardware; the first with a full OS, the second with a shared kernel.</li><li>SaaS, PaaS and IaaS differ in how much you manage versus the provider.</li><li>Every option has a cost in latency, price, privacy and energy.</li></ul><p class="doc-next"><strong>Next step:</strong> OS Architecture: Kernel, User Space and Kernel Space. We open the layer between programs and hardware, and afterwards move on to Programming Basics.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>Core concept</strong>
+<p>Modern computing relies on a huge ecosystem of devices, networks, cloud services, and data.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Hands-on practice</span>
+<h3>Try it yourself</h3>
+</div>
+</div>
+<p>Think about the apps you use every day and identify which of them rely on Cloud Computing.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which concept refers to using computing resources over the internet?</strong></p><ul><li>Cloud Computing</li><li>Keyboard</li><li>RAM</li><li>BIOS</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Cloud Computing</strong></p></details></li><li><p><strong>A company needs a virtual server on which it installs its own OS and software. Which model fits?</strong></p><ul><li>SaaS</li><li>IaaS</li><li>PaaS</li><li>IoT</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>IaaS</strong></p><p>IaaS gives servers, network and storage while you manage the OS and software.</p></details></li><li><p><strong>What is the main difference between a container and a virtual machine?</strong></p><ul><li>A container carries its own full operating system</li><li>A VM always shares the host kernel</li><li>A container shares the host kernel so it starts faster and is lighter</li><li>There is no difference in isolation</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A container shares the host kernel so it starts faster and is lighter</strong></p><p>Sharing the kernel makes a container lighter but its isolation is weaker than a VM.</p></details></li><li><p><strong>A smart camera detects motion itself and uploads a short clip instead of streaming hours. What is this pattern?</strong></p><ul><li>Edge computing</li><li>Pure cloud computing</li><li>Hashing</li><li>Permanent data migration</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Edge computing</strong></p><p>Processing data near its source saves bandwidth and cuts latency.</p></details></li><li><p><strong>Which statement about machine learning is correct?</strong></p><ul><li>The model never makes mistakes</li><li>It trains on many examples to learn patterns and can be wrong, needing human review</li><li>The programmer writes every rule by hand</li><li>Training is lighter than using the model</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>It trains on many examples to learn patterns and can be wrong, needing human review</strong></p><p>A model predicts what resembles its examples, so important cases need human review.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-19">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/computer-basics/lessons/com-18.html"><small>Previous lesson</small><strong>History of Computers</strong></a>
+        <a rel="next" href="/en/fundamentals/computer-basics/lessons/com-20.html"><small>Next lesson</small><strong>OS Architecture: Kernel, User Space and Kernel Space</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/computer-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

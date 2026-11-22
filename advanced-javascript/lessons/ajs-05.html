@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>Memoization و Debounce و Throttle — JavaScript المتقدم | FAYBIT</title>
+    <meta name="description" content="تقنيات عملية للأداء: التخزين المؤقت للنتائج وضبط عدد الاستدعاءات." />
+    <link rel="canonical" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-05.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-05.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-05.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-05.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Memoization و Debounce و Throttle — JavaScript المتقدم | FAYBIT" />
+    <meta property="og:description" content="تقنيات عملية للأداء: التخزين المؤقت للنتائج وضبط عدد الاستدعاءات." />
+    <meta property="og:url" content="https://faybit.vercel.app/advanced-javascript/lessons/ajs-05.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript المتقدم","item":"https://faybit.vercel.app/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Memoization و Debounce و Throttle","item":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-05.html"}]},{"@type":"LearningResource","name":"Memoization و Debounce و Throttle","description":"تقنيات عملية للأداء: التخزين المؤقت للنتائج وضبط عدد الاستدعاءات.","url":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-05.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript المتقدم — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript المتقدم"><a href="/advanced-javascript/lessons/index.html">الدروس</a><a href="/en/advanced-javascript/lessons/ajs-05.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/advanced-javascript/lessons/index.html">JavaScript المتقدم</a></nav>
+      <p class="lp-eyebrow">الدرس 5 من 22</p>
+      <h1 class="lp-h1">Memoization و Debounce و Throttle</h1>
+      <p class="lp-lead">تقنيات عملية للأداء: التخزين المؤقت للنتائج وضبط عدد الاستدعاءات.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-5">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>Memoization</h2><p>تخزين نتيجة دالة <strong>نقية</strong> لكل مدخل حتى لا تُحسب مرتين. المفتاح عادةً من المدخلات.</p></article><article class="content-card"><h2>Debounce و Throttle</h2><p><strong>Debounce</strong> ينفذ الدالة بعد توقف الاستدعاءات لمدة محددة (مثل البحث أثناء الكتابة). <strong>Throttle</strong> ينفذها بحد أقصى مرة كل فترة (مثل التمرير).</p></article></div>
+<article class="body-card key-card"><p>Memoization للدوال النقية فقط، وDebounce يؤخر بينما Throttle يحدّ.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>const memo = (fn) =&gt; {
+const cache = new Map();
+return (n) =&gt; {
+if (cache.has(n)) return cache.get(n);
+const v = fn(n);
+cache.set(n, v);
+return v;
+};
+};
+let calls = 0;
+const square = memo((n) =&gt; { calls++; return n * n; });
+square(4); square(4); square(5);
+console.log("calls:", calls);
+const debounce = (fn, ms) =&gt; {
+let t;
+return (...a) =&gt; {
+clearTimeout(t);
+t = setTimeout(() =&gt; fn(...a), ms);
+};
+};
+const log = debounce((v) =&gt; console.log("saved", v), 20);
+log("a"); log("b"); log("c");</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">calls: 2
+saved c</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>الاستدعاء الثاني لـ <code>square(4)</code> جاء من الـ cache فلم يزد العداد. في <code>debounce</code> كل استدعاء يلغي المؤقت السابق فلا ينفذ إلا الأخير.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>جرّب بنفسك</h2></div>
+</div>
+<p class="practice-description">اكتب &lt;code&gt;once(fn)&lt;/code&gt; تنفذ الدالة مرة واحدة فقط وتعيد نفس النتيجة بعدها.</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>متى تكون Memoization آمنة؟</strong></p><ul><li>مع الدوال النقية التي لا تعتمد على حالة خارجية</li><li>مع أي دالة</li><li>مع الدوال غير المتزامنة فقط</li><li>لا تكون آمنة أبدًا</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>مع الدوال النقية التي لا تعتمد على حالة خارجية</strong></p></details></li><li><p><strong>ماذا يفعل Debounce؟</strong></p><ul><li>يؤخر التنفيذ حتى تتوقف الاستدعاءات</li><li>ينفذ كل استدعاء فورًا</li><li>يمنع الدالة نهائيًا</li><li>يكرر الدالة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يؤخر التنفيذ حتى تتوقف الاستدعاءات</strong></p></details></li><li><p><strong>أي تقنية تناسب حدث scroll المتكرر؟</strong></p><ul><li>Throttle</li><li>Memoization</li><li>Currying</li><li>Hoisting</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Throttle</strong></p></details></li><li><p><strong>memoize تخزن النتيجة بمفتاح args[0] فقط. ما المشكلة عند استخدامها مع دالة add(a, b)؟</strong></p><ul><li>add(1, 2) ثم add(1, 5) يعيد الثانية نتيجة الأولى الخاطئة 3 من الذاكرة</li><li>لا تعمل الذاكرة مع دوال بوسيطين</li><li>تصبح الدالة أبطأ دائماً</li><li>لا مشكلة لأن الوسيط الأول يكفي دائماً</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>add(1, 2) ثم add(1, 5) يعيد الثانية نتيجة الأولى الخاطئة 3 من الذاكرة</strong></p><p>مفتاح التخزين يجب أن يمثل كل المدخلات التي تؤثر في النتيجة، وإلا تتشابه المفاتيح وتعود نتائج قديمة خاطئة. نبني المفتاح من كل args مثلاً JSON.stringify(args).</p></details></li><li><p><strong>دالة debounce بانتظار 200ms استُدعيت عند الزمن 0 و 50 و 100ms. متى وكم مرة تُنفذ الدالة الأصلية؟</strong></p><ul><li>ثلاث مرات عند 200 و 250 و 300</li><li>مرة واحدة عند 200ms</li><li>مرة واحدة عند 300ms</li><li>مرتان عند 0 و 100</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>مرة واحدة عند 300ms</strong></p><p>كل استدعاء جديد يلغي المؤقت السابق ويبدأ انتظاراً جديداً. آخر استدعاء كان عند 100ms فتُنفذ الدالة مرة واحدة بعد 200ms منه أي عند 300ms.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-5">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/advanced-javascript/lessons/ajs-04.html"><small>الدرس السابق</small><strong>الدوال عالية المرتبة والتركيب</strong></a>
+        <a rel="next" href="/advanced-javascript/lessons/ajs-06.html"><small>الدرس التالي</small><strong>Prototypes وسلسلة الوراثة</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/advanced-javascript/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

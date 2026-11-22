@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>Collapse, Accordion, and Dropdown — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="Interactive collapsing components and dropdown menus." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-17.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-17.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-17.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-17.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Collapse, Accordion, and Dropdown — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="Interactive collapsing components and dropdown menus." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-17.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Collapse, Accordion, and Dropdown","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-17.html"}]},{"@type":"LearningResource","name":"Collapse, Accordion, and Dropdown","description":"Interactive collapsing components and dropdown menus.","url":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-17.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/en/bootstrap-learning/lessons/index.html">Lessons</a><a href="/bootstrap-learning/lessons/bs-17.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">Lesson 17 of 20</p>
+      <h1 class="lp-h1">Collapse, Accordion, and Dropdown</h1>
+      <p class="lp-lead">Interactive collapsing components and dropdown menus.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-17">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Collapse and Accordion</h2><p>The <code>.collapse</code> element is shown and hidden with a button using <code>data-bs-toggle="collapse"</code>. The <code>.accordion</code> groups collapse items, and when <code>data-bs-parent</code> is set on each item, the others close when one is opened.</p></article><article class="content-card"><h2>Dropdown</h2><p><code>.dropdown</code> contains a <code>data-bs-toggle="dropdown"</code> button and a <code>.dropdown-menu</code> list with <code>.dropdown-item</code> entries. Direction: <code>dropup</code>/<code>dropend</code>/<code>dropstart</code>.</p></article></div>
+<article class="body-card key-card"><p>Use button for triggers (not an empty link), and aria-expanded is managed automatically.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="container py-3"&gt;
+&lt;div class="dropdown mb-3"&gt;
+&lt;button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"&gt;Language&lt;/button&gt;
+&lt;ul class="dropdown-menu"&gt;
+&lt;li&gt;&lt;a class="dropdown-item active" href="#"&gt;Arabic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;English&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;hr class="dropdown-divider"&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="dropdown-item disabled" aria-disabled="true"&gt;Français&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="accordion" id="faq"&gt;
+&lt;div class="accordion-item"&gt;
+&lt;h2 class="accordion-header"&gt;&lt;button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#q1" aria-expanded="true" aria-controls="q1"&gt;What is Bootstrap?&lt;/button&gt;&lt;/h2&gt;
+&lt;div id="q1" class="accordion-collapse collapse show" data-bs-parent="#faq"&gt;&lt;div class="accordion-body"&gt;A library for building responsive interfaces.&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="accordion-item"&gt;
+&lt;h2 class="accordion-header"&gt;&lt;button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2" aria-expanded="false" aria-controls="q2"&gt;Is it free?&lt;/button&gt;&lt;/h2&gt;
+&lt;div id="q2" class="accordion-collapse collapse" data-bs-parent="#faq"&gt;&lt;div class="accordion-body"&gt;Yes, under the MIT license.&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>The <code>data-bs-parent="#faq"</code> attribute makes opening one item close the others. The dropdown closes when you click outside it or press Escape.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Add a third accordion item with a question and answer of your choice.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What does data-bs-parent do in an accordion?</strong></p><ul><li>Makes opening one item close the other items</li><li>Colors the accordion</li><li>Deletes the accordion</li><li>Changes the direction</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Makes opening one item close the other items</strong></p></details></li><li><p><strong>Which class gives a dropdown menu?</strong></p><ul><li>dropdown-menu inside dropdown</li><li>menu-list</li><li>select-box</li><li>popup</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>dropdown-menu inside dropdown</strong></p></details></li><li><p><strong>Why use a button for a Collapse trigger?</strong></p><ul><li>Accessibility with the keyboard and screen readers</li><li>To color it</li><li>To speed it up</li><li>No benefit</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Accessibility with the keyboard and screen readers</strong></p></details></li><li><p><strong>Which class makes the dropdown open upward?</strong></p><ul><li>dropend</li><li>dropup</li><li>dropdown-up-menu</li><li>dropstart</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>dropup</strong></p><p>dropup opens upward, dropend to the end side and dropstart to the start side.</p></details></li><li><p><strong>An accordion without data-bs-parent on its items. What happens when you open a second item?</strong></p><ul><li>The first stays open</li><li>The first closes automatically</li><li>The buttons stop working</li><li>The page reloads</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The first stays open</strong></p><p>data-bs-parent is what closes the others; without it each item works independently.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-17">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/bootstrap-learning/lessons/bs-16.html"><small>Previous lesson</small><strong>Modal and Offcanvas</strong></a>
+        <a rel="next" href="/en/bootstrap-learning/lessons/bs-18.html"><small>Next lesson</small><strong>Tooltips, Popovers, and Toasts</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/bootstrap-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

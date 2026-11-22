@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>Forms — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="Basic form elements: fields, labels, selects, and checkboxes." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-12.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-12.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-12.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-12.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Forms — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="Basic form elements: fields, labels, selects, and checkboxes." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-12.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Forms","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-12.html"}]},{"@type":"LearningResource","name":"Forms","description":"Basic form elements: fields, labels, selects, and checkboxes.","url":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-12.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/en/bootstrap-learning/lessons/index.html">Lessons</a><a href="/bootstrap-learning/lessons/bs-12.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">Lesson 12 of 20</p>
+      <h1 class="lp-h1">Forms</h1>
+      <p class="lp-lead">Basic form elements: fields, labels, selects, and checkboxes.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-12">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Elements</h2><p><code>.form-label</code> for the label, <code>.form-control</code> for text fields, <code>.form-select</code> for select menus, <code>.form-check</code> with <code>.form-check-input</code> and <code>.form-check-label</code> for checkboxes and radios, <code>.form-switch</code> for switches, and <code>.form-range</code> for the slider. Sizes: <code>form-control-lg</code> and <code>-sm</code>.</p></article><article class="content-card"><h2>Linking</h2><p>Link each label to its field through <code>for</code> and <code>id</code> — this is the foundation of accessibility.</p></article></div>
+<article class="body-card key-card"><p>Every field needs a label linked with for/id.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;form class="container py-3" style="max-width:480px"&gt;
+&lt;div class="mb-3"&gt;
+&lt;label for="email" class="form-label"&gt;Email address&lt;/label&gt;
+&lt;input type="email" class="form-control" id="email" placeholder="name@example.com"&gt;
+&lt;/div&gt;
+&lt;div class="mb-3"&gt;
+&lt;label for="level" class="form-label"&gt;Level&lt;/label&gt;
+&lt;select class="form-select" id="level"&gt;&lt;option&gt;Beginner&lt;/option&gt;&lt;option&gt;Intermediate&lt;/option&gt;&lt;/select&gt;
+&lt;/div&gt;
+&lt;div class="form-check form-switch mb-3"&gt;
+&lt;input class="form-check-input" type="checkbox" role="switch" id="news" checked&gt;
+&lt;label class="form-check-label" for="news"&gt;Receive news&lt;/label&gt;
+&lt;/div&gt;
+&lt;button type="button" class="btn btn-primary"&gt;Save&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>Each field group is in <code>mb-3</code> for even spacing. The switch is a checkbox with <code>form-switch</code> and <code>role="switch"</code>.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Add a password field with a label and link it with &lt;code&gt;for&lt;/code&gt;.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which class styles a text input field?</strong></p><ul><li>form-control</li><li>input-box</li><li>form-input</li><li>text-field</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>form-control</strong></p></details></li><li><p><strong>How do we link a label to a field?</strong></p><ul><li>The for in the label equals the id in the field</li><li>Just by putting them on the same line</li><li>By giving them the same color</li><li>No need</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The for in the label equals the id in the field</strong></p></details></li><li><p><strong>Which class creates a toggle switch?</strong></p><ul><li>form-switch</li><li>form-toggle</li><li>btn-switch</li><li>switch-box</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>form-switch</strong></p></details></li><li><p><strong>Which class styles a select dropdown?</strong></p><ul><li>form-control-select</li><li>form-select</li><li>select-menu</li><li>form-dropdown</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>form-select</strong></p><p>form-select is for the select element, while form-control is for text fields.</p></details></li><li><p><strong>What is the correct structure for a checkbox?</strong></p><ul><li>Only input.form-control</li><li>div.form-check holding input.form-check-input and label.form-check-label</li><li>Only label.form-switch</li><li>div.checkbox holding a span</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>div.form-check holding input.form-check-input and label.form-check-label</strong></p><p>These three classes together give the correct alignment and styling.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-12">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/bootstrap-learning/lessons/bs-11.html"><small>Previous lesson</small><strong>Navbar and Nav</strong></a>
+        <a rel="next" href="/en/bootstrap-learning/lessons/bs-13.html"><small>Next lesson</small><strong>Validation, Input Groups, and Floating Labels</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/bootstrap-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

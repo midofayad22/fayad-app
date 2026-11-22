@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>الحاويات والنقاط الفاصلة — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="container وcontainer-fluid والنقاط الفاصلة (breakpoints) التي تبني عليها كل الفئات المتجاوبة." />
+    <link rel="canonical" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-02.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-02.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-02.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-02.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="الحاويات والنقاط الفاصلة — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="container وcontainer-fluid والنقاط الفاصلة (breakpoints) التي تبني عليها كل الفئات المتجاوبة." />
+    <meta property="og:url" content="https://faybit.vercel.app/bootstrap-learning/lessons/bs-02.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"الحاويات والنقاط الفاصلة","item":"https://faybit.vercel.app/bootstrap-learning/lessons/bs-02.html"}]},{"@type":"LearningResource","name":"الحاويات والنقاط الفاصلة","description":"container وcontainer-fluid والنقاط الفاصلة (breakpoints) التي تبني عليها كل الفئات المتجاوبة.","url":"https://faybit.vercel.app/bootstrap-learning/lessons/bs-02.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/bootstrap-learning/lessons/index.html">الدروس</a><a href="/en/bootstrap-learning/lessons/bs-02.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">الدرس 2 من 20</p>
+      <h1 class="lp-h1">الحاويات والنقاط الفاصلة</h1>
+      <p class="lp-lead">container وcontainer-fluid والنقاط الفاصلة (breakpoints) التي تبني عليها كل الفئات المتجاوبة.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-2">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>Containers</h2><p><code>.container</code> عرضه ثابت يتغير عند كل نقطة فاصلة، و<code>.container-fluid</code> بعرض 100% دائمًا، و<code>.container-md</code> وأخواتها تكون 100% حتى النقطة المحددة ثم تصبح ثابتة.</p></article><article class="content-card"><h2>Breakpoints</h2><p>النقاط الفاصلة (mobile-first): <strong>sm ≥576px</strong>، <strong>md ≥768px</strong>، <strong>lg ≥992px</strong>، <strong>xl ≥1200px</strong>، <strong>xxl ≥1400px</strong>. الفئة بدون نقطة (مثل <code>col-6</code>) تنطبق من أصغر الشاشات، والفئة مع نقطة (<code>col-md-6</code>) تنطبق من تلك النقطة فصاعدًا.</p></article></div>
+<article class="body-card key-card"><p>Bootstrap mobile-first: الفئة بدون نقطة تنطبق دائمًا، والمتجاوبة تنطبق من النقطة وما فوقها.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="container bg-light border py-2 mb-3"&gt;.container&lt;/div&gt;
+&lt;div class="container-fluid bg-light border py-2 mb-3"&gt;.container-fluid&lt;/div&gt;
+&lt;div class="container-md bg-light border py-2"&gt;.container-md&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>غيّر عرض المعاينة أو افتح الصفحة على شاشات مختلفة: الحاوية الأولى تتغير عرضها عند النقاط الفاصلة، والثانية تملأ العرض، والثالثة تملأ العرض حتى 768px.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">أضف حاوية رابعة بالفئة &lt;code&gt;container-lg&lt;/code&gt; واكتب بداخلها اسم الفئة.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>عند أي عرض تبدأ النقطة md؟</strong></p><ul><li>768px</li><li>576px</li><li>992px</li><li>1200px</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>768px</strong></p></details></li><li><p><strong>ما الفرق بين container وcontainer-fluid؟</strong></p><ul><li>الأول عرض ثابت حسب النقطة والثاني 100% دائمًا</li><li>لا فرق</li><li>الثاني للجوال فقط</li><li>الأول للطباعة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>الأول عرض ثابت حسب النقطة والثاني 100% دائمًا</strong></p></details></li><li><p><strong>ماذا تعني mobile-first؟</strong></p><ul><li>الأنماط الأساسية للشاشات الصغيرة وتُوسَّع بالنقاط للأكبر</li><li>التصميم للحاسوب أولًا</li><li>حذف الشاشات الصغيرة</li><li>لا تدعم الجوال</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>الأنماط الأساسية للشاشات الصغيرة وتُوسَّع بالنقاط للأكبر</strong></p></details></li><li><p><strong>تريد حاوية بعرض 100% على الهاتف وتصبح بعرض ثابت ابتداءً من lg. أي فئة تستخدم؟</strong></p><ul><li>container-fluid</li><li>container-lg</li><li>container-sm</li><li>container-xxl-fluid</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>container-lg</strong></p><p>container-lg يبقى 100% حتى نقطة lg ثم يصبح ثابت العرض.</p></details></li><li><p><strong>الشاشة عرضها 700px. أي عبارة صحيحة؟</strong></p><ul><li>col-md-6 يعمل و col-6 لا يعمل</li><li>الاثنان يعملان معاً</li><li>لا يعمل أي منهما</li><li>col-6 يعمل و col-md-6 لا يعمل</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>col-6 يعمل و col-md-6 لا يعمل</strong></p><p>الفئة بلا نقطة توقف تعمل دائماً، أما md فتبدأ من 768px فأكثر.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-2">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/bootstrap-learning/lessons/bs-01.html"><small>الدرس السابق</small><strong>مقدمة: ما هو Bootstrap وكيف نبدأ</strong></a>
+        <a rel="next" href="/bootstrap-learning/lessons/bs-03.html"><small>الدرس التالي</small><strong>نظام الشبكة (Grid)</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/bootstrap-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

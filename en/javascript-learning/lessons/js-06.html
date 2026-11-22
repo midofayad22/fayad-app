@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="js" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Loops — JavaScript | FAYBIT</title>
+    <meta name="description" content="Learn how JavaScript repeats a set of statements using loops." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-06.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-06.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/javascript-learning/lessons/js-06.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/javascript-learning/lessons/js-06.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Loops — JavaScript | FAYBIT" />
+    <meta property="og:description" content="Learn how JavaScript repeats a set of statements using loops." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/javascript-learning/lessons/js-06.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript","item":"https://faybit.vercel.app/en/javascript-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Loops","item":"https://faybit.vercel.app/en/javascript-learning/lessons/js-06.html"}]},{"@type":"LearningResource","name":"Loops","description":"Learn how JavaScript repeats a set of statements using loops.","url":"https://faybit.vercel.app/en/javascript-learning/lessons/js-06.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript — FAYBIT","url":"https://faybit.vercel.app/javascript-learning/javascript-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript"><a href="/en/javascript-learning/lessons/index.html">Lessons</a><a href="/javascript-learning/lessons/js-06.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/javascript-learning/lessons/index.html">JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 6 of 25</p>
+      <h1 class="lp-h1">Loops</h1>
+      <p class="lp-lead">Learn how JavaScript repeats a set of statements using loops.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-6">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>let result = "";
+for (let i = 1; i &lt;= 5; i++) {
+result += i + " ";
+}
+document.getElementById("jsResult").textContent = result;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>
+<p><strong>Loops</strong> let you repeat a set of instructions.</p>
+<p>A <strong>for</strong> loop usually consists of an initialization, a condition, and an update.</p>
+<p>In the example, <strong>i</strong> starts at 1 and continues until it reaches 5.</p>
+<p>Loops reduce the need to write the same code many times.</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Write JavaScript</h2></div>
+</div>
+<p class="practice-description">Change the code below, then run it to see the result.</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is the main use of loops?</strong></p><ul><li>Repeating code execution</li><li>Creating HTML</li><li>Changing CSS files</li><li>Creating images</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Repeating code execution</strong></p></details></li><li><p><strong>Which keyword is used to create a for loop?</strong></p><ul><li>for</li><li>repeat</li><li>looping</li><li>cycle</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>for</strong></p></details></li><li><p><strong>What happens when the loop condition becomes false?</strong></p><ul><li>The loop stops</li><li>It starts over</li><li>The browser stops</li><li>The variable is deleted</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The loop stops</strong></p></details></li><li><p><strong>What does this code print? for (let i = 0; i !== 5; i++) { if (i === 2) continue; if (i === 4) break; console.log(i); }</strong></p><ul><li>0 1 3</li><li>0 1 2 3</li><li>0 1</li><li>0 1 3 4</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>0 1 3</strong></p><p>continue skips only the i = 2 iteration, and break ends the whole loop at i = 4 before it is printed. So 0, 1 and 3 are printed.</p></details></li><li><p><strong>What is the problem in this code? let i = 0; while (i !== 3) { console.log(i); }</strong></p><ul><li>while does not accept the !== condition</li><li>The loop never runs because i equals 0</li><li>Nothing increases i, so the loop is infinite</li><li>const should be used instead of let</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Nothing increases i, so the loop is infinite</strong></p><p>The condition i !== 3 stays true forever because i never changes inside the loop. We need something like i++ so it reaches 3 and stops.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-6">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/javascript-learning/lessons/js-05.html"><small>Previous lesson</small><strong>Conditions</strong></a>
+        <a rel="next" href="/en/javascript-learning/lessons/js-07.html"><small>Next lesson</small><strong>Functions</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/javascript-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

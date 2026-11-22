@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="react" />
+    <meta name="robots" content="noindex, follow" />
+    <title>useRef — React | FAYBIT</title>
+    <meta name="description" content="تعلم كيف تستخدم useRef للاحتفاظ بقيمة أو الوصول إلى عنصر DOM دون التسبب في Re-render." />
+    <link rel="canonical" href="https://faybit.vercel.app/react-learning/lessons/react-15.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/react-learning/lessons/react-15.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/react-learning/lessons/react-15.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/react-learning/lessons/react-15.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="useRef — React | FAYBIT" />
+    <meta property="og:description" content="تعلم كيف تستخدم useRef للاحتفاظ بقيمة أو الوصول إلى عنصر DOM دون التسبب في Re-render." />
+    <meta property="og:url" content="https://faybit.vercel.app/react-learning/lessons/react-15.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"React","item":"https://faybit.vercel.app/react-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"useRef","item":"https://faybit.vercel.app/react-learning/lessons/react-15.html"}]},{"@type":"LearningResource","name":"useRef","description":"تعلم كيف تستخدم useRef للاحتفاظ بقيمة أو الوصول إلى عنصر DOM دون التسبب في Re-render.","url":"https://faybit.vercel.app/react-learning/lessons/react-15.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"React — FAYBIT","url":"https://faybit.vercel.app/react-learning/react-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="React"><a href="/react-learning/lessons/index.html">الدروس</a><a href="/en/react-learning/lessons/react-15.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/react-learning/lessons/index.html">React</a></nav>
+      <p class="lp-eyebrow">الدرس 15 من 30</p>
+      <h1 class="lp-h1">useRef</h1>
+      <p class="lp-lead">تعلم كيف تستخدم useRef للاحتفاظ بقيمة أو الوصول إلى عنصر DOM دون التسبب في Re-render.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-15">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<p>
+useRef ترجع Object يحتوي على خاصية current يمكن أن تحتفظ
+بقيمة بين عمليات Render.
+</p>
+<p>
+من الاستخدامات الشائعة الوصول إلى DOM element مثل input
+للتركيز عليه.
+</p>
+<p>
+تغيير ref.current لا يسبب Re-render للمكون.
+</p>
+</div></article>
+<article class="body-card key-card"><p>useRef مفيدة للقيم التي تحتاج إلى الاحتفاظ بها دون التسبب في إعادة Render.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>الكود</h2></div>
+</div>
+<pre dir="ltr"><code>import { useRef } from "react";
+function App() {
+const inputRef = useRef(null);
+return &lt;input ref={inputRef} /&gt;;
+}</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>يمكن استخدامها أيضًا لحفظ reference إلى DOM element.</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span></div>
+</div>
+<p class="practice-description">جرّب تغيير اسم inputRef.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>في ماذا يمكن استخدام useRef؟</strong></p><ul><li>الوصول إلى DOM elements</li><li>إنشاء CSS فقط</li><li>إنشاء Database tables</li><li>استبدال JavaScript</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>الوصول إلى DOM elements</strong></p></details></li><li><p><strong>أين توجد القيمة المخزنة في ref؟</strong></p><ul><li>current</li><li>valueOnly</li><li>state</li><li>data</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>current</strong></p></details></li><li><p><strong>هل تغيير ref.current يسبب Re-render؟</strong></p><ul><li>لا</li><li>نعم دائمًا</li><li>فقط في CSS</li><li>فقط في HTML</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لا</strong></p></details></li><li><p><strong>ما الكود الذي يركّز حقل الإدخال عند النقر؟</strong></p><ul><li>input.current = focus</li><li>inputRef.current.focus()</li><li>inputRef.focus()</li><li>useRef.focus()</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>inputRef.current.focus()</strong></p><p>الوصول لعنصر DOM يتم عبر ref.current.</p></details></li><li><p><strong>لماذا لا يظهر الرقم الجديد؟ ref.current += 1; return &lt;p&gt;{ref.current}&lt;/p&gt;;</strong></p><ul><li>تغيير ref لا يسبب إعادة رسم</li><li>ref ممنوع في JSX</li><li>الرقم يجب أن يكون نصاً</li><li>هناك خطأ في p</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تغيير ref لا يسبب إعادة رسم</strong></p><p>للقيم المعروضة والمتغيرة استخدم state بدل ref.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-15">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/react-learning/lessons/react-14.html"><small>الدرس السابق</small><strong>useEffect</strong></a>
+        <a rel="next" href="/react-learning/lessons/react-16.html"><small>الدرس التالي</small><strong>useContext</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/react-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

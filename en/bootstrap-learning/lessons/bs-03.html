@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>The Grid System — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="12 columns, rows and columns, and changing the layout by screen size." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-03.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-03.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-03.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-03.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="The Grid System — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="12 columns, rows and columns, and changing the layout by screen size." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-03.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"The Grid System","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-03.html"}]},{"@type":"LearningResource","name":"The Grid System","description":"12 columns, rows and columns, and changing the layout by screen size.","url":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-03.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/en/bootstrap-learning/lessons/index.html">Lessons</a><a href="/bootstrap-learning/lessons/bs-03.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">Lesson 3 of 20</p>
+      <h1 class="lp-h1">The Grid System</h1>
+      <p class="lp-lead">12 columns, rows and columns, and changing the layout by screen size.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-3">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>The idea</h2><p>A <code>.row</code> inside a container divides the width into <strong>12 parts</strong>. A column <code>.col-N</code> occupies N parts. If you don't specify a number (<code>.col</code>), the columns share the width equally.</p></article><article class="content-card"><h2>Responsive columns</h2><p>Combine classes for several breakpoints: <code>col-12 col-md-6 col-lg-4</code> = a full-width column on mobile, half on tablets, and a third on large screens. If the columns' total exceeds 12, the excess wraps to a new line.</p></article></div>
+<article class="body-card key-card"><p>A row contains only columns, and the columns in a single line add up to 12.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="container text-center"&gt;
+&lt;div class="row g-2"&gt;
+&lt;div class="col-12 col-md-6 col-lg-4"&gt;&lt;div class="p-3 bg-primary-subtle border"&gt;1&lt;/div&gt;&lt;/div&gt;
+&lt;div class="col-12 col-md-6 col-lg-4"&gt;&lt;div class="p-3 bg-primary-subtle border"&gt;2&lt;/div&gt;&lt;/div&gt;
+&lt;div class="col-12 col-md-12 col-lg-4"&gt;&lt;div class="p-3 bg-primary-subtle border"&gt;3&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>On mobile each column takes its own line. From md, columns 1 and 2 sit side by side and the third takes a full line. From lg, all three columns are on one line. <code>g-2</code> sets the spacing between columns.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Make the row contain four equal columns on large screens using &lt;code&gt;col-lg-3&lt;/code&gt;.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>How many columns are in the Bootstrap grid?</strong></p><ul><li>12</li><li>10</li><li>16</li><li>24</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>12</strong></p></details></li><li><p><strong>What does col-12 col-md-6 mean?</strong></p><ul><li>A full-width column on mobile and half width from md upward</li><li>Half width always</li><li>Hidden on mobile</li><li>Two columns together</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A full-width column on mobile and half width from md upward</strong></p></details></li><li><p><strong>What happens if the columns in a row add up to more than 12?</strong></p><ul><li>The excess wraps to a new line</li><li>An error occurs</li><li>The columns are deleted</li><li>They overlap</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The excess wraps to a new line</strong></p></details></li><li><p><strong>You want three equal columns per line on large screens. Which class goes on each column?</strong></p><ul><li>col-lg-3</li><li>col-lg-6</li><li>col-lg-4</li><li>col-4-lg</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>col-lg-4</strong></p><p>12 divided by 3 gives 4 parts per column, so use col-lg-4.</p></details></li><li><p><strong>What happens to columns that just use col with no number?</strong></p><ul><li>They share the row width equally</li><li>Each takes two columns</li><li>They become hidden</li><li>They get a fixed 100px width</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>They share the row width equally</strong></p><p>A bare col divides the available space equally among the columns.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-3">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/bootstrap-learning/lessons/bs-02.html"><small>Previous lesson</small><strong>Containers and Breakpoints</strong></a>
+        <a rel="next" href="/en/bootstrap-learning/lessons/bs-04.html"><small>Next lesson</small><strong>Advanced Grid: Spacing, Ordering, and Nesting</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/bootstrap-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

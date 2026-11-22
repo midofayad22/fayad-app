@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <title>مشروع: لغة مصغّرة للحساب — أساسيات البرمجة | FAYBIT</title>
+    <meta name="description" content="PROJECT تجمع المراحل الثلاث في مفسّر كامل. تضيف ميزة جديدة للغة (عامل جديد). تفهم كيف تُصمَّم لغة من الصفر. الدروس 21 إلى 27 من هذا القسم. سنبني دالة…" />
+    <link rel="canonical" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-28.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-28.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-28.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-28.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="مشروع: لغة مصغّرة للحساب — أساسيات البرمجة | FAYBIT" />
+    <meta property="og:description" content="PROJECT تجمع المراحل الثلاث في مفسّر كامل. تضيف ميزة جديدة للغة (عامل جديد). تفهم كيف تُصمَّم لغة من الصفر. الدروس 21 إلى 27 من هذا القسم. سنبني دالة…" />
+    <meta property="og:url" content="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-28.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"أساسيات البرمجة","item":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"مشروع: لغة مصغّرة للحساب","item":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-28.html"}]},{"@type":"LearningResource","name":"مشروع: لغة مصغّرة للحساب","description":"PROJECT تجمع المراحل الثلاث في مفسّر كامل. تضيف ميزة جديدة للغة (عامل جديد). تفهم كيف تُصمَّم لغة من الصفر. الدروس 21 إلى 27 من هذا القسم. سنبني دالة…","url":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-28.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"أساسيات البرمجة — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="أساسيات البرمجة"><a href="/fundamentals/programming-basics/lessons/index.html">الدروس</a><a href="/en/fundamentals/programming-basics/lessons/prg-28.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/fundamentals/programming-basics/lessons/index.html">أساسيات البرمجة</a></nav>
+      <p class="lp-eyebrow">الدرس 28 من 31</p>
+      <h1 class="lp-h1">مشروع: لغة مصغّرة للحساب</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-28">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">PROJECT</span>
+<h2>Tokenizer وParser وEvaluator في برنامج واحد</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content"><section class="lesson-section doc-objectives"><h3>أهداف الدرس</h3><ul><li>تجمع المراحل الثلاث في مفسّر كامل.</li><li>تضيف ميزة جديدة للغة (عامل جديد).</li><li>تفهم كيف تُصمَّم لغة من الصفر.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>المتطلبات السابقة</h3><ul><li>الدروس 21 إلى 27 من هذا القسم.</li></ul>
+</section>
+<section class="lesson-section "><h3>الهدف</h3>
+<p>سنبني دالة <code>calc(text)</code> تأخذ تعبيرًا نصيًا مثل <code>"2 + 3 * (4 - 1)"</code> وتعيد قيمته. هذا هو القلب نفسه لأي مفسّر: نص ← Tokens ← AST ← قيمة.</p>
+<figure class="doc-diagram" role="group" aria-label="مخطط"><figcaption>خط المعالجة</figcaption><ol class="doc-flow"><li><strong>tokenize</strong><span>نص ← قائمة رموز</span></li><li><strong>parse</strong><span>رموز ← شجرة AST</span></li><li><strong>evaluate</strong><span>شجرة ← رقم</span></li></ol></figure>
+</section>
+<section class="lesson-section "><h3>البرنامج الكامل</h3>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>function tokenize(src) {
+return src.match(/\d+(?:\.\d+)?|[-+*/()]/g) || [];
+}
+function parse(tokens) {
+let pos = 0;
+const peek = () =&gt; tokens[pos], next = () =&gt; tokens[pos++];
+function expression() {
+let node = term();
+while (peek() === "+" || peek() === "-") node = { op: next(), left: node, right: term() };
+return node;
+}
+function term() {
+let node = factor();
+while (peek() === "*" || peek() === "/") node = { op: next(), left: node, right: factor() };
+return node;
+}
+function factor() {
+const t = next();
+if (t === "(") { const e = expression(); next(); return e; }
+return { num: Number(t) };
+}
+return expression();
+}
+function evaluate(n) {
+if (n.num !== undefined) return n.num;
+const a = evaluate(n.left), b = evaluate(n.right);
+switch (n.op) {
+case "+": return a + b;
+case "-": return a - b;
+case "*": return a * b;
+case "/": return a / b;
+}
+}
+const calc = (text) =&gt; evaluate(parse(tokenize(text)));
+console.log(calc("2 + 3 * (4 - 1)")); // 11</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>توسيع اللغة</h3>
+<p>إضافة ميزة جديدة تمر بالمراحل نفسها: يجب أن يعرف الـ Tokenizer الرمز، ويعرف الـ Parser موضعه في القواعد، ويعرف الـ Evaluator معناه. لإضافة عامل الباقي <code>%</code> مثلًا نضعه في مستوى <code>term</code> مع <code>*</code> و<code>/</code> ونضيف حالته في <code>evaluate</code>.</p>
+<div class="doc-mistakes"><h4>أخطاء شائعة</h4><ul><li>إضافة العامل إلى evaluate فقط دون Tokenizer وParser فلا يُقرأ أصلًا.</li><li>القسمة على صفر: في JavaScript تعطي <code>Infinity</code>، ولغتك قد تحتاج رسالة خطأ.</li></ul></div>
+<details class="doc-exercise"><summary><span>تمرين</span> أين تضع عامل القوة <code>^</code> ليكون أقوى ارتباطًا من الضرب؟</summary><div class="doc-solution"><strong>عرض الحل</strong><p>في قاعدة جديدة بين <code>term</code> و<code>factor</code>: <code>power := factor ("^" factor)*</code>، وتجعل <code>term</code> تستدعي <code>power</code> بدل <code>factor</code>.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>الخلاصة</h3><ul><li>المفسّر = Tokenizer + Parser + Evaluator.</li><li>كل ميزة جديدة تمس المراحل الثلاث.</li><li>بنيت لغة صغيرة حقيقية.</li></ul><p class="doc-next"><strong>الخطوة التالية:</strong> جرّب المشروع الإضافي: اللغات الكبيرة تفعل الشيء نفسه بقواعد أكبر.</p>
+</section></div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong> الفكرة الأساسية </strong>
+<p>كل لغة برمجة، مهما كبرت، هي نص ثم Tokens ثم AST ثم تنفيذ.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>مثال عملي</span>
+<h3>شاهد الفكرة في كود</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>function tokenize(s) { return s.match(/\d+|[-+*/()]/g) || []; }
+const tokens = tokenize("2 + 3 * 4");
+console.log(tokens.length, tokens.join(" "));</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>تطبيق</span>
+<h3>تحدَّ نفسك</h3>
+</div>
+</div>
+<p></p>
+<div class="fd-exercise"><h4>تمرين تفاعلي</h4><p class="fd-ex-prompt">المفسّر في المحرر يعمل لكنه لا يعرف الباقي %. أضف دعمه في المراحل الثلاث بحيث تعيد calc("10 % 3") القيمة 1 وcalc("2 + 7 % 4 * 3") القيمة 11.</p><p class="fd-ex-status" role="status"></p></div>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما المراحل الثلاث لمفسّر الحساب؟</strong></p><ul><li>Tokenize ثم Parse ثم Evaluate</li><li>Print ثم Save ثم Delete</li><li>Read ثم Draw ثم Play</li><li>Compile ثم Ship ثم Sell</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Tokenize ثم Parse ثم Evaluate</strong></p><p>نص ← رموز ← شجرة ← قيمة.</p></details></li><li><p><strong>لإضافة % أين تضعه في القواعد؟</strong></p><ul><li>في مستوى term مع * و/</li><li>في مستوى expression مع +</li><li>داخل الأرقام</li><li>خارج اللغة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>في مستوى term مع * و/</strong></p><p>للباقي أولوية الضرب والقسمة نفسها.</p></details></li><li><p><strong>ماذا يحدث لو أضفنا % إلى evaluate فقط؟</strong></p><ul><li>لن تُقرأ لأن Tokenizer لا يعرفها</li><li>تعمل تلقائيًا</li><li>يتعطل الحاسوب</li><li>تُحذف اللغة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لن تُقرأ لأن Tokenizer لا يعرفها</strong></p><p>المراحل مترابطة: الرمز يجب أن يمر بالمراحل الثلاث.</p></details></li><li><p><strong>ما ناتج calc(&quot;2 + 3 * (4 - 1)&quot;)؟</strong></p><ul><li>11</li><li>15</li><li>9</li><li>14</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>11</strong></p><p>(4 - 1) = 3 ثم 3 × 3 = 9 ثم 2 + 9 = 11.</p></details></li><li><p><strong>ما الذي يعيده calc(&quot;8 - 3 - 2&quot;) بالمحلل المكتوب بحلقة while في expression؟</strong></p><ul><li>3</li><li>7</li><li>-3</li><li>13</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>3</strong></p><p>الحلقة تبني الشجرة من اليسار: (8 - 3) - 2 = 3. لو بُنيت من اليمين لأصبحت 8 - (3 - 2) = 7 وهو خطأ لأن الطرح يُقرأ من اليسار.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-28">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/fundamentals/programming-basics/lessons/prg-27.html"><small>الدرس السابق</small><strong>المحلل النحوي Parser وشجرة AST</strong></a>
+        <a rel="next" href="/fundamentals/programming-basics/lessons/prg-29.html"><small>الدرس التالي</small><strong>الأخطاء النحوية وتصحيحها</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/fundamentals/programming-basics/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="angular" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Component Communication — Angular | FAYBIT</title>
+    <meta name="description" content="Learn how Angular components communicate and exchange information." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/angular-learning/lessons/angular-14.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/angular-learning/lessons/angular-14.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/angular-learning/lessons/angular-14.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/angular-learning/lessons/angular-14.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Component Communication — Angular | FAYBIT" />
+    <meta property="og:description" content="Learn how Angular components communicate and exchange information." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/angular-learning/lessons/angular-14.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Angular","item":"https://faybit.vercel.app/en/angular-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Component Communication","item":"https://faybit.vercel.app/en/angular-learning/lessons/angular-14.html"}]},{"@type":"LearningResource","name":"Component Communication","description":"Learn how Angular components communicate and exchange information.","url":"https://faybit.vercel.app/en/angular-learning/lessons/angular-14.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Angular — FAYBIT","url":"https://faybit.vercel.app/angular-learning/angular-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Angular"><a href="/en/angular-learning/lessons/index.html">Lessons</a><a href="/angular-learning/lessons/angular-14.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/angular-learning/lessons/index.html">Angular</a></nav>
+      <p class="lp-eyebrow">Lesson 14 of 32</p>
+      <h1 class="lp-h1">Component Communication</h1>
+      <p class="lp-lead">Learn how Angular components communicate and exchange information.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/angular-learning/angular-learning.html#lesson-14">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>Component communication becomes important as applications grow. A parent can pass data to a child through inputs, while a child can notify its parent through outputs and emitted events.</div></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>Code Example</h2></div>
+</div>
+<pre dir="ltr"><code>@Input()
+title = '';
+@Output()
+selected = new EventEmitter&lt;string&gt;();</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Try It Yourself</h2></div>
+</div>
+<p class="practice-description">Modify the example below and run your code to explore the Angular syntax.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which decorators are commonly used for component communication?</strong></p><ul><li>@Input and @Output</li><li>@CSS and @HTML</li><li>@Route and @Style</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>@Input and @Output</strong></p></details></li><li><p><strong>What is the main focus of this lesson?</strong></p><ul><li>Component Communication</li><li>Inputs</li><li>Outputs</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Component Communication</strong></p></details></li><li><p><strong>Which statement best describes this topic?</strong></p><ul><li>Component communication becomes important as applications grow. A parent can pass data to a child through inputs, while a child can notify its parent through outputs and emitted events.</li><li>An input is a public value that a child component can receive from its parent. This makes components reusable because the parent can provide different values to the same component.</li><li>Outputs are commonly implemented with EventEmitter. The child emits an event and the parent listens to that event. This creates a clear communication path from child to parent.</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Component communication becomes important as applications grow. A parent can pass data to a child through inputs, while a child can notify its parent through outputs and emitted events.</strong></p></details></li><li><p><strong>What is a practical goal of this lesson?</strong></p><ul><li>Learn how Angular components communicate and exchange information.</li><li>Learn how parent components pass data into child components using inputs.</li><li>Learn how child components send events back to their parent components.</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Learn how Angular components communicate and exchange information.</strong></p></details></li><li><p><strong>Which Angular concept is directly related to this lesson?</strong></p><ul><li>Component communication</li><li>Input</li><li>Output</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Component communication</strong></p></details></li><li><p><strong>Which syntax or API is most closely associated with this lesson?</strong></p><ul><li>@Input</li><li>input()</li><li>@Output</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>@Input</strong></p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/angular-learning/angular-learning.html#lesson-14">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/angular-learning/lessons/angular-13.html"><small>Previous lesson</small><strong>Rendering Lists</strong></a>
+        <a rel="next" href="/en/angular-learning/lessons/angular-15.html"><small>Next lesson</small><strong>Inputs</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/angular-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <title>Colors and Opacity — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="The color palette with shades from 50 to 950 and how to control opacity." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-03.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-03.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-03.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-03.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Colors and Opacity — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="The color palette with shades from 50 to 950 and how to control opacity." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-03.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Colors and Opacity","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-03.html"}]},{"@type":"LearningResource","name":"Colors and Opacity","description":"The color palette with shades from 50 to 950 and how to control opacity.","url":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-03.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/en/tailwind-learning/lessons/index.html">Lessons</a><a href="/tailwind-learning/lessons/tw-03.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">Lesson 3 of 20</p>
+      <h1 class="lp-h1">Colors and Opacity</h1>
+      <p class="lp-lead">The color palette with shades from 50 to 950 and how to control opacity.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-3">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>The Palette</h2><p>Each color has shades: <code>50, 100, 200 … 900, 950</code>. The syntax is <code>bg-{color}-{shade}</code>, plus <code>text-</code>, <code>border-</code>, <code>ring-</code>, and <code>fill-</code>. For example <code>bg-sky-600</code> and <code>text-slate-700</code>. Special colors: <code>white</code> <code>black</code> <code>transparent</code> <code>current</code>.</p></article><article class="content-card"><h2>Opacity</h2><p>Add <code>/opacity</code> after the color: <code>bg-black/50</code> and <code>text-sky-700/80</code>. For the whole element use <code>opacity-50</code>. Choose shades that are far apart (such as 50 for the background and 800 for the text) to ensure contrast.</p></article></div>
+<article class="body-card key-card"><p>bg-sky-600/50 means the same color at 50% opacity. Make sure there is enough contrast between text and background.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="space-y-3 p-4"&gt;
+&lt;div class="rounded bg-sky-100 p-3 text-sky-900"&gt;Light background with dark text&lt;/div&gt;
+&lt;div class="rounded bg-slate-800 p-3 text-white"&gt;Dark background with white text&lt;/div&gt;
+&lt;div class="rounded bg-black/10 p-3"&gt;Black at 10% opacity&lt;/div&gt;
+&lt;div id="o" class="rounded bg-emerald-500 p-3 opacity-50"&gt;opacity-50&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>Shades close to 50 are light, and those close to 900 are dark. <code>/10</code> changes only the color's opacity, whereas <code>opacity-50</code> affects the element and its content.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Make the first background &lt;code&gt;bg-rose-100&lt;/code&gt; and the text &lt;code&gt;text-rose-900&lt;/code&gt;.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What does bg-black/50 mean?</strong></p><ul><li>A black background at 50% opacity</li><li>A background with width 50</li><li>50 black elements</li><li>A black shadow</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A black background at 50% opacity</strong></p></details></li><li><p><strong>Which pair gives good contrast?</strong></p><ul><li>bg-slate-800 with text-white</li><li>bg-sky-100 with text-white</li><li>bg-white with text-yellow-100</li><li>bg-gray-300 with text-gray-400</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>bg-slate-800 with text-white</strong></p></details></li><li><p><strong>What is the difference between bg-black/50 and opacity-50?</strong></p><ul><li>The first affects only the background color, and the second affects the whole element</li><li>No difference</li><li>The second is for color only</li><li>The first hides the element</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The first affects only the background color, and the second affects the whole element</strong></p></details></li><li><p><strong>What does text-sky-700/80 mean?</strong></p><ul><li>Text in sky-700 at 80% opacity</li><li>Text 80px in size</li><li>Text at shade 780</li><li>A maximum of 80 characters</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Text in sky-700 at 80% opacity</strong></p><p>The number after the slash is the opacity percentage.</p></details></li><li><p><strong>What is the darkest shade in the default color scale?</strong></p><ul><li>50</li><li>500</li><li>1000</li><li>950</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>950</strong></p><p>The shades run from 50 to 950.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-3">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/tailwind-learning/lessons/tw-02.html"><small>Previous lesson</small><strong>Spacing: padding, margin, and gap</strong></a>
+        <a rel="next" href="/en/tailwind-learning/lessons/tw-04.html"><small>Next lesson</small><strong>Typography</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/tailwind-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

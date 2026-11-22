@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="css" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Pseudo-classes — CSS | FAYBIT</title>
+    <meta name="description" content="تعلم كيف تستخدم Pseudo-classes لتنسيق العناصر في حالات معينة." />
+    <link rel="canonical" href="https://faybit.vercel.app/css-learning/lessons/css-21.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/css-learning/lessons/css-21.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/css-learning/lessons/css-21.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/css-learning/lessons/css-21.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Pseudo-classes — CSS | FAYBIT" />
+    <meta property="og:description" content="تعلم كيف تستخدم Pseudo-classes لتنسيق العناصر في حالات معينة." />
+    <meta property="og:url" content="https://faybit.vercel.app/css-learning/lessons/css-21.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"CSS","item":"https://faybit.vercel.app/css-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Pseudo-classes","item":"https://faybit.vercel.app/css-learning/lessons/css-21.html"}]},{"@type":"LearningResource","name":"Pseudo-classes","description":"تعلم كيف تستخدم Pseudo-classes لتنسيق العناصر في حالات معينة.","url":"https://faybit.vercel.app/css-learning/lessons/css-21.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"CSS — FAYBIT","url":"https://faybit.vercel.app/css-learning/css-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="CSS"><a href="/css-learning/lessons/index.html">الدروس</a><a href="/en/css-learning/lessons/css-21.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/css-learning/lessons/index.html">CSS</a></nav>
+      <p class="lp-eyebrow">الدرس 21 من 30</p>
+      <h1 class="lp-h1">Pseudo-classes</h1>
+      <p class="lp-lead">تعلم كيف تستخدم Pseudo-classes لتنسيق العناصر في حالات معينة.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-21">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>أول كود CSS لك</h2></div>
+</div>
+<pre dir="ltr"><code>button:hover {
+background: #0f807a;
+}</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>اكتب CSS وشاهد النتيجة</h2></div>
+</div>
+<p class="practice-description">غيّر الكود الموجود بالأسفل ثم شغّله لترى النتيجة.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ماذا يمثل :hover؟</strong></p><ul><li>العنصر عندما يكون مؤشر الماوس فوقه</li><li>العنصر بعد الضغط عليه</li><li>العنصر عندما يكون مخفيًا</li><li>العنصر قبل تحميله</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>العنصر عندما يكون مؤشر الماوس فوقه</strong></p></details></li><li><p><strong>أي مما يلي يعتبر Pseudo-class؟</strong></p><ul><li>:hover</li><li>::after</li><li>.hover-element</li><li>#hover</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>:hover</strong></p></details></li><li><p><strong>هل تصف Pseudo-classes عادة حالة العنصر أم جزءًا منه؟</strong></p><ul><li>حالة العنصر</li><li>هيكل HTML</li><li>حالة قاعدة البيانات</li><li>نوع الملف</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>حالة العنصر</strong></p></details></li><li><p><strong>a:hover كُتبت قبل a:link بنفس القوة. لماذا لا يتغير اللون عند المرور؟</strong></p><ul><li>لأن hover لا يعمل على الروابط</li><li>لأن a:link المتأخرة تتغلب على hover السابقة</li><li>لأن اللون لا يمكن تغييره بـ hover</li><li>لأن المتصفح يحتاج JavaScript</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لأن a:link المتأخرة تتغلب على hover السابقة</strong></p><p>عند تساوي القوة يفوز الأخير كتابة، فتلغي a:link المتأخرة أثر hover. لذلك الترتيب الموصى به link ثم visited ثم hover ثم active.</p></details></li><li><p><strong>أي عناصر تستهدفها li:nth-child(2n)؟</strong></p><ul><li>العناصر الفردية 1 و3 و5</li><li>العنصر الثاني فقط</li><li>العناصر الزوجية 2 و4 و6</li><li>كل العناصر</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>العناصر الزوجية 2 و4 و6</strong></p><p>الصيغة 2n تعطي مضاعفات 2 أي 2 و4 و6 وهي مرادفة لـ even. أما الفردية فهي 2n+1 أو odd.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-21">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/css-learning/lessons/css-20.html"><small>الدرس السابق</small><strong>التصميم المتجاوب</strong></a>
+        <a rel="next" href="/css-learning/lessons/css-22.html"><small>الدرس التالي</small><strong>Pseudo-elements</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/css-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="js" />
+    <meta name="robots" content="noindex, follow" />
+    <title>JavaScript غير المتزامنة — JavaScript | FAYBIT</title>
+    <meta name="description" content="تعرّف على مفهوم Asynchronous JavaScript وكيفية التعامل مع المهام التي تستغرق وقتًا." />
+    <link rel="canonical" href="https://faybit.vercel.app/javascript-learning/lessons/js-22.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/javascript-learning/lessons/js-22.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-22.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/javascript-learning/lessons/js-22.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="JavaScript غير المتزامنة — JavaScript | FAYBIT" />
+    <meta property="og:description" content="تعرّف على مفهوم Asynchronous JavaScript وكيفية التعامل مع المهام التي تستغرق وقتًا." />
+    <meta property="og:url" content="https://faybit.vercel.app/javascript-learning/lessons/js-22.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript","item":"https://faybit.vercel.app/javascript-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"JavaScript غير المتزامنة","item":"https://faybit.vercel.app/javascript-learning/lessons/js-22.html"}]},{"@type":"LearningResource","name":"JavaScript غير المتزامنة","description":"تعرّف على مفهوم Asynchronous JavaScript وكيفية التعامل مع المهام التي تستغرق وقتًا.","url":"https://faybit.vercel.app/javascript-learning/lessons/js-22.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript — FAYBIT","url":"https://faybit.vercel.app/javascript-learning/javascript-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript"><a href="/javascript-learning/lessons/index.html">الدروس</a><a href="/en/javascript-learning/lessons/js-22.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/javascript-learning/lessons/index.html">JavaScript</a></nav>
+      <p class="lp-eyebrow">الدرس 22 من 25</p>
+      <h1 class="lp-h1">JavaScript غير المتزامنة</h1>
+      <p class="lp-lead">تعرّف على مفهوم Asynchronous JavaScript وكيفية التعامل مع المهام التي تستغرق وقتًا.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-22">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>document.getElementById("jsResult").textContent =
+"ابدأ";
+setTimeout(() =&gt; {
+document.getElementById("jsResult").textContent =
+"اكتملت المهمة";
+}, 1000);</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>
+<p><strong>Asynchronous JavaScript</strong> تسمح للبرنامج بالتعامل مع مهام لا تنتهي فورًا.</p>
+<p>من أمثلة ذلك طلب البيانات من Server أو الانتظار باستخدام Timer.</p>
+<p><strong>setTimeout()</strong> تسمح بتأجيل تنفيذ Function لمدة محددة.</p>
+<p>الهدف هو التعامل مع المهام التي تحتاج إلى وقت دون تجميد تجربة المستخدم.</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>اكتب JavaScript</h2></div>
+</div>
+<p class="practice-description">غيّر الكود الموجود بالأسفل ثم شغّله لترى النتيجة.</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ماذا يعني Asynchronous؟</strong></p><ul><li>تنفيذ المهام بطريقة لا تتطلب الانتظار لكل شيء قبل الاستمرار</li><li>إيقاف البرنامج</li><li>حذف HTML</li><li>تغيير CSS</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تنفيذ المهام بطريقة لا تتطلب الانتظار لكل شيء قبل الاستمرار</strong></p></details></li><li><p><strong>أي Function تستخدم لتأخير التنفيذ؟</strong></p><ul><li>setTimeout()</li><li>delayCode()</li><li>waitJS()</li><li>pauseScript()</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>setTimeout()</strong></p></details></li><li><p><strong>أين تظهر الحاجة إلى Async JavaScript كثيرًا؟</strong></p><ul><li>طلبات الشبكة والعمليات التي تستغرق وقتًا</li><li>كتابة CSS فقط</li><li>كتابة HTML فقط</li><li>تغيير الخطوط فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>طلبات الشبكة والعمليات التي تستغرق وقتًا</strong></p></details></li><li><p><strong>ما ترتيب الطباعة؟ console.log(1); setTimeout(() =&gt; console.log(2), 0); console.log(3);</strong></p><ul><li>1 ثم 2 ثم 3</li><li>2 ثم 1 ثم 3</li><li>1 ثم 3 ثم 2</li><li>3 ثم 2 ثم 1</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>1 ثم 3 ثم 2</strong></p><p>دالة setTimeout تؤجل callback حتى ينتهي الكود المتزامن حتى لو كان التأخير صفراً. لذلك تُطبع 1 و 3 أولاً ثم 2.</p></details></li><li><p><strong>جُدول setTimeout بتأخير 100ms ثم setTimeout بتأخير 0ms. أيهما يُنفَّذ أولاً؟</strong></p><ul><li>الأول لأنه جُدول أولاً</li><li>الثاني لأن مدة انتظاره أقصر</li><li>يعملان معاً في اللحظة نفسها</li><li>يتوقف البرنامج 100ms ثم يعمل الاثنان</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>الثاني لأن مدة انتظاره أقصر</strong></p><p>الترتيب يحدده زمن انتهاء المؤقت وليس ترتيب الكتابة، والانتظار لا يوقف بقية البرنامج. لذلك ينفذ المؤقت ذو 0ms أولاً.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-22">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/javascript-learning/lessons/js-21.html"><small>الدرس السابق</small><strong>Modules</strong></a>
+        <a rel="next" href="/javascript-learning/lessons/js-23.html"><small>الدرس التالي</small><strong>Promises</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/javascript-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

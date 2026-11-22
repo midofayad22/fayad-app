@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="js" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Parameters and Arguments — JavaScript | FAYBIT</title>
+    <meta name="description" content="Learn how functions receive data using Parameters and Arguments." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-08.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-08.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/javascript-learning/lessons/js-08.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/javascript-learning/lessons/js-08.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Parameters and Arguments — JavaScript | FAYBIT" />
+    <meta property="og:description" content="Learn how functions receive data using Parameters and Arguments." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/javascript-learning/lessons/js-08.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript","item":"https://faybit.vercel.app/en/javascript-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Parameters and Arguments","item":"https://faybit.vercel.app/en/javascript-learning/lessons/js-08.html"}]},{"@type":"LearningResource","name":"Parameters and Arguments","description":"Learn how functions receive data using Parameters and Arguments.","url":"https://faybit.vercel.app/en/javascript-learning/lessons/js-08.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript — FAYBIT","url":"https://faybit.vercel.app/javascript-learning/javascript-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript"><a href="/en/javascript-learning/lessons/index.html">Lessons</a><a href="/javascript-learning/lessons/js-08.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/javascript-learning/lessons/index.html">JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 8 of 25</p>
+      <h1 class="lp-h1">Parameters and Arguments</h1>
+      <p class="lp-lead">Learn how functions receive data using Parameters and Arguments.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-8">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>function greet(name) {
+return "Hello " + name;
+}
+document.getElementById("jsResult").textContent =
+greet("FAYBIT");</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>
+<p>A <strong>Parameter</strong> is the variable in the function definition that receives a value.</p>
+<p>An <strong>Argument</strong> is the value we pass when calling the function.</p>
+<p>In the example, <strong>name</strong> is the Parameter.</p>
+<p>And <strong>"FAYBIT"</strong> is the Argument passed to the function.</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Write JavaScript</h2></div>
+</div>
+<p class="practice-description">Change the code below, then run it to see the result.</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is a Parameter?</strong></p><ul><li>A variable the function receives</li><li>An HTML element</li><li>A CSS file</li><li>A loop</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A variable the function receives</strong></p></details></li><li><p><strong>What is an Argument?</strong></p><ul><li>The value passed to the function</li><li>The function name</li><li>The file name</li><li>The data type</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The value passed to the function</strong></p></details></li><li><p><strong>In greet(&quot;FAYBIT&quot;), what is the Argument?</strong></p><ul><li>&quot;FAYBIT&quot;</li><li>greet</li><li>name</li><li>()</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>&quot;FAYBIT&quot;</strong></p></details></li><li><p><strong>What does this code print? function f(a, b = 2) { return a + b; } console.log(f(1), f(1, 5));</strong></p><ul><li>NaN and 6</li><li>3 and 6</li><li>3 and 3</li><li>1 and 6</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>3 and 6</strong></p><p>The default b = 2 is used only when no argument is passed, so f(1) is 3. Passing 5 replaces the default, giving 6.</p></details></li><li><p><strong>What does this code print? function show(a, b) { console.log(b); } show(1);</strong></p><ul><li>1</li><li>An error because an argument is missing</li><li>null</li><li>undefined</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>undefined</strong></p><p>JavaScript does not require the number of arguments to match the parameters, and a parameter that receives no argument is undefined. No error is thrown and null is not used.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-8">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/javascript-learning/lessons/js-07.html"><small>Previous lesson</small><strong>Functions</strong></a>
+        <a rel="next" href="/en/javascript-learning/lessons/js-09.html"><small>Next lesson</small><strong>Return</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/javascript-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

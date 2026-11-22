@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="html" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Header &amp; Navigation — HTML | FAYBIT</title>
+    <meta name="description" content="Header &amp; Navigation: تعلّم إنشاء رأس الصفحة ومنطقة التنقل. — HTML." />
+    <link rel="canonical" href="https://faybit.vercel.app/html-learning/lessons/html-16.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/html-learning/lessons/html-16.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/html-learning/lessons/html-16.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/html-learning/lessons/html-16.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Header &amp; Navigation — HTML | FAYBIT" />
+    <meta property="og:description" content="Header &amp; Navigation: تعلّم إنشاء رأس الصفحة ومنطقة التنقل. — HTML." />
+    <meta property="og:url" content="https://faybit.vercel.app/html-learning/lessons/html-16.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"HTML","item":"https://faybit.vercel.app/html-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Header & Navigation","item":"https://faybit.vercel.app/html-learning/lessons/html-16.html"}]},{"@type":"LearningResource","name":"Header & Navigation","description":"Header & Navigation: تعلّم إنشاء رأس الصفحة ومنطقة التنقل. — HTML.","url":"https://faybit.vercel.app/html-learning/lessons/html-16.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"HTML — FAYBIT","url":"https://faybit.vercel.app/html-learning/html-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="HTML"><a href="/html-learning/lessons/index.html">الدروس</a><a href="/en/html-learning/lessons/html-16.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/html-learning/lessons/index.html">HTML</a></nav>
+      <p class="lp-eyebrow">الدرس 16 من 30</p>
+      <h1 class="lp-h1">Header &amp; Navigation</h1>
+      <p class="lp-lead">تعلّم إنشاء رأس الصفحة ومنطقة التنقل.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/html-learning/html-learning.html#lesson-16">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<article class="content-card">
+<h2>رأس الصفحة والتنقل</h2>
+<p>استخدم <code>&lt;header&gt;</code> للترويسة و <code>&lt;nav&gt;</code> لروابط القائمة.</p>
+</article>
+</div></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>قائمة الهيدر</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;header&gt;
+&lt;nav&gt;
+&lt;a href="#"&gt;الرئيسية&lt;/a&gt;
+&lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><header><nav><a href="#">الرئيسية</a></nav></header></div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>يجمع nav روابط التنقل الأساسية للموقع.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>اكتب كود HTML</h2></div>
+</div>
+<p class="practice-description">أنشئ ترويسة تحتوي على رابطين.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أي عنصر دلالي يخصص لجمع روابط التنقل الأساسية في الموقع؟</strong></p><ul><li>&lt;nav&gt;</li><li>&lt;header&gt;</li><li>&lt;menu&gt;</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>&lt;nav&gt;</strong></p></details></li><li><p><strong>أين يوضع عادةً وسم الترويسة العليا للموقع أو المقال؟</strong></p><ul><li>&lt;header&gt;</li><li>&lt;footer&gt;</li><li>&lt;aside&gt;</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>&lt;header&gt;</strong></p></details></li><li><p><strong>هل يمكن أن يحتوي header على شعار الموقع وعنوانه وروابط التنقل معاً؟</strong></p><ul><li>نعم، هذه الممارسة القياسية</li><li>لا، يمنع إضافة أكثر من عنصر داخله</li><li>فقط عند استخدام تنسيقات خاصة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>نعم، هذه الممارسة القياسية</strong></p></details></li><li><p><strong>أي محتوى يناسب العنصر header في رأس الصفحة؟</strong></p><ul><li>حقوق النشر فقط</li><li>الشعار وعنوان الموقع وروابط التنقل</li><li>الإعلانات الجانبية</li><li>كل محتوى الصفحة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>الشعار وعنوان الموقع وروابط التنقل</strong></p><p>header يضم المحتوى التمهيدي مثل الشعار والعنوان والتنقل. حقوق النشر تذهب إلى footer والإعلانات إلى aside.</p></details></li><li><p><strong>صفحة فيها ثلاثة روابط صغيرة للشروط في أسفلها. هل يجب وضعها في nav؟</strong></p><ul><li>نعم، كل مجموعة روابط يجب أن تكون في nav</li><li>لا يجوز استخدام nav في الصفحة أكثر من مرة</li><li>nav يُستخدم مع الصور فقط</li><li>ليس بالضرورة، فـ nav مخصص لكتل التنقل الرئيسية</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>ليس بالضرورة، فـ nav مخصص لكتل التنقل الرئيسية</strong></p><p>nav مخصص لمجموعات التنقل الرئيسية. روابط قليلة في التذييل يمكن أن تبقى في footer، ويجوز وجود أكثر من nav إذا لزم.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/html-learning/html-learning.html#lesson-16">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/html-learning/lessons/html-15.html"><small>الدرس السابق</small><strong>Labels &amp; Buttons</strong></a>
+        <a rel="next" href="/html-learning/lessons/html-17.html"><small>الدرس التالي</small><strong>Main &amp; Section</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/html-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

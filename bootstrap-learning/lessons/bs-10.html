@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>البطاقات Cards — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="مكوّن المحتوى الأكثر استخدامًا: صورة وعنوان ونص وأزرار وتخطيطات." />
+    <link rel="canonical" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-10.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-10.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-10.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-10.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="البطاقات Cards — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="مكوّن المحتوى الأكثر استخدامًا: صورة وعنوان ونص وأزرار وتخطيطات." />
+    <meta property="og:url" content="https://faybit.vercel.app/bootstrap-learning/lessons/bs-10.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"البطاقات Cards","item":"https://faybit.vercel.app/bootstrap-learning/lessons/bs-10.html"}]},{"@type":"LearningResource","name":"البطاقات Cards","description":"مكوّن المحتوى الأكثر استخدامًا: صورة وعنوان ونص وأزرار وتخطيطات.","url":"https://faybit.vercel.app/bootstrap-learning/lessons/bs-10.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/bootstrap-learning/lessons/index.html">الدروس</a><a href="/en/bootstrap-learning/lessons/bs-10.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">الدرس 10 من 20</p>
+      <h1 class="lp-h1">البطاقات Cards</h1>
+      <p class="lp-lead">مكوّن المحتوى الأكثر استخدامًا: صورة وعنوان ونص وأزرار وتخطيطات.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-10">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>البنية</h2><p><code>.card</code> ثم <code>.card-body</code> وبداخله <code>.card-title</code> و<code>.card-text</code> والأزرار. اختياريًا: <code>.card-header</code> و<code>.card-footer</code> و<code>.card-img-top</code>. البطاقة بعرض الأب افتراضيًا فتحتاج شبكة أو <code>style="width"</code>.</p></article><article class="content-card"><h2>بطاقات متساوية الارتفاع</h2><p>ضع البطاقات داخل <code>.row.row-cols-1.row-cols-md-3.g-4</code> وأضف <code>h-100</code> للبطاقة لتتساوى الارتفاعات.</p></article></div>
+<article class="body-card key-card"><p>ضع البطاقات في شبكة row-cols مع h-100 لتخطيط متجاوب متساوي الارتفاع.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="container py-3"&gt;
+&lt;div class="row row-cols-1 row-cols-md-3 g-3"&gt;
+&lt;div class="col"&gt;
+&lt;div class="card h-100"&gt;
+&lt;div class="card-header"&gt;HTML&lt;/div&gt;
+&lt;div class="card-body"&gt;
+&lt;h5 class="card-title"&gt;أساسيات الويب&lt;/h5&gt;
+&lt;p class="card-text"&gt;تعلّم بنية الصفحات خطوة بخطوة.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="card-footer"&gt;&lt;a href="#" class="btn btn-primary btn-sm"&gt;ابدأ&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col"&gt;&lt;div class="card h-100"&gt;&lt;div class="card-body"&gt;&lt;h5 class="card-title"&gt;CSS&lt;/h5&gt;&lt;p class="card-text"&gt;تنسيق وتصميم متجاوب.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="col"&gt;&lt;div class="card h-100 text-bg-dark"&gt;&lt;div class="card-body"&gt;&lt;h5 class="card-title"&gt;JavaScript&lt;/h5&gt;&lt;p class="card-text"&gt;التفاعل والمنطق.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>ثلاث بطاقات بنفس الارتفاع بفضل <code>h-100</code>. الفئة <code>text-bg-dark</code> تضبط لون الخلفية والنص معًا بتباين صحيح.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">أضف بطاقة رابعة وغيّر الشبكة إلى &lt;code&gt;row-cols-md-4&lt;/code&gt;.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما الحاوية الأساسية لمحتوى البطاقة؟</strong></p><ul><li>card-body</li><li>card-content</li><li>card-main</li><li>card-inner</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>card-body</strong></p></details></li><li><p><strong>كيف نجعل بطاقات الصف بنفس الارتفاع؟</strong></p><ul><li>h-100 على كل بطاقة داخل الشبكة</li><li>width:100%</li><li>d-none</li><li>position-absolute</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>h-100 على كل بطاقة داخل الشبكة</strong></p></details></li><li><p><strong>ما فائدة text-bg-dark؟</strong></p><ul><li>تضبط الخلفية والنص بتباين مناسب معًا</li><li>تخفي النص</li><li>تغير الخط</li><li>تضيف ظلًا</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تضبط الخلفية والنص بتباين مناسب معًا</strong></p></details></li><li><p><strong>أي فئة تضع صورة في أعلى البطاقة؟</strong></p><ul><li>card-top-image</li><li>card-img-top</li><li>card-body-img</li><li>img-card</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>card-img-top</strong></p><p>card-img-top مخصصة للصورة أعلى البطاقة وتتمدد بعرضها.</p></details></li><li><p><strong>بطاقة تمتد على كامل عرض الصفحة بشكل مزعج. ما الحل؟</strong></p><ul><li>وضعها داخل عمود في شبكة أو تحديد عرضها</li><li>إضافة card-narrow</li><li>حذف card-body</li><li>استخدام h-100 فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>وضعها داخل عمود في شبكة أو تحديد عرضها</strong></p><p>البطاقة تأخذ عرض أبيها افتراضياً، فنتحكم بعرضها بالشبكة.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-10">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/bootstrap-learning/lessons/bs-09.html"><small>الدرس السابق</small><strong>الأزرار ومجموعات الأزرار</strong></a>
+        <a rel="next" href="/bootstrap-learning/lessons/bs-11.html"><small>الدرس التالي</small><strong>شريط التنقل Navbar و Nav</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/bootstrap-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

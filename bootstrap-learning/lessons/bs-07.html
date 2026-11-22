@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>Flexbox والأدوات المساعدة — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="التوزيع والمحاذاة والاتجاه وتغليف العناصر بفئات d-flex." />
+    <link rel="canonical" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-07.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-07.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-07.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-07.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Flexbox والأدوات المساعدة — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="التوزيع والمحاذاة والاتجاه وتغليف العناصر بفئات d-flex." />
+    <meta property="og:url" content="https://faybit.vercel.app/bootstrap-learning/lessons/bs-07.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Flexbox والأدوات المساعدة","item":"https://faybit.vercel.app/bootstrap-learning/lessons/bs-07.html"}]},{"@type":"LearningResource","name":"Flexbox والأدوات المساعدة","description":"التوزيع والمحاذاة والاتجاه وتغليف العناصر بفئات d-flex.","url":"https://faybit.vercel.app/bootstrap-learning/lessons/bs-07.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/bootstrap-learning/lessons/index.html">الدروس</a><a href="/en/bootstrap-learning/lessons/bs-07.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">الدرس 7 من 20</p>
+      <h1 class="lp-h1">Flexbox والأدوات المساعدة</h1>
+      <p class="lp-lead">التوزيع والمحاذاة والاتجاه وتغليف العناصر بفئات d-flex.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-7">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>أساسيات</h2><p><code>d-flex</code> يحول الحاوية إلى Flex. الاتجاه: <code>flex-row</code> / <code>flex-column</code>. المحاذاة الرئيسية: <code>justify-content-start|center|end|between|around|evenly</code>. المحاذاة العرضية: <code>align-items-start|center|end|stretch</code>. التغليف: <code>flex-wrap</code>. المسافة: <code>gap-*</code>.</p></article><article class="content-card"><h2>على العناصر</h2><p><code>flex-fill</code> و<code>flex-grow-1</code> لتمدد العنصر، و<code>ms-auto</code> لدفع العنصر إلى النهاية. وكلها تدعم النقاط (<code>flex-md-row</code>).</p></article></div>
+<article class="body-card key-card"><p>d-flex + justify-content + align-items تغطي معظم احتياجات المحاذاة.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="container"&gt;
+&lt;div class="d-flex justify-content-between align-items-center border p-3 mb-3"&gt;
+&lt;strong&gt;FAYBIT&lt;/strong&gt;
+&lt;span class="text-muted"&gt;يسار/يمين حسب الاتجاه&lt;/span&gt;
+&lt;button class="btn btn-sm btn-primary"&gt;إجراء&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class="d-flex flex-column flex-md-row gap-2"&gt;
+&lt;div class="p-3 bg-light border flex-fill"&gt;1&lt;/div&gt;
+&lt;div class="p-3 bg-light border flex-fill"&gt;2&lt;/div&gt;
+&lt;div class="p-3 bg-light border ms-md-auto"&gt;ms-md-auto&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>الصف الأول يوزع العناصر على الأطراف ويتوسطها عموديًا. الثاني عمودي على الهاتف وأفقي من md، و<code>ms-md-auto</code> يدفع العنصر الأخير لنهاية السطر.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">اجعل الصف الأول &lt;code&gt;justify-content-center&lt;/code&gt; وشاهد التأثير.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أي فئة تحاذي العناصر عموديًا في المنتصف داخل d-flex أفقي؟</strong></p><ul><li>align-items-center</li><li>justify-content-center</li><li>text-center</li><li>m-auto فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>align-items-center</strong></p></details></li><li><p><strong>ماذا يفعل justify-content-between؟</strong></p><ul><li>يوزع المسافات بين العناصر ويضع الأولى والأخيرة على الأطراف</li><li>يمركز كل شيء</li><li>يعكس الترتيب</li><li>يخفي العناصر</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يوزع المسافات بين العناصر ويضع الأولى والأخيرة على الأطراف</strong></p></details></li><li><p><strong>ماذا تفعل flex-column؟</strong></p><ul><li>تجعل الاتجاه رأسيًا</li><li>تجعل العرض 100%</li><li>تحذف gap</li><li>تلغي d-flex</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تجعل الاتجاه رأسيًا</strong></p></details></li><li><p><strong>داخل d-flex تريد دفع زر إلى نهاية الصف. أي فئة تضعها على الزر؟</strong></p><ul><li>me-0</li><li>ms-auto</li><li>flex-fill</li><li>align-self-start</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>ms-auto</strong></p><p>ms-auto يأخذ كل المساحة الفارغة قبل العنصر فيدفعه إلى النهاية.</p></details></li><li><p><strong>أي فئات تجعل العناصر عمودية على الهاتف وأفقية من md؟</strong></p><ul><li>d-flex flex-row flex-md-column</li><li>d-block flex-md-row</li><li>d-flex flex-column flex-md-row</li><li>flex-column d-md-flex-row</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>d-flex flex-column flex-md-row</strong></p><p>الاتجاه الأساسي عمودي ثم flex-md-row يعيده أفقياً من md.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-7">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/bootstrap-learning/lessons/bs-06.html"><small>الدرس السابق</small><strong>المسافات والأحجام</strong></a>
+        <a rel="next" href="/bootstrap-learning/lessons/bs-08.html"><small>الدرس التالي</small><strong>الحدود والظلال والموضع والعرض</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/bootstrap-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="react" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Loading and Error States — React | FAYBIT</title>
+    <meta name="description" content="Learn how to show an appropriate UI while data is loading or when an error occurs." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/react-learning/lessons/react-20.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/react-learning/lessons/react-20.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/react-learning/lessons/react-20.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/react-learning/lessons/react-20.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Loading and Error States — React | FAYBIT" />
+    <meta property="og:description" content="Learn how to show an appropriate UI while data is loading or when an error occurs." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/react-learning/lessons/react-20.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"React","item":"https://faybit.vercel.app/en/react-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Loading and Error States","item":"https://faybit.vercel.app/en/react-learning/lessons/react-20.html"}]},{"@type":"LearningResource","name":"Loading and Error States","description":"Learn how to show an appropriate UI while data is loading or when an error occurs.","url":"https://faybit.vercel.app/en/react-learning/lessons/react-20.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"React — FAYBIT","url":"https://faybit.vercel.app/react-learning/react-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="React"><a href="/en/react-learning/lessons/index.html">Lessons</a><a href="/react-learning/lessons/react-20.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/react-learning/lessons/index.html">React</a></nav>
+      <p class="lp-eyebrow">Lesson 20 of 30</p>
+      <h1 class="lp-h1">Loading and Error States</h1>
+      <p class="lp-lead">Learn how to show an appropriate UI while data is loading or when an error occurs.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-20">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<p>
+When fetching data from an API, the app may need some time before the result arrives.
+</p>
+<p>
+So it is best to show a Loading state so the user knows the operation is still in progress.
+</p>
+<p>
+If the request fails, you should show an appropriate Error state instead of leaving the user with no information.
+</p>
+</div></article>
+<article class="body-card key-card"><p>Loading and Error states are an essential part of a good user experience.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>The code</h2></div>
+</div>
+<pre dir="ltr"><code>if (loading) {
+return &lt;p&gt;Loading...&lt;/p&gt;;
+}
+if (error) {
+return &lt;p&gt;An error occurred.&lt;/p&gt;;
+}</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>A professional app doesn't just display data; it also handles waiting and failure states.</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span></div>
+</div>
+<p class="practice-description">Change the Loading and Error messages.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Why do we use a Loading state?</strong></p><ul><li>To tell the user the data is still loading</li><li>To change CSS</li><li>To delete a Component</li><li>To create a Database</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>To tell the user the data is still loading</strong></p></details></li><li><p><strong>When do we use an Error state?</strong></p><ul><li>When a problem occurs in the operation</li><li>Only when the request succeeds</li><li>When changing the color</li><li>When loading CSS</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>When a problem occurs in the operation</strong></p></details></li><li><p><strong>What is the main benefit of these states?</strong></p><ul><li>Improving the user experience</li><li>Deleting JavaScript</li><li>Cancelling APIs</li><li>Cancelling State</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Improving the user experience</strong></p></details></li><li><p><strong>Which render check order is sensible?</strong></p><ul><li>Always return &lt;List/&gt;</li><li>Show Err before the request begins</li><li>Hide everything</li><li>if (loading) return &lt;Spinner/&gt;; if (error) return &lt;Err/&gt;; return &lt;List/&gt;</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>if (loading) return &lt;Spinner/&gt;; if (error) return &lt;Err/&gt;; return &lt;List/&gt;</strong></p><p>Handle loading, then error, then success.</p></details></li><li><p><strong>What happens if we skip catch and checking res.ok?</strong></p><ul><li>The server fixes itself</li><li>Nothing ever changes</li><li>The screen may stay loading or show wrong data</li><li>The request gets faster</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The screen may stay loading or show wrong data</strong></p><p>Without error handling the user never learns what happened.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-20">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/react-learning/lessons/react-19.html"><small>Previous lesson</small><strong>API Requests</strong></a>
+        <a rel="next" href="/en/react-learning/lessons/react-21.html"><small>Next lesson</small><strong>Performance Optimization</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/react-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

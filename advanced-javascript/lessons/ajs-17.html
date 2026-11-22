@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>أنماط async/await العملية — JavaScript المتقدم | FAYBIT</title>
+    <meta name="description" content="التنفيذ المتسلسل مقابل المتوازي، وإعادة المحاولة، والمهلة، ومعالجة الأخطاء الصحيحة." />
+    <link rel="canonical" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-17.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-17.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-17.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-17.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="أنماط async/await العملية — JavaScript المتقدم | FAYBIT" />
+    <meta property="og:description" content="التنفيذ المتسلسل مقابل المتوازي، وإعادة المحاولة، والمهلة، ومعالجة الأخطاء الصحيحة." />
+    <meta property="og:url" content="https://faybit.vercel.app/advanced-javascript/lessons/ajs-17.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript المتقدم","item":"https://faybit.vercel.app/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"أنماط async/await العملية","item":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-17.html"}]},{"@type":"LearningResource","name":"أنماط async/await العملية","description":"التنفيذ المتسلسل مقابل المتوازي، وإعادة المحاولة، والمهلة، ومعالجة الأخطاء الصحيحة.","url":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-17.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript المتقدم — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript المتقدم"><a href="/advanced-javascript/lessons/index.html">الدروس</a><a href="/en/advanced-javascript/lessons/ajs-17.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/advanced-javascript/lessons/index.html">JavaScript المتقدم</a></nav>
+      <p class="lp-eyebrow">الدرس 17 من 22</p>
+      <h1 class="lp-h1">أنماط async/await العملية</h1>
+      <p class="lp-lead">التنفيذ المتسلسل مقابل المتوازي، وإعادة المحاولة، والمهلة، ومعالجة الأخطاء الصحيحة.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-17">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>تسلسلي أم متوازٍ؟</h2><p>استخدام <code>await</code> داخل حلقة ينفذ العمليات واحدة بعد أخرى. إن كانت مستقلة فابدأها كلها ثم انتظرها معًا بـ <code>Promise.all</code> لتوفير الوقت.</p></article><article class="content-card"><h2>إعادة المحاولة والمهلة</h2><p>كثير من العمليات الشبكية تفشل مؤقتًا. اكتب دالة <code>retry</code> بعدد محاولات محدد، وسباقًا مع مؤقت لفرض مهلة.</p></article></div>
+<article class="body-card key-card"><p>لا تضع await داخل حلقة إذا كانت العمليات مستقلة.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>const wait = (ms, v) =&gt; new Promise((r) =&gt; setTimeout(() =&gt; r(v), ms));
+async function retry(fn, times) {
+let lastError;
+for (let i = 1; i &lt;= times; i++) {
+try { return await fn(i); }
+catch (e) { lastError = e; console.log("attempt", i, "failed"); }
+}
+throw lastError;
+}
+const withTimeout = (p, ms) =&gt;
+Promise.race([p, new Promise((_, j) =&gt; setTimeout(() =&gt; j(new Error("timeout")), ms))]);
+(async () =&gt; {
+const v = await retry(async (n) =&gt; { if (n &lt; 3) throw new Error("flaky"); return "ok on " + n; }, 5);
+console.log(v);
+const t0 = Date.now();
+await Promise.all([wait(40), wait(40), wait(40)]);
+console.log("parallel under 110ms:", Date.now() - t0 &lt; 110);
+try { await withTimeout(wait(100), 10); } catch (e) { console.log(e.message); }
+})();</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">attempt 1 failed
+attempt 2 failed
+ok on 3
+parallel under 110ms: true
+timeout</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>ثلاث عمليات انتظار 40ms تنتهي في ~40ms معًا لا 120ms لأنها بدأت في وقت واحد. دالة <code>retry</code> تحتفظ بآخر خطأ وترميه إذا استنفدت المحاولات.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>جرّب بنفسك</h2></div>
+</div>
+<p class="practice-description">اكتب &lt;code&gt;sleep(ms)&lt;/code&gt; تعيد Promise ثم استخدمها داخل async لطباعة رسالة بعد 50ms.</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>لماذا نستخدم Promise.all للعمليات المستقلة؟</strong></p><ul><li>لتنفيذها بالتوازي وتقليل الزمن الكلي</li><li>لتقليل عدد الأخطاء</li><li>لأنها تحذف await</li><li>لتشفيرها</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لتنفيذها بالتوازي وتقليل الزمن الكلي</strong></p></details></li><li><p><strong>كيف نفرض مهلة على وعد؟</strong></p><ul><li>Promise.race مع وعد يرفض بعد المهلة</li><li>setTimeout فقط</li><li>console.log</li><li>typeof</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Promise.race مع وعد يرفض بعد المهلة</strong></p></details></li><li><p><strong>ما الغرض من retry؟</strong></p><ul><li>إعادة محاولة العملية عند الفشل المؤقت</li><li>تسريع المتصفح</li><li>حذف الأخطاء</li><li>إنشاء Promise جديد دائمًا</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>إعادة محاولة العملية عند الفشل المؤقت</strong></p></details></li><li><p><strong>ما ترتيب الطباعة؟ [1, 2].forEach(async n =&gt; { await null; console.log(n); }); console.log(&quot;end&quot;);</strong></p><ul><li>1 ثم 2 ثم end</li><li>end ثم 1 ثم 2</li><li>end فقط</li><li>1 ثم end ثم 2</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>end ثم 1 ثم 2</strong></p><p>forEach لا تنتظر الـ promises التي تعيدها دوال async، فتكمل فوراً وتُطبع end أولاً. للانتظار الحقيقي نستخدم for...of مع await أو Promise.all مع map.</p></details></li><li><p><strong>ماذا يطبع الكود؟ async function f() { try { return Promise.reject(new Error(&quot;x&quot;)); } catch { return &quot;caught&quot;; } } f().catch(e =&gt; console.log(e.message));</strong></p><ul><li>caught</li><li>x</li><li>لا شيء</li><li>undefined</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>x</strong></p><p>return دون await يمرر الـ promise المرفوض للخارج قبل أن يلتقطه try، فلا يعمل catch الداخلي. لو كتبنا return await لالتقطه catch وطبعنا caught.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-17">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/advanced-javascript/lessons/ajs-16.html"><small>الدرس السابق</small><strong>Promise.all و allSettled و race و any</strong></a>
+        <a rel="next" href="/advanced-javascript/lessons/ajs-18.html"><small>الدرس التالي</small><strong>AbortController والـ Async Iterators</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/advanced-javascript/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

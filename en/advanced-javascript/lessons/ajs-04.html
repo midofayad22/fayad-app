@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>Higher-Order Functions and Composition — Advanced JavaScript | FAYBIT</title>
+    <meta name="description" content="Write functions that take functions and return them: Currying, Compose, and Pipe." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-04.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-04.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-04.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-04.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Higher-Order Functions and Composition — Advanced JavaScript | FAYBIT" />
+    <meta property="og:description" content="Write functions that take functions and return them: Currying, Compose, and Pipe." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-04.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Advanced JavaScript","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Higher-Order Functions and Composition","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-04.html"}]},{"@type":"LearningResource","name":"Higher-Order Functions and Composition","description":"Write functions that take functions and return them: Currying, Compose, and Pipe.","url":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-04.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Advanced JavaScript — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Advanced JavaScript"><a href="/en/advanced-javascript/lessons/index.html">Lessons</a><a href="/advanced-javascript/lessons/ajs-04.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/advanced-javascript/lessons/index.html">Advanced JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 4 of 22</p>
+      <h1 class="lp-h1">Higher-Order Functions and Composition</h1>
+      <p class="lp-lead">Write functions that take functions and return them: Currying, Compose, and Pipe.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-4">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Higher-Order Functions</h2><p>A higher-order function takes a function as an argument or returns a function. <code>map</code>, <code>filter</code>, and <code>reduce</code> are well-known examples, and you can build your own tools.</p></article><article class="content-card"><h2>Currying and Composition</h2><p><strong>Currying</strong> converts a multi-argument function into a chain of single-argument functions. <strong>Pipe</strong> passes the result from one function to the next, from left to right.</p></article></div>
+<article class="body-card key-card"><p>Build small pure functions and then compose them instead of writing one huge function.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>const curry = (fn) =&gt; function curried(...args) {
+return args.length &gt;= fn.length
+? fn(...args)
+: (...more) =&gt; curried(...args, ...more);
+};
+const add3 = curry((a, b, c) =&gt; a + b + c);
+console.log(add3(1)(2)(3), add3(1, 2)(3));
+const pipe = (...fns) =&gt; (x) =&gt; fns.reduce((v, f) =&gt; f(v), x);
+const slugify = pipe(
+(s) =&gt; s.trim(),
+(s) =&gt; s.toLowerCase(),
+(s) =&gt; s.replace(/\s+/g, "-"),
+);
+console.log(slugify("  Advanced JS Course "));</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">6 6
+advanced-js-course</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p><code>fn.length</code> is the number of declared parameters, so we keep collecting arguments until they are complete. <code>pipe</code> uses <code>reduce</code> to pass the value through a chain of transformations.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Try it yourself</h2></div>
+</div>
+<p class="practice-description">Define &lt;code&gt;compose&lt;/code&gt; (which runs from right to left) and try it on &lt;code&gt;double&lt;/code&gt; and &lt;code&gt;inc&lt;/code&gt;.</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is a higher-order function?</strong></p><ul><li>A function that takes a function or returns a function</li><li>A function with more than 5 arguments</li><li>A function inside an object</li><li>An async function</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A function that takes a function or returns a function</strong></p></details></li><li><p><strong>What is Currying?</strong></p><ul><li>Converting a multi-argument function into a sequence of single-argument functions</li><li>Copying functions</li><li>Deleting functions</li><li>Speeding up loops</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Converting a multi-argument function into a sequence of single-argument functions</strong></p></details></li><li><p><strong>How does pipe differ from compose?</strong></p><ul><li>pipe goes left to right and compose goes right to left</li><li>There is no difference at all</li><li>pipe is for numbers only</li><li>compose does not exist</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>pipe goes left to right and compose goes right to left</strong></p></details></li><li><p><strong>What does this code print? const add = a =&gt; b =&gt; a + b; console.log([1, 2].map(add(10)));</strong></p><ul><li>[11, 12]</li><li>[10, 10]</li><li>[1, 2]</li><li>[NaN, NaN]</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>[11, 12]</strong></p><p>add(10) returns a function that waits for b and remembers a = 10, and map feeds it each element. This is currying with partial application.</p></details></li><li><p><strong>Given inc = x =&gt; x + 1 and dbl = x =&gt; x * 2, what do compose(inc, dbl)(5) and pipe(inc, dbl)(5) return, in order?</strong></p><ul><li>12 and 12</li><li>11 and 12</li><li>12 and 11</li><li>11 and 11</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>11 and 12</strong></p><p>compose applies functions right to left: dbl(5) = 10 then inc = 11. pipe applies them left to right: inc(5) = 6 then dbl = 12.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-4">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/advanced-javascript/lessons/ajs-03.html"><small>Previous lesson</small><strong>this and call / apply / bind</strong></a>
+        <a rel="next" href="/en/advanced-javascript/lessons/ajs-05.html"><small>Next lesson</small><strong>Memoization, Debounce, and Throttle</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/advanced-javascript/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

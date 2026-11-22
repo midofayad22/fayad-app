@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <title>Project: A Tiny Calculator Language — Programming Basics | FAYBIT</title>
+    <meta name="description" content="PROJECT Combine the three stages into a complete interpreter. Add a new language feature (a new operator). Understand how a language is designed from…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-28.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-28.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-28.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-28.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Project: A Tiny Calculator Language — Programming Basics | FAYBIT" />
+    <meta property="og:description" content="PROJECT Combine the three stages into a complete interpreter. Add a new language feature (a new operator). Understand how a language is designed from…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-28.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Programming Basics","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Project: A Tiny Calculator Language","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-28.html"}]},{"@type":"LearningResource","name":"Project: A Tiny Calculator Language","description":"PROJECT Combine the three stages into a complete interpreter. Add a new language feature (a new operator). Understand how a language is designed from…","url":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-28.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Programming Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Programming Basics"><a href="/en/fundamentals/programming-basics/lessons/index.html">Lessons</a><a href="/fundamentals/programming-basics/lessons/prg-28.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/programming-basics/lessons/index.html">Programming Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 28 of 31 · PROJECT</p>
+      <h1 class="lp-h1">Project: A Tiny Calculator Language</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-28">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">PROJECT</span>
+<h2>Tokenizer, parser and evaluator in one program</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content"><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Combine the three stages into a complete interpreter.</li><li>Add a new language feature (a new operator).</li><li>Understand how a language is designed from scratch.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>Lessons 21 to 27 of this section.</li></ul>
+</section>
+<section class="lesson-section "><h3>The goal</h3>
+<p>We build a function <code>calc(text)</code> that takes a text expression such as <code>"2 + 3 * (4 - 1)"</code> and returns its value. This is the heart of any interpreter: text, tokens, AST, value.</p>
+<figure class="doc-diagram" role="group" aria-label="Diagram"><figcaption>The pipeline</figcaption><ol class="doc-flow"><li><strong>tokenize</strong><span>text to token list</span></li><li><strong>parse</strong><span>tokens to AST</span></li><li><strong>evaluate</strong><span>AST to number</span></li></ol></figure>
+</section>
+<section class="lesson-section "><h3>The complete program</h3>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>function tokenize(src) {
+return src.match(/\d+(?:\.\d+)?|[-+*/()]/g) || [];
+}
+function parse(tokens) {
+let pos = 0;
+const peek = () =&gt; tokens[pos], next = () =&gt; tokens[pos++];
+function expression() {
+let node = term();
+while (peek() === "+" || peek() === "-") node = { op: next(), left: node, right: term() };
+return node;
+}
+function term() {
+let node = factor();
+while (peek() === "*" || peek() === "/") node = { op: next(), left: node, right: factor() };
+return node;
+}
+function factor() {
+const t = next();
+if (t === "(") { const e = expression(); next(); return e; }
+return { num: Number(t) };
+}
+return expression();
+}
+function evaluate(n) {
+if (n.num !== undefined) return n.num;
+const a = evaluate(n.left), b = evaluate(n.right);
+switch (n.op) {
+case "+": return a + b;
+case "-": return a - b;
+case "*": return a * b;
+case "/": return a / b;
+}
+}
+const calc = (text) =&gt; evaluate(parse(tokenize(text)));
+console.log(calc("2 + 3 * (4 - 1)")); // 11</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>Extending the language</h3>
+<p>Adding a feature goes through the same stages: the tokenizer must know the symbol, the parser must know where it fits in the grammar, and the evaluator must know its meaning. To add the remainder operator <code>%</code>, for example, we place it in the <code>term</code> level with <code>*</code> and <code>/</code> and add its case to <code>evaluate</code>.</p>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>Adding the operator to evaluate only, so it is never even read.</li><li>Division by zero: in JavaScript it gives <code>Infinity</code>, and your language may want an error message.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> Where would you put the power operator <code>^</code> so that it binds tighter than multiplication?</summary><div class="doc-solution"><strong>Show solution</strong><p>In a new rule between <code>term</code> and <code>factor</code>: <code>power := factor ("^" factor)*</code>, and make <code>term</code> call <code>power</code> instead of <code>factor</code>.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>An interpreter is a tokenizer, a parser and an evaluator.</li><li>Every new feature touches all three stages.</li><li>You built a real small language.</li></ul><p class="doc-next"><strong>Next step:</strong> Try the extension ideas: big languages do the same thing with larger grammars.</p>
+</section></div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong>Core idea</strong>
+<p>Every programming language, however big, is text, then tokens, then an AST, then execution.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Worked example</span>
+<h3>See the idea in code</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>function tokenize(s) { return s.match(/\d+|[-+*/()]/g) || []; }
+const tokens = tokenize("2 + 3 * 4");
+console.log(tokens.length, tokens.join(" "));</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Practice</span>
+<h3>Challenge yourself</h3>
+</div>
+</div>
+<p></p>
+<div class="fd-exercise"><h4>Interactive exercise</h4><p class="fd-ex-prompt">The interpreter in the editor works but does not know the remainder %. Add support in all three stages so that calc("10 % 3") returns 1 and calc("2 + 7 % 4 * 3") returns 11.</p><p class="fd-ex-status" role="status"></p></div>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What are the three stages of the calculator interpreter?</strong></p><ul><li>Tokenize, parse, evaluate</li><li>Print, save, delete</li><li>Read, draw, play</li><li>Compile, ship, sell</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Tokenize, parse, evaluate</strong></p><p>Text to tokens to tree to value.</p></details></li><li><p><strong>Where do you put % in the grammar?</strong></p><ul><li>In the term level with * and /</li><li>In the expression level with +</li><li>Inside numbers</li><li>Outside the language</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>In the term level with * and /</strong></p><p>Remainder has the same precedence as multiplication and division.</p></details></li><li><p><strong>What happens if we add % to evaluate only?</strong></p><ul><li>It is never read because the tokenizer does not know it</li><li>It works automatically</li><li>The computer crashes</li><li>The language is deleted</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>It is never read because the tokenizer does not know it</strong></p><p>The stages are linked: the symbol must pass through all three.</p></details></li><li><p><strong>What does calc(&quot;2 + 3 * (4 - 1)&quot;) return?</strong></p><ul><li>11</li><li>15</li><li>9</li><li>14</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>11</strong></p><p>(4 - 1) = 3, then 3 × 3 = 9, then 2 + 9 = 11.</p></details></li><li><p><strong>What does calc(&quot;8 - 3 - 2&quot;) return with the parser that uses a while loop in expression?</strong></p><ul><li>3</li><li>7</li><li>-3</li><li>13</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>3</strong></p><p>The loop builds the tree from the left: (8 - 3) - 2 = 3. A right-leaning tree would give 8 - (3 - 2) = 7, which is wrong because subtraction associates from the left.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-28">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/programming-basics/lessons/prg-27.html"><small>Previous lesson</small><strong>The Parser and the AST</strong></a>
+        <a rel="next" href="/en/fundamentals/programming-basics/lessons/prg-29.html"><small>Next lesson</small><strong>Syntax Errors and Debugging a Parser</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/programming-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

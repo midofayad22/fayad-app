@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="css" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Box Model — CSS | FAYBIT</title>
+    <meta name="description" content="Box Model: Understand content, padding, border, and margin. — CSS." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/css-learning/lessons/css-10.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/css-learning/lessons/css-10.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/css-learning/lessons/css-10.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/css-learning/lessons/css-10.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Box Model — CSS | FAYBIT" />
+    <meta property="og:description" content="Box Model: Understand content, padding, border, and margin. — CSS." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/css-learning/lessons/css-10.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"CSS","item":"https://faybit.vercel.app/en/css-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Box Model","item":"https://faybit.vercel.app/en/css-learning/lessons/css-10.html"}]},{"@type":"LearningResource","name":"Box Model","description":"Box Model: Understand content, padding, border, and margin. — CSS.","url":"https://faybit.vercel.app/en/css-learning/lessons/css-10.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"CSS — FAYBIT","url":"https://faybit.vercel.app/css-learning/css-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="CSS"><a href="/en/css-learning/lessons/index.html">Lessons</a><a href="/css-learning/lessons/css-10.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/css-learning/lessons/index.html">CSS</a></nav>
+      <p class="lp-eyebrow">Lesson 10 of 30</p>
+      <h1 class="lp-h1">Box Model</h1>
+      <p class="lp-lead">Understand content, padding, border, and margin.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-10">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>Your first CSS code</h2></div>
+</div>
+<pre dir="ltr"><code>.box {
+width: 200px;
+padding: 20px;
+border: 5px solid #0f807a;
+margin: 20px;
+}</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Write CSS and see the result</h2></div>
+</div>
+<p class="practice-description">Change the code below, then run it to see the result.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which four parts make up the CSS box model?</strong></p><ul><li>Content, padding, border, margin</li><li>Text, image, button, link</li><li>Header, main, footer, nav</li><li>Width, height, color, font</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Content, padding, border, margin</strong></p></details></li><li><p><strong>Which part is closest to the actual content?</strong></p><ul><li>Content</li><li>Margin</li><li>Border</li><li>Outer spacing</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Content</strong></p></details></li><li><p><strong>Which part creates space outside the border?</strong></p><ul><li>Margin</li><li>Padding</li><li>Content</li><li>Width</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Margin</strong></p></details></li><li><p><strong>A content-box box has width: 100px; padding: 10px; border: 5px solid; margin: 20px. How wide is the visible box, not counting margin?</strong></p><ul><li>100px</li><li>120px</li><li>130px</li><li>170px</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>130px</strong></p><p>Visible width = content + padding + border on both sides: 100 + 20 + 10 = 130px. Margin is outside the visible box; adding it would give 170px.</p></details></li><li><p><strong>An element has background-color, padding, border and margin. Which part is not painted with the background color by default?</strong></p><ul><li>The padding</li><li>The content</li><li>The margin</li><li>The area under the border</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The margin</strong></p><p>The background extends under the content, padding and border, while margin is transparent external space that is never painted.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-10">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/css-learning/lessons/css-09.html"><small>Previous lesson</small><strong>Padding</strong></a>
+        <a rel="next" href="/en/css-learning/lessons/css-11.html"><small>Next lesson</small><strong>Box Sizing</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/css-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

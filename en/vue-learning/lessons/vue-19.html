@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="vue" />
+    <title>Lifecycle Hooks — Vue.js | FAYBIT</title>
+    <meta name="description" content="Learn the idea of lifecycle hooks and how to run code at specific stages of a component's life." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/vue-learning/lessons/vue-19.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/vue-learning/lessons/vue-19.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/vue-learning/lessons/vue-19.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/vue-learning/lessons/vue-19.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Lifecycle Hooks — Vue.js | FAYBIT" />
+    <meta property="og:description" content="Learn the idea of lifecycle hooks and how to run code at specific stages of a component's life." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/vue-learning/lessons/vue-19.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Vue.js","item":"https://faybit.vercel.app/en/vue-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Lifecycle Hooks","item":"https://faybit.vercel.app/en/vue-learning/lessons/vue-19.html"}]},{"@type":"LearningResource","name":"Lifecycle Hooks","description":"Learn the idea of lifecycle hooks and how to run code at specific stages of a component's life.","url":"https://faybit.vercel.app/en/vue-learning/lessons/vue-19.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Vue.js — FAYBIT","url":"https://faybit.vercel.app/vue-learning/vue-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Vue.js"><a href="/en/vue-learning/lessons/index.html">Lessons</a><a href="/vue-learning/lessons/vue-19.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/vue-learning/lessons/index.html">Vue.js</a></nav>
+      <p class="lp-eyebrow">Lesson 19 of 22</p>
+      <h1 class="lp-h1">Lifecycle Hooks</h1>
+      <p class="lp-lead">Learn the idea of lifecycle hooks and how to run code at specific stages of a component's life.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-19">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<h2>Lifecycle Hooks</h2>
+<p>
+Vue components go through different stages during their life.
+</p>
+<p>
+Lifecycle hooks let you run logic at specific stages, such as the moment the component is mounted.
+</p>
+</div></article>
+<article class="body-card key-card"><div class="info-label">Hooks run at specific stages</div><p>You can run logic when important stages in a component's lifecycle occur.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>The code</h2></div>
+</div>
+<pre dir="ltr"><code>
+&lt;div id="app"&gt;
+&lt;h2&gt;Hello Vue&lt;/h2&gt;
+&lt;/div&gt;
+&lt;script&gt;
+const { createApp, onMounted } = Vue;
+createApp({
+setup() {
+onMounted(() =&gt; {
+console.log("Component mounted!");
+});
+}
+}).mount("#app");
+&lt;/script&gt;
+</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static">
+<div style="padding:20px;font-family:Arial;">
+<div class="lp-demo-h2">Hello Vue</div>
+<p style="margin-bottom:0;">onMounted ran after the component was mounted.</p>
+</div>
+</div></div>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>
+<p>
+<code>onMounted()</code> is a lifecycle hook from the Composition API.
+</p>
+<p>
+The callback runs after the component is mounted in the DOM.
+</p>
+<p>
+Other hooks exist, such as <code>onUpdated()</code> and <code>onUnmounted()</code>.
+</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span></div>
+</div>
+<p class="practice-description">Use onMounted to run code after the component is mounted.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>When does onMounted() run?</strong></p><ul><li>After the component is mounted</li><li>Before JavaScript loads</li><li>Only when CSS changes</li><li>When HTML is deleted</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>After the component is mounted</strong></p></details></li><li><p><strong>What do lifecycle hooks do?</strong></p><ul><li>Run logic at specific stages of a component's life</li><li>Create databases</li><li>Change the operating system</li><li>Create images</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Run logic at specific stages of a component's life</strong></p></details></li><li><p><strong>Which hook is used to run logic after mounting?</strong></p><ul><li>onMounted()</li><li>onStarted()</li><li>onLoadedCSS()</li><li>afterVue()</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>onMounted()</strong></p></details></li><li><p><strong>Where do we put a data fetch we want to run when the component appears on the page?</strong></p><ul><li>Inside onMounted</li><li>Inside &lt;style&gt;</li><li>After the component is removed</li><li>Inside the props</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Inside onMounted</strong></p><p>onMounted runs after the component is inserted into the DOM and is a common place for initial data fetching.</p></details></li><li><p><strong>Which hook is suitable for clearing a setInterval before the component is removed?</strong></p><ul><li>onMounted</li><li>onUpdated</li><li>onBeforeUnmount</li><li>watch</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>onBeforeUnmount</strong></p><p>onBeforeUnmount runs just before removal, so we stop timers and listeners there to avoid leaks.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-19">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/vue-learning/lessons/vue-18.html"><small>Previous lesson</small><strong>watch</strong></a>
+        <a rel="next" href="/en/vue-learning/lessons/vue-20.html"><small>Next lesson</small><strong>Forms and Validation</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/vue-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

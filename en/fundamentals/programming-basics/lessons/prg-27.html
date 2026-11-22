@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <title>The Parser and the AST — Programming Basics | FAYBIT</title>
+    <meta name="description" content="PARSER Understand an AST . Know why multiplication binds tighter than addition. Read and write a recursive descent parser. The tokenizer (prg-26) and…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-27.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-27.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-27.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-27.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="The Parser and the AST — Programming Basics | FAYBIT" />
+    <meta property="og:description" content="PARSER Understand an AST . Know why multiplication binds tighter than addition. Read and write a recursive descent parser. The tokenizer (prg-26) and…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-27.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Programming Basics","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"The Parser and the AST","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-27.html"}]},{"@type":"LearningResource","name":"The Parser and the AST","description":"PARSER Understand an AST . Know why multiplication binds tighter than addition. Read and write a recursive descent parser. The tokenizer (prg-26) and…","url":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-27.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Programming Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Programming Basics"><a href="/en/fundamentals/programming-basics/lessons/index.html">Lessons</a><a href="/fundamentals/programming-basics/lessons/prg-27.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/programming-basics/lessons/index.html">Programming Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 27 of 31 · PARSER</p>
+      <h1 class="lp-h1">The Parser and the AST</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-27">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">PARSER</span>
+<h2>From a list of tokens to a tree that represents structure</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content"><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Understand an <span class="term">AST</span>.</li><li>Know why multiplication binds tighter than addition.</li><li>Read and write a recursive descent parser.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>The tokenizer (prg-26) and recursion (prg-21) lessons.</li></ul>
+</section>
+<section class="lesson-section "><h3>Why is a list not enough?</h3>
+<p>The list <code>2 + 3 * 4</code> does not say which operation runs first. The parser adds structure: it builds an <span class="term">AST</span> (abstract syntax tree) that places multiplication deeper than addition so it is computed first.</p>
+<figure class="doc-diagram doc-tree-fig" role="group" aria-label="AST"><figcaption>AST for <code>2 + 3 * 4</code></figcaption><div class="doc-tree-wrap"><ul class="doc-tree"><li><span class="doc-node doc-node-op">+</span><ul><li><span class="doc-node doc-node-num">2</span></li><li><span class="doc-node doc-node-op">*</span><ul><li><span class="doc-node doc-node-num">3</span></li><li><span class="doc-node doc-node-num">4</span></li></ul></li></ul></li></ul></div></figure>
+<p>Read the tree from the leaves to the root: <code>3 * 4 = 12</code> is computed first because it is deeper, then <code>2 + 12 = 14</code>. Brackets in <code>(2 + 3) * 4</code> change the shape of the tree itself:</p>
+<figure class="doc-diagram doc-tree-fig" role="group" aria-label="AST"><figcaption>AST for <code>(2 + 3) * 4</code></figcaption><div class="doc-tree-wrap"><ul class="doc-tree"><li><span class="doc-node doc-node-op">*</span><ul><li><span class="doc-node doc-node-op">+</span><ul><li><span class="doc-node doc-node-num">2</span></li><li><span class="doc-node doc-node-num">3</span></li></ul></li><li><span class="doc-node doc-node-num">4</span></li></ul></li></ul></div></figure>
+</section>
+<section class="lesson-section "><h3>The grammar</h3>
+<p>We describe the language with rules. Each precedence level gets a rule, and the deeper one binds tighter:</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">text</span></figcaption><pre dir="ltr"><code>expression := term ( ("+" | "-") term )*
+term       := factor ( ("*" | "/") factor )*
+factor     := NUMBER | "(" expression ")"</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>Recursive descent</h3>
+<p>We write one function per rule, and the functions call each other (and themselves, for brackets). This is recursion in action:</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>function parse(tokens) {
+let pos = 0;
+const peek = () =&gt; tokens[pos];
+const next = () =&gt; tokens[pos++];
+function expression() {
+let node = term();
+while (peek() === "+" || peek() === "-") {
+const op = next();
+node = { op, left: node, right: term() };
+}
+return node;
+}
+function term() {
+let node = factor();
+while (peek() === "*" || peek() === "/") {
+const op = next();
+node = { op, left: node, right: factor() };
+}
+return node;
+}
+function factor() {
+const t = next();
+if (t === "(") { const e = expression(); next(); return e; }
+return { num: Number(t) };
+}
+return expression();
+}
+console.log(JSON.stringify(parse(["2", "+", "3", "*", "4"])));</code></pre></figure>
+<figure class="code-ex code-ex-out"><figcaption><span class="code-ex-lang">Output</span></figcaption><pre dir="ltr"><code>{"op":"+","left":{"num":2},"right":{"op":"*","left":{"num":3},"right":{"num":4}}}</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>Evaluating the tree</h3>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>function evaluate(node) {
+if (node.num !== undefined) return node.num;
+const a = evaluate(node.left), b = evaluate(node.right);
+if (node.op === "+") return a + b;
+if (node.op === "-") return a - b;
+if (node.op === "*") return a * b;
+return a / b;
+}</code></pre></figure>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>Putting addition and multiplication in one rule, which loses precedence.</li><li>Forgetting to consume the closing bracket <code>)</code> after the inner expression.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> Why does the parser put the <code>term</code> rule beneath <code>expression</code> and not the other way round?</summary><div class="doc-solution"><strong>Show solution</strong><p>Because the deeper function finishes first, so multiplications are grouped before additions. The order of the rules is what produces operator precedence.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>An AST represents program structure as a tree.</li><li>The grammar determines precedence.</li><li>Recursive descent: one function per rule.</li></ul><p class="doc-next"><strong>Next step:</strong> We put everything together in a tiny language.</p>
+</section></div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong>Core idea</strong>
+<p>The parser turns tokens into a tree that carries structure and precedence, and evaluating the tree recursively gives the result.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Worked example</span>
+<h3>See the idea in code</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>const ast = { op: "+", left: { num: 2 }, right: { op: "*", left: { num: 3 }, right: { num: 4 } } };
+function evaluate(n) {
+if (n.num !== undefined) return n.num;
+const a = evaluate(n.left), b = evaluate(n.right);
+return n.op === "+" ? a + b : a * b;
+}
+console.log(evaluate(ast));</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Practice</span>
+<h3>Challenge yourself</h3>
+</div>
+</div>
+<p></p>
+<div class="fd-exercise"><h4>Interactive exercise</h4><p class="fd-ex-prompt">Write evaluate(node) that evaluates an AST of the form {num} or {op,left,right}, supporting + - * /.</p><p class="fd-ex-status" role="status"></p></div>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is an AST for?</strong></p><ul><li>It represents program structure and operator precedence</li><li>It stores images</li><li>It speeds up the internet</li><li>It deletes errors</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>It represents program structure and operator precedence</strong></p><p>The tree is the representation an interpreter evaluates or a compiler translates.</p></details></li><li><p><strong>Where is the multiplication in the tree of 2 + 3 * 4?</strong></p><ul><li>Deeper than the addition</li><li>At the root</li><li>Outside the tree</li><li>Nowhere</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Deeper than the addition</strong></p><p>The deeper node is evaluated first.</p></details></li><li><p><strong>What is the result of evaluating (2 + 3) * 4?</strong></p><ul><li>20</li><li>14</li><li>24</li><li>9</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>20</strong></p><p>The brackets push the addition deeper: 5 × 4.</p></details></li><li><p><strong>Which programming concept does recursive descent use?</strong></p><ul><li>Recursion</li><li>Images</li><li>Sound</li><li>Disks</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Recursion</strong></p><p>Functions call each other and themselves for brackets.</p></details></li><li><p><strong>What is the root of the AST for 2 * 3 + 4 and what does it evaluate to?</strong></p><ul><li>The root is * and the value is 14</li><li>The root is + and the value is 10, with 2 * 3 as its left child</li><li>The root is + and the value is 9</li><li>The tree has no root</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The root is + and the value is 10, with 2 * 3 as its left child</strong></p><p>The lowest-precedence operation sits at the top because it runs last, so the root is + with left child 2*3 = 6, and 6 + 4 = 10. Putting * at the root would mean computing (3 + 4) first, a precedence mistake.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-27">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/programming-basics/lessons/prg-26.html"><small>Previous lesson</small><strong>The Tokenizer (Lexer)</strong></a>
+        <a rel="next" href="/en/fundamentals/programming-basics/lessons/prg-28.html"><small>Next lesson</small><strong>Project: A Tiny Calculator Language</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/programming-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

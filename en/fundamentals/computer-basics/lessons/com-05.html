@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>Memory (RAM) — Computer Basics | FAYBIT</title>
+    <meta name="description" content="Explain what RAM is and why it is temporary ( Volatile ) memory. Compare RAM with storage in speed, capacity and persistence. Estimate memory needs…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-05.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-05.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-05.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-05.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Memory (RAM) — Computer Basics | FAYBIT" />
+    <meta property="og:description" content="Explain what RAM is and why it is temporary ( Volatile ) memory. Compare RAM with storage in speed, capacity and persistence. Estimate memory needs…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-05.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Computer Basics","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Memory (RAM)","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-05.html"}]},{"@type":"LearningResource","name":"Memory (RAM)","description":"Explain what RAM is and why it is temporary ( Volatile ) memory. Compare RAM with storage in speed, capacity and persistence. Estimate memory needs…","url":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-05.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Computer Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Computer Basics"><a href="/en/fundamentals/computer-basics/lessons/index.html">Lessons</a><a href="/fundamentals/computer-basics/lessons/com-05.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/computer-basics/lessons/index.html">Computer Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 5 of 30</p>
+      <h1 class="lp-h1">Memory (RAM)</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-5">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>Memory (RAM)</h2>
+<div><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Explain what <span class="term">RAM</span> is and why it is temporary (<span class="term">Volatile</span>) memory.</li><li>Compare RAM with storage in speed, capacity and persistence.</li><li>Estimate memory needs roughly and understand what happens when it fills up.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>The lessons “How a computer works” and “The CPU”.</li></ul>
+</section>
+<section class="lesson-section "><h3>Introduction: the workbench</h3>
+<p>Imagine a huge library (storage) and a workbench in front of you (RAM). You do not work on books inside the library; you bring what you need to the bench, and the bigger the bench the more references you can lay out at once. <span class="term">RAM</span> (Random Access Memory) is that bench: a fast space where the operating system puts the programs and data in use so the processor can reach them quickly.</p>
+<p>“Random” does not mean chaotic; it means any location in memory can be reached directly by its address in roughly the same time, without reading everything before it.</p>
+</section>
+<section class="lesson-section "><h3>Why does RAM lose its contents?</h3>
+<p>Most computer memory is <span class="term">DRAM</span>: each bit is stored as a tiny electrical charge in a small capacitor, and the charge leaks away within fractions of a second, so it must be refreshed constantly. When power is cut everything vanishes, which is why it is called <strong>volatile</strong> memory. An SSD or HDD, by contrast, keeps its data without power.</p>
+</section>
+<section class="lesson-section "><h3>RAM versus storage</h3>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Property</th><th scope="col">RAM</th><th scope="col">SSD</th><th scope="col">HDD</th></tr></thead><tbody><tr><th scope="row">Typical capacity</th><td>8 to 32 GB</td><td>256 GB to 2 TB</td><td>1 to 8 TB</td></tr><tr><th scope="row">Approximate access time</th><td>about 100 nanoseconds</td><td>about 0.1 milliseconds</td><td>about 5 to 10 milliseconds</td></tr><tr><th scope="row">Persistence</th><td>Lost at power-off</td><td>Permanent</td><td>Permanent</td></tr><tr><th scope="row">Price per GB</th><td>Highest</td><td>Medium</td><td>Lowest</td></tr></tbody></table></div>
+<p>The figures above are approximate and vary by generation and model, but the ratio is what matters: accessing RAM is roughly thousands of times faster than an SSD.</p>
+</section>
+<section class="lesson-section "><h3>Types and bandwidth</h3>
+<p>The common generations today are <span class="term">DDR4</span> and <span class="term">DDR5</span> (Double Data Rate): they transfer data twice per clock cycle. Speed is measured in MT/s, millions of transfers per second. The memory bus is 64 bits = 8 bytes wide, so DDR4-3200 theoretically moves 3200 × 8 = 25,600 MB per second, about 25.6 GB/s per channel. It roughly doubles with two channels (dual channel) using two matching modules.</p>
+</section>
+<section class="lesson-section "><h3>What happens when memory fills up?</h3>
+<figure class="doc-diagram" role="group" aria-label="Diagram"><figcaption>When memory runs short</figcaption><ol class="doc-flow"><li><strong>You open more programs</strong><span>the system demands more RAM</span></li><li><strong>Memory nears full</strong><span>the system first drops cached files that can be re-read</span></li><li><strong>Virtual memory</strong><span>the system moves unused pieces to disk (swap or page file)</span></li><li><strong>Noticeable slowdown</strong><span>disk access is far slower, so the user feels freezing</span></li></ol></figure>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">bash</span></figcaption><pre dir="ltr"><code>free -h</code></pre></figure>
+<figure class="code-ex code-ex-out"><figcaption><span class="code-ex-lang">Output</span></figcaption><pre dir="ltr"><code>              total   used   free   shared  buff/cache  available
+Mem:           15Gi   6.2Gi  1.1Gi   0.4Gi        8.0Gi       8.6Gi
+Swap:         2.0Gi   0B     2.0Gi</code></pre></figure>
+<p>In this example (illustrative values) “free” memory looks like only 1.1, but the <code>available</code> column shows 8.6 is actually obtainable, because the system uses the rest as a cache and can release it on demand.</p>
+</section>
+<section class="lesson-section "><h3>Real-world applications</h3>
+<ul><li><strong>Browsing:</strong> each browser tab can use hundreds of megabytes, so twenty tabs can take several gigabytes.</li><li><strong>Video and design work:</strong> large files and many layers need more memory; 16 GB or more is often recommended.</li><li><strong>Servers and databases:</strong> they keep the most requested data in RAM to answer quickly.</li><li><strong>Phones:</strong> when an app in the background “reloads” from scratch, the system probably evicted it from memory to make room for another.</li></ul>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>“More RAM always means a faster machine”: adding memory only helps if you are running out of what you have; otherwise nothing changes.</li><li>“Free memory is good and used memory is bad”: unused memory is wasted; a good system fills it with caches and releases them on demand.</li><li>“RAM is where my files are saved”: files are saved to storage, and what is in RAM is lost unless you save, which is why an unsaved draft disappears in a power cut.</li><li>“Memory cleaner apps speed up the machine”: emptying memory forces the system to re-read from disk, which usually makes things slower.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Calculation:</strong> a DDR5-5600 module on a single channel. What is the theoretical bandwidth, and roughly how long would it take to read a 4 GB block?</summary><div class="doc-solution"><strong>Show solution</strong><p>5600 × 8 bytes = 44,800 MB/s, about 44.8 GB/s. Reading 4 GB takes theoretically 4 ÷ 44.8 ≈ 0.09 seconds (about 90 ms). In practice the figure is a little lower because of overhead.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Reasoning:</strong> your machine has 8 GB, the system uses 3 GB, and you open 20 tabs at about 300 MB each. Will you have a problem?</summary><div class="doc-solution"><strong>Show solution</strong><p>The tabs: 20 × 300 = 6000 MB, about 6 GB (using 1 GB = 1000 MB for estimation). With the system that totals 9 GB, more than 8, so the system will fall back to virtual memory on disk and you will notice lag when switching tabs. Fixes: close some, use a feature that suspends inactive tabs, or upgrade the memory.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Hands-on:</strong> open Task Manager, the Performance tab, then Memory (or run <code>free -h</code>). Record the used amount before opening several programs, after opening them, and after closing them.</summary><div class="doc-solution"><strong>Show solution</strong><p>The value will rise with each program and drop when you close them, but it will not return exactly to the first number because the system keeps some files cached. The “Cached” figure in Windows or the <code>buff/cache</code> column in Linux is evidence of this behaviour. What matters is whether usage approaches total capacity.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>RAM is fast, temporary memory holding the programs and data in use.</li><li>It is thousands of times faster than storage but smaller, pricier, and loses its contents at power-off.</li><li>When it fills, the system falls back on the disk and the machine slows down.</li></ul><p class="doc-next"><strong>Next step:</strong> Storage: the places where data is kept permanently.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>Core concept</strong>
+<p>RAM is fast, temporary memory that the computer uses while programs are running.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Hands-on practice</span>
+<h3>Try it yourself</h3>
+</div>
+</div>
+<p>Watch RAM usage in Task Manager as you open several programs, then close them and notice the difference.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What typically happens to the contents of RAM when the computer is turned off?</strong></p><ul><li>They always remain</li><li>They move to the monitor</li><li>They are lost</li><li>They turn into a CPU</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>They are lost</strong></p></details></li><li><p><strong>Why does DRAM lose its contents when power is cut?</strong></p><ul><li>Each bit is a charge in a tiny capacitor that leaks quickly and needs constant refreshing</li><li>Because the user's command wipes it automatically</li><li>Because it is made of spinning platters</li><li>Because its capacity is too small</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Each bit is a charge in a tiny capacitor that leaks quickly and needs constant refreshing</strong></p><p>The charge leaks within fractions of a second, which is why it is called volatile memory.</p></details></li><li><p><strong>free -h shows Free = 1.1Gi but available = 8.6Gi. What can we conclude?</strong></p><ul><li>Memory is nearly full and the machine will stop</li><li>The memory is faulty</li><li>Most of the memory used as cache can be released on demand</li><li>8.6 is the disk size</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Most of the memory used as cache can be released on demand</strong></p><p>The system uses spare memory as cache and can release it instantly, so the available column is the accurate one.</p></details></li><li><p><strong>When RAM fills up and the system falls back to swap on disk, what is the expected result?</strong></p><ul><li>The machine gets faster</li><li>RAM capacity doubles at the same speed</li><li>Nothing the user would notice changes</li><li>Noticeable slowdown or freezing because disk is far slower</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Noticeable slowdown or freezing because disk is far slower</strong></p><p>Virtual memory relies on disk, whose access is thousands of times slower than RAM.</p></details></li><li><p><strong>What is the theoretical bandwidth of DDR4-3200 per channel? (The bus is 8 bytes wide)</strong></p><ul><li>6.4 GB/s</li><li>25.6 GB/s</li><li>3200 GB/s</li><li>256 GB/s</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>25.6 GB/s</strong></p><p>3200 million transfers x 8 bytes = 25,600 MB/s, about 25.6 GB/s.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-5">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/computer-basics/lessons/com-04.html"><small>Previous lesson</small><strong>The Processor (CPU)</strong></a>
+        <a rel="next" href="/en/fundamentals/computer-basics/lessons/com-06.html"><small>Next lesson</small><strong>Storage</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/computer-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

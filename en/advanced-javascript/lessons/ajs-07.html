@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>Classes: Privacy and static — Advanced JavaScript | FAYBIT</title>
+    <meta name="description" content="Build modern classes with private fields, static methods, and Getters and Setters." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-07.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-07.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-07.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-07.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Classes: Privacy and static — Advanced JavaScript | FAYBIT" />
+    <meta property="og:description" content="Build modern classes with private fields, static methods, and Getters and Setters." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-07.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Advanced JavaScript","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Classes: Privacy and static","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-07.html"}]},{"@type":"LearningResource","name":"Classes: Privacy and static","description":"Build modern classes with private fields, static methods, and Getters and Setters.","url":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-07.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Advanced JavaScript — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Advanced JavaScript"><a href="/en/advanced-javascript/lessons/index.html">Lessons</a><a href="/advanced-javascript/lessons/ajs-07.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/advanced-javascript/lessons/index.html">Advanced JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 7 of 22</p>
+      <h1 class="lp-h1">Classes: Privacy and static</h1>
+      <p class="lp-lead">Build modern classes with private fields, static methods, and Getters and Setters.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-7">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Syntactic Sugar over Prototypes</h2><p>A <code>class</code> is a clearer way to write the same prototype system. Methods go onto <code>prototype</code> automatically.</p></article><article class="content-card"><h2>Private and Static</h2><p>Fields that start with <code>#</code> are truly private and cannot be accessed from outside the class. <code>static</code> members belong to the class itself, not to instances.</p></article></div>
+<article class="body-card key-card"><p>Use #private to protect state, and getter/setter to validate values.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>class Account {
+#balance = 0;
+static count = 0;
+constructor(owner) {
+this.owner = owner;
+Account.count++;
+}
+get balance() { return this.#balance; }
+deposit(n) {
+if (n &lt;= 0) throw new RangeError("amount must be positive");
+this.#balance += n;
+return this;
+}
+static compare(a, b) { return a.balance - b.balance; }
+}
+const a = new Account("Ali").deposit(50).deposit(25);
+const b = new Account("Noor").deposit(10);
+console.log(a.balance, Account.count);
+console.log([a, b].sort(Account.compare).map((x) =&gt; x.owner));
+console.log(a.balance = 5, a.balance);
+try { a.deposit(-1); } catch (e) { console.log(e.name + ": " + e.message); }</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">75 2
+[ 'Noor', 'Ali' ]
+5 75
+RangeError: amount must be positive</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>There is no setter for <code>balance</code>, so the assignment changes nothing (it is silently ignored outside strict mode). The <code>#balance</code> field can only be accessed from inside the class.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Try it yourself</h2></div>
+</div>
+<p class="practice-description">Add to the &lt;code&gt;Temperature&lt;/code&gt; class a getter named &lt;code&gt;fahrenheit&lt;/code&gt; that computes the value from &lt;code&gt;celsius&lt;/code&gt;.</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What does a field that starts with # mean?</strong></p><ul><li>Private and cannot be read from outside the class</li><li>Constant only</li><li>Temporary</li><li>Public</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Private and cannot be read from outside the class</strong></p></details></li><li><p><strong>What do static members belong to?</strong></p><ul><li>The class itself, not instances</li><li>Every instance</li><li>The prototype only</li><li>window</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The class itself, not instances</strong></p></details></li><li><p><strong>What is the purpose of a getter?</strong></p><ul><li>Reading a computed value as if it were a property</li><li>Deleting the property</li><li>Freezing the object</li><li>Duplicating the object</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Reading a computed value as if it were a property</strong></p></details></li><li><p><strong>What does this code print? class A { #x = 1; } const a = new A(); console.log(a.x, Object.keys(a));</strong></p><ul><li>1 and [&quot;x&quot;]</li><li>1 and []</li><li>undefined and []</li><li>undefined and [&quot;#x&quot;]</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>undefined and []</strong></p><p>The private field #x is not a normal property named x and does not appear in the keys, so a.x is undefined. It can only be reached inside the class through this.#x.</p></details></li><li><p><strong>What does this code print? class C { static n = 0; constructor() { C.n++; } } new C(); new C(); console.log(C.n);</strong></p><ul><li>0</li><li>1</li><li>2</li><li>undefined</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>2</strong></p><p>A static field belongs to the class itself with a single shared copy, and each constructor call increments it. After two instances it is 2.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-7">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/advanced-javascript/lessons/ajs-06.html"><small>Previous lesson</small><strong>Prototypes and the Inheritance Chain</strong></a>
+        <a rel="next" href="/en/advanced-javascript/lessons/ajs-08.html"><small>Next lesson</small><strong>Class Inheritance and Mixins</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/advanced-javascript/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

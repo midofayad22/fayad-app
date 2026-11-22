@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <title>Time Complexity and Big-O — Programming Basics | FAYBIT</title>
+    <meta name="description" content="COMPLEXITY Understand what O(n) and O(n²) mean. Compare two solutions to the same problem. Improve a slow solution using a suitable structure. The Loops…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-23.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-23.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-23.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-23.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Time Complexity and Big-O — Programming Basics | FAYBIT" />
+    <meta property="og:description" content="COMPLEXITY Understand what O(n) and O(n²) mean. Compare two solutions to the same problem. Improve a slow solution using a suitable structure. The Loops…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-23.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Programming Basics","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Time Complexity and Big-O","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-23.html"}]},{"@type":"LearningResource","name":"Time Complexity and Big-O","description":"COMPLEXITY Understand what O(n) and O(n²) mean. Compare two solutions to the same problem. Improve a slow solution using a suitable structure. The Loops…","url":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-23.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Programming Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Programming Basics"><a href="/en/fundamentals/programming-basics/lessons/index.html">Lessons</a><a href="/fundamentals/programming-basics/lessons/prg-23.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/programming-basics/lessons/index.html">Programming Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 23 of 31 · COMPLEXITY</p>
+      <h1 class="lp-h1">Time Complexity and Big-O</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-23">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">COMPLEXITY</span>
+<h2>How does running time change as the data grows?</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content"><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Understand what <span class="term">O(n)</span> and <span class="term">O(n²)</span> mean.</li><li>Compare two solutions to the same problem.</li><li>Improve a slow solution using a suitable structure.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>The Loops (prg-11) and data structures (prg-22) lessons.</li></ul>
+</section>
+<section class="lesson-section "><h3>We do not measure in seconds</h3>
+<p>Running time in seconds changes with the machine. So we describe an algorithm by how the <strong>number of steps grows</strong> with input size <code>n</code>. That is <span class="term">Big-O</span>: an approximate upper bound on growth that ignores constants.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Notation</th><th scope="col">Name</th><th scope="col">Example</th></tr></thead><tbody><tr><th scope="row">O(1)</th><td>Constant</td><td>Reading an element by index <code>list[3]</code></td></tr><tr><th scope="row">O(log n)</th><td>Logarithmic</td><td>Binary search</td></tr><tr><th scope="row">O(n)</th><td>Linear</td><td>Visiting each element once</td></tr><tr><th scope="row">O(n²)</th><td>Quadratic</td><td>A loop inside a loop over the same data</td></tr></tbody></table></div>
+</section>
+<section class="lesson-section "><h3>Example: finding a duplicate</h3>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>// O(n^2): compare every pair
+function hasDuplicateSlow(a) {
+for (let i = 0; i &lt; a.length; i++)
+for (let j = i + 1; j &lt; a.length; j++)
+if (a[i] === a[j]) return true;
+return false;
+}
+// O(n): remember what we have seen in a Set
+function hasDuplicateFast(a) {
+const seen = new Set();
+for (const x of a) {
+if (seen.has(x)) return true;
+seen.add(x);
+}
+return false;
+}</code></pre></figure>
+<p>With 1,000 items the first solution makes about half a million comparisons and the second only a thousand steps. With a million items the first becomes impractical (about 500 billion comparisons) while the second stays fast.</p>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>Optimising before measuring the problem (premature optimisation).</li><li>Believing O(n²) is always bad; for tiny data it can be enough and clearer.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> What is the complexity of two consecutive (not nested) loops of n items each?</summary><div class="doc-solution"><strong>Show solution</strong><p>O(n): we add n + n = 2n, and the constant 2 is ignored in Big-O.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>Big-O describes the growth of steps, not seconds.</li><li>A loop inside a loop is usually O(n²).</li><li>The right structure can turn O(n²) into O(n).</li></ul><p class="doc-next"><strong>Next step:</strong> Different ways of thinking in programming: paradigms.</p>
+</section></div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong>Core idea</strong>
+<p>A good algorithm is one whose running time stays acceptable when the data grows.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Worked example</span>
+<h3>See the idea in code</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>const data = Array.from({ length: 5 }, (_, i) =&gt; i * 2);
+let steps = 0;
+for (const x of data) { steps++; }
+console.log("n =", data.length, "steps =", steps);</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Practice</span>
+<h3>Challenge yourself</h3>
+</div>
+</div>
+<p></p>
+<div class="fd-exercise"><h4>Interactive exercise</h4><p class="fd-ex-prompt">Write hasDuplicate(arr) in O(n) using a Set. It is tested on 200,000 items; a quadratic solution will time out.</p><p class="fd-ex-status" role="status"></p></div>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is the complexity of one for loop over n items?</strong></p><ul><li>O(n)</li><li>O(1)</li><li>O(n²)</li><li>O(log n)</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>O(n)</strong></p><p>The number of steps grows in proportion to n.</p></details></li><li><p><strong>What is the complexity of two nested loops over n items?</strong></p><ul><li>O(n²)</li><li>O(n)</li><li>O(1)</li><li>O(2n)</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>O(n²)</strong></p><p>For each outer item we visit n inner items.</p></details></li><li><p><strong>Why do we ignore constants in Big-O?</strong></p><ul><li>Because what matters is the growth shape at large sizes</li><li>Because they are wrong</li><li>Because the computer does not count them</li><li>No reason</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Because what matters is the growth shape at large sizes</strong></p><p>At large n the growth shape dominates the constant.</p></details></li><li><p><strong>What does the Set do in hasDuplicateFast?</strong></p><ul><li>It makes checking for a value fast</li><li>It sorts the array</li><li>It deletes the array</li><li>It prints the result</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>It makes checking for a value fast</strong></p><p>has() does not scan all elements.</p></details></li><li><p><strong>What is the complexity of this code in terms of n? for (const x of arr) { f(x); } followed directly (not inside it) by for (const y of arr) { g(y); }</strong></p><ul><li>O(n)</li><li>O(n squared)</li><li>O(1)</li><li>O(log n)</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>O(n)</strong></p><p>The loops run one after the other, so the work is n + n = 2n, which is O(n) after dropping the constant. Squaring happens only when loops are nested.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-23">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/programming-basics/lessons/prg-22.html"><small>Previous lesson</small><strong>Data Structures: Stack, Queue, Map and Set</strong></a>
+        <a rel="next" href="/en/fundamentals/programming-basics/lessons/prg-24.html"><small>Next lesson</small><strong>Programming Paradigms</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/programming-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

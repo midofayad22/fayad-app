@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>المسافات والأحجام — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="فئات margin وpadding وgap والعرض والارتفاع المنطقية (تدعم RTL)." />
+    <link rel="canonical" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-06.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-06.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-06.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-06.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="المسافات والأحجام — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="فئات margin وpadding وgap والعرض والارتفاع المنطقية (تدعم RTL)." />
+    <meta property="og:url" content="https://faybit.vercel.app/bootstrap-learning/lessons/bs-06.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"المسافات والأحجام","item":"https://faybit.vercel.app/bootstrap-learning/lessons/bs-06.html"}]},{"@type":"LearningResource","name":"المسافات والأحجام","description":"فئات margin وpadding وgap والعرض والارتفاع المنطقية (تدعم RTL).","url":"https://faybit.vercel.app/bootstrap-learning/lessons/bs-06.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/bootstrap-learning/lessons/index.html">الدروس</a><a href="/en/bootstrap-learning/lessons/bs-06.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">الدرس 6 من 20</p>
+      <h1 class="lp-h1">المسافات والأحجام</h1>
+      <p class="lp-lead">فئات margin وpadding وgap والعرض والارتفاع المنطقية (تدعم RTL).</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-6">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>صيغة المسافات</h2><p><code>{property}{sides}-{size}</code> حيث property هو <code>m</code> (margin) أو <code>p</code> (padding)، وsides هي <code>t</code> <code>b</code> <code>s</code> (البداية) <code>e</code> (النهاية) <code>x</code> <code>y</code> أو فارغة للكل، وsize من <code>0</code> إلى <code>5</code> أو <code>auto</code>. القيم: 1=0.25rem، 2=0.5rem، 3=1rem، 4=1.5rem، 5=3rem.</p></article><article class="content-card"><h2>start و end</h2><p>استخدم <code>ms-*</code> و<code>me-*</code> (بدل left/right) لتنعكس تلقائيًا في الواجهات العربية RTL.</p></article><article class="content-card"><h2>الأحجام</h2><p><code>w-25</code> <code>w-50</code> <code>w-75</code> <code>w-100</code> <code>w-auto</code> و<code>h-*</code> بنفس الفكرة، و<code>mw-100</code> و<code>vh-100</code> و<code>min-vh-100</code>.</p></article></div>
+<article class="body-card key-card"><p>استخدم ms/me بدل ml/mr لتعمل التصاميم في الاتجاهين.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="container"&gt;
+&lt;div class="bg-light border p-3 mb-3"&gt;p-3 (1rem من كل جهة)&lt;/div&gt;
+&lt;div class="bg-light border px-5 py-1 mb-3"&gt;px-5 py-1&lt;/div&gt;
+&lt;div class="bg-light border ms-5 mb-3"&gt;ms-5: هامش من البداية&lt;/div&gt;
+&lt;div class="bg-light border mx-auto w-50 text-center"&gt;mx-auto w-50: في المنتصف&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>الحرف <code>x</code> للأفقي و<code>y</code> للرأسي. <code>mx-auto</code> مع عرض محدد يمركز العنصر. القيمة 5 تساوي 3rem.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">اجعل العنصر الأخير بعرض &lt;code&gt;w-75&lt;/code&gt; وهامش سفلي &lt;code&gt;mb-5&lt;/code&gt;.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ماذا تعني الفئة mt-4؟</strong></p><ul><li>هامش علوي 1.5rem</li><li>هامش سفلي 4px</li><li>حشوة علوية 4rem</li><li>عرض 4</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>هامش علوي 1.5rem</strong></p></details></li><li><p><strong>لماذا نفضل ms-3 على ml-3؟</strong></p><ul><li>لأنها تنعكس تلقائيًا في RTL</li><li>لأنها أقصر</li><li>لأن ml غير موجودة في أي إصدار</li><li>لا فرق ولا سبب</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لأنها تنعكس تلقائيًا في RTL</strong></p></details></li><li><p><strong>أي فئة تجعل العرض نصف الحاوية؟</strong></p><ul><li>w-50</li><li>col-50</li><li>half</li><li>mw-50</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>w-50</strong></p></details></li><li><p><strong>ما قيمة الهامش في الفئة mb-5؟</strong></p><ul><li>هامش سفلي 3rem</li><li>هامش سفلي 0.5rem</li><li>حشوة سفلية 3rem</li><li>هامش علوي 3rem</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>هامش سفلي 3rem</strong></p><p>الحرف m هامش و b سفلي والحجم 5 يساوي 3rem.</p></details></li><li><p><strong>أي فئة تمركز عنصراً له عرض محدد أفقياً داخل أبيه؟</strong></p><ul><li>my-auto</li><li>px-auto</li><li>ms-100</li><li>mx-auto</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>mx-auto</strong></p><p>mx-auto يجعل الهامش الأفقي تلقائياً فيتوسط العنصر.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-6">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/bootstrap-learning/lessons/bs-05.html"><small>الدرس السابق</small><strong>النصوص والألوان</strong></a>
+        <a rel="next" href="/bootstrap-learning/lessons/bs-07.html"><small>الدرس التالي</small><strong>Flexbox والأدوات المساعدة</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/bootstrap-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

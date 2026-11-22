@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="css" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Margin — CSS | FAYBIT</title>
+    <meta name="description" content="Learn how margin creates space outside an element." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/css-learning/lessons/css-08.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/css-learning/lessons/css-08.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/css-learning/lessons/css-08.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/css-learning/lessons/css-08.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Margin — CSS | FAYBIT" />
+    <meta property="og:description" content="Learn how margin creates space outside an element." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/css-learning/lessons/css-08.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"CSS","item":"https://faybit.vercel.app/en/css-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Margin","item":"https://faybit.vercel.app/en/css-learning/lessons/css-08.html"}]},{"@type":"LearningResource","name":"Margin","description":"Learn how margin creates space outside an element.","url":"https://faybit.vercel.app/en/css-learning/lessons/css-08.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"CSS — FAYBIT","url":"https://faybit.vercel.app/css-learning/css-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="CSS"><a href="/en/css-learning/lessons/index.html">Lessons</a><a href="/css-learning/lessons/css-08.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/css-learning/lessons/index.html">CSS</a></nav>
+      <p class="lp-eyebrow">Lesson 8 of 30</p>
+      <h1 class="lp-h1">Margin</h1>
+      <p class="lp-lead">Learn how margin creates space outside an element.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-8">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>Your first CSS code</h2></div>
+</div>
+<pre dir="ltr"><code>.box {
+margin: 30px;
+background: #0f807a;
+}</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Write CSS and see the result</h2></div>
+</div>
+<p class="practice-description">Change the code below, then run it to see the result.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Where does margin create space?</strong></p><ul><li>Outside the element</li><li>Inside the element</li><li>Inside the text</li><li>Inside the border</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Outside the element</strong></p></details></li><li><p><strong>Which property controls the space outside an element?</strong></p><ul><li>margin</li><li>padding</li><li>spacing</li><li>outside</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>margin</strong></p></details></li><li><p><strong>What does margin: 30px apply?</strong></p><ul><li>30px outside the element</li><li>30px inside the content</li><li>30px border</li><li>30px font size</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>30px outside the element</strong></p></details></li><li><p><strong>Two stacked blocks: the first has margin-bottom: 30px and the second has margin-top: 20px. How big is the gap between them?</strong></p><ul><li>50px</li><li>20px</li><li>30px</li><li>10px</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>30px</strong></p><p>Vertical margins between adjacent blocks collapse, so the larger one, 30px, is used instead of adding them up.</p></details></li><li><p><strong>How do you horizontally center a fixed-width block div inside its parent?</strong></p><ul><li>margin: 0 auto</li><li>padding: auto</li><li>text-align: center on the div itself</li><li>margin: center</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>margin: 0 auto</strong></p><p>When the element has a set width, auto splits the remaining horizontal space equally on both sides, centering it. text-align centers inner content, not the box itself.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-8">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/css-learning/lessons/css-07.html"><small>Previous lesson</small><strong>Width &amp; Height</strong></a>
+        <a rel="next" href="/en/css-learning/lessons/css-09.html"><small>Next lesson</small><strong>Padding</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/css-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

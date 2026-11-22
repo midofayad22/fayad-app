@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="js" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Spread and Rest — JavaScript | FAYBIT</title>
+    <meta name="description" content="Learn how to use ... to copy and gather values with Arrays, Objects, and Functions." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-20.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-20.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/javascript-learning/lessons/js-20.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/javascript-learning/lessons/js-20.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Spread and Rest — JavaScript | FAYBIT" />
+    <meta property="og:description" content="Learn how to use ... to copy and gather values with Arrays, Objects, and Functions." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/javascript-learning/lessons/js-20.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript","item":"https://faybit.vercel.app/en/javascript-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Spread and Rest","item":"https://faybit.vercel.app/en/javascript-learning/lessons/js-20.html"}]},{"@type":"LearningResource","name":"Spread and Rest","description":"Learn how to use ... to copy and gather values with Arrays, Objects, and Functions.","url":"https://faybit.vercel.app/en/javascript-learning/lessons/js-20.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript — FAYBIT","url":"https://faybit.vercel.app/javascript-learning/javascript-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript"><a href="/en/javascript-learning/lessons/index.html">Lessons</a><a href="/javascript-learning/lessons/js-20.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/javascript-learning/lessons/index.html">JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 20 of 25</p>
+      <h1 class="lp-h1">Spread and Rest</h1>
+      <p class="lp-lead">Learn how to use ... to copy and gather values with Arrays, Objects, and Functions.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-20">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>const numbers = [1, 2, 3];
+const newNumbers = [
+...numbers,
+4
+];
+document.getElementById("jsResult").textContent =
+newNumbers.join(", ");</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>
+<p>The <strong>...</strong> symbol is used in modern JavaScript in more than one way.</p>
+<p><strong>Spread</strong> expands the values inside an Array or Object so they can be used elsewhere.</p>
+<p><strong>Rest</strong> gathers multiple values into a single Array in a function's Parameters.</p>
+<p>The difference depends on the context in which the symbol is used.</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Write JavaScript</h2></div>
+</div>
+<p class="practice-description">Change the code below, then run it to see the result.</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which symbol is used in Spread and Rest?</strong></p><ul><li>...</li><li>***</li><li>&gt;&gt;&gt;</li><li>::</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>...</strong></p></details></li><li><p><strong>What does Spread do with an Array?</strong></p><ul><li>Expands its elements so they can be used in another Array</li><li>Deletes them</li><li>Converts them to a String</li><li>Stops the program</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Expands its elements so they can be used in another Array</strong></p></details></li><li><p><strong>What do Rest Parameters do?</strong></p><ul><li>Gather multiple values into an Array</li><li>Delete values</li><li>Create HTML</li><li>Create CSS</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Gather multiple values into an Array</strong></p></details></li><li><p><strong>What does this code print? const a = { x: { n: 1 } }; const b = { ...a }; b.x.n = 2; console.log(a.x.n);</strong></p><ul><li>1</li><li>2</li><li>undefined</li><li>An error</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>2</strong></p><p>Spread makes only a shallow copy, so the inner object x is shared between a and b. Changing b.x.n shows up in a.x.n; use structuredClone for a deep copy.</p></details></li><li><p><strong>What does this code print? function f(first, ...rest) { return rest; } console.log(f(1, 2, 3));</strong></p><ul><li>[1, 2, 3]</li><li>[1]</li><li>[2, 3]</li><li>3</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>[2, 3]</strong></p><p>first takes the first argument, and ...rest gathers the remaining arguments into a real array, [2, 3]. The rest parameter must be last.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-20">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/javascript-learning/lessons/js-19.html"><small>Previous lesson</small><strong>Destructuring</strong></a>
+        <a rel="next" href="/en/javascript-learning/lessons/js-21.html"><small>Next lesson</small><strong>Modules</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/javascript-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

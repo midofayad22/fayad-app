@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>Hands-on Lab: Linux and Windows — Computer Basics | FAYBIT</title>
+    <meta name="description" content="Explore processes, memory and files from the command line. Compare equivalent commands between Linux and Windows PowerShell. Run safe experiments without…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-29.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-29.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-29.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-29.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Hands-on Lab: Linux and Windows — Computer Basics | FAYBIT" />
+    <meta property="og:description" content="Explore processes, memory and files from the command line. Compare equivalent commands between Linux and Windows PowerShell. Run safe experiments without…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-29.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Computer Basics","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Hands-on Lab: Linux and Windows","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-29.html"}]},{"@type":"LearningResource","name":"Hands-on Lab: Linux and Windows","description":"Explore processes, memory and files from the command line. Compare equivalent commands between Linux and Windows PowerShell. Run safe experiments without…","url":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-29.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Computer Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Computer Basics"><a href="/en/fundamentals/computer-basics/lessons/index.html">Lessons</a><a href="/fundamentals/computer-basics/lessons/com-29.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/computer-basics/lessons/index.html">Computer Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 29 of 30</p>
+      <h1 class="lp-h1">Hands-on Lab: Linux and Windows</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-29">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>Hands-on Lab: Linux and Windows</h2>
+<div><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Explore processes, memory and files from the command line.</li><li>Compare equivalent commands between Linux and Windows PowerShell.</li><li>Run safe experiments without damaging your system.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>Lessons 21 to 29 of this series. Use a virtual machine or a scratch folder.</li></ul>
+</section>
+<section class="lesson-section "><h3>Part 1: Processes</h3>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">bash</span></figcaption><pre dir="ltr"><code>ps aux --sort=-%mem | head -5   # top memory users
+top -b -n 1 | head -12</code></pre></figure>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">powershell</span></figcaption><pre dir="ltr"><code>Get-Process | Sort-Object WS -Descending | Select-Object -First 5</code></pre></figure>
+<p>Note the name, the PID and the memory use of the largest process.</p>
+</section>
+<section class="lesson-section "><h3>Part 2: Memory and disks</h3>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">bash</span></figcaption><pre dir="ltr"><code>free -h
+df -h</code></pre></figure>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">powershell</span></figcaption><pre dir="ltr"><code>Get-CimInstance Win32_OperatingSystem | Select-Object FreePhysicalMemory,TotalVisibleMemorySize
+Get-Volume</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>Part 3: Files and permissions</h3>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">bash</span></figcaption><pre dir="ltr"><code>mkdir lab &amp;&amp; cd lab
+echo "hello" &gt; a.txt
+ln a.txt b.txt
+ls -li          # same inode number?
+chmod 600 a.txt
+ls -l</code></pre></figure>
+<figure class="code-ex code-ex-out"><figcaption><span class="code-ex-lang">Output</span></figcaption><pre dir="ltr"><code>1312345 -rw------- 2 user user 6 Nov  9 10:00 a.txt
+1312345 -rw------- 2 user user 6 Nov  9 10:00 b.txt</code></pre></figure>
+<p>Both files share the same inode, and changing the permissions of one changed the other because the data is the same.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Task</th><th scope="col">Linux</th><th scope="col">Windows PowerShell</th></tr></thead><tbody><tr><th scope="row">List processes</th><td><code>ps aux</code></td><td><code>Get-Process</code></td></tr><tr><th scope="row">Stop a process</th><td><code>kill PID</code></td><td><code>Stop-Process -Id PID</code></td></tr><tr><th scope="row">List files</th><td><code>ls -l</code></td><td><code>Get-ChildItem</code></td></tr><tr><th scope="row">Network connections</th><td><code>ss -tun</code></td><td><code>Get-NetTCPConnection</code></td></tr></tbody></table></div>
+<details class="doc-exercise"><summary><span>Exercise</span> A process is using all of the CPU. What are your steps, in order?</summary><div class="doc-solution"><strong>Show solution</strong><ol><li>Identify the process and PID with top or Get-Process.</li><li>Check that it is not an essential system process.</li><li>Send a gentle stop request (SIGTERM) before the forceful one (SIGKILL).</li><li>Investigate the cause: a stuck program or an infinite loop?</li></ol></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>Commands reveal what the system does under the graphical interface.</li><li>The concepts are the same on Linux and Windows even if names differ.</li></ul><p class="doc-next"><strong>Next step:</strong> You are now ready for the final test and for reviewing the other sections.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>Core concept</strong>
+<p>Whoever understands what is under the interface can diagnose problems instead of trying fixes at random.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Hands-on practice</span>
+<h3>Try it yourself</h3>
+</div>
+</div>
+<p>Complete the three parts, then write a short paragraph summarising what you learned about your machine.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What do permissions 644 mean?</strong></p><ul><li>Owner read and write, everyone else read only</li><li>Everyone writes</li><li>Nobody reads</li><li>Only the owner executes</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Owner read and write, everyone else read only</strong></p></details></li><li><p><strong>A file has permissions -rwxr-x---. What can group members do?</strong></p><ul><li>Read, write and execute</li><li>Read and execute only</li><li>Nothing</li><li>Write only</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Read and execute only</strong></p><p>The middle part r-x gives the group read and execute without write.</p></details></li><li><p><strong>What is the numeric form of rw-r--r--?</strong></p><ul><li>755</li><li>600</li><li>777</li><li>644</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>644</strong></p><p>rw-=6, r--=4 and r--=4, giving 644.</p></details></li><li><p><strong>A user runs chmod 777 on a file to get rid of Permission denied. Why is this a mistake?</strong></p><ul><li>Because it opens the file to everyone for read, write and execute</li><li>Because it deletes the file</li><li>Because it locks the file for everyone</li><li>Because it changes the owner's name</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Because it opens the file to everyone for read, write and execute</strong></p><p>Better to find why access was denied and grant the minimum that solves it.</p></details></li><li><p><strong>Which case is authentication rather than authorisation?</strong></p><ul><li>The system stops you editing a file you do not own</li><li>Scanning your fingerprint to prove who you are</li><li>Refusing to run a program without permission</li><li>Setting who may read a folder</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Scanning your fingerprint to prove who you are</strong></p><p>Authentication answers who you are; authorisation answers what you may do.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-29">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/computer-basics/lessons/com-28.html"><small>Previous lesson</small><strong>Users, Permissions and OS Security</strong></a>
+        <a rel="next" href="/en/fundamentals/computer-basics/lessons/com-30.html"><small>Next lesson</small><strong>Final Quiz</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/computer-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

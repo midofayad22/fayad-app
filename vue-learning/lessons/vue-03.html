@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="vue" />
+    <title>Template Syntax — Vue.js | FAYBIT</title>
+    <meta name="description" content="تعلّم كيف تعرض البيانات داخل Template باستخدام Syntax الخاص بـ Vue." />
+    <link rel="canonical" href="https://faybit.vercel.app/vue-learning/lessons/vue-03.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/vue-learning/lessons/vue-03.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/vue-learning/lessons/vue-03.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/vue-learning/lessons/vue-03.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Template Syntax — Vue.js | FAYBIT" />
+    <meta property="og:description" content="تعلّم كيف تعرض البيانات داخل Template باستخدام Syntax الخاص بـ Vue." />
+    <meta property="og:url" content="https://faybit.vercel.app/vue-learning/lessons/vue-03.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Vue.js","item":"https://faybit.vercel.app/vue-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Template Syntax","item":"https://faybit.vercel.app/vue-learning/lessons/vue-03.html"}]},{"@type":"LearningResource","name":"Template Syntax","description":"تعلّم كيف تعرض البيانات داخل Template باستخدام Syntax الخاص بـ Vue.","url":"https://faybit.vercel.app/vue-learning/lessons/vue-03.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Vue.js — FAYBIT","url":"https://faybit.vercel.app/vue-learning/vue-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Vue.js"><a href="/vue-learning/lessons/index.html">الدروس</a><a href="/en/vue-learning/lessons/vue-03.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/vue-learning/lessons/index.html">Vue.js</a></nav>
+      <p class="lp-eyebrow">الدرس 3 من 22</p>
+      <h1 class="lp-h1">Template Syntax</h1>
+      <p class="lp-lead">تعلّم كيف تعرض البيانات داخل Template باستخدام Syntax الخاص بـ Vue.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-3">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<h2>Template Syntax</h2>
+<p>
+تستخدم Vue طريقة بسيطة لعرض البيانات داخل HTML باستخدام
+الأقواس المزدوجة <code>{{ }}</code>.
+</p>
+<p>
+تسمى هذه الطريقة Interpolation، وتسمح لك بعرض قيم البيانات
+مباشرة داخل الـ Template.
+</p>
+</div></article>
+<article class="body-card key-card"><div class="info-label">استخدم {{ }} لعرض البيانات</div><p>Interpolation تسمح لك بعرض قيم JavaScript داخل Template الخاص بـ Vue.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>الكود</h2></div>
+</div>
+<pre dir="ltr"><code>
+&lt;div id="app"&gt;
+&lt;h1&gt;{{ name }}&lt;/h1&gt;
+&lt;p&gt;{{ message }}&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+const { createApp } = Vue;
+createApp({
+data() {
+return {
+name: "FAYBIT",
+message: "Welcome to Vue!"
+};
+}
+}).mount("#app");
+&lt;/script&gt;
+</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static">
+<div style="padding:20px;font-family:Arial;">
+<div class="lp-demo-h2">FAYBIT</div>
+<p style="margin:0;">Welcome to Vue!</p>
+</div>
+</div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>
+<p>
+<code>{{ name }}</code> تعرض قيمة المتغير <code>name</code>.
+</p>
+<p>
+<code>{{ message }}</code> تعرض قيمة <code>message</code>.
+</p>
+<p>
+Vue تراقب هذه البيانات وتحدث الواجهة عندما تتغير.
+</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span></div>
+</div>
+<p class="practice-description">اعرض الاسم والرسالة داخل الصفحة باستخدام Interpolation.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما استخدام {{ }} في Vue؟</strong></p><ul><li>عرض البيانات داخل الـ Template</li><li>إنشاء ملفات CSS</li><li>إنشاء قواعد البيانات</li><li>تشغيل نظام التشغيل</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>عرض البيانات داخل الـ Template</strong></p></details></li><li><p><strong>ماذا تسمى طريقة {{ variable }}؟</strong></p><ul><li>Interpolation</li><li>Inheritance</li><li>Compilation</li><li>Routing</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Interpolation</strong></p></details></li><li><p><strong>أين يمكن استخدام {{ message }}؟</strong></p><ul><li>داخل Template لعرض قيمة message</li><li>داخل قاعدة البيانات فقط</li><li>داخل ملف الصور فقط</li><li>داخل نظام التشغيل</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>داخل Template لعرض قيمة message</strong></p></details></li><li><p><strong>ماذا يعرض هذا القالب إذا كانت message = 'مرحبا'؟
+&lt;p&gt;{{ message }}&lt;/p&gt;</strong></p><ul><li>{{ message }} حرفياً</li><li>message</li><li>Hello</li><li>لا شيء</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Hello</strong></p><p>الأقواس المزدوجة تُستبدل بقيمة المتغير، فيظهر النص المخزن فيه.</p></details></li><li><p><strong>أي تعبير مما يلي يمكن كتابته داخل {{ }}؟</strong></p><ul><li>{{ count + 1 }}</li><li>{{ for (i=0;i&lt;3;i++) }}</li><li>{{ let x = 5 }}</li><li>{{ if (ok) { } }}</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>{{ count + 1 }}</strong></p><p>داخل الأقواس نكتب تعابير JavaScript فقط مثل الجمع، أما الجمل مثل for وlet وif فلا تصلح.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-3">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/vue-learning/lessons/vue-02.html"><small>الدرس السابق</small><strong>بنية تطبيق Vue</strong></a>
+        <a rel="next" href="/vue-learning/lessons/vue-04.html"><small>الدرس التالي</small><strong>البيانات والتفاعلية</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/vue-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

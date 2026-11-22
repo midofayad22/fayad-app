@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>Storage — Computer Basics | FAYBIT</title>
+    <meta name="description" content="Explain how RAM differs from permanent storage and why a computer needs both. Compare HDD , SSD and NVMe drives by mechanism, speed and lifespan.…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-06.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-06.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-06.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-06.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Storage — Computer Basics | FAYBIT" />
+    <meta property="og:description" content="Explain how RAM differs from permanent storage and why a computer needs both. Compare HDD , SSD and NVMe drives by mechanism, speed and lifespan.…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-06.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Computer Basics","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Storage","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-06.html"}]},{"@type":"LearningResource","name":"Storage","description":"Explain how RAM differs from permanent storage and why a computer needs both. Compare HDD , SSD and NVMe drives by mechanism, speed and lifespan.…","url":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-06.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Computer Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Computer Basics"><a href="/en/fundamentals/computer-basics/lessons/index.html">Lessons</a><a href="/fundamentals/computer-basics/lessons/com-06.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/computer-basics/lessons/index.html">Computer Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 6 of 30</p>
+      <h1 class="lp-h1">Storage</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-6">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>Storage</h2>
+<div><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Explain how <span class="term">RAM</span> differs from permanent storage and why a computer needs both.</li><li>Compare <span class="term">HDD</span>, <span class="term">SSD</span> and <span class="term">NVMe</span> drives by mechanism, speed and lifespan.</li><li>Calculate real capacity and transfer time, and set up a simple backup plan.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>The CPU (com-04) and RAM (com-05) lessons.</li></ul>
+</section>
+<section class="lesson-section "><h3>Introduction: what survives a shutdown?</h3>
+<p>When you switch a computer off, everything in RAM vanishes, yet your photos, documents and programs are still there at the next start. They survive because they live in <span class="term">Storage</span>: a component that keeps data without needing continuous power. That property is called <span class="term">Non-volatile</span>, as opposed to <span class="term">Volatile</span>, which describes RAM.</p>
+<p>Why not use a single kind of memory? Because speed, capacity and price never come together. RAM is fast but expensive and temporary; storage is cheap, large and permanent but much slower. Think of storage as the warehouse and RAM as the workbench: only what you are working on right now is carried to the bench.</p>
+</section>
+<section class="lesson-section "><h3>How data is stored: three technologies</h3>
+<p>An <span class="term">HDD</span> (hard disk drive) stores data magnetically on metal platters spinning at 5400 or 7200 revolutions per minute, read by a tiny head that moves over the surface. That mechanical motion is the reason for its slowness and its sensitivity to shocks. An <span class="term">SSD</span> (solid-state drive) has no moving parts and keeps data in NAND <span class="term">Flash</span> chips that hold their electrical charge even without power.</p>
+<p>Then there is <span class="term">NVMe</span>: not a new kind of chip but a modern protocol that connects an SSD directly to <span class="term">PCIe</span> lanes on the motherboard, escaping the limits of the older SATA interface. It usually comes as a small stick called M.2 that plugs into the board.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Type</th><th scope="col">Mechanism</th><th scope="col">Approx. sequential read speed</th><th scope="col">Typical use</th></tr></thead><tbody><tr><th scope="row">HDD</th><td>spinning magnetic platters</td><td>100–200 MB/s</td><td>archives and cheap bulk capacity</td></tr><tr><th scope="row">SATA SSD</th><td>flash chips</td><td>about 550 MB/s</td><td>upgrading older computers</td></tr><tr><th scope="row">NVMe on PCIe 3.0</th><td>flash chips on PCIe lanes</td><td>up to about 3,500 MB/s</td><td>modern computers</td></tr><tr><th scope="row">NVMe on PCIe 4.0</th><td>flash chips on PCIe lanes</td><td>up to about 7,000 MB/s</td><td>professional work and gaming</td></tr></tbody></table></div>
+</section>
+<section class="lesson-section "><h3>What happens inside an SSD?</h3>
+<p>NAND cells are organised into pages and blocks. A fresh page can be written quickly, but existing data cannot be overwritten in place; the whole block must be erased first. So an SSD contains a <span class="term">Controller</span> that manages this cleverly: it spreads writes evenly across cells (<span class="term">Wear Leveling</span>) because each cell survives only a limited number of erase cycles. Manufacturers express this as <span class="term">TBW</span>, the total data they guarantee can be written, usually hundreds of terabytes for consumer drives.</p>
+<p>Do not worry about your drive in normal use: writing 50 GB a day is 18.25 TB a year, so a drive rated at 600 TBW would take over 30 years to reach its limit.</p>
+</section>
+<section class="lesson-section "><h3>Real capacity and file systems</h3>
+<p>Manufacturers define a gigabyte in decimal: 1 TB = 1,000,000,000,000 bytes. Windows counts in powers of 2 (1 GiB = 1,073,741,824 bytes) and displays the result with the label GB, so a drive looks smaller than the box says. A 1 TB drive shows up as about 931 GB; nothing is actually lost, it is just a different unit.</p>
+<p>For the system to use a drive it is split into <span class="term">Partition</span>s, and each partition is formatted with a <span class="term">File System</span>: the structure that records file names and where they sit. Well-known ones are NTFS on Windows, APFS on macOS, ext4 on Linux, and exFAT and FAT32 for portable drives; note that FAT32 cannot hold a single file larger than 4 GB.</p>
+</section>
+<section class="lesson-section "><h3>External, cloud and backup storage</h3>
+<ul><li><strong>External drives and USB sticks:</strong> convenient for carrying and copying, connected over USB.</li><li><strong>Cloud storage:</strong> your files sit on a provider's computers and you reach them over the internet from any device; it is really a remote warehouse, not a mysterious cloud.</li><li><strong>NAS:</strong> a storage device attached to a home or office network and shared by several users.</li></ul>
+<p>Because any drive can fail, the <span class="term">3-2-1</span> rule is recommended: three copies of your data, on two different kinds of media, with at least one copy off-site. <span class="term">RAID</span> combines several disks so the array survives one failure, but it is not a substitute for backup, since it does not protect against accidental deletion or malware.</p>
+</section>
+<section class="lesson-section "><h3>Real-world applications</h3>
+<ul><li><strong>Reviving an old machine:</strong> swapping an HDD for an SSD often cuts boot time from a minute or more to a few tens of seconds.</li><li><strong>Photographers and video editors:</strong> work on fast NVMe and archive finished projects on large, cheap HDDs.</li><li><strong>Data centres:</strong> mix media in tiers: SSDs for hot, frequently used data and HDDs for cold data.</li></ul>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>“Storage is the same as memory”: RAM works temporarily while the machine runs, whereas storage is permanent; one filling up says nothing about the other.</li><li>“My drive is smaller than advertised, so the maker is cheating”: the gap comes from decimal versus binary units, plus space taken by the system and partitions.</li><li>“Deleting erases a file for good”: the file usually stays on the disk until new data is written over it.</li><li>“Files in the cloud are a sufficient backup”: sync services propagate deletions and corruption to every device, so you also need a separate, non-synced copy.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Calculation:</strong> you want to copy a 50 GB folder. About how long does it take on an HDD at 150 MB/s, a SATA SSD at 550 MB/s and an NVMe drive at 3,500 MB/s? (Take 1 GB = 1000 MB.)</summary><div class="doc-solution"><strong>Show solution</strong><p>Size = 50,000 MB. On the HDD: 50,000 ÷ 150 ≈ 333 s, about 5.6 minutes. On the SATA SSD: 50,000 ÷ 550 ≈ 91 s. On NVMe: 50,000 ÷ 3,500 ≈ 14 s. These are best-case times; in practice speed drops with many small files and may be capped by the other drive you copy from or to.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Reasoning:</strong> why does a 512 GB drive show up as about 477 GB in the system, and can you predict the number?</summary><div class="doc-solution"><strong>Show solution</strong><p>The maker counts 512 × 1,000,000,000 = 512,000,000,000 bytes. The system divides by 1,073,741,824 (2 to the power 30): 512,000,000,000 ÷ 1,073,741,824 ≈ 476.8, so about 477 is displayed. The rule of thumb: displayed capacity ≈ advertised capacity × 0.931, the same explanation for every size.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Hands-on:</strong> find out the type, size and free space of your device's drive, then write a three-line backup plan.</summary><div class="doc-solution"><strong>Show solution</strong><p>On Windows open Disk Management or the storage settings and read the media type (SSD or HDD); on macOS open System Information and then Storage. Note the size and the free space. A sample plan: (1) documents sync automatically to a cloud service; (2) on the first of each month, make a full copy to an external drive; (3) keep that drive somewhere other than where the computer sits. This roughly satisfies the 3-2-1 rule.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>Storage is permanent, large and slower; RAM is temporary, fast and small.</li><li>HDDs rely on mechanical motion; SSDs and NVMe drives use flash chips, and NVMe is fastest because it connects over PCIe.</li><li>Displayed capacity is lower than advertised because of units, and a drive needs partitions and a file system.</li><li>Backup is a necessity, and the 3-2-1 rule is a good starting point.</li></ul><p class="doc-next"><strong>Next step:</strong> The Motherboard: we see how all these components are wired to each other.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>Core concept</strong>
+<p>Storage keeps data even after the device is turned off, unlike RAM.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Hands-on practice</span>
+<h3>Try it yourself</h3>
+</div>
+</div>
+<p>Check which type of storage drive your device has: is it an SSD or an HDD?</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which type of storage is usually faster?</strong></p><ul><li>SSD</li><li>HDD</li><li>Both are always the same speed</li><li>RAM</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>SSD</strong></p></details></li><li><p><strong>A drive labelled 1 TB shows up as about 931 GB in Windows. Why?</strong></p><ul><li>The maker sold a smaller drive</li><li>Part of the data was lost</li><li>The drive is faulty</li><li>The maker counts in decimal while Windows counts in powers of 2 but labels it GB</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The maker counts in decimal while Windows counts in powers of 2 but labels it GB</strong></p><p>Nothing is lost: 10^12 bytes / 1,073,741,824 is about 931 GiB.</p></details></li><li><p><strong>What exactly is NVMe?</strong></p><ul><li>A new type of memory chip</li><li>A modern protocol that connects an SSD directly to PCIe lanes</li><li>A fast spinning disk</li><li>A file system from Microsoft</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A modern protocol that connects an SSD directly to PCIe lanes</strong></p><p>NVMe is not a chip type but a protocol that escapes the limits of the older SATA interface.</p></details></li><li><p><strong>What is the purpose of wear leveling in an SSD?</strong></p><ul><li>Compressing files to save space</li><li>Speeding up rotation</li><li>Spreading writes evenly because each cell survives a limited number of erase cycles</li><li>Cooling the drive</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Spreading writes evenly because each cell survives a limited number of erase cycles</strong></p><p>The controller spreads writes so certain cells do not wear out before others.</p></details></li><li><p><strong>Why is an HDD slower and more sensitive to shocks than an SSD?</strong></p><ul><li>Because it relies on mechanical motion: spinning platters and a moving head</li><li>Because it has more NAND chips</li><li>Because it uses the NVMe protocol</li><li>Because it stores data in RAM</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Because it relies on mechanical motion: spinning platters and a moving head</strong></p><p>An SSD has no moving parts, while the HDD's mechanical motion causes its slowness and fragility.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-6">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/computer-basics/lessons/com-05.html"><small>Previous lesson</small><strong>Memory (RAM)</strong></a>
+        <a rel="next" href="/en/fundamentals/computer-basics/lessons/com-07.html"><small>Next lesson</small><strong>The Motherboard</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/computer-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

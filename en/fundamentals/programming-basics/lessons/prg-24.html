@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <title>Programming Paradigms — Programming Basics | FAYBIT</title>
+    <meta name="description" content="PARADIGMS Distinguish procedural, object-oriented and functional styles. Solve the same problem in three ways. Understand that modern languages mix…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-24.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-24.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-24.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-24.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Programming Paradigms — Programming Basics | FAYBIT" />
+    <meta property="og:description" content="PARADIGMS Distinguish procedural, object-oriented and functional styles. Solve the same problem in three ways. Understand that modern languages mix…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-24.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Programming Basics","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Programming Paradigms","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-24.html"}]},{"@type":"LearningResource","name":"Programming Paradigms","description":"PARADIGMS Distinguish procedural, object-oriented and functional styles. Solve the same problem in three ways. Understand that modern languages mix…","url":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-24.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Programming Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Programming Basics"><a href="/en/fundamentals/programming-basics/lessons/index.html">Lessons</a><a href="/fundamentals/programming-basics/lessons/prg-24.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/programming-basics/lessons/index.html">Programming Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 24 of 31 · PARADIGMS</p>
+      <h1 class="lp-h1">Programming Paradigms</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-24">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">PARADIGMS</span>
+<h2>More than one way to think about code</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content"><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Distinguish procedural, object-oriented and functional styles.</li><li>Solve the same problem in three ways.</li><li>Understand that modern languages mix several paradigms.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>The Functions, Arrays and Objects lessons.</li></ul>
+</section>
+<section class="lesson-section "><h3>What is a paradigm?</h3>
+<p>A <span class="term">paradigm</span> is a style of organising a program and thinking about a problem; it is not a language. We solve the following task three ways: “add up the squares of the even numbers in a list”.</p>
+</section>
+<section class="lesson-section "><h3>1) Procedural</h3>
+<p>A sequence of steps that change variables, organised into functions.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>function sumEvenSquares(list) {
+let total = 0;
+for (let i = 0; i &lt; list.length; i++) {
+if (list[i] % 2 === 0) total += list[i] * list[i];
+}
+return total;
+}
+console.log(sumEvenSquares([1, 2, 3, 4])); // 20</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>2) Functional</h3>
+<p>We compose small functions without mutating the original data: <code>filter</code>, then <code>map</code>, then <code>reduce</code>.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>const sumEvenSquares = (list) =&gt;
+list.filter((x) =&gt; x % 2 === 0)
+.map((x) =&gt; x * x)
+.reduce((a, b) =&gt; a + b, 0);
+console.log(sumEvenSquares([1, 2, 3, 4])); // 20</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>3) Object-oriented</h3>
+<p>We bundle data and behaviour in one object with its own internal state.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>class NumberList {
+constructor(items) { this.items = items; }
+sumEvenSquares() {
+return this.items.filter((x) =&gt; x % 2 === 0).reduce((s, x) =&gt; s + x * x, 0);
+}
+}
+console.log(new NumberList([1, 2, 3, 4]).sumEvenSquares()); // 20</code></pre></figure>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Paradigm</th><th scope="col">Core idea</th><th scope="col">Fits</th></tr></thead><tbody><tr><th scope="row">Procedural</th><td>Steps and instructions</td><td>Scripts and simple jobs</td></tr><tr><th scope="row">Functional</th><td>Pure functions and immutable data</td><td>Data transformation</td></tr><tr><th scope="row">Object-oriented</th><td>Objects with state and behaviour</td><td>Large models such as games and interfaces</td></tr></tbody></table></div>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>Believing one paradigm is always the “correct” one.</li><li>Mutating the original array inside <code>map</code>, which breaks the functional style.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> What is a pure function?</summary><div class="doc-solution"><strong>Show solution</strong><p>A function that always gives the same result for the same input and changes nothing outside itself (no globals, no printing, no mutating the array passed in). That makes it easy to test.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>A paradigm is a way of thinking, not a language.</li><li>Procedural is steps, functional is composing functions, object-oriented is data with behaviour.</li></ul><p class="doc-next"><strong>Next step:</strong> Now we open the box: how does a language become execution? Compilers and interpreters.</p>
+</section></div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong>Core idea</strong>
+<p>Different paradigms solve the same problem with different organisation, and modern languages blend them.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Worked example</span>
+<h3>See the idea in code</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>const nums = [1, 2, 3, 4, 5, 6];
+const result = nums
+.filter((n) =&gt; n % 2 === 1)
+.map((n) =&gt; n * 10);
+console.log(result);</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Practice</span>
+<h3>Challenge yourself</h3>
+</div>
+</div>
+<p></p>
+<div class="fd-exercise"><h4>Interactive exercise</h4><p class="fd-ex-prompt">Write sumOddCubes(list) in the functional style (filter, map, reduce) returning the sum of the cubes of the odd numbers. Do not mutate the original list.</p><p class="fd-ex-status" role="status"></p></div>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which functions are used together in the functional style to transform a list?</strong></p><ul><li>filter, map and reduce</li><li>alert and prompt</li><li>push and pop only</li><li>eval</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>filter, map and reduce</strong></p><p>They filter, transform and combine without changing the original list.</p></details></li><li><p><strong>Which paradigm bundles data and behaviour in an object?</strong></p><ul><li>Object-oriented</li><li>Procedural only</li><li>None</li><li>Functional only</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Object-oriented</strong></p><p>An object has properties (state) and methods (behaviour).</p></details></li><li><p><strong>Which of these is a pure function?</strong></p><ul><li>(a, b) =&gt; a + b</li><li>A function that changes a global variable</li><li>A function that prints to the screen</li><li>A function that depends on Math.random</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>(a, b) =&gt; a + b</strong></p><p>Same inputs give the same result with no side effects.</p></details></li><li><p><strong>Can you use more than one paradigm in JavaScript?</strong></p><ul><li>Yes</li><li>No</li><li>Only in the browser</li><li>Only in Node</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Yes</strong></p><p>JavaScript is a multi-paradigm language.</p></details></li><li><p><strong>What is the difference between the imperative and declarative styles?</strong></p><ul><li>Imperative describes how to carry out the steps in detail, declarative describes what result is wanted</li><li>Imperative uses no variables and declarative does</li><li>Declarative does not work in JavaScript</li><li>There is no difference except the names</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Imperative describes how to carry out the steps in detail, declarative describes what result is wanted</strong></p><p>A for loop that sums numbers step by step is imperative, while reduce or map states what is wanted. JavaScript lets you mix both styles.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-24">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/programming-basics/lessons/prg-23.html"><small>Previous lesson</small><strong>Time Complexity and Big-O</strong></a>
+        <a rel="next" href="/en/fundamentals/programming-basics/lessons/prg-25.html"><small>Next lesson</small><strong>How Languages Work: Compilers and Interpreters</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/programming-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

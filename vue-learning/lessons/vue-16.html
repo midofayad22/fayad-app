@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="vue" />
+    <title>Composition API — Vue.js | FAYBIT</title>
+    <meta name="description" content="تعرّف على Composition API ولماذا تستخدم لتنظيم Logic داخل مكونات Vue." />
+    <link rel="canonical" href="https://faybit.vercel.app/vue-learning/lessons/vue-16.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/vue-learning/lessons/vue-16.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/vue-learning/lessons/vue-16.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/vue-learning/lessons/vue-16.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Composition API — Vue.js | FAYBIT" />
+    <meta property="og:description" content="تعرّف على Composition API ولماذا تستخدم لتنظيم Logic داخل مكونات Vue." />
+    <meta property="og:url" content="https://faybit.vercel.app/vue-learning/lessons/vue-16.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Vue.js","item":"https://faybit.vercel.app/vue-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Composition API","item":"https://faybit.vercel.app/vue-learning/lessons/vue-16.html"}]},{"@type":"LearningResource","name":"Composition API","description":"تعرّف على Composition API ولماذا تستخدم لتنظيم Logic داخل مكونات Vue.","url":"https://faybit.vercel.app/vue-learning/lessons/vue-16.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Vue.js — FAYBIT","url":"https://faybit.vercel.app/vue-learning/vue-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Vue.js"><a href="/vue-learning/lessons/index.html">الدروس</a><a href="/en/vue-learning/lessons/vue-16.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/vue-learning/lessons/index.html">Vue.js</a></nav>
+      <p class="lp-eyebrow">الدرس 16 من 22</p>
+      <h1 class="lp-h1">Composition API</h1>
+      <p class="lp-lead">تعرّف على Composition API ولماذا تستخدم لتنظيم Logic داخل مكونات Vue.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-16">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<h2>Composition API</h2>
+<p>
+Composition API توفر مجموعة من Functions تساعدك على تنظيم
+منطق Component بطريقة أكثر مرونة.
+</p>
+<p>
+من أشهر Functions الموجودة فيها <code>ref()</code> و
+<code>reactive()</code> و<code>computed()</code>.
+</p>
+</div></article>
+<article class="body-card key-card"><div class="info-label">Composition API لتنظيم Logic</div><p>تسمح لك Composition API بتجميع Logic المرتبط ببعضه في مكان واضح وقابل لإعادة الاستخدام.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>الكود</h2></div>
+</div>
+<pre dir="ltr"><code>
+&lt;div id="app"&gt;
+&lt;button @click="increment"&gt;
+{{ count }}
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;script&gt;
+const { createApp, ref } = Vue;
+createApp({
+setup() {
+const count = ref(0);
+function increment() {
+count.value++;
+}
+return {
+count,
+increment
+};
+}
+}).mount("#app");
+&lt;/script&gt;
+</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static">
+<div style="padding:20px;font-family:Arial;">
+</div>
+</div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>
+<p>
+<code>setup()</code> هي المكان الأساسي لكتابة Logic باستخدام
+Composition API.
+</p>
+<p>
+<code>ref(0)</code> تنشئ قيمة Reactive.
+</p>
+<p>
+داخل JavaScript نستخدم <code>count.value</code> للوصول للقيمة.
+</p>
+<p>
+عند إرجاع <code>count</code> و<code>increment</code> يمكن
+استخدامهما داخل Template.
+</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span></div>
+</div>
+<p class="practice-description">أنشئ Counter باستخدام Composition API وref().</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما الهدف الأساسي من Composition API؟</strong></p><ul><li>تنظيم Logic الخاص بالمكونات</li><li>إنشاء قواعد بيانات</li><li>تصميم الصور</li><li>استبدال HTML</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تنظيم Logic الخاص بالمكونات</strong></p></details></li><li><p><strong>أين نكتب Composition API Logic غالبًا؟</strong></p><ul><li>داخل setup()</li><li>داخل style فقط</li><li>داخل HTML comments</li><li>داخل database()</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>داخل setup()</strong></p></details></li><li><p><strong>أي Function من التالية مرتبطة بـ Composition API؟</strong></p><ul><li>ref()</li><li>htmlDatabase()</li><li>cssEngine()</li><li>browserState()</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>ref()</strong></p></details></li><li><p><strong>أين نستدعي ref وcomputed عند استخدام &lt;script setup&gt;؟</strong></p><ul><li>داخل &lt;script setup&gt; بعد استيرادها من vue</li><li>داخل وسوم &lt;style&gt;</li><li>داخل &lt;template&gt; فقط</li><li>لا تحتاج استيراداً أبداً</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>داخل &lt;script setup&gt; بعد استيرادها من vue</strong></p><p>نستورد الدوال من 'vue' ونكتب المنطق داخل script setup ويصبح متاحاً للقالب.</p></details></li><li><p><strong>ما ميزة تجميع المنطق المتعلق بميزة واحدة معاً في Composition API؟</strong></p><ul><li>يصبح الكود أصعب في القراءة</li><li>يسهل تنظيمه وإعادة استخدامه</li><li>يمنع استخدام القوالب</li><li>يوقف التفاعلية</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يسهل تنظيمه وإعادة استخدامه</strong></p><p>تجميع المنطق بحسب الميزة يجعل المكونات الكبيرة أنظف ويسهّل استخراج دوال قابلة لإعادة الاستخدام.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-16">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/vue-learning/lessons/vue-15.html"><small>الدرس السابق</small><strong>Events و Emits</strong></a>
+        <a rel="next" href="/vue-learning/lessons/vue-17.html"><small>الدرس التالي</small><strong>ref و reactive</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/vue-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="js" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Return — JavaScript | FAYBIT</title>
+    <meta name="description" content="تعلّم كيف تستخدم return لإرجاع قيمة من الدالة إلى المكان الذي تم استدعاؤها منه." />
+    <link rel="canonical" href="https://faybit.vercel.app/javascript-learning/lessons/js-09.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/javascript-learning/lessons/js-09.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-09.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/javascript-learning/lessons/js-09.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Return — JavaScript | FAYBIT" />
+    <meta property="og:description" content="تعلّم كيف تستخدم return لإرجاع قيمة من الدالة إلى المكان الذي تم استدعاؤها منه." />
+    <meta property="og:url" content="https://faybit.vercel.app/javascript-learning/lessons/js-09.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript","item":"https://faybit.vercel.app/javascript-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Return","item":"https://faybit.vercel.app/javascript-learning/lessons/js-09.html"}]},{"@type":"LearningResource","name":"Return","description":"تعلّم كيف تستخدم return لإرجاع قيمة من الدالة إلى المكان الذي تم استدعاؤها منه.","url":"https://faybit.vercel.app/javascript-learning/lessons/js-09.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript — FAYBIT","url":"https://faybit.vercel.app/javascript-learning/javascript-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript"><a href="/javascript-learning/lessons/index.html">الدروس</a><a href="/en/javascript-learning/lessons/js-09.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/javascript-learning/lessons/index.html">JavaScript</a></nav>
+      <p class="lp-eyebrow">الدرس 9 من 25</p>
+      <h1 class="lp-h1">Return</h1>
+      <p class="lp-lead">تعلّم كيف تستخدم return لإرجاع قيمة من الدالة إلى المكان الذي تم استدعاؤها منه.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-9">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>function add(a, b) {
+return a + b;
+}
+const result = add(5, 3);
+document.getElementById("jsResult").textContent = result;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>
+<p>الكلمة المفتاحية <strong>return</strong> تُرجع قيمة من الدالة.</p>
+<p>بعد تنفيذ <strong>return</strong> تتوقف الدالة عن تنفيذ التعليمات الموجودة بعدها.</p>
+<p>يمكن تخزين القيمة التي أعادتها الدالة داخل متغير.</p>
+<p>هذا يسمح باستخدام نتائج الدوال في أماكن أخرى من البرنامج.</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>اكتب JavaScript</h2></div>
+</div>
+<p class="practice-description">غيّر الكود الموجود بالأسفل ثم شغّله لترى النتيجة.</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ماذا تفعل return؟</strong></p><ul><li>ترجع قيمة من الدالة</li><li>تنشئ Loop</li><li>تحذف متغيرًا</li><li>تغير HTML فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>ترجع قيمة من الدالة</strong></p></details></li><li><p><strong>ماذا يحدث غالبًا بعد تنفيذ return؟</strong></p><ul><li>تتوقف الدالة عن التنفيذ</li><li>تبدأ الحلقة</li><li>يتم إنشاء متغير</li><li>يتم تشغيل CSS</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تتوقف الدالة عن التنفيذ</strong></p></details></li><li><p><strong>ما نتيجة add(5, 3) إذا كانت الدالة ترجع a + b؟</strong></p><ul><li>8</li><li>2</li><li>15</li><li>53</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>8</strong></p></details></li><li><p><strong>ما ناتج الكود؟ function f(a) { a * 2; } console.log(f(4));</strong></p><ul><li>8</li><li>undefined</li><li>4</li><li>NaN</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>undefined</strong></p><p>الدالة تحسب a * 2 لكنها لا تستخدم return، والدالة التي لا تعيد قيمة صراحة تعيد undefined. الحل أن نكتب return a * 2.</p></details></li><li><p><strong>ما ناتج الكود؟ function g() { return 1; console.log(&quot;x&quot;); return 2; } console.log(g());</strong></p><ul><li>1 فقط</li><li>x ثم 1</li><li>x ثم 2</li><li>2</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>1 فقط</strong></p><p>return ينهي تنفيذ الدالة فوراً، فلا يصل التنفيذ إلى console.log ولا إلى return الثانية. لذلك يطبع 1 فقط.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-9">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/javascript-learning/lessons/js-08.html"><small>الدرس السابق</small><strong>Parameters و Arguments</strong></a>
+        <a rel="next" href="/javascript-learning/lessons/js-10.html"><small>الدرس التالي</small><strong>Arrow Functions</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/javascript-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

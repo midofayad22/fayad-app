@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="react" />
+    <meta name="robots" content="noindex, follow" />
+    <title>مقدمة إلى Hooks — React | FAYBIT</title>
+    <meta name="description" content="افهم مفهوم React Hooks ولماذا أصبحت أساسية في كتابة المكونات الحديثة." />
+    <link rel="canonical" href="https://faybit.vercel.app/react-learning/lessons/react-12.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/react-learning/lessons/react-12.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/react-learning/lessons/react-12.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/react-learning/lessons/react-12.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="مقدمة إلى Hooks — React | FAYBIT" />
+    <meta property="og:description" content="افهم مفهوم React Hooks ولماذا أصبحت أساسية في كتابة المكونات الحديثة." />
+    <meta property="og:url" content="https://faybit.vercel.app/react-learning/lessons/react-12.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"React","item":"https://faybit.vercel.app/react-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"مقدمة إلى Hooks","item":"https://faybit.vercel.app/react-learning/lessons/react-12.html"}]},{"@type":"LearningResource","name":"مقدمة إلى Hooks","description":"افهم مفهوم React Hooks ولماذا أصبحت أساسية في كتابة المكونات الحديثة.","url":"https://faybit.vercel.app/react-learning/lessons/react-12.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"React — FAYBIT","url":"https://faybit.vercel.app/react-learning/react-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="React"><a href="/react-learning/lessons/index.html">الدروس</a><a href="/en/react-learning/lessons/react-12.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/react-learning/lessons/index.html">React</a></nav>
+      <p class="lp-eyebrow">الدرس 12 من 30</p>
+      <h1 class="lp-h1">مقدمة إلى Hooks</h1>
+      <p class="lp-lead">افهم مفهوم React Hooks ولماذا أصبحت أساسية في كتابة المكونات الحديثة.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-12">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<p>
+Hooks هي Functions توفر للمكونات إمكانية استخدام خصائص React
+مثل State وEffects.
+</p>
+<p>
+من أشهر Hooks: useState وuseEffect وuseRef وuseContext.
+</p>
+<p>
+Hooks تسمح بكتابة منطق قابل لإعادة الاستخدام دون الحاجة إلى
+Class Components في الأسلوب الحديث.
+</p>
+</div></article>
+<article class="body-card key-card"><p>Hooks توفر وظائف React الأساسية داخل Function Components.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>الكود</h2></div>
+</div>
+<pre dir="ltr"><code>import { useState } from "react";
+function App() {
+const [name, setName] = useState("FAYBIT");
+return &lt;h1&gt;{name}&lt;/h1&gt;;
+}</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>كل Hook لها وظيفة محددة، ويجب الالتزام بقواعد استخدامها.</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span></div>
+</div>
+<p class="practice-description">جرّب تغيير القيمة الأولية في useState.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما هي React Hooks؟</strong></p><ul><li>Functions تسمح باستخدام خصائص React</li><li>CSS classes</li><li>HTML attributes</li><li>Database tables</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Functions تسمح باستخدام خصائص React</strong></p></details></li><li><p><strong>أي من التالي Hook حقيقية؟</strong></p><ul><li>useState</li><li>useHTML</li><li>useCSS</li><li>useDatabase</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>useState</strong></p></details></li><li><p><strong>لماذا تستخدم Hooks؟</strong></p><ul><li>لاستخدام وإعادة تنظيم منطق React</li><li>لكتابة CSS فقط</li><li>لإنشاء قواعد بيانات</li><li>لإلغاء Components</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لاستخدام وإعادة تنظيم منطق React</strong></p></details></li><li><p><strong>أين يجب استدعاء Hook مثل useState؟</strong></p><ul><li>في المستوى الأعلى من المكون</li><li>بعد return</li><li>خارج أي دالة</li><li>داخل حلقة أو شرط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>في المستوى الأعلى من المكون</strong></p><p>Hooks تُستدعى في أعلى المكون وبنفس الترتيب في كل رسم.</p></details></li><li><p><strong>ما الخطأ؟ if (open) { const [n,setN] = useState(0); }</strong></p><ul><li>الصفر غير مسموح</li><li>open خاطئ الاسم</li><li>لا خطأ</li><li>Hook داخل شرط يخالف قواعد Hooks</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Hook داخل شرط يخالف قواعد Hooks</strong></p><p>يجب أن يُستدعى الHook في كل رسم ليبقى الترتيب ثابتاً.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-12">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/react-learning/lessons/react-11.html"><small>الدرس السابق</small><strong>تركيب المكونات Component Composition</strong></a>
+        <a rel="next" href="/react-learning/lessons/react-13.html"><small>الدرس التالي</small><strong>useState</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/react-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Parameters &amp; Arguments — أساسيات البرمجة | FAYBIT</title>
+    <meta name="description" content="FUNCTIONS Parameter هو متغير تستقبله Function لكي تتمكن من التعامل مع بيانات مختلفة. Argument هي القيمة الفعلية التي نرسلها إلى Function عند استدعائها.…" />
+    <link rel="canonical" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-13.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-13.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-13.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-13.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Parameters &amp; Arguments — أساسيات البرمجة | FAYBIT" />
+    <meta property="og:description" content="FUNCTIONS Parameter هو متغير تستقبله Function لكي تتمكن من التعامل مع بيانات مختلفة. Argument هي القيمة الفعلية التي نرسلها إلى Function عند استدعائها.…" />
+    <meta property="og:url" content="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-13.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"أساسيات البرمجة","item":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Parameters & Arguments","item":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-13.html"}]},{"@type":"LearningResource","name":"Parameters & Arguments","description":"FUNCTIONS Parameter هو متغير تستقبله Function لكي تتمكن من التعامل مع بيانات مختلفة. Argument هي القيمة الفعلية التي نرسلها إلى Function عند استدعائها.…","url":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-13.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"أساسيات البرمجة — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="أساسيات البرمجة"><a href="/fundamentals/programming-basics/lessons/index.html">الدروس</a><a href="/en/fundamentals/programming-basics/lessons/prg-13.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/fundamentals/programming-basics/lessons/index.html">أساسيات البرمجة</a></nav>
+      <p class="lp-eyebrow">الدرس 13 من 31</p>
+      <h1 class="lp-h1">Parameters &amp; Arguments</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-13">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">FUNCTIONS</span>
+<h2>اجعل Functions أكثر مرونة</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content">
+<section class="lesson-section">
+<h3>Parameters</h3>
+<p>
+Parameter هو متغير تستقبله Function
+لكي تتمكن من التعامل مع بيانات مختلفة.
+</p>
+<h3>Arguments</h3>
+<p>
+Argument هي القيمة الفعلية التي نرسلها
+إلى Function عند استدعائها.
+</p>
+</section>
+</div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong> الفكرة الأساسية </strong>
+<p>Parameters تجعل Function قابلة لإعادة الاستخدام مع بيانات مختلفة بدل كتابة Function جديدة لكل حالة.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>مثال عملي</span>
+<h3>شاهد الفكرة في كود</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>function greet(name) {
+console.log("Hello " + name);
+}
+greet("Ali");
+greet("Mona");</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>تطبيق</span>
+<h3>تحدَّ نفسك</h3>
+</div>
+</div>
+<p></p>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>في المثال، ما هو name؟</strong></p><ul><li>Argument</li><li>Parameter</li><li>Operator</li><li>Loop</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Parameter</strong></p></details></li><li><p><strong>ما الناتج؟ function greet(name, greeting) { return greeting + &quot;, &quot; + name; } console.log(greet(&quot;Ali&quot;, &quot;Hi&quot;));</strong></p><ul><li>Ali, Hi</li><li>Hi, Ali</li><li>Hi Ali</li><li>undefined</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Hi, Ali</strong></p><p>الوسائط تُطابق المعاملات بالترتيب: &quot;Ali&quot; إلى name و &quot;Hi&quot; إلى greeting. ترتيب الدمج داخل الدالة يعطي Hi, Ali.</p></details></li><li><p><strong>ماذا يطبع الكود؟ function f(a, b) { return a + b; } console.log(f(2));</strong></p><ul><li>2</li><li>خطأ يوقف البرنامج</li><li>0</li><li>NaN</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>NaN</strong></p><p>المعامل b لم يستلم وسيطاً فقيمته undefined، و 2 + undefined تعطي NaN. JavaScript لا ترمي خطأ عند نقص الوسائط.</p></details></li><li><p><strong>ما الناتج؟ function p(x, y = 10) { return x + y; } console.log(p(1));</strong></p><ul><li>11</li><li>1</li><li>NaN</li><li>10</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>11</strong></p><p>القيمة الافتراضية y = 10 تُستخدم عندما لا يُمرَّر وسيط ثانٍ، فيكون الناتج 1 + 10 = 11. الناتج NaN يظهر فقط بدون قيمة افتراضية.</p></details></li><li><p><strong>ما قيمة v؟ function change(n) { n = 99; } let v = 5; change(v); console.log(v);</strong></p><ul><li>99</li><li>5</li><li>undefined</li><li>خطأ</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>5</strong></p><p>الأرقام تُمرَّر كنسخة من القيمة، فتعديل n داخل الدالة لا يغيّر v الخارجي. لذلك تبقى v تساوي 5.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-13">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/fundamentals/programming-basics/lessons/prg-12.html"><small>الدرس السابق</small><strong>Functions</strong></a>
+        <a rel="next" href="/fundamentals/programming-basics/lessons/prg-14.html"><small>الدرس التالي</small><strong>Scope</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/fundamentals/programming-basics/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

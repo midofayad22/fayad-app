@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>Files and Folders — Computer Basics | FAYBIT</title>
+    <meta name="description" content="Read an absolute and a relative Path and locate any file in the folder tree. Understand the role of an Extension and the rules for naming files. Tell…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-11.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-11.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-11.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-11.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Files and Folders — Computer Basics | FAYBIT" />
+    <meta property="og:description" content="Read an absolute and a relative Path and locate any file in the folder tree. Understand the role of an Extension and the rules for naming files. Tell…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-11.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Computer Basics","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Files and Folders","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-11.html"}]},{"@type":"LearningResource","name":"Files and Folders","description":"Read an absolute and a relative Path and locate any file in the folder tree. Understand the role of an Extension and the rules for naming files. Tell…","url":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-11.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Computer Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Computer Basics"><a href="/en/fundamentals/computer-basics/lessons/index.html">Lessons</a><a href="/fundamentals/computer-basics/lessons/com-11.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/computer-basics/lessons/index.html">Computer Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 11 of 30</p>
+      <h1 class="lp-h1">Files and Folders</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-11">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>Files and Folders</h2>
+<div><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Read an absolute and a relative <span class="term">Path</span> and locate any file in the folder tree.</li><li>Understand the role of an <span class="term">Extension</span> and the rules for naming files.</li><li>Tell copying, moving and deleting apart, and perform them in the interface and on the command line.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>The storage (com-06) and operating-system (com-10) lessons.</li></ul>
+</section>
+<section class="lesson-section "><h3>Introduction: how does the computer find your file among millions?</h3>
+<p>We saw that a drive keeps data permanently, but at heart it is just a vast stretch of bytes. What makes it organised is the <span class="term">File System</span>: a layer managed by the operating system that records, for every piece of data, a name, a size, dates and a location on the drive. The basic unit we deal with is the <span class="term">File</span>: one named collection of data, whether a document, a picture or a program.</p>
+<p>Because files number in the tens of thousands, we group them in a <span class="term">Folder</span> (called a <span class="term">Directory</span> among developers). A folder is a container that holds files and other folders, and this nesting builds a clear hierarchy you can follow step by step.</p>
+</section>
+<section class="lesson-section "><h3>The folder tree and paths</h3>
+<figure class="doc-diagram doc-tree-fig" role="group" aria-label="AST"><figcaption>Part of a user's file tree on Linux</figcaption><div class="doc-tree-wrap"><ul class="doc-tree"><li><span class="doc-node doc-node-op">/</span><ul><li><span class="doc-node doc-node-op">home</span><ul><li><span class="doc-node doc-node-op">sara</span><ul><li><span class="doc-node doc-node-op">Documents</span><ul><li><span class="doc-node doc-node-op">report.docx</span></li><li><span class="doc-node doc-node-op">budget.xlsx</span></li></ul></li><li><span class="doc-node doc-node-op">Pictures</span><ul><li><span class="doc-node doc-node-op">trip.jpg</span></li></ul></li></ul></li></ul></li><li><span class="doc-node doc-node-op">usr</span><ul><li><span class="doc-node doc-node-op">bin</span></li></ul></li></ul></li></ul></div></figure>
+<p>The tree has a single <strong>root</strong> <span class="term">Root</span> on Linux and macOS, written <code>/</code>. On Windows each drive or partition has its own root with a letter such as <code>C:</code> and <code>D:</code>. A <span class="term">Path</span> is the address describing the way from some starting point to the file, with its parts separated by a forward slash <code>/</code> on Linux and macOS and a backslash on Windows.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Kind</th><th scope="col">Definition</th><th scope="col">Example (Linux)</th></tr></thead><tbody><tr><th scope="row"><span class="term">Absolute Path</span></th><td>starts at the root and means the same wherever you stand</td><td>/home/sara/Documents/report.docx</td></tr><tr><th scope="row"><span class="term">Relative Path</span></th><td>starts at the current folder, so its meaning changes with where you are</td><td>Documents/report.docx</td></tr><tr><th scope="row">The symbol <code>.</code></th><td>the current folder</td><td>./report.docx</td></tr><tr><th scope="row">The symbol <code>..</code></th><td>the parent folder (one level up)</td><td>../Pictures/trip.jpg</td></tr></tbody></table></div>
+<p>If you are inside <code>/home/sara/Documents</code>, the path <code>../Pictures/trip.jpg</code> means: go up to <code>/home/sara</code>, enter <code>Pictures</code> and pick the image. The folder you are working in right now is called the <span class="term">Working Directory</span>.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">text</span></figcaption><pre dir="ltr"><code>Windows : C:\Users\Sara\Documents\report.docx
+Linux   : /home/sara/Documents/report.docx
+macOS   : /Users/sara/Documents/report.docx</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>Names and extensions</h3>
+<p>A file name usually has two parts separated by a dot: the name and the <span class="term">Extension</span>, as in <code>report.docx</code>. The extension does not change what is inside the file; it is a hint the system uses to choose which program opens it. Renaming <code>photo.png</code> to <code>photo.txt</code> does not turn the picture into text; the system will try a text editor and show meaningless symbols.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Extension</th><th scope="col">Content</th><th scope="col">Note</th></tr></thead><tbody><tr><th scope="row">.txt</th><td>plain text</td><td>no formatting</td></tr><tr><th scope="row">.jpg / .png</th><td>images</td><td>JPG is lossy, PNG is lossless</td></tr><tr><th scope="row">.mp3 / .mp4</th><td>audio / video</td><td>compressed</td></tr><tr><th scope="row">.pdf</th><td>fixed-layout document</td><td>looks the same everywhere</td></tr><tr><th scope="row">.zip</th><td>compressed archive</td><td>bundles many files into one</td></tr><tr><th scope="row">.exe / .sh</th><td>program / script</td><td>executable, so be careful</td></tr></tbody></table></div>
+<ul><li><strong>Characters forbidden on Windows:</strong> <code>&lt; &gt; : " / | ? *</code>, and a name may not end in a dot or a space.</li><li><strong>Length:</strong> a single name is usually limited to 255 characters, and some versions limit the full path as well.</li><li><strong>Letter case:</strong> on Linux <code>Report.txt</code> and <code>report.txt</code> are different files, whereas Windows and macOS normally treat them as one name.</li><li><strong>Hidden files:</strong> on Linux and macOS a hidden file's name begins with a dot, such as <code>.config</code>.</li></ul>
+</section>
+<section class="lesson-section "><h3>Copy, move and delete</h3>
+<ul><li><strong><span class="term">Copy</span>:</strong> creates an identical file elsewhere and leaves the original, so the space used doubles.</li><li><strong><span class="term">Move</span>:</strong> changes where the file lives so it no longer sits in the old place. Within the same drive the system only edits its index entry, so a move is instant however large the file; between two drives the file is copied and the original then deleted.</li><li><strong><span class="term">Delete</span>:</strong> in the interface files normally go to the <span class="term">Recycle Bin</span> and can be restored. The <code>rm</code> command on the command line deletes directly, with no bin.</li></ul>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">bash</span></figcaption><pre dir="ltr"><code>pwd                          # where am I?
+mkdir -p projects/demo       # create nested folders
+cd projects/demo
+echo "hello" &gt; notes.txt     # create a small file
+cp notes.txt backup.txt      # copy
+mv backup.txt ../old.txt     # move up one level and rename
+ls -l . ..                   # list both folders
+rm notes.txt                 # delete (no recycle bin!)</code></pre></figure>
+<figure class="code-ex code-ex-out"><figcaption><span class="code-ex-lang">Output</span></figcaption><pre dir="ltr"><code>/home/sara
+.:
+total 0
+..:
+total 4
+-rw-r--r-- 1 sara sara 6 Nov 10 09:15 old.txt
+drwxr-xr-x 2 sara sara 4096 Nov 10 09:14 demo</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>Real-world applications</h3>
+<ul><li><strong>Organising work:</strong> a layout such as <code>project/source/images</code> lets a team find any file without asking anyone.</li><li><strong>Websites:</strong> the address <code>/images/logo.png</code> in a link is a real path to a file on the server.</li><li><strong>Programming:</strong> code uses relative paths to read configuration files, so a project moves between machines unchanged.</li></ul>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>“Changing the extension converts the file”: the content is unchanged; to really turn a <code>.png</code> into a <code>.jpg</code> you need a tool that re-encodes the data.</li><li>“A folder and a file are the same thing”: a folder holds organising information only, not document content.</li><li>“Moving is always copy then delete”: within the same drive it is just an index edit and no data moves at all.</li><li>“Everything I delete comes back from the bin”: the bin does not cover files removed with <code>rm</code>, often not those on external drives, and nothing after it is emptied.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Reasoning:</strong> you are in <code>/home/sara/Documents</code>. Write the relative path to <code>/home/sara/Pictures/trip.jpg</code>, then the absolute one.</summary><div class="doc-solution"><strong>Show solution</strong><p>To reach the picture we go up one level to <code>/home/sara</code> with <code>..</code> and then enter <code>Pictures</code>, so the relative path is <code>../Pictures/trip.jpg</code>. The absolute path starts at the root and never changes: <code>/home/sara/Pictures/trip.jpg</code>. If we stood in a different folder the relative path would change but the absolute one would not.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Calculation:</strong> you copy 40 files of 25 MB each from one drive to another, and then consider moving instead of copying. How much space does the target drive use, and how much is used across both drives afterwards?</summary><div class="doc-solution"><strong>Show solution</strong><p>Total size = 40 × 25 = 1,000 MB, about 1 GB. With a <strong>copy</strong> the target drive uses 1,000 MB and the original stays on the first drive, so the total across both is 2,000 MB. With a <strong>move</strong> between two drives the target also uses 1,000 MB but the original is deleted once the copy succeeds, leaving a total of 1,000 MB. If the move happens inside a single drive no extra space is needed and it finishes in moments.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Hands-on:</strong> create a folder layout for a study project with commands, copy a file into it, then check the result.</summary><div class="doc-solution"><strong>Show solution</strong><p>Open the terminal and run: <code>mkdir -p study/notes study/files</code> to create both folders at once, then <code>echo "first note" &gt; study/notes/day1.txt</code> to create a file, then <code>cp study/notes/day1.txt study/files/day1-copy.txt</code> to copy it. Finally <code>ls -R study</code> prints the whole tree; expect <code>day1.txt</code> under <code>notes</code> and <code>day1-copy.txt</code> under <code>files</code>. Try <code>mv</code> to relocate one of them and watch the output change. On Windows use File Explorer with right-click to get the same result.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>A file is named data and a folder is a container that organises files into a tree with a single root.</li><li>An absolute path starts at the root; a relative one starts at the current folder and uses <code>.</code> and <code>..</code>.</li><li>The extension is a hint about file type, not a conversion, and good names are descriptive and clean.</li><li>Copy duplicates data, move relocates it, and delete may not be recoverable.</li></ul><p class="doc-next"><strong>Next step:</strong> Binary and data: how all these files turn into zeros and ones.</p>
+</section>
+<section class="lesson-section doc-refs"><h3>Further reading</h3><ul><li>The Linux <code>man</code> pages for <code>cp</code>, <code>mv</code> and <code>rm</code>.</li><li>The Filesystem Hierarchy Standard describing Linux directory layout.</li></ul>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>Core concept</strong>
+<p>Organizing files and folders is a basic skill for anyone who works with computers.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Hands-on practice</span>
+<h3>Try it yourself</h3>
+</div>
+</div>
+<p>Create a folder named FAYBIT, then create folders inside it named HTML, CSS, and JavaScript.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is the main purpose of a Folder?</strong></p><ul><li>Cooling the CPU</li><li>Organizing files</li><li>Increasing RAM</li><li>Displaying images</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Organizing files</strong></p></details></li><li><p><strong>You are inside /home/sara/Documents. Where does ../Pictures/trip.jpg point?</strong></p><ul><li>/home/sara/Documents/Pictures/trip.jpg</li><li>/Pictures/trip.jpg</li><li>/home/sara/Pictures/trip.jpg</li><li>/home/Pictures/trip.jpg</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>/home/sara/Pictures/trip.jpg</strong></p><p>The two dots .. mean the parent folder /home/sara, and then we enter Pictures.</p></details></li><li><p><strong>You renamed photo.png to photo.txt. What happened to the picture?</strong></p><ul><li>It really became text</li><li>The content is unchanged, but the system will try a text editor and show meaningless symbols</li><li>The picture was deleted</li><li>Its size shrank</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The content is unchanged, but the system will try a text editor and show meaningless symbols</strong></p><p>The extension is only a hint for choosing a program; it does not change what is inside the file.</p></details></li><li><p><strong>On Linux, what is the relation between Report.txt and report.txt?</strong></p><ul><li>Two different files because letter case matters</li><li>The same file</li><li>Both are disallowed</li><li>The second is a hidden copy of the first</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Two different files because letter case matters</strong></p><p>Linux is case-sensitive, whereas Windows and macOS normally treat them as one name.</p></details></li><li><p><strong>Which file name is invalid on Windows?</strong></p><ul><li>budget-2026-q1.xlsx</li><li>my report.docx</li><li>notes_final.txt</li><li>budget:q1?.xlsx</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>budget:q1?.xlsx</strong></p><p>The characters : ? * | / &lt; &gt; and &quot; are forbidden in Windows file names.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-11">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/computer-basics/lessons/com-10.html"><small>Previous lesson</small><strong>Operating Systems</strong></a>
+        <a rel="next" href="/en/fundamentals/computer-basics/lessons/com-12.html"><small>Next lesson</small><strong>Binary and Data</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/computer-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

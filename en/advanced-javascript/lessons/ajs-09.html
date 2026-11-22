@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>Property Descriptors and Freezing — Advanced JavaScript | FAYBIT</title>
+    <meta name="description" content="Control whether a property is writable and enumerable, and understand the difference between freeze and seal and between shallow and deep copying." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-09.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-09.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-09.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-09.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Property Descriptors and Freezing — Advanced JavaScript | FAYBIT" />
+    <meta property="og:description" content="Control whether a property is writable and enumerable, and understand the difference between freeze and seal and between shallow and deep copying." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-09.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Advanced JavaScript","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Property Descriptors and Freezing","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-09.html"}]},{"@type":"LearningResource","name":"Property Descriptors and Freezing","description":"Control whether a property is writable and enumerable, and understand the difference between freeze and seal and between shallow and deep copying.","url":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-09.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Advanced JavaScript — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Advanced JavaScript"><a href="/en/advanced-javascript/lessons/index.html">Lessons</a><a href="/advanced-javascript/lessons/ajs-09.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/advanced-javascript/lessons/index.html">Advanced JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 9 of 22</p>
+      <h1 class="lp-h1">Property Descriptors and Freezing</h1>
+      <p class="lp-lead">Control whether a property is writable and enumerable, and understand the difference between freeze and seal and between shallow and deep copying.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-9">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Descriptors</h2><p>Every property has attributes: <code>writable</code>, <code>enumerable</code>, and <code>configurable</code> (or get/set). You control them via <code>Object.defineProperty</code>.</p></article><article class="content-card"><h2>freeze and structuredClone</h2><p><code>Object.freeze</code> is shallow: it only prevents modifying direct properties. For deep copying use <code>structuredClone</code> (it does not support functions).</p></article></div>
+<article class="body-card key-card"><p>freeze is shallow. Nested objects remain modifiable unless you freeze them too.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>"use strict";
+const cfg = {};
+Object.defineProperty(cfg, "id", { value: 7, enumerable: false });
+console.log(cfg.id, Object.keys(cfg));
+try { cfg.id = 8; } catch (e) { console.log(e.name); }
+const state = Object.freeze({ user: { name: "A" }, n: 1 });
+try { state.n = 2; } catch (e) { console.log("frozen"); }
+state.user.name = "B";
+console.log(state.user.name);
+const deep = structuredClone({ d: new Date(0), list: [1, { x: 2 }] });
+console.log(deep.list[1].x, deep.d.getTime());</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">7 []
+TypeError
+frozen
+B
+2 0</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>A property defined with <code>defineProperty</code> without writable is read-only and not visible in <code>keys</code>. Freezing did not prevent changing <code>state.user.name</code> because it is a nested object.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Try it yourself</h2></div>
+</div>
+<p class="practice-description">Make the object &lt;code&gt;{a: {b: 1}}&lt;/code&gt; deeply frozen using a &lt;code&gt;deepFreeze&lt;/code&gt; function that walks through the values.</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What does Object.freeze prevent?</strong></p><ul><li>Modifying, adding, and deleting direct properties</li><li>Reading properties</li><li>Using the object in loops</li><li>Converting to JSON</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Modifying, adding, and deleting direct properties</strong></p></details></li><li><p><strong>What is the limitation of freeze?</strong></p><ul><li>It is shallow and does not freeze nested objects</li><li>It deeply freezes everything</li><li>It works on numbers only</li><li>It prevents nothing</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>It is shallow and does not freeze nested objects</strong></p></details></li><li><p><strong>What does structuredClone not support?</strong></p><ul><li>Functions</li><li>Arrays</li><li>Dates</li><li>Nested objects</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Functions</strong></p></details></li><li><p><strong>What does this code print? const o = {}; Object.defineProperty(o, &quot;id&quot;, { value: 1 }); console.log(Object.keys(o), o.id, Object.getOwnPropertyDescriptor(o, &quot;id&quot;).writable);</strong></p><ul><li>[&quot;id&quot;] 1 true</li><li>[] 1 false</li><li>[&quot;id&quot;] 1 false</li><li>[] undefined false</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>[] 1 false</strong></p><p>With defineProperty, writable, enumerable and configurable all default to false. So the property is not writable and does not show in Object.keys, but its value can be read.</p></details></li><li><p><strong>What does this code print? const o = Object.freeze({ list: [1] }); o.list.push(2); console.log(o.list);</strong></p><ul><li>[1], because the object is frozen</li><li>[1, 2], because freeze is shallow and does not cover the inner array</li><li>A TypeError</li><li>[2]</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>[1, 2], because freeze is shallow and does not cover the inner array</strong></p><p>freeze locks only the object's direct properties, so list cannot be replaced by another array. The array itself is a separate unfrozen object and can still be changed with push.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-9">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/advanced-javascript/lessons/ajs-08.html"><small>Previous lesson</small><strong>Class Inheritance and Mixins</strong></a>
+        <a rel="next" href="/en/advanced-javascript/lessons/ajs-10.html"><small>Next lesson</small><strong>Proxy and Reflect</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/advanced-javascript/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

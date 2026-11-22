@@ -1,0 +1,50 @@
+/* Static lesson pages (tools/gen-lesson-pages.mjs). Reading-first layout; the lesson markup keeps the classes of the live lesson UI. */
+body.lp { margin: 0; background: var(--fy-bg, #f8fafc); color: var(--fy-text, #0f172a); font-family: var(--fy-font-body, system-ui, sans-serif); line-height: 1.8; }
+.lp-skip { position: absolute; inset-inline-start: 8px; top: -48px; padding: 8px 14px; background: var(--fy-brand, #0d9488); color: #fff; border-radius: 8px; z-index: 10; }
+.lp-skip:focus { top: 8px; }
+.lp-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px max(16px, env(safe-area-inset-right)) 10px max(16px, env(safe-area-inset-left)); border-block-end: 1px solid var(--fy-border, #e2e8f0); background: var(--fy-surface, #fff); position: sticky; top: 0; z-index: 5; }
+.lp-brand { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; letter-spacing: .04em; color: inherit; text-decoration: none; }
+.lp-nav { display: flex; gap: 6px; }
+.lp-nav a { min-height: 44px; display: inline-flex; align-items: center; padding: 0 12px; border-radius: 10px; color: var(--fy-text-soft, #475569); text-decoration: none; }
+.lp-nav a:hover, .lp-nav a:focus-visible { background: var(--fy-surface-2, #f1f5f9); color: inherit; outline: none; }
+.lp-main { width: min(760px, 100% - 32px); margin: 0 auto; padding: 22px 0 64px; }
+.lp-crumbs { font-size: .88rem; color: var(--fy-text-soft, #475569); }
+.lp-crumbs a { color: inherit; }
+.lp-eyebrow { margin: 14px 0 0; font-size: .85rem; font-weight: 700; letter-spacing: .04em; color: var(--fy-brand, #0d9488); }
+.lp-h1 { margin: 4px 0 8px; font-size: clamp(1.6rem, 5.5vw, 2.3rem); line-height: 1.25; }
+.lp-lead { margin: 0 0 14px; font-size: 1.08rem; color: var(--fy-text-soft, #475569); }
+.lp-cta { display: grid; gap: 4px; margin: 14px 0; }
+.lp-cta small { color: var(--fy-text-soft, #475569); }
+.lp-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 18px; border-radius: 12px; background: var(--fy-brand, #0d9488); color: #fff; font-weight: 700; text-decoration: none; text-align: center; }
+.lp-btn:focus-visible { outline: 3px solid var(--fy-brand-ring, #5eead4); outline-offset: 2px; }
+.lp-body { display: block; padding: 0; margin: 18px 0; }
+.lp-body > * { max-width: 100%; }
+.lp-body h2 { margin: 26px 0 8px; font-size: 1.35rem; line-height: 1.35; }
+.lp-body h3 { margin: 18px 0 6px; font-size: 1.1rem; }
+.lp-body :is(.body-card, .example-card, .result-card, .explanation-card, .practice-card, .key-card, .content-card, .lesson-card, .lesson-section) { margin: 14px 0; padding: 14px 16px; border: 1px solid var(--fy-border, #e2e8f0); border-radius: 14px; background: var(--fy-surface, #fff); }
+.lp-body pre { margin: 10px 0; padding: 12px 14px; overflow-x: auto; border-radius: 12px; background: var(--fy-code-bg, #0b1620); color: var(--fy-code-text, #e2e8f0); direction: ltr; text-align: left; font: 400 14px/1.7 var(--fy-font-code, ui-monospace, Menlo, Consolas, monospace); }
+.lp-body code { font-family: var(--fy-font-code, ui-monospace, Menlo, Consolas, monospace); direction: ltr; unicode-bidi: isolate; }
+.lp-body table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; }
+.lp-body img, .lp-body svg, .lp-body video { max-width: 100%; height: auto; }
+.lp-body details > summary { min-height: 44px; cursor: pointer; }
+.lp-pager { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
+.lp-pager a { display: grid; gap: 2px; padding: 12px 14px; border: 1px solid var(--fy-border-strong, #cbd5e1); border-radius: 12px; color: inherit; text-decoration: none; min-height: 44px; }
+.lp-pager a[rel=next] { text-align: end; }
+.lp-pager small { color: var(--fy-text-soft, #475569); }
+.lp-all { text-align: center; margin-top: 18px; }
+.lp-list { display: grid; gap: 4px; padding-inline-start: 1.6em; }
+.lp-list a { display: inline-flex; align-items: center; min-height: 44px; }
+@media (max-width: 520px) { .lp-pager { grid-template-columns: 1fr; } }
+.lp-quiz { margin: 26px 0 8px; padding: 14px 16px; border: 1px solid var(--fy-border, #e2e8f0); border-radius: 14px; background: var(--fy-surface, #fff); }
+.lp-quiz h2 { margin-top: 0; }
+.lp-quiz > ol { display: grid; gap: 14px; padding-inline-start: 1.4em; margin: 0; }
+.lp-quiz ul { margin: 6px 0; padding-inline-start: 1.2em; }
+.lp-quiz summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; color: var(--fy-brand, #0d9488); font-weight: 600; }
+.lp-demo-h1 { font-size: 2em; font-weight: 700; margin: .4em 0; } .lp-demo-h2 { font-size: 1.5em; font-weight: 700; margin: .4em 0; } .lp-demo-h3 { font-size: 1.17em; font-weight: 700; margin: .4em 0; }
+.lp-demo-h4 { font-weight: 700; margin: .4em 0; } .lp-demo-h5 { font-size: .83em; font-weight: 700; margin: .4em 0; } .lp-demo-h6 { font-size: .67em; font-weight: 700; margin: .4em 0; }
+.lp-brand { min-height: 44px; }
+.lp-all a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 8px; }
+.lp-crumbs a { display: inline-flex; align-items: center; min-height: 32px; }
+/* nested cards inside the lesson body: only the outer one is a card */
+.lp-body :is(.body-card, .example-card, .result-card, .explanation-card, .practice-card, .key-card, .content-card, .lesson-card, .lesson-section) :is(.body-card, .content-card, .lesson-section, .example-card) { border: 0; padding: 0; background: none; margin: 10px 0; border-radius: 0; }
+.lp-body .lesson-card > .lesson-section + .lesson-section { margin-top: 14px; }

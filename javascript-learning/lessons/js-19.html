@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="js" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Destructuring — JavaScript | FAYBIT</title>
+    <meta name="description" content="تعلّم كيف تستخرج القيم من Arrays وObjects بطريقة مختصرة ومنظمة." />
+    <link rel="canonical" href="https://faybit.vercel.app/javascript-learning/lessons/js-19.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/javascript-learning/lessons/js-19.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-19.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/javascript-learning/lessons/js-19.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Destructuring — JavaScript | FAYBIT" />
+    <meta property="og:description" content="تعلّم كيف تستخرج القيم من Arrays وObjects بطريقة مختصرة ومنظمة." />
+    <meta property="og:url" content="https://faybit.vercel.app/javascript-learning/lessons/js-19.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript","item":"https://faybit.vercel.app/javascript-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Destructuring","item":"https://faybit.vercel.app/javascript-learning/lessons/js-19.html"}]},{"@type":"LearningResource","name":"Destructuring","description":"تعلّم كيف تستخرج القيم من Arrays وObjects بطريقة مختصرة ومنظمة.","url":"https://faybit.vercel.app/javascript-learning/lessons/js-19.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript — FAYBIT","url":"https://faybit.vercel.app/javascript-learning/javascript-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript"><a href="/javascript-learning/lessons/index.html">الدروس</a><a href="/en/javascript-learning/lessons/js-19.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/javascript-learning/lessons/index.html">JavaScript</a></nav>
+      <p class="lp-eyebrow">الدرس 19 من 25</p>
+      <h1 class="lp-h1">Destructuring</h1>
+      <p class="lp-lead">تعلّم كيف تستخرج القيم من Arrays وObjects بطريقة مختصرة ومنظمة.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-19">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>const user = {
+name: "FAYBIT",
+age: 20
+};
+const { name, age } = user;
+document.getElementById("jsResult").textContent =
+name + " - " + age;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>
+<p><strong>Destructuring</strong> تسمح باستخراج القيم من Object أو Array داخل متغيرات.</p>
+<p>بدلًا من كتابة <strong>user.name</strong> و<strong>user.age</strong> عدة مرات يمكن استخراج القيم مباشرة.</p>
+<p>يُستخدم Destructuring بكثرة في JavaScript الحديثة.</p>
+<p>يمكن استخدامه مع Objects وArrays.</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>اكتب JavaScript</h2></div>
+</div>
+<p class="practice-description">غيّر الكود الموجود بالأسفل ثم شغّله لترى النتيجة.</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما فائدة Destructuring؟</strong></p><ul><li>استخراج القيم بسهولة من Objects وArrays</li><li>إنشاء CSS</li><li>إنشاء HTML</li><li>تشغيل المتصفح</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>استخراج القيم بسهولة من Objects وArrays</strong></p></details></li><li><p><strong>أي صيغة تستخدم Destructuring من Object؟</strong></p><ul><li>const { name } = user;</li><li>const name = { user };</li><li>const [name] = user;</li><li>destructure(user)</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>const { name } = user;</strong></p></details></li><li><p><strong>هل يمكن استخدام Destructuring مع Arrays؟</strong></p><ul><li>نعم</li><li>لا</li><li>فقط مع CSS</li><li>فقط مع Functions</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>نعم</strong></p></details></li><li><p><strong>ما ناتج الكود؟ const [x, y = 5] = [1]; const { name, age = 30 } = { name: &quot;Z&quot; }; console.log(x, y, name, age);</strong></p><ul><li>1 undefined Z undefined</li><li>1 5 Z 30</li><li>1 5 Z undefined</li><li>خطأ لأن المصفوفة أقصر من المتغيرات</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>1 5 Z 30</strong></p><p>القيم الافتراضية في destructuring تُستخدم عندما تكون القيمة المقابلة undefined أو غير موجودة. لذلك y تصبح 5 و age تصبح 30.</p></details></li><li><p><strong>ما الذي تفعله هذه العبارة؟ [a, b] = [b, a];</strong></p><ul><li>تنسخ a إلى b فقط</li><li>تبدّل قيمتي المتغيرين دون متغير مؤقت</li><li>ترمي خطأ لأن المصفوفة لا تُسند</li><li>تنشئ مصفوفة جديدة فقط دون تغيير المتغيرات</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تبدّل قيمتي المتغيرين دون متغير مؤقت</strong></p><p>الطرف الأيمن يبني مصفوفة بالقيم الحالية أولاً، ثم يفككها destructuring إلى a و b بالترتيب المعكوس. هكذا يتم التبديل دون متغير ثالث.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-19">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/javascript-learning/lessons/js-18.html"><small>الدرس السابق</small><strong>الأحداث Events</strong></a>
+        <a rel="next" href="/javascript-learning/lessons/js-20.html"><small>الدرس التالي</small><strong>Spread و Rest</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/javascript-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

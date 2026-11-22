@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="js" />
+    <meta name="robots" content="noindex, follow" />
+    <title>الشروط Conditions — JavaScript | FAYBIT</title>
+    <meta name="description" content="تعلّم كيف تستخدم if وelse لجعل البرنامج يتخذ قرارات بناءً على شروط معينة." />
+    <link rel="canonical" href="https://faybit.vercel.app/javascript-learning/lessons/js-05.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/javascript-learning/lessons/js-05.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-05.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/javascript-learning/lessons/js-05.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="الشروط Conditions — JavaScript | FAYBIT" />
+    <meta property="og:description" content="تعلّم كيف تستخدم if وelse لجعل البرنامج يتخذ قرارات بناءً على شروط معينة." />
+    <meta property="og:url" content="https://faybit.vercel.app/javascript-learning/lessons/js-05.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript","item":"https://faybit.vercel.app/javascript-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"الشروط Conditions","item":"https://faybit.vercel.app/javascript-learning/lessons/js-05.html"}]},{"@type":"LearningResource","name":"الشروط Conditions","description":"تعلّم كيف تستخدم if وelse لجعل البرنامج يتخذ قرارات بناءً على شروط معينة.","url":"https://faybit.vercel.app/javascript-learning/lessons/js-05.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript — FAYBIT","url":"https://faybit.vercel.app/javascript-learning/javascript-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript"><a href="/javascript-learning/lessons/index.html">الدروس</a><a href="/en/javascript-learning/lessons/js-05.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/javascript-learning/lessons/index.html">JavaScript</a></nav>
+      <p class="lp-eyebrow">الدرس 5 من 25</p>
+      <h1 class="lp-h1">الشروط Conditions</h1>
+      <p class="lp-lead">تعلّم كيف تستخدم if وelse لجعل البرنامج يتخذ قرارات بناءً على شروط معينة.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-5">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>const age = 20;
+if (age &gt;= 18) {
+document.getElementById("jsResult").textContent = "بالغ";
+} else {
+document.getElementById("jsResult").textContent = "قاصر";
+}</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>
+<p><strong>if</strong> تتحقق من وجود شرط معين.</p>
+<p>إذا كان الشرط صحيحًا يتم تنفيذ الكود الموجود داخلها.</p>
+<p><strong>else</strong> تُستخدم لتنفيذ كود بديل عندما يكون الشرط غير صحيح.</p>
+<p>الشروط تسمح للبرنامج باتخاذ قرارات مختلفة حسب البيانات.</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>اكتب JavaScript</h2></div>
+</div>
+<p class="practice-description">غيّر الكود الموجود بالأسفل ثم شغّله لترى النتيجة.</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما الكلمة المفتاحية المستخدمة لإنشاء شرط؟</strong></p><ul><li>if</li><li>loop</li><li>check</li><li>condition</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>if</strong></p></details></li><li><p><strong>متى يتم تنفيذ else؟</strong></p><ul><li>عندما يكون شرط if غير صحيح</li><li>دائمًا</li><li>قبل if</li><li>عند تعريف المتغير</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>عندما يكون شرط if غير صحيح</strong></p></details></li><li><p><strong>ما نتيجة الشرط 20 &gt;= 18؟</strong></p><ul><li>true</li><li>false</li><li>undefined</li><li>null</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>true</strong></p></details></li><li><p><strong>أي قيمة من التالية تُعتبر falsy في الشرط؟</strong></p><ul><li>النص &quot;0&quot;</li><li>المصفوفة الفارغة []</li><li>الرقم 0</li><li>الكائن الفارغ {}</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>الرقم 0</strong></p><p>القيم falsy هي false و 0 و &quot;&quot; و null و undefined و NaN. النص &quot;0&quot; والمصفوفة والكائن الفارغان كلها truthy لأنها ليست في تلك القائمة.</p></details></li><li><p><strong>ماذا يطبع الكود؟ let n = 7; if (n === 7) { console.log(&quot;a&quot;); } else if (n === 7) { console.log(&quot;b&quot;); } else { console.log(&quot;c&quot;); }</strong></p><ul><li>a فقط</li><li>a ثم b</li><li>b فقط</li><li>c</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>a فقط</strong></p><p>تُفحص الشروط بالترتيب وعند أول شرط صحيح ينفذ بلوكه ويتوقف الباقي. لذلك لا يصل التنفيذ إلى else if رغم أن شرطه صحيح أيضاً.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-5">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/javascript-learning/lessons/js-04.html"><small>الدرس السابق</small><strong>العوامل Operators</strong></a>
+        <a rel="next" href="/javascript-learning/lessons/js-06.html"><small>الدرس التالي</small><strong>الحلقات Loops</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/javascript-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

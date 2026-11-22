@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="react" />
+    <meta name="robots" content="noindex, follow" />
+    <title>تحسين الأداء Performance — React | FAYBIT</title>
+    <meta name="description" content="تعرف على المبادئ الأساسية لتحسين أداء تطبيقات React وتقليل العمل غير الضروري." />
+    <link rel="canonical" href="https://faybit.vercel.app/react-learning/lessons/react-21.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/react-learning/lessons/react-21.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/react-learning/lessons/react-21.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/react-learning/lessons/react-21.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="تحسين الأداء Performance — React | FAYBIT" />
+    <meta property="og:description" content="تعرف على المبادئ الأساسية لتحسين أداء تطبيقات React وتقليل العمل غير الضروري." />
+    <meta property="og:url" content="https://faybit.vercel.app/react-learning/lessons/react-21.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"React","item":"https://faybit.vercel.app/react-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"تحسين الأداء Performance","item":"https://faybit.vercel.app/react-learning/lessons/react-21.html"}]},{"@type":"LearningResource","name":"تحسين الأداء Performance","description":"تعرف على المبادئ الأساسية لتحسين أداء تطبيقات React وتقليل العمل غير الضروري.","url":"https://faybit.vercel.app/react-learning/lessons/react-21.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"React — FAYBIT","url":"https://faybit.vercel.app/react-learning/react-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="React"><a href="/react-learning/lessons/index.html">الدروس</a><a href="/en/react-learning/lessons/react-21.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/react-learning/lessons/index.html">React</a></nav>
+      <p class="lp-eyebrow">الدرس 21 من 30</p>
+      <h1 class="lp-h1">تحسين الأداء Performance</h1>
+      <p class="lp-lead">تعرف على المبادئ الأساسية لتحسين أداء تطبيقات React وتقليل العمل غير الضروري.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-21">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<p>
+Performance optimization يعني تقليل العمليات غير الضرورية
+التي يقوم بها التطبيق.
+</p>
+<p>
+من المهم أولًا فهم سبب إعادة Render ثم تحديد الجزء الذي
+يحتاج إلى تحسين.
+</p>
+<p>
+أدوات مثل React.memo وuseMemo وuseCallback قد تساعد في حالات
+معينة، لكنها ليست مطلوبة لكل Component.
+</p>
+</div></article>
+<article class="body-card key-card"><p>تحسين الأداء يبدأ بفهم المشكلة وليس بإضافة أدوات Optimization عشوائيًا.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>الكود</h2></div>
+</div>
+<pre dir="ltr"><code>function ProductList({ products }) {
+return products.map((product) =&gt; (
+&lt;Product
+key={product.id}
+product={product}
+/&gt;
+));
+}</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>راقب عمليات Render والعمليات الحسابية الثقيلة قبل اختيار طريقة التحسين.</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span></div>
+</div>
+<p class="practice-description">حاول تحديد Component الذي قد يحتاج إلى تحسين في المثال.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما الهدف من Performance Optimization؟</strong></p><ul><li>تقليل العمل والعمليات غير الضرورية</li><li>إضافة CSS أكثر</li><li>حذف Components</li><li>إلغاء JavaScript</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تقليل العمل والعمليات غير الضرورية</strong></p></details></li><li><p><strong>ماذا يجب أن تفعل قبل Optimization؟</strong></p><ul><li>تفهم سبب المشكلة أولًا</li><li>تستخدم كل Hooks</li><li>تحذف State</li><li>تحذف Components</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تفهم سبب المشكلة أولًا</strong></p></details></li><li><p><strong>هل يجب استخدام memoization في كل Component؟</strong></p><ul><li>لا</li><li>نعم دائمًا</li><li>فقط في HTML</li><li>فقط في CSS</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لا</strong></p></details></li><li><p><strong>ما سبب إعادة رسم المكون؟</strong></p><ul><li>حفظ الملف فقط</li><li>تغير state أو props أو إعادة رسم الأب</li><li>مرور الوقت فقط</li><li>تغيير لون الشاشة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تغير state أو props أو إعادة رسم الأب</strong></p><p>فهم أسباب الرسم يسبق أي تحسين.</p></details></li><li><p><strong>ما الخطوة الأولى لتحسين بطء ملحوظ؟</strong></p><ul><li>إضافة memo في كل مكان</li><li>القياس وتحديد الجزء البطيء</li><li>حذف المكونات</li><li>إعادة كتابة المشروع</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>القياس وتحديد الجزء البطيء</strong></p><p>نقيس أولاً حتى لا نحسّن ما لا يحتاج.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-21">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/react-learning/lessons/react-20.html"><small>الدرس السابق</small><strong>حالات التحميل والأخطاء</strong></a>
+        <a rel="next" href="/react-learning/lessons/react-22.html"><small>الدرس التالي</small><strong>React.memo</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/react-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

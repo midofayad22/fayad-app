@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <title>group و peer وبقية الـ variants — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="تأثير حالة عنصر على آخر، وأنماط الأبناء، وaria وdata variants." />
+    <link rel="canonical" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-13.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-13.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-13.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-13.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="group و peer وبقية الـ variants — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="تأثير حالة عنصر على آخر، وأنماط الأبناء، وaria وdata variants." />
+    <meta property="og:url" content="https://faybit.vercel.app/tailwind-learning/lessons/tw-13.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"group و peer وبقية الـ variants","item":"https://faybit.vercel.app/tailwind-learning/lessons/tw-13.html"}]},{"@type":"LearningResource","name":"group و peer وبقية الـ variants","description":"تأثير حالة عنصر على آخر، وأنماط الأبناء، وaria وdata variants.","url":"https://faybit.vercel.app/tailwind-learning/lessons/tw-13.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/tailwind-learning/lessons/index.html">الدروس</a><a href="/en/tailwind-learning/lessons/tw-13.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">الدرس 13 من 20</p>
+      <h1 class="lp-h1">group و peer وبقية الـ variants</h1>
+      <p class="lp-lead">تأثير حالة عنصر على آخر، وأنماط الأبناء، وaria وdata variants.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-13">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>group</h2><p>ضع <code>group</code> على الأب ثم <code>group-hover:*</code> على الأبناء ليتغيروا عند الحوم على الأب.</p></article><article class="content-card"><h2>peer</h2><p>ضع <code>peer</code> على عنصر <strong>سابق</strong> ثم <code>peer-checked:*</code> أو <code>peer-invalid:*</code> على الأخ التالي. ممتاز لخانات الاختيار المخصصة.</p></article><article class="content-card"><h2>أخرى</h2><p><code>first:</code> <code>last:</code> <code>odd:</code> <code>even:</code> للأبناء، و<code>aria-expanded:*</code> و<code>data-[state=open]:*</code> للحالات المعبّر عنها بخصائص.</p></article></div>
+<article class="body-card key-card"><p>peer يجب أن يسبق العنصر المتأثر في ترتيب HTML.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="space-y-4 p-4"&gt;
+&lt;a href="#" class="group flex items-center gap-3 rounded-lg border p-3 hover:border-sky-500"&gt;
+&lt;span class="text-slate-700 group-hover:text-sky-700"&gt;مرّر على البطاقة كلها&lt;/span&gt;
+&lt;span id="arrow" class="ms-auto opacity-0 transition group-hover:opacity-100"&gt;←&lt;/span&gt;
+&lt;/a&gt;
+&lt;label class="flex items-center gap-2"&gt;
+&lt;input type="checkbox" id="chk" class="peer size-5"&gt;
+&lt;span class="text-slate-500 peer-checked:font-bold peer-checked:text-emerald-700"&gt;وافقت على الشروط&lt;/span&gt;
+&lt;/label&gt;
+&lt;ul&gt;&lt;li class="odd:bg-slate-100 p-2"&gt;1&lt;/li&gt;&lt;li class="odd:bg-slate-100 p-2"&gt;2&lt;/li&gt;&lt;li class="odd:bg-slate-100 p-2"&gt;3&lt;/li&gt;&lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>السهم يظهر عند الحوم على البطاقة كلها بفضل <code>group</code>. النص يتغير عند تحديد الخانة بفضل <code>peer-checked</code>. <code>odd:</code> يظلل العناصر الفردية.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">أضف &lt;code&gt;first:rounded-t-lg&lt;/code&gt; على العناصر ولاحظ أنها تطبّق على الأول فقط.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما وظيفة group؟</strong></p><ul><li>تسمح للأبناء بالتفاعل مع حالة الأب عبر group-hover</li><li>تجمع الألوان</li><li>تنشئ شبكة</li><li>تخفي الأبناء</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تسمح للأبناء بالتفاعل مع حالة الأب عبر group-hover</strong></p></details></li><li><p><strong>شرط peer-checked؟</strong></p><ul><li>أن يسبق peer العنصر المتأثر في HTML</li><li>أن يكون العنصر div</li><li>أن يكون الأب grid</li><li>لا شرط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>أن يسبق peer العنصر المتأثر في HTML</strong></p></details></li><li><p><strong>ماذا يفعل odd:bg-slate-100؟</strong></p><ul><li>يظلل العناصر الفردية فقط</li><li>يظلل الزوجية</li><li>يظلل الأول فقط</li><li>يخفي الفردية</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يظلل العناصر الفردية فقط</strong></p></details></li><li><p><strong>أي بادئة تنسّق أول عنصر ابن فقط؟</strong></p><ul><li>start:</li><li>first:</li><li>top:</li><li>head:</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>first:</strong></p><p>first: و last: يستهدفان أول وآخر ابن.</p></details></li><li><p><strong>أي بادئة تنسّق عنصراً عندما تكون خاصية aria-expanded تساوي true؟</strong></p><ul><li>aria-expanded:</li><li>expanded-aria:</li><li>open:aria</li><li>state-expanded:</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>aria-expanded:</strong></p><p>البادئات aria-* تقرأ حالة السمة مباشرة.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-13">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/tailwind-learning/lessons/tw-12.html"><small>الدرس السابق</small><strong>الحالات: hover و focus و active و disabled</strong></a>
+        <a rel="next" href="/tailwind-learning/lessons/tw-14.html"><small>الدرس التالي</small><strong>الوضع الداكن</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/tailwind-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

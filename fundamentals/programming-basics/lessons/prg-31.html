@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <title>المشروع النهائي: لغة FAY كاملة — أساسيات البرمجة | FAYBIT</title>
+    <meta name="description" content="FINAL PROJECT تفهم كيف تتصل المراحل الخمس وما الذي ينتقل بينها. تقرأ مفسّرًا كاملًا بحوالي 90 سطرًا وتعرف دور كل جزء. تضيف ميزة جديدة (الأمر print ) عبر…" />
+    <link rel="canonical" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-31.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-31.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-31.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-31.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="المشروع النهائي: لغة FAY كاملة — أساسيات البرمجة | FAYBIT" />
+    <meta property="og:description" content="FINAL PROJECT تفهم كيف تتصل المراحل الخمس وما الذي ينتقل بينها. تقرأ مفسّرًا كاملًا بحوالي 90 سطرًا وتعرف دور كل جزء. تضيف ميزة جديدة (الأمر print ) عبر…" />
+    <meta property="og:url" content="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-31.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"أساسيات البرمجة","item":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"المشروع النهائي: لغة FAY كاملة","item":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-31.html"}]},{"@type":"LearningResource","name":"المشروع النهائي: لغة FAY كاملة","description":"FINAL PROJECT تفهم كيف تتصل المراحل الخمس وما الذي ينتقل بينها. تقرأ مفسّرًا كاملًا بحوالي 90 سطرًا وتعرف دور كل جزء. تضيف ميزة جديدة (الأمر print ) عبر…","url":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-31.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"أساسيات البرمجة — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="أساسيات البرمجة"><a href="/fundamentals/programming-basics/lessons/index.html">الدروس</a><a href="/en/fundamentals/programming-basics/lessons/prg-31.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/fundamentals/programming-basics/lessons/index.html">أساسيات البرمجة</a></nav>
+      <p class="lp-eyebrow">الدرس 31 من 31</p>
+      <h1 class="lp-h1">المشروع النهائي: لغة FAY كاملة</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-31">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">FINAL PROJECT</span>
+<h2>Source ← Tokenizer ← Parser ← AST ← Interpreter ← Output</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content"><section class="lesson-section doc-objectives"><h3>أهداف الدرس</h3><ul><li>تفهم كيف تتصل المراحل الخمس وما الذي ينتقل بينها.</li><li>تقرأ مفسّرًا كاملًا بحوالي 90 سطرًا وتعرف دور كل جزء.</li><li>تضيف ميزة جديدة (الأمر <code>print</code>) عبر المراحل المعنية.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>المتطلبات السابقة</h3><ul><li>الدروس 25 إلى 30 من هذا القسم.</li></ul>
+</section>
+<section class="lesson-section "><h3>لغة FAY: ما الذي تدعمه؟</h3>
+<ul><li>أعداد صحيحة وعشرية: <code>42</code> و<code>3.5</code>.</li><li>العوامل <code>+ - * / %</code> والأقواس والسالب <code>-x</code>.</li><li>المتغيرات: <code>let price = 20</code>.</li><li>عبارة تفصل بين الأسطر أو بـ <code>;</code>.</li><li>وفي نهاية المشروع: الأمر <code>print</code> (ستضيفه أنت).</li></ul>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">text</span></figcaption><pre dir="ltr"><code>let price = 20
+let qty = 3
+let total = price * qty - 10
+print total          # you will add this command
+print total % 7</code></pre></figure>
+<figure class="doc-diagram" role="group" aria-label="مخطط"><figcaption>الخط الكامل</figcaption><ol class="doc-flow"><li><strong>Source</strong><span>نص البرنامج</span></li><li><strong>Tokenizer</strong><span>نص ← Tokens مع المواضع</span></li><li><strong>Parser</strong><span>Tokens ← شجرة عبارات (AST)</span></li><li><strong>Interpreter</strong><span>AST + بيئة ← تنفيذ</span></li><li><strong>Output</strong><span>مصفوفة سطور المخرجات</span></li></ol></figure>
+</section>
+<section class="lesson-section "><h3>المرحلة 1: الـ Tokenizer</h3>
+<p>تعبير نمطي واحد بأجزاء بديلة يقسم النص: مسافات (تُهمل)، أعداد، أسماء، فواصل الأسطر، عوامل، وأي شيء آخر هو خطأ. نخزّن موضع كل Token لرسائل الخطأ.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>function tokenize(src) {
+const tokens = [];
+const re = /([ \t\r]+)|(\d+(?:\.\d+)?)|([A-Za-z_]\w*)|([\n;])|([-+*\/%()=])|([\s\S])/g;
+let m;
+while ((m = re.exec(src))) {
+const pos = m.index;
+if (m[1]) continue;
+if (m[2]) tokens.push({ type: "num", value: Number(m[2]), pos });
+else if (m[3]) tokens.push({ type: "id", value: m[3], pos });
+else if (m[4]) tokens.push({ type: "nl", value: "\n", pos });
+else if (m[5]) tokens.push({ type: "op", value: m[5], pos });
+else throw new Error("Unexpected character '" + m[6] + "' at " + pos);
+}
+return tokens;
+}
+</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>المرحلة 2: الـ Parser</h3>
+<p>نفس الأسلوب الذي تعلمته: دالة لكل قاعدة. أضفنا <code>program</code> و<code>statement</code> فوق <code>expression</code> و<code>term</code> و<code>factor</code>، ودالة <code>expect</code> لرسائل الخطأ. لاحظ أن <code>print</code> غير موجودة بعد: هذا هو تمرينك.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>function parse(tokens) {
+let i = 0;
+const peek = () =&gt; tokens[i];
+const next = () =&gt; tokens[i++];
+const isOp = (v) =&gt; peek() &amp;&amp; peek().type === "op" &amp;&amp; peek().value === v;
+const where = () =&gt; (peek() ? "at " + peek().pos : "at the end");
+function expect(v) {
+if (!isOp(v)) throw new Error("Expected '" + v + "' " + where());
+return next();
+}
+function program() {
+const out = [];
+while (peek()) {
+if (peek().type === "nl") { next(); continue; }
+out.push(statement());
+if (peek() &amp;&amp; peek().type !== "nl") throw new Error("Unexpected '" + peek().value + "' " + where());
+}
+return out;
+}
+function statement() {
+const t = peek();
+if (t.type === "id" &amp;&amp; t.value === "let") {
+next();
+const name = next();
+if (!name || name.type !== "id") throw new Error("Expected a name after 'let'");
+expect("=");
+return { kind: "let", name: name.value, value: expression() };
+}
+return { kind: "expr", value: expression() };
+}
+function expression() {
+let node = term();
+while (isOp("+") || isOp("-")) node = { kind: "bin", op: next().value, left: node, right: term() };
+return node;
+}
+function term() {
+let node = factor();
+while (isOp("*") || isOp("/") || isOp("%")) node = { kind: "bin", op: next().value, left: node, right: factor() };
+return node;
+}
+function factor() {
+const t = next();
+if (!t) throw new Error("Unexpected end of input");
+if (t.type === "num") return { kind: "num", value: t.value };
+if (t.type === "id") return { kind: "var", name: t.value };
+if (t.type === "op" &amp;&amp; t.value === "-") return { kind: "neg", value: factor() };
+if (t.type === "op" &amp;&amp; t.value === "(") { const e = expression(); expect(")"); return e; }
+throw new Error("Unexpected '" + t.value + "' at " + t.pos);
+}
+return program();
+}
+</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>المرحلة 3: الـ Interpreter</h3>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>function interpret(ast) {
+const env = new Map();
+const output = [];
+function ev(n) {
+switch (n.kind) {
+case "num": return n.value;
+case "var":
+if (!env.has(n.name)) throw new Error("Undefined variable '" + n.name + "'");
+return env.get(n.name);
+case "neg": return -ev(n.value);
+case "bin": {
+const a = ev(n.left), b = ev(n.right);
+if (n.op === "+") return a + b;
+if (n.op === "-") return a - b;
+if (n.op === "*") return a * b;
+if (n.op === "%") return a % b;
+if (b === 0) throw new Error("Division by zero");
+return a / b;
+}
+}
+}
+for (const s of ast) {
+if (s.kind === "let") env.set(s.name, ev(s.value));
+else ev(s.value);
+}
+return output;
+}
+const runFay = (src) =&gt; interpret(parse(tokenize(src)));
+</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>كيف تضيف ميزة جديدة؟</h3>
+<p>لإضافة <code>print</code> اسأل في كل مرحلة: هل يعرف الـ Tokenizer الكلمة؟ (نعم: هي اسم عادي <code>id</code> فلا تغيير). هل يعرف الـ Parser شكل العبارة؟ (لا: أضف فرعًا في <code>statement</code> ينتج <code>{kind:"print", value}</code>). هل يعرف الـ Interpreter معناها؟ (لا: أضف فرعًا يضيف النتيجة إلى <code>output</code>). هذا هو الدرس الأهم: كل ميزة تمر على المراحل التي تتأثر بها فقط.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">الميزة</th><th scope="col">Tokenizer</th><th scope="col">Parser</th><th scope="col">Interpreter</th></tr></thead><tbody><tr><th scope="row">عامل جديد <code>^</code></th><td>يعرف الرمز</td><td>قاعدة جديدة</td><td>حالة جديدة</td></tr><tr><th scope="row">أمر <code>print</code></th><td>لا تغيير</td><td>فرع في statement</td><td>فرع في الحلقة</td></tr><tr><th scope="row">تعليق <code>#</code></th><td>يتجاهل حتى نهاية السطر</td><td>لا تغيير</td><td>لا تغيير</td></tr></tbody></table></div>
+</section>
+<section class="lesson-section "><h3>مشاريع تطوير بعد التمرين</h3>
+<ol><li>أضف التعليقات <code>#</code> (Tokenizer فقط).</li><li>أضف عامل القوة <code>^</code> بأولوية أعلى من الضرب.</li><li>أضف <code>if</code> بسيطة تقارن بين قيمتين.</li><li>حسّن رسائل الخطأ لتعرض السطر ورقم العمود.</li></ol>
+<div class="doc-mistakes"><h4>أخطاء شائعة</h4><ul><li>إضافة الميزة في الـ Interpreter فقط وانتظار أن تعمل.</li><li>تعديل الكود دون اختبار بمدخلات صحيحة ومدخلات خاطئة معًا.</li></ul></div>
+<details class="doc-exercise"><summary><span>تمرين</span> لماذا لا نحتاج إلى تعديل الـ Tokenizer عند إضافة <code>print</code>؟</summary><div class="doc-solution"><strong>عرض الحل</strong><p>لأن <code>print</code> تتكوّن من أحرف ينتجها الـ Tokenizer أصلًا كاسم عادي (<code>id</code>). تمييزها ككلمة خاصة يتم في الـ Parser عندما يرى <code>id</code> قيمته <code>print</code> في بداية عبارة.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>الخلاصة</h3><ul><li>بنيت مفسّرًا كاملًا: Source ← Tokenizer ← Parser ← AST ← Interpreter ← Output.</li><li>كل مرحلة مسؤولة عن شيء واحد وتسلّم شكلًا مختلفًا من البيانات.</li><li>الميزة الجديدة تمر على المراحل المتأثرة فقط.</li></ul><p class="doc-next"><strong>الخطوة التالية:</strong> راجع الدروس 21 إلى 31 ثم جرّب الاختبار النهائي للمسار.</p>
+</section></div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong> الفكرة الأساسية </strong>
+<p>اللغة هي خط أنابيب من مراحل صغيرة، وكل ميزة تمر على المراحل التي تتأثر بها.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>مثال عملي</span>
+<h3>شاهد الفكرة في كود</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>// the whole pipeline in one line (the functions come from the lesson)
+const tokens = "let a = 2 + 3".match(/[A-Za-z_]\w*|\d+|[-+*/%()=]/g);
+console.log(tokens);</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>تطبيق</span>
+<h3>تحدَّ نفسك</h3>
+</div>
+</div>
+<p></p>
+<div class="fd-exercise"><h4>تمرين تفاعلي</h4><p class="fd-ex-prompt">المفسّر أمامك يعمل لكنه لا يعرف الأمر print. أضفه بحيث يعيد runFay("let a = 2\nlet b = a * 5\nprint b + 1") المصفوفة ["11"]، مع بقاء الأخطاء كما هي (متغير غير معرّف، تعبير ناقص).</p><p class="fd-ex-status" role="status"></p></div>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما الترتيب الصحيح للمراحل؟</strong></p><ul><li>Tokenizer ثم Parser ثم Interpreter</li><li>Interpreter ثم Parser ثم Tokenizer</li><li>Parser ثم Tokenizer ثم Interpreter</li><li>لا يوجد ترتيب</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Tokenizer ثم Parser ثم Interpreter</strong></p><p>كل مرحلة تأخذ ناتج التي قبلها.</p></details></li><li><p><strong>أي مرحلة تعرف أن print عبارة خاصة؟</strong></p><ul><li>الـ Parser</li><li>الـ Tokenizer</li><li>الشاشة</li><li>لا أحد</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>الـ Parser</strong></p><p>يرى id بقيمة print في بداية العبارة فينتج عقدة print.</p></details></li><li><p><strong>لإضافة تعليقات # أي مرحلة تتغير فقط؟</strong></p><ul><li>الـ Tokenizer</li><li>الـ Interpreter</li><li>الـ Parser فقط</li><li>الثلاثة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>الـ Tokenizer</strong></p><p>التعليق يُهمل قبل أن يرى الـ Parser أي رمز.</p></details></li><li><p><strong>لماذا نخزّن موضع كل Token؟</strong></p><ul><li>لرسائل خطأ دقيقة</li><li>لتسريع الشاشة</li><li>لتقليل الذاكرة</li><li>لا حاجة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لرسائل خطأ دقيقة</strong></p><p>الـ Parser يذكر موضع الرمز المسبب للخطأ.</p></details></li><li><p><strong>تريد أن تدعم FAY الرقم السالب مثل -5 + 2 والرمز - يُنتجه المحلل المعجمي فعلاً. أين التعديل الأدنى؟</strong></p><ul><li>المحلل المعجمي، بإضافة رمز جديد للسالب</li><li>المفسّر فقط دون المحلل النحوي</li><li>المحلل النحوي (factor): إذا بدأ العامل بـ - فاقرأ العامل التالي وأنتج عقدة سالب</li><li>لا حاجة لأي تعديل</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>المحلل النحوي (factor): إذا بدأ العامل بـ - فاقرأ العامل التالي وأنتج عقدة سالب</strong></p><p>الرمز موجود أصلاً، والمشكلة أن القواعد لا تقبل - في بداية العامل، فالتعديل في قواعد الـ parser (ثم يُقيِّم المفسّر عقدة السالب). تعديل المحلل المعجمي لا يضيف قاعدة نحوية.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-31">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/fundamentals/programming-basics/lessons/prg-30.html"><small>الدرس السابق</small><strong>المفسّر: البيئة والمتغيرات والعبارات</strong></a>
+        <span></span>
+      </nav>
+      <p class="lp-all"><a href="/fundamentals/programming-basics/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

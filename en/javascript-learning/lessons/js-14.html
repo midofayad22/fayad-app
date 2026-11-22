@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="js" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Object Methods — JavaScript | FAYBIT</title>
+    <meta name="description" content="Learn how objects can contain Functions known as Methods." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-14.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-14.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/javascript-learning/lessons/js-14.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/javascript-learning/lessons/js-14.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Object Methods — JavaScript | FAYBIT" />
+    <meta property="og:description" content="Learn how objects can contain Functions known as Methods." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/javascript-learning/lessons/js-14.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript","item":"https://faybit.vercel.app/en/javascript-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Object Methods","item":"https://faybit.vercel.app/en/javascript-learning/lessons/js-14.html"}]},{"@type":"LearningResource","name":"Object Methods","description":"Learn how objects can contain Functions known as Methods.","url":"https://faybit.vercel.app/en/javascript-learning/lessons/js-14.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript — FAYBIT","url":"https://faybit.vercel.app/javascript-learning/javascript-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript"><a href="/en/javascript-learning/lessons/index.html">Lessons</a><a href="/javascript-learning/lessons/js-14.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/javascript-learning/lessons/index.html">JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 14 of 25</p>
+      <h1 class="lp-h1">Object Methods</h1>
+      <p class="lp-lead">Learn how objects can contain Functions known as Methods.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-14">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>const user = {
+name: "FAYBIT",
+greet() {
+return "Hello " + this.name;
+}
+};
+document.getElementById("jsResult").textContent =
+user.greet();</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>
+<p>A <strong>Method</strong> is a Function attached to an Object.</p>
+<p>A Method can be defined inside an Object.</p>
+<p>In this context, the <strong>this</strong> keyword refers to the object the Method belongs to.</p>
+<p>Methods let an object bundle data and behavior together.</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Write JavaScript</h2></div>
+</div>
+<p class="practice-description">Change the code below, then run it to see the result.</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is a Method?</strong></p><ul><li>A Function inside an Object</li><li>A CSS property</li><li>HTML Attribute</li><li>Array</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A Function inside an Object</strong></p></details></li><li><p><strong>What does this usually refer to inside an object's Method?</strong></p><ul><li>The current object</li><li>A CSS file</li><li>Only the browser</li><li>Always an Array</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The current object</strong></p></details></li><li><p><strong>How do you call greet inside user?</strong></p><ul><li>user.greet()</li><li>greet.user</li><li>user-&gt;greet</li><li>call.user</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>user.greet()</strong></p></details></li><li><p><strong>What does this code print? const c = { count: 0, inc() { this.count++; } }; c.inc(); c.inc(); console.log(c.count);</strong></p><ul><li>0</li><li>1</li><li>2</li><li>NaN</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>2</strong></p><p>When c.inc() is called, this points to c, so count increases on every call. After two calls the value is 2.</p></details></li><li><p><strong>What is the problem? const c = { count: 0, inc() { count++; } }; c.inc();</strong></p><ul><li>this is missing, so the code looks for a separate count variable that does not exist and throws a ReferenceError</li><li>++ cannot be used inside a method</li><li>A method cannot be defined inside an object this way</li><li>count is a read-only property</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>this is missing, so the code looks for a separate count variable that does not exist and throws a ReferenceError</strong></p><p>Object properties do not become variables inside a method; they must be reached through this.count. Without this, a count variable is looked up in scope and does not exist.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-14">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/javascript-learning/lessons/js-13.html"><small>Previous lesson</small><strong>Objects</strong></a>
+        <a rel="next" href="/en/javascript-learning/lessons/js-15.html"><small>Next lesson</small><strong>Introduction to the DOM</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/javascript-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

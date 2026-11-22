@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <title>The Interpreter: Environment, Variables and Statements — Programming Basics | FAYBIT</title>
+    <meta name="description" content="INTERPRETER Understand how the interpreter walks the tree. Tell an expression from a statement . Understand the environment that stores variables. The…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-30.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-30.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-30.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-30.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="The Interpreter: Environment, Variables and Statements — Programming Basics | FAYBIT" />
+    <meta property="og:description" content="INTERPRETER Understand how the interpreter walks the tree. Tell an expression from a statement . Understand the environment that stores variables. The…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-30.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Programming Basics","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"The Interpreter: Environment, Variables and Statements","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-30.html"}]},{"@type":"LearningResource","name":"The Interpreter: Environment, Variables and Statements","description":"INTERPRETER Understand how the interpreter walks the tree. Tell an expression from a statement . Understand the environment that stores variables. The…","url":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-30.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Programming Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Programming Basics"><a href="/en/fundamentals/programming-basics/lessons/index.html">Lessons</a><a href="/fundamentals/programming-basics/lessons/prg-30.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/programming-basics/lessons/index.html">Programming Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 30 of 31 · INTERPRETER</p>
+      <h1 class="lp-h1">The Interpreter: Environment, Variables and Statements</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-30">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">INTERPRETER</span>
+<h2>How a tree becomes a result and how a language remembers values</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content"><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Understand how the interpreter walks the tree.</li><li>Tell an <span class="term">expression</span> from a <span class="term">statement</span>.</li><li>Understand the <span class="term">environment</span> that stores variables.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>The parser and AST lesson (prg-27) and the errors lesson (prg-29).</li></ul>
+</section>
+<section class="lesson-section "><h3>Expressions and statements</h3>
+<p>An <strong>expression</strong> has a value: <code>3 * (2 + 4)</code> is 18. A <strong>statement</strong> does something: <code>let area = ...</code> stores a value and <code>print area</code> shows something. Some languages treat everything as an expression, but this distinction keeps our first language simple.</p>
+<figure class="doc-diagram doc-tree-fig" role="group" aria-label="AST"><figcaption>AST of the statement <code>let area = 3 * (2 + 4)</code></figcaption><div class="doc-tree-wrap"><ul class="doc-tree"><li><span class="doc-node doc-node-stmt">let area</span><ul><li><span class="doc-node doc-node-op">*</span><ul><li><span class="doc-node doc-node-num">3</span></li><li><span class="doc-node doc-node-op">+</span><ul><li><span class="doc-node doc-node-num">2</span></li><li><span class="doc-node doc-node-num">4</span></li></ul></li></ul></li></ul></li></ul></div></figure>
+</section>
+<section class="lesson-section "><h3>Walking the tree</h3>
+<p>The interpreter uses a recursive <code>evaluate</code> function: a leaf returns its value, and an inner node evaluates its two children then applies the operator. Here is the actual order of execution on the tree above:</p>
+<figure class="doc-diagram" role="group" aria-label="Diagram"><figcaption>Evaluation order (deepest first)</figcaption><ol class="doc-flow"><li><strong>Leaves 2 and 4</strong><span>return 2 and 4</span></li><li><strong>Node <code>+</code></strong><span>2 + 4 = 6</span></li><li><strong>Node <code>*</code></strong><span>3 × 6 = 18</span></li><li><strong>Statement <code>let area</code></strong><span>stores 18 in the environment under the name area</span></li></ol></figure>
+</section>
+<section class="lesson-section "><h3>The environment: the language's memory</h3>
+<p>The <span class="term">environment</span> is a map from variable name to value. <code>let</code> adds a name, reading a variable looks it up, and if it is missing that is a runtime error.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>function interpret(ast) {
+const env = new Map();   // the environment
+const output = [];
+function ev(n) {
+switch (n.kind) {
+case "num": return n.value;
+case "var":
+if (!env.has(n.name)) throw new Error("Undefined variable '" + n.name + "'");
+return env.get(n.name);
+case "bin": {
+const a = ev(n.left), b = ev(n.right);
+return n.op === "+" ? a + b : n.op === "-" ? a - b : n.op === "*" ? a * b : a / b;
+}
+}
+}
+for (const s of ast) {
+if (s.kind === "let") env.set(s.name, ev(s.value));
+else if (s.kind === "print") output.push(String(ev(s.value)));
+}
+return output;
+}</code></pre></figure>
+<figure class="code-ex code-ex-out"><figcaption><span class="code-ex-lang">Output</span></figcaption><pre dir="ltr"><code>env after  let a = 2   -&gt;  { a: 2 }
+env after  let b = a * 5 -&gt;  { a: 2, b: 10 }
+print b + 1             -&gt;  output: ["11"]</code></pre></figure>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>Evaluating a variable before defining it: gives <code>Undefined variable</code>, which is correct behaviour.</li><li>Forgetting <code>String(...)</code> when producing output, mixing types.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> What does the environment hold after <code>let x = 4</code> then <code>let x = x * 2</code>?</summary><div class="doc-solution"><strong>Show solution</strong><p><code>x = 8</code>: the second statement reads x (4), computes 8, then writes the same name again, replacing the old value.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>An expression has a value; a statement does something.</li><li>The interpreter walks the tree recursively from the leaves.</li><li>The environment stores variables and reports undefined ones.</li></ul><p class="doc-next"><strong>Next step:</strong> We combine every stage in the final project.</p>
+</section></div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong>Core idea</strong>
+<p>The interpreter walks the tree and keeps variable values in an environment, turning a program from structure into a result.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Worked example</span>
+<h3>See the idea in code</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>const env = new Map();
+env.set("a", 2);
+env.set("b", env.get("a") * 5);
+console.log(Object.fromEntries(env));</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Practice</span>
+<h3>Challenge yourself</h3>
+</div>
+</div>
+<p></p>
+<div class="fd-exercise"><h4>Interactive exercise</h4><p class="fd-ex-prompt">Write run(ast) that executes an array of statements: {kind:"let",name,value} and {kind:"print",value}, where value is a node {kind:"num",value}, {kind:"var",name} or {kind:"bin",op,left,right} (operators + - * /). Return the outputs as an array of strings. An undefined variable throws Error("Undefined variable 'x'").</p><p class="fd-ex-status" role="status"></p></div>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is the environment for?</strong></p><ul><li>Storing variable names and values</li><li>Drawing the tree</li><li>Splitting the text</li><li>Only printing errors</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Storing variable names and values</strong></p><p>It is a map from name to value.</p></details></li><li><p><strong>Which of these is a statement?</strong></p><ul><li>let a = 5</li><li>2 + 3</li><li>(4)</li><li>7</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>let a = 5</strong></p><p>It does something (stores a value) rather than merely being a value.</p></details></li><li><p><strong>What kind of error is reading an undefined variable?</strong></p><ul><li>A runtime error</li><li>A lexical error</li><li>A syntax error</li><li>No error</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A runtime error</strong></p><p>The code is valid, but the interpreter could not find the name.</p></details></li><li><p><strong>In what order is 3 * (2 + 4) evaluated on the tree?</strong></p><ul><li>Addition first, then multiplication</li><li>Multiplication then addition</li><li>Randomly</li><li>No order</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Addition first, then multiplication</strong></p><p>The deepest node is evaluated first.</p></details></li><li><p><strong>What does the FAY language print? let price = 20, then let qty = 3, then let total = price * qty - 10, then print total</strong></p><ul><li>50</li><li>10</li><li>30</li><li>60</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>50</strong></p><p>The environment stores price = 20 and qty = 3, then 20 * 3 = 60 is computed before the subtraction, so 60 - 10 = 50. Reading it as 20 * (3 - 10) would be wrong because multiplication binds tighter.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-30">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/programming-basics/lessons/prg-29.html"><small>Previous lesson</small><strong>Syntax Errors and Debugging a Parser</strong></a>
+        <a rel="next" href="/en/fundamentals/programming-basics/lessons/prg-31.html"><small>Next lesson</small><strong>Final Project: The Complete FAY Language</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/programming-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

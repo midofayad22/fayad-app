@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="vue" />
+    <meta name="robots" content="noindex, follow" />
+    <title>v-on and Events — Vue.js | FAYBIT</title>
+    <meta name="description" content="Learn how Vue handles user events such as click using v-on." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/vue-learning/lessons/vue-10.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/vue-learning/lessons/vue-10.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/vue-learning/lessons/vue-10.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/vue-learning/lessons/vue-10.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="v-on and Events — Vue.js | FAYBIT" />
+    <meta property="og:description" content="Learn how Vue handles user events such as click using v-on." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/vue-learning/lessons/vue-10.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Vue.js","item":"https://faybit.vercel.app/en/vue-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"v-on and Events","item":"https://faybit.vercel.app/en/vue-learning/lessons/vue-10.html"}]},{"@type":"LearningResource","name":"v-on and Events","description":"Learn how Vue handles user events such as click using v-on.","url":"https://faybit.vercel.app/en/vue-learning/lessons/vue-10.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Vue.js — FAYBIT","url":"https://faybit.vercel.app/vue-learning/vue-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Vue.js"><a href="/en/vue-learning/lessons/index.html">Lessons</a><a href="/vue-learning/lessons/vue-10.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/vue-learning/lessons/index.html">Vue.js</a></nav>
+      <p class="lp-eyebrow">Lesson 10 of 22</p>
+      <h1 class="lp-h1">v-on and Events</h1>
+      <p class="lp-lead">Learn how Vue handles user events such as click using v-on.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-10">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<h2>v-on and Events</h2>
+<p>
+Use <code>v-on</code> to listen to Events that occur
+on page elements.
+</p>
+<p>
+The common shorthand for <code>v-on:click</code> is
+<code>@click</code>.
+</p>
+</div></article>
+<article class="body-card key-card"><div class="info-label">@click handles clicks</div><p>You can use @click to run certain logic when the user clicks an element.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>The code</h2></div>
+</div>
+<pre dir="ltr"><code>
+&lt;div id="app"&gt;
+&lt;p&gt;Clicked {{ count }} times&lt;/p&gt;
+&lt;button @click="count++"&gt;
+Click
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;script&gt;
+const { createApp } = Vue;
+createApp({
+data() {
+return {
+count: 0
+};
+}
+}).mount("#app");
+&lt;/script&gt;
+</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static">
+<div style="padding:20px;font-family:Arial;">
+<p>Clicked 0 times</p>
+</div>
+</div></div>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>
+<p>
+<code>v-on</code> is used to listen to Events.
+</p>
+<p>
+<code>@click</code> is the shorthand for <code>v-on:click</code>.
+</p>
+<p>
+When the button is clicked, the code after <code>@click</code> runs.
+</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span></div>
+</div>
+<p class="practice-description">Create a button that increases the counter value when clicked.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is the shorthand for v-on:click?</strong></p><ul><li>@click</li><li>:click</li><li>#click</li><li>$click</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>@click</strong></p></details></li><li><p><strong>What is the purpose of v-on?</strong></p><ul><li>Listening to Events</li><li>Creating a database</li><li>Binding images only</li><li>Changing all of the HTML</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Listening to Events</strong></p></details></li><li><p><strong>Which Event occurs when the user clicks a button?</strong></p><ul><li>click</li><li>hover-only</li><li>load-css</li><li>database</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>click</strong></p></details></li><li><p><strong>Which form runs save only on button click, not when the page renders?</strong></p><ul><li>@click=&quot;save&quot;</li><li>click=&quot;save&quot;</li><li>{{ save() }}</li><li>v-if=&quot;save&quot;</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>@click=&quot;save&quot;</strong></p><p>@click binds the function to the click event; {{ save() }} would run during render and click without @ is just an attribute.</p></details></li><li><p><strong>How do we listen for the Enter key in an input?</strong></p><ul><li>@keyup.enter=&quot;submit&quot;</li><li>@enter=&quot;submit&quot;</li><li>v-enter=&quot;submit&quot;</li><li>@press=&quot;enter&quot;</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>@keyup.enter=&quot;submit&quot;</strong></p><p>Modifiers such as .enter are added after the event name to restrict it to a specific key.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-10">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/vue-learning/lessons/vue-09.html"><small>Previous lesson</small><strong>v-for</strong></a>
+        <a rel="next" href="/en/vue-learning/lessons/vue-11.html"><small>Next lesson</small><strong>v-model</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/vue-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

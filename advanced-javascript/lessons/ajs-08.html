@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>الوراثة بين الكلاسات و Mixins — JavaScript المتقدم | FAYBIT</title>
+    <meta name="description" content="extends وsuper وتعدد السلوكيات عبر Mixins وتفضيل التركيب على الوراثة." />
+    <link rel="canonical" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-08.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-08.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-08.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-08.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="الوراثة بين الكلاسات و Mixins — JavaScript المتقدم | FAYBIT" />
+    <meta property="og:description" content="extends وsuper وتعدد السلوكيات عبر Mixins وتفضيل التركيب على الوراثة." />
+    <meta property="og:url" content="https://faybit.vercel.app/advanced-javascript/lessons/ajs-08.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript المتقدم","item":"https://faybit.vercel.app/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"الوراثة بين الكلاسات و Mixins","item":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-08.html"}]},{"@type":"LearningResource","name":"الوراثة بين الكلاسات و Mixins","description":"extends وsuper وتعدد السلوكيات عبر Mixins وتفضيل التركيب على الوراثة.","url":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-08.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript المتقدم — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript المتقدم"><a href="/advanced-javascript/lessons/index.html">الدروس</a><a href="/en/advanced-javascript/lessons/ajs-08.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/advanced-javascript/lessons/index.html">JavaScript المتقدم</a></nav>
+      <p class="lp-eyebrow">الدرس 8 من 22</p>
+      <h1 class="lp-h1">الوراثة بين الكلاسات و Mixins</h1>
+      <p class="lp-lead">extends وsuper وتعدد السلوكيات عبر Mixins وتفضيل التركيب على الوراثة.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-8">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>extends و super</h2><p><code>extends</code> تربط prototype الكلاس الابن بالأب. <code>super()</code> في الـ constructor إلزامية قبل استخدام <code>this</code>، و<code>super.method()</code> تستدعي نسخة الأب.</p></article><article class="content-card"><h2>التركيب أولًا</h2><p>سلاسل الوراثة العميقة تصبح هشة. عندما تحتاج سلوكًا مشتركًا من أكثر من مصدر استخدم <strong>Mixins</strong> أو مرّر الاعتماديات (Composition).</p></article></div>
+<article class="body-card key-card"><p>فضّل التركيب (has-a) على الوراثة (is-a) إلا عند علاقة حقيقية.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>class Shape {
+constructor(name) { this.name = name; }
+area() { return 0; }
+describe() { return this.name + " area=" + this.area().toFixed(1); }
+}
+class Circle extends Shape {
+constructor(r) { super("circle"); this.r = r; }
+area() { return Math.PI * this.r ** 2; }
+describe() { return super.describe() + "!"; }
+}
+console.log(new Circle(2).describe());
+const Serializable = (Base) =&gt; class extends Base {
+toJSON() { return { type: this.name }; }
+};
+class Tagged extends Serializable(Shape) {}
+console.log(JSON.stringify(new Tagged("tag")));
+console.log(new Circle(1) instanceof Shape);</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">circle area=12.6!
+{"type":"tag"}
+true</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p><code>Serializable</code> دالة تأخذ كلاسًا وتُرجع كلاسًا جديدًا يرثه، وهكذا نضيف سلوكًا دون تعقيد التسلسل الهرمي.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>جرّب بنفسك</h2></div>
+</div>
+<p class="practice-description">أنشئ &lt;code&gt;Square extends Shape&lt;/code&gt; تعيد مساحة &lt;code&gt;side ** 2&lt;/code&gt; واطبع الوصف.</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>لماذا يجب استدعاء super() قبل this في constructor الابن؟</strong></p><ul><li>لأن الكائن لا يُنشأ إلا بعد تنفيذ constructor الأب</li><li>للسرعة</li><li>اختياري</li><li>لأنها تحذف الأب</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لأن الكائن لا يُنشأ إلا بعد تنفيذ constructor الأب</strong></p></details></li><li><p><strong>ما فائدة الـ Mixin؟</strong></p><ul><li>إضافة سلوك مشترك دون سلسلة وراثة عميقة</li><li>حذف الكلاسات</li><li>تسريع الشبكة</li><li>تشفير البيانات</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>إضافة سلوك مشترك دون سلسلة وراثة عميقة</strong></p></details></li><li><p><strong>ماذا تعني قاعدة «التركيب قبل الوراثة»؟</strong></p><ul><li>بناء الكائنات من أجزاء مستقلة بدل التوسع في الهرم</li><li>عدم استخدام الكلاسات</li><li>استخدام var</li><li>عدم كتابة اختبارات</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>بناء الكائنات من أجزاء مستقلة بدل التوسع في الهرم</strong></p></details></li><li><p><strong>ما ناتج الكود؟ class A { hi() { return &quot;A&quot;; } } class B extends A { hi() { return super.hi() + &quot;B&quot;; } } console.log(new B().hi());</strong></p><ul><li>B</li><li>A</li><li>AB</li><li>BA</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>AB</strong></p><p>super.hi() يستدعي نسخة الأب فتعيد A، ثم تضيف الابنة B فتصبح AB. override لا يلغي الأب بل يسمح بالبناء عليه.</p></details></li><li><p><strong>ما ناتج الكود؟ const Fly = Base =&gt; class extends Base { fly() { return &quot;fly&quot;; } }; class Bird extends Fly(Object) {} console.log(new Bird().fly(), new Bird() instanceof Bird);</strong></p><ul><li>fly true</li><li>fly false</li><li>undefined true</li><li>خطأ لأن الكلاس لا يعاد من دالة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>fly true</strong></p><p>الكلاس قيمة عادية في JavaScript فيمكن لدالة أن تنشئ كلاساً يمتد من Base الممرر، وهذا نمط mixin. Bird يرث fly عبر السلسلة ويبقى instanceof لنفسه صحيحاً.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-8">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/advanced-javascript/lessons/ajs-07.html"><small>الدرس السابق</small><strong>Classes: الخصوصية والـ static</strong></a>
+        <a rel="next" href="/advanced-javascript/lessons/ajs-09.html"><small>الدرس التالي</small><strong>Property Descriptors والتجميد</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/advanced-javascript/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

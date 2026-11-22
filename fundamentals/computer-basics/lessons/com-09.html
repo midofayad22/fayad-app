@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>أجهزة الإدخال والإخراج — أساسيات الكمبيوتر | FAYBIT</title>
+    <meta name="description" content="تصنّف الأجهزة إلى Input و Output وأجهزة تؤدي الدورين. تشرح كيف تتحول الإشارات الفيزيائية إلى بيانات رقمية والعكس، ودور Driver . تقارن المنافذ الشائعة…" />
+    <link rel="canonical" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-09.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-09.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-09.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-09.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="أجهزة الإدخال والإخراج — أساسيات الكمبيوتر | FAYBIT" />
+    <meta property="og:description" content="تصنّف الأجهزة إلى Input و Output وأجهزة تؤدي الدورين. تشرح كيف تتحول الإشارات الفيزيائية إلى بيانات رقمية والعكس، ودور Driver . تقارن المنافذ الشائعة…" />
+    <meta property="og:url" content="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-09.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"أساسيات الكمبيوتر","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"أجهزة الإدخال والإخراج","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-09.html"}]},{"@type":"LearningResource","name":"أجهزة الإدخال والإخراج","description":"تصنّف الأجهزة إلى Input و Output وأجهزة تؤدي الدورين. تشرح كيف تتحول الإشارات الفيزيائية إلى بيانات رقمية والعكس، ودور Driver . تقارن المنافذ الشائعة…","url":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-09.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"أساسيات الكمبيوتر — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="أساسيات الكمبيوتر"><a href="/fundamentals/computer-basics/lessons/index.html">الدروس</a><a href="/en/fundamentals/computer-basics/lessons/com-09.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/fundamentals/computer-basics/lessons/index.html">أساسيات الكمبيوتر</a></nav>
+      <p class="lp-eyebrow">الدرس 9 من 30</p>
+      <h1 class="lp-h1">أجهزة الإدخال والإخراج</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-9">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>أجهزة الإدخال والإخراج</h2>
+<div><section class="lesson-section doc-objectives"><h3>أهداف الدرس</h3><ul><li>تصنّف الأجهزة إلى <span class="term">Input</span> و<span class="term">Output</span> وأجهزة تؤدي الدورين.</li><li>تشرح كيف تتحول الإشارات الفيزيائية إلى بيانات رقمية والعكس، ودور <span class="term">Driver</span>.</li><li>تقارن المنافذ الشائعة وتحسب أحجام الصوت وأزمنة النقل.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>المتطلبات السابقة</h3><ul><li>درس كيف يعمل الكمبيوتر (com-02) ودرس اللوحة الأم (com-07).</li></ul>
+</section>
+<section class="lesson-section "><h3>مقدمة: الجسر بين الإنسان والآلة</h3>
+<p>الكمبيوتر يتعامل مع الأرقام فقط، أما أنت فتتعامل مع ضغطات وأصوات وصور وكلمات. تتولى <span class="term">I/O Devices</span> (أجهزة الإدخال والإخراج) الترجمة بين العالمين. <span class="term">Input</span> يدخل البيانات من العالم الخارجي إلى النظام، و<span class="term">Output</span> يعيد نتائج المعالجة إلى الحواس البشرية أو إلى جهاز آخر.</p>
+</section>
+<section class="lesson-section "><h3>تصنيف الأجهزة</h3>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">الجهاز</th><th scope="col">الفئة</th><th scope="col">ما يحدث</th></tr></thead><tbody><tr><th scope="row">لوحة المفاتيح</th><td>إدخال</td><td>ضغطة مفتاح تتحول إلى رمز رقمي</td></tr><tr><th scope="row">الفأرة ولوحة اللمس</th><td>إدخال</td><td>حركة المستشعر تتحول إلى إحداثيات</td></tr><tr><th scope="row">الميكروفون والكاميرا</th><td>إدخال</td><td>صوت وضوء يتحولان إلى أرقام</td></tr><tr><th scope="row">الشاشة</th><td>إخراج</td><td>أرقام تتحول إلى لون كل بكسل</td></tr><tr><th scope="row">السماعة والطابعة</th><td>إخراج</td><td>إشارة رقمية تتحول إلى اهتزاز أو حبر</td></tr><tr><th scope="row">شاشة اللمس وبطاقة الشبكة وذاكرة USB</th><td>إدخال وإخراج معًا</td><td>تستقبل البيانات وترسلها</td></tr></tbody></table></div>
+</section>
+<section class="lesson-section "><h3>من العالم الفيزيائي إلى الأرقام</h3>
+<p>معظم الظواهر الفيزيائية مستمرة (تناظرية) كالصوت والضوء. ويحوّلها مكوّن يسمى <span class="term">ADC</span> (محوّل تناظري إلى رقمي) إلى أرقام بأخذ قياسات متكررة تسمى <span class="term">Sampling</span>. بالنسبة للصوت، قياس صوت CD يتم 44,100 مرة في الثانية، وكل قياس يخزن في 16 بت، ولقناتين (يمين ويسار). وفي الإخراج يحدث العكس بواسطة <span class="term">DAC</span> الذي يعيد الأرقام إلى جهد كهربائي يحرّك السماعة.</p>
+<figure class="doc-diagram" role="group" aria-label="مخطط"><figcaption>رحلة ضغطة مفتاح حتى ظهور الحرف</figcaption><ol class="doc-flow"><li><strong>لوحة المفاتيح</strong><span>المتحكم الداخلي يكتشف المفتاح المضغوط ويرسل رمزه</span></li><li><strong>المنفذ والمقاطعة</strong><span>ينبّه الجهاز المعالج بإشارة <span class="term">Interrupt</span> بدل أن ينتظر المعالج</span></li><li><strong>التعريف والنظام</strong><span>يفسر الـ Driver الرمز ويسلمه نظام التشغيل</span></li><li><strong>البرنامج</strong><span>يعالج البرنامج الحرف ويضيفه إلى النص</span></li><li><strong>الشاشة</strong><span>يُرسم الحرف على الشاشة</span></li></ol></figure>
+<p><span class="term">Driver</span> (التعريف) برنامج صغير يشرح لنظام التشغيل كيف يخاطب جهازًا بعينه. بوجوده تعمل أجهزة من مصنّعين مختلفين بالطريقة نفسها من منظور البرامج. أما <span class="term">Interrupt</span> فسبب سرعة الاستجابة: بدل أن يسأل المعالج كل جزء من الثانية «هل ضُغط مفتاح؟» (وهذا يسمى Polling) ينتظر حتى يُنبَّه فيهتم بما حدث فقط.</p>
+</section>
+<section class="lesson-section "><h3>المنافذ والتوصيلات</h3>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">المنفذ</th><th scope="col">الاستخدام</th><th scope="col">ملاحظة</th></tr></thead><tbody><tr><th scope="row">USB-A وUSB-C</th><td>أجهزة طرفية وتخزين وشحن</td><td>النوع هو شكل المنفذ، أما السرعة فتحددها نسخة USB</td></tr><tr><th scope="row">HDMI وDisplayPort</th><td>صورة وصوت إلى الشاشة</td><td>الأول شائع في التلفاز والثاني في شاشات الحاسوب</td></tr><tr><th scope="row">3.5 ملم</th><td>صوت تناظري</td><td>سماعات وميكروفون</td></tr><tr><th scope="row">Ethernet</th><td>شبكة سلكية</td><td>ثابت وسريع</td></tr><tr><th scope="row">Bluetooth وWi-Fi</th><td>اتصال لاسلكي</td><td>أسهل لكنه أكثر عرضة للتداخل</td></tr></tbody></table></div>
+<p>تختلف سرعات USB بحسب النسخة: USB 2.0 حتى 480 ميغابت في الثانية، وUSB 3.0 حتى 5 جيجابت، وUSB 3.2 Gen 2 حتى 10 جيجابت، وUSB4 حتى 40 جيجابت. لاحظ أن الأرقام بالـ <strong>بت</strong> (حرف b صغير) وليس البايت، وكل بايت 8 بت؛ ولذلك فإن 480 Mbit/s يساوي 60 MB/s نظريًا فقط.</p>
+</section>
+<section class="lesson-section "><h3>خصائص تهمّك عند الاختيار</h3>
+<ul><li><strong>الشاشة:</strong> الدقة (عدد البكسلات)، ومعدل التحديث بوحدة هرتز (عدد المرات التي تُحدّث فيها الصورة في الثانية)، وزمن الاستجابة، ونوع اللوحة.</li><li><strong>الفأرة:</strong> قيمة DPI (نقاط لكل بوصة) تحدد مقدار حركة المؤشر مقابل حركة اليد.</li><li><strong>الطابعة:</strong> الدقة بوحدة DPI وطريقة الطباعة بالحبر أو الليزر.</li><li><strong>الكاميرا والميكروفون:</strong> الدقة ومعدل أخذ العينات وجودة المستشعر.</li></ul>
+</section>
+<section class="lesson-section "><h3>تطبيقات من الواقع</h3>
+<ul><li><strong>إمكانية الوصول:</strong> قارئات الشاشة وأجهزة الإدخال الصوتي ولوحات برايل الإلكترونية تتيح لمن لديه إعاقة استعمال الحاسوب.</li><li><strong>الاستشعار:</strong> الهاتف يحتوي مستشعرات للحركة والموقع والضوء، وكلها أجهزة إدخال.</li><li><strong>الصناعة والصحة:</strong> مستشعرات المصانع وأجهزة قياس النبض ترسل قراءات مستمرة لأنظمة المراقبة.</li></ul>
+<div class="doc-mistakes"><h4>أخطاء شائعة</h4><ul><li>«الشاشة جزء من الحاسوب نفسه»: هي جهاز إخراج طرفي له معالجه الصغير، ويمكن فصله وتبديله.</li><li>«منفذ USB-C يعني أنه سريع»: USB-C مجرد شكل للمنفذ، وقد يدعم USB 2.0 البطيء أو USB4 السريع.</li><li>«الميغابت هو الميغابايت»: الفرق 8 أضعاف، فخلطهما يجعل التقدير خاطئًا بشدة.</li><li>«كل جهاز يعمل فور توصيله دون تعريف»: كثير من الأجهزة تتضمن تعريفات عامة، لكن الميزات المتقدمة تحتاج Driver خاصًا.</li></ul></div>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>حساب:</strong> كم يحتاج تسجيل صوتي بجودة CD (44,100 عينة في الثانية، 16 بت، قناتان) من حجم لدقيقة واحدة؟</summary><div class="doc-solution"><strong>عرض الحل</strong><p>معدل البتات = 44,100 × 16 × 2 = 1,411,200 بت في الثانية. لدقيقة: 1,411,200 × 60 = 84,672,000 بت. وبالقسمة على 8 نحصل على 10,584,000 بايت، أي نحو 10.6 MB. وهذا الحجم قبل أي ضغط؛ ولهذا تبلغ ملفات MP3 أصغر بنحو عشر مرات.</p></div></details>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>حساب:</strong> كم يستغرق نقل 1 GB على USB 2.0 (480 Mbit/s نظريًا)؟ وعلى USB 3.0 (5 Gbit/s)؟ وماذا نتوقع عمليًا؟</summary><div class="doc-solution"><strong>عرض الحل</strong><p>1 GB = 8,000 ميغابت. على USB 2.0: 8,000 ÷ 480 ≈ 16.7 ثانية. على USB 3.0: 8,000 ÷ 5,000 = 1.6 ثانية. عمليًا تكون الأزمنة أطول: تقل سرعة USB 2.0 عادة إلى 30 – 40 MB/s فتحتاج نحو 25 – 35 ثانية، وفي USB 3.0 تحدّ سرعةَ النقل في الغالب سرعةُ الذاكرة أو القرص المتصل وليس المنفذ.</p></div></details>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>تطبيق عملي:</strong> اكتب قائمة بكل ما يتصل بجهازك أو يكون جزءًا منه، وصنّفه إلى إدخال أو إخراج أو الاثنين، وحدد المنافذ المتاحة وسرعتها.</summary><div class="doc-solution"><strong>عرض الحل</strong><p>مثال على حاسوب محمول: لوحة المفاتيح ولوحة اللمس وكاميرا الويب والميكروفون (إدخال)، والشاشة والسماعات (إخراج)، وشاشة اللمس وبطاقة Wi-Fi ومنفذ USB (إدخال وإخراج). لمعرفة سرعة المنفذ انظر إلى رمزه: علامة SS تعني 5 Gbit/s أو أكثر، ورمز البرق يعني Thunderbolt، وإن لم يوجد رمز فارجع إلى دليل الجهاز. وفي إدارة الأجهزة (Windows) أو تقرير النظام (macOS) يمكنك رؤية أجهزة USB المتصلة وإصدار الـ Driver.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>الخلاصة</h3><ul><li>أجهزة الإدخال تدخل البيانات، والإخراج يعرض النتائج، وبعض الأجهزة تؤدي الدورين.</li><li>الإشارات الفيزيائية تتحول إلى أرقام بالـ ADC وتعود بالـ DAC، والـ Driver والمقاطعات يضمنان التفاهم والسرعة.</li><li>شكل المنفذ لا يحدد سرعته، وانتبه إلى الفرق بين البت والبايت.</li></ul><p class="doc-next"><strong>الخطوة التالية:</strong> أنظمة التشغيل: البرنامج الذي يدير كل هذه الأجهزة ويجمعها في تجربة واحدة.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>المفهوم الأساسي</strong>
+<p>Input يدخل البيانات إلى النظام، بينما Output يعرض النتائج الناتجة عن المعالجة.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>تطبيق عملي</span>
+<h3>جرّب بنفسك</h3>
+</div>
+</div>
+<p>صنف Mouse وMonitor وKeyboard وSpeaker إلى Input أو Output.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أي جهاز يعتبر Input Device؟</strong></p><ul><li>Monitor</li><li>Speaker</li><li>Keyboard</li><li>Projector</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Keyboard</strong></p></details></li><li><p><strong>وحدة USB 2.0 سرعتها 480 Mbit/s. كم تساوي نظرياً بالـ MB/s؟</strong></p><ul><li>480 MB/s</li><li>3840 MB/s</li><li>60 MB/s</li><li>4.8 MB/s</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>60 MB/s</strong></p><p>البايت 8 بتات، لذا 480 ÷ 8 = 60 MB/s.</p></details></li><li><p><strong>ما فائدة الـ Interrupt مقارنة بالاستطلاع (Polling)؟</strong></p><ul><li>يجعل المعالج يسأل الجهاز في كل لحظة</li><li>يمنع الجهاز من إرسال بيانات</li><li>يزيد حجم الذاكرة</li><li>ينبّه الجهاز المعالج عند حدوث شيء فلا ينتظر المعالج ويسأل</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>ينبّه الجهاز المعالج عند حدوث شيء فلا ينتظر المعالج ويسأل</strong></p><p>الانتظار حتى التنبيه يوفر وقت المعالج ويجعل الاستجابة سريعة.</p></details></li><li><p><strong>أي جهاز يُصنَّف إدخالاً وإخراجاً معاً؟</strong></p><ul><li>لوحة المفاتيح</li><li>كرت الشبكة</li><li>الشاشة</li><li>الفأرة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>كرت الشبكة</strong></p><p>كرت الشبكة يستقبل البيانات ويرسلها، وكذلك شاشة اللمس وذاكرة USB.</p></details></li><li><p><strong>ماذا يفعل الـ ADC؟</strong></p><ul><li>يحوّل الأرقام إلى صوت</li><li>يحوّل الظواهر التماثلية كالصوت والضوء إلى أرقام بأخذ قياسات متكررة</li><li>يطبع الصفحات</li><li>يشحن الجهاز</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يحوّل الظواهر التماثلية كالصوت والضوء إلى أرقام بأخذ قياسات متكررة</strong></p><p>هذه العملية تُسمى Sampling، والـ DAC يقوم بالعكس عند الإخراج.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-9">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/fundamentals/computer-basics/lessons/com-08.html"><small>الدرس السابق</small><strong>بطاقة الرسوميات GPU</strong></a>
+        <a rel="next" href="/fundamentals/computer-basics/lessons/com-10.html"><small>الدرس التالي</small><strong>أنظمة التشغيل</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/fundamentals/computer-basics/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

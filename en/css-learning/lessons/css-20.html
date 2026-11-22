@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="css" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Responsive Design — CSS | FAYBIT</title>
+    <meta name="description" content="Learn how CSS adapts websites to different screen sizes." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/css-learning/lessons/css-20.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/css-learning/lessons/css-20.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/css-learning/lessons/css-20.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/css-learning/lessons/css-20.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Responsive Design — CSS | FAYBIT" />
+    <meta property="og:description" content="Learn how CSS adapts websites to different screen sizes." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/css-learning/lessons/css-20.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"CSS","item":"https://faybit.vercel.app/en/css-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Responsive Design","item":"https://faybit.vercel.app/en/css-learning/lessons/css-20.html"}]},{"@type":"LearningResource","name":"Responsive Design","description":"Learn how CSS adapts websites to different screen sizes.","url":"https://faybit.vercel.app/en/css-learning/lessons/css-20.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"CSS — FAYBIT","url":"https://faybit.vercel.app/css-learning/css-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="CSS"><a href="/en/css-learning/lessons/index.html">Lessons</a><a href="/css-learning/lessons/css-20.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/css-learning/lessons/index.html">CSS</a></nav>
+      <p class="lp-eyebrow">Lesson 20 of 30</p>
+      <h1 class="lp-h1">Responsive Design</h1>
+      <p class="lp-lead">Learn how CSS adapts websites to different screen sizes.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-20">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>Your first CSS code</h2></div>
+</div>
+<pre dir="ltr"><code>@media (max-width: 600px) {
+.container {
+grid-template-columns: 1fr;
+}
+}</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Write CSS and see the result</h2></div>
+</div>
+<p class="practice-description">Change the code below, then run it to see the result.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is responsive design?</strong></p><ul><li>Design that adapts to different screen sizes</li><li>Design only for phones</li><li>Design without CSS</li><li>Design only for desktop</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Design that adapts to different screen sizes</strong></p></details></li><li><p><strong>Which CSS feature is commonly used for responsive breakpoints?</strong></p><ul><li>Media Queries</li><li>Animations</li><li>Variables</li><li>Borders</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Media Queries</strong></p></details></li><li><p><strong>What does max-width: 600px mean in a media query?</strong></p><ul><li>Apply styles when the viewport is 600px or narrower</li><li>Make the page exactly 600px</li><li>Make every element 600px wide</li><li>Set the minimum screen width to 600px</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Apply styles when the viewport is 600px or narrower</strong></p></details></li><li><p><strong>Your page is responsive but a phone shows it zoomed out like a desktop page. What is the likely cause?</strong></p><ul><li>The meta viewport tag is missing from the head</li><li>Using flexbox</li><li>Using the rem unit</li><li>Having many images</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The meta viewport tag is missing from the head</strong></p><p>Without the meta viewport tag, mobile browsers assume a width near 980px and shrink the page, so media queries do not behave as expected. The tag sets the width to the device width.</p></details></li><li><p><strong>Why write img { max-width: 100%; height: auto; } in a responsive design?</strong></p><ul><li>To enlarge all images beyond their original size</li><li>To stop images overflowing their container while keeping their ratio</li><li>To hide images on mobile</li><li>To repeat the image in the background</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>To stop images overflowing their container while keeping their ratio</strong></p><p>max-width: 100% stops the width from exceeding the container, and height: auto scales the height proportionally so the image is not distorted.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-20">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/css-learning/lessons/css-19.html"><small>Previous lesson</small><strong>CSS Grid</strong></a>
+        <a rel="next" href="/en/css-learning/lessons/css-21.html"><small>Next lesson</small><strong>Pseudo-classes</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/css-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

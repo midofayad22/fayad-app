@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>الجداول والقوائم — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="تنسيق الجداول وجعلها متجاوبة، ومجموعات القوائم list-group." />
+    <link rel="canonical" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-14.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-14.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-14.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-14.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="الجداول والقوائم — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="تنسيق الجداول وجعلها متجاوبة، ومجموعات القوائم list-group." />
+    <meta property="og:url" content="https://faybit.vercel.app/bootstrap-learning/lessons/bs-14.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"الجداول والقوائم","item":"https://faybit.vercel.app/bootstrap-learning/lessons/bs-14.html"}]},{"@type":"LearningResource","name":"الجداول والقوائم","description":"تنسيق الجداول وجعلها متجاوبة، ومجموعات القوائم list-group.","url":"https://faybit.vercel.app/bootstrap-learning/lessons/bs-14.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/bootstrap-learning/lessons/index.html">الدروس</a><a href="/en/bootstrap-learning/lessons/bs-14.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">الدرس 14 من 20</p>
+      <h1 class="lp-h1">الجداول والقوائم</h1>
+      <p class="lp-lead">تنسيق الجداول وجعلها متجاوبة، ومجموعات القوائم list-group.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-14">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>الجداول</h2><p><code>.table</code> أساس، ويضاف <code>table-striped</code> (أشرطة) و<code>table-hover</code> و<code>table-bordered</code> و<code>table-sm</code> و<code>table-dark</code>. لتمرير الجدول أفقيًا على الهاتف غلّفه بـ <code>.table-responsive</code>.</p></article><article class="content-card"><h2>القوائم</h2><p><code>.list-group</code> + <code>.list-group-item</code> (يمكن أن تكون روابط <code>list-group-item-action</code>)، ولإضافة شارة <code>d-flex justify-content-between</code> مع <code>.badge</code>.</p></article></div>
+<article class="body-card key-card"><p>ضع الجداول العريضة داخل table-responsive.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="container py-3"&gt;
+&lt;div class="table-responsive"&gt;
+&lt;table class="table table-striped table-hover align-middle"&gt;
+&lt;thead class="table-dark"&gt;&lt;tr&gt;&lt;th scope="col"&gt;#&lt;/th&gt;&lt;th scope="col"&gt;الدرس&lt;/th&gt;&lt;th scope="col"&gt;الحالة&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;&lt;th scope="row"&gt;1&lt;/th&gt;&lt;td&gt;الشبكة&lt;/td&gt;&lt;td&gt;&lt;span class="badge text-bg-success"&gt;مكتمل&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;th scope="row"&gt;2&lt;/th&gt;&lt;td&gt;النماذج&lt;/td&gt;&lt;td&gt;&lt;span class="badge text-bg-warning"&gt;قيد التقدم&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;ul class="list-group mt-3"&gt;
+&lt;li class="list-group-item d-flex justify-content-between align-items-center"&gt;الإشعارات &lt;span class="badge text-bg-primary rounded-pill"&gt;3&lt;/span&gt;&lt;/li&gt;
+&lt;a href="#" class="list-group-item list-group-item-action active" aria-current="true"&gt;الرسائل&lt;/a&gt;
+&lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>التظليل المتبادل والتمرير عند المرور من <code>table-striped</code> و<code>table-hover</code>. الجدول داخل <code>table-responsive</code> يمرَّر أفقيًا بدل كسر التخطيط.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">أضف صفًا ثالثًا للجدول وعنصرًا ثالثًا للقائمة.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أي فئة تغلف الجدول ليتمرر أفقيًا على الشاشات الصغيرة؟</strong></p><ul><li>table-responsive</li><li>table-scroll</li><li>overflow-table</li><li>table-mobile</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>table-responsive</strong></p></details></li><li><p><strong>ما فائدة scope=&quot;col&quot; في th؟</strong></p><ul><li>تحديد أن الخلية عنوان عمود لقارئ الشاشة</li><li>تلوين الرأس</li><li>دمج الأعمدة</li><li>ترتيب الجدول</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تحديد أن الخلية عنوان عمود لقارئ الشاشة</strong></p></details></li><li><p><strong>أي فئة تجعل عنصر القائمة تفاعليًا برابط؟</strong></p><ul><li>list-group-item-action</li><li>list-link</li><li>list-active</li><li>item-click</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>list-group-item-action</strong></p></details></li><li><p><strong>أي فئة تضيف خطوطاً بالتناوب لصفوف الجدول؟</strong></p><ul><li>table-zebra</li><li>table-alt</li><li>table-striped</li><li>table-lined</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>table-striped</strong></p><p>table-striped يلوّن الصفوف الفردية بخلفية خفيفة.</p></details></li><li><p><strong>كيف تضع شارة badge في نهاية عنصر قائمة list-group-item؟</strong></p><ul><li>d-flex justify-content-between مع badge</li><li>badge-end على العنصر</li><li>table-responsive حول العنصر</li><li>list-group-badge فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>d-flex justify-content-between مع badge</strong></p><p>flex مع التوزيع between يدفع الشارة إلى الطرف الآخر.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-14">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/bootstrap-learning/lessons/bs-13.html"><small>الدرس السابق</small><strong>التحقق ومجموعات الإدخال والتسميات العائمة</strong></a>
+        <a rel="next" href="/bootstrap-learning/lessons/bs-15.html"><small>الدرس التالي</small><strong>التنبيهات والشارات والتقدم والمؤشرات</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/bootstrap-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

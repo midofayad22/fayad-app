@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="vue" />
+    <title>إدارة الحالة — Vue.js | FAYBIT</title>
+    <meta name="description" content="تعلّم الفكرة الأساسية لإدارة State المشتركة بين أجزاء تطبيق Vue." />
+    <link rel="canonical" href="https://faybit.vercel.app/vue-learning/lessons/vue-22.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/vue-learning/lessons/vue-22.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/vue-learning/lessons/vue-22.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/vue-learning/lessons/vue-22.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="إدارة الحالة — Vue.js | FAYBIT" />
+    <meta property="og:description" content="تعلّم الفكرة الأساسية لإدارة State المشتركة بين أجزاء تطبيق Vue." />
+    <meta property="og:url" content="https://faybit.vercel.app/vue-learning/lessons/vue-22.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Vue.js","item":"https://faybit.vercel.app/vue-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"إدارة الحالة","item":"https://faybit.vercel.app/vue-learning/lessons/vue-22.html"}]},{"@type":"LearningResource","name":"إدارة الحالة","description":"تعلّم الفكرة الأساسية لإدارة State المشتركة بين أجزاء تطبيق Vue.","url":"https://faybit.vercel.app/vue-learning/lessons/vue-22.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Vue.js — FAYBIT","url":"https://faybit.vercel.app/vue-learning/vue-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Vue.js"><a href="/vue-learning/lessons/index.html">الدروس</a><a href="/en/vue-learning/lessons/vue-22.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/vue-learning/lessons/index.html">Vue.js</a></nav>
+      <p class="lp-eyebrow">الدرس 22 من 22</p>
+      <h1 class="lp-h1">إدارة الحالة</h1>
+      <p class="lp-lead">تعلّم الفكرة الأساسية لإدارة State المشتركة بين أجزاء تطبيق Vue.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-22">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<h2>إدارة الحالة</h2>
+<p>
+State هي البيانات التي تمثل الحالة الحالية للتطبيق.
+</p>
+<p>
+عندما يكبر التطبيق قد تحتاج عدة Components إلى الوصول إلى
+نفس البيانات، وهنا تظهر أهمية إدارة الحالة بشكل منظم.
+</p>
+<p>
+يمكن استخدام حلول مثل Pinia لإدارة الحالة المشتركة في تطبيقات Vue الحديثة.
+</p>
+</div></article>
+<article class="body-card key-card"><div class="info-label">State مشتركة تحتاج إلى تنظيم</div><p>عندما تحتاج Components متعددة إلى نفس البيانات، استخدم نظامًا منظمًا لإدارة الحالة.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>الكود</h2></div>
+</div>
+<pre dir="ltr"><code>
+import { defineStore } from "pinia";
+export const useCounterStore = defineStore("counter", {
+state: () =&gt; ({
+count: 0
+}),
+actions: {
+increment() {
+this.count++;
+}
+}
+});
+</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static">
+<div style="padding:20px;font-family:Arial;">
+<div class="lp-demo-h3">Counter Store</div>
+<p style="margin:0;">إدارة State مشتركة بين Components.</p>
+</div>
+</div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>
+<p>
+عندما تكون البيانات خاصة بـ Component واحد يمكن أن تكون داخل
+ذلك Component.
+</p>
+<p>
+لكن عندما تحتاج Components متعددة إلى نفس State، يصبح من الأفضل
+استخدام حل منظم لإدارة الحالة.
+</p>
+<p>
+<strong>Pinia</strong> هو حل شائع وحديث لإدارة State في Vue.
+</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span></div>
+</div>
+<p class="practice-description">فكر في تطبيق يحتوي على Components متعددة تحتاج إلى نفس قيمة count وكيف ستنظم هذه الحالة.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما المقصود بـ State؟</strong></p><ul><li>البيانات التي تمثل الحالة الحالية للتطبيق</li><li>ملفات CSS فقط</li><li>صور الموقع</li><li>روابط HTML فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>البيانات التي تمثل الحالة الحالية للتطبيق</strong></p></details></li><li><p><strong>لماذا نحتاج State Management؟</strong></p><ul><li>لتنظيم البيانات المشتركة بين Components</li><li>لإنشاء الصور</li><li>لحذف JavaScript</li><li>لتغيير نظام التشغيل</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لتنظيم البيانات المشتركة بين Components</strong></p></details></li><li><p><strong>ما المكتبة الشائعة لإدارة State في Vue الحديثة؟</strong></p><ul><li>Pinia</li><li>jQuery</li><li>Bootstrap</li><li>Express فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Pinia</strong></p></details></li><li><p><strong>ما المشكلة التي يحلها store مشترك مثل Pinia؟</strong></p><ul><li>تمرير نفس البيانات عبر طبقات كثيرة من props</li><li>تحويل CSS إلى JavaScript</li><li>منع استخدام المكونات</li><li>تسريع الإنترنت</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تمرير نفس البيانات عبر طبقات كثيرة من props</strong></p><p>المخزن يتيح لأي مكون الوصول إلى الحالة المشتركة مباشرة بدل تمريرها يدوياً.</p></details></li><li><p><strong>متى نبقي الحالة محلية داخل المكون بدل وضعها في store عام؟</strong></p><ul><li>عندما يحتاجها هذا المكون وحده</li><li>عندما تستخدمها كل الصفحات</li><li>عندما تتشاركها عشرة مكونات</li><li>لا يجوز ذلك</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>عندما يحتاجها هذا المكون وحده</strong></p><p>الحالة الخاصة بمكون واحد لا تحتاج إلى store، ونضع المشتركة فقط في المخزن.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-22">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/vue-learning/lessons/vue-21.html"><small>الدرس السابق</small><strong>Vue Router</strong></a>
+        <span></span>
+      </nav>
+      <p class="lp-all"><a href="/vue-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

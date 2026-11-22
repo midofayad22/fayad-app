@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="js" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Asynchronous JavaScript — JavaScript | FAYBIT</title>
+    <meta name="description" content="Learn the concept of Asynchronous JavaScript and how to handle tasks that take time." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-22.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-22.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/javascript-learning/lessons/js-22.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/javascript-learning/lessons/js-22.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Asynchronous JavaScript — JavaScript | FAYBIT" />
+    <meta property="og:description" content="Learn the concept of Asynchronous JavaScript and how to handle tasks that take time." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/javascript-learning/lessons/js-22.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript","item":"https://faybit.vercel.app/en/javascript-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Asynchronous JavaScript","item":"https://faybit.vercel.app/en/javascript-learning/lessons/js-22.html"}]},{"@type":"LearningResource","name":"Asynchronous JavaScript","description":"Learn the concept of Asynchronous JavaScript and how to handle tasks that take time.","url":"https://faybit.vercel.app/en/javascript-learning/lessons/js-22.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript — FAYBIT","url":"https://faybit.vercel.app/javascript-learning/javascript-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript"><a href="/en/javascript-learning/lessons/index.html">Lessons</a><a href="/javascript-learning/lessons/js-22.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/javascript-learning/lessons/index.html">JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 22 of 25</p>
+      <h1 class="lp-h1">Asynchronous JavaScript</h1>
+      <p class="lp-lead">Learn the concept of Asynchronous JavaScript and how to handle tasks that take time.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-22">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>document.getElementById("jsResult").textContent =
+"Start";
+setTimeout(() =&gt; {
+document.getElementById("jsResult").textContent =
+"Task completed";
+}, 1000);</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>
+<p><strong>Asynchronous JavaScript</strong> lets a program handle tasks that do not finish immediately.</p>
+<p>Examples include requesting data from a Server or waiting using a Timer.</p>
+<p><strong>setTimeout()</strong> lets you delay running a Function for a specified time.</p>
+<p>The goal is to handle tasks that need time without freezing the user experience.</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Write JavaScript</h2></div>
+</div>
+<p class="practice-description">Change the code below, then run it to see the result.</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What does Asynchronous mean?</strong></p><ul><li>Running tasks in a way that does not require waiting for everything before continuing</li><li>Stopping the program</li><li>Deleting HTML</li><li>Changing CSS</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Running tasks in a way that does not require waiting for everything before continuing</strong></p></details></li><li><p><strong>Which Function is used to delay execution?</strong></p><ul><li>setTimeout()</li><li>delayCode()</li><li>waitJS()</li><li>pauseScript()</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>setTimeout()</strong></p></details></li><li><p><strong>Where is Async JavaScript often needed?</strong></p><ul><li>Network requests and operations that take time</li><li>Only writing CSS</li><li>Only writing HTML</li><li>Only changing fonts</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Network requests and operations that take time</strong></p></details></li><li><p><strong>What is the print order? console.log(1); setTimeout(() =&gt; console.log(2), 0); console.log(3);</strong></p><ul><li>1, 2, 3</li><li>2, 1, 3</li><li>1, 3, 2</li><li>3, 2, 1</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>1, 3, 2</strong></p><p>setTimeout defers its callback until the synchronous code finishes, even with a delay of zero. So 1 and 3 print first, then 2.</p></details></li><li><p><strong>A setTimeout with a 100ms delay is scheduled, then one with a 0ms delay. Which runs first?</strong></p><ul><li>The first, because it was scheduled first</li><li>The second, because its wait is shorter</li><li>They run together at the same moment</li><li>The program pauses 100ms then both run</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The second, because its wait is shorter</strong></p><p>Order is decided by when each timer expires, not by the order written, and waiting does not block the rest of the program. So the 0ms timer runs first.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-22">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/javascript-learning/lessons/js-21.html"><small>Previous lesson</small><strong>Modules</strong></a>
+        <a rel="next" href="/en/javascript-learning/lessons/js-23.html"><small>Next lesson</small><strong>Promises</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/javascript-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>The Processor (CPU) — Computer Basics | FAYBIT</title>
+    <meta name="description" content="Explain the internal structure of the CPU : the ALU , the Control Unit and Registers . Understand what a Core , a Thread , clock speed and Cache mean.…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-04.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-04.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-04.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-04.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="The Processor (CPU) — Computer Basics | FAYBIT" />
+    <meta property="og:description" content="Explain the internal structure of the CPU : the ALU , the Control Unit and Registers . Understand what a Core , a Thread , clock speed and Cache mean.…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-04.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Computer Basics","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"The Processor (CPU)","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-04.html"}]},{"@type":"LearningResource","name":"The Processor (CPU)","description":"Explain the internal structure of the CPU : the ALU , the Control Unit and Registers . Understand what a Core , a Thread , clock speed and Cache mean.…","url":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-04.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Computer Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Computer Basics"><a href="/en/fundamentals/computer-basics/lessons/index.html">Lessons</a><a href="/fundamentals/computer-basics/lessons/com-04.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/computer-basics/lessons/index.html">Computer Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 4 of 30</p>
+      <h1 class="lp-h1">The Processor (CPU)</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-4">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>The Processor (CPU)</h2>
+<div><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Explain the internal structure of the <span class="term">CPU</span>: the <span class="term">ALU</span>, the <span class="term">Control Unit</span> and <span class="term">Registers</span>.</li><li>Understand what a <span class="term">Core</span>, a <span class="term">Thread</span>, clock speed and <span class="term">Cache</span> mean.</li><li>Compare two processors properly instead of relying on clock speed alone.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>The lessons “How a computer works” and “Hardware and Software”.</li></ul>
+</section>
+<section class="lesson-section "><h3>Introduction: the instruction factory</h3>
+<p>The <span class="term">CPU</span> (central processing unit) is a silicon chip about the size of a postage stamp, yet it holds billions of transistors, tiny electrical switches that open and close to represent 0 and 1. Its core job is the Fetch-Decode-Execute cycle we saw earlier, but what sets one processor apart from another is how it performs that cycle and how many at once.</p>
+</section>
+<section class="lesson-section "><h3>Internal structure</h3>
+<figure class="doc-diagram" role="group" aria-label="Diagram"><figcaption>Parts of a single core</figcaption><ol class="doc-layers"><li><strong>Control Unit</strong><span>fetches and decodes instructions and directs the other parts</span></li><li><strong>ALU</strong><span>arithmetic logic unit: adds, subtracts and compares</span></li><li><strong>Registers</strong><span>very small, very fast slots holding the values in use</span></li><li><strong>Cache</strong><span>memory faster than RAM that keeps copies of frequently used data</span></li></ol></figure>
+<p><strong>Cache</strong> is arranged in levels: L1 is smallest and fastest (tens of kilobytes per core), then L2, then L3 which is shared between cores and can reach tens of megabytes. When the CPU finds what it needs in cache this is a <span class="term">Cache Hit</span>; otherwise it must go to RAM, which is several times slower.</p>
+</section>
+<section class="lesson-section "><h3>Cores and threads</h3>
+<p>A <span class="term">Core</span> is a complete miniature processor inside the chip that can run an instruction stream on its own. A four-core CPU can genuinely work on four tasks at the same moment. Some processors support <span class="term">SMT</span> (such as Intel's Hyper-Threading), which lets each core present itself as two logical cores and so exposes more “threads”; a 4-core / 8-thread chip is a common example.</p>
+<p>Extra cores help when the work can be split: video editing, or running several programs together. A program that follows a single path cannot use more than one core.</p>
+</section>
+<section class="lesson-section "><h3>Clock speed is not everything</h3>
+<p>Clock speed (GHz) is the number of cycles per second, but what matters is instructions completed per second, roughly <code>clock × IPC</code>, where <span class="term">IPC</span> is the average number of instructions executed per cycle. A newer processor at a lower clock can beat an older one at a higher clock because its IPC is larger.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">CPU</th><th scope="col">Clock</th><th scope="col">IPC (assumed)</th><th scope="col">Approximate throughput</th></tr></thead><tbody><tr><th scope="row">Older</th><td>4.0 GHz</td><td>2</td><td>8 billion instr/s</td></tr><tr><th scope="row">Newer</th><td>3.2 GHz</td><td>4</td><td>12.8 billion instr/s</td></tr></tbody></table></div>
+<p>There is also <span class="term">Boost Clock</span>: the processor raises its frequency temporarily when heat and power allow, then lowers it when it gets hot, which is called thermal throttling.</p>
+</section>
+<section class="lesson-section "><h3>Architecture: x86 and ARM</h3>
+<p>Each processor family has its own instruction set, the <span class="term">ISA</span>. Desktop and laptop processors are generally from the x86-64 family (Intel and AMD), while phones and Apple Silicon machines use the ARM architecture, known for energy efficiency. A program compiled for one architecture does not run directly on another without translation or emulation.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">bash</span></figcaption><pre dir="ltr"><code>nproc          # number of logical processors (Linux)
+lscpu | head -n 8   # architecture, cores, model name</code></pre></figure>
+<figure class="code-ex code-ex-out"><figcaption><span class="code-ex-lang">Output</span></figcaption><pre dir="ltr"><code>8
+Architecture:  x86_64
+CPU(s):        8
+Thread(s) per core: 2
+Core(s) per socket: 4
+Model name:    (your CPU name)</code></pre></figure>
+<p>The output above is an example and will differ on your machine, but the relation is fixed: logical processors = cores × threads per core (here 4 × 2 = 8).</p>
+</section>
+<section class="lesson-section "><h3>Real-world applications</h3>
+<ul><li><strong>Buying a machine:</strong> for gaming, per-core performance matters along with a good graphics card; for video editing and compiling code, more cores help.</li><li><strong>Phones:</strong> many phones combine powerful cores with energy-saving ones and switch between them by workload to extend battery life.</li><li><strong>Servers:</strong> server processors can have dozens of cores to handle many requests at once.</li></ul>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>“More GHz is always faster”: performance depends on IPC, core count, cache and architecture, not clock speed alone.</li><li>“Double the cores means double the speed”: that holds only for programs that split their work across cores; others use a single core.</li><li>“Threads are as good as real cores”: a two-thread core typically gives a gain of roughly 20 to 30 percent, not a full doubling.</li><li>“The CPU is where the machine keeps its memory”: cache is tiny; the real storage is in RAM and on disk.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Calculation:</strong> processor A runs at 3.0 GHz with IPC = 3, and processor B at 4.0 GHz with IPC = 2 (one core each). Which is faster?</summary><div class="doc-solution"><strong>Show solution</strong><p>A: 3.0 × 3 = 9 billion instructions per second. B: 4.0 × 2 = 8 billion. So A is about 12.5 percent faster despite the lower clock, because IPC makes up for it.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Reasoning:</strong> a program spends half its time on work that can be spread across cores and half on strictly sequential work. Does it get twice as fast with eight cores?</summary><div class="doc-solution"><strong>Show solution</strong><p>No. The sequential part stays as it is. With eight cores the parallel half shrinks to 1/8 of half the time, i.e. 0.0625, plus the sequential 0.5, for a total of 0.5625 of the original time, a speed-up of only about 1.78 times. This is the idea behind Amdahl's law and explains why extra cores do not scale linearly.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Hands-on:</strong> open Task Manager (Windows), then the Performance tab, then CPU, or run <code>lscpu</code>. Write down the number of cores, logical processors and the clock speed, and check how they relate.</summary><div class="doc-solution"><strong>Show solution</strong><p>You may see, for example, “Cores: 6, Logical processors: 12”. If the second number is double the first, the machine supports SMT. The displayed clock can change while you watch, moving between base and boost. If you run a heavy program you can see which cores climb in usage; if only one does, the program is single-threaded.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>The CPU combines a control unit, an ALU, registers and cache, and runs instructions through the familiar cycle.</li><li>Cores enable parallel work, but the gain depends on how well a program can be split.</li><li>Compare processors by clock, IPC, cores and cache together, not clock alone.</li></ul><p class="doc-next"><strong>Next step:</strong> RAM: where the computer keeps what it is working on right now.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>Core concept</strong>
+<p>The CPU is the main component responsible for executing program instructions and handling arithmetic and logical operations.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Hands-on practice</span>
+<h3>Try it yourself</h3>
+</div>
+</div>
+<p>Open Task Manager in Windows and look for information about your processor, its number of Cores, and its speed.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What does CPU stand for?</strong></p><ul><li>Central Processing Unit</li><li>Computer Program Utility</li><li>Central Power Unit</li><li>Computer Processing User</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Central Processing Unit</strong></p></details></li><li><p><strong>A CPU has 4 cores and each core supports 2 threads (SMT). How many logical processors will the system show?</strong></p><ul><li>4</li><li>6</li><li>8</li><li>16</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>8</strong></p><p>Logical processors = cores x threads per core = 4 x 2 = 8.</p></details></li><li><p><strong>An older CPU runs at 4.0 GHz with IPC 2, a newer one at 3.2 GHz with IPC 4. Which is faster by the lesson's rule?</strong></p><ul><li>The older one, because its clock is higher</li><li>The newer one (12.8 vs 8 billion instructions/s)</li><li>They are equal</li><li>They can never be compared</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The newer one (12.8 vs 8 billion instructions/s)</strong></p><p>Throughput is roughly clock x IPC, so 3.2 x 4 = 12.8 beats 4.0 x 2 = 8.</p></details></li><li><p><strong>What does a Cache Hit mean?</strong></p><ul><li>The processor overheats</li><li>The program crashes</li><li>The CPU found what it needed in cache without going to RAM</li><li>Data is written to disk</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The CPU found what it needed in cache without going to RAM</strong></p><p>Finding data in cache is much faster than going to the comparatively slow RAM.</p></details></li><li><p><strong>Does a program compiled for an x86 processor run directly on an ARM processor?</strong></p><ul><li>Yes, always</li><li>Yes, but at exactly half speed</li><li>Only if the clock speed is higher</li><li>No, it needs translation or emulation because the instruction set differs</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>No, it needs translation or emulation because the instruction set differs</strong></p><p>Each processor family has its own instruction set, so a program compiled for one does not run directly on another.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-4">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/computer-basics/lessons/com-03.html"><small>Previous lesson</small><strong>Hardware and Software</strong></a>
+        <a rel="next" href="/en/fundamentals/computer-basics/lessons/com-05.html"><small>Next lesson</small><strong>Memory (RAM)</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/computer-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

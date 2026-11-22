@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <title>الأخطاء النحوية وتصحيحها — أساسيات البرمجة | FAYBIT</title>
+    <meta name="description" content="DEBUGGING تفرّق بين الخطأ المعجمي والنحوي ووقت التشغيل. تفهم كيف يكتشف الـ Parser الخطأ ويذكر موضعه. تتبّع مصدر المشكلة بفحص مخرجات كل مرحلة. دروس…" />
+    <link rel="canonical" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-29.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-29.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-29.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-29.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="الأخطاء النحوية وتصحيحها — أساسيات البرمجة | FAYBIT" />
+    <meta property="og:description" content="DEBUGGING تفرّق بين الخطأ المعجمي والنحوي ووقت التشغيل. تفهم كيف يكتشف الـ Parser الخطأ ويذكر موضعه. تتبّع مصدر المشكلة بفحص مخرجات كل مرحلة. دروس…" />
+    <meta property="og:url" content="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-29.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"أساسيات البرمجة","item":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"الأخطاء النحوية وتصحيحها","item":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-29.html"}]},{"@type":"LearningResource","name":"الأخطاء النحوية وتصحيحها","description":"DEBUGGING تفرّق بين الخطأ المعجمي والنحوي ووقت التشغيل. تفهم كيف يكتشف الـ Parser الخطأ ويذكر موضعه. تتبّع مصدر المشكلة بفحص مخرجات كل مرحلة. دروس…","url":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-29.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"أساسيات البرمجة — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="أساسيات البرمجة"><a href="/fundamentals/programming-basics/lessons/index.html">الدروس</a><a href="/en/fundamentals/programming-basics/lessons/prg-29.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/fundamentals/programming-basics/lessons/index.html">أساسيات البرمجة</a></nav>
+      <p class="lp-eyebrow">الدرس 29 من 31</p>
+      <h1 class="lp-h1">الأخطاء النحوية وتصحيحها</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-29">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">DEBUGGING</span>
+<h2>كيف تكتشف اللغة الخطأ وكيف تتبّع مصدره</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content"><section class="lesson-section doc-objectives"><h3>أهداف الدرس</h3><ul><li>تفرّق بين الخطأ المعجمي والنحوي ووقت التشغيل.</li><li>تفهم كيف يكتشف الـ Parser الخطأ ويذكر موضعه.</li><li>تتبّع مصدر المشكلة بفحص مخرجات كل مرحلة.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>المتطلبات السابقة</h3><ul><li>دروس Tokenizer وParser (prg-26 وprg-27) ودرس Debugging (prg-17).</li></ul>
+</section>
+<section class="lesson-section "><h3>ثلاثة أنواع من الأخطاء</h3>
+<p>كل مرحلة في مفسّرنا ترى العالم بطريقتها، فتكتشف نوعًا مختلفًا من المشكلات. معرفة المرحلة التي رفضت الشيفرة تعني أنك عرفت نصف الحل.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">النوع</th><th scope="col">تكتشفه</th><th scope="col">مثال</th><th scope="col">الرسالة</th></tr></thead><tbody><tr><th scope="row">معجمي</th><td>Tokenizer</td><td><code>3 $ 4</code></td><td><code>Unexpected character '$' at 2</code></td></tr><tr><th scope="row">نحوي</th><td>Parser</td><td><code>(1 + 2</code></td><td><code>Expected ')' at the end</code></td></tr><tr><th scope="row">وقت التشغيل</th><td>Interpreter</td><td><code>print y</code> دون تعريف y</td><td><code>Undefined variable 'y'</code></td></tr></tbody></table></div>
+</section>
+<section class="lesson-section "><h3>كيف يكتشف الـ Parser الخطأ؟</h3>
+<p>الـ Parser يتوقع رمزًا معينًا في كل موضع. الدالة <code>expect</code> تفحص الرمز التالي: إن كان ما توقعته تابعت، وإلا رميت خطأ يذكر ما توقعته وأين حدث. فحصنا لـ <code>(1 + 2</code> يسير هكذا:</p>
+<figure class="doc-diagram" role="group" aria-label="مخطط"><figcaption>تتبّع تحليل <code>(1 + 2</code></figcaption><ol class="doc-flow"><li><strong>factor يرى <code>(</code></strong><span>يستدعي <code>expression()</code> لقراءة ما بداخل القوس</span></li><li><strong>expression يقرأ <code>1 + 2</code></strong><span>يبني شجرة الجمع ثم تنتهي الرموز</span></li><li><strong>factor يستدعي <code>expect(")")</code></strong><span>لا يوجد رمز تالٍ فيرمي: <code>Expected ')' at the end</code></span></li></ol></figure>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>function expect(v) {
+if (!isOp(v)) throw new Error("Expected '" + v + "' " + where());
+return next();
+}</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>طريقة منهجية لتتبّع المشكلة</h3>
+<ol><li><strong>اطبع الـ Tokens</strong>: هل قُطّع النص كما توقعت؟ إن كان خطأ هنا فالمشكلة في الـ Tokenizer.</li><li><strong>اطبع الشجرة</strong> بـ <code>JSON.stringify(ast)</code>: هل شكلها يطابق ما قصدته؟ إن كان خطأ هنا فالمشكلة في الـ Parser.</li><li><strong>تتبّع التقييم</strong>: إن كانت الشجرة صحيحة والنتيجة خاطئة فالمشكلة في الـ Interpreter.</li></ol>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>const tokens = tokenize("2 + 3 * 4");
+console.log(tokens.map((t) =&gt; t.value).join(" "));   // 2 + 3 * 4
+const ast = parse(tokens);
+console.log(JSON.stringify(ast[0].value));          // inspect the tree</code></pre></figure>
+<div class="doc-mistakes"><h4>أخطاء شائعة</h4><ul><li>تعديل الـ Interpreter لعلاج خطأ سببه الـ Parser: تُصلح العَرَض لا السبب.</li><li>رسائل خطأ عامة مثل «Error» دون موضع أو توقّع، فتضيع ساعات في البحث.</li></ul></div>
+<details class="doc-exercise"><summary><span>تمرين</span> أي مرحلة تكتشف <code>let = 5</code>؟ وما الرسالة المناسبة؟</summary><div class="doc-solution"><strong>عرض الحل</strong><p>الـ Parser: فبعد <code>let</code> يتوقع اسمًا ويجد <code>=</code>. الرسالة المناسبة: <code>Expected a name after 'let'</code>.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>الخلاصة</h3><ul><li>لكل مرحلة نوع خطأ خاص بها.</li><li>الرسالة الجيدة تذكر المتوقَّع والموضع.</li><li>تتبّع المشكلة بفحص ناتج كل مرحلة بالترتيب.</li></ul><p class="doc-next"><strong>الخطوة التالية:</strong> ننفّذ الشجرة فعليًا: المفسّر والمتغيرات.</p>
+</section></div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong> الفكرة الأساسية </strong>
+<p>اعرف المرحلة التي رفضت الشيفرة، وافحص ناتج كل مرحلة بالترتيب بدل التخمين.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>مثال عملي</span>
+<h3>شاهد الفكرة في كود</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>const tokens = ["(", "1", "+", "2"];
+let depth = 0;
+for (const t of tokens) {
+if (t === "(") depth++;
+if (t === ")") depth--;
+}
+console.log(depth === 0 ? "balanced" : "unbalanced by " + depth);</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>تطبيق</span>
+<h3>تحدَّ نفسك</h3>
+</div>
+</div>
+<p></p>
+<div class="fd-exercise"><h4>تمرين تفاعلي</h4><p class="fd-ex-prompt">اكتب checkParens(tokens) تفحص مصفوفة رموز وتعيد { ok: true } إن كانت الأقواس متوازنة، وإلا { ok: false, pos, message } حيث pos فهرس أول خطأ. قوس مغلق زائد: الرسالة Unexpected ')' at pos. قوس مفتوح بلا إغلاق: الرسالة Unclosed '(' at pos وpos فهرس ذلك القوس.</p><p class="fd-ex-status" role="status"></p></div>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أي مرحلة تكتشف الحرف $ غير المعروف؟</strong></p><ul><li>Tokenizer</li><li>Parser</li><li>Interpreter</li><li>لا أحد</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Tokenizer</strong></p><p>الخطأ المعجمي يظهر عند تقطيع الأحرف.</p></details></li><li><p><strong>ما سبب الرسالة Expected ')' at the end؟</strong></p><ul><li>قوس مفتوح بلا إغلاق</li><li>حرف غير معروف</li><li>قسمة على صفر</li><li>متغير غير معرّف</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>قوس مفتوح بلا إغلاق</strong></p><p>الـ Parser وصل لنهاية الرموز وهو ينتظر ).</p></details></li><li><p><strong>الشجرة صحيحة لكن الناتج خاطئ. أين تبحث؟</strong></p><ul><li>في الـ Interpreter</li><li>في الـ Tokenizer</li><li>في لوحة المفاتيح</li><li>في الشاشة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>في الـ Interpreter</strong></p><p>الشجرة هي حدّ الفصل بين الـ Parser والـ Interpreter.</p></details></li><li><p><strong>لماذا تُذكر الموضع في رسالة الخطأ؟</strong></p><ul><li>ليصل المستخدم إلى المشكلة بسرعة</li><li>لتزيين الرسالة</li><li>لتبطئ البرنامج</li><li>بلا سبب</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>ليصل المستخدم إلى المشكلة بسرعة</strong></p><p>المعلومة المحددة توفّر وقت البحث.</p></details></li><li><p><strong>حاسبتك تعطي نتيجة خاطئة لتعبير ما ولا تعرف في أي مرحلة السبب. ما الطريقة الأنسب للتحديد؟</strong></p><ul><li>طباعة ناتج كل مرحلة بالترتيب (الرموز ثم الشجرة ثم النتيجة) ومعرفة أول مكان يختلف عن المتوقع</li><li>إعادة كتابة المراحل الثلاث معاً</li><li>تغيير التعبير حتى يعمل</li><li>البحث عن الخطأ في المرحلة الأخيرة فقط دائماً</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>طباعة ناتج كل مرحلة بالترتيب (الرموز ثم الشجرة ثم النتيجة) ومعرفة أول مكان يختلف عن المتوقع</strong></p><p>كل مرحلة تأخذ ناتج السابقة، فالمرحلة الأولى التي يظهر عندها ناتج خاطئ هي المسؤولة. الفحص من النهاية فقط قد يخدعك لأن الخطأ قد ينشأ مبكراً.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-29">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/fundamentals/programming-basics/lessons/prg-28.html"><small>الدرس السابق</small><strong>مشروع: لغة مصغّرة للحساب</strong></a>
+        <a rel="next" href="/fundamentals/programming-basics/lessons/prg-30.html"><small>الدرس التالي</small><strong>المفسّر: البيئة والمتغيرات والعبارات</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/fundamentals/programming-basics/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>
