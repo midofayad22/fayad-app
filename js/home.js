@@ -280,6 +280,140 @@
     },
   });
 
+  F.i18n.extend({ ar: {
+ "h.desc2": "تتعلم تطوير الويب خطوة بخطوة بالعربية والإنجليزية: تقرأ الدرس، تجرّب الكود في محرر داخل الصفحة، ثم تختبر فهمك وتتمرّن.",
+ "h.cta3": "شاهد المسار كاملًا",
+ "h.f1": "ما الذي تتعلمه",
+ "h.f1d": "HTML وCSS وJavaScript ثم أطر العمل",
+ "h.f2": "من أين تبدأ",
+ "h.f2d": "من الصفر، دون خبرة سابقة",
+ "h.f3": "المحتوى",
+ "s.title": "تقدمك في المراحل",
+ "s.note": "يُحفظ تقدمك على هذا الجهاز، ومع حسابك إن سجّلت الدخول.",
+ "t.sub2": "أربع مراحل متتابعة. كل مسار يوضح مستواه ومتطلباته وما ستتقنه، والأسابيع المقترحة من خطة الـ 18 أسبوعًا.",
+ "oc.com": "تفهم كيف يعمل الحاسوب من العتاد إلى الشبكات والأمن السيبراني.",
+ "oc.prg": "تفكّر كمبرمج: متغيرات وشروط وحلقات ودوال، وتحلّ مسائل صغيرة بنفسك.",
+ "oc.html": "تبني صفحة ويب سليمة البنية بعناصر دلالية ونماذج وجداول وإمكانية وصول.",
+ "oc.css": "تصمّم صفحات متجاوبة: المحددات والتتابع ونموذج الصندوق وFlexbox وGrid.",
+ "oc.js": "تجعل الصفحة تتفاعل: أساسيات اللغة وDOM والأحداث والوحدات وPromises وFetch.",
+ "oc.ajs": "تفهم ما تحت الغطاء: النطاق والـ Closures وحلقة الأحداث والمولدات وأنماط التصميم.",
+ "oc.bs": "تبني واجهات جاهزة بسرعة بالشبكة والمكونات والأدوات المساعدة.",
+ "oc.tw": "تصمّم مباشرة في الـ HTML بفئات Utility، مع التجاوب والوضع الداكن والتخصيص.",
+ "oc.angular": "تبني تطبيقًا منظمًا: مكونات وقوالب وخدمات وتوجيه ونماذج وRxJS.",
+ "oc.react": "تبني واجهات من مكونات: JSX وProps وState وHooks والتوجيه.",
+ "oc.vue": "تبني واجهات تفاعلية بقوالب بسيطة وComposition API وVue Router.",
+ "lv.b": "مبتدئ",
+ "lv.i": "متوسط",
+ "lv.a": "متقدم",
+ "pr.com": "دون متطلبات",
+ "pr.prg": "مفضّل: أساسيات الحاسوب",
+ "pr.html": "دون متطلبات",
+ "pr.css": "يتطلب: HTML",
+ "pr.js": "يتطلب: HTML وCSS",
+ "pr.ajs": "يتطلب: JavaScript",
+ "pr.bs": "يتطلب: HTML وCSS",
+ "pr.tw": "يتطلب: CSS",
+ "pr.angular": "يتطلب: JavaScript",
+ "pr.react": "يتطلب: JavaScript",
+ "pr.vue": "يتطلب: JavaScript",
+ "wk.pre": "قبل الأسبوع 1",
+ "wk.html": "الأسابيع 1–2",
+ "wk.css": "الأسابيع 3–5",
+ "wk.js": "الأسابيع 8–12",
+ "wk.bs": "الأسبوع 6",
+ "wk.tw": "الأسبوع 13",
+ "wk.ng": "الأسابيع 15–17",
+ "wk.x": "مسار إضافي",
+ "st.4.d2": "ابنِ تطبيقًا كاملًا بإطار حديث. الخطة المعتمدة تعتمد Angular؛ React وVue بدائل إضافية.",
+ "how.title2": "كيف يسير كل درس",
+ "how.1.d2": "شرح قصير ثم مثال كامل يمكنك قراءته.",
+ "how.2.d2": "عدّل المثال وشغّله في محرر الدرس، داخل بيئة معزولة.",
+ "how.3.d2": "أسئلة بعد كل درس مع شرح للإجابة.",
+ "how.4": "تمرّن باللعب",
+ "how.4.d": "طبّق ما تعلمته في تحديات الكود والألعاب.",
+ "g.title2": "تمرّن بالكود",
+ "g.lead2": "ألعاب وتحديات تكتب فيها كودًا حقيقيًا، ويُفحص فورًا داخل متصفحك.",
+ "gm.arena.t": "ساحات الكود",
+ "gm.arena.d": "محرر ومعاينة حية في HTML وCSS وJavaScript، 20 تحديًا في كل ساحة.",
+ "gm.arena.lv": "من مبتدئ إلى خبير",
+ "gm.flex.d": "اضبط خصائص Flexbox حتى يطابق التخطيط الهدف.",
+ "gm.flex.lv": "CSS · مبتدئ إلى متوسط",
+ "gm.sel.d": "اكتب محدد CSS يختار العناصر المطلوبة فقط.",
+ "gm.sel.lv": "CSS · مبتدئ إلى متوسط",
+ "gm.zombie.d": "دافع عن الناجين بكود HTML وCSS وJavaScript حقيقي في 15 مهمة.",
+ "gm.zombie.lv": "مشروع تطبيقي · متوسط",
+ "gm.adv.t": "المغامرة الكبرى",
+ "gm.adv.d": "برمجة بالكتل عبر 120 مرحلة: تسلسل وحلقات وشروط ودوال.",
+ "gm.adv.lv": "منطق برمجي · مبتدئ",
+ "h.cta2": "العب وتعلّم"
+}, en: {
+ "h.desc2": "Learn web development step by step in Arabic or English: read the lesson, try the code in an editor on the page, then test yourself and practise.",
+ "h.cta3": "See the full path",
+ "h.f1": "What you learn",
+ "h.f1d": "HTML, CSS and JavaScript, then frameworks",
+ "h.f2": "Where to start",
+ "h.f2d": "From zero, no prior experience",
+ "h.f3": "Content",
+ "s.title": "Your progress by stage",
+ "s.note": "Progress is saved on this device, and with your account if you sign in.",
+ "t.sub2": "Four stages in order. Each track shows its level, prerequisites and what you will master, plus the suggested weeks from the 18-week plan.",
+ "oc.com": "Understand how a computer works, from hardware to networks and cybersecurity.",
+ "oc.prg": "Think like a programmer: variables, conditions, loops and functions, and solve small problems yourself.",
+ "oc.html": "Build a well-structured web page with semantic elements, forms, tables and accessibility.",
+ "oc.css": "Design responsive pages: selectors, the cascade, the box model, Flexbox and Grid.",
+ "oc.js": "Make the page interactive: language basics, the DOM, events, modules, Promises and Fetch.",
+ "oc.ajs": "Understand what is under the hood: scope, closures, the event loop, generators and design patterns.",
+ "oc.bs": "Build ready-made interfaces fast with the grid, components and utilities.",
+ "oc.tw": "Style directly in HTML with utility classes, including responsive design, dark mode and theming.",
+ "oc.angular": "Build a structured app: components, templates, services, routing, forms and RxJS.",
+ "oc.react": "Build interfaces from components: JSX, props, state, hooks and routing.",
+ "oc.vue": "Build interactive interfaces with simple templates, the Composition API and Vue Router.",
+ "lv.b": "Beginner",
+ "lv.i": "Intermediate",
+ "lv.a": "Advanced",
+ "pr.com": "No prerequisites",
+ "pr.prg": "Suggested: computer basics",
+ "pr.html": "No prerequisites",
+ "pr.css": "Requires: HTML",
+ "pr.js": "Requires: HTML and CSS",
+ "pr.ajs": "Requires: JavaScript",
+ "pr.bs": "Requires: HTML and CSS",
+ "pr.tw": "Requires: CSS",
+ "pr.angular": "Requires: JavaScript",
+ "pr.react": "Requires: JavaScript",
+ "pr.vue": "Requires: JavaScript",
+ "wk.pre": "Before week 1",
+ "wk.html": "Weeks 1–2",
+ "wk.css": "Weeks 3–5",
+ "wk.js": "Weeks 8–12",
+ "wk.bs": "Week 6",
+ "wk.tw": "Week 13",
+ "wk.ng": "Weeks 15–17",
+ "wk.x": "Extra track",
+ "st.4.d2": "Build a complete app with a modern framework. The approved plan uses Angular; React and Vue are extra alternatives.",
+ "how.title2": "How each lesson runs",
+ "how.1.d2": "A short explanation, then a complete example you can read.",
+ "how.2.d2": "Edit the example and run it in the lesson editor, in an isolated sandbox.",
+ "how.3.d2": "Questions after every lesson, with an explanation of the answer.",
+ "how.4": "Practise by playing",
+ "how.4.d": "Apply what you learned in code challenges and games.",
+ "g.title2": "Practise with code",
+ "g.lead2": "Games and challenges where you write real code, checked instantly in your browser.",
+ "gm.arena.t": "Code arenas",
+ "gm.arena.d": "Editor and live preview in HTML, CSS and JavaScript, 20 challenges per arena.",
+ "gm.arena.lv": "Beginner to expert",
+ "gm.flex.d": "Set Flexbox properties until the layout matches the target.",
+ "gm.flex.lv": "CSS · beginner to intermediate",
+ "gm.sel.d": "Write a CSS selector that picks only the required elements.",
+ "gm.sel.lv": "CSS · beginner to intermediate",
+ "gm.zombie.d": "Defend the survivors with real HTML, CSS and JavaScript across 15 missions.",
+ "gm.zombie.lv": "Applied project · intermediate",
+ "gm.adv.t": "The Grand Adventure",
+ "gm.adv.d": "Block coding across 120 levels: sequences, loops, conditions and functions.",
+ "gm.adv.lv": "Programming logic · beginner",
+ "h.cta2": "Play and learn"
+} });
+
   var tracksById = {};
   F.catalog.tracks.forEach(function (t) { tracksById[t.id] = t; });
 
@@ -378,43 +512,6 @@
       el.textContent = F.i18n.t("st.meta", { c: ids.length, l: lessons });
     });
   }
-  // stage tabs (WAI-ARIA tabs pattern): one stage panel visible at a time
-  function selectStage(n, focus) {
-    var tabs = $$(".hm-tabs [role=tab]");
-    tabs.forEach(function (tb) {
-      var on = tb.getAttribute("data-seg") === String(n);
-      tb.setAttribute("aria-selected", on ? "true" : "false");
-      tb.tabIndex = on ? 0 : -1;
-      if (on && focus) tb.focus();
-      var panel = document.getElementById(tb.getAttribute("aria-controls"));
-      if (panel) { panel.hidden = !on; panel.classList.toggle("is-on", on); }
-    });
-    window.dispatchEvent(new CustomEvent("fayad:stagechange", { detail: { stage: n } }));
-  }
-  function initTabs() {
-    var tabs = $$(".hm-tabs [role=tab]");
-    tabs.forEach(function (tb, i) {
-      tb.addEventListener("click", function () { selectStage(tb.getAttribute("data-seg")); });
-      tb.addEventListener("keydown", function (e) {
-        var rtl = document.documentElement.dir === "rtl", k = e.key, j = -1;
-        if (k === "ArrowRight") j = i + (rtl ? -1 : 1);
-        else if (k === "ArrowLeft") j = i + (rtl ? 1 : -1);
-        else if (k === "Home") j = 0;
-        else if (k === "End") j = tabs.length - 1;
-        else return;
-        e.preventDefault();
-        j = (j + tabs.length) % tabs.length;
-        selectStage(tabs[j].getAttribute("data-seg"), true);
-      });
-    });
-    // open the stage that holds the course the learner is currently on
-    var next = $("#nextStep");
-    var cur = next && next.getAttribute("data-course");
-    var start = 1;
-    STAGES.forEach(function (ids, i) { if (cur && ids.indexOf(cur) !== -1) start = i + 1; });
-    selectStage(cur ? start : 1);
-  }
-
   // 4-segment overview of real progress per stage (only tracks that record completed lessons contribute)
   var STAGES = [["com", "prg"], ["html", "css", "js"], ["ajs", "bs", "tw"], ["react", "vue", "angular"]];
   function paintSegments() {
@@ -422,10 +519,11 @@
     STAGES.forEach(function (ids, i) {
       var done = 0, total = 0;
       ids.forEach(function (id) { total += p[id].total; done += p[id].done || 0; });
-      var a = $('.hm-tab[data-seg="' + (i + 1) + '"]');
+      var a = $('.hm-seg[data-seg="' + (i + 1) + '"]');
       if (!a) return;
       var pct = total ? Math.round((done / total) * 100) : 0;
       $(".hm-seg-bar > span", a).style.width = pct + "%";
+      $("[data-pct]", a).textContent = pct + "%";
       a.setAttribute("title", F.i18n.t("c.done", { done: done, total: total }));
     });
   }
@@ -457,5 +555,4 @@
   window.addEventListener("pageshow", render);
   F.i18n.apply();
   render();
-  initTabs();
 })();

@@ -121,3 +121,11 @@ Checklist: [x] Adventure mechanics v2  [x] Zombie web-lab (supersedes the JS-onl
 - Tests: `tests/seo.test.mjs` (10) incl. every lesson id/pair, canonical, hreflang, sitemap↔noindex consistency, prev/next chain; `tests/lesson-pages-ui.test.mjs` (real browser, 8 sample pages × 5 widths + dark, no overflow, touch targets ≥ 32 px, language switch + next link). Screenshots inspected (AR 390, EN 390/1366).
 - Docs: `SEO-MIGRATION.md` (Search Console steps/baseline exports — no GSC access here, nothing claimed), `PERFORMANCE-BASELINE.md` (Lighthouse + INP proxy before redesign: home LCP 3.78 s, course LCP 3.85 s).
 - Not done: Search Console data, field Core Web Vitals, 301 deployment (needs approval).
+
+## Homepage redesign (from 4a07d11)
+
+**Removed:** 6 feature cards (`#platform`), tabbed roadmap, fake code window + floating tags + marquee, gradient/orb/grid backgrounds, 3-card "how it works", owner card with empty image, final CTA, GSAP/ScrollTrigger and `home-motion.js`/`home-platform.js` from this page.
+**New composition:** left-aligned hero (headline, one primary CTA, three factual lines) + a real "next step" panel (continue/start, per-stage progress from saved data); one ruled learning-path list (4 stages, 11 tracks, each with outcome, level, prerequisites, suggested weeks from the approved 18-week plan, lesson count, progress); compact 4-step "how a lesson runs"; practice list (5 games, own glyph/colour, level, real progress; totals fixed to 60/24/24/15/120); concise footer.
+**Honesty notes:** weeks shown only for tracks in the approved roadmap (HTML 1–2, CSS 3–5, Bootstrap 6, JS 8–12, Tailwind 13, Angular 15–17); others labelled "extra track"; React/Vue explicitly alternatives. No fake stats; counts derive from the catalog. Level/prerequisite labels are editorial judgments.
+**Verification:** tests/home (rewritten for new IA), motion, english-zero-arabic, global-shell, routes, seo, search, sidebar pass (search index rebuilt; sidebar test updated for `?next=` login href). Screenshots inspected: AR 390/1366, EN 1366 (all five widths rendered; 360/430/820 not individually inspected). Dark mode not yet visually inspected.
+**Lighthouse (lab, local brotli server, 2 runs) vs baseline:** perf 79 → 97/99, LCP 3.78 → 2.4/2.1 s, TBT 355 → 0 ms, CLS 0, a11y 100, SEO 100.

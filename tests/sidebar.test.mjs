@@ -140,7 +140,7 @@ test("motion: hover/focus transitions are short, panel timing is ≤ 220ms with 
 
 test("navbar account control: guest → login icon (same box as siblings); real stored session → avatar linking to the profile; course marks are one colour", async () => {
   const g = await open("/index.html", { lang: "en" }); const a = g.page.locator(".fy-btn-account");
-  assert.equal(await a.getAttribute("href"), "/login.html"); assert.equal(await g.page.locator(".fy-btn-account .fy-avatar").count(), 0); await g.ctx.close();
+  assert.match(await a.getAttribute("href"), /^\/login\.html(\?next=.*)?$/); assert.equal(await g.page.locator(".fy-btn-account .fy-avatar").count(), 0); await g.ctx.close();
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 800 }, serviceWorkers: "block" });
   await ctx.addInitScript(() => { localStorage.setItem("fayad-language", "en"); localStorage.setItem("sb-vsrysitexadvmmikcmfs-auth-token", JSON.stringify({ user: { id: "u1", email: "sara@example.com", user_metadata: { full_name: "Sara" } }, expires_at: Math.floor(Date.now() / 1000) + 3600 })); });
   await ctx.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort()); const page = await ctx.newPage(); await page.goto(base + "/css-learning/css-learning.html"); await page.waitForSelector(".fy-btn-account");
