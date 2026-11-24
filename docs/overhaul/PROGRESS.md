@@ -129,3 +129,10 @@ Checklist: [x] Adventure mechanics v2  [x] Zombie web-lab (supersedes the JS-onl
 **Honesty notes:** weeks shown only for tracks in the approved roadmap (HTML 1–2, CSS 3–5, Bootstrap 6, JS 8–12, Tailwind 13, Angular 15–17); others labelled "extra track"; React/Vue explicitly alternatives. No fake stats; counts derive from the catalog. Level/prerequisite labels are editorial judgments.
 **Verification:** tests/home (rewritten for new IA), motion, english-zero-arabic, global-shell, routes, seo, search, sidebar pass (search index rebuilt; sidebar test updated for `?next=` login href). Screenshots inspected: AR 390/1366, EN 1366 (all five widths rendered; 360/430/820 not individually inspected). Dark mode not yet visually inspected.
 **Lighthouse (lab, local brotli server, 2 runs) vs baseline:** perf 79 → 97/99, LCP 3.78 → 2.4/2.1 s, TBT 355 → 0 ms, CLS 0, a11y 100, SEO 100.
+
+## Visual direction v1 + homepage rebuild (supersedes the earlier "Homepage redesign" entry; NOT yet approved by the owner)
+- New identity ("ink and signal"), independently designed light/dark themes, bilingual type roles, measured contrast: see `docs/overhaul/DESIGN-SYSTEM.md` (`tools/contrast-report.mjs`: 110 pairs, 0 failures after darkening brand to `#b73618`).
+- Homepage: editorial hero + ink progress panel; **interactive 18-week map** (11 tracks: plan stops by week, foundations before week 1, extras; planned-but-unpublished stops dashed and non-interactive); in-page track detail; compact lesson-flow; practice band with a real CSS-arena challenge and per-game rows. No owner section, no GSAP on the page.
+- Tests: home (rewritten: map/selection/keyboard/last-track), motion, english-zero-arabic, global-shell, routes, seo, search, sidebar, overflow — 149 pass. Real-browser: mouse, keyboard Enter, touch tap on 390px; touch targets ≥44px.
+- Lighthouse lab (local, noisy, 5 runs): perf 86–97, LCP 2.5–3.7 s, TBT 0–62 ms, CLS 0 (baseline 79 / 3.78 s / 355 ms). Variance is large; treat as "better than baseline", not a precise figure.
+- Limits: only 3 of the brief's references were reachable (text only); Vercel Preview not checked for this commit yet.

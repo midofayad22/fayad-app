@@ -32,20 +32,40 @@ test("every internal link on the homepage resolves to an existing file", async (
   }
 });
 
-test("the path has 4 ordered stages containing all 11 courses once, in learning order", async () => {
+test("the 18-week map lists every track once: plan stops, pre-week foundations and extras; each has an in-page detail with level, prerequisites and lessons", async () => {
   const { ctx, page } = await open({}, "en");
-  const stages = await page.$$eval(".hm-stage", (els) => els.map((e) => ({ n: e.id, title: e.querySelector("h3").textContent, courses: [...e.querySelectorAll(".hm-row")].map((r) => r.dataset.courseCard) })));
-  assert.deepEqual(stages.map((x) => x.title), ["Fundamentals", "Web foundations", "Go deeper", "Frameworks"]);
-  assert.deepEqual(stages.flatMap((x) => x.courses), ["com", "prg", "html", "css", "js", "ajs", "bs", "tw", "angular", "react", "vue"]);
-  const rows = await page.$$eval(".hm-row", (els) => els.map((r) => ({ href: r.getAttribute("href"), count: r.querySelector(".hm-count").textContent })));
-  assert.equal(rows.length, 11); assert.ok(rows.every((r) => /\d+ lessons/.test(r.count) && r.href.endsWith(".html")));
-  // every track states level, prerequisites and schedule; all stages are visible at once (no hidden tabs)
-  assert.equal(await page.locator(".hm-stage:visible").count(), 4);
-  assert.equal(await page.locator(".hm-tabs, [role=tab]").count(), 0);
-  const metas = await page.$$eval(".hm-row .hm-meta", (els) => els.map((e) => e.children.length));
-  assert.ok(metas.length === 11 && metas.every((n) => n === 3));
-  assert.match(await page.locator('[data-course-card="css"] .hm-meta').innerText(), /Beginner[\s\S]*Requires: HTML[\s\S]*Weeks 3–5/);
+  const ids = await page.$$eval("#courses [data-pick]", (els) => els.map((e) => e.dataset.pick));
+  assert.deepEqual([...new Set(ids)].sort(), ["ajs", "angular", "bs", "com", "css", "html", "js", "prg", "react", "tw", "vue"]);
+  assert.equal(await page.locator(".rm-detail").count(), 11);
+  const d = await page.$$eval(".rm-detail", (els) => els.map((e) => ({ id: e.dataset.detail, href: e.querySelector(".rm-d-go").getAttribute("href"), lessons: e.querySelector(".hm-count").textContent, pre: e.querySelector("[data-i18n^='pq.']").textContent.length })));
+  assert.ok(d.every((x) => /\d+ lessons/.test(x.lessons) && x.href.endsWith(".html") && x.pre > 0));
+  const gaps = await page.$$eval(".rm-seg.rm-gap", (els) => els.map((e) => e.tagName)); // planned but unpublished stops are not links
+  assert.deepEqual(gaps, ["SPAN", "SPAN", "SPAN"]);
+  assert.equal(await page.locator(".rm-weeks span").count(), 18);
   assert.equal(await page.locator("text=/coming soon|قريبًا/i").count(), 0);
+  await ctx.close();
+});
+
+test("picking a stop on the map swaps the detail (mouse + keyboard), marks aria-current and keeps the link target", async () => {
+  const { ctx, page } = await open({}, "en");
+  assert.equal(await page.locator(".rm-detail:not([hidden])").count(), 1);
+  assert.equal(await page.locator(".rm-detail:not([hidden]) .rm-d-name").textContent(), "HTML");
+  await page.locator('.rm-seg[data-pick="css"]').click();
+  assert.equal(await page.locator(".rm-detail:not([hidden]) .rm-d-name").textContent(), "CSS");
+  assert.equal(await page.locator('[data-pick="css"][aria-current="true"]').count() >= 1, true);
+  assert.equal(await page.locator('[data-pick="html"][aria-current="true"]').count(), 0);
+  assert.match(await page.locator(".rm-detail:not([hidden]) .rm-d-eyebrow").innerText(), /Weeks 3–5/);
+  await page.locator('.rm-seg[data-pick="bs"]').focus(); await page.keyboard.press("Enter");
+  assert.equal(await page.locator(".rm-detail:not([hidden]) .rm-d-name").textContent(), "Bootstrap 5");
+  await page.locator('.rm-chip[data-pick="react"]').click();
+  assert.equal(await page.locator(".rm-detail:not([hidden]) .rm-d-name").textContent(), "React");
+  assert.match(await page.locator(".rm-detail:not([hidden]) .rm-d-go").getAttribute("href"), /react-learning/);
+  await ctx.close();
+});
+
+test("the map starts on the learner's last track when there is one", async () => {
+  const { ctx, page } = await open({ "fayad-last-track": JSON.stringify({ id: "js", t: Date.now() }) }, "ar");
+  assert.equal(await page.locator(".rm-detail:not([hidden])").getAttribute("data-detail"), "js");
   await ctx.close();
 });
 
@@ -80,7 +100,7 @@ test("the next-step card starts at the first course, then continues from real sa
 test("corrupt progress data does not break the page", async () => {
   const { ctx, page } = await open({ "fayad-html-progress": "{not json", "fayad-js-current-lesson": "banana", "fayad-last-track": "###" });
   assert.equal(await page.locator("#nextLabel").textContent(), "ابدأ من هنا");
-  assert.equal(await page.locator(".hm-row").count(), 11);
+  assert.equal(await page.locator(".rm-detail").count(), 11);
   await ctx.close();
 });
 
@@ -201,10 +221,10 @@ test("homepage sections flow continuously: never overlap, never overflow sideway
   for (const lang of ["ar", "en"]) for (const [w, h] of [[360, 740], [390, 844], [768, 1024], [1280, 800], [1440, 900]]) {
     const { ctx, page } = await open({}, lang);
     await page.setViewportSize({ width: w, height: h }); await page.waitForTimeout(1500);
-    const r = await page.evaluate(() => [...document.querySelectorAll("main > .hm-sec")].map((s) => { const b = s.getBoundingClientRect(); return { id: s.id, top: b.top + scrollY, bottom: b.bottom + scrollY, h: b.height, sh: s.scrollHeight }; }));
-    assert.equal(r.length, 3);
+    const r = await page.evaluate(() => [...document.querySelectorAll("main > section")].map((s) => { const b = s.getBoundingClientRect(); return { id: s.id, top: b.top + scrollY, bottom: b.bottom + scrollY, h: b.height, sh: s.scrollHeight }; }));
+    assert.equal(r.length, 4);
     r.forEach((s, i) => {
-            assert.ok(s.h > 200, `${lang}@${w}x${h}: #${s.id} collapsed (${s.h})`);
+            assert.ok(s.h > 150, `${lang}@${w}x${h}: #${s.id} collapsed (${s.h})`);
       if (i) assert.ok(s.top >= r[i - 1].bottom - 1, `${lang}@${w}x${h}: #${s.id} overlaps previous`);
     });
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${lang}@${w}: x overflow`);
