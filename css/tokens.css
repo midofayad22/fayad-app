@@ -65,33 +65,33 @@ html[lang="en"] {
 html[data-theme="dark"] {
   color-scheme: dark;
 
-  --fy-bg: #0a0c12;
-  --fy-bg-soft: #0e111a;
-  --fy-surface: #131722;
-  --fy-surface-2: #1b2030;
-  --fy-surface-3: #262c3f;
-  --fy-surface-raised: #1f2536;
-  --fy-glass: rgba(19,23,34,.86);
+  --fy-bg: #07121c;
+  --fy-bg-soft: #0b1927;
+  --fy-surface: #102236;
+  --fy-surface-2: #162d45;
+  --fy-surface-3: #1f3a56;
+  --fy-surface-raised: #1a3350;
+  --fy-glass: rgba(7,18,28,.82);
 
-  --fy-border: rgba(190,200,255,.09);
-  --fy-border-strong: rgba(190,200,255,.18);
+  --fy-border: rgba(150,200,230,.12);
+  --fy-border-strong: rgba(150,200,230,.24);
 
-  --fy-text: #eceaf4;
-  --fy-text-soft: #b4b8c8;
-  --fy-text-muted: #8e93a8;
+  --fy-text: #e8f1f6;
+  --fy-text-soft: #a9bdcb;
+  --fy-text-muted: #7f97a8;
 
-  --fy-brand: #ff7a59;
-  --fy-brand-light: #ffb39d;
-  --fy-brand-strong: #e8613f;
-  --fy-brand-soft: rgba(255,122,89,.13);
-  --fy-on-brand: #1a0802;
+  --fy-brand: #1fd1bf;
+  --fy-brand-light: #8ff0e4;
+  --fy-brand-strong: #12b3a3;
+  --fy-brand-soft: rgba(31,209,191,.13);
+  --fy-on-brand: #04211e;
   --fy-navy: #102a43; --fy-mint: #ccfbf1; --fy-teal: #0d9488; --fy-teal-deep: #0f766e;
 
   --fy-gold: #e3b94e;
   --fy-gold-light: #f0d58a;
   --fy-gold-soft: rgba(227, 185, 78, 0.12);
 
-  --fy-success: #4ade9a;
+  --fy-success: #4ade80;
   --fy-danger: #ff7b86;
   --fy-warning: #f2b84b;
   --fy-blue: #6cc4ff;
@@ -102,47 +102,47 @@ html[data-theme="dark"] {
   --fy-heart: #ff6b81; --fy-heart-soft: rgba(255, 107, 129, 0.14);
   --fy-info: #5ec2ff; --fy-info-soft: rgba(94, 194, 255, 0.13);
 
-  --fy-code-bg: #07090e;
-  --fy-code-surface: #0e121b;
-  --fy-code-text: #dfe3f2;
+  --fy-code-bg: #040b12;
+  --fy-code-surface: #0b1927;
+  --fy-code-text: #dbe8f0;
   --fy-code-border: rgba(255, 255, 255, 0.1);
 
   --fy-shadow: 0 1px 2px rgba(0, 0, 0, 0.45), 0 8px 24px rgba(0, 0, 0, 0.28);
   --fy-shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.5);
-  --fy-grid-line: rgba(190,200,255,.05);
-  --fy-hover: rgba(190,200,255,.07);
+  --fy-grid-line: rgba(150,200,230,.05);
+  --fy-hover: rgba(150,200,230,.07);
 }
 
 /* ---------------- LIGHT ---------------- */
 html[data-theme="light"] {
   color-scheme: light;
 
-  --fy-bg: #f4efe6;
-  --fy-bg-soft: #ebe5d8;
-  --fy-surface: #fbf9f4;
-  --fy-surface-2: #f0ebdf;
-  --fy-surface-3: #e4ddcc;
-  --fy-surface-raised: #fffdf9;
-  --fy-glass: rgba(251,249,244,.86);
+  --fy-bg: #f4f8f9;
+  --fy-bg-soft: #e7eff1;
+  --fy-surface: #ffffff;
+  --fy-surface-2: #f7fafb;
+  --fy-surface-3: #e3ecef;
+  --fy-surface-raised: #ffffff;
+  --fy-glass: rgba(255,255,255,.82);
 
-  --fy-border: rgba(23,19,14,.14);
-  --fy-border-strong: rgba(23,19,14,.28);
+  --fy-border: rgba(17,39,59,.14);
+  --fy-border-strong: rgba(17,39,59,.28);
 
-  --fy-text: #17130e;
-  --fy-text-soft: #4a4337;
-  --fy-text-muted: #665e50;
+  --fy-text: #11273b;
+  --fy-text-soft: #3f566a;
+  --fy-text-muted: #52687a;
 
-  --fy-brand: #b73618;
-  --fy-brand-light: #d9573a;
-  --fy-brand-strong: #9c2c11;
-  --fy-brand-soft: rgba(191,58,26,.09);
+  --fy-brand: #097570;
+  --fy-brand-light: #0fa9a0;
+  --fy-brand-strong: #065c58;
+  --fy-brand-soft: rgba(10,125,120,.09);
   --fy-on-brand: #ffffff;
 
   --fy-gold: #86600a;
   --fy-gold-light: #9a6f0c;
   --fy-gold-soft: rgba(134, 96, 10, 0.12);
 
-  --fy-success: #1b7048;
+  --fy-success: #237a3b;
   --fy-danger: #b3261e;
   --fy-warning: #8a5a00;
   --fy-blue: #1d5fa8;
@@ -154,15 +154,15 @@ html[data-theme="light"] {
   --fy-info: #0369a1; --fy-info-soft: rgba(3, 105, 161, 0.09);
 
   /* code panels stay dark in both themes: familiar, and highest syntax contrast */
-  --fy-code-bg: #14110d;
-  --fy-code-surface: #1d1913;
-  --fy-code-text: #ece6da;
+  --fy-code-bg: #0b1b2b;
+  --fy-code-surface: #122638;
+  --fy-code-text: #dbe8f0;
   --fy-code-border: rgba(255, 255, 255, 0.1);
 
   --fy-shadow: 0 1px 2px rgba(9, 58, 74, 0.08), 0 8px 24px rgba(9, 58, 74, 0.07);
   --fy-shadow-lg: 0 22px 55px rgba(9, 58, 74, 0.16);
-  --fy-grid-line: rgba(23,19,14,.06);
-  --fy-hover: rgba(23,19,14,.05);
+  --fy-grid-line: rgba(17,39,59,.06);
+  --fy-hover: rgba(17,39,59,.05);
 }
 
 /* ---------------- COURSE ACCENTS ----------------

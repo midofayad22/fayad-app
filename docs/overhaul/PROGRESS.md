@@ -136,3 +136,9 @@ Checklist: [x] Adventure mechanics v2  [x] Zombie web-lab (supersedes the JS-onl
 - Tests: home (rewritten: map/selection/keyboard/last-track), motion, english-zero-arabic, global-shell, routes, seo, search, sidebar, overflow — 149 pass. Real-browser: mouse, keyboard Enter, touch tap on 390px; touch targets ≥44px.
 - Lighthouse lab (local, noisy, 5 runs): perf 86–97, LCP 2.5–3.7 s, TBT 0–62 ms, CLS 0 (baseline 79 / 3.78 s / 355 ms). Variance is large; treat as "better than baseline", not a precise figure.
 - Limits: only 3 of the brief's references were reachable (text only); Vercel Preview not checked for this commit yet.
+
+## Correction: Homepage V2 (V1 0775fcf retracted by the product owner)
+- Removed: the 18-week map, big "18", week strings, vermilion identity. Restored teal brand; per-track accents only for the 11 real tracks.
+- Homepage IA: hero + real next-step/progress panel, tracks (foundations rows / core split / tools rail), how a lesson runs, games (five distinct compositions, arena shows a real challenge), footer.
+- Motion: CSS hover depth and progress transitions; one IntersectionObserver for staggered tile reveal and arena check ticking; no GSAP; reduced motion disables arming.
+- Tests: home.test.mjs rewritten for V2. Not marked approved; awaiting review.

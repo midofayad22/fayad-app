@@ -32,40 +32,49 @@ test("every internal link on the homepage resolves to an existing file", async (
   }
 });
 
-test("the 18-week map lists every track once: plan stops, pre-week foundations and extras; each has an in-page detail with level, prerequisites and lessons", async () => {
+test("the homepage presents the real tracks, with no 18-week roadmap or timeline", async () => {
   const { ctx, page } = await open({}, "en");
-  const ids = await page.$$eval("#courses [data-pick]", (els) => els.map((e) => e.dataset.pick));
-  assert.deepEqual([...new Set(ids)].sort(), ["ajs", "angular", "bs", "com", "css", "html", "js", "prg", "react", "tw", "vue"]);
-  assert.equal(await page.locator(".rm-detail").count(), 11);
-  const d = await page.$$eval(".rm-detail", (els) => els.map((e) => ({ id: e.dataset.detail, href: e.querySelector(".rm-d-go").getAttribute("href"), lessons: e.querySelector(".hm-count").textContent, pre: e.querySelector("[data-i18n^='pq.']").textContent.length })));
-  assert.ok(d.every((x) => /\d+ lessons/.test(x.lessons) && x.href.endsWith(".html") && x.pre > 0));
-  const gaps = await page.$$eval(".rm-seg.rm-gap", (els) => els.map((e) => e.tagName)); // planned but unpublished stops are not links
-  assert.deepEqual(gaps, ["SPAN", "SPAN", "SPAN"]);
-  assert.equal(await page.locator(".rm-weeks span").count(), 18);
-  assert.equal(await page.locator("text=/coming soon|قريبًا/i").count(), 0);
+  const html = fs.readFileSync(path.join(ROOT, "index.html"), "utf8");
+  assert.doesNotMatch(html, /18[- ]week|roadmap|rm-weeks|rm-seg|class="rm/i);
+  const ids = await page.$$eval("[data-course-card]", (els) => els.map((e) => e.dataset.courseCard));
+  assert.deepEqual(ids.sort(), ["ajs", "angular", "bs", "com", "css", "html", "js", "prg", "react", "tw", "vue"].sort());
+  assert.equal(await page.locator("[data-course-card=python]").count(), 0);
+  for (const id of ids) assert.match(await page.locator(`[data-course-card="${id}"]`).getAttribute("href"), /\.html$/);
   await ctx.close();
 });
 
-test("picking a stop on the map swaps the detail (mouse + keyboard), marks aria-current and keeps the link target", async () => {
+test("tools rail buttons scroll the rail in both directions and layouts", async () => {
+  for (const lang of ["en", "ar"]) {
+    const { ctx, page } = await open({}, lang);
+    await page.evaluate(() => document.documentElement.style.scrollBehavior = "auto");
+    await page.setViewportSize({ width: 390, height: 800 });
+    await page.locator("#tkRail").scrollIntoViewIfNeeded();
+    const start = await page.$eval("#tkRail", (r) => r.scrollLeft);
+    await page.click('[data-rail="next"]'); await page.waitForTimeout(900);
+    const moved = await page.$eval("#tkRail", (r) => r.scrollLeft);
+    assert.notEqual(moved, start, lang + ": next moved the rail");
+    await page.click('[data-rail="prev"]'); await page.waitForTimeout(900);
+    const back = await page.$eval("#tkRail", (r) => r.scrollLeft);
+    assert.ok(Math.abs(back - start) < Math.abs(moved - start), lang + ": prev moved back");
+    await ctx.close();
+  }
+});
+
+test("games keep their links and per-game totals; no animation library is loaded", async () => {
   const { ctx, page } = await open({}, "en");
-  assert.equal(await page.locator(".rm-detail:not([hidden])").count(), 1);
-  assert.equal(await page.locator(".rm-detail:not([hidden]) .rm-d-name").textContent(), "HTML");
-  await page.locator('.rm-seg[data-pick="css"]').click();
-  assert.equal(await page.locator(".rm-detail:not([hidden]) .rm-d-name").textContent(), "CSS");
-  assert.equal(await page.locator('[data-pick="css"][aria-current="true"]').count() >= 1, true);
-  assert.equal(await page.locator('[data-pick="html"][aria-current="true"]').count(), 0);
-  assert.match(await page.locator(".rm-detail:not([hidden]) .rm-d-eyebrow").innerText(), /Weeks 3–5/);
-  await page.locator('.rm-seg[data-pick="bs"]').focus(); await page.keyboard.press("Enter");
-  assert.equal(await page.locator(".rm-detail:not([hidden]) .rm-d-name").textContent(), "Bootstrap 5");
-  await page.locator('.rm-chip[data-pick="react"]').click();
-  assert.equal(await page.locator(".rm-detail:not([hidden]) .rm-d-name").textContent(), "React");
-  assert.match(await page.locator(".rm-detail:not([hidden]) .rm-d-go").getAttribute("href"), /react-learning/);
+  const html = fs.readFileSync(path.join(ROOT, "index.html"), "utf8");
+  assert.doesNotMatch(html, /gsap|lenis/i);
+  for (const g of ["arena", "flex", "sel", "zombie", "adventure"]) assert.ok(await page.locator(`[data-prog="${g}"]`).count() >= 1, g);
+  assert.equal(await page.locator(".gt").count(), 5);
   await ctx.close();
 });
 
-test("the map starts on the learner's last track when there is one", async () => {
-  const { ctx, page } = await open({ "fayad-last-track": JSON.stringify({ id: "js", t: Date.now() }) }, "ar");
-  assert.equal(await page.locator(".rm-detail:not([hidden])").getAttribute("data-detail"), "js");
+test("with reduced motion nothing is hidden or armed for animation", async () => {
+  const ctx = await browser.newContext({ reducedMotion: "reduce" });
+  const page = await ctx.newPage(); await offline(page);
+  await page.goto(base + "/"); await page.waitForSelector("[data-course-card]", { state: "attached" });
+  assert.equal(await page.evaluate(() => document.documentElement.classList.contains("tk-anim")), false);
+  assert.equal(await page.evaluate(() => getComputedStyle(document.querySelector(".tk-feature")).opacity), "1");
   await ctx.close();
 });
 
@@ -100,7 +109,7 @@ test("the next-step card starts at the first course, then continues from real sa
 test("corrupt progress data does not break the page", async () => {
   const { ctx, page } = await open({ "fayad-html-progress": "{not json", "fayad-js-current-lesson": "banana", "fayad-last-track": "###" });
   assert.equal(await page.locator("#nextLabel").textContent(), "ابدأ من هنا");
-  assert.equal(await page.locator(".rm-detail").count(), 11);
+  assert.equal(await page.locator("[data-course-card]").count(), 11);
   await ctx.close();
 });
 
@@ -244,6 +253,6 @@ test("practice list shows real per-game totals and distinct game identities", as
   const { ctx, page } = await open({}, "en");
   const t = await page.$$eval("[data-prog]", (els) => els.map((e) => e.querySelector(".gm-meta").textContent));
   assert.deepEqual(t, ["0 of 60 levels", "0 of 24 levels", "0 of 24 levels", "0 of 15 levels", "0 of 120 levels"]);
-  assert.equal(new Set(await page.$$eval(".gm-id", (els) => els.map((e) => getComputedStyle(e).borderColor))).size, 5);
+  assert.equal(await page.locator(".gt").count(), 5);
   await ctx.close();
 });

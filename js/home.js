@@ -290,7 +290,6 @@
  "h.f3": "المحتوى",
  "s.title": "تقدمك في المراحل",
  "s.note": "يُحفظ تقدمك على هذا الجهاز، ومع حسابك إن سجّلت الدخول.",
- "t.sub2": "أربع مراحل متتابعة. كل مسار يوضح مستواه ومتطلباته وما ستتقنه، والأسابيع المقترحة من خطة الـ 18 أسبوعًا.",
  "oc.com": "تفهم كيف يعمل الحاسوب من العتاد إلى الشبكات والأمن السيبراني.",
  "oc.prg": "تفكّر كمبرمج: متغيرات وشروط وحلقات ودوال، وتحلّ مسائل صغيرة بنفسك.",
  "oc.html": "تبني صفحة ويب سليمة البنية بعناصر دلالية ونماذج وجداول وإمكانية وصول.",
@@ -316,14 +315,6 @@
  "pr.angular": "يتطلب: JavaScript",
  "pr.react": "يتطلب: JavaScript",
  "pr.vue": "يتطلب: JavaScript",
- "wk.pre": "قبل الأسبوع 1",
- "wk.html": "الأسابيع 1–2",
- "wk.css": "الأسابيع 3–5",
- "wk.js": "الأسابيع 8–12",
- "wk.bs": "الأسبوع 6",
- "wk.tw": "الأسبوع 13",
- "wk.ng": "الأسابيع 15–17",
- "wk.x": "مسار إضافي",
  "st.4.d2": "ابنِ تطبيقًا كاملًا بإطار حديث. الخطة المعتمدة تعتمد Angular؛ React وVue بدائل إضافية.",
  "how.title2": "كيف يسير كل درس",
  "how.1.d2": "شرح قصير ثم مثال كامل يمكنك قراءته.",
@@ -356,7 +347,6 @@
  "h.f3": "Content",
  "s.title": "Your progress by stage",
  "s.note": "Progress is saved on this device, and with your account if you sign in.",
- "t.sub2": "Four stages in order. Each track shows its level, prerequisites and what you will master, plus the suggested weeks from the 18-week plan.",
  "oc.com": "Understand how a computer works, from hardware to networks and cybersecurity.",
  "oc.prg": "Think like a programmer: variables, conditions, loops and functions, and solve small problems yourself.",
  "oc.html": "Build a well-structured web page with semantic elements, forms, tables and accessibility.",
@@ -382,14 +372,6 @@
  "pr.angular": "Requires: JavaScript",
  "pr.react": "Requires: JavaScript",
  "pr.vue": "Requires: JavaScript",
- "wk.pre": "Before week 1",
- "wk.html": "Weeks 1–2",
- "wk.css": "Weeks 3–5",
- "wk.js": "Weeks 8–12",
- "wk.bs": "Week 6",
- "wk.tw": "Week 13",
- "wk.ng": "Weeks 15–17",
- "wk.x": "Extra track",
  "st.4.d2": "Build a complete app with a modern framework. The approved plan uses Angular; React and Vue are extra alternatives.",
  "how.title2": "How each lesson runs",
  "how.1.d2": "A short explanation, then a complete example you can read.",
@@ -415,65 +397,41 @@
 } });
 
   F.i18n.extend({ ar: {
- "h.cta3": "شاهد خريطة الأسابيع",
- "rm.title": "خريطة الـ 18 أسبوعًا",
- "rm.sub": "اختر أي محطة لترى ما ستتقنه ومتطلباتها وتقدمك فيها. الخانات المنقّطة جزء من الخطة لكن دروسها لم تُنشر بعد.",
- "rm.pre": "قبل الأسبوع 1",
- "rm.week": "الأسبوع",
- "rm.extra": "مسارات إضافية خارج الخطة",
- "rm.aria": "خطة الـ 18 أسبوعًا",
- "rm.git": "Git وGitHub + مشروع",
- "rm.aits": "AI + TypeScript",
- "rm.be": "Backend + نشر",
- "d.pre": "المتطلبات",
- "d.lessons": "الدروس",
  "pl.lab": "تحدٍّ حقيقي من ساحة CSS",
  "pl.brief": "اجعل العنوان برتقاليًا (#e34f26)، بحجم 40px، في منتصف السطر.",
  "pl.c1": "اللون #e34f26",
  "pl.c2": "الحجم 40px",
  "pl.c3": "المحاذاة center",
- "pl.cta": "جرّب ساحة CSS",
- "pq.com": "لا شيء",
- "pq.prg": "أساسيات الحاسوب (مفضّل)",
- "pq.html": "لا شيء",
- "pq.css": "HTML",
- "pq.js": "HTML وCSS",
- "pq.ajs": "JavaScript",
- "pq.bs": "HTML وCSS",
- "pq.tw": "CSS",
- "pq.angular": "JavaScript",
- "pq.react": "JavaScript",
- "pq.vue": "JavaScript"
+ "pl.cta": "جرّب ساحة CSS"
 }, en: {
- "h.cta3": "See the week map",
- "rm.title": "The 18-week map",
- "rm.sub": "Pick any stop to see what you will master, its prerequisites and your progress. Dotted slots are part of the plan but their lessons are not published yet.",
- "rm.pre": "Before week 1",
- "rm.week": "Week",
- "rm.extra": "Extra tracks outside the plan",
- "rm.aria": "18-week plan",
- "rm.git": "Git and GitHub + project",
- "rm.aits": "AI + TypeScript",
- "rm.be": "Backend + deploy",
- "d.pre": "Prerequisites",
- "d.lessons": "Lessons",
  "pl.lab": "A real challenge from the CSS arena",
  "pl.brief": "Make the heading orange (#e34f26), 40px, centred.",
  "pl.c1": "Colour is #e34f26",
  "pl.c2": "Size is 40px",
  "pl.c3": "text-align is center",
- "pl.cta": "Try the CSS arena",
- "pq.com": "None",
- "pq.prg": "Computer basics (suggested)",
- "pq.html": "None",
- "pq.css": "HTML",
- "pq.js": "HTML and CSS",
- "pq.ajs": "JavaScript",
- "pq.bs": "HTML and CSS",
- "pq.tw": "CSS",
- "pq.angular": "JavaScript",
- "pq.react": "JavaScript",
- "pq.vue": "JavaScript"
+ "pl.cta": "Try the CSS arena"
+} });
+
+  F.i18n.extend({ ar: {
+ "h.cta3": "استعرض المسارات",
+ "tk.title": "اختر مسارك",
+ "tk.sub": "ابدأ من الأساسيات أو انتقل مباشرة إلى ما تحتاجه. تقدمك في كل مسار يُحفظ تلقائيًا.",
+ "tk.found": "قبل أن تبدأ",
+ "tk.core": "الأساس: ثلاث لغات خلف كل صفحة ويب",
+ "tk.more": "تعمّق وأدوات وأطر عمل",
+ "tk.prev": "السابق",
+ "tk.next": "التالي",
+ "pl.cta2": "افتح الساحات"
+}, en: {
+ "h.cta3": "Browse the tracks",
+ "tk.title": "Choose your track",
+ "tk.sub": "Start from the fundamentals or jump straight to what you need. Your progress in every track is saved automatically.",
+ "tk.found": "Before you start",
+ "tk.core": "The core: three languages behind every web page",
+ "tk.more": "Go further: tools and frameworks",
+ "tk.prev": "Previous",
+ "tk.next": "Next",
+ "pl.cta2": "Open the arenas"
 } });
 
   var tracksById = {};
@@ -585,7 +543,7 @@
       if (!a) return;
       var pct = total ? Math.round((done / total) * 100) : 0;
       $(".hm-seg-bar > span", a).style.width = pct + "%";
-      $("[data-pct]", a).textContent = pct + "%";
+      $("[data-pct]", a).textContent = done ? pct + "%" : "0/" + total;
       a.setAttribute("title", F.i18n.t("c.done", { done: done, total: total }));
     });
   }
