@@ -47,7 +47,7 @@ test("tools rail buttons scroll the rail in both directions and layouts", async 
   for (const lang of ["en", "ar"]) {
     const { ctx, page } = await open({}, lang);
     await page.evaluate(() => document.documentElement.style.scrollBehavior = "auto");
-    await page.setViewportSize({ width: 390, height: 800 });
+    await page.setViewportSize({ width: 900, height: 800 });
     await page.locator("#tkRail").scrollIntoViewIfNeeded();
     const start = await page.$eval("#tkRail", (r) => r.scrollLeft);
     await page.click('[data-rail="next"]'); await page.waitForTimeout(900);

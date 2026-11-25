@@ -80,13 +80,15 @@
     <link rel="stylesheet" href="/css/theme-overrides.css" />
     <link rel="stylesheet" href="/css/shell.css" />
     <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/motion.css" />
     <script src="/js/i18n.js" defer></script>
     <script src="/js/shell.js" defer></script>
     <script src="/js/catalog.js" defer></script>
     <script src="/js/home.js" defer></script>
     <script src="/js/home-tracks.js" defer></script>
+    <script src="/js/motion.js" defer></script>
   </head>
-  <body class="fayad-page">
+  <body class="fayad-page has-bn">
     <a class="fy-skip" href="#main" data-i18n="common.skip">تخطي إلى المحتوى</a>
 
     <header class="navbar" id="navbar">
@@ -99,6 +101,7 @@
         <a href="#home" class="nav-link active" data-i18n="nav.home">الرئيسية</a>
         <a href="#courses" class="nav-link" data-i18n="nav.courses">المسارات</a>
         <a href="#how" class="nav-link" data-i18n="nav.how">كيف تتعلم</a>
+        <a href="#games" class="nav-link" data-i18n="menu.game">الألعاب</a>
         <a href="about/about.html" class="nav-link" data-i18n="nav.about">عن المنصة</a>
       </nav>
 
@@ -123,7 +126,7 @@
               <a class="hm-cta" id="heroCta" href="fundamentals/computer-basics/com.html"><span data-i18n="h.cta">ابدأ من الأساسيات</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
               <a class="hm-cta2" href="#courses"><span data-i18n="h.cta3">استعرض المسارات</span></a>
             </div>
-            <p class="hm-fine"><b data-stat="tracks">11</b> <span data-i18n="h.stat.tracks">مسارات</span> · <b data-stat="lessons">271</b> <span data-i18n="h.stat.lessons">درسًا</span> · <span data-i18n="h.f2d">من الصفر، دون خبرة سابقة</span></p>
+            <p class="hm-fine"><b data-stat="tracks">11</b> <span data-i18n="h.stat.tracks">مسارات</span> · <b data-stat="lessons">292</b> <span data-i18n="h.stat.lessons">درسًا</span> · <span data-i18n="h.f2d">من الصفر، دون خبرة سابقة</span></p>
           </div>
 
           <aside class="hm-next" id="nextStep" aria-labelledby="nextLabel" data-course="com">
@@ -148,13 +151,13 @@
 
       <section id="courses" class="tk-sec" aria-labelledby="coursesTitle">
         <div class="hm-wrap">
-          <header class="tk-head">
+          <header class="tk-head rv">
             <h2 id="coursesTitle" data-i18n="tk.title">اختر مسارك</h2>
             <p data-i18n="tk.sub">ابدأ من الأساسيات أو انتقل مباشرة إلى ما تحتاجه. تقدمك في كل مسار يُحفظ تلقائيًا.</p>
           </header>
 
           <div class="tk-group">
-            <h3 class="tk-label" data-i18n="tk.found">قبل أن تبدأ</h3>
+            <h3 class="tk-label rv" data-i18n="tk.found">قبل أن تبدأ</h3>
             <div class="tk-found">
               <a class="tk tk-row" href="fundamentals/computer-basics/com.html" data-course="com" data-course-card="com" style="--i:0">
                 <span class="tk-glyph" aria-hidden="true">CS</span>
@@ -182,9 +185,10 @@
           </div>
 
           <div class="tk-group">
-            <h3 class="tk-label" data-i18n="tk.core">الأساس: ثلاث لغات خلف كل صفحة ويب</h3>
+            <h3 class="tk-label rv" data-i18n="tk.core">الأساس: ثلاث لغات خلف كل صفحة ويب</h3>
             <div class="tk-core">
               <a class="tk tk-feature" href="html-learning/html-learning.html" data-course="html" data-course-card="html" style="--i:0">
+                <span class="tk-art tk-art-html" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
                 <span class="tk-glyph" aria-hidden="true">HTML</span>
                 <span class="tk-body">
                   <span class="tk-title"><strong>HTML</strong><span class="tk-lv" data-i18n="lv.b">مبتدئ</span></span>
@@ -197,6 +201,7 @@
                 <span class="tk-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
               </a>
               <a class="tk tk-half" href="css-learning/css-learning.html" data-course="css" data-course-card="css" style="--i:1">
+                <span class="tk-art tk-art-css" aria-hidden="true"><i></i><i></i><i></i></span>
                 <span class="tk-glyph" aria-hidden="true">CSS</span>
                 <span class="tk-body">
                   <span class="tk-title"><strong>CSS</strong><span class="tk-lv" data-i18n="lv.b">مبتدئ</span></span>
@@ -208,6 +213,7 @@
                 <span class="tk-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
               </a>
               <a class="tk tk-half" href="javascript-learning/javascript-learning.html" data-course="js" data-course-card="js" style="--i:2">
+                <span class="tk-art tk-art-js" aria-hidden="true"><i></i><i></i><i></i></span>
                 <span class="tk-glyph" aria-hidden="true">JS</span>
                 <span class="tk-body">
                   <span class="tk-title"><strong>JavaScript</strong><span class="tk-lv" data-i18n="lv.i">متوسط</span></span>
@@ -222,7 +228,7 @@
           </div>
 
           <div class="tk-group">
-            <div class="tk-label-row">
+            <div class="tk-label-row rv">
               <h3 class="tk-label" id="tkMore" data-i18n="tk.more">تعمّق وأدوات وأطر عمل</h3>
               <div class="tk-rail-ctl">
                 <button type="button" class="tk-nav" data-rail="prev" aria-label="السابق" data-i18n-attr="aria-label:tk.prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
@@ -304,7 +310,7 @@
       <section id="how" class="hm-how" aria-labelledby="howTitle">
         <div class="hm-wrap hm-how-grid">
           <h2 id="howTitle" data-i18n="how.title2">كيف يسير كل درس</h2>
-          <ol class="hm-steps">
+          <ol class="hm-steps rv">
             <li><b>1</b><div><strong data-i18n="how.1">افهم الفكرة</strong><span data-i18n="how.1.d2">شرح قصير ثم مثال كامل يمكنك قراءته.</span></div></li>
             <li><b>2</b><div><strong data-i18n="how.2">جرّب بنفسك</strong><span data-i18n="how.2.d2">عدّل المثال وشغّله في محرر الدرس، داخل بيئة معزولة.</span></div></li>
             <li><b>3</b><div><strong data-i18n="how.3">اختبر نفسك</strong><span data-i18n="how.3.d2">أسئلة بعد كل درس مع شرح للإجابة.</span></div></li>
@@ -315,12 +321,12 @@
 
       <section id="games" class="pl" aria-labelledby="gamesTitle">
         <div class="hm-wrap">
-          <header class="pl-head">
+          <header class="pl-head rv">
             <h2 id="gamesTitle" data-i18n="g.title2">تمرّن بالكود</h2>
             <p data-i18n="g.lead2">ألعاب وتحديات تكتب فيها كودًا حقيقيًا، ويُفحص فورًا داخل متصفحك.</p>
           </header>
           <div class="gt-grid">
-            <a class="gt gt-arena" href="play/index.html" data-game="arena">
+            <a class="gt gt-arena rv" style="--i:0" href="play/index.html" data-game="arena">
               <span class="gt-arena-copy">
                 <span class="gt-eyebrow" data-i18n="gm.arena.lv">من مبتدئ إلى خبير</span>
                 <strong class="gt-title" data-i18n="gm.arena.t">ساحات الكود</strong>
@@ -339,29 +345,33 @@
                 <span class="pl-checks"><span data-i18n="pl.c1">اللون #e34f26</span><span data-i18n="pl.c2">الحجم 40px</span><span data-i18n="pl.c3">المحاذاة center</span></span>
               </span>
             </a>
-            <a class="gt gt-flex" href="play/flex-quest.html" data-game="flex">
+            <a class="gt gt-flex rv" style="--i:1" href="play/flex-quest.html" data-game="flex">
               <span class="gt-vis gt-vis-flex" aria-hidden="true"><i></i><i></i><i></i></span>
               <strong class="gt-title">Flex Quest</strong>
               <span class="gt-desc" data-i18n="gm.flex.d">اضبط خصائص Flexbox حتى يطابق التخطيط الهدف.</span>
               <span class="gt-foot"><span class="gt-eyebrow" data-i18n="gm.flex.lv">CSS · مبتدئ إلى متوسط</span><span class="gt-prog" data-prog="flex"></span></span>
+              <span class="gt-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg></span>
             </a>
-            <a class="gt gt-sel" href="play/selector-quest.html" data-game="sel">
+            <a class="gt gt-sel rv" style="--i:2" href="play/selector-quest.html" data-game="sel">
               <span class="gt-vis gt-vis-sel" aria-hidden="true"><code>.card &gt; .title</code><i></i><i class="on"></i><i></i></span>
               <strong class="gt-title">Selector Quest</strong>
               <span class="gt-desc" data-i18n="gm.sel.d">اكتب محدد CSS يختار العناصر المطلوبة فقط.</span>
               <span class="gt-foot"><span class="gt-eyebrow" data-i18n="gm.sel.lv">CSS · مبتدئ إلى متوسط</span><span class="gt-prog" data-prog="sel"></span></span>
+              <span class="gt-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg></span>
             </a>
-            <a class="gt gt-zombie" href="play/zombie.html" data-game="zombie">
+            <a class="gt gt-zombie rv" style="--i:3" href="play/zombie.html" data-game="zombie">
               <span class="gt-vis gt-vis-zombie" aria-hidden="true"><b>HTML</b><b>CSS</b><b>JS</b></span>
               <strong class="gt-title">Zombie Survival</strong>
               <span class="gt-desc" data-i18n="gm.zombie.d">دافع عن الناجين بكود HTML وCSS وJavaScript حقيقي في 15 مهمة.</span>
               <span class="gt-foot"><span class="gt-eyebrow" data-i18n="gm.zombie.lv">مشروع تطبيقي · متوسط</span><span class="gt-prog" data-prog="zombie"></span></span>
+              <span class="gt-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg></span>
             </a>
-            <a class="gt gt-adv" href="play/adventure.html" data-game="adventure">
+            <a class="gt gt-adv rv" style="--i:4" href="play/adventure.html" data-game="adventure">
               <span class="gt-vis gt-vis-adv" aria-hidden="true"><i></i><i></i><i></i></span>
               <strong class="gt-title" data-i18n="gm.adv.t">المغامرة الكبرى</strong>
               <span class="gt-desc" data-i18n="gm.adv.d">برمجة بالكتل عبر 120 مرحلة: تسلسل وحلقات وشروط ودوال.</span>
               <span class="gt-foot"><span class="gt-eyebrow" data-i18n="gm.adv.lv">منطق برمجي · مبتدئ</span><span class="gt-prog" data-prog="adventure"></span></span>
+              <span class="gt-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg></span>
             </a>
           </div>
           <a class="hm-link" href="play/index.html"><span data-i18n="g.all">مركز الألعاب ولوحة الترتيب</span></a>
@@ -369,6 +379,12 @@
       </section>
     </main>
 
+    <nav class="bn" aria-label="التنقل السريع" data-i18n-attr="aria-label:bn.label">
+      <a href="#home" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4v-5H9v5H5a1 1 0 0 1-1-1z"/></svg><span data-i18n="nav.home">الرئيسية</span></a>
+      <a href="#courses"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 5.5A1.5 1.5 0 0 1 6.5 4H19v14H6.5A1.5 1.5 0 0 0 5 19.5z"/><path d="M5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3"/></svg><span data-i18n="nav.courses">المسارات</span></a>
+      <a href="#games"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><rect x="3" y="7" width="18" height="11" rx="4"/><path d="M8 10.5v4M6 12.5h4M16 11h.01M18 14h.01"/></svg><span data-i18n="menu.game">الألعاب</span></a>
+      <button type="button" id="bnMenu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg><span data-i18n="bn.menu">القائمة</span></button>
+    </nav>
     <footer class="ft" id="footer">
       <div class="hm-wrap ft-bar">
         <a href="index.html" class="logo ft-logo" aria-label="FAYBIT">

@@ -1,0 +1,33 @@
+/* FAYBIT motion system. One timing language: --fy-dur-fast / --fy-dur / --fy-dur-slow with --fy-ease (tokens.css).
+   Rules: content is never hidden without JS; nothing delays access; scroll is native (no scroll-jacking, no smooth-scroll library);
+   everything here is switched off by prefers-reduced-motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* progressive reveal: JS arms it (html.rv-on) and marks elements .is-in as they enter the viewport */
+.rv { --rv-d: calc(var(--i, 0) * 80ms); }
+html.rv-on .rv:not(.is-in) { opacity: 0; transform: translateY(20px); }
+html.rv-on .rv { transition: opacity .7s var(--fy-ease), transform .7s var(--fy-ease); transition-delay: var(--rv-d); }
+html.rv-on .rv.is-in { opacity: 1; transform: none; }
+
+/* thin reading-progress line under the navbar */
+.sp { position: fixed; inset-block-start: 0; inset-inline: 0; z-index: 1300; height: 2px; pointer-events: none; transform-origin: 0 50%; transform: scaleX(var(--p, 0)); background: linear-gradient(90deg, var(--fy-brand), #34e2cf); opacity: 0; transition: opacity var(--fy-dur); }
+html[dir="rtl"] .sp { transform-origin: 100% 50%; }
+html.is-scrolled .sp { opacity: 1; }
+
+/* navbar scroll state */
+.navbar { transition: background-color var(--fy-dur), box-shadow var(--fy-dur), border-color var(--fy-dur), height var(--fy-dur) var(--fy-ease); }
+.navbar.is-scrolled { box-shadow: 0 14px 32px -24px rgba(7,18,28,.55); }
+
+/* scroll-linked (progressive enhancement, Chromium): the hero copy eases back as the section leaves */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes hero-out { to { opacity: .25; transform: translateY(-36px); } }
+    .hm-hero-copy { animation: hero-out linear both; animation-timeline: view(); animation-range: exit 10% exit 90%; }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.rv-on .rv:not(.is-in) { opacity: 1; transform: none; }
+  html.rv-on .rv, .navbar, .sp { transition: none; }
+}

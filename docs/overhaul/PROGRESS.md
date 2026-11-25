@@ -142,3 +142,12 @@ Checklist: [x] Adventure mechanics v2  [x] Zombie web-lab (supersedes the JS-onl
 - Homepage IA: hero + real next-step/progress panel, tracks (foundations rows / core split / tools rail), how a lesson runs, games (five distinct compositions, arena shows a real challenge), footer.
 - Motion: CSS hover depth and progress transitions; one IntersectionObserver for staggered tile reveal and arena check ticking; no GSAP; reduced motion disables arming.
 - Tests: home.test.mjs rewritten for V2. Not marked approved; awaiting review.
+
+## V3: motion system, mobile experience, navbar/footer, login, About (checkpoint after d089a6f)
+- Motion (css/motion.css + js/motion.js, no library): progressive reveal (`.rv`, armed by JS, released after reveal so component hover transitions are untouched), navbar scrolled state + thin progress line, scroll spy with a sliding indicator (desktop links) and the same spy driving the mobile bottom bar, Chromium scroll-linked hero ease-out (progressive enhancement). Native scrolling only: Lenis and GSAP ScrollTrigger were considered and not adopted (no scroll-jacking, no extra weight; nothing here needs a timeline).
+- Mobile: bottom navigation (Home, Courses, Games, Menu) wired to the existing drawer; tracks and games are horizontal snap carousels; compact header.
+- Games: three compositions (wide arena with real challenge, two compact rows, two tall cards), per-game thumbnails, play affordance, real level totals/progress.
+- Footer: social links grey by default, brand colours on hover/focus (GitHub, LinkedIn, Facebook, Instagram; no YouTube link exists, none invented).
+- Login: presentation only (auth.css). Markup, ids, handlers and Supabase untouched.
+- About: rewritten around the platform (no owner profile/portrait/personal links in the page body); facts read from the catalog. The shared footer keeps the existing social destinations; the homepage JSON-LD still carries the existing founder Person node (SEO data, not visible UI).
+- Limitations: learner progress on a device is stored in shared localStorage keys (not namespaced per account), so two accounts on one browser share local progress until cloud sync overwrites it; not changed (backend/contract). Supabase and CDN hosts are not reachable from the test sandbox, so login/registration/recovery were not exercised end-to-end; signed-in UI states were checked with simulated sessions only.

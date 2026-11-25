@@ -53,3 +53,30 @@ html[data-theme="dark"] .au-status.error { color: #fca5a5; } html[data-theme="da
   .au-card { padding-block: max(24px, env(safe-area-inset-top)) max(96px, calc(env(safe-area-inset-bottom) + 84px)); } /* clears the floating shell bar */
 }
 @media (prefers-reduced-motion: reduce) { .au-submit, .au-meter i, .au-tabs button, .au-field input { transition: none; } .au-submit.is-loading::after { animation-duration: 2s; } }
+
+/* ---------- V3 refinement: presentation only (markup, ids and handlers unchanged) ---------- */
+.au-body { background: radial-gradient(900px 520px at 85% -10%, color-mix(in srgb, var(--fy-brand) 11%, transparent), transparent 70%), var(--fy-bg); }
+.au-side { background: linear-gradient(160deg, #0f2a40 0%, #0b1f31 62%, #0a3a3c 120%); isolation: isolate; }
+.au-side::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(rgba(234,242,247,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(234,242,247,.045) 1px, transparent 1px); background-size: 44px 44px; mask-image: radial-gradient(120% 90% at 20% 20%, #000 20%, transparent 75%); }
+.au-pitch h1 { font-family: var(--fy-font-display, inherit); text-wrap: balance; }
+.au-pitch li { padding-inline-start: 30px; }
+.au-pitch li::before { inset-block-start: .2em; width: 20px; height: 20px; border-radius: 50%; background: rgba(31,209,191,.16) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231fd1bf' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/12px no-repeat; }
+.au-card { align-self: center; margin-block: 24px; border: 1px solid var(--fy-border); border-radius: 22px; background: var(--fy-surface); box-shadow: 0 28px 60px -36px rgba(7,18,28,.45); padding: clamp(24px, 4vw, 44px); animation: au-in .6s var(--fy-ease, ease) both; }
+html[data-theme="dark"] .au-card { box-shadow: 0 28px 60px -30px rgba(0,0,0,.7); }
+@keyframes au-in { from { opacity: 0; transform: translateY(14px); } }
+.au-tabs { border: 0; padding: 4px; gap: 4px; border-radius: 14px; background: var(--fy-surface-3, var(--fy-bg-soft)); }
+.au-tabs button { border: 0; margin: 0; border-radius: 10px; min-height: 42px; transition: background-color .2s, color .2s, box-shadow .2s; }
+.au-tabs button[aria-selected="true"] { background: var(--fy-surface); color: var(--fy-brand-strong, var(--fy-brand)); box-shadow: 0 1px 2px rgba(7,18,28,.12), 0 4px 10px -6px rgba(7,18,28,.25); }
+.au-form h2 { font-family: var(--fy-font-display, inherit); font-size: 1.75rem; }
+.au-field input { min-height: 50px; border-radius: 12px; background: var(--fy-bg-soft); transition: border-color .18s, box-shadow .18s, background-color .18s; }
+.au-field input:focus-visible { background: var(--fy-surface); }
+.au-field input[aria-invalid="true"] { box-shadow: 0 0 0 3px color-mix(in srgb, #dc2626 18%, transparent); }
+.au-pw button:hover { color: var(--fy-brand); background: color-mix(in srgb, var(--fy-brand) 10%, transparent); }
+.au-submit { min-height: 52px; border-radius: 12px; font-size: 1.02rem; box-shadow: 0 10px 22px -14px var(--fy-brand); }
+.au-submit:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 14px 26px -14px var(--fy-brand); }
+.au-status.error, .au-status.success { padding: 10px 12px; border-radius: 10px; }
+.au-status.error { background: color-mix(in srgb, #dc2626 10%, transparent); } .au-status.success { background: color-mix(in srgb, var(--fy-brand) 12%, transparent); }
+.au-status:empty { padding: 0; background: none; }
+.au-body #fy-notice { display: none; } /* the "lesson content not translated" prompt is irrelevant here */
+@media (max-width: 860px) { .au-card { margin: 0 auto; border: 0; box-shadow: none; background: transparent; border-radius: 0; padding: clamp(20px, 5vw, 32px); } }
+@media (prefers-reduced-motion: reduce) { .au-card { animation: none; } .au-submit:hover:not(:disabled) { transform: none; } }

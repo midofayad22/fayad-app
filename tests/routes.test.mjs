@@ -79,12 +79,10 @@ test("robots.txt and sitemap.xml list every public route", async () => {
   }
 });
 
-test("About page uses the exact English and Arabic names", async () => {
-  const html = fs.readFileSync("about/about.html", "utf8");
-  const js = fs.readFileSync("about/about.js", "utf8"); // English strings live in the page's dictionary
-  assert.ok(js.includes('"a.name": "Abdullhamid, Fayad"'));
-  assert.ok(!(html + js).includes("Abd Elhamid"));
-  assert.ok(html.includes("عبد الحميد فياض"));
+test("About page is platform-focused: no owner profile, portrait or personal links", async () => {
+  const html = fs.readFileSync("about/about.html", "utf8").replace(/<footer[\s\S]*<\/footer>/, ""); // the shared footer keeps the existing social destinations
+  const js = fs.readFileSync("about/about.js", "utf8");
+  assert.ok(!/عبد الحميد فياض|Abdullhamid|portfolio|linkedin\.com\/in|<img[^>]+(portrait|avatar|owner)/i.test(html + js));
 });
 
 test("service worker never intercepts cross-origin or Supabase requests", async () => {

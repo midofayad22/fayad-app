@@ -15,22 +15,24 @@ async function open(url, opts = {}) {
 }
 test("about page: reveal-on-scroll and back-to-top work; nothing stays hidden", async () => {
   const { ctx, page } = await open("/about/about.html");
-  assert.ok(await page.locator(".fx-pre").count() > 0, "some below-the-fold blocks should wait for reveal");
+  assert.ok(await page.locator(".rv:not(.is-in)").count() > 0, "some below-the-fold blocks should wait for reveal (motion.js)");
   await page.evaluate(() => scrollTo(0, document.documentElement.scrollHeight)); await page.waitForTimeout(1200);
-  assert.equal(await page.locator(".fx-pre:not(.fx-in)").evaluateAll((e) => e.filter((x) => { const r = x.getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0; }).length), 0);
+  assert.equal(await page.locator(".rv:not(.is-in)").evaluateAll((e) => e.filter((x) => { const r = x.getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0; }).length), 0);
   assert.equal(await page.locator(".fx-progress").count(), 0, "no scroll progress bar");
   assert.ok(await page.locator(".fx-top.on").count() === 1);
+  await page.evaluate(() => scrollTo(0, 1400)); await page.waitForTimeout(500); // the button hides while the footer is in view
   await page.locator(".fx-top").click(); await page.waitForFunction(() => scrollY < 5);
   await ctx.close();
 });
 test("reduced motion: no fx elements and no hidden content", async () => {
   const { ctx, page } = await open("/about/about.html", { reducedMotion: "reduce" });
   assert.equal(await page.locator(".fx-top, .fx-pre").count(), 0);
+  assert.equal(await page.evaluate(() => document.documentElement.classList.contains("rv-on")), false);
   await ctx.close();
 });
 test("buttons produce a ripple that cleans itself up", async () => {
   const { ctx, page } = await open("/about/about.html");
-  await page.locator(".ab-btn").first().dispatchEvent("pointerdown", { clientX: 5, clientY: 5 });
+  await page.locator(".hm-cta").first().dispatchEvent("pointerdown", { clientX: 5, clientY: 5 });
   assert.equal(await page.locator(".fx-ripple").count(), 1);
   await page.waitForTimeout(900);
   assert.equal(await page.locator(".fx-ripple").count(), 0);

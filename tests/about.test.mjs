@@ -32,11 +32,12 @@ test("no false claims remain in the source (no stale totals, no 'all lessons in 
   assert.ok(!/AR · EN/.test(html));
 });
 
-test("identity facts are exactly the verified ones, in both languages", async () => {
-  for (const [lang, name, edu] of [["ar", "عبد الحميد فياض", "طالب هندسة حاسبات في جامعة طنطا"], ["en", "Abdullhamid, Fayad", "Computer engineering student at Tanta University"]]) {
+test("the page describes the platform in both languages and has no personal profile section", async () => {
+  for (const [lang, h1] of [["ar", "مكان هادئ لتتعلم تطوير الويب خطوة بخطوة"], ["en", "A calm place to learn web development, step by step"]]) {
     const { ctx, page } = await open(lang);
-    assert.equal(await page.locator("h1").innerText(), name);
-    assert.equal(await page.locator(".ab-edu").innerText(), edu);
+    assert.equal(await page.locator("h1").innerText(), h1);
+    assert.equal(await page.locator("#who, #links, .ab-edu, .ab-role").count(), 0);
+    assert.equal(await page.locator("[data-fact=tracks]").innerText(), String(await page.evaluate(() => FAYAD.catalog.tracks.length)));
     await ctx.close();
   }
 });

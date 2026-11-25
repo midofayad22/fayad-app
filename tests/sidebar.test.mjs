@@ -109,10 +109,15 @@ for (const [lang, dir] of [["ar", "rtl"], ["en", "ltr"]]) test(`navbar: balanced
     const { ctx, page } = await open("/index.html", { w, lang });
     const r = await page.evaluate(() => { const bs = [...document.querySelectorAll(".navbar .fy-controls .fy-btn")].map((b) => { const x = b.getBoundingClientRect(); return { c: b.className.replace("fy-btn ", ""), l: Math.round(x.left), r: Math.round(x.right), w: Math.round(x.width), h: Math.round(x.height), t: Math.round(x.top) }; });
       const nav = document.querySelector(".navbar").getBoundingClientRect(); return { bs, signin: document.querySelectorAll(".navbar .nav-signin-btn, .navbar a[href*='login']:not(.fy-btn-account)").length, navL: nav.left, navR: nav.right, dir: document.documentElement.dir, over: document.documentElement.scrollWidth - innerWidth }; });
-    assert.deepEqual(r.bs.map((b) => b.c), ["fy-btn-search", "fy-btn-lang", "fy-btn-theme", "fy-btn-account", "fy-btn-menu"], `${w}: order`);
+    if (w <= 720) { // phones: the menu toggle moves to the bottom navigation bar (#bnMenu), the header keeps the other four controls
+      assert.equal(await page.locator(".bn #bnMenu").count(), 1, `${w}: bottom-bar menu present`);
+      assert.equal(r.bs.find((b) => b.c === "fy-btn-menu").w, 0, `${w}: header menu toggle hidden`);
+      r.bs = r.bs.filter((b) => b.c !== "fy-btn-menu");
+    }
+    assert.deepEqual(r.bs.map((b) => b.c), w <= 720 ? ["fy-btn-search", "fy-btn-lang", "fy-btn-theme", "fy-btn-account"] : ["fy-btn-search", "fy-btn-lang", "fy-btn-theme", "fy-btn-account", "fy-btn-menu"], `${w}: order`);
     assert.equal(new Set(r.bs.map((b) => b.w)).size, 1, `${w}: equal widths`); assert.equal(new Set(r.bs.map((b) => b.h)).size, 1); assert.equal(new Set(r.bs.map((b) => b.t)).size, 1, `${w}: aligned`);
     const gaps = r.bs.slice(1).map((b, i) => (dir === "ltr" ? b.l - r.bs[i].r : r.bs[i].l - b.r)); assert.ok(gaps.every((g) => g >= 0 && g <= 12), `${w}: gaps ${gaps}`);
-    const menu = r.bs[4]; if (dir === "ltr") assert.ok(r.bs.every((b) => b.r <= menu.r)); else assert.ok(r.bs.every((b) => b.l >= menu.l)); // toggle is the last control in reading order
+    const menu = r.bs[r.bs.length - 1]; if (dir === "ltr") assert.ok(r.bs.every((b) => b.r <= menu.r)); else assert.ok(r.bs.every((b) => b.l >= menu.l)); // toggle is the last control in reading order
     assert.equal(r.signin, 0, `${w}: sign-in must not be in the navbar`); assert.ok(r.bs.every((b) => b.l >= 0 && b.r <= w), `${w}: controls inside viewport`); assert.ok(r.over <= 0, `${w}: overflow`); await ctx.close();
   }
 });

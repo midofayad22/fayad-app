@@ -305,3 +305,41 @@ b, strong { font-weight: var(--fy-fw-strong); }
 
 /* Smooth same-origin page-to-page transitions (progressive enhancement; off for reduced motion). */
 @media (prefers-reduced-motion: no-preference) { @view-transition { navigation: auto; } ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 180ms; } }
+
+/* ================= V3 navigation system ================= */
+.navbar { background: color-mix(in srgb, var(--fy-bg) 74%, transparent); -webkit-backdrop-filter: saturate(1.5) blur(18px); backdrop-filter: saturate(1.5) blur(18px); border-block-end: 1px solid transparent; }
+.navbar.is-scrolled { background: color-mix(in srgb, var(--fy-bg) 90%, transparent); border-block-end-color: var(--fy-border); }
+.navbar .logo { gap: 10px; }
+.navbar .logo-text { font: 800 1.05rem var(--fy-font-en); letter-spacing: .16em; color: var(--fy-text); }
+.nav-links { position: relative; display: flex; align-items: center; gap: 2px; padding: 4px; border: 1px solid var(--fy-border); border-radius: 999px; background: color-mix(in srgb, var(--fy-surface) 70%, transparent); }
+.navbar .nav-link { position: relative; z-index: 1; min-height: 36px; padding: 0 16px; border-radius: 999px; color: var(--fy-text-soft); font-size: .9375rem; font-weight: 600; background: none; transition: color var(--fy-dur-fast), background-color var(--fy-dur-fast); }
+.navbar .nav-link::after { display: none; }
+.navbar .nav-link:hover { color: var(--fy-text); background: var(--fy-hover, rgba(0,0,0,.05)); }
+.navbar .nav-link.active { color: var(--fy-brand); background: none; }
+.navbar .nav-link:focus-visible { outline: none; box-shadow: var(--fy-focus); }
+.nav-ind { position: absolute; inset-block: 4px; inset-inline-start: 4px; width: 0; border-radius: 999px; background: color-mix(in srgb, var(--fy-brand) 14%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--fy-brand) 28%, transparent); opacity: 0; transition: transform .45s var(--fy-ease), width .45s var(--fy-ease), opacity var(--fy-dur); pointer-events: none; }
+/* one icon language: 1.75 stroke, rounded, 18px, 38px targets */
+.fy-btn svg, .bn svg { stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.fy-controls--inline .fy-btn { width: 38px; height: 38px; min-width: 38px; border-radius: 12px; transition: background-color var(--fy-dur-fast), color var(--fy-dur-fast), transform var(--fy-dur-fast); }
+.fy-controls--inline .fy-btn:hover { color: var(--fy-brand); background: color-mix(in srgb, var(--fy-brand) 10%, transparent); }
+.fy-controls--inline .fy-btn[lang="ar"], .fy-controls--inline .fy-btn-lang { font-size: .8125rem; font-weight: 700; letter-spacing: .04em; }
+@media (max-width: 900px) { .nav-links { display: none; } }
+
+/* mobile bottom navigation (homepage) */
+.bn { display: none; }
+@media (max-width: 720px) {
+  body.has-bn .navbar .fy-btn-menu, body.has-bn .fy-controls--inline .fy-btn-menu { display: none; }
+  .bn { position: fixed; z-index: 1250; inset-inline: 0; inset-block-end: 0; display: grid; grid-template-columns: repeat(4, 1fr); padding: 6px 8px calc(6px + env(safe-area-inset-bottom, 0px)); background: color-mix(in srgb, var(--fy-surface) 88%, transparent); -webkit-backdrop-filter: saturate(1.6) blur(20px); backdrop-filter: saturate(1.6) blur(20px); border-block-start: 1px solid var(--fy-border); box-shadow: 0 -14px 34px -26px rgba(7,18,28,.6); }
+  .bn a, .bn button { position: relative; display: grid; justify-items: center; align-content: center; gap: 3px; min-height: 52px; padding: 4px 2px; border: 0; background: none; color: var(--fy-text-muted); font: 600 .75rem/1.2 var(--fy-font-body, inherit); text-decoration: none; cursor: pointer; border-radius: 14px; -webkit-tap-highlight-color: transparent; transition: color var(--fy-dur-fast), background-color var(--fy-dur-fast), transform .12s; }
+  .bn svg { width: 24px; height: 24px; fill: none; stroke: currentColor; }
+  .bn a:active, .bn button:active { transform: scale(.94); }
+  .bn a.active { color: var(--fy-brand); background: color-mix(in srgb, var(--fy-brand) 11%, transparent); }
+  .bn a.active::before { content: ""; position: absolute; inset-block-start: -7px; width: 22px; height: 3px; border-radius: 0 0 3px 3px; background: var(--fy-brand); }
+  .bn a:focus-visible, .bn button:focus-visible { outline: none; box-shadow: var(--fy-focus); }
+}
+
+/* very narrow phones (320–360): five header controls must fit on one row without overflow */
+@media (max-width: 380px) {
+  .fy-controls--inline .fy-btn { width: 34px; height: 34px; min-width: 34px; }
+  .navbar { padding-inline: 12px; }
+}
