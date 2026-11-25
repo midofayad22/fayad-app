@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="react" />
+    <meta name="robots" content="noindex, follow" />
+    <title>useContext — React | FAYBIT</title>
+    <meta name="description" content="تعلم كيف تسمح useContext بمشاركة البيانات بين Components دون تمرير Props عبر كل مستوى." />
+    <link rel="canonical" href="https://faybit.vercel.app/react-learning/lessons/react-16.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/react-learning/lessons/react-16.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/react-learning/lessons/react-16.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/react-learning/lessons/react-16.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="useContext — React | FAYBIT" />
+    <meta property="og:description" content="تعلم كيف تسمح useContext بمشاركة البيانات بين Components دون تمرير Props عبر كل مستوى." />
+    <meta property="og:url" content="https://faybit.vercel.app/react-learning/lessons/react-16.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"React","item":"https://faybit.vercel.app/react-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"useContext","item":"https://faybit.vercel.app/react-learning/lessons/react-16.html"}]},{"@type":"LearningResource","name":"useContext","description":"تعلم كيف تسمح useContext بمشاركة البيانات بين Components دون تمرير Props عبر كل مستوى.","url":"https://faybit.vercel.app/react-learning/lessons/react-16.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"React — FAYBIT","url":"https://faybit.vercel.app/react-learning/react-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="React"><a href="/react-learning/lessons/index.html">الدروس</a><a href="/en/react-learning/lessons/react-16.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/react-learning/lessons/index.html">React</a></nav>
+      <p class="lp-eyebrow">الدرس 16 من 30</p>
+      <h1 class="lp-h1">useContext</h1>
+      <p class="lp-lead">تعلم كيف تسمح useContext بمشاركة البيانات بين Components دون تمرير Props عبر كل مستوى.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-16">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<p>
+عندما تحتاج عدة Components إلى نفس البيانات، قد يصبح تمرير
+Props عبر مستويات كثيرة أمرًا مزعجًا.
+</p>
+<p>
+Context يوفر طريقة لمشاركة بيانات معينة عبر شجرة Components.
+</p>
+<p>
+useContext تستخدم لقراءة القيمة الموجودة في Context داخل
+Component.
+</p>
+</div></article>
+<article class="body-card key-card"><p>Context مناسب للبيانات المشتركة التي تحتاجها Components متعددة.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>الكود</h2></div>
+</div>
+<pre dir="ltr"><code>const ThemeContext = createContext("light");
+function App() {
+return (
+&lt;ThemeContext.Provider value="dark"&gt;
+&lt;Page /&gt;
+&lt;/ThemeContext.Provider&gt;
+);
+}</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>مثل Theme أو معلومات المستخدم أو إعدادات عامة للتطبيق.</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span></div>
+</div>
+<p class="practice-description">غيّر قيمة ThemeContext من light إلى dark.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما المشكلة التي يساعد useContext في حلها؟</strong></p><ul><li>مشاركة البيانات بين Components</li><li>كتابة CSS</li><li>إنشاء HTML</li><li>إنشاء Database</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>مشاركة البيانات بين Components</strong></p></details></li><li><p><strong>ما الذي يوفره Context؟</strong></p><ul><li>قيمة يمكن الوصول إليها من Components داخل Provider</li><li>CSS Animation</li><li>HTML file</li><li>SQL table</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>قيمة يمكن الوصول إليها من Components داخل Provider</strong></p></details></li><li><p><strong>أي بيانات مناسبة لـContext؟</strong></p><ul><li>Theme أو بيانات مستخدم عامة</li><li>لون زر واحد فقط دائمًا</li><li>ملف CSS</li><li>صورة واحدة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Theme أو بيانات مستخدم عامة</strong></p></details></li><li><p><strong>ما الذي يوفره Provider؟</strong></p><ul><li>ملفات CSS</li><li>مسارات الصفحات</li><li>اتصالاً بالإنترنت</li><li>قيمة السياق لكل المكونات تحته</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>قيمة السياق لكل المكونات تحته</strong></p><p>المكونات داخل Provider تقرأ قيمته عبر useContext.</p></details></li><li><p><strong>ماذا تعيد useContext(ThemeContext) خارج أي Provider؟</strong></p><ul><li>null دائماً</li><li>اسم المكون</li><li>خطأ دائماً</li><li>القيمة الافتراضية الممررة إلى createContext</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>القيمة الافتراضية الممررة إلى createContext</strong></p><p>عند غياب Provider تُستخدم القيمة الافتراضية.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-16">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/react-learning/lessons/react-15.html"><small>الدرس السابق</small><strong>useRef</strong></a>
+        <a rel="next" href="/react-learning/lessons/react-17.html"><small>الدرس التالي</small><strong>Custom Hooks</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/react-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

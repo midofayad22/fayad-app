@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="css" />
+    <meta name="robots" content="noindex, follow" />
+    <title>CSS Variables — CSS | FAYBIT</title>
+    <meta name="description" content="Learn how custom properties make CSS easier to maintain." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/css-learning/lessons/css-26.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/css-learning/lessons/css-26.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/css-learning/lessons/css-26.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/css-learning/lessons/css-26.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="CSS Variables — CSS | FAYBIT" />
+    <meta property="og:description" content="Learn how custom properties make CSS easier to maintain." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/css-learning/lessons/css-26.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"CSS","item":"https://faybit.vercel.app/en/css-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"CSS Variables","item":"https://faybit.vercel.app/en/css-learning/lessons/css-26.html"}]},{"@type":"LearningResource","name":"CSS Variables","description":"Learn how custom properties make CSS easier to maintain.","url":"https://faybit.vercel.app/en/css-learning/lessons/css-26.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"CSS — FAYBIT","url":"https://faybit.vercel.app/css-learning/css-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="CSS"><a href="/en/css-learning/lessons/index.html">Lessons</a><a href="/css-learning/lessons/css-26.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/css-learning/lessons/index.html">CSS</a></nav>
+      <p class="lp-eyebrow">Lesson 26 of 30</p>
+      <h1 class="lp-h1">CSS Variables</h1>
+      <p class="lp-lead">Learn how custom properties make CSS easier to maintain.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-26">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>Your first CSS code</h2></div>
+</div>
+<pre dir="ltr"><code>:root {
+--primary: #0f807a;
+}
+button {
+background: var(--primary);
+}</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Write CSS and see the result</h2></div>
+</div>
+<p class="practice-description">Change the code below, then run it to see the result.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which syntax creates a CSS variable?</strong></p><ul><li>--variable-name</li><li>$variable</li><li>@variable</li><li>#variable</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>--variable-name</strong></p></details></li><li><p><strong>Which function reads a CSS variable?</strong></p><ul><li>var()</li><li>get()</li><li>css-var()</li><li>value()</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>var()</strong></p></details></li><li><p><strong>Where are global CSS variables commonly defined?</strong></p><ul><li>:root</li><li>:global-css</li><li>body-root-only</li><li>#variables</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>:root</strong></p></details></li><li><p><strong>The variable .card { --gap: 10px; } is defined and var(--gap) is used on body. What happens?</strong></p><ul><li>It works, because variables are always global</li><li>It fails, because the variable is only available inside .card and its descendants</li><li>It works but with the value zero</li><li>An error breaks the whole page</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>It fails, because the variable is only available inside .card and its descendants</strong></p><p>Custom properties are inherited only by descendants of the element where they are defined. Global ones are therefore defined on :root.</p></details></li><li><p><strong>What does var(--color, blue) mean?</strong></p><ul><li>It defines the variable color as blue</li><li>It always uses blue</li><li>It uses --color, and if it is not defined it uses blue</li><li>It blends the two colors</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>It uses --color, and if it is not defined it uses blue</strong></p><p>The second argument is a fallback that is used only when the first variable is not defined.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-26">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/css-learning/lessons/css-25.html"><small>Previous lesson</small><strong>Animations</strong></a>
+        <a rel="next" href="/en/css-learning/lessons/css-27.html"><small>Next lesson</small><strong>Specificity</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/css-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

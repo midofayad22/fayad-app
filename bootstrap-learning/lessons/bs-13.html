@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>التحقق ومجموعات الإدخال والتسميات العائمة — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="التحقق ومجموعات الإدخال والتسميات العائمة: رسائل التحقق، وinput-group، وform-floating. — Bootstrap 5." />
+    <link rel="canonical" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-13.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-13.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-13.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-13.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="التحقق ومجموعات الإدخال والتسميات العائمة — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="التحقق ومجموعات الإدخال والتسميات العائمة: رسائل التحقق، وinput-group، وform-floating. — Bootstrap 5." />
+    <meta property="og:url" content="https://faybit.vercel.app/bootstrap-learning/lessons/bs-13.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"التحقق ومجموعات الإدخال والتسميات العائمة","item":"https://faybit.vercel.app/bootstrap-learning/lessons/bs-13.html"}]},{"@type":"LearningResource","name":"التحقق ومجموعات الإدخال والتسميات العائمة","description":"التحقق ومجموعات الإدخال والتسميات العائمة: رسائل التحقق، وinput-group، وform-floating. — Bootstrap 5.","url":"https://faybit.vercel.app/bootstrap-learning/lessons/bs-13.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/bootstrap-learning/lessons/index.html">الدروس</a><a href="/en/bootstrap-learning/lessons/bs-13.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">الدرس 13 من 20</p>
+      <h1 class="lp-h1">التحقق ومجموعات الإدخال والتسميات العائمة</h1>
+      <p class="lp-lead">رسائل التحقق، وinput-group، وform-floating.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-13">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>التحقق</h2><p>أضف <code>novalidate</code> للنموذج و<code>needs-validation</code>، ثم عند الإرسال أضف <code>was-validated</code> ليظهر الأخضر/الأحمر حسب قواعد HTML (<code>required</code> و<code>type</code> و<code>minlength</code>). أو ضع <code>is-invalid</code>/<code>is-valid</code> يدويًا مع <code>.invalid-feedback</code>. التحقق من الخادم لا غنى عنه.</p></article><article class="content-card"><h2>مجموعات وتسميات</h2><p><code>.input-group</code> يدمج نصًا أو زرًا مع الحقل (<code>.input-group-text</code>). <code>.form-floating</code> يضع التسمية داخل الحقل وترتفع عند الكتابة (يجب أن يأتي الـ input قبل الـ label).</p></article></div>
+<article class="body-card key-card"><p>التحقق في المتصفح للتجربة فقط، تحقق دائمًا من الخادم أيضًا.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;form class="container py-3 needs-validation" novalidate style="max-width:480px" onsubmit="event.preventDefault(); this.classList.add('was-validated')"&gt;
+&lt;div class="input-group mb-3"&gt;
+&lt;span class="input-group-text"&gt;@&lt;/span&gt;
+&lt;input type="text" class="form-control" placeholder="اسم المستخدم" aria-label="اسم المستخدم" required minlength="3"&gt;
+&lt;div class="invalid-feedback"&gt;الاسم مطلوب (3 أحرف على الأقل).&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="form-floating mb-3"&gt;
+&lt;input type="email" class="form-control" id="mail" placeholder="name@example.com" required&gt;
+&lt;label for="mail"&gt;البريد الإلكتروني&lt;/label&gt;
+&lt;div class="invalid-feedback"&gt;أدخل بريدًا صحيحًا.&lt;/div&gt;
+&lt;/div&gt;
+&lt;button class="btn btn-primary" type="submit"&gt;إرسال&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>اضغط «إرسال» بحقول فارغة لتظهر الرسائل الحمراء. الفئة <code>was-validated</code> تضيف التنسيق حسب حالة كل حقل.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">أضف حقل كلمة مرور &lt;code&gt;required minlength="8"&lt;/code&gt; داخل &lt;code&gt;form-floating&lt;/code&gt;.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ماذا تفعل was-validated؟</strong></p><ul><li>تفعّل تنسيق الصح والخطأ حسب حالة الحقول</li><li>ترسل النموذج</li><li>تحذف الحقول</li><li>تحفظ البيانات</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تفعّل تنسيق الصح والخطأ حسب حالة الحقول</strong></p></details></li><li><p><strong>لماذا نحتاج التحقق من الخادم رغم التحقق في المتصفح؟</strong></p><ul><li>لأن التحقق في المتصفح يمكن تجاوزه</li><li>لأن المتصفح لا يدعمه</li><li>للسرعة فقط</li><li>لا نحتاج</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لأن التحقق في المتصفح يمكن تجاوزه</strong></p></details></li><li><p><strong>ما الشرط في form-floating؟</strong></p><ul><li>أن يأتي input قبل label</li><li>أن يأتي label قبل input</li><li>وجود select فقط</li><li>عدم وجود placeholder</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>أن يأتي input قبل label</strong></p></details></li><li><p><strong>أي فئة تحمل الرمز @ بجانب حقل الإدخال داخل input-group؟</strong></p><ul><li>input-addon</li><li>form-text-box</li><li>group-label</li><li>input-group-text</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>input-group-text</strong></p><p>input-group-text ينسّق النص أو الأيقونة الملاصقة للحقل.</p></details></li><li><p><strong>كيف تُظهر رسالة خطأ حمراء يدوياً تحت حقل؟</strong></p><ul><li>is-invalid على الحقل و invalid-feedback للرسالة</li><li>text-error على الحقل</li><li>was-validated على الحقل وحده</li><li>alert-red بعد الحقل</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>is-invalid على الحقل و invalid-feedback للرسالة</strong></p><p>الفئة is-invalid تلوّن الحقل وتُظهر النص الموجود في invalid-feedback.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-13">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/bootstrap-learning/lessons/bs-12.html"><small>الدرس السابق</small><strong>النماذج Forms</strong></a>
+        <a rel="next" href="/bootstrap-learning/lessons/bs-14.html"><small>الدرس التالي</small><strong>الجداول والقوائم</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/bootstrap-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

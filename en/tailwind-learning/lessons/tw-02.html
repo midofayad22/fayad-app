@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <title>Spacing: padding, margin, and gap — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="Tailwind's spacing scale: each unit equals 0.25rem." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-02.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-02.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-02.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-02.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Spacing: padding, margin, and gap — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="Tailwind's spacing scale: each unit equals 0.25rem." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-02.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Spacing: padding, margin, and gap","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-02.html"}]},{"@type":"LearningResource","name":"Spacing: padding, margin, and gap","description":"Tailwind's spacing scale: each unit equals 0.25rem.","url":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-02.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/en/tailwind-learning/lessons/index.html">Lessons</a><a href="/tailwind-learning/lessons/tw-02.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">Lesson 2 of 20</p>
+      <h1 class="lp-h1">Spacing: padding, margin, and gap</h1>
+      <p class="lp-lead">Tailwind's spacing scale: each unit equals 0.25rem.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-2">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>The Scale</h2><p>In v4 all spacing is derived from a single variable, <code>--spacing: 0.25rem</code>. So <code>p-1</code> = 0.25rem, <code>p-4</code> = 1rem, <code>p-8</code> = 2rem, and any number works (<code>p-13</code> = 3.25rem).</p></article><article class="content-card"><h2>The Syntax</h2><p><code>p</code> is padding and <code>m</code> is margin, followed by a direction: <code>t</code> <code>b</code> <code>x</code> <code>y</code>, and for logical directions <code>s</code> (start) and <code>e</code> (end), such as <code>ps-4</code> <code>me-2</code>. <code>gap-*</code> sets the space between flex/grid items, and <code>space-x-*</code> sets the space between children. Negative margin: <code>-mt-2</code>. <code>mx-auto</code> is for centering.</p></article></div>
+<article class="body-card key-card"><p>Spacing number × 0.25rem. Use s/e instead of l/r to support RTL.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="p-4"&gt;
+&lt;div id="a" class="mb-4 bg-slate-100 p-4"&gt;p-4 = 1rem&lt;/div&gt;
+&lt;div id="b" class="mb-4 bg-slate-100 px-8 py-2"&gt;px-8 py-2&lt;/div&gt;
+&lt;div id="c" class="ms-8 bg-slate-100 p-3"&gt;ms-8 (margin at the start)&lt;/div&gt;
+&lt;div class="mt-4 flex gap-3"&gt;&lt;span class="bg-amber-200 p-2"&gt;1&lt;/span&gt;&lt;span class="bg-amber-200 p-2"&gt;2&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p><code>p-4</code> gives 16px because 4 × 0.25rem = 1rem. <code>px-8</code> gives 32px horizontally. <code>gap-3</code> puts 12px between the two items.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Make the second element's horizontal padding &lt;code&gt;px-12&lt;/code&gt;, then try &lt;code&gt;-mt-2&lt;/code&gt; on the third.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What does p-4 equal?</strong></p><ul><li>1rem (16px)</li><li>4px</li><li>4rem</li><li>0.4rem</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>1rem (16px)</strong></p></details></li><li><p><strong>Which class adds a margin at the start of the element in an RTL-friendly way?</strong></p><ul><li>ms-4</li><li>ml-4</li><li>mt-4</li><li>mb-4</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>ms-4</strong></p></details></li><li><p><strong>What does gap-3 do?</strong></p><ul><li>Space between flex/grid items</li><li>Padding inside the element</li><li>The element's width</li><li>Border color</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Space between flex/grid items</strong></p></details></li><li><p><strong>What does the class p-13 equal in v4?</strong></p><ul><li>1.3rem</li><li>13rem</li><li>3.25rem</li><li>13px</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>3.25rem</strong></p><p>13 times 0.25rem gives 3.25rem because any number works.</p></details></li><li><p><strong>Which class centers a block horizontally?</strong></p><ul><li>my-auto</li><li>mx-auto</li><li>px-auto</li><li>gap-auto</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>mx-auto</strong></p><p>mx-auto makes both horizontal margins automatic.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-2">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/tailwind-learning/lessons/tw-01.html"><small>Previous lesson</small><strong>Introduction: The Utility-First Philosophy and Setup Options</strong></a>
+        <a rel="next" href="/en/tailwind-learning/lessons/tw-03.html"><small>Next lesson</small><strong>Colors and Opacity</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/tailwind-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

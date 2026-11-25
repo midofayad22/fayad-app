@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <title>مشروع: بطاقات تسعير وأفضل الممارسات — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="صفحة بطاقات تسعير متجاوبة، مع خطأ شائع يجب تجنبه: أسماء الفئات الديناميكية." />
+    <link rel="canonical" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-20.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-20.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-20.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-20.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="مشروع: بطاقات تسعير وأفضل الممارسات — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="صفحة بطاقات تسعير متجاوبة، مع خطأ شائع يجب تجنبه: أسماء الفئات الديناميكية." />
+    <meta property="og:url" content="https://faybit.vercel.app/tailwind-learning/lessons/tw-20.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"مشروع: بطاقات تسعير وأفضل الممارسات","item":"https://faybit.vercel.app/tailwind-learning/lessons/tw-20.html"}]},{"@type":"LearningResource","name":"مشروع: بطاقات تسعير وأفضل الممارسات","description":"صفحة بطاقات تسعير متجاوبة، مع خطأ شائع يجب تجنبه: أسماء الفئات الديناميكية.","url":"https://faybit.vercel.app/tailwind-learning/lessons/tw-20.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/tailwind-learning/lessons/index.html">الدروس</a><a href="/en/tailwind-learning/lessons/tw-20.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">الدرس 20 من 20</p>
+      <h1 class="lp-h1">مشروع: بطاقات تسعير وأفضل الممارسات</h1>
+      <p class="lp-lead">صفحة بطاقات تسعير متجاوبة، مع خطأ شائع يجب تجنبه: أسماء الفئات الديناميكية.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-20">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>المشروع</h2><p>نبني ثلاث بطاقات: أساسي، احترافي (مميز)، مؤسسات. شبكة <code>grid gap-6 md:grid-cols-3</code>، والبطاقة المميزة بحلقة <code>ring-2</code>، وأزرار بحالات hover وfocus، ودعم الوضع الداكن.</p></article><article class="content-card"><h2>تجنّب الأسماء الديناميكية</h2><p>Tailwind يبحث عن أسماء الفئات <strong>كاملة كنص</strong> في ملفاتك. لذلك الكود <code>`bg-${color}-500`</code> لن يولّد شيئًا، بل اكتب الأسماء كاملة أو اربطها بخريطة: <code>{ red: "bg-red-500", blue: "bg-blue-500" }</code>.</p></article><article class="content-card"><h2>قائمة مراجعة</h2><ul><li>ترتيب ثابت للفئات (مثلًا بإضافة Prettier plugin).</li><li>استخدم <code>@theme</code> للقيم المتكررة.</li><li>اختبر التباين والوضع الداكن والتركيز.</li><li>أضف نسخة بناء حقيقية للإنتاج بدل نسخة المتصفح.</li></ul></article></div>
+<article class="body-card key-card"><p>اكتب أسماء الفئات كاملة في الكود ولا تبنِها بدمج نصوص.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;section class="grid gap-6 p-6 md:grid-cols-3"&gt;
+&lt;article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"&gt;
+&lt;h2 class="text-lg font-bold text-slate-900"&gt;أساسي&lt;/h2&gt;
+&lt;p class="mt-2 text-4xl font-extrabold text-slate-900"&gt;0&lt;span class="text-base font-medium text-slate-500"&gt; / شهر&lt;/span&gt;&lt;/p&gt;
+&lt;ul class="mt-4 space-y-2 text-sm text-slate-600"&gt;&lt;li&gt;دروس مجانية&lt;/li&gt;&lt;li&gt;تتبع التقدم&lt;/li&gt;&lt;/ul&gt;
+&lt;button class="mt-6 w-full rounded-lg bg-slate-900 py-2 font-semibold text-white hover:bg-slate-700"&gt;ابدأ&lt;/button&gt;
+&lt;/article&gt;
+&lt;article id="pro" class="rounded-2xl border border-sky-500 bg-white p-6 shadow-lg ring-2 ring-sky-500"&gt;
+&lt;p class="text-xs font-bold uppercase tracking-wide text-sky-700"&gt;الأكثر اختيارًا&lt;/p&gt;
+&lt;h2 class="mt-1 text-lg font-bold text-slate-900"&gt;احترافي&lt;/h2&gt;
+&lt;p class="mt-2 text-4xl font-extrabold text-slate-900"&gt;9&lt;span class="text-base font-medium text-slate-500"&gt; / شهر&lt;/span&gt;&lt;/p&gt;
+&lt;ul class="mt-4 space-y-2 text-sm text-slate-600"&gt;&lt;li&gt;كل المميزات الأساسية&lt;/li&gt;&lt;li&gt;شهادات إتمام&lt;/li&gt;&lt;/ul&gt;
+&lt;button class="mt-6 w-full rounded-lg bg-sky-600 py-2 font-semibold text-white hover:bg-sky-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"&gt;اشترك&lt;/button&gt;
+&lt;/article&gt;
+&lt;article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"&gt;
+&lt;h2 class="text-lg font-bold text-slate-900"&gt;مؤسسات&lt;/h2&gt;
+&lt;p class="mt-2 text-4xl font-extrabold text-slate-900"&gt;تواصل&lt;/p&gt;
+&lt;ul class="mt-4 space-y-2 text-sm text-slate-600"&gt;&lt;li&gt;إدارة فرق&lt;/li&gt;&lt;li&gt;دعم مخصص&lt;/li&gt;&lt;/ul&gt;
+&lt;button class="mt-6 w-full rounded-lg bg-slate-900 py-2 font-semibold text-white hover:bg-slate-700"&gt;اتصل بنا&lt;/button&gt;
+&lt;/article&gt;
+&lt;/section&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>الشبكة تصبح عمودًا واحدًا على الهاتف وثلاثة أعمدة من <code>md</code>. البطاقة المميزة تتميز بحلقة وظل أكبر. جرّب تحويلها لوضع داكن بإضافة <code>dark:</code> لكل لون.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">أضف &lt;code&gt;dark:bg-slate-800 dark:text-white&lt;/code&gt; للبطاقات واجعل نسخة داكنة كاملة.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>لماذا لا يعمل الكود bg-${color}-500 في Tailwind؟</strong></p><ul><li>لأن Tailwind يكتشف أسماء الفئات الكاملة كنص ولا ينفذ الكود</li><li>لأن الأسماء قصيرة</li><li>لأن color محجوزة</li><li>يعمل دائمًا</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لأن Tailwind يكتشف أسماء الفئات الكاملة كنص ولا ينفذ الكود</strong></p></details></li><li><p><strong>كيف نحل مشكلة الألوان الديناميكية؟</strong></p><ul><li>نكتب أسماء الفئات كاملة أو نستخدم خريطة بأسماء كاملة</li><li>نستخدم eval</li><li>نحذف الألوان</li><li>نغير المتصفح</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>نكتب أسماء الفئات كاملة أو نستخدم خريطة بأسماء كاملة</strong></p></details></li><li><p><strong>ما الأفضل للإنتاج؟</strong></p><ul><li>بناء Tailwind الحقيقي بدل نسخة المتصفح</li><li>نسخة المتصفح دائمًا</li><li>عدم استخدام Tailwind</li><li>تحميل كل الألوان</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>بناء Tailwind الحقيقي بدل نسخة المتصفح</strong></p></details></li><li><p><strong>أي فئات تصنع ثلاثة أعمدة من md مع مسافة بينها؟</strong></p><ul><li>grid gap-6 md:grid-cols-3</li><li>flex gap-6 md:cols-3</li><li>grid md:gap-3-cols</li><li>columns-3 md:grid</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>grid gap-6 md:grid-cols-3</strong></p><p>grid مع grid-cols-3 عند md و gap-6 للمسافات.</p></details></li><li><p><strong>ما فائدة إضافة Prettier plugin لـ Tailwind؟</strong></p><ul><li>ترتيب الفئات بشكل متسق</li><li>إلغاء الحاجة لـ HTML</li><li>تحويل الفئات إلى صور</li><li>تسريع الإنترنت</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>ترتيب الفئات بشكل متسق</strong></p><p>ترتيب موحد للفئات يسهّل القراءة والمراجعة.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-20">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/tailwind-learning/lessons/tw-19.html"><small>الدرس السابق</small><strong>النماذج وحالات الحقول</strong></a>
+        <span></span>
+      </nav>
+      <p class="lp-all"><a href="/tailwind-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

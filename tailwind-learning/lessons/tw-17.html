@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <title>التخصيص بـ @theme — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="عرّف ألوانك وخطوطك ونقاطك الفاصلة كمتغيرات تُولّد فئات تلقائيًا." />
+    <link rel="canonical" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-17.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-17.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-17.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-17.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="التخصيص بـ @theme — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="عرّف ألوانك وخطوطك ونقاطك الفاصلة كمتغيرات تُولّد فئات تلقائيًا." />
+    <meta property="og:url" content="https://faybit.vercel.app/tailwind-learning/lessons/tw-17.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"التخصيص بـ @theme","item":"https://faybit.vercel.app/tailwind-learning/lessons/tw-17.html"}]},{"@type":"LearningResource","name":"التخصيص بـ @theme","description":"عرّف ألوانك وخطوطك ونقاطك الفاصلة كمتغيرات تُولّد فئات تلقائيًا.","url":"https://faybit.vercel.app/tailwind-learning/lessons/tw-17.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/tailwind-learning/lessons/index.html">الدروس</a><a href="/en/tailwind-learning/lessons/tw-17.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">الدرس 17 من 20</p>
+      <h1 class="lp-h1">التخصيص بـ @theme</h1>
+      <p class="lp-lead">عرّف ألوانك وخطوطك ونقاطك الفاصلة كمتغيرات تُولّد فئات تلقائيًا.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-17">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>من config إلى CSS</h2><p>في v4 يتم التخصيص داخل CSS عبر <code>@theme</code>: <code>--color-brand: #0b6b78;</code> يولّد <code>bg-brand</code> و<code>text-brand</code> و<code>border-brand</code> تلقائيًا. كذلك <code>--font-display</code> و<code>--breakpoint-3xl</code> و<code>--spacing</code> و<code>--radius-card</code>.</p></article><article class="content-card"><h2>ألوان بدرجات</h2><p>عرّف <code>--color-brand-500</code> و<code>--color-brand-700</code> لتحصل على فئات بدرجات. لإلغاء لوحة الألوان الافتراضية: <code>--color-*: initial;</code>.</p></article></div>
+<article class="body-card key-card"><p>كل متغير في @theme يولّد فئات الأدوات المقابلة له تلقائيًا.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;style type="text/tailwindcss"&gt;
+@theme {
+--color-brand-500: #0b6b78;
+--color-brand-700: #095561;
+--radius-card: 1.25rem;
+--breakpoint-3xl: 100rem;
+}
+&lt;/style&gt;
+&lt;div class="p-4"&gt;
+&lt;button id="b" class="rounded-card bg-brand-500 px-5 py-2 font-semibold text-white hover:bg-brand-700"&gt;زر بلون العلامة&lt;/button&gt;
+&lt;p class="mt-3 text-brand-700"&gt;نص بلون العلامة الداكن.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>المتغيرات <code>--color-brand-*</code> ولّدت فئات <code>bg-brand-500</code> و<code>text-brand-700</code> و<code>hover:bg-brand-700</code>، والمتغير <code>--radius-card</code> ولّد <code>rounded-card</code>.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">أضف &lt;code&gt;--color-accent: #f59e0b;&lt;/code&gt; واستخدم &lt;code&gt;bg-accent&lt;/code&gt;.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أين يتم التخصيص في Tailwind v4؟</strong></p><ul><li>داخل CSS عبر @theme</li><li>في ملف tailwind.config.js فقط</li><li>في HTML</li><li>في JSON</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>داخل CSS عبر @theme</strong></p></details></li><li><p><strong>ماذا يولّد --color-brand-500 داخل @theme؟</strong></p><ul><li>فئات مثل bg-brand-500 وtext-brand-500</li><li>لا شيء</li><li>ملفًا جديدًا</li><li>خطأ</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>فئات مثل bg-brand-500 وtext-brand-500</strong></p></details></li><li><p><strong>كيف نحذف ألوان Tailwind الافتراضية؟</strong></p><ul><li>--color-*: initial;</li><li>delete colors</li><li>colors: none</li><li>@reset</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>--color-*: initial;</strong></p></details></li><li><p><strong>ما الفئة التي يولدها --breakpoint-3xl داخل @theme؟</strong></p><ul><li>3xl:</li><li>max-3xl-size</li><li>screen-3xl</li><li>break-3xl</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>3xl:</strong></p><p>تصبح البادئة 3xl: متاحة مثل md: و lg:.</p></details></li><li><p><strong>ما الفئة التي يولدها --radius-card؟</strong></p><ul><li>radius-card</li><li>card-rounded</li><li>rounded-card</li><li>border-card</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>rounded-card</strong></p><p>اسم المتغير بعد البادئة يصبح جزءاً من اسم الفئة.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-17">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/tailwind-learning/lessons/tw-16.html"><small>الدرس السابق</small><strong>القيم الاعتباطية Arbitrary Values</strong></a>
+        <a rel="next" href="/tailwind-learning/lessons/tw-18.html"><small>الدرس التالي</small><strong>@apply و @layer وإعادة الاستخدام</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/tailwind-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

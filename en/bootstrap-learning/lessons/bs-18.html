@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>Tooltips, Popovers, and Toasts — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="The components that need JavaScript initialization, and how to enable them." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-18.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-18.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-18.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-18.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Tooltips, Popovers, and Toasts — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="The components that need JavaScript initialization, and how to enable them." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-18.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Tooltips, Popovers, and Toasts","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-18.html"}]},{"@type":"LearningResource","name":"Tooltips, Popovers, and Toasts","description":"The components that need JavaScript initialization, and how to enable them.","url":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-18.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/en/bootstrap-learning/lessons/index.html">Lessons</a><a href="/bootstrap-learning/lessons/bs-18.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">Lesson 18 of 20</p>
+      <h1 class="lp-h1">Tooltips, Popovers, and Toasts</h1>
+      <p class="lp-lead">The components that need JavaScript initialization, and how to enable them.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-18">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Why do they need initialization?</h2><p>Tooltips and Popovers don't work automatically for performance reasons, so they must be created: <code>new bootstrap.Tooltip(el)</code> (or for all elements with <code>data-bs-toggle="tooltip"</code>). The same goes for Toast: <code>new bootstrap.Toast(el).show()</code>.</p></article><article class="content-card"><h2>Accessibility</h2><p>A Tooltip isn't easily shown to touch users, and essential information must not be placed only in it. Use it as a helper, not as the main content.</p></article></div>
+<article class="body-card key-card"><p>Enable Tooltips/Popovers/Toasts manually, and don't put critical information in them.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="container py-4"&gt;
+&lt;button id="tipBtn" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-title="Help text"&gt;Hover here&lt;/button&gt;
+&lt;button id="toastBtn" class="btn btn-primary"&gt;Show Toast&lt;/button&gt;
+&lt;div class="toast-container position-fixed bottom-0 end-0 p-3"&gt;
+&lt;div id="liveToast" class="toast" role="status" aria-live="polite" aria-atomic="true"&gt;
+&lt;div class="toast-header"&gt;&lt;strong class="me-auto"&gt;FAYBIT&lt;/strong&gt;&lt;small&gt;Now&lt;/small&gt;&lt;button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"&gt;&lt;/button&gt;&lt;/div&gt;
+&lt;div class="toast-body"&gt;Progress saved.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+new bootstrap.Tooltip(document.getElementById('tipBtn'));
+document.getElementById('toastBtn').addEventListener('click', () =&gt; {
+bootstrap.Toast.getOrCreateInstance(document.getElementById('liveToast')).show();
+});
+&lt;/script&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>The Tooltip is created programmatically because Bootstrap doesn't enable it automatically. <code>getOrCreateInstance</code> creates the instance if it doesn't exist or returns the existing one.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Add a third button with another Tooltip and enable it the same way.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Why don't Tooltips work without JavaScript code?</strong></p><ul><li>Because they need explicit initialization for performance reasons</li><li>Because they were removed</li><li>Because they need the internet</li><li>Because they are for printers</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Because they need explicit initialization for performance reasons</strong></p></details></li><li><p><strong>Which function shows a Toast?</strong></p><ul><li>bootstrap.Toast(el).show()</li><li>toast.open()</li><li>el.showToast()</li><li>alert(el)</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>bootstrap.Toast(el).show()</strong></p></details></li><li><p><strong>What is the main caveat about using a Tooltip?</strong></p><ul><li>Don't put essential information in it because it is hard to reach on touch devices</li><li>It slows down the network</li><li>It cancels the form</li><li>It needs a license</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Don't put essential information in it because it is hard to reach on touch devices</strong></p></details></li><li><p><strong>How do you enable all Tooltips on the page?</strong></p><ul><li>Select elements with data-bs-toggle=&quot;tooltip&quot; and create new bootstrap.Tooltip for each</li><li>Just add the tooltip class</li><li>Nothing is needed</li><li>Call bootstrap.Modal</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Select elements with data-bs-toggle=&quot;tooltip&quot; and create new bootstrap.Tooltip for each</strong></p><p>The attribute alone is not enough; a Tooltip object must be created per element.</p></details></li><li><p><strong>Putting the password rules only inside a Tooltip. What is the problem?</strong></p><ul><li>The Tooltip slows the server</li><li>Tooltips do not support text</li><li>Touch users may not be able to reach it</li><li>It blocks form submission</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Touch users may not be able to reach it</strong></p><p>A Tooltip is only a helper; essential info must appear in the page itself.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-18">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/bootstrap-learning/lessons/bs-17.html"><small>Previous lesson</small><strong>Collapse, Accordion, and Dropdown</strong></a>
+        <a rel="next" href="/en/bootstrap-learning/lessons/bs-19.html"><small>Next lesson</small><strong>Dark Mode, RTL, and Customization with CSS Variables</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/bootstrap-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

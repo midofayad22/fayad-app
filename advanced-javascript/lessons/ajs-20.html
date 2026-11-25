@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>التعابير النمطية المتقدمة — JavaScript المتقدم | FAYBIT</title>
+    <meta name="description" content="المجموعات المسماة والنظر للأمام والخلف وmatchAll لاستخراج البيانات بدقة." />
+    <link rel="canonical" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-20.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-20.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-20.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-20.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="التعابير النمطية المتقدمة — JavaScript المتقدم | FAYBIT" />
+    <meta property="og:description" content="المجموعات المسماة والنظر للأمام والخلف وmatchAll لاستخراج البيانات بدقة." />
+    <meta property="og:url" content="https://faybit.vercel.app/advanced-javascript/lessons/ajs-20.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript المتقدم","item":"https://faybit.vercel.app/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"التعابير النمطية المتقدمة","item":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-20.html"}]},{"@type":"LearningResource","name":"التعابير النمطية المتقدمة","description":"المجموعات المسماة والنظر للأمام والخلف وmatchAll لاستخراج البيانات بدقة.","url":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-20.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript المتقدم — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript المتقدم"><a href="/advanced-javascript/lessons/index.html">الدروس</a><a href="/en/advanced-javascript/lessons/ajs-20.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/advanced-javascript/lessons/index.html">JavaScript المتقدم</a></nav>
+      <p class="lp-eyebrow">الدرس 20 من 22</p>
+      <h1 class="lp-h1">التعابير النمطية المتقدمة</h1>
+      <p class="lp-lead">المجموعات المسماة والنظر للأمام والخلف وmatchAll لاستخراج البيانات بدقة.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-20">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>أدوات حديثة</h2><ul><li>مجموعات مسماة: <code>(?&lt;year&gt;\d{4})</code>.</li><li>Lookahead <code>(?=...)</code> وLookbehind <code>(?&lt;=...)</code>.</li><li><code>matchAll</code> للحصول على كل النتائج مع المجموعات.</li><li>العلم <code>u</code> للتعامل الصحيح مع Unicode.</li></ul></article></div>
+<article class="body-card key-card"><p>المجموعات المسماة تجعل الـ regex مقروءًا، وmatchAll تتطلب العلم g.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>const date = /(?&lt;year&gt;\d{4})-(?&lt;month&gt;\d{2})-(?&lt;day&gt;\d{2})/u;
+const { groups } = "Due 2026-03-09".match(date);
+console.log(groups.year, groups.month, groups.day);
+const prices = "usd:10 eur:20 usd:35";
+const usd = [...prices.matchAll(/usd:(\d+)/g)].map((m) =&gt; Number(m[1]));
+console.log(usd);
+console.log("1234567".replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+console.log("price: $45".match(/(?&lt;=\$)\d+/)[0]);
+console.log("2026-03-09".replace(date, "$&lt;day&gt;/$&lt;month&gt;/$&lt;year&gt;"));</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">2026 03 09
+[ 10, 35 ]
+1,234,567
+45
+09/03/2026</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>الـ lookahead يضع الفواصل كل 3 أرقام دون استهلاك الأرقام. والـ lookbehind يلتقط الرقم بعد علامة <code>$</code> دون إدراجها في النتيجة.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>جرّب بنفسك</h2></div>
+</div>
+<p class="practice-description">استخرج كل الكلمات التي تبدأ بـ &lt;code&gt;#&lt;/code&gt; من النص &lt;code&gt;I love #js and #css&lt;/code&gt; باستخدام &lt;code&gt;matchAll&lt;/code&gt;.</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما فائدة المجموعات المسماة؟</strong></p><ul><li>الوصول للنتائج بالاسم بدل الأرقام</li><li>تسريع الصفحة</li><li>تشفير النص</li><li>تحويل النص لأرقام</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>الوصول للنتائج بالاسم بدل الأرقام</strong></p></details></li><li><p><strong>ماذا يشترط matchAll؟</strong></p><ul><li>العلم g</li><li>العلم i فقط</li><li>لا شرط</li><li>العلم y فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>العلم g</strong></p></details></li><li><p><strong>ماذا يفعل (?&lt;=\$)؟</strong></p><ul><li>يتحقق من وجود $ قبل الموضع دون استهلاكها</li><li>يطابق $ ويحذفها</li><li>يتحقق بعد الموضع</li><li>يعيد كل النص</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يتحقق من وجود $ قبل الموضع دون استهلاكها</strong></p></details></li><li><p><strong>ما ناتج الكود؟ console.log(&quot;[a][b]&quot;.match(/\[.*\]/)[0], &quot;[a][b]&quot;.match(/\[.*?\]/)[0]);</strong></p><ul><li>[a] و [a]</li><li>[a][b] و [a]</li><li>[a] و [a][b]</li><li>[a][b] و [a][b]</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>[a][b] و [a]</strong></p><p>الكمّ الجشع .* يلتقط أكبر نص ممكن حتى آخر ] فيعطي [a][b]. إضافة ? تجعله كسولاً فيتوقف عند أول ] ويعطي [a].</p></details></li><li><p><strong>ما ناتج console.log(&quot;10px 20em&quot;.match(/\d+(?=px)/)[0])؟</strong></p><ul><li>20</li><li>10px</li><li>10</li><li>null</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>10</strong></p><p>(?=px) هو lookahead يشترط أن يتبع الرقم النص px دون أن يلتقطه ضمن النتيجة. لذلك تُرجع المطابقة 10 فقط بدون px.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-20">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/advanced-javascript/lessons/ajs-19.html"><small>الدرس السابق</small><strong>أخطاء مخصصة واستراتيجيات المعالجة</strong></a>
+        <a rel="next" href="/advanced-javascript/lessons/ajs-21.html"><small>الدرس التالي</small><strong>أنماط التصميم: Observer و Pub/Sub</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/advanced-javascript/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

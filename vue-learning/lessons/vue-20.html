@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="vue" />
+    <meta name="robots" content="noindex, follow" />
+    <title>النماذج والتحقق — Vue.js | FAYBIT</title>
+    <meta name="description" content="تعلّم كيفية التعامل مع Forms وإضافة Validation بسيطة باستخدام Vue." />
+    <link rel="canonical" href="https://faybit.vercel.app/vue-learning/lessons/vue-20.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/vue-learning/lessons/vue-20.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/vue-learning/lessons/vue-20.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/vue-learning/lessons/vue-20.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="النماذج والتحقق — Vue.js | FAYBIT" />
+    <meta property="og:description" content="تعلّم كيفية التعامل مع Forms وإضافة Validation بسيطة باستخدام Vue." />
+    <meta property="og:url" content="https://faybit.vercel.app/vue-learning/lessons/vue-20.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Vue.js","item":"https://faybit.vercel.app/vue-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"النماذج والتحقق","item":"https://faybit.vercel.app/vue-learning/lessons/vue-20.html"}]},{"@type":"LearningResource","name":"النماذج والتحقق","description":"تعلّم كيفية التعامل مع Forms وإضافة Validation بسيطة باستخدام Vue.","url":"https://faybit.vercel.app/vue-learning/lessons/vue-20.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Vue.js — FAYBIT","url":"https://faybit.vercel.app/vue-learning/vue-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Vue.js"><a href="/vue-learning/lessons/index.html">الدروس</a><a href="/en/vue-learning/lessons/vue-20.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/vue-learning/lessons/index.html">Vue.js</a></nav>
+      <p class="lp-eyebrow">الدرس 20 من 22</p>
+      <h1 class="lp-h1">النماذج والتحقق</h1>
+      <p class="lp-lead">تعلّم كيفية التعامل مع Forms وإضافة Validation بسيطة باستخدام Vue.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-20">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<h2>النماذج والتحقق</h2>
+<p>
+يمكن استخدام <code>v-model</code> لربط قيم Form بالبيانات.
+</p>
+<p>
+ويمكنك استخدام Methods للتحقق من البيانات قبل تنفيذ عملية
+الإرسال.
+</p>
+</div></article>
+<article class="body-card key-card"><div class="info-label">تحقق من البيانات قبل الإرسال</div><p>اربط حقول Form بالبيانات ثم تحقق من القيم قبل إرسالها أو تنفيذ العملية.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>الكود</h2></div>
+</div>
+<pre dir="ltr"><code>
+&lt;div id="app"&gt;
+&lt;form @submit.prevent="submitForm"&gt;
+&lt;input v-model="name" placeholder="الاسم"&gt;
+&lt;button type="submit"&gt;
+إرسال
+&lt;/button&gt;
+&lt;p v-if="error"&gt;
+{{ error }}
+&lt;/p&gt;
+&lt;/form&gt;
+&lt;/div&gt;
+&lt;script&gt;
+const { createApp } = Vue;
+createApp({
+data() {
+return {
+name: "",
+error: ""
+};
+},
+methods: {
+submitForm() {
+if (!this.name.trim()) {
+this.error = "من فضلك اكتب اسمك";
+return;
+}
+this.error = "";
+alert("تم الإرسال");
+}
+}
+}).mount("#app");
+&lt;/script&gt;
+</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static">
+<div style="padding:20px;font-family:Arial;">
+<input placeholder="الاسم" style="padding:8px 10px;border:1px solid #ccc;border-radius:6px;">
+</div>
+</div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>
+<p>
+<code>v-model</code> تربط Input بالبيانات.
+</p>
+<p>
+<code>@submit.prevent</code> تمنع إرسال Form بالطريقة الافتراضية.
+</p>
+<p>
+داخل <code>submitForm()</code> نتحقق من البيانات قبل تنفيذ العملية.
+</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span></div>
+</div>
+<p class="practice-description">أنشئ Form يتحقق من أن الاسم ليس فارغًا قبل الإرسال.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما فائدة Validation في Forms؟</strong></p><ul><li>التأكد من صحة البيانات قبل استخدامها</li><li>إنشاء CSS</li><li>إنشاء Components</li><li>تغيير لون المتصفح</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>التأكد من صحة البيانات قبل استخدامها</strong></p></details></li><li><p><strong>ما الذي يمكن استخدامه لربط Input بالبيانات؟</strong></p><ul><li>v-model</li><li>v-route</li><li>v-check-only</li><li>v-input-data</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>v-model</strong></p></details></li><li><p><strong>ماذا تفعل .prevent مع submit؟</strong></p><ul><li>تمنع السلوك الافتراضي للمتصفح</li><li>تحذف Form</li><li>تنشئ Component</li><li>تغلق الصفحة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تمنع السلوك الافتراضي للمتصفح</strong></p></details></li><li><p><strong>ما فائدة @submit.prevent على النموذج؟</strong></p><ul><li>يمنع إعادة تحميل الصفحة ويسمح لدالتنا بمعالجة الإرسال</li><li>يحذف الحقول</li><li>يمنع كتابة أي بيانات</li><li>يرسل النموذج مرتين</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يمنع إعادة تحميل الصفحة ويسمح لدالتنا بمعالجة الإرسال</strong></p><p>بدون prevent يعيد المتصفح تحميل الصفحة قبل أن نتحقق من البيانات.</p></details></li><li><p><strong>أي شرط تحقق مناسب لمنع إرسال بريد فارغ؟</strong></p><ul><li>if (email) send()</li><li>if (!email) { error = 'Required'; return }</li><li>email = ''</li><li>if (email === email) send()</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>if (!email) { error = 'Required'; return }</strong></p><p>نفحص القيمة، وإذا كانت فارغة نعرض رسالة خطأ ونوقف الإرسال بـ return.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-20">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/vue-learning/lessons/vue-19.html"><small>الدرس السابق</small><strong>Lifecycle Hooks</strong></a>
+        <a rel="next" href="/vue-learning/lessons/vue-21.html"><small>الدرس التالي</small><strong>Vue Router</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/vue-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

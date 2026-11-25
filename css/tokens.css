@@ -4,6 +4,8 @@
 @font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-display:swap;font-weight:600;src:url(/assets/fonts/ibm-plex-sans-arabic-arabic-600-normal.woff2) format("woff2");unicode-range:U+0600-06FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FEFC}
 @font-face{font-family:"JetBrains Mono";font-style:normal;font-display:swap;font-weight:400;src:url(/assets/fonts/jetbrains-mono-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+2000-206F,U+2190-21FF,U+2212,U+2215}
 @font-face{font-family:"JetBrains Mono";font-style:normal;font-display:swap;font-weight:500;src:url(/assets/fonts/jetbrains-mono-latin-500-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+2000-206F,U+2190-21FF,U+2212,U+2215}
+@font-face{font-family:"Readex Pro";font-style:normal;font-display:swap;font-weight:160 700;src:url(/assets/fonts/readex-pro-arabic-wght-normal.woff2) format("woff2");unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+FB50-FDFF,U+FE70-FEFF}
+@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-display:swap;font-weight:200 800;src:url(/assets/fonts/plus-jakarta-sans-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:"Plex Fallback";src:local("Tahoma"),local("Segoe UI"),local("Arial");size-adjust:98%;ascent-override:104%;descent-override:42%;line-gap-override:0%}
 @font-face{font-family:"Inter Fallback";src:local("Arial"),local("Helvetica Neue");size-adjust:107%;ascent-override:90%;descent-override:22%;line-gap-override:0%}
 @font-face{font-family:"Inter";font-style:normal;font-display:swap;font-weight:100 900;src:url(/assets/fonts/inter-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -21,7 +23,7 @@
   --fy-font-en: "Inter", "IBM Plex Sans Arabic", "Inter Fallback", system-ui, -apple-system, sans-serif;
   --fy-font-code: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --fy-font: var(--fy-font-ar);
-  --fy-font-display: var(--fy-font); /* one family for headlines too: hierarchy comes from size and weight, not from a different typeface */
+  --fy-font-display: "Readex Pro", "Plus Jakarta Sans", var(--fy-font-ar); /* one family for headlines too: hierarchy comes from size and weight, not from a different typeface */
   --fy-font-title: var(--fy-font);
 
   /* type scale (rem; body copy 15px) — use these, never page-local sizes */
@@ -56,110 +58,111 @@
 
 html[lang="en"] {
   --fy-font: var(--fy-font-en);
+  --fy-font-display: "Plus Jakarta Sans", "Inter", var(--fy-font-en);
 }
 
 /* ---------------- DARK ---------------- */
 html[data-theme="dark"] {
   color-scheme: dark;
 
-  --fy-bg: #081420;
-  --fy-bg-soft: #0c1c2c;
-  --fy-surface: #11263a;
-  --fy-surface-2: #183049;
-  --fy-surface-3: #214058;
-  --fy-surface-raised: #1b3550;
-  --fy-glass: rgba(18, 41, 63, 0.78);
+  --fy-bg: #07121c;
+  --fy-bg-soft: #0b1927;
+  --fy-surface: #102236;
+  --fy-surface-2: #162d45;
+  --fy-surface-3: #1f3a56;
+  --fy-surface-raised: #1a3350;
+  --fy-glass: rgba(7,18,28,.82);
 
-  --fy-border: rgba(255, 255, 255, 0.09);
-  --fy-border-strong: rgba(255, 255, 255, 0.17);
+  --fy-border: rgba(150,200,230,.12);
+  --fy-border-strong: rgba(150,200,230,.24);
 
-  --fy-text: #eef6f8;
-  --fy-text-soft: #b7c9cf;
-  --fy-text-muted: #88a0a8;
+  --fy-text: #e8f1f6;
+  --fy-text-soft: #a9bdcb;
+  --fy-text-muted: #7f97a8;
 
-  --fy-brand: #2dd4bf;
-  --fy-brand-light: #99f6e4;
-  --fy-brand-strong: #0d9488;
-  --fy-brand-soft: rgba(45, 212, 191, 0.12);
-  --fy-on-brand: #042f2c;
+  --fy-brand: #1fd1bf;
+  --fy-brand-light: #8ff0e4;
+  --fy-brand-strong: #12b3a3;
+  --fy-brand-soft: rgba(31,209,191,.13);
+  --fy-on-brand: #04211e;
   --fy-navy: #102a43; --fy-mint: #ccfbf1; --fy-teal: #0d9488; --fy-teal-deep: #0f766e;
 
   --fy-gold: #e3b94e;
   --fy-gold-light: #f0d58a;
   --fy-gold-soft: rgba(227, 185, 78, 0.12);
 
-  --fy-success: #3ecf93;
-  --fy-danger: #ff6b7a;
-  --fy-warning: #f0b429;
-  --fy-blue: #5b9bff;
+  --fy-success: #4ade80;
+  --fy-danger: #ff7b86;
+  --fy-warning: #f2b84b;
+  --fy-blue: #6cc4ff;
   /* secondary + game semantics (dark) */
-  --fy-accent: #8e9bff; --fy-accent-strong: #6f7cf0; --fy-accent-soft: rgba(142, 155, 255, 0.14); --fy-on-accent: #0b1030;
+  --fy-accent: #9da9ff; --fy-accent-strong: #7f8cf2; --fy-accent-soft: rgba(142, 155, 255, 0.14); --fy-on-accent: #0b1030;
   --fy-xp: #f5b942; --fy-xp-soft: rgba(245, 185, 66, 0.14);
   --fy-streak: #ff8a4c; --fy-streak-soft: rgba(255, 138, 76, 0.14);
   --fy-heart: #ff6b81; --fy-heart-soft: rgba(255, 107, 129, 0.14);
   --fy-info: #5ec2ff; --fy-info-soft: rgba(94, 194, 255, 0.13);
 
-  --fy-code-bg: #08131a;
-  --fy-code-surface: #0d1c25;
-  --fy-code-text: #d6e6ea;
+  --fy-code-bg: #040b12;
+  --fy-code-surface: #0b1927;
+  --fy-code-text: #dbe8f0;
   --fy-code-border: rgba(255, 255, 255, 0.1);
 
   --fy-shadow: 0 1px 2px rgba(0, 0, 0, 0.45), 0 8px 24px rgba(0, 0, 0, 0.28);
   --fy-shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.5);
-  --fy-grid-line: rgba(255, 255, 255, 0.045);
-  --fy-hover: rgba(255, 255, 255, 0.06);
+  --fy-grid-line: rgba(150,200,230,.05);
+  --fy-hover: rgba(150,200,230,.07);
 }
 
 /* ---------------- LIGHT ---------------- */
 html[data-theme="light"] {
   color-scheme: light;
 
-  --fy-bg: #f0f5f8;
-  --fy-bg-soft: #e5ecf2;
+  --fy-bg: #f4f8f9;
+  --fy-bg-soft: #e7eff1;
   --fy-surface: #ffffff;
-  --fy-surface-2: #f4f7fa;
-  --fy-surface-3: #e5ecf2;
+  --fy-surface-2: #f7fafb;
+  --fy-surface-3: #e3ecef;
   --fy-surface-raised: #ffffff;
-  --fy-glass: rgba(255, 255, 255, 0.82);
+  --fy-glass: rgba(255,255,255,.82);
 
-  --fy-border: rgba(9, 58, 74, 0.13);
-  --fy-border-strong: rgba(9, 58, 74, 0.26);
+  --fy-border: rgba(17,39,59,.14);
+  --fy-border-strong: rgba(17,39,59,.28);
 
-  --fy-text: #0d2830;
-  --fy-text-soft: #3b5760;
-  --fy-text-muted: #4d646b;
+  --fy-text: #11273b;
+  --fy-text-soft: #3f566a;
+  --fy-text-muted: #52687a;
 
-  --fy-brand: #0d6e66;
-  --fy-brand-light: #0d9488;
-  --fy-brand-strong: #0b5f59;
-  --fy-brand-soft: rgba(15, 118, 110, 0.09);
+  --fy-brand: #097570;
+  --fy-brand-light: #0fa9a0;
+  --fy-brand-strong: #065c58;
+  --fy-brand-soft: rgba(10,125,120,.09);
   --fy-on-brand: #ffffff;
 
   --fy-gold: #86600a;
   --fy-gold-light: #9a6f0c;
   --fy-gold-soft: rgba(134, 96, 10, 0.12);
 
-  --fy-success: #13805a;
-  --fy-danger: #c0354a;
-  --fy-warning: #a86a00;
-  --fy-blue: #1d5fd1;
+  --fy-success: #237a3b;
+  --fy-danger: #b3261e;
+  --fy-warning: #8a5a00;
+  --fy-blue: #1d5fa8;
   /* secondary + game semantics (light) */
-  --fy-accent: #4f46e5; --fy-accent-strong: #4038c4; --fy-accent-soft: rgba(79, 70, 229, 0.09); --fy-on-accent: #ffffff;
+  --fy-accent: #2a44c8; --fy-accent-strong: #2236a8; --fy-accent-soft: rgba(79, 70, 229, 0.09); --fy-on-accent: #ffffff;
   --fy-xp: #b45309; --fy-xp-soft: rgba(180, 83, 9, 0.1);
   --fy-streak: #c2410c; --fy-streak-soft: rgba(194, 65, 12, 0.1);
   --fy-heart: #be123c; --fy-heart-soft: rgba(190, 18, 60, 0.09);
   --fy-info: #0369a1; --fy-info-soft: rgba(3, 105, 161, 0.09);
 
   /* code panels stay dark in both themes: familiar, and highest syntax contrast */
-  --fy-code-bg: #0a1b24;
-  --fy-code-surface: #10242f;
-  --fy-code-text: #d6e6ea;
+  --fy-code-bg: #0b1b2b;
+  --fy-code-surface: #122638;
+  --fy-code-text: #dbe8f0;
   --fy-code-border: rgba(255, 255, 255, 0.1);
 
   --fy-shadow: 0 1px 2px rgba(9, 58, 74, 0.08), 0 8px 24px rgba(9, 58, 74, 0.07);
   --fy-shadow-lg: 0 22px 55px rgba(9, 58, 74, 0.16);
-  --fy-grid-line: rgba(9, 58, 74, 0.06);
-  --fy-hover: rgba(9, 58, 74, 0.05);
+  --fy-grid-line: rgba(17,39,59,.06);
+  --fy-hover: rgba(17,39,59,.05);
 }
 
 /* ---------------- COURSE ACCENTS ----------------

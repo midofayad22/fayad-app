@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="js" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Changing Content — JavaScript | FAYBIT</title>
+    <meta name="description" content="Learn how JavaScript changes the text and content inside HTML elements." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-17.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-17.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/javascript-learning/lessons/js-17.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/javascript-learning/lessons/js-17.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Changing Content — JavaScript | FAYBIT" />
+    <meta property="og:description" content="Learn how JavaScript changes the text and content inside HTML elements." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/javascript-learning/lessons/js-17.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript","item":"https://faybit.vercel.app/en/javascript-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Changing Content","item":"https://faybit.vercel.app/en/javascript-learning/lessons/js-17.html"}]},{"@type":"LearningResource","name":"Changing Content","description":"Learn how JavaScript changes the text and content inside HTML elements.","url":"https://faybit.vercel.app/en/javascript-learning/lessons/js-17.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript — FAYBIT","url":"https://faybit.vercel.app/javascript-learning/javascript-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript"><a href="/en/javascript-learning/lessons/index.html">Lessons</a><a href="/javascript-learning/lessons/js-17.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/javascript-learning/lessons/index.html">JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 17 of 25</p>
+      <h1 class="lp-h1">Changing Content</h1>
+      <p class="lp-lead">Learn how JavaScript changes the text and content inside HTML elements.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-17">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>const title =
+document.querySelector("h1");
+title.textContent = "Hello from JavaScript";
+document.getElementById("jsResult").textContent =
+title.textContent;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>
+<p><strong>textContent</strong> lets you read or change the text inside an element.</p>
+<p>It can be used to update page content based on user interaction or data.</p>
+<p>When a new value is assigned to textContent, the text on the page updates immediately.</p>
+<p>This is one of the most commonly used DOM operations.</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Write JavaScript</h2></div>
+</div>
+<p class="practice-description">Change the code below, then run it to see the result.</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which Property changes the text inside an element?</strong></p><ul><li>textContent</li><li>textChange</li><li>contentText</li><li>changeText</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>textContent</strong></p></details></li><li><p><strong>What happens when you write element.textContent = &quot;Hello&quot;?</strong></p><ul><li>The text inside the element changes</li><li>JavaScript is deleted</li><li>Only CSS changes</li><li>An Array is created</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The text inside the element changes</strong></p></details></li><li><p><strong>Can textContent be used to read text?</strong></p><ul><li>Yes</li><li>No</li><li>Only inside CSS</li><li>Only inside HTML</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Yes</strong></p></details></li><li><p><strong>You assign to textContent a string containing HTML markup such as a b element. How does it appear on the page?</strong></p><ul><li>As literal text exactly as written, so the markup itself is visible</li><li>As bold text</li><li>Nothing appears</li><li>It throws a syntax error</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>As literal text exactly as written, so the markup itself is visible</strong></p><p>textContent treats the value as plain text and does not parse it as HTML, so the markup shows as written. This makes it safer for displaying user-provided text.</p></details></li><li><p><strong>What is wrong with this code? document.querySelector(&quot;#msg&quot;).textContent(&quot;Hi&quot;);</strong></p><ul><li>textContent is a property, not a function; the correct form is textContent = &quot;Hi&quot;</li><li>Only getElementById may be used</li><li>Text cannot be written inside an element</li><li>The # sign is not allowed in querySelector</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>textContent is a property, not a function; the correct form is textContent = &quot;Hi&quot;</strong></p><p>textContent is a property assigned with =, and calling it with parentheses throws a TypeError because it is not a function. The # sign is correct with querySelector.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-17">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/javascript-learning/lessons/js-16.html"><small>Previous lesson</small><strong>Selecting Elements</strong></a>
+        <a rel="next" href="/en/javascript-learning/lessons/js-18.html"><small>Next lesson</small><strong>Events</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/javascript-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

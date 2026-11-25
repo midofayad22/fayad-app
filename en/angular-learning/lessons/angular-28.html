@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="angular" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Signals — Angular | FAYBIT</title>
+    <meta name="description" content="Learn how Angular Signals represent reactive state and notify the application when values change." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/angular-learning/lessons/angular-28.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/angular-learning/lessons/angular-28.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/angular-learning/lessons/angular-28.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/angular-learning/lessons/angular-28.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Signals — Angular | FAYBIT" />
+    <meta property="og:description" content="Learn how Angular Signals represent reactive state and notify the application when values change." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/angular-learning/lessons/angular-28.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Angular","item":"https://faybit.vercel.app/en/angular-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Signals","item":"https://faybit.vercel.app/en/angular-learning/lessons/angular-28.html"}]},{"@type":"LearningResource","name":"Signals","description":"Learn how Angular Signals represent reactive state and notify the application when values change.","url":"https://faybit.vercel.app/en/angular-learning/lessons/angular-28.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Angular — FAYBIT","url":"https://faybit.vercel.app/angular-learning/angular-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Angular"><a href="/en/angular-learning/lessons/index.html">Lessons</a><a href="/angular-learning/lessons/angular-28.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/angular-learning/lessons/index.html">Angular</a></nav>
+      <p class="lp-eyebrow">Lesson 28 of 32</p>
+      <h1 class="lp-h1">Signals</h1>
+      <p class="lp-lead">Learn how Angular Signals represent reactive state and notify the application when values change.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/angular-learning/angular-learning.html#lesson-28">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>Signals provide a modern reactive state primitive in Angular. A signal stores a value, reads are tracked, and updates can cause dependent parts of the UI to react. Signals can be especially useful for local component state.</div></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>Code Example</h2></div>
+</div>
+<pre dir="ltr"><code>import { signal } from '@angular/core';
+count = signal(0);
+increase() {
+this.count.update(
+value =&gt; value + 1
+);
+}</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Try It Yourself</h2></div>
+</div>
+<p class="practice-description">Modify the example below and run your code to explore the Angular syntax.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is a Signal mainly used for?</strong></p><ul><li>Managing reactive state</li><li>Creating databases</li><li>Writing CSS</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Managing reactive state</strong></p></details></li><li><p><strong>What is the main focus of this lesson?</strong></p><ul><li>Signals</li><li>Standalone Components</li><li>State Management</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Signals</strong></p></details></li><li><p><strong>Which statement best describes this topic?</strong></p><ul><li>Signals provide a modern reactive state primitive in Angular. A signal stores a value, reads are tracked, and updates can cause dependent parts of the UI to react. Signals can be especially useful for local component state.</li><li>Standalone components can declare their own imports and work without being declared inside a traditional NgModule. This approach simplifies application structure and is now a central part of modern Angular development.</li><li>State management is about controlling important application data and keeping the UI synchronized with that state. Small applications can use local component state, while larger applications may require shared services, signals, or dedicated state-management solutions.</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Signals provide a modern reactive state primitive in Angular. A signal stores a value, reads are tracked, and updates can cause dependent parts of the UI to react. Signals can be especially useful for local component state.</strong></p></details></li><li><p><strong>What is a practical goal of this lesson?</strong></p><ul><li>Learn how Angular Signals represent reactive state and notify the application when values change.</li><li>Learn the modern Angular approach to building components without traditional NgModules.</li><li>Learn how applications manage shared and changing data using reactive state techniques.</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Learn how Angular Signals represent reactive state and notify the application when values change.</strong></p></details></li><li><p><strong>Which Angular concept is directly related to this lesson?</strong></p><ul><li>Signals</li><li>Standalone components</li><li>State management</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Signals</strong></p></details></li><li><p><strong>Which syntax or API is most closely associated with this lesson?</strong></p><ul><li>signal()</li><li>standalone: true</li><li>state</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>signal()</strong></p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/angular-learning/angular-learning.html#lesson-28">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/angular-learning/lessons/angular-27.html"><small>Previous lesson</small><strong>Pipes</strong></a>
+        <a rel="next" href="/en/angular-learning/lessons/angular-29.html"><small>Next lesson</small><strong>Standalone Components</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/angular-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>Advanced Grid: Spacing, Ordering, and Nesting — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="gutters, offset, order, nested rows, and equal columns with row-cols." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-04.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-04.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-04.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-04.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Advanced Grid: Spacing, Ordering, and Nesting — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="gutters, offset, order, nested rows, and equal columns with row-cols." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-04.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Advanced Grid: Spacing, Ordering, and Nesting","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-04.html"}]},{"@type":"LearningResource","name":"Advanced Grid: Spacing, Ordering, and Nesting","description":"gutters, offset, order, nested rows, and equal columns with row-cols.","url":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-04.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/en/bootstrap-learning/lessons/index.html">Lessons</a><a href="/bootstrap-learning/lessons/bs-04.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">Lesson 4 of 20</p>
+      <h1 class="lp-h1">Advanced Grid: Spacing, Ordering, and Nesting</h1>
+      <p class="lp-lead">gutters, offset, order, nested rows, and equal columns with row-cols.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-4">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Gutters</h2><p>The spacing between columns is set with the <code>g-*</code> classes (horizontal and vertical) or <code>gx-*</code> and <code>gy-*</code>. Values range from 0 to 5.</p></article><article class="content-card"><h2>Offset, Order, and Nesting</h2><ul><li><code>offset-md-2</code> shifts the column by two columns.</li><li><code>order-1</code>…<code>order-5</code> changes the visual order (not the HTML order that a screen reader reads).</li><li>A new <code>.row</code> can be placed inside a column to divide it.</li><li><code>row-cols-2 row-cols-md-4</code> sets the number of columns per row without writing <code>col-*</code> for each element.</li></ul></article></div>
+<article class="body-card key-card"><p>Visual ordering with order does not change the reading order for a screen reader, so use it with care.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="container"&gt;
+&lt;div class="row row-cols-2 row-cols-md-4 g-3 mb-3"&gt;
+&lt;div class="col"&gt;&lt;div class="p-2 border bg-light"&gt;A&lt;/div&gt;&lt;/div&gt;
+&lt;div class="col"&gt;&lt;div class="p-2 border bg-light"&gt;B&lt;/div&gt;&lt;/div&gt;
+&lt;div class="col"&gt;&lt;div class="p-2 border bg-light"&gt;C&lt;/div&gt;&lt;/div&gt;
+&lt;div class="col"&gt;&lt;div class="p-2 border bg-light"&gt;D&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row"&gt;
+&lt;div class="col-md-4 offset-md-4 order-2 order-md-1"&gt;&lt;div class="p-2 border bg-warning-subtle"&gt;Offset&lt;/div&gt;&lt;/div&gt;
+&lt;div class="col-md-4 order-1 order-md-2"&gt;
+&lt;div class="row"&gt;&lt;div class="col-6"&gt;&lt;div class="p-1 border"&gt;Nested&lt;/div&gt;&lt;/div&gt;&lt;div class="col-6"&gt;&lt;div class="p-1 border"&gt;Nested&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p><code>row-cols-*</code> sets the number of columns in a row. The second column contains an inner row. The order is swapped on mobile thanks to <code>order-1</code> and <code>order-2</code>.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Change the spacing between the four columns to &lt;code&gt;g-5&lt;/code&gt; and notice the difference.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What does the g-3 class do?</strong></p><ul><li>Sets the spacing between columns horizontally and vertically</li><li>Changes the color</li><li>Doubles the column</li><li>Hides the row</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Sets the spacing between columns horizontally and vertically</strong></p></details></li><li><p><strong>What does offset-md-2 do?</strong></p><ul><li>Shifts the column by two columns from md upward</li><li>Deletes two columns</li><li>Changes the color</li><li>Makes the column hidden</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Shifts the column by two columns from md upward</strong></p></details></li><li><p><strong>What is row-cols-md-3 for?</strong></p><ul><li>Three columns per row from md without specifying col for each element</li><li>Three rows</li><li>Three containers</li><li>Three breakpoints</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Three columns per row from md without specifying col for each element</strong></p></details></li><li><p><strong>Which class sets only the horizontal spacing between columns?</strong></p><ul><li>gx-4</li><li>gy-4</li><li>g-0 row</li><li>offset-4</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>gx-4</strong></p><p>gx-* is horizontal, gy-* is vertical and g-* sets both.</p></details></li><li><p><strong>Where do you place a nested row?</strong></p><ul><li>Directly inside another row</li><li>Outside the container</li><li>Inside a col column</li><li>Inside the head tag</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Inside a col column</strong></p><p>A new .row goes inside a column to split that column into its own 12 parts.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-4">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/bootstrap-learning/lessons/bs-03.html"><small>Previous lesson</small><strong>The Grid System</strong></a>
+        <a rel="next" href="/en/bootstrap-learning/lessons/bs-05.html"><small>Next lesson</small><strong>Text and Colors</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/bootstrap-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

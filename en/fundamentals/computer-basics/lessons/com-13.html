@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>Bits and Bytes — Computer Basics | FAYBIT</title>
+    <meta name="description" content="Define a Bit and a Byte and count the values n bits can hold. Distinguish 1000-based units (KB, MB) from 1024-based ones (KiB, MiB) and explain…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-13.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-13.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-13.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-13.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Bits and Bytes — Computer Basics | FAYBIT" />
+    <meta property="og:description" content="Define a Bit and a Byte and count the values n bits can hold. Distinguish 1000-based units (KB, MB) from 1024-based ones (KiB, MiB) and explain…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-13.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Computer Basics","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Bits and Bytes","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-13.html"}]},{"@type":"LearningResource","name":"Bits and Bytes","description":"Define a Bit and a Byte and count the values n bits can hold. Distinguish 1000-based units (KB, MB) from 1024-based ones (KiB, MiB) and explain…","url":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-13.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Computer Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Computer Basics"><a href="/en/fundamentals/computer-basics/lessons/index.html">Lessons</a><a href="/fundamentals/computer-basics/lessons/com-13.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/computer-basics/lessons/index.html">Computer Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 13 of 30</p>
+      <h1 class="lp-h1">Bits and Bytes</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-13">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>Bits and Bytes</h2>
+<div><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Define a <span class="term">Bit</span> and a <span class="term">Byte</span> and count the values n bits can hold.</li><li>Distinguish 1000-based units (KB, MB) from 1024-based ones (KiB, MiB) and explain disk-capacity gaps.</li><li>Estimate an uncompressed file size, convert between Mbps and MB/s and compute download time.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>The binary and data lesson (com-12).</li></ul>
+</section>
+<section class="lesson-section "><h3>Introduction: the language of measurement</h3>
+<p>When you read “a 5-megabyte photo” or “a 100-megabit connection”, you face units that look alike yet differ greatly. Understanding them lets you compute a drive's capacity, a download time and a video's size instead of guessing. It all starts from the smallest unit: the <span class="term">Bit</span>.</p>
+</section>
+<section class="lesson-section "><h3>The bit and the byte</h3>
+<p>A <span class="term">Bit</span> is one place holding 0 or 1, the smallest possible piece of information. Because a single bit is too little to represent anything useful, eight of them are grouped into a <span class="term">Byte</span>, the unit by which a computer addresses its memory. A bit is written with a lowercase <code>b</code> and a byte with an uppercase <code>B</code>, a crucial difference: 8 bits = 1 B.</p>
+<p>Every added bit doubles the number of possibilities, so n bits give 2 to the power n values:</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Bits</th><th scope="col">Values</th><th scope="col">Example use</th></tr></thead><tbody><tr><th scope="row">1</th><td>2</td><td>an on/off switch</td></tr><tr><th scope="row">4</th><td>16</td><td>one hex digit</td></tr><tr><th scope="row">8</th><td>256</td><td>an extended ASCII char, or a colour channel</td></tr><tr><th scope="row">16</th><td>65,536</td><td>16-bit CD audio</td></tr><tr><th scope="row">24</th><td>16,777,216</td><td>a full RGB colour</td></tr><tr><th scope="row">32</th><td>4,294,967,296</td><td>an IPv4 address</td></tr><tr><th scope="row">64</th><td>18,446,744,073,709,551,616</td><td>64-bit processors</td></tr></tbody></table></div>
+<p>This also explains “32-bit” and “64-bit” processors: the width of the address the processor can use to point at memory locations. Thirty-two bits means 4,294,967,296 addresses, that is at most 4 GiB of memory, which is why modern machines moved to 64 bits.</p>
+</section>
+<section class="lesson-section "><h3>KB or KiB? The 1000 versus 1024 problem</h3>
+<p>Binary logic makes 1024 (2 to the power 10) very close to a thousand, so people habitually used “kilo” for both. To end the confusion the international standards define two families: decimal <span class="term">SI</span> units (KB, MB, GB, TB) worth 1000 to the power n, and binary <span class="term">IEC</span> units (KiB, MiB, GiB, TiB) worth 1024 to the power n.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Unit</th><th scope="col">Decimal (SI)</th><th scope="col">Binary (IEC)</th><th scope="col">Gap</th></tr></thead><tbody><tr><th scope="row">Kilo</th><td>KB = 1,000 B</td><td>KiB = 1,024 B</td><td>2.4%</td></tr><tr><th scope="row">Mega</th><td>MB = 1,000,000 B</td><td>MiB = 1,048,576 B</td><td>4.9%</td></tr><tr><th scope="row">Giga</th><td>GB = 1,000,000,000 B</td><td>GiB = 1,073,741,824 B</td><td>7.4%</td></tr><tr><th scope="row">Tera</th><td>TB = 10^12 B</td><td>TiB = 1,099,511,627,776 B</td><td>10.0%</td></tr></tbody></table></div>
+<p>The gap grows with each step, which is the secret behind drive-capacity differences: a drive labelled 256 GB holds 256,000,000,000 bytes, and when the system divides by 1,073,741,824 it shows only about 238.4, that is 238.4 GiB. Windows writes GB for what is really GiB, whereas modern macOS and most manufacturers use decimal units.</p>
+</section>
+<section class="lesson-section "><h3>Estimating file sizes</h3>
+<p>An uncompressed image's size = width × height × bytes per pixel. A Full HD picture of 1920 × 1080 in RGB (3 bytes per pixel) holds 2,073,600 pixels, so its size is 2,073,600 × 3 = 6,220,800 bytes, about 6.22 MB or 5.93 MiB. A JPG at this resolution may be only a few hundred kilobytes because <span class="term">Compression</span> removes redundancy.</p>
+<figure class="doc-diagram" role="group" aria-label="Diagram"><figcaption>Estimating an uncompressed video (one minute)</figcaption><ol class="doc-flow"><li><strong>Frame size</strong><span>1920 × 1080 × 3 = 6,220,800 bytes</span></li><li><strong>Frames per second</strong><span>30 frames, so 6,220,800 × 30 = 186,624,000 bytes/s</span></li><li><strong>One minute</strong><span>× 60 = 11,197,440,000 bytes</span></li><li><strong>Result</strong><span>about 11.2 GB, which is why video is always compressed</span></li></ol></figure>
+<p>Audio example: a CD takes 44,100 samples per second, each 16 bits, in two channels: 44,100 × 16 × 2 = 1,411,200 bits/s, that is 176,400 bytes/s, so a minute is 10,584,000 bytes ≈ 10.6 MB.</p>
+</section>
+<section class="lesson-section "><h3>Network speed: Mbps or MB/s?</h3>
+<p>Internet providers measure speed in <span class="term">Mbps</span>, megabits per second (lowercase b), while the browser shows downloads in MB/s, megabytes per second (uppercase B). The conversion: divide by 8. A 100 Mbps connection gives in theory 100 ÷ 8 = 12.5 MB/s, and 500 Mbps gives 62.5 MB/s. The real speed is somewhat lower because of protocol overhead and congestion.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">python</span></figcaption><pre dir="ltr"><code>size_mb = 1000          # a 1 GB file, decimal
+speed_mbps = 100        # advertised speed in megabits/s
+speed_MBps = speed_mbps / 8
+print(speed_MBps)       # megabytes per second
+print(size_mb / speed_MBps)  # seconds</code></pre></figure>
+<figure class="code-ex code-ex-out"><figcaption><span class="code-ex-lang">Output</span></figcaption><pre dir="ltr"><code>12.5
+80.0</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>Real-world applications</h3>
+<ul><li><strong>Buying storage:</strong> you can estimate how many photos your phone's memory holds before you buy.</li><li><strong>Data caps:</strong> a 50 GB monthly plan covers a certain number of video hours depending on quality.</li><li><strong>Choosing quality:</strong> understanding bitrate helps you pick recording and streaming settings.</li></ul>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>“Mb and MB are the same”: the first is a megabit and the second a megabyte, eight times apart.</li><li>“My drive is short, the maker is cheating me”: the gap comes from the counting unit (1000 versus 1024), not from lost data.</li><li>“A JPG has the same pixels so its size equals the raw size”: compression shrinks the size a lot while the dimensions stay the same.</li><li>“100 Mbps downloads 100 megabytes every second”: it is only 12.5 MB/s in theory.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Calculation:</strong> what is the size of an uncompressed 4000 × 3000 RGB image, and how many fit on a 64 GB (decimal) drive?</summary><div class="doc-solution"><strong>Show solution</strong><p>Pixels = 4000 × 3000 = 12,000,000. Size = 12,000,000 × 3 = 36,000,000 bytes = 36 MB. A 64 GB drive is 64,000 MB, so 64,000 ÷ 36 ≈ 1,777 images (rounded down). In reality the image is compressed to a few megabytes, so far more would fit.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Reasoning:</strong> you bought a 200 Mbps connection. In theory, how long does a 40 GB game take to download?</summary><div class="doc-solution"><strong>Show solution</strong><p>Speed in bytes = 200 ÷ 8 = 25 MB/s. The game = 40 × 1000 = 40,000 MB. Time = 40,000 ÷ 25 = 1,600 seconds ≈ 26.7 minutes. In practice it takes a little longer because of server load, protocol overhead and congestion, and a slow disk can also be a limit.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Hands-on:</strong> find a file's size in bytes on your device, then convert it to KB and KiB and compare.</summary><div class="doc-solution"><strong>Show solution</strong><p>On Windows right-click the file and choose Properties to see its size in bytes. Suppose it is 5,242,880 bytes: in decimal units it is 5,242.88 KB, about 5.24 MB. In binary units it is 5,242,880 ÷ 1,024 = 5,120 KiB = exactly 5 MiB. The difference between the two figures comes from the unit, not from the file. On Linux try <code>ls -l</code> to get the size in bytes.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>A bit is the smallest information, a byte is eight bits, and n bits give 2 to the power n values.</li><li>KB and MB are decimal (1000), KiB and MiB binary (1024), which explains drive capacities.</li><li>Raw image size = width × height × bytes per pixel, and compression shrinks it a lot.</li><li>Mbps divided by 8 gives MB/s.</li></ul><p class="doc-next"><strong>Next step:</strong> How a program runs: how your instructions become numbers the CPU executes.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>Core concept</strong>
+<p>One Byte consists of 8 Bits.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Hands-on practice</span>
+<h3>Try it yourself</h3>
+</div>
+</div>
+<p>Try to arrange KB, MB, GB, and TB from smallest to largest.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>How many Bits are in one Byte?</strong></p><ul><li>2</li><li>4</li><li>8</li><li>16</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>8</strong></p></details></li><li><p><strong>A 256 GB drive shows about 238.4 in Windows. Why?</strong></p><ul><li>Because it divides by 1,073,741,824 instead of 1,000,000,000 (GiB units)</li><li>Because the drive is faulty</li><li>Because of a virus</li><li>Because the maker cheated</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Because it divides by 1,073,741,824 instead of 1,000,000,000 (GiB units)</strong></p><p>Windows writes GB for what is really GiB, and the gap is 7.4% at the giga level.</p></details></li><li><p><strong>Why were 32-bit processors limited to about 4 GiB of memory?</strong></p><ul><li>Because every machine only had 4 GB</li><li>Because 32 bits give only 4,294,967,296 addresses</li><li>Because of clock speed</li><li>Because of screen size</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Because 32 bits give only 4,294,967,296 addresses</strong></p><p>A 32-bit address width means 2^32 locations, which is 4 GiB.</p></details></li><li><p><strong>What is the size of an uncompressed 1920 x 1080 image at 3 bytes per pixel?</strong></p><ul><li>About 2 MB</li><li>About 600 KB</li><li>About 6.22 MB</li><li>About 62 MB</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>About 6.22 MB</strong></p><p>2,073,600 pixels x 3 = 6,220,800 bytes, about 6.22 MB.</p></details></li><li><p><strong>An internet connection is 100 Mbps. About how many MB/s is that?</strong></p><ul><li>800 MB/s</li><li>100 MB/s</li><li>50 MB/s</li><li>12.5 MB/s</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>12.5 MB/s</strong></p><p>A megabit (lowercase b) is an eighth of a megabyte, so 100 / 8 = 12.5 MB/s.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-13">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/computer-basics/lessons/com-12.html"><small>Previous lesson</small><strong>Binary and Data</strong></a>
+        <a rel="next" href="/en/fundamentals/computer-basics/lessons/com-14.html"><small>Next lesson</small><strong>How Does a Program Work?</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/computer-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

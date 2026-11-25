@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>Performance and Memory — Advanced JavaScript | FAYBIT</title>
+    <meta name="description" content="Algorithm complexity, avoiding common leaks, and measuring performance before optimizing." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-22.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-22.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-22.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-22.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Performance and Memory — Advanced JavaScript | FAYBIT" />
+    <meta property="og:description" content="Algorithm complexity, avoiding common leaks, and measuring performance before optimizing." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-22.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Advanced JavaScript","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Performance and Memory","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-22.html"}]},{"@type":"LearningResource","name":"Performance and Memory","description":"Algorithm complexity, avoiding common leaks, and measuring performance before optimizing.","url":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-22.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Advanced JavaScript — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Advanced JavaScript"><a href="/en/advanced-javascript/lessons/index.html">Lessons</a><a href="/advanced-javascript/lessons/ajs-22.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/advanced-javascript/lessons/index.html">Advanced JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 22 of 22</p>
+      <h1 class="lp-h1">Performance and Memory</h1>
+      <p class="lp-lead">Algorithm complexity, avoiding common leaks, and measuring performance before optimizing.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-22">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Think About Complexity</h2><p>Searching an array is <code>O(n)</code> while <code>Set.has</code> and <code>Map.get</code> are roughly <code>O(1)</code>. Replacing a lookup inside a loop with a Set can turn <code>O(n²)</code> into <code>O(n)</code>.</p></article><article class="content-card"><h2>Common Memory Leaks</h2><ul><li>Event listeners that were not removed.</li><li><code>setInterval</code> timers that were not cleared.</li><li>Closures holding on to huge objects.</li><li>Global Maps that grow without limit (use WeakMap or a size limit).</li></ul></article></div>
+<article class="body-card key-card"><p>Measure first, then optimize. Premature optimization without measurement wastes time.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>const N = 2000;
+const a = Array.from({ length: N }, (_, i) =&gt; i);
+const b = Array.from({ length: N }, (_, i) =&gt; i * 2);
+function slow() {
+let n = 0;
+for (const x of a) if (b.includes(x)) n++;
+return n;
+}
+function fast() {
+const set = new Set(b);
+let n = 0;
+for (const x of a) if (set.has(x)) n++;
+return n;
+}
+console.log(slow() === fast(), fast());
+const cache = new Map();
+function remember(key, value, max = 3) {
+cache.set(key, value);
+if (cache.size &gt; max) cache.delete(cache.keys().next().value);
+}
+["a", "b", "c", "d", "e"].forEach((k, i) =&gt; remember(k, i));
+console.log([...cache.keys()]);</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">true 1000
+[ 'c', 'd', 'e' ]</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>Both versions give the same result, but the second is much faster at large sizes. The bounded cache deletes the oldest key (Map preserves insertion order), so it does not grow without limit.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Try it yourself</h2></div>
+</div>
+<p class="practice-description">Write a function that returns the elements common to two arrays using &lt;code&gt;Set&lt;/code&gt;.</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is the advantage of Set.has compared to includes?</strong></p><ul><li>Faster lookup (roughly constant time) on large collections</li><li>It automatically removes duplicates from the output</li><li>It works on strings only</li><li>There is never any difference</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Faster lookup (roughly constant time) on large collections</strong></p></details></li><li><p><strong>Which of the following is a common cause of memory leaks?</strong></p><ul><li>Event listeners that were not removed</li><li>Using const</li><li>Writing comments</li><li>Using map</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Event listeners that were not removed</strong></p></details></li><li><p><strong>What is the right rule for optimization?</strong></p><ul><li>Measure first, then optimize what is actually slowest</li><li>Optimize every line early</li><li>Never optimize</li><li>Write everything with nested loops</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Measure first, then optimize what is actually slowest</strong></p></details></li><li><p><strong>A loop writes an element's style and then reads offsetHeight on every iteration. What is the problem and the fix?</strong></p><ul><li>No problem, reading is always fast</li><li>Alternating writes and reads forces the browser to recompute layout on every iteration, so batch the reads first and then the writes</li><li>offsetHeight does not work inside loops</li><li>The fix is to use var instead of let</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Alternating writes and reads forces the browser to recompute layout on every iteration, so batch the reads first and then the writes</strong></p><p>Reading a layout property after a related change forces a synchronous recalculation known as layout thrashing. Batching all reads first and then the writes lets the browser calculate once.</p></details></li><li><p><strong>A list has 1000 items that must each respond to a click. What is the most efficient approach?</strong></p><ul><li>Add a separate listener to each item</li><li>Use setInterval to poll for clicks</li><li>One listener on the container that checks event.target (event delegation)</li><li>Rebuild the page after every click</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>One listener on the container that checks event.target (event delegation)</strong></p><p>Events bubble up to the container, so one listener serves every item and also works for items added later. This saves memory and time compared with a thousand listeners.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-22">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/advanced-javascript/lessons/ajs-21.html"><small>Previous lesson</small><strong>Design Patterns: Observer and Pub/Sub</strong></a>
+        <span></span>
+      </nav>
+      <p class="lp-all"><a href="/en/advanced-javascript/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

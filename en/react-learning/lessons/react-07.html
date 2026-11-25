@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="react" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Events — React | FAYBIT</title>
+    <meta name="description" content="Learn how React handles user interaction such as clicking, typing, and submitting forms." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/react-learning/lessons/react-07.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/react-learning/lessons/react-07.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/react-learning/lessons/react-07.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/react-learning/lessons/react-07.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Events — React | FAYBIT" />
+    <meta property="og:description" content="Learn how React handles user interaction such as clicking, typing, and submitting forms." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/react-learning/lessons/react-07.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"React","item":"https://faybit.vercel.app/en/react-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Events","item":"https://faybit.vercel.app/en/react-learning/lessons/react-07.html"}]},{"@type":"LearningResource","name":"Events","description":"Learn how React handles user interaction such as clicking, typing, and submitting forms.","url":"https://faybit.vercel.app/en/react-learning/lessons/react-07.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"React — FAYBIT","url":"https://faybit.vercel.app/react-learning/react-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="React"><a href="/en/react-learning/lessons/index.html">Lessons</a><a href="/react-learning/lessons/react-07.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/react-learning/lessons/index.html">React</a></nav>
+      <p class="lp-eyebrow">Lesson 7 of 30</p>
+      <h1 class="lp-h1">Events</h1>
+      <p class="lp-lead">Learn how React handles user interaction such as clicking, typing, and submitting forms.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-7">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<p>
+Events allow the application to respond to user actions.
+</p>
+<p>
+In React, you use props such as onClick, onChange, and onSubmit to handle events.
+</p>
+<p>
+We usually pass a function to an event handler so that it runs when the event occurs.
+</p>
+</div></article>
+<article class="body-card key-card"><p>Events connect a user action to the behavior you want to run in the application.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>The code</h2></div>
+</div>
+<pre dir="ltr"><code>function App() {
+function handleClick() {
+console.log("The button was clicked");
+}
+return &lt;button onClick={handleClick}&gt;Click here&lt;/button&gt;;
+}</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>When a button is clicked, a function can run, and when typing in an input, State can be updated.</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span></div>
+</div>
+<p class="practice-description">Change the text that appears when the button is clicked.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which event is commonly used when clicking a button?</strong></p><ul><li>onClick</li><li>onButton</li><li>buttonEvent</li><li>clickOnly</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>onClick</strong></p></details></li><li><p><strong>What do we usually pass to onClick?</strong></p><ul><li>Function</li><li>CSS file</li><li>Database</li><li>HTML document</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Function</strong></p></details></li><li><p><strong>What is the purpose of Events?</strong></p><ul><li>Handling user interaction</li><li>Creating databases</li><li>Writing CSS</li><li>Removing Components</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Handling user interaction</strong></p></details></li><li><p><strong>Which click handler is written correctly?</strong></p><ul><li>&lt;button click={handle}&gt;</li><li>&lt;button onClick={handle()}&gt;</li><li>&lt;button onClick={handle}&gt;</li><li>&lt;button onclick=handle&gt;</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>&lt;button onClick={handle}&gt;</strong></p><p>Pass the function itself without calling it, otherwise it runs during render.</p></details></li><li><p><strong>What does e.target.value return in an input's onChange?</strong></p><ul><li>The current text in the field</li><li>The page name</li><li>The field color</li><li>Nothing</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The current text in the field</strong></p><p>The event carries the element that fired it, and its value is what the user typed.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-7">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/react-learning/lessons/react-06.html"><small>Previous lesson</small><strong>State</strong></a>
+        <a rel="next" href="/en/react-learning/lessons/react-08.html"><small>Next lesson</small><strong>Conditional Rendering</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/react-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

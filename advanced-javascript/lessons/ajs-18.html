@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>AbortController والـ Async Iterators — JavaScript المتقدم | FAYBIT</title>
+    <meta name="description" content="إلغاء العمليات الجارية وقراءة التدفقات اللامتزامنة بـ for await...of." />
+    <link rel="canonical" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-18.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-18.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-18.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-18.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="AbortController والـ Async Iterators — JavaScript المتقدم | FAYBIT" />
+    <meta property="og:description" content="إلغاء العمليات الجارية وقراءة التدفقات اللامتزامنة بـ for await...of." />
+    <meta property="og:url" content="https://faybit.vercel.app/advanced-javascript/lessons/ajs-18.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript المتقدم","item":"https://faybit.vercel.app/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"AbortController والـ Async Iterators","item":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-18.html"}]},{"@type":"LearningResource","name":"AbortController والـ Async Iterators","description":"إلغاء العمليات الجارية وقراءة التدفقات اللامتزامنة بـ for await...of.","url":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-18.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript المتقدم — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript المتقدم"><a href="/advanced-javascript/lessons/index.html">الدروس</a><a href="/en/advanced-javascript/lessons/ajs-18.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/advanced-javascript/lessons/index.html">JavaScript المتقدم</a></nav>
+      <p class="lp-eyebrow">الدرس 18 من 22</p>
+      <h1 class="lp-h1">AbortController والـ Async Iterators</h1>
+      <p class="lp-lead">إلغاء العمليات الجارية وقراءة التدفقات اللامتزامنة بـ for await...of.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-18">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>إلغاء العمليات</h2><p><code>AbortController</code> ينتج <code>signal</code> تمرره إلى العملية (مثل fetch). استدعاء <code>abort()</code> يجعل العملية ترفض بخطأ <code>AbortError</code> وتتوقف.</p></article><article class="content-card"><h2>Async Iterators</h2><p>المولد اللامتزامن <code>async function*</code> ينتج قيمًا عبر الزمن، ونقرؤه بـ <code>for await...of</code>. مناسب للتدفقات والصفحات المتتابعة.</p></article></div>
+<article class="body-card key-card"><p>مرّر signal وتحقق منه، وتعامل مع الإلغاء كحالة عادية لا خطأ مفاجئ.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>const sleep = (ms, signal) =&gt; new Promise((resolve, reject) =&gt; {
+const t = setTimeout(resolve, ms);
+signal?.addEventListener("abort", () =&gt; {
+clearTimeout(t);
+reject(signal.reason);
+});
+});
+(async () =&gt; {
+const ctrl = new AbortController();
+setTimeout(() =&gt; ctrl.abort(new Error("cancelled")), 10);
+try { await sleep(200, ctrl.signal); }
+catch (e) { console.log(e.message); }
+async function* pages() {
+for (let p = 1; p &lt;= 3; p++) {
+await sleep(5);
+yield [p * 10, p * 10 + 1];
+}
+}
+const all = [];
+for await (const items of pages()) all.push(...items);
+console.log(all);
+})();</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">cancelled
+[ 10, 11, 20, 21, 30, 31 ]</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>الإلغاء يمنع الانتظار الكامل (200ms). المولد اللامتزامن يسلّم صفحات متتابعة، و<code>for await</code> تنتظر كل صفحة قبل الانتقال للتالية.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>جرّب بنفسك</h2></div>
+</div>
+<p class="practice-description">أنشئ &lt;code&gt;AbortController&lt;/code&gt; وأخبره بالإلغاء فورًا ثم اطبع قيمة &lt;code&gt;signal.aborted&lt;/code&gt;.</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ماذا ينتج AbortController؟</strong></p><ul><li>signal يمكن تمريره للعمليات</li><li>نافذة جديدة</li><li>ملفًا</li><li>خيطًا جديدًا</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>signal يمكن تمريره للعمليات</strong></p></details></li><li><p><strong>ما الذي يقرأ المولد اللامتزامن؟</strong></p><ul><li>for await...of</li><li>for...in</li><li>while فقط</li><li>switch</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>for await...of</strong></p></details></li><li><p><strong>ماذا تفعل عند إلغاء العملية؟</strong></p><ul><li>تتعامل مع AbortError كحالة متوقعة</li><li>تتجاهلها دائمًا</li><li>تعيد تحميل الصفحة</li><li>تحذف المتغيرات</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تتعامل مع AbortError كحالة متوقعة</strong></p></details></li><li><p><strong>ما الناتج؟ const c = new AbortController(); c.signal.addEventListener(&quot;abort&quot;, () =&gt; console.log(&quot;ab&quot;)); c.abort(); c.abort(); console.log(c.signal.aborted);</strong></p><ul><li>ab ثم ab ثم true</li><li>ab ثم true</li><li>true فقط</li><li>خطأ عند الاستدعاء الثاني</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>ab ثم true</strong></p><p>الإلغاء يحدث مرة واحدة فقط، والاستدعاءات التالية لـ abort لا تفعل شيئاً ولا تُطلق الحدث ثانية. وبعده تصبح signal.aborted تساوي true.</p></details></li><li><p><strong>ماذا يُطبع؟ async function* g() { try { yield 1; yield 2; } finally { console.log(&quot;cleanup&quot;); } } (async () =&gt; { for await (const x of g()) { console.log(x); break; } })();</strong></p><ul><li>1 فقط</li><li>1 ثم 2 ثم cleanup</li><li>1 ثم cleanup</li><li>cleanup ثم 1</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>1 ثم cleanup</strong></p><p>الخروج المبكر من for await بـ break يستدعي return للمولد، فتنفذ كتلة finally فتُطبع cleanup بعد 1. لذلك نضع التنظيف في finally ليعمل حتى عند التوقف المبكر.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-18">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/advanced-javascript/lessons/ajs-17.html"><small>الدرس السابق</small><strong>أنماط async/await العملية</strong></a>
+        <a rel="next" href="/advanced-javascript/lessons/ajs-19.html"><small>الدرس التالي</small><strong>أخطاء مخصصة واستراتيجيات المعالجة</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/advanced-javascript/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

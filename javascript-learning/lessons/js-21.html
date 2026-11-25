@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="js" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Modules — JavaScript | FAYBIT</title>
+    <meta name="description" content="تعلّم كيف تقسّم JavaScript إلى ملفات مستقلة باستخدام export وimport." />
+    <link rel="canonical" href="https://faybit.vercel.app/javascript-learning/lessons/js-21.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/javascript-learning/lessons/js-21.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-21.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/javascript-learning/lessons/js-21.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Modules — JavaScript | FAYBIT" />
+    <meta property="og:description" content="تعلّم كيف تقسّم JavaScript إلى ملفات مستقلة باستخدام export وimport." />
+    <meta property="og:url" content="https://faybit.vercel.app/javascript-learning/lessons/js-21.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript","item":"https://faybit.vercel.app/javascript-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Modules","item":"https://faybit.vercel.app/javascript-learning/lessons/js-21.html"}]},{"@type":"LearningResource","name":"Modules","description":"تعلّم كيف تقسّم JavaScript إلى ملفات مستقلة باستخدام export وimport.","url":"https://faybit.vercel.app/javascript-learning/lessons/js-21.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript — FAYBIT","url":"https://faybit.vercel.app/javascript-learning/javascript-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript"><a href="/javascript-learning/lessons/index.html">الدروس</a><a href="/en/javascript-learning/lessons/js-21.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/javascript-learning/lessons/index.html">JavaScript</a></nav>
+      <p class="lp-eyebrow">الدرس 21 من 25</p>
+      <h1 class="lp-h1">Modules</h1>
+      <p class="lp-lead">تعلّم كيف تقسّم JavaScript إلى ملفات مستقلة باستخدام export وimport.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-21">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>// math.js
+export function add(a, b) {
+return a + b;
+}
+// app.js
+import { add } from "./math.js";
+document.getElementById("jsResult").textContent =
+add(5, 3);</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>
+<p><strong>Modules</strong> تسمح بتقسيم البرنامج إلى ملفات منفصلة ومنظمة.</p>
+<p><strong>export</strong> تجعل قيمة أو Function متاحة لملفات أخرى.</p>
+<p><strong>import</strong> تستخدم لاستيراد ما تم تصديره من Module أخرى.</p>
+<p>استخدام Modules يساعد في تنظيم المشاريع الكبيرة.</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>اكتب JavaScript</h2></div>
+</div>
+<p class="practice-description">غيّر الكود الموجود بالأسفل ثم شغّله لترى النتيجة.</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>لماذا نستخدم Modules؟</strong></p><ul><li>لتقسيم وتنظيم الكود بين ملفات متعددة</li><li>لتغيير ألوان CSS</li><li>لاستبدال HTML</li><li>لإنشاء الصور</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لتقسيم وتنظيم الكود بين ملفات متعددة</strong></p></details></li><li><p><strong>أي كلمة تستخدم لتصدير Function؟</strong></p><ul><li>export</li><li>send</li><li>public</li><li>share</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>export</strong></p></details></li><li><p><strong>أي كلمة تستخدم لاستيراد قيمة؟</strong></p><ul><li>import</li><li>include</li><li>requireOnly</li><li>load</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>import</strong></p></details></li><li><p><strong>الملف يحتوي export default add;. أي استيراد صحيح؟</strong></p><ul><li>import { add } from &quot;./math.js&quot;;</li><li>import add from &quot;./math.js&quot;;</li><li>import * add from &quot;./math.js&quot;;</li><li>require add from &quot;./math.js&quot;;</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>import add from &quot;./math.js&quot;;</strong></p><p>الـ default export يُستورد دون أقواس معقوفة وباسم نختاره. الأقواس المعقوفة مخصصة للتصدير المسمى named export.</p></details></li><li><p><strong>عرّفنا const secret = 1 في ملف module دون export. هل يمكن لملف آخر قراءتها؟</strong></p><ul><li>نعم، لأنها متغير عام</li><li>نعم إذا كتبنا import secret فقط</li><li>نعم لكن للقراءة فقط</li><li>لا، فكل ما في الـ module خاص به إلا ما يُصدَّر بـ export</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لا، فكل ما في الـ module خاص به إلا ما يُصدَّر بـ export</strong></p><p>للـ module نطاق خاص به، فلا تتسرب متغيراته إلى النطاق العام. لا يراه غيره إلا بالتصدير الصريح، وهذه إحدى فوائد الـ modules.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-21">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/javascript-learning/lessons/js-20.html"><small>الدرس السابق</small><strong>Spread و Rest</strong></a>
+        <a rel="next" href="/javascript-learning/lessons/js-22.html"><small>الدرس التالي</small><strong>JavaScript غير المتزامنة</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/javascript-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

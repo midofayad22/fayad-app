@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="html" />
+    <meta name="robots" content="noindex, follow" />
+    <title>هيكل مستند HTML — HTML | FAYBIT</title>
+    <meta name="description" content="تعلّم الهيكل الأساسي لمستند HTML ووظيفة html وhead وbody." />
+    <link rel="canonical" href="https://faybit.vercel.app/html-learning/lessons/html-02.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/html-learning/lessons/html-02.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/html-learning/lessons/html-02.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/html-learning/lessons/html-02.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="هيكل مستند HTML — HTML | FAYBIT" />
+    <meta property="og:description" content="تعلّم الهيكل الأساسي لمستند HTML ووظيفة html وhead وbody." />
+    <meta property="og:url" content="https://faybit.vercel.app/html-learning/lessons/html-02.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"HTML","item":"https://faybit.vercel.app/html-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"هيكل مستند HTML","item":"https://faybit.vercel.app/html-learning/lessons/html-02.html"}]},{"@type":"LearningResource","name":"هيكل مستند HTML","description":"تعلّم الهيكل الأساسي لمستند HTML ووظيفة html وhead وbody.","url":"https://faybit.vercel.app/html-learning/lessons/html-02.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"HTML — FAYBIT","url":"https://faybit.vercel.app/html-learning/html-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="HTML"><a href="/html-learning/lessons/index.html">الدروس</a><a href="/en/html-learning/lessons/html-02.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/html-learning/lessons/index.html">HTML</a></nav>
+      <p class="lp-eyebrow">الدرس 2 من 30</p>
+      <h1 class="lp-h1">هيكل مستند HTML</h1>
+      <p class="lp-lead">تعلّم الهيكل الأساسي لمستند HTML ووظيفة html وhead وbody.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/html-learning/html-learning.html#lesson-2">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<article class="content-card">
+<h2>هيكل المستند</h2>
+<p>مستند HTML يتكون من أجزاء منظمة تساعد المتصفح على فهم الصفحة وعرضها بشكل صحيح.</p>
+<p>أهم العناصر الأساسية هي <code>&lt;html&gt;</code> و <code>&lt;head&gt;</code> و <code>&lt;body&gt;</code>.</p>
+</article>
+</div></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>مستند HTML أساسي</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;صفحتي&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;مرحبًا&lt;/h1&gt;
+&lt;p&gt;هذه صفحتي.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><div class="lp-demo-h1">مرحبًا</div><p>هذه صفحتي.</p></div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p><code>&lt;!DOCTYPE html&gt;</code> يخبر المتصفح أن المستند يستخدم HTML5.</p><p><code>&lt;head&gt;</code> يحتوي على معلومات الصفحة، و<code>&lt;body&gt;</code> يحتوي على المحتوى الظاهر.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>اكتب كود HTML</h2></div>
+</div>
+<p class="practice-description">أنشئ مستند HTML كاملًا يحتوي على title وh1 وفقرة.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أين يوضع المحتوى الذي يظهر للمستخدم في الصفحة؟</strong></p><ul><li>&lt;body&gt;</li><li>&lt;head&gt;</li><li>&lt;title&gt;</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>&lt;body&gt;</strong></p></details></li><li><p><strong>ما وظيفة عنصر &lt;head&gt; في مستند HTML؟</strong></p><ul><li>يحتوي على بيانات ومعلومات وإعدادات الصفحة للمتصفح</li><li>يعرض الصور والنصوص المباشرة للمستخدم</li><li>ينشئ أزرار الإرسال بالصفحة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يحتوي على بيانات ومعلومات وإعدادات الصفحة للمتصفح</strong></p></details></li><li><p><strong>ما فائدة الإعلان DOCTYPE في بداية المستند؟</strong></p><ul><li>تحديد إصدار ونوع مستند الويب للمتصفح</li><li>إنشاء فقرة نصية جديدة</li><li>ربط ملف التنسيقات الخارجية</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تحديد إصدار ونوع مستند الويب للمتصفح</strong></p></details></li><li><p><strong>ما الترتيب الصحيح لأجزاء المستند الرئيسية؟</strong></p><ul><li>العنصر body ثم head ثم DOCTYPE</li><li>DOCTYPE ثم html الذي يحوي head ثم body</li><li>head ثم DOCTYPE ثم body خارج html</li><li>html ثم DOCTYPE ثم head داخل body</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>DOCTYPE ثم html الذي يحوي head ثم body</strong></p><p>يبدأ المستند بإعلان DOCTYPE ثم العنصر الجذر html الذي يحتوي على head (معلومات الصفحة) ثم body (المحتوى المرئي). head و body شقيقان داخل html.</p></details></li><li><p><strong>الصفحة فيها العنصر title بداخل head ونصه Shop، وفي body عنوان h1 نصه Welcome. ماذا يعرض المتصفح؟</strong></p><ul><li>Welcome في تبويب المتصفح و Shop في الصفحة</li><li>Shop و Welcome معاً داخل الصفحة</li><li>لا شيء يظهر لأن head مخفي بالكامل</li><li>Shop في تبويب المتصفح و Welcome داخل الصفحة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Shop في تبويب المتصفح و Welcome داخل الصفحة</strong></p><p>نص title يظهر في تبويب المتصفح وليس داخل الصفحة، أما h1 فمحتوى مرئي في body. head لا يعرض محتواه في الصفحة لكن title منه يظهر في التبويب.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/html-learning/html-learning.html#lesson-2">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/html-learning/lessons/html-01.html"><small>الدرس السابق</small><strong>مقدمة إلى HTML</strong></a>
+        <a rel="next" href="/html-learning/lessons/html-03.html"><small>الدرس التالي</small><strong>Tags و Elements</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/html-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

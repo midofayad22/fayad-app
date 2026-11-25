@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="react" />
+    <meta name="robots" content="noindex, follow" />
+    <title>React Router — React | FAYBIT</title>
+    <meta name="description" content="Learn how to use React Router to create navigation between pages and views inside a React app." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/react-learning/lessons/react-18.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/react-learning/lessons/react-18.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/react-learning/lessons/react-18.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/react-learning/lessons/react-18.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="React Router — React | FAYBIT" />
+    <meta property="og:description" content="Learn how to use React Router to create navigation between pages and views inside a React app." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/react-learning/lessons/react-18.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"React","item":"https://faybit.vercel.app/en/react-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"React Router","item":"https://faybit.vercel.app/en/react-learning/lessons/react-18.html"}]},{"@type":"LearningResource","name":"React Router","description":"Learn how to use React Router to create navigation between pages and views inside a React app.","url":"https://faybit.vercel.app/en/react-learning/lessons/react-18.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"React — FAYBIT","url":"https://faybit.vercel.app/react-learning/react-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="React"><a href="/en/react-learning/lessons/index.html">Lessons</a><a href="/react-learning/lessons/react-18.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/react-learning/lessons/index.html">React</a></nav>
+      <p class="lp-eyebrow">Lesson 18 of 30</p>
+      <h1 class="lp-h1">React Router</h1>
+      <p class="lp-lead">Learn how to use React Router to create navigation between pages and views inside a React app.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-18">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<p>
+React Router is a library used to manage Navigation inside React applications.
+</p>
+<p>
+You can define different Routes such as /, /about, and /profile, and link each Route to a specific Component.
+</p>
+<p>
+This allows building apps that feel multi-page from a user experience standpoint, without reloading the page on every navigation.
+</p>
+</div></article>
+<article class="body-card key-card"><p>React Router manages Navigation and maps URLs to components.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>The code</h2></div>
+</div>
+<pre dir="ltr"><code>import {
+BrowserRouter,
+Routes,
+Route
+} from "react-router-dom";
+&lt;BrowserRouter&gt;
+&lt;Routes&gt;
+&lt;Route path="/" element={&lt;Home /&gt;} /&gt;
+&lt;Route path="/about" element={&lt;About /&gt;} /&gt;
+&lt;/Routes&gt;
+&lt;/BrowserRouter&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>You can define a Route for each page in the app.</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span></div>
+</div>
+<p class="practice-description">Add a new Route for a Contact page.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is React Router used for?</strong></p><ul><li>Client-side navigation</li><li>Managing databases</li><li>Writing CSS</li><li>Creating images</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Client-side navigation</strong></p></details></li><li><p><strong>What does a Route define?</strong></p><ul><li>The relationship between a URL and a Component</li><li>The page color</li><li>The database type</li><li>A CSS file</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The relationship between a URL and a Component</strong></p></details></li><li><p><strong>Which element is used to define a group of Routes?</strong></p><ul><li>Routes</li><li>RouteGroup</li><li>RouterList</li><li>NavigationCSS</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Routes</strong></p></details></li><li><p><strong>What does &lt;Link to=&quot;/about&quot;&gt; do?</strong></p><ul><li>Deletes the page</li><li>Submits a form</li><li>Changes CSS</li><li>Navigates without a full page reload</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Navigates without a full page reload</strong></p><p>Link changes the route inside the app without a full reload.</p></details></li><li><p><strong>How do you read the dynamic id from /users/:id?</strong></p><ul><li>useRef()</li><li>useMemo()</li><li>useParams()</li><li>useState()</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>useParams()</strong></p><p>useParams returns an object of the route parameters.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-18">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/react-learning/lessons/react-17.html"><small>Previous lesson</small><strong>Custom Hooks</strong></a>
+        <a rel="next" href="/en/react-learning/lessons/react-19.html"><small>Next lesson</small><strong>API Requests</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/react-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>The Event Loop: Microtasks and Macrotasks — Advanced JavaScript | FAYBIT</title>
+    <meta name="description" content="Understand precisely the execution order of synchronous and asynchronous code." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-15.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-15.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-15.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-15.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="The Event Loop: Microtasks and Macrotasks — Advanced JavaScript | FAYBIT" />
+    <meta property="og:description" content="Understand precisely the execution order of synchronous and asynchronous code." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-15.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Advanced JavaScript","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"The Event Loop: Microtasks and Macrotasks","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-15.html"}]},{"@type":"LearningResource","name":"The Event Loop: Microtasks and Macrotasks","description":"Understand precisely the execution order of synchronous and asynchronous code.","url":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-15.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Advanced JavaScript — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Advanced JavaScript"><a href="/en/advanced-javascript/lessons/index.html">Lessons</a><a href="/advanced-javascript/lessons/ajs-15.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/advanced-javascript/lessons/index.html">Advanced JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 15 of 22</p>
+      <h1 class="lp-h1">The Event Loop: Microtasks and Macrotasks</h1>
+      <p class="lp-lead">Understand precisely the execution order of synchronous and asynchronous code.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-15">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>The Call Stack and Task Queues</h2><p>JavaScript runs on a single thread. Synchronous code runs first on the Call Stack. When it is empty, the Event Loop runs all <strong>Microtasks</strong> (Promise.then and queueMicrotask), then one task from the <strong>Macrotasks</strong> (setTimeout and DOM events), and repeats.</p></article></div>
+<article class="body-card key-card"><p>All Microtasks run before any Macrotask, even if setTimeout is zero.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>console.log("1 sync");
+setTimeout(() =&gt; console.log("5 timeout"), 0);
+Promise.resolve().then(() =&gt; console.log("3 promise"));
+queueMicrotask(() =&gt; console.log("4 microtask"));
+(async () =&gt; {
+console.log("2 inside async (sync part)");
+await null;
+console.log("4b after await");
+})();
+console.log("2b sync end");</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">1 sync
+2 inside async (sync part)
+2b sync end
+3 promise
+4 microtask
+4b after await
+5 timeout</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>The first part of an async function runs immediately. Everything after <code>await</code> moves to the microtask queue, and all of it runs before the turn reaches <code>setTimeout</code>.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Try it yourself</h2></div>
+</div>
+<p class="practice-description">Predict, then test, the print order: &lt;code&gt;setTimeout&lt;/code&gt;, then &lt;code&gt;Promise.then&lt;/code&gt;, then a plain line.</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What runs first after the synchronous code finishes?</strong></p><ul><li>The Microtasks</li><li>setTimeout</li><li>Network events</li><li>Nothing</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The Microtasks</strong></p></details></li><li><p><strong>Does setTimeout(fn, 0) run immediately?</strong></p><ul><li>No, it is scheduled as a Macrotask after the current code and the Microtasks</li><li>Yes, immediately</li><li>It never runs</li><li>It runs before the Promise</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>No, it is scheduled as a Macrotask after the current code and the Microtasks</strong></p></details></li><li><p><strong>Where does code resume after await?</strong></p><ul><li>As a Microtask</li><li>As a Macrotask</li><li>On a new thread</li><li>On the network</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>As a Microtask</strong></p></details></li><li><p><strong>What is the print order? console.log(&quot;1&quot;); setTimeout(() =&gt; console.log(&quot;2&quot;)); Promise.resolve().then(() =&gt; console.log(&quot;3&quot;)); console.log(&quot;4&quot;);</strong></p><ul><li>1, 2, 3, 4</li><li>1, 4, 2, 3</li><li>1, 3, 4, 2</li><li>1, 4, 3, 2</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>1, 4, 3, 2</strong></p><p>Synchronous code runs first, printing 1 and 4, then the microtask queue is drained, printing 3, and only then does the timer macrotask print 2.</p></details></li><li><p><strong>What is the print order? async function f() { console.log(&quot;a&quot;); await null; console.log(&quot;b&quot;); } f(); console.log(&quot;c&quot;);</strong></p><ul><li>a, c, b</li><li>a, b, c</li><li>c, a, b</li><li>a, c only</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>a, c, b</strong></p><p>An async function runs synchronously up to the first await, printing a, then pauses and hands control back so c prints. The code after await is scheduled as a microtask, so b prints last.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-15">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/advanced-javascript/lessons/ajs-14.html"><small>Previous lesson</small><strong>Symbols and Tagged Templates</strong></a>
+        <a rel="next" href="/en/advanced-javascript/lessons/ajs-16.html"><small>Next lesson</small><strong>Promise.all, allSettled, race, and any</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/advanced-javascript/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

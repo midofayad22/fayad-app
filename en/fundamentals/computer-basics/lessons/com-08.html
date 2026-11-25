@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>The Graphics Card (GPU) — Computer Basics | FAYBIT</title>
+    <meta name="description" content="Explain how a GPU differs from a CPU in design and in tasks. Distinguish integrated from dedicated graphics and understand the role of VRAM . Calculate…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-08.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-08.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-08.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-08.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="The Graphics Card (GPU) — Computer Basics | FAYBIT" />
+    <meta property="og:description" content="Explain how a GPU differs from a CPU in design and in tasks. Distinguish integrated from dedicated graphics and understand the role of VRAM . Calculate…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-08.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Computer Basics","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"The Graphics Card (GPU)","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-08.html"}]},{"@type":"LearningResource","name":"The Graphics Card (GPU)","description":"Explain how a GPU differs from a CPU in design and in tasks. Distinguish integrated from dedicated graphics and understand the role of VRAM . Calculate…","url":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-08.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Computer Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Computer Basics"><a href="/en/fundamentals/computer-basics/lessons/index.html">Lessons</a><a href="/fundamentals/computer-basics/lessons/com-08.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/computer-basics/lessons/index.html">Computer Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 8 of 30</p>
+      <h1 class="lp-h1">The Graphics Card (GPU)</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-8">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>The Graphics Card (GPU)</h2>
+<div><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Explain how a <span class="term">GPU</span> differs from a <span class="term">CPU</span> in design and in tasks.</li><li>Distinguish integrated from dedicated graphics and understand the role of <span class="term">VRAM</span>.</li><li>Calculate pixel counts and the time budget per frame, and know uses of a GPU beyond games.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>The CPU (com-04) and motherboard (com-07) lessons.</li></ul>
+</section>
+<section class="lesson-section "><h3>Introduction: why a second processor?</h3>
+<p>A Full HD screen holds about two million pixels, and the colour of each must be decided dozens of times per second. If the main processor did that alone it would have no time left for the rest of the system. That is why the <span class="term">GPU</span> (Graphics Processing Unit) exists: a processor specialised in producing the image, working beside the CPU.</p>
+<p>A GPU is not a “stronger processor” but one with a different design. A <span class="term">CPU</span> is like a few experts who finish complex tasks one after another; a GPU is like thousands of simple workers each doing the same simple operation at the same time on lots of data.</p>
+</section>
+<section class="lesson-section "><h3>A design built on parallelism</h3>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Property</th><th scope="col">CPU</th><th scope="col">GPU</th></tr></thead><tbody><tr><th scope="row">Number of cores</th><td>a handful to dozens of powerful cores</td><td>thousands of simpler cores</td></tr><tr><th scope="row">Best at</th><td>complex logic, decisions and branching</td><td>repetitive maths over huge amounts of data</td></tr><tr><th scope="row">Memory</th><td>system RAM</td><td>its own high-bandwidth VRAM</td></tr><tr><th scope="row">Example</th><td>running the OS and application logic</td><td>computing the colour of every pixel</td></tr></tbody></table></div>
+<p>This works for graphics because the colour of each pixel rarely depends on its neighbour, so all of them can be computed at once. That kind of problem is called <span class="term">Data Parallelism</span>.</p>
+</section>
+<section class="lesson-section "><h3>How is an image drawn?</h3>
+<figure class="doc-diagram" role="group" aria-label="Diagram"><figcaption>Simplified graphics pipeline for one frame</figcaption><ol class="doc-flow"><li><strong>Scene description</strong><span>through the CPU, the program sends 3D objects as points (vertices) and triangles</span></li><li><strong>Vertex processing</strong><span>the GPU works out each vertex's place on screen from the camera angle</span></li><li><strong>Rasterization</strong><span>triangles are turned into pixels</span></li><li><strong>Shading</strong><span>each pixel's colour is computed from lighting and texture</span></li><li><strong>Output</strong><span>the frame is written to the frame buffer and sent to the display</span></li></ol></figure>
+<p>These steps are driven through software interfaces called a <span class="term">Graphics API</span>, such as DirectX, Vulkan, OpenGL and Metal, which connect the game to the device's drivers. Developers write small programs called a <span class="term">Shader</span> that run on thousands of cores at once.</p>
+</section>
+<section class="lesson-section "><h3>Integrated or dedicated? And the role of VRAM</h3>
+<p>An <span class="term">Integrated GPU</span> is part of the processor chip itself and shares system RAM; it is enough for web browsing, video, office work and light games, and it saves power and heat. A <span class="term">Dedicated GPU</span> is a separate card that plugs into a PCIe slot on the motherboard and has its own <span class="term">VRAM</span>, cooler and power feed; it gives higher performance but uses more power and needs space and cooling.</p>
+<p>VRAM holds textures, scene data and the frame buffer. When it fills up the card has to borrow system RAM across the much slower PCIe link, which causes visible stutter. That is why VRAM size matters for high-resolution gaming or large 3D models.</p>
+</section>
+<section class="lesson-section "><h3>Beyond games: general-purpose GPU computing</h3>
+<p>Because a GPU runs so many calculations in parallel, it has been put to work on tasks unrelated to drawing, a practice known as <span class="term">GPGPU</span>, through platforms such as CUDA and OpenCL. Its best-known use today is training artificial-intelligence models, since training is built on multiplying huge matrices. It is also used in scientific simulation, video editing, and cryptographic workloads. Most cards also have dedicated circuits for video encoding and decoding that relieve the CPU.</p>
+</section>
+<section class="lesson-section "><h3>Real-world applications</h3>
+<ul><li><strong>Gaming:</strong> the card sets the resolution, frame rate and lighting quality.</li><li><strong>Design and editing:</strong> 3D and video-editing software use the GPU to speed up preview and export.</li><li><strong>Artificial intelligence:</strong> data centres house thousands of GPUs to train models.</li><li><strong>Phones:</strong> the phone chip includes a small GPU that draws the interface and games on minimal power.</li></ul>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>“A GPU is just a gaming card”: the desktop interface, web browsing, editing and AI all use it, and every device with a display has some GPU.</li><li>“A GPU beats a CPU at everything”: a GPU is poor at complex sequential logic and cannot replace the CPU; each complements the other.</li><li>“More memory means a faster card”: VRAM only prevents stutter when it would otherwise fill up; card speed is set by cores, architecture and memory bandwidth.</li><li>“Upgrading only the GPU speeds up any computer”: the CPU may become the bottleneck, or the power supply may be too weak.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Calculation:</strong> how many pixels are on a 1920×1080 screen? On a 4K screen at 3840×2160? And how many pixels per second must the GPU produce at 60 frames per second on each?</summary><div class="doc-solution"><strong>Show solution</strong><p>1920 × 1080 = 2,073,600 pixels. 3840 × 2160 = 8,294,400 pixels, exactly four times as many. At 60 frames: 2,073,600 × 60 ≈ 124.4 million pixels per second, and for 4K: 8,294,400 × 60 ≈ 497.7 million pixels per second. This is why raising the resolution burdens the card even when the game does not change.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Calculation and reasoning:</strong> how many milliseconds are available per frame at 60 and at 144 frames per second? And how much memory does one 4K frame need if each pixel is stored in 4 bytes?</summary><div class="doc-solution"><strong>Show solution</strong><p>At 60: 1000 ÷ 60 ≈ 16.7 ms per frame. At 144: 1000 ÷ 144 ≈ 6.9 ms, less than half the time, so the computation must be much faster. A 4K frame: 8,294,400 × 4 = 33,177,600 bytes, about 33 MB. The card keeps several frames alongside the textures, which is why it needs plenty of VRAM.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Hands-on:</strong> find your GPU's name, whether it is integrated or dedicated, how much VRAM it has, and watch its usage while a video plays.</summary><div class="doc-solution"><strong>Show solution</strong><p>On Windows open Task Manager, then Performance, then GPU: you see the name plus dedicated memory (VRAM) and shared memory (from system RAM). If only shared memory appears, it is probably integrated. You can also use <code>dxdiag</code>. On macOS open About This Mac. Play a high-resolution video and watch the Video Decode entry or overall usage: you will see a slight rise because decoding runs on the GPU, while CPU usage stays low.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>A GPU is a specialised processor with thousands of simple cores for parallel operations.</li><li>Integrated GPUs share RAM with the processor; dedicated ones have their own VRAM and a PCIe slot.</li><li>Resolution and frame rate set the workload, and each increase multiplies the computation.</li><li>GPUs today serve AI and scientific computing as well as graphics.</li></ul><p class="doc-next"><strong>Next step:</strong> Input and Output Devices: how a person connects to all this machinery.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>Core concept</strong>
+<p>A GPU specializes in graphics processing and parallel operations; it is not just a second copy of the CPU.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Hands-on practice</span>
+<h3>Try it yourself</h3>
+</div>
+</div>
+<p>Look up your device's specifications to find the name of the GPU it contains.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which field is directly associated with the GPU?</strong></p><ul><li>Graphics</li><li>Paper printing only</li><li>File management only</li><li>The keyboard</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Graphics</strong></p></details></li><li><p><strong>What is the main design difference between a GPU and a CPU?</strong></p><ul><li>A GPU has thousands of simple cores working in parallel, a CPU a few powerful cores</li><li>A GPU has very few, stronger cores</li><li>There is no difference</li><li>A GPU has no memory</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A GPU has thousands of simple cores working in parallel, a CPU a few powerful cores</strong></p><p>Graphics needs a simple operation repeated over huge data, which suits data parallelism.</p></details></li><li><p><strong>Which statement describes an integrated GPU?</strong></p><ul><li>A separate card with its own VRAM</li><li>Part of the processor chip that shares system RAM</li><li>It requires its own power supply</li><li>It works only for artificial intelligence</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Part of the processor chip that shares system RAM</strong></p><p>Integrated graphics saves power and heat and is enough for browsing, office work and light games.</p></details></li><li><p><strong>What happens when VRAM fills up in a high-resolution game?</strong></p><ul><li>Frame rate increases</li><li>The game always closes</li><li>The card borrows system RAM over the slower PCIe link, causing stutter</li><li>It uses the disk as the screen</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The card borrows system RAM over the slower PCIe link, causing stutter</strong></p><p>System RAM is much slower than VRAM, so visible stutter appears.</p></details></li><li><p><strong>Ahmed bought a card only because it has more cores than another. What is the mistake?</strong></p><ul><li>None; more cores always means better performance</li><li>Core designs differ between vendors and generations, so benchmarks should be used</li><li>Cores have no effect on performance at all</li><li>Comparing the box size is the solution</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Core designs differ between vendors and generations, so benchmarks should be used</strong></p><p>Core count alone is not a fair comparison between different cards; look at benchmarks for your workload.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-8">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/computer-basics/lessons/com-07.html"><small>Previous lesson</small><strong>The Motherboard</strong></a>
+        <a rel="next" href="/en/fundamentals/computer-basics/lessons/com-09.html"><small>Next lesson</small><strong>Input and Output Devices</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/computer-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

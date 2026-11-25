@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>Internet and Networking Basics — Computer Basics | FAYBIT</title>
+    <meta name="description" content="Tell a LAN , a WAN and the Internet apart and describe the roles of a Router and a Switch . Explain an IP Address , DNS , a Packet , ports and the…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-15.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-15.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-15.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-15.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Internet and Networking Basics — Computer Basics | FAYBIT" />
+    <meta property="og:description" content="Tell a LAN , a WAN and the Internet apart and describe the roles of a Router and a Switch . Explain an IP Address , DNS , a Packet , ports and the…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-15.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Computer Basics","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Internet and Networking Basics","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-15.html"}]},{"@type":"LearningResource","name":"Internet and Networking Basics","description":"Tell a LAN , a WAN and the Internet apart and describe the roles of a Router and a Switch . Explain an IP Address , DNS , a Packet , ports and the…","url":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-15.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Computer Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Computer Basics"><a href="/en/fundamentals/computer-basics/lessons/index.html">Lessons</a><a href="/fundamentals/computer-basics/lessons/com-15.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/computer-basics/lessons/index.html">Computer Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 15 of 30</p>
+      <h1 class="lp-h1">Internet and Networking Basics</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-15">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>Internet and Networking Basics</h2>
+<div><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Tell a <span class="term">LAN</span>, a <span class="term">WAN</span> and the <span class="term">Internet</span> apart and describe the roles of a <span class="term">Router</span> and a <span class="term">Switch</span>.</li><li>Explain an <span class="term">IP Address</span>, <span class="term">DNS</span>, a <span class="term">Packet</span>, ports and the <span class="term">Client-Server</span> model.</li><li>Distinguish <span class="term">Latency</span> from <span class="term">Bandwidth</span> and read <code>ping</code> and <code>nslookup</code> output.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>The bits and bytes lesson (com-13) for transfer-speed arithmetic, and the operating-system lesson (com-10).</li></ul>
+</section>
+<section class="lesson-section "><h3>Introduction: two computers talking</h3>
+<p>A <span class="term">Network</span> is a group of devices connected to exchange data, by cable or radio waves. As soon as two devices connect, questions arise: how is each identified? how does a message reach only its target? what common language do they use? The answers form the structure of the internet, solved by layers of rules called a <span class="term">Protocol</span>.</p>
+</section>
+<section class="lesson-section "><h3>Kinds of networks and their parts</h3>
+<ul><li><strong><span class="term">LAN</span>:</strong> a local area network within a small area such as a home, office or school.</li><li><strong><span class="term">WAN</span>:</strong> a wide area network linking distant sites across cities or countries, often over lines leased from providers.</li><li><strong><span class="term">Internet</span>:</strong> not one network, but a network of thousands of independent networks interconnected by shared protocols.</li></ul>
+<figure class="doc-diagram" role="group" aria-label="Diagram"><figcaption>A typical home network</figcaption><ol class="doc-layers"><li><strong>Phones and computers</strong><span>devices joining over Wi-Fi or cable</span></li><li><strong>Switch / access point</strong><span>joins devices in the local network and forwards frames between them</span></li><li><strong>Router</strong><span>the gateway from the local network to other networks</span></li><li><strong>Internet provider (ISP)</strong><span>connects your home to the rest of the internet</span></li><li><strong>The Internet</strong><span>networks and data centres worldwide</span></li></ol></figure>
+<p>The difference: a <span class="term">Switch</span> joins devices <em>inside</em> one network and delivers a message only to the intended device by its hardware <span class="term">MAC Address</span>, whereas a <span class="term">Router</span> joins <em>between</em> networks and chooses the message's next hop by its IP address. At home one box often combines several roles: router, access point and a small switch.</p>
+</section>
+<section class="lesson-section "><h3>Addresses and DNS</h3>
+<p>Every device on the network has an <span class="term">IP Address</span>: a number that identifies it and gives its location. In <span class="term">IPv4</span> the address is 32 bits, written as four numbers from 0 to 255 separated by dots, such as <code>192.168.1.20</code>. The possible addresses number 2 to the power 32 = 4,294,967,296, not enough for every device on Earth, so <span class="term">IPv6</span> appeared with 128-bit addresses. Private ranges such as <code>192.168.x.x</code> are reserved for local networks and reused in many homes, and the router translates between them and your public address through <span class="term">NAT</span>.</p>
+<p>People remember names, not numbers, and that is where <span class="term">DNS</span> (Domain Name System) comes in: a distributed system like a phone book that turns a name such as <code>example.com</code> into an IP address. When you type the address in the browser your device asks a DNS server (usually assigned by your provider), which replies with the number, and only then does the browser connect to the numeric address.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">bash</span></figcaption><pre dir="ltr"><code>nslookup example.com
+ping -c 3 example.com</code></pre></figure>
+<figure class="code-ex code-ex-out"><figcaption><span class="code-ex-lang">Output</span></figcaption><pre dir="ltr"><code>Name:    example.com
+Address: 192.0.2.10
+PING example.com (192.0.2.10): 56 data bytes
+64 bytes from 192.0.2.10: icmp_seq=0 ttl=57 time=38.2 ms
+64 bytes from 192.0.2.10: icmp_seq=1 ttl=57 time=39.1 ms
+64 bytes from 192.0.2.10: icmp_seq=2 ttl=57 time=37.8 ms
+--- 3 packets transmitted, 3 received, 0% packet loss
+round-trip min/avg/max = 37.8/38.4/39.1 ms</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>Packets, client and server, and ports</h3>
+<p>Data is not sent in one piece; it is split into small <span class="term">Packet</span>s, each with a header carrying the sender and receiver addresses and a sequence number. Each packet follows the best path available, and may arrive late or out of order, so the receiver reorders them and asks for anything lost. That is an advantage: if part of the network fails, packets can take another route. A typical Ethernet packet is about 1500 bytes, of which about 1460 carry content after the headers. So a file of 1,000,000 bytes needs about 685 packets.</p>
+<p>Applications communicate in a <span class="term">Client-Server</span> pattern: a <span class="term">Client</span> asks, like the browser on your phone, and a <span class="term">Server</span> is a computer that runs continuously and answers with resources. Because one machine runs many services at once, there is a <span class="term">Port</span>: a number from 0 to 65,535 that identifies which application on the machine is meant, just as an apartment number completes a building's address.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Port</th><th scope="col">Service</th><th scope="col">Use</th></tr></thead><tbody><tr><th scope="row">80</th><td>HTTP</td><td>unencrypted web pages</td></tr><tr><th scope="row">443</th><td>HTTPS</td><td>encrypted web pages</td></tr><tr><th scope="row">22</th><td>SSH</td><td>secure remote login</td></tr><tr><th scope="row">53</th><td>DNS</td><td>turning names into addresses</td></tr></tbody></table></div>
+<figure class="doc-diagram" role="group" aria-label="Diagram"><figcaption>What happens when you open a website?</figcaption><ol class="doc-flow"><li><strong>DNS query</strong><span>the device turns the name into an IP address</span></li><li><strong>Connection</strong><span>the browser opens a connection to the server on port 443</span></li><li><strong>Request</strong><span>the request is split into packets crossing routers</span></li><li><strong>Response</strong><span>the server sends the page back as packets to your device</span></li><li><strong>Display</strong><span>the browser reassembles and displays it</span></li></ol></figure>
+</section>
+<section class="lesson-section "><h3>Latency versus bandwidth</h3>
+<p>Many people confuse the two. <span class="term">Bandwidth</span> is how much data can be moved per second, like a road's width, measured in Mbps. <span class="term">Latency</span> is how long a tiny message takes to arrive, like a road's length, measured in milliseconds, and it is what <code>ping</code> reports. A wider pipe cannot cancel a delay imposed by distance: light in optical fibre covers about 200,000 km/s, so 6,000 km takes 30 ms one way, at least 60 ms round trip.</p>
+<p>That is why each matters for different things: downloading a huge file depends on bandwidth, whereas video calls and real-time games depend on latency. <span class="term">Jitter</span> is the fluctuation of latency from one packet to the next, and it is what makes audio stutter.</p>
+</section>
+<section class="lesson-section "><h3>Real-world applications</h3>
+<ul><li><strong>Troubleshooting:</strong> if <code>ping</code> works to a numeric address but not to a name, the problem is probably DNS.</li><li><strong>Home networks:</strong> connecting a game console by cable instead of Wi-Fi lowers and steadies latency.</li><li><strong>Cloud services:</strong> companies place servers near their users to shorten the distance.</li></ul>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>“The internet is the web”: the web is a service running on top of the internet, alongside others such as email and calls.</li><li>“More speed means less delay”: bandwidth and latency are largely independent.</li><li>“A router and a switch are the same”: a switch works inside a network, a router connects between networks.</li><li>“Everyone in the world sees my device's IP”: a <code>192.168.x.x</code> address is local only; websites see the router's public address.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Calculation:</strong> you download a 600 MB file on a 50 Mbps connection. How long does it take in theory? Then what extra delay arises if the file is fetched in 100 small sequential requests with 40 ms latency each?</summary><div class="doc-solution"><strong>Show solution</strong><p>600 MB = 600 × 8 = 4,800 Mb. Time = 4,800 ÷ 50 = 96 seconds. In bytes: 50 ÷ 8 = 6.25 MB/s and 600 ÷ 6.25 = 96 seconds again. 100 sequential requests add 100 × 40 ms = 4,000 ms = 4 seconds of waiting, bringing the total to about 100 seconds. This shows latency matters most when requests are many and small.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Reasoning:</strong> the address <code>http://203.0.113.5</code> opens in the browser but <code>example.com</code> does not. What is the most likely cause and how do you confirm it?</summary><div class="doc-solution"><strong>Show solution</strong><p>Connectivity is fine since the numeric address works, so the problem is name resolution, that is DNS. To confirm, run <code>nslookup example.com</code>: if it returns no address or an error, the DNS server is down or misconfigured. The fix is to change the DNS server in the network settings to another public one, or restart the router, then test again.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Hands-on:</strong> find your device's local IP address and measure latency to a website.</summary><div class="doc-solution"><strong>Show solution</strong><p>On Windows type <code>ipconfig</code> in the command prompt and look for “IPv4 Address”; on Linux use <code>ip addr</code>. You will usually see the form <code>192.168.x.x</code>. Then run <code>ping example.com</code> and note the average time. Repeat over Wi-Fi and by cable if you can and compare, then try a site on a distant continent and notice the time grow with distance. Remember that the numbers you see belong to your network and will not match the sample.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>A LAN is local, a WAN is wide, and the internet is a network of networks; a switch connects inside one and a router connects between them.</li><li>An IP address identifies the device, DNS turns names into addresses, packets carry the data and ports pick the application.</li><li>The client asks and the server responds.</li><li>Bandwidth is the amount per second, latency is how fast a message arrives, and the two are largely independent.</li></ul><p class="doc-next"><strong>Next step:</strong> The Browser and the Web: how the browser uses this network to display pages.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>Core concept</strong>
+<p>The internet is not a single device; it is a global network of networks and devices connected to one another.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Hands-on practice</span>
+<h3>Try it yourself</h3>
+</div>
+</div>
+<p>Look up the difference between a Local Network and the Internet and try to explain it in your own words.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is the internet?</strong></p><ul><li>A single computer</li><li>A global network of networks</li><li>A drawing program</li><li>A type of storage unit</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A global network of networks</strong></p></details></li><li><p><strong>What is the difference between a switch and a router?</strong></p><ul><li>A switch joins networks using IP, a router joins within a network</li><li>A switch joins devices inside one network by MAC address, a router joins between networks by IP address</li><li>There is no difference</li><li>A router stores files</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A switch joins devices inside one network by MAC address, a router joins between networks by IP address</strong></p><p>At home one box often combines the roles of router, access point and a small switch.</p></details></li><li><p><strong>What is the job of DNS?</strong></p><ul><li>Encrypting the connection</li><li>Speeding up the network</li><li>Turning a name such as example.com into an IP address</li><li>Blocking ads</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Turning a name such as example.com into an IP address</strong></p><p>People remember names, not numbers, so your device asks a DNS server and then connects to the numeric address.</p></details></li><li><p><strong>Which of the following addresses is in a private range reserved for local networks?</strong></p><ul><li>8.8.8.8</li><li>300.1.1.1</li><li>192.168.1.20</li><li>256.256.256.256</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>192.168.1.20</strong></p><p>The 192.168.x.x range is private and reused in many homes; NAT translates it to your public address.</p></details></li><li><p><strong>ping shows: 3 packets transmitted, 3 received, time=38.2 ms. What does it mean?</strong></p><ul><li>No packet loss and a round trip of about 38 ms</li><li>All packets were lost</li><li>Download speed is 38 megabits</li><li>The hop count is 38</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>No packet loss and a round trip of about 38 ms</strong></p><p>The time field is the round trip (latency), and 0% packet loss means every packet arrived.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-15">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/computer-basics/lessons/com-14.html"><small>Previous lesson</small><strong>How Does a Program Work?</strong></a>
+        <a rel="next" href="/en/fundamentals/computer-basics/lessons/com-16.html"><small>Next lesson</small><strong>The Browser and the Web</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/computer-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

@@ -114,3 +114,40 @@ Checklist: [x] Adventure mechanics v2  [x] Zombie web-lab (supersedes the JS-onl
 - Arenas now have crawlable URLs with their own title/description/H1-intro: `/play/{html,css,js}-arena.html` (old `arena.html?track=` keeps working, noindex).
 - Tests: new `tests/seo.test.mjs` (8 checks incl. unique titles/descriptions, JSON-LD validity, sitemap↔canonical consistency, redirect). Regression: routes, english-zero-arabic, game, global-shell, home, no-legacy, overflow pass (`zombie/sim.js` exempted from the eval guard: injected only into the sandbox).
 - Owner actions: add `faybit.vercel.app` as a Search Console property (the existing verification meta belongs to the old property), submit the new sitemap, use Change of Address if both are verified. Not done: lessons render client-side from JSON, so individual lesson URLs are not separately indexable (next SEO step: prerendered lesson content); Core Web Vitals not measured yet.
+
+## SEO completion: static lesson pages, sitemap audit, GSC runbook, performance baseline
+- `tools/gen-lesson-pages.mjs` renders every lesson of the 11 tracks (292) in AR and EN through the real lesson UI (so `content/*/index.js`, lesson IDs and the 3 lesson layouts stay the source), strips interactive parts, adds quiz review (answers in `<details>`), prev/next, CTA to `track.html#lesson-N`, breadcrumbs, hreflang pair + x-default, JSON-LD (BreadcrumbList + LearningResource) → 584 pages + 22 course indexes. URLs: `/<course>/lessons/<id>.html` and `/en/<course>/lessons/<id>.html`.
+- Audit result: the previous 21-URL sitemap was far from complete. Now 307 URLs (hreflang alternates included). Quality gate: lessons with < 80 words of prose (code and quiz excluded, minimum over AR/EN) are `noindex, follow` and kept out of the sitemap; ~160 lessons are in that state (content work for Phase 4). AR/EN pairs are always symmetric.
+- Tests: `tests/seo.test.mjs` (10) incl. every lesson id/pair, canonical, hreflang, sitemap↔noindex consistency, prev/next chain; `tests/lesson-pages-ui.test.mjs` (real browser, 8 sample pages × 5 widths + dark, no overflow, touch targets ≥ 32 px, language switch + next link). Screenshots inspected (AR 390, EN 390/1366).
+- Docs: `SEO-MIGRATION.md` (Search Console steps/baseline exports — no GSC access here, nothing claimed), `PERFORMANCE-BASELINE.md` (Lighthouse + INP proxy before redesign: home LCP 3.78 s, course LCP 3.85 s).
+- Not done: Search Console data, field Core Web Vitals, 301 deployment (needs approval).
+
+## Homepage redesign (from 4a07d11)
+
+**Removed:** 6 feature cards (`#platform`), tabbed roadmap, fake code window + floating tags + marquee, gradient/orb/grid backgrounds, 3-card "how it works", owner card with empty image, final CTA, GSAP/ScrollTrigger and `home-motion.js`/`home-platform.js` from this page.
+**New composition:** left-aligned hero (headline, one primary CTA, three factual lines) + a real "next step" panel (continue/start, per-stage progress from saved data); one ruled learning-path list (4 stages, 11 tracks, each with outcome, level, prerequisites, suggested weeks from the approved 18-week plan, lesson count, progress); compact 4-step "how a lesson runs"; practice list (5 games, own glyph/colour, level, real progress; totals fixed to 60/24/24/15/120); concise footer.
+**Honesty notes:** weeks shown only for tracks in the approved roadmap (HTML 1–2, CSS 3–5, Bootstrap 6, JS 8–12, Tailwind 13, Angular 15–17); others labelled "extra track"; React/Vue explicitly alternatives. No fake stats; counts derive from the catalog. Level/prerequisite labels are editorial judgments.
+**Verification:** tests/home (rewritten for new IA), motion, english-zero-arabic, global-shell, routes, seo, search, sidebar pass (search index rebuilt; sidebar test updated for `?next=` login href). Screenshots inspected: AR 390/1366, EN 1366 (all five widths rendered; 360/430/820 not individually inspected). Dark mode not yet visually inspected.
+**Lighthouse (lab, local brotli server, 2 runs) vs baseline:** perf 79 → 97/99, LCP 3.78 → 2.4/2.1 s, TBT 355 → 0 ms, CLS 0, a11y 100, SEO 100.
+
+## Visual direction v1 + homepage rebuild (supersedes the earlier "Homepage redesign" entry; NOT yet approved by the owner)
+- New identity ("ink and signal"), independently designed light/dark themes, bilingual type roles, measured contrast: see `docs/overhaul/DESIGN-SYSTEM.md` (`tools/contrast-report.mjs`: 110 pairs, 0 failures after darkening brand to `#b73618`).
+- Homepage: editorial hero + ink progress panel; **interactive 18-week map** (11 tracks: plan stops by week, foundations before week 1, extras; planned-but-unpublished stops dashed and non-interactive); in-page track detail; compact lesson-flow; practice band with a real CSS-arena challenge and per-game rows. No owner section, no GSAP on the page.
+- Tests: home (rewritten: map/selection/keyboard/last-track), motion, english-zero-arabic, global-shell, routes, seo, search, sidebar, overflow — 149 pass. Real-browser: mouse, keyboard Enter, touch tap on 390px; touch targets ≥44px.
+- Lighthouse lab (local, noisy, 5 runs): perf 86–97, LCP 2.5–3.7 s, TBT 0–62 ms, CLS 0 (baseline 79 / 3.78 s / 355 ms). Variance is large; treat as "better than baseline", not a precise figure.
+- Limits: only 3 of the brief's references were reachable (text only); Vercel Preview not checked for this commit yet.
+
+## Correction: Homepage V2 (V1 0775fcf retracted by the product owner)
+- Removed: the 18-week map, big "18", week strings, vermilion identity. Restored teal brand; per-track accents only for the 11 real tracks.
+- Homepage IA: hero + real next-step/progress panel, tracks (foundations rows / core split / tools rail), how a lesson runs, games (five distinct compositions, arena shows a real challenge), footer.
+- Motion: CSS hover depth and progress transitions; one IntersectionObserver for staggered tile reveal and arena check ticking; no GSAP; reduced motion disables arming.
+- Tests: home.test.mjs rewritten for V2. Not marked approved; awaiting review.
+
+## V3: motion system, mobile experience, navbar/footer, login, About (checkpoint after d089a6f)
+- Motion (css/motion.css + js/motion.js, no library): progressive reveal (`.rv`, armed by JS, released after reveal so component hover transitions are untouched), navbar scrolled state + thin progress line, scroll spy with a sliding indicator (desktop links) and the same spy driving the mobile bottom bar, Chromium scroll-linked hero ease-out (progressive enhancement). Native scrolling only: Lenis and GSAP ScrollTrigger were considered and not adopted (no scroll-jacking, no extra weight; nothing here needs a timeline).
+- Mobile: bottom navigation (Home, Courses, Games, Menu) wired to the existing drawer; tracks and games are horizontal snap carousels; compact header.
+- Games: three compositions (wide arena with real challenge, two compact rows, two tall cards), per-game thumbnails, play affordance, real level totals/progress.
+- Footer: social links grey by default, brand colours on hover/focus (GitHub, LinkedIn, Facebook, Instagram; no YouTube link exists, none invented).
+- Login: presentation only (auth.css). Markup, ids, handlers and Supabase untouched.
+- About: rewritten around the platform (no owner profile/portrait/personal links in the page body); facts read from the catalog. The shared footer keeps the existing social destinations; the homepage JSON-LD still carries the existing founder Person node (SEO data, not visible UI).
+- Limitations: learner progress on a device is stored in shared localStorage keys (not namespaced per account), so two accounts on one browser share local progress until cloud sync overwrites it; not changed (backend/contract). Supabase and CDN hosts are not reachable from the test sandbox, so login/registration/recovery were not exercised end-to-end; signed-in UI states were checked with simulated sessions only.

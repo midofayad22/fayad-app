@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <title>Positioning, the Container, and Layer Order — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="relative, absolute, sticky, inset, z-index, and overflow." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-08.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-08.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-08.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-08.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Positioning, the Container, and Layer Order — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="relative, absolute, sticky, inset, z-index, and overflow." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-08.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Positioning, the Container, and Layer Order","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-08.html"}]},{"@type":"LearningResource","name":"Positioning, the Container, and Layer Order","description":"relative, absolute, sticky, inset, z-index, and overflow.","url":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-08.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/en/tailwind-learning/lessons/index.html">Lessons</a><a href="/tailwind-learning/lessons/tw-08.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">Lesson 8 of 20</p>
+      <h1 class="lp-h1">Positioning, the Container, and Layer Order</h1>
+      <p class="lp-lead">relative, absolute, sticky, inset, z-index, and overflow.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-8">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Position</h2><p><code>relative</code> <code>absolute</code> <code>fixed</code> <code>sticky</code> with <code>inset-0</code> <code>top-0</code> <code>start-0</code> <code>end-4</code> (logical). An absolute element is positioned relative to its nearest <code>relative</code> ancestor.</p></article><article class="content-card"><h2>z-index and Overflow</h2><p><code>z-10</code> <code>z-50</code> for layer order. <code>overflow-hidden</code> and <code>overflow-auto</code> clip or scroll the content. <code>container</code> sets a maximum width per breakpoint, and is usually used with <code>mx-auto px-4</code>.</p></article></div>
+<article class="body-card key-card"><p>Make the parent relative before placing an absolute element inside it.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="container mx-auto px-4 py-6"&gt;
+&lt;div id="wrap" class="relative h-32 overflow-hidden rounded-xl bg-slate-200"&gt;
+&lt;span class="absolute end-3 top-3 rounded-full bg-rose-500 px-2 py-1 text-xs font-bold text-white"&gt;New&lt;/span&gt;
+&lt;div class="absolute inset-x-0 bottom-0 bg-black/60 p-2 text-sm text-white"&gt;Bottom bar&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sticky top-0 z-10 mt-4 bg-white p-2 shadow"&gt;Sticky bar&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>The badge and the bottom bar are absolutely positioned inside the relative parent. <code>inset-x-0</code> stretches the bar horizontally. <code>overflow-hidden</code> clips whatever spills past the rounded corners.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Move the badge to the bottom start with &lt;code&gt;start-3 bottom-3&lt;/code&gt;.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What makes an absolute element position itself inside its parent?</strong></p><ul><li>The parent being relative</li><li>The parent being flex</li><li>Having z-10</li><li>Having gap</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The parent being relative</strong></p></details></li><li><p><strong>What does inset-0 do?</strong></p><ul><li>top/right/bottom/left = 0</li><li>Adds borders</li><li>Changes the color</li><li>Hides the element</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>top/right/bottom/left = 0</strong></p></details></li><li><p><strong>What is the purpose of overflow-hidden together with rounded?</strong></p><ul><li>Clipping content that extends beyond the rounded corners</li><li>Enlarging the image</li><li>Animating the element</li><li>Always disabling scrolling only</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Clipping content that extends beyond the rounded corners</strong></p></details></li><li><p><strong>What does the container class do in Tailwind?</strong></p><ul><li>Sets a max width at each breakpoint</li><li>Centers the content automatically</li><li>Adds 1rem of padding</li><li>Makes the element position fixed</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Sets a max width at each breakpoint</strong></p><p>It does not center by itself, so add mx-auto and px-4.</p></details></li><li><p><strong>Two overlapping elements, z-10 and z-50. Which one is on top?</strong></p><ul><li>z-10</li><li>z-50</li><li>Both are on the same level</li><li>By alphabetical order</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>z-50</strong></p><p>The higher z-index value sits in the front layer.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-8">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/tailwind-learning/lessons/tw-07.html"><small>Previous lesson</small><strong>Grid</strong></a>
+        <a rel="next" href="/en/tailwind-learning/lessons/tw-09.html"><small>Next lesson</small><strong>Borders, Shadows, and Rings</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/tailwind-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

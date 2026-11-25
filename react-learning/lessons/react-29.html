@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="react" />
+    <meta name="robots" content="noindex, follow" />
+    <title>React + APIs — React | FAYBIT</title>
+    <meta name="description" content="اربط بين React وState وEffects وAPIs لبناء تطبيقات تعتمد على البيانات الحقيقية." />
+    <link rel="canonical" href="https://faybit.vercel.app/react-learning/lessons/react-29.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/react-learning/lessons/react-29.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/react-learning/lessons/react-29.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/react-learning/lessons/react-29.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="React + APIs — React | FAYBIT" />
+    <meta property="og:description" content="اربط بين React وState وEffects وAPIs لبناء تطبيقات تعتمد على البيانات الحقيقية." />
+    <meta property="og:url" content="https://faybit.vercel.app/react-learning/lessons/react-29.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"React","item":"https://faybit.vercel.app/react-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"React + APIs","item":"https://faybit.vercel.app/react-learning/lessons/react-29.html"}]},{"@type":"LearningResource","name":"React + APIs","description":"اربط بين React وState وEffects وAPIs لبناء تطبيقات تعتمد على البيانات الحقيقية.","url":"https://faybit.vercel.app/react-learning/lessons/react-29.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"React — FAYBIT","url":"https://faybit.vercel.app/react-learning/react-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="React"><a href="/react-learning/lessons/index.html">الدروس</a><a href="/en/react-learning/lessons/react-29.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/react-learning/lessons/index.html">React</a></nav>
+      <p class="lp-eyebrow">الدرس 29 من 30</p>
+      <h1 class="lp-h1">React + APIs</h1>
+      <p class="lp-lead">اربط بين React وState وEffects وAPIs لبناء تطبيقات تعتمد على البيانات الحقيقية.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-29">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<p>
+معظم التطبيقات العملية تحتاج إلى جلب بيانات من Backend أو
+API خارجي.
+</p>
+<p>
+غالبًا يتم استخدام useEffect لبدء عملية الجلب، ثم يتم تخزين
+النتيجة داخل State.
+</p>
+<p>
+يجب أيضًا التعامل مع Loading وError وSuccess states حتى تكون
+تجربة المستخدم جيدة.
+</p>
+</div></article>
+<article class="body-card key-card"><p>التطبيقات المعتمدة على البيانات تحتاج إلى تنسيق جيد بين API وState وUI.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>الكود</h2></div>
+</div>
+<pre dir="ltr"><code>useEffect(() =&gt; {
+fetch("/api/users")
+.then((response) =&gt; response.json())
+.then((data) =&gt; setUsers(data));
+}, []);</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>يمكن فصل منطق API في services لتقليل مسؤوليات Components.</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span></div>
+</div>
+<p class="practice-description">غيّر endpoint في المثال إلى endpoint آخر.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ماذا يمكن أن يوفر API لتطبيق React؟</strong></p><ul><li>بيانات خارجية</li><li>CSS فقط</li><li>HTML فقط</li><li>صور CSS</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>بيانات خارجية</strong></p></details></li><li><p><strong>أين يمكن تخزين البيانات القادمة من API؟</strong></p><ul><li>React State</li><li>CSS</li><li>HTML attribute</li><li>Class name فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>React State</strong></p></details></li><li><p><strong>ما Hook الشائعة لتنفيذ Fetch عند تحميل Component؟</strong></p><ul><li>useEffect</li><li>useHTML</li><li>useCSS</li><li>useDatabase</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>useEffect</strong></p></details></li><li><p><strong>لماذا نحتاج مصفوفة [] في useEffect عند الجلب؟</strong></p><ul><li>لتغيير CSS</li><li>لتشغيل الجلب مرة عند تحميل المكون</li><li>لتكرار الجلب بلا نهاية</li><li>لإلغاء المكون</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لتشغيل الجلب مرة عند تحميل المكون</strong></p><p>بدونها يعمل التأثير بعد كل رسم وقد يسبب حلقة.</p></details></li><li><p><strong>لماذا قد يتكرر هذا الكود بلا نهاية؟ useEffect(() =&gt; { fetch(u).then(r=&gt;r.json()).then(setData); });</strong></p><ul><li>لا مصفوفة اعتماديات فيعمل بعد كل رسم وsetData تسبب رسماً</li><li>fetch ممنوعة</li><li>json خطأ</li><li>لا حلقة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لا مصفوفة اعتماديات فيعمل بعد كل رسم وsetData تسبب رسماً</strong></p><p>أضف [] أو الاعتماديات الصحيحة.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-29">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/react-learning/lessons/react-28.html"><small>الدرس السابق</small><strong>أفضل الممارسات Best Practices</strong></a>
+        <a rel="next" href="/react-learning/lessons/react-30.html"><small>الدرس التالي</small><strong>المشروع النهائي</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/react-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

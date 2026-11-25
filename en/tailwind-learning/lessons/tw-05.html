@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <title>Sizing: Width and Height — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="w, h, size, max-w, min-h, fractions, and special values." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-05.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-05.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-05.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-05.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Sizing: Width and Height — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="w, h, size, max-w, min-h, fractions, and special values." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-05.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Sizing: Width and Height","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-05.html"}]},{"@type":"LearningResource","name":"Sizing: Width and Height","description":"w, h, size, max-w, min-h, fractions, and special values.","url":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-05.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/en/tailwind-learning/lessons/index.html">Lessons</a><a href="/tailwind-learning/lessons/tw-05.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">Lesson 5 of 20</p>
+      <h1 class="lp-h1">Sizing: Width and Height</h1>
+      <p class="lp-lead">w, h, size, max-w, min-h, fractions, and special values.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-5">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Width and Height</h2><p>Same spacing scale: <code>w-16</code> = 4rem. Fractions: <code>w-1/2</code> <code>w-2/3</code>. Keywords: <code>w-full</code> <code>w-screen</code> <code>w-fit</code> <code>w-auto</code>. For a square use <code>size-12</code> (width and height together).</p></article><article class="content-card"><h2>Limits</h2><p><code>max-w-sm|md|lg|xl|2xl…</code> sets the maximum width of text content, <code>min-h-screen</code> gives a height of at least the screen, and <code>aspect-video</code> gives a 16/9 ratio.</p></article></div>
+<article class="body-card key-card"><p>Use max-w instead of a fixed w so the element adapts to small screens.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="space-y-3 p-4"&gt;
+&lt;div id="half" class="w-1/2 bg-sky-200 p-2"&gt;w-1/2&lt;/div&gt;
+&lt;div class="size-16 bg-amber-300"&gt;&lt;/div&gt;
+&lt;div id="mx" class="max-w-xs bg-slate-200 p-2"&gt;max-w-xs: never exceeds 20rem however large the screen gets.&lt;/div&gt;
+&lt;div class="aspect-video w-48 bg-emerald-200"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p><code>size-16</code> gives a square element of 4rem × 4rem. <code>aspect-video</code> preserves the width-to-height ratio.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Make the first element &lt;code&gt;w-2/3&lt;/code&gt; and add an element with &lt;code&gt;h-24 w-full&lt;/code&gt;.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What does w-1/2 mean?</strong></p><ul><li>Width of 50% of the parent</li><li>Width of 1 pixel</li><li>Half the height</li><li>Always half the screen</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Width of 50% of the parent</strong></p></details></li><li><p><strong>Which class makes width and height equal in a single line?</strong></p><ul><li>size-12</li><li>wh-12</li><li>square-12</li><li>box-12</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>size-12</strong></p></details></li><li><p><strong>Why do we prefer max-w over a fixed w?</strong></p><ul><li>So the element shrinks on small screens</li><li>Because it is faster</li><li>Because it changes the color</li><li>No difference</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>So the element shrinks on small screens</strong></p></details></li><li><p><strong>What does the class aspect-video give?</strong></p><ul><li>A 16/9 aspect ratio</li><li>Screen-sized height</li><li>100% width</li><li>Video playback</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A 16/9 aspect ratio</strong></p><p>aspect-video sets the element to a 16:9 ratio.</p></details></li><li><p><strong>Which class makes the height at least the screen height?</strong></p><ul><li>h-min</li><li>min-h-screen</li><li>max-h-full</li><li>h-fit</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>min-h-screen</strong></p><p>min-h-screen fills the screen while still allowing growth.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-5">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/tailwind-learning/lessons/tw-04.html"><small>Previous lesson</small><strong>Typography</strong></a>
+        <a rel="next" href="/en/tailwind-learning/lessons/tw-06.html"><small>Next lesson</small><strong>Flexbox</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/tailwind-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>Validation, Input Groups, and Floating Labels — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="Validation messages, input-group, and form-floating." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-13.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-13.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-13.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-13.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Validation, Input Groups, and Floating Labels — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="Validation messages, input-group, and form-floating." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-13.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Validation, Input Groups, and Floating Labels","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-13.html"}]},{"@type":"LearningResource","name":"Validation, Input Groups, and Floating Labels","description":"Validation messages, input-group, and form-floating.","url":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-13.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/en/bootstrap-learning/lessons/index.html">Lessons</a><a href="/bootstrap-learning/lessons/bs-13.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">Lesson 13 of 20</p>
+      <h1 class="lp-h1">Validation, Input Groups, and Floating Labels</h1>
+      <p class="lp-lead">Validation messages, input-group, and form-floating.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-13">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Validation</h2><p>Add <code>novalidate</code> to the form along with <code>needs-validation</code>, then on submit add <code>was-validated</code> so that green/red appears according to the HTML rules (<code>required</code>, <code>type</code>, and <code>minlength</code>). Or set <code>is-invalid</code>/<code>is-valid</code> manually with <code>.invalid-feedback</code>. Server-side validation is indispensable.</p></article><article class="content-card"><h2>Groups and labels</h2><p><code>.input-group</code> combines text or a button with the field (<code>.input-group-text</code>). <code>.form-floating</code> places the label inside the field and it floats up when typing (the input must come before the label).</p></article></div>
+<article class="body-card key-card"><p>Browser validation is for convenience only; always validate on the server too.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;form class="container py-3 needs-validation" novalidate style="max-width:480px" onsubmit="event.preventDefault(); this.classList.add('was-validated')"&gt;
+&lt;div class="input-group mb-3"&gt;
+&lt;span class="input-group-text"&gt;@&lt;/span&gt;
+&lt;input type="text" class="form-control" placeholder="Username" aria-label="Username" required minlength="3"&gt;
+&lt;div class="invalid-feedback"&gt;Name is required (at least 3 characters).&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="form-floating mb-3"&gt;
+&lt;input type="email" class="form-control" id="mail" placeholder="name@example.com" required&gt;
+&lt;label for="mail"&gt;Email address&lt;/label&gt;
+&lt;div class="invalid-feedback"&gt;Enter a valid email.&lt;/div&gt;
+&lt;/div&gt;
+&lt;button class="btn btn-primary" type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>Click "Submit" with empty fields to show the red messages. The <code>was-validated</code> class adds the styling according to each field's state.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Add a password field &lt;code&gt;required minlength="8"&lt;/code&gt; inside &lt;code&gt;form-floating&lt;/code&gt;.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What does was-validated do?</strong></p><ul><li>Enables valid and invalid styling according to the fields' state</li><li>Submits the form</li><li>Deletes the fields</li><li>Saves the data</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Enables valid and invalid styling according to the fields' state</strong></p></details></li><li><p><strong>Why do we need server-side validation despite browser validation?</strong></p><ul><li>Because browser validation can be bypassed</li><li>Because the browser doesn't support it</li><li>For speed only</li><li>We don't need it</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Because browser validation can be bypassed</strong></p></details></li><li><p><strong>What is the requirement in form-floating?</strong></p><ul><li>That input comes before label</li><li>That label comes before input</li><li>Only a select is present</li><li>No placeholder</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>That input comes before label</strong></p></details></li><li><p><strong>Which class holds the @ symbol beside the field inside input-group?</strong></p><ul><li>input-addon</li><li>form-text-box</li><li>group-label</li><li>input-group-text</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>input-group-text</strong></p><p>input-group-text styles the text or icon attached to the field.</p></details></li><li><p><strong>How do you manually show a red error message under a field?</strong></p><ul><li>is-invalid on the field and invalid-feedback for the message</li><li>text-error on the field</li><li>was-validated on the field alone</li><li>alert-red after the field</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>is-invalid on the field and invalid-feedback for the message</strong></p><p>is-invalid colors the field and reveals the text inside invalid-feedback.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-13">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/bootstrap-learning/lessons/bs-12.html"><small>Previous lesson</small><strong>Forms</strong></a>
+        <a rel="next" href="/en/bootstrap-learning/lessons/bs-14.html"><small>Next lesson</small><strong>Tables and Lists</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/bootstrap-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

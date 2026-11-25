@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>الذاكرة RAM — أساسيات الكمبيوتر | FAYBIT</title>
+    <meta name="description" content="تشرح ما هي RAM ولماذا تُعد ذاكرة مؤقتة ( Volatile ). تقارن بين RAM والتخزين من حيث السرعة والسعة والدوام. تحسب احتياج الذاكرة تقريبيًا وتفهم ما يحدث حين…" />
+    <link rel="canonical" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-05.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-05.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-05.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-05.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="الذاكرة RAM — أساسيات الكمبيوتر | FAYBIT" />
+    <meta property="og:description" content="تشرح ما هي RAM ولماذا تُعد ذاكرة مؤقتة ( Volatile ). تقارن بين RAM والتخزين من حيث السرعة والسعة والدوام. تحسب احتياج الذاكرة تقريبيًا وتفهم ما يحدث حين…" />
+    <meta property="og:url" content="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-05.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"أساسيات الكمبيوتر","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"الذاكرة RAM","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-05.html"}]},{"@type":"LearningResource","name":"الذاكرة RAM","description":"تشرح ما هي RAM ولماذا تُعد ذاكرة مؤقتة ( Volatile ). تقارن بين RAM والتخزين من حيث السرعة والسعة والدوام. تحسب احتياج الذاكرة تقريبيًا وتفهم ما يحدث حين…","url":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-05.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"أساسيات الكمبيوتر — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="أساسيات الكمبيوتر"><a href="/fundamentals/computer-basics/lessons/index.html">الدروس</a><a href="/en/fundamentals/computer-basics/lessons/com-05.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/fundamentals/computer-basics/lessons/index.html">أساسيات الكمبيوتر</a></nav>
+      <p class="lp-eyebrow">الدرس 5 من 30</p>
+      <h1 class="lp-h1">الذاكرة RAM</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-5">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>الذاكرة RAM</h2>
+<div><section class="lesson-section doc-objectives"><h3>أهداف الدرس</h3><ul><li>تشرح ما هي <span class="term">RAM</span> ولماذا تُعد ذاكرة مؤقتة (<span class="term">Volatile</span>).</li><li>تقارن بين RAM والتخزين من حيث السرعة والسعة والدوام.</li><li>تحسب احتياج الذاكرة تقريبيًا وتفهم ما يحدث حين تمتلئ.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>المتطلبات السابقة</h3><ul><li>دروس «كيف يعمل الكمبيوتر؟» و«المعالج CPU».</li></ul>
+</section>
+<section class="lesson-section "><h3>مقدمة: طاولة العمل</h3>
+<p>تخيّل مكتبة ضخمة (التخزين) وطاولة عمل أمامك (RAM). لا تعمل على الكتب داخل المكتبة، بل تحضر ما تحتاجه إلى الطاولة، وكلما كبرت الطاولة وضعت عليها مراجع أكثر في وقت واحد. <span class="term">RAM</span> (Random Access Memory) هي هذه الطاولة: مساحة سريعة يضع فيها نظام التشغيل البرامج والبيانات التي تُستعمل الآن ليصل إليها المعالج بسرعة.</p>
+<p>كلمة «عشوائي» لا تعني الفوضى، بل أن أي موضع في الذاكرة يمكن الوصول إليه مباشرة بعنوانه، في زمن متقارب، دون المرور على ما قبله.</p>
+</section>
+<section class="lesson-section "><h3>لماذا تفقد RAM محتواها؟</h3>
+<p>معظم ذاكرة الحواسيب هي <span class="term">DRAM</span>: كل بت فيها يُخزَّن كشحنة كهربائية دقيقة في مكثف صغير، والشحنة تتسرب خلال أجزاء من الثانية فتحتاج إلى إنعاش دوري. وعند انقطاع الكهرباء يختفي كل شيء، ولذلك تسمى ذاكرة <strong>متطايرة</strong>. في المقابل يحتفظ SSD أو HDD ببياناته بلا كهرباء.</p>
+</section>
+<section class="lesson-section "><h3>RAM مقابل التخزين</h3>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">الخاصية</th><th scope="col">RAM</th><th scope="col">SSD</th><th scope="col">HDD</th></tr></thead><tbody><tr><th scope="row">السعة النموذجية</th><td>8 إلى 32 GB</td><td>256 GB إلى 2 TB</td><td>1 إلى 8 TB</td></tr><tr><th scope="row">زمن الوصول التقريبي</th><td>نحو 100 نانو ثانية</td><td>نحو 0.1 ميلي ثانية</td><td>نحو 5 إلى 10 ميلي ثانية</td></tr><tr><th scope="row">الدوام</th><td>تزول عند الإطفاء</td><td>دائمة</td><td>دائمة</td></tr><tr><th scope="row">السعر لكل GB</th><td>الأعلى</td><td>متوسط</td><td>الأقل</td></tr></tbody></table></div>
+<p>الأرقام أعلاه تقديرية وتتفاوت حسب الجيل والطراز، لكن النسبة بينها هي المهمة: الوصول إلى RAM أسرع من SSD بآلاف المرات تقريبًا.</p>
+</section>
+<section class="lesson-section "><h3>الأنواع والعرض الترددي</h3>
+<p>الجيل الشائع حاليًا هو <span class="term">DDR4</span> و<span class="term">DDR5</span> (Double Data Rate): تنقل البيانات مرتين في كل نبضة. تُقاس سرعتها بـ MT/s أي ملايين عمليات النقل في الثانية. ناقل الذاكرة عرضه 64 بت = 8 بايت، فذاكرة DDR4-3200 تنقل نظريًا 3200 × 8 = 25,600 ميغابايت في الثانية، أي نحو 25.6 GB/s في القناة الواحدة. وتتضاعف تقريبًا عند استعمال قناتين (Dual Channel) بوحدتين متطابقتين.</p>
+</section>
+<section class="lesson-section "><h3>ماذا يحدث حين تمتلئ الذاكرة؟</h3>
+<figure class="doc-diagram" role="group" aria-label="مخطط"><figcaption>امتلاء الذاكرة</figcaption><ol class="doc-flow"><li><strong>تفتح برامج أكثر</strong><span>يزداد ما يطلبه النظام من RAM</span></li><li><strong>الذاكرة تقترب من الامتلاء</strong><span>يحذف النظام أولًا ما يخبّئه من ملفات يمكن إعادة قراءتها</span></li><li><strong>الذاكرة الافتراضية</strong><span>ينقل النظام أجزاء غير مستعملة إلى القرص (Swap أو Page File)</span></li><li><strong>تباطؤ ملحوظ</strong><span>الوصول للقرص أبطأ بكثير فيشعر المستخدم بالتجمد</span></li></ol></figure>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">bash</span></figcaption><pre dir="ltr"><code>free -h</code></pre></figure>
+<figure class="code-ex code-ex-out"><figcaption><span class="code-ex-lang">الناتج</span></figcaption><pre dir="ltr"><code>              total   used   free   shared  buff/cache  available
+Mem:           15Gi   6.2Gi  1.1Gi   0.4Gi        8.0Gi       8.6Gi
+Swap:         2.0Gi   0B     2.0Gi</code></pre></figure>
+<p>في هذا المثال (قيم توضيحية) تبدو الذاكرة «الحرّة» 1.1 فقط، لكن عمود <code>available</code> يبيّن أن 8.6 متاحة فعليًا، لأن النظام يستعمل الباقي مخبّأً ويستطيع إخلاءه عند الحاجة.</p>
+</section>
+<section class="lesson-section "><h3>تطبيقات من الواقع</h3>
+<ul><li><strong>التصفح:</strong> كل تبويب في المتصفح قد يستهلك مئات الميغابايت، فعشرون تبويبًا قد تستهلك عدة غيغابايتات.</li><li><strong>المونتاج والتصميم:</strong> الملفات الكبيرة والطبقات المتعددة تحتاج ذاكرة أكبر، وغالبًا يوصى بـ 16 GB أو أكثر.</li><li><strong>الخوادم وقواعد البيانات:</strong> تحتفظ بالبيانات الأكثر طلبًا في RAM للإجابة بسرعة.</li><li><strong>الهواتف:</strong> عندما «تُغلق» تطبيقًا في الخلفية فقد يكون النظام أخرجه من الذاكرة ليعطي المساحة لتطبيق آخر.</li></ul>
+<div class="doc-mistakes"><h4>أخطاء شائعة</h4><ul><li>«RAM أكثر دائمًا يعني جهازًا أسرع»: إضافة الذاكرة تفيد فقط إن كنت تستنفد الموجودة؛ وإلا فلا يتغير شيء.</li><li>«الذاكرة الحرّة جيدة والمستعملة سيئة»: الذاكرة غير المستعملة مهدورة، والنظام الجيد يملؤها بالتخزين المؤقت ويحرره عند الطلب.</li><li>«RAM هي مكان حفظ ملفاتي»: الملفات تُحفظ في التخزين، وما في RAM يضيع إن لم تحفظه، ولهذا تضيع مسودتك عند انقطاع الكهرباء.</li><li>«برامج تنظيف الذاكرة تسرّع الجهاز»: تفريغها يُجبر النظام على إعادة القراءة من القرص فيصير أبطأ غالبًا.</li></ul></div>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>حساب:</strong> ذاكرة DDR5-5600 بقناة واحدة. ما العرض الترددي النظري؟ وكم تحتاج تقريبًا لتحميل ملف حجمه 4 GB منها؟</summary><div class="doc-solution"><strong>عرض الحل</strong><p>5600 × 8 بايت = 44,800 MB/s، أي نحو 44.8 GB/s. وقراءة 4 GB تستغرق نظريًا 4 ÷ 44.8 ≈ 0.09 ثانية (نحو 90 ميلي ثانية). في الواقع تكون القيمة أقل قليلًا بسبب الكلفة الإضافية.</p></div></details>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>استدلال:</strong> جهازك فيه 8 GB، والنظام يستهلك 3 GB، وتفتح 20 تبويبًا بمعدل 300 MB لكل تبويب. هل ستواجه مشكلة؟</summary><div class="doc-solution"><strong>عرض الحل</strong><p>التبويبات: 20 × 300 = 6000 MB تقريبًا أي نحو 6 GB (باعتبار 1 GB = 1000 MB للتقدير). المجموع مع النظام 9 GB وهو أكثر من 8، فسيلجأ النظام إلى الذاكرة الافتراضية على القرص، وستلاحظ بطئًا وتأخرًا عند التبديل بين التبويبات. الحل: إغلاق بعضها أو استخدام ميزة تعليق التبويبات غير النشطة أو ترقية الذاكرة.</p></div></details>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>تطبيق عملي:</strong> افتح مدير المهام وتبويب الأداء ثم الذاكرة (أو شغّل <code>free -h</code>). سجّل المستعمل قبل فتح عدة برامج وبعدها وبعد إغلاقها.</summary><div class="doc-solution"><strong>عرض الحل</strong><p>سترتفع القيمة مع كل برنامج ثم تنخفض عند الإغلاق، لكنها لن تعود تمامًا إلى الرقم الأول لأن النظام يبقي بعض الملفات مخبّأة. وإن رأيت في Windows مقدار «Cached» أو في Linux عمود <code>buff/cache</code> فهو دليل على هذا السلوك. والمهم أن تراقب هل يقترب المستعمل من السعة الكلية أم لا.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>الخلاصة</h3><ul><li>RAM ذاكرة سريعة مؤقتة تحمل البرامج والبيانات الجارية.</li><li>هي أسرع من التخزين بآلاف المرات لكنها أصغر وأغلى وتفقد محتواها عند الإطفاء.</li><li>عند امتلائها يلجأ النظام إلى القرص فيتباطأ الجهاز.</li></ul><p class="doc-next"><strong>الخطوة التالية:</strong> التخزين Storage: نتعرف على الأماكن التي تحفظ فيها البيانات بشكل دائم.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>المفهوم الأساسي</strong>
+<p>RAM ذاكرة مؤقتة وسريعة يستخدمها الكمبيوتر أثناء تشغيل البرامج.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>تطبيق عملي</span>
+<h3>جرّب بنفسك</h3>
+</div>
+</div>
+<p>راقب استهلاك RAM في Task Manager عند فتح عدة برامج ثم أغلقها ولاحظ الفرق.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ماذا يحدث لمحتويات RAM عادةً عند إيقاف تشغيل الكمبيوتر؟</strong></p><ul><li>تبقى دائمًا</li><li>تنتقل إلى الشاشة</li><li>تُفقد</li><li>تتحول إلى CPU</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تُفقد</strong></p></details></li><li><p><strong>لماذا تفقد DRAM محتواها عند انقطاع الكهرباء؟</strong></p><ul><li>تخزن كل بت كشحنة في مكثف صغير تتسرب بسرعة فتحتاج إلى تحديث مستمر</li><li>لأنها تُمسح تلقائياً بأمر من المستخدم</li><li>لأنها مصنوعة من أقراص دوّارة</li><li>لأن سعتها صغيرة جداً</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تخزن كل بت كشحنة في مكثف صغير تتسرب بسرعة فتحتاج إلى تحديث مستمر</strong></p><p>الشحنة تتسرب خلال أجزاء من الثانية، لذلك تسمى ذاكرة متطايرة (Volatile).</p></details></li><li><p><strong>أظهر free -h أن Free = 1.1Gi لكن available = 8.6Gi. ماذا نستنتج؟</strong></p><ul><li>الذاكرة شبه ممتلئة والجهاز سيتوقف</li><li>الذاكرة تالفة</li><li>يمكن تحرير معظم الذاكرة المستخدمة ككاش عند الحاجة</li><li>8.6 هي حجم القرص</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يمكن تحرير معظم الذاكرة المستخدمة ككاش عند الحاجة</strong></p><p>النظام يستخدم الذاكرة الفارغة ككاش ويستطيع إعادتها فوراً، فالعمود available هو الأدق.</p></details></li><li><p><strong>عند امتلاء RAM ولجوء النظام إلى ملف التبديل (swap) على القرص، ما النتيجة المتوقعة؟</strong></p><ul><li>يصبح الجهاز أسرع</li><li>تتضاعف سعة RAM فعلياً بنفس السرعة</li><li>لا يتغير شيء يلاحظه المستخدم</li><li>بطء ملحوظ أو تجمّد لأن القرص أبطأ بكثير</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>بطء ملحوظ أو تجمّد لأن القرص أبطأ بكثير</strong></p><p>الذاكرة الافتراضية تعتمد على القرص، ووصوله أبطأ بآلاف المرات من RAM.</p></details></li><li><p><strong>كم تبلغ السعة النظرية لذاكرة DDR4-3200 لكل قناة؟ (الناقل 8 بايت)</strong></p><ul><li>6.4 GB/s</li><li>25.6 GB/s</li><li>3200 GB/s</li><li>256 GB/s</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>25.6 GB/s</strong></p><p>3200 مليون عملية نقل × 8 بايت = 25,600 MB/s أي نحو 25.6 GB/s.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-5">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/fundamentals/computer-basics/lessons/com-04.html"><small>الدرس السابق</small><strong>المعالج CPU</strong></a>
+        <a rel="next" href="/fundamentals/computer-basics/lessons/com-06.html"><small>الدرس التالي</small><strong>التخزين Storage</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/fundamentals/computer-basics/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

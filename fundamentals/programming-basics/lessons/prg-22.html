@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <title>هياكل البيانات: Stack وQueue وMap وSet — أساسيات البرمجة | FAYBIT</title>
+    <meta name="description" content="DATA STRUCTURES تعرف المكدس Stack والطابور Queue . تستخدم Map و Set في JavaScript. تختار البنية حسب العمليات المطلوبة. درس Arrays (prg-15) ودرس Objects…" />
+    <link rel="canonical" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-22.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-22.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-22.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-22.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="هياكل البيانات: Stack وQueue وMap وSet — أساسيات البرمجة | FAYBIT" />
+    <meta property="og:description" content="DATA STRUCTURES تعرف المكدس Stack والطابور Queue . تستخدم Map و Set في JavaScript. تختار البنية حسب العمليات المطلوبة. درس Arrays (prg-15) ودرس Objects…" />
+    <meta property="og:url" content="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-22.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"أساسيات البرمجة","item":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"هياكل البيانات: Stack وQueue وMap وSet","item":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-22.html"}]},{"@type":"LearningResource","name":"هياكل البيانات: Stack وQueue وMap وSet","description":"DATA STRUCTURES تعرف المكدس Stack والطابور Queue . تستخدم Map و Set في JavaScript. تختار البنية حسب العمليات المطلوبة. درس Arrays (prg-15) ودرس Objects…","url":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-22.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"أساسيات البرمجة — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="أساسيات البرمجة"><a href="/fundamentals/programming-basics/lessons/index.html">الدروس</a><a href="/en/fundamentals/programming-basics/lessons/prg-22.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/fundamentals/programming-basics/lessons/index.html">أساسيات البرمجة</a></nav>
+      <p class="lp-eyebrow">الدرس 22 من 31</p>
+      <h1 class="lp-h1">هياكل البيانات: Stack وQueue وMap وSet</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-22">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">DATA STRUCTURES</span>
+<h2>اختر طريقة التخزين المناسبة للمهمة</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content"><section class="lesson-section doc-objectives"><h3>أهداف الدرس</h3><ul><li>تعرف المكدس <span class="term">Stack</span> والطابور <span class="term">Queue</span>.</li><li>تستخدم <code>Map</code> و<code>Set</code> في JavaScript.</li><li>تختار البنية حسب العمليات المطلوبة.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>المتطلبات السابقة</h3><ul><li>درس Arrays (prg-15) ودرس Objects (prg-16).</li></ul>
+</section>
+<section class="lesson-section "><h3>لماذا تهم البنية؟</h3>
+<p><span class="term">Data Structure</span> هي طريقة منظمة لتخزين البيانات تجعل عمليات معينة سريعة وبسيطة. المصفوفة ممتازة للقوائم، لكن لا تناسب كل مهمة. اختيار البنية جزء من تصميم الخوارزمية.</p>
+</section>
+<section class="lesson-section "><h3>Stack: آخر داخل أول خارج</h3>
+<p>كأكوام الأطباق: تضيف وتأخذ من الأعلى فقط. يُستخدم في زر «تراجع» وفي Call Stack وفي فحص الأقواس.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>const stack = [];
+stack.push("a");   // add on top
+stack.push("b");
+console.log(stack.pop()); // "b"  (last in, first out)
+console.log(stack);       // ["a"]</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>Queue: أول داخل أول خارج</h3>
+<p>كطابور الانتظار: تُضاف العناصر في النهاية وتُؤخذ من البداية. يُستخدم في الطباعة ومهام المعالج وطلبات الخادم.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>const queue = [];
+queue.push("job1");
+queue.push("job2");
+console.log(queue.shift()); // "job1"  (first in, first out)</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>Map وSet</h3>
+<ul><li><strong>Map</strong>: أزواج مفتاح ← قيمة مع بحث سريع بالمفتاح، ويقبل أي نوع كمفتاح.</li><li><strong>Set</strong>: مجموعة قيم فريدة، لا تكرار فيها، والتحقق من وجود قيمة سريع.</li></ul>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>const ages = new Map([["Sara", 20], ["Omar", 22]]);
+console.log(ages.get("Sara")); // 20
+const unique = new Set([1, 2, 2, 3, 3, 3]);
+console.log(unique.size, unique.has(2)); // 3 true</code></pre></figure>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">المهمة</th><th scope="col">البنية المناسبة</th></tr></thead><tbody><tr><th scope="row">تراجع/إعادة</th><td>Stack</td></tr><tr><th scope="row">طابور مهام</th><td>Queue</td></tr><tr><th scope="row">عدّ تكرار الكلمات</th><td>Map</td></tr><tr><th scope="row">إزالة التكرار</th><td>Set</td></tr></tbody></table></div>
+<div class="doc-mistakes"><h4>أخطاء شائعة</h4><ul><li>استخدام <code>shift()</code> على مصفوفة ضخمة كطابور: يحرّك كل العناصر. للأحجام الكبيرة استخدم بنية مخصصة.</li><li>الخلط بين Map والكائن العادي <code>{}</code>: المفاتيح في الكائن تتحول إلى نصوص.</li></ul></div>
+<details class="doc-exercise"><summary><span>تمرين</span> أي بنية تستخدم لمعرفة هل زار المستخدم صفحة من قبل؟</summary><div class="doc-solution"><strong>عرض الحل</strong><p><code>Set</code> يحفظ عناوين الصفحات الفريدة، و<code>has(url)</code> يجيب فورًا.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>الخلاصة</h3><ul><li>Stack: آخر داخل أول خارج.</li><li>Queue: أول داخل أول خارج.</li><li>Map للبحث بالمفتاح، Set للقيم الفريدة.</li></ul><p class="doc-next"><strong>الخطوة التالية:</strong> كيف نقيس كفاءة اختيارنا؟ التعقيد الزمني.</p>
+</section></div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong> الفكرة الأساسية </strong>
+<p>البنية المناسبة تجعل الحل أبسط وأسرع؛ اختر حسب العمليات التي تحتاجها.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>مثال عملي</span>
+<h3>شاهد الفكرة في كود</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>const stack = [];
+for (const ch of "abc") stack.push(ch);
+let reversed = "";
+while (stack.length) reversed += stack.pop();
+console.log(reversed);</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>تطبيق</span>
+<h3>تحدَّ نفسك</h3>
+</div>
+</div>
+<p></p>
+<div class="fd-exercise"><h4>تمرين تفاعلي</h4><p class="fd-ex-prompt">اكتب isBalanced(text) تعيد true إذا كانت الأقواس () متوازنة (كل فتح له إغلاق بالترتيب الصحيح) وإلا false. استخدم Stack.</p><p class="fd-ex-status" role="status"></p></div>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أي بنية تعطي ترتيب «آخر داخل أول خارج»؟</strong></p><ul><li>Stack</li><li>Queue</li><li>Set</li><li>Map</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Stack</strong></p><p>في Stack يُضاف العنصر ويُؤخذ من الأعلى.</p></details></li><li><p><strong>ما ناتج new Set([1,1,2]).size؟</strong></p><ul><li>2</li><li>3</li><li>1</li><li>0</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>2</strong></p><p>Set يزيل التكرار فيبقى 1 و2.</p></details></li><li><p><strong>أي بنية مناسبة لعدّ مرات ظهور كل كلمة؟</strong></p><ul><li>Map من الكلمة إلى العدد</li><li>رقم واحد</li><li>نص طويل</li><li>Stack</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Map من الكلمة إلى العدد</strong></p><p>نبحث عن الكلمة بالمفتاح ونزيد العدّاد.</p></details></li><li><p><strong>أي عملية تأخذ العنصر الأقدم من الطابور؟</strong></p><ul><li>shift()</li><li>pop()</li><li>push()</li><li>length</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>shift()</strong></p><p>shift() يزيل أول عنصر، أما pop() فيزيل الأخير.</p></details></li><li><p><strong>ما الناتج؟ const m = new Map(); m.set(&quot;a&quot;, 1); m.set(&quot;a&quot;, 2); console.log(m.size, m.get(&quot;a&quot;));</strong></p><ul><li>2 1</li><li>1 2</li><li>1 1</li><li>2 2</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>1 2</strong></p><p>المفتاح في Map فريد، فالإسناد الثاني للمفتاح &quot;a&quot; يستبدل القيمة القديمة ولا يضيف عنصراً. لذلك الحجم 1 والقيمة 2.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-22">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/fundamentals/programming-basics/lessons/prg-21.html"><small>الدرس السابق</small><strong>التكرار الذاتي Recursion</strong></a>
+        <a rel="next" href="/fundamentals/programming-basics/lessons/prg-23.html"><small>الدرس التالي</small><strong>التعقيد الزمني Big-O</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/fundamentals/programming-basics/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Git ومفاهيمه — أساسيات البرمجة | FAYBIT</title>
+    <meta name="description" content="DEVELOPER TOOLS Git هو نظام Version Control يساعد المطورين على تتبع التغييرات التي تحدث في المشروع. المكان الذي يحتوي على ملفات المشروع وتاريخه. تسجيل…" />
+    <link rel="canonical" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-19.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-19.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-19.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-19.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Git ومفاهيمه — أساسيات البرمجة | FAYBIT" />
+    <meta property="og:description" content="DEVELOPER TOOLS Git هو نظام Version Control يساعد المطورين على تتبع التغييرات التي تحدث في المشروع. المكان الذي يحتوي على ملفات المشروع وتاريخه. تسجيل…" />
+    <meta property="og:url" content="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-19.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"أساسيات البرمجة","item":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Git ومفاهيمه","item":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-19.html"}]},{"@type":"LearningResource","name":"Git ومفاهيمه","description":"DEVELOPER TOOLS Git هو نظام Version Control يساعد المطورين على تتبع التغييرات التي تحدث في المشروع. المكان الذي يحتوي على ملفات المشروع وتاريخه. تسجيل…","url":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-19.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"أساسيات البرمجة — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="أساسيات البرمجة"><a href="/fundamentals/programming-basics/lessons/index.html">الدروس</a><a href="/en/fundamentals/programming-basics/lessons/prg-19.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/fundamentals/programming-basics/lessons/index.html">أساسيات البرمجة</a></nav>
+      <p class="lp-eyebrow">الدرس 19 من 31</p>
+      <h1 class="lp-h1">Git ومفاهيمه</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-19">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">DEVELOPER TOOLS</span>
+<h2>ابدأ بفهم Version Control</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content">
+<section class="lesson-section">
+<h3>ما هو Git؟</h3>
+<p>
+Git هو نظام Version Control يساعد المطورين
+على تتبع التغييرات التي تحدث في المشروع.
+</p>
+<div class="info-grid">
+<div class="info-box">
+<h4>Repository</h4>
+<p>المكان الذي يحتوي على ملفات المشروع وتاريخه.</p>
+</div>
+<div class="info-box">
+<h4>Commit</h4>
+<p>تسجيل مجموعة من التغييرات في تاريخ المشروع.</p>
+</div>
+<div class="info-box">
+<h4>Branch</h4>
+<p>مسار مستقل لتطوير ميزة أو تجربة.</p>
+</div>
+<div class="info-box">
+<h4>GitHub</h4>
+<p>منصة شهيرة لاستضافة مشاريع Git والتعاون عليها.</p>
+</div>
+</div>
+</section>
+</div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong> الفكرة الأساسية </strong>
+<p>Git ليس لغة برمجة؛ هو أداة لإدارة إصدارات المشروع وتتبع التغييرات.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>مثال عملي</span>
+<h3>شاهد الفكرة في كود</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>git init
+git add .
+git commit -m "Initial commit"</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>تطبيق</span>
+<h3>تحدَّ نفسك</h3>
+</div>
+</div>
+<p></p>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما وظيفة Git الأساسية؟</strong></p><ul><li>تصميم واجهات</li><li>إدارة وتتبع إصدارات المشروع</li><li>تشغيل الإنترنت</li><li>إنشاء صور</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>إدارة وتتبع إصدارات المشروع</strong></p></details></li><li><p><strong>عدّلت ملفاً وتريد حفظ لقطة منه في تاريخ المشروع. ما التسلسل الصحيح؟</strong></p><ul><li>git commit ثم git add</li><li>git push فقط</li><li>git add لتجهيز التغييرات ثم git commit لتسجيلها</li><li>git clone ثم git add</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>git add لتجهيز التغييرات ثم git commit لتسجيلها</strong></p><p>add تضع التغييرات في منطقة التجهيز، وcommit تسجلها كلقطة في التاريخ. الـ commit بدون تجهيز لا يتضمن التعديلات الجديدة.</p></details></li><li><p><strong>تريد تجربة ميزة محفوفة بالمخاطر دون المساس بالنسخة الرئيسية العاملة. ماذا تفعل؟</strong></p><ul><li>أنشئ فرعاً جديداً (branch) وأعمل عليه</li><li>أعدّل الفرع الرئيسي مباشرة وأحتفظ بنسخة في سطح المكتب</li><li>أحذف المشروع وأبدأ من جديد</li><li>أنتظر حتى يكتب غيري الميزة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>أنشئ فرعاً جديداً (branch) وأعمل عليه</strong></p><p>الفرع يتيح عزل التجربة، فإذا فشلت يُترك الفرع بلا ضرر وإذا نجحت تُدمج. العمل على الرئيسي مباشرة يعرّضه للكسر.</p></details></li><li><p><strong>ما الفرق بين commit و push؟</strong></p><ul><li>commit يرفع التغييرات إلى الخادم و push تحفظها محلياً</li><li>لا فرق بينهما</li><li>commit يحفظ لقطة في مستودعك المحلي، و push يرسل التزاماتك إلى مستودع بعيد</li><li>push يحذف التاريخ</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>commit يحفظ لقطة في مستودعك المحلي، و push يرسل التزاماتك إلى مستودع بعيد</strong></p><p>الـ commit عملية محلية لا تحتاج إنترنت، أما push فتنقل الالتزامات إلى مستودع مثل GitHub. العكس الذي في الخيار الأول خاطئ.</p></details></li><li><p><strong>ما العلاقة بين Git و GitHub؟</strong></p><ul><li>الاسمان لنفس البرنامج</li><li>Git موقع و GitHub أداة سطر أوامر</li><li>GitHub لغة برمجة</li><li>Git أداة إدارة الإصدارات، و GitHub خدمة تستضيف المستودعات على الإنترنت</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Git أداة إدارة الإصدارات، و GitHub خدمة تستضيف المستودعات على الإنترنت</strong></p><p>يمكنك استخدام Git على جهازك بدون GitHub، وGitHub يضيف الاستضافة والتعاون. الخلط بينهما شائع لتقاربهما في الاستخدام.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-19">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/fundamentals/programming-basics/lessons/prg-18.html"><small>الدرس السابق</small><strong>حل المشكلات</strong></a>
+        <a rel="next" href="/fundamentals/programming-basics/lessons/prg-20.html"><small>الدرس التالي</small><strong>مراجعة شاملة</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/fundamentals/programming-basics/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

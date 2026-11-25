@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>الشبكة المتقدمة: المسافات والترتيب والتداخل — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="gutters وoffset وorder والصفوف المتداخلة والأعمدة المتساوية بـ row-cols." />
+    <link rel="canonical" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-04.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-04.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-04.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-04.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="الشبكة المتقدمة: المسافات والترتيب والتداخل — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="gutters وoffset وorder والصفوف المتداخلة والأعمدة المتساوية بـ row-cols." />
+    <meta property="og:url" content="https://faybit.vercel.app/bootstrap-learning/lessons/bs-04.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"الشبكة المتقدمة: المسافات والترتيب والتداخل","item":"https://faybit.vercel.app/bootstrap-learning/lessons/bs-04.html"}]},{"@type":"LearningResource","name":"الشبكة المتقدمة: المسافات والترتيب والتداخل","description":"gutters وoffset وorder والصفوف المتداخلة والأعمدة المتساوية بـ row-cols.","url":"https://faybit.vercel.app/bootstrap-learning/lessons/bs-04.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/bootstrap-learning/lessons/index.html">الدروس</a><a href="/en/bootstrap-learning/lessons/bs-04.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">الدرس 4 من 20</p>
+      <h1 class="lp-h1">الشبكة المتقدمة: المسافات والترتيب والتداخل</h1>
+      <p class="lp-lead">gutters وoffset وorder والصفوف المتداخلة والأعمدة المتساوية بـ row-cols.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-4">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>Gutters</h2><p>المسافة بين الأعمدة تُضبط بفئات <code>g-*</code> (أفقي ورأسي) أو <code>gx-*</code> و<code>gy-*</code>. القيم من 0 إلى 5.</p></article><article class="content-card"><h2>Offset وOrder وNesting</h2><ul><li><code>offset-md-2</code> يزيح العمود بمقدار عمودين.</li><li><code>order-1</code>…<code>order-5</code> يغير ترتيب العرض (وليس ترتيب HTML المقروء بقارئ الشاشة).</li><li>يمكن وضع <code>.row</code> جديدة داخل عمود لتقسيمه.</li><li><code>row-cols-2 row-cols-md-4</code> يحدد عدد الأعمدة لكل صف دون كتابة <code>col-*</code> لكل عنصر.</li></ul></article></div>
+<article class="body-card key-card"><p>الترتيب البصري عبر order لا يغير ترتيب القراءة لقارئ الشاشة، فاستخدمه بحذر.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="container"&gt;
+&lt;div class="row row-cols-2 row-cols-md-4 g-3 mb-3"&gt;
+&lt;div class="col"&gt;&lt;div class="p-2 border bg-light"&gt;A&lt;/div&gt;&lt;/div&gt;
+&lt;div class="col"&gt;&lt;div class="p-2 border bg-light"&gt;B&lt;/div&gt;&lt;/div&gt;
+&lt;div class="col"&gt;&lt;div class="p-2 border bg-light"&gt;C&lt;/div&gt;&lt;/div&gt;
+&lt;div class="col"&gt;&lt;div class="p-2 border bg-light"&gt;D&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row"&gt;
+&lt;div class="col-md-4 offset-md-4 order-2 order-md-1"&gt;&lt;div class="p-2 border bg-warning-subtle"&gt;Offset&lt;/div&gt;&lt;/div&gt;
+&lt;div class="col-md-4 order-1 order-md-2"&gt;
+&lt;div class="row"&gt;&lt;div class="col-6"&gt;&lt;div class="p-1 border"&gt;متداخل&lt;/div&gt;&lt;/div&gt;&lt;div class="col-6"&gt;&lt;div class="p-1 border"&gt;متداخل&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p><code>row-cols-*</code> تحدد عدد الأعمدة في الصف. العمود الثاني يحتوي صفًا داخليًا. الترتيب يتبدل على الهاتف بفضل <code>order-1</code> و<code>order-2</code>.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">غيّر المسافة بين الأعمدة الأربعة إلى &lt;code&gt;g-5&lt;/code&gt; ولاحظ الفرق.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ماذا تفعل الفئة g-3؟</strong></p><ul><li>تضبط المسافة بين الأعمدة أفقيًا ورأسيًا</li><li>تغير اللون</li><li>تضاعف العمود</li><li>تخفي الصف</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تضبط المسافة بين الأعمدة أفقيًا ورأسيًا</strong></p></details></li><li><p><strong>ماذا يفعل offset-md-2؟</strong></p><ul><li>يزيح العمود بمقدار عمودين من md فما فوق</li><li>يحذف عمودين</li><li>يغير اللون</li><li>يجعل العمود مخفيًا</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يزيح العمود بمقدار عمودين من md فما فوق</strong></p></details></li><li><p><strong>ما فائدة row-cols-md-3؟</strong></p><ul><li>ثلاثة أعمدة في كل صف من md دون تحديد col لكل عنصر</li><li>ثلاثة صفوف</li><li>ثلاث حاويات</li><li>ثلاث نقاط فاصلة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>ثلاثة أعمدة في كل صف من md دون تحديد col لكل عنصر</strong></p></details></li><li><p><strong>أي فئة تضبط المسافة الأفقية فقط بين الأعمدة؟</strong></p><ul><li>gx-4</li><li>gy-4</li><li>g-0 row</li><li>offset-4</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>gx-4</strong></p><p>gx-* للمسافة الأفقية و gy-* للعمودية و g-* للاثنتين.</p></details></li><li><p><strong>أين يوضع الصف المتداخل (nested row)؟</strong></p><ul><li>مباشرة داخل صف آخر</li><li>خارج الحاوية container</li><li>داخل عمود col</li><li>داخل وسم head</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>داخل عمود col</strong></p><p>يوضع .row جديد داخل عمود لتقسيم هذا العمود إلى 12 جزءاً من جديد.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-4">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/bootstrap-learning/lessons/bs-03.html"><small>الدرس السابق</small><strong>نظام الشبكة (Grid)</strong></a>
+        <a rel="next" href="/bootstrap-learning/lessons/bs-05.html"><small>الدرس التالي</small><strong>النصوص والألوان</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/bootstrap-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

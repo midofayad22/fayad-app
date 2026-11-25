@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>File Systems — Computer Basics | FAYBIT</title>
+    <meta name="description" content="Explain what a file system does between the application and the disk. Know the concepts of inode , directory and path. Compare NTFS, ext4, FAT32 and APFS.…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-25.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-25.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-25.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-25.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="File Systems — Computer Basics | FAYBIT" />
+    <meta property="og:description" content="Explain what a file system does between the application and the disk. Know the concepts of inode , directory and path. Compare NTFS, ext4, FAT32 and APFS.…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-25.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Computer Basics","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"File Systems","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-25.html"}]},{"@type":"LearningResource","name":"File Systems","description":"Explain what a file system does between the application and the disk. Know the concepts of inode , directory and path. Compare NTFS, ext4, FAT32 and APFS.…","url":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-25.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Computer Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Computer Basics"><a href="/en/fundamentals/computer-basics/lessons/index.html">Lessons</a><a href="/fundamentals/computer-basics/lessons/com-25.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/computer-basics/lessons/index.html">Computer Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 25 of 30</p>
+      <h1 class="lp-h1">File Systems</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-25">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>File Systems</h2>
+<div><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Explain what a file system does between the application and the disk.</li><li>Know the concepts of <span class="term">inode</span>, directory and path.</li><li>Compare NTFS, ext4, FAT32 and APFS.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>The storage lesson (com-06) and the files and folders lesson (com-11).</li></ul>
+</section>
+<section class="lesson-section "><h3>A disk knows nothing about files</h3>
+<p>A disk is only a numbered array of blocks. A <span class="term">file system</span> is the layer that organises those blocks into names, folders, sizes, permissions and dates, and tracks which blocks are free or used.</p>
+<figure class="doc-diagram" role="group" aria-label="Diagram"><figcaption>Simplified layout of a Unix-style file system</figcaption><ol class="doc-layers"><li><strong>Superblock</strong><span>global facts: size, number of blocks, state</span></li><li><strong>Inode table</strong><span>one record per file: size, owner, permissions, block locations</span></li><li><strong>Data blocks</strong><span>the actual file contents</span></li></ol></figure>
+<p>The name is not part of the file itself; it is stored in the directory, which maps a name to an <span class="term">inode</span> number. That is why one file can have several names (hard links) and why renaming does not copy the content.</p>
+</section>
+<section class="lesson-section "><h3>What happens when you save a file?</h3>
+<figure class="doc-diagram" role="group" aria-label="Diagram"><figcaption>Saving a file</figcaption><ol class="doc-flow"><li><strong>Application</strong><span>calls write()</span></li><li><strong>Page cache</strong><span>the kernel writes data to RAM first for speed</span></li><li><strong>File system</strong><span>allocates free blocks and updates the inode and directory</span></li><li><strong>Disk</strong><span>blocks are written later, or at once on fsync()</span></li></ol></figure>
+</section>
+<section class="lesson-section "><h3>Common types</h3>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">File system</th><th scope="col">Used by</th><th scope="col">Notes</th></tr></thead><tbody><tr><th scope="row">NTFS</th><td>Windows</td><td>permissions, encryption, journaling</td></tr><tr><th scope="row">ext4</th><td>Linux</td><td>journaling, good performance, default on many distributions</td></tr><tr><th scope="row">APFS</th><td>macOS and iOS</td><td>snapshots and built-in encryption</td></tr><tr><th scope="row">FAT32 / exFAT</th><td>USB sticks and cards</td><td>works everywhere; FAT32 cannot hold a file over 4 GB</td></tr></tbody></table></div>
+<p><span class="term">Journaling</span> means the system records an operation in a log before doing it, so after a power cut it replays the log and repairs the state instead of scanning the whole disk.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">bash</span></figcaption><pre dir="ltr"><code>df -h              # mounted file systems and free space
+ls -li             # show inode numbers
+ln notes.txt alias.txt   # create a second name (hard link)</code></pre></figure>
+<details class="doc-exercise"><summary><span>Exercise</span> Why is deleting a huge file instant while copying it takes time?</summary><div class="doc-solution"><strong>Show solution</strong><p>Deleting removes the directory entry and marks the blocks free without erasing their content. Copying reads every block and writes it elsewhere. That is also why a deleted file can sometimes be recovered before new data overwrites it.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>A file system turns disk blocks into names and folders.</li><li>The name lives in the directory; the data in the inode and blocks.</li><li>Journaling protects against power loss.</li></ul><p class="doc-next"><strong>Next step:</strong> How does the system talk to the disk, the printer and other devices? Drivers.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>Core concept</strong>
+<p>The file system gives data names, structure and permissions on top of a disk that only knows blocks.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Hands-on practice</span>
+<h3>Try it yourself</h3>
+</div>
+</div>
+<p>Run &lt;code&gt;df -h&lt;/code&gt; (Linux/macOS) or open “This PC” (Windows) and record the file system type of each drive.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What happens on a page fault?</strong></p><ul><li>The kernel loads the missing page from disk and execution continues</li><li>The program is always deleted</li><li>The machine powers off</li><li>Memory is erased</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The kernel loads the missing page from disk and execution continues</strong></p></details></li><li><p><strong>With 4096-byte pages, what are the page number and offset of address 0x00005FFF?</strong></p><ul><li>Page 5, offset 0xFFF</li><li>Page 0xFFF, offset 5</li><li>Page 6, offset 0</li><li>Page 4, offset 0x5FF</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Page 5, offset 0xFFF</strong></p><p>The offset is the low 12 bits (0xFFF) and the page number is the address shifted right by 12, which is 5.</p></details></li><li><p><strong>What is wrong with saying virtual memory means extra RAM?</strong></p><ul><li>Nothing is wrong</li><li>It is an abstraction plus protection, and swap is far slower than RAM</li><li>It is a full virtual machine</li><li>It is memory faster than RAM</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>It is an abstraction plus protection, and swap is far slower than RAM</strong></p><p>It gives each process a private address space and adds neither real capacity nor speed.</p></details></li><li><p><strong>A machine becomes extremely slow because the kernel constantly moves pages between RAM and disk. What is this called?</strong></p><ul><li>Ideal paging</li><li>Thrashing</li><li>Booting</li><li>Caching</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Thrashing</strong></p><p>Constant page faults signal memory pressure and are called thrashing.</p></details></li><li><p><strong>What happens when a process touches a forbidden address?</strong></p><ul><li>It gets extra RAM</li><li>It runs faster</li><li>A segmentation fault occurs and the kernel terminates the process</li><li>The whole system restarts</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A segmentation fault occurs and the kernel terminates the process</strong></p><p>Each page has read, write and execute permissions, and violating them ends only the offending process.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-25">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/computer-basics/lessons/com-24.html"><small>Previous lesson</small><strong>Memory Management and Virtual Memory</strong></a>
+        <a rel="next" href="/en/fundamentals/computer-basics/lessons/com-26.html"><small>Next lesson</small><strong>Drivers, Device Management and Interrupts</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/computer-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

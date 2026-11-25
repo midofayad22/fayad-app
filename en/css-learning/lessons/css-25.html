@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="css" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Animations — CSS | FAYBIT</title>
+    <meta name="description" content="Animations: Learn how CSS keyframes create animations. — CSS." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/css-learning/lessons/css-25.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/css-learning/lessons/css-25.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/css-learning/lessons/css-25.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/css-learning/lessons/css-25.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Animations — CSS | FAYBIT" />
+    <meta property="og:description" content="Animations: Learn how CSS keyframes create animations. — CSS." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/css-learning/lessons/css-25.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"CSS","item":"https://faybit.vercel.app/en/css-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Animations","item":"https://faybit.vercel.app/en/css-learning/lessons/css-25.html"}]},{"@type":"LearningResource","name":"Animations","description":"Animations: Learn how CSS keyframes create animations. — CSS.","url":"https://faybit.vercel.app/en/css-learning/lessons/css-25.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"CSS — FAYBIT","url":"https://faybit.vercel.app/css-learning/css-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="CSS"><a href="/en/css-learning/lessons/index.html">Lessons</a><a href="/css-learning/lessons/css-25.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/css-learning/lessons/index.html">CSS</a></nav>
+      <p class="lp-eyebrow">Lesson 25 of 30</p>
+      <h1 class="lp-h1">Animations</h1>
+      <p class="lp-lead">Learn how CSS keyframes create animations.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-25">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>Your first CSS code</h2></div>
+</div>
+<pre dir="ltr"><code>@keyframes fade {
+from {
+opacity: 0;
+}
+to {
+opacity: 1;
+}
+}
+.box {
+animation: fade 1s ease;
+}</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Write CSS and see the result</h2></div>
+</div>
+<p class="practice-description">Change the code below, then run it to see the result.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which rule defines animation stages?</strong></p><ul><li>@keyframes</li><li>@animation</li><li>@motion</li><li>@frames-css</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>@keyframes</strong></p></details></li><li><p><strong>Which property applies an animation to an element?</strong></p><ul><li>animation</li><li>animate</li><li>keyframe</li><li>motion</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>animation</strong></p></details></li><li><p><strong>What does opacity: 0 mean?</strong></p><ul><li>The element is fully transparent</li><li>The element is fully visible</li><li>The element is removed from HTML</li><li>The element becomes larger</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The element is fully transparent</strong></p></details></li><li><p><strong>What is the result of @keyframes spin { to { transform: rotate(360deg); } } with animation: spin 2s linear infinite?</strong></p><ul><li>One rotation, then it stops</li><li>Continuous rotation every 2 seconds at constant speed</li><li>It moves forward and backward</li><li>Nothing, because from is missing</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Continuous rotation every 2 seconds at constant speed</strong></p><p>infinite repeats forever and linear keeps the speed constant. When from is missing, the browser uses the element's current state as the start.</p></details></li><li><p><strong>After a fade-in animation ends, the element suddenly returns to opacity: 0. What is the fix?</strong></p><ul><li>animation-fill-mode: forwards</li><li>animation-iteration-count: 0</li><li>transition: none</li><li>animation-direction: reverse</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>animation-fill-mode: forwards</strong></p><p>After finishing, styles go back to their original state, and forwards keeps the values from the last keyframe.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-25">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/css-learning/lessons/css-24.html"><small>Previous lesson</small><strong>Transforms</strong></a>
+        <a rel="next" href="/en/css-learning/lessons/css-26.html"><small>Next lesson</small><strong>CSS Variables</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/css-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

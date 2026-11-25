@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>Users, Permissions and OS Security — Computer Basics | FAYBIT</title>
+    <meta name="description" content="Read Linux file permissions (rwx). Understand the least privilege principle. Know the difference between authentication and authorisation. The files…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-28.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-28.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-28.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-28.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Users, Permissions and OS Security — Computer Basics | FAYBIT" />
+    <meta property="og:description" content="Read Linux file permissions (rwx). Understand the least privilege principle. Know the difference between authentication and authorisation. The files…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-28.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Computer Basics","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Users, Permissions and OS Security","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-28.html"}]},{"@type":"LearningResource","name":"Users, Permissions and OS Security","description":"Read Linux file permissions (rwx). Understand the least privilege principle. Know the difference between authentication and authorisation. The files…","url":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-28.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Computer Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Computer Basics"><a href="/en/fundamentals/computer-basics/lessons/index.html">Lessons</a><a href="/fundamentals/computer-basics/lessons/com-28.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/computer-basics/lessons/index.html">Computer Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 28 of 30</p>
+      <h1 class="lp-h1">Users, Permissions and OS Security</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-28">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>Users, Permissions and OS Security</h2>
+<div><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Read Linux file permissions (rwx).</li><li>Understand the <span class="term">least privilege</span> principle.</li><li>Know the difference between authentication and authorisation.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>The files (com-11), cybersecurity (com-17) and OS architecture (com-21) lessons.</li></ul>
+</section>
+<section class="lesson-section "><h3>Who are you, and what may you do?</h3>
+<p><span class="term">Authentication</span> answers “who are you?” (password, fingerprint, key). <span class="term">Authorization</span> answers “what are you allowed to do?”. The system checks the second every time you open a file or run a program.</p>
+</section>
+<section class="lesson-section "><h3>Unix permissions</h3>
+<p>Every file has an owner, a group and everyone else, and each class has three permissions: read <code>r</code>, write <code>w</code> and execute <code>x</code>.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">bash</span></figcaption><pre dir="ltr"><code>ls -l report.sh
+-rwxr-x--- 1 sara devs 220 Nov  9 10:00 report.sh</code></pre></figure>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Part</th><th scope="col">Value</th><th scope="col">Meaning</th></tr></thead><tbody><tr><th scope="row">Owner</th><td>rwx</td><td>sara: read, write, execute</td></tr><tr><th scope="row">Group</th><td>r-x</td><td>devs: read and execute only</td></tr><tr><th scope="row">Others</th><td>---</td><td>nothing</td></tr></tbody></table></div>
+<p>Numeric form: r=4, w=2, x=1, so the permissions above equal <code>750</code>.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">bash</span></figcaption><pre dir="ltr"><code>chmod 750 report.sh     # set permissions
+chmod u+x script.sh     # add execute for the owner
+chown sara:devs report.sh</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>Windows and UAC</h3>
+<p>Windows uses access control lists (ACLs), finer than rwx, and adds <span class="term">UAC</span>: even an administrator runs with ordinary rights until they approve a confirmation prompt.</p>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>Setting permissions to <code>777</code> to fix “Permission denied”; that opens the file to everyone.</li><li>Always working as administrator: any malware inherits those rights.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> What are the permissions of a file set to 640? Who can edit it?</summary><div class="doc-solution"><strong>Show solution</strong><p>6 = rw- for the owner, 4 = r-- for the group, 0 = nothing for others. Only the owner can edit it; group members can only read it.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>Authentication proves identity; authorisation decides what is allowed.</li><li>rwx is the basis of Unix permissions, and least privilege is the golden rule.</li></ul><p class="doc-next"><strong>Next step:</strong> We put it all into practice in a hands-on Linux and Windows lab.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>Core concept</strong>
+<p>A secure system trusts no program or user more than necessary.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Hands-on practice</span>
+<h3>Try it yourself</h3>
+</div>
+</div>
+<p>Create a test file and set its permissions to 600, then 644, then 755, and note the &lt;code&gt;ls -l&lt;/code&gt; output each time.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which boot order is correct?</strong></p><ul><li>Firmware, then bootloader, then kernel</li><li>Kernel, then firmware, then bootloader</li><li>Bootloader, then firmware, then kernel</li><li>Desktop, then kernel</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Firmware, then bootloader, then kernel</strong></p></details></li><li><p><strong>After installing Windows after Linux, the Linux option vanished at startup. What is the likely explanation?</strong></p><ul><li>The disk burned out</li><li>The Windows installer replaced the bootloader with its own, which does not know Linux</li><li>The kernel was deleted from RAM</li><li>Linux expired</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The Windows installer replaced the bootloader with its own, which does not know Linux</strong></p><p>The fix is reinstalling GRUB or adding a Linux entry in the UEFI settings.</p></details></li><li><p><strong>What does Secure Boot in UEFI do?</strong></p><ul><li>Speeds up the internet</li><li>Verifies the bootloader signature before running it</li><li>Removes viruses automatically</li><li>Compresses the disk</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Verifies the bootloader signature before running it</strong></p><p>Old BIOS verifies nothing, while UEFI can block unsigned bootloaders.</p></details></li><li><p><strong>Which part loads the kernel into RAM?</strong></p><ul><li>POST</li><li>The power supply</li><li>The bootloader such as GRUB</li><li>The login screen</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The bootloader such as GRUB</strong></p><p>The firmware finds the boot device and starts the bootloader, which loads the kernel.</p></details></li><li><p><strong>Which is the first process started after kernel initialisation on modern Linux?</strong></p><ul><li>systemd (init)</li><li>wininit</li><li>GRUB</li><li>POST</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>systemd (init)</strong></p><p>The first process starts the other services; wininit is the Windows counterpart.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-28">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/computer-basics/lessons/com-27.html"><small>Previous lesson</small><strong>The Boot Process</strong></a>
+        <a rel="next" href="/en/fundamentals/computer-basics/lessons/com-29.html"><small>Next lesson</small><strong>Hands-on Lab: Linux and Windows</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/computer-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

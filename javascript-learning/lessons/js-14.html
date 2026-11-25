@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="js" />
+    <meta name="robots" content="noindex, follow" />
+    <title>دوال الكائنات — JavaScript | FAYBIT</title>
+    <meta name="description" content="تعلّم كيف يمكن للكائنات أن تحتوي على Functions تُعرف باسم Methods." />
+    <link rel="canonical" href="https://faybit.vercel.app/javascript-learning/lessons/js-14.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/javascript-learning/lessons/js-14.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-14.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/javascript-learning/lessons/js-14.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="دوال الكائنات — JavaScript | FAYBIT" />
+    <meta property="og:description" content="تعلّم كيف يمكن للكائنات أن تحتوي على Functions تُعرف باسم Methods." />
+    <meta property="og:url" content="https://faybit.vercel.app/javascript-learning/lessons/js-14.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript","item":"https://faybit.vercel.app/javascript-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"دوال الكائنات","item":"https://faybit.vercel.app/javascript-learning/lessons/js-14.html"}]},{"@type":"LearningResource","name":"دوال الكائنات","description":"تعلّم كيف يمكن للكائنات أن تحتوي على Functions تُعرف باسم Methods.","url":"https://faybit.vercel.app/javascript-learning/lessons/js-14.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript — FAYBIT","url":"https://faybit.vercel.app/javascript-learning/javascript-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript"><a href="/javascript-learning/lessons/index.html">الدروس</a><a href="/en/javascript-learning/lessons/js-14.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/javascript-learning/lessons/index.html">JavaScript</a></nav>
+      <p class="lp-eyebrow">الدرس 14 من 25</p>
+      <h1 class="lp-h1">دوال الكائنات</h1>
+      <p class="lp-lead">تعلّم كيف يمكن للكائنات أن تحتوي على Functions تُعرف باسم Methods.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-14">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>const user = {
+name: "FAYBIT",
+greet() {
+return "Hello " + this.name;
+}
+};
+document.getElementById("jsResult").textContent =
+user.greet();</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>
+<p><strong>Method</strong> هي Function مرتبطة بكائن Object.</p>
+<p>يمكن تعريف Method داخل Object.</p>
+<p>الكلمة المفتاحية <strong>this</strong> تشير في هذا السياق إلى الكائن الذي ينتمي إليه الـMethod.</p>
+<p>Methods تسمح للكائن بتجميع البيانات والسلوك معًا.</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>اكتب JavaScript</h2></div>
+</div>
+<p class="practice-description">غيّر الكود الموجود بالأسفل ثم شغّله لترى النتيجة.</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما هي Method؟</strong></p><ul><li>Function داخل Object</li><li>خاصية CSS</li><li>HTML Attribute</li><li>Array</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Function داخل Object</strong></p></details></li><li><p><strong>ما الذي تشير إليه this غالبًا داخل Method الخاصة بالكائن؟</strong></p><ul><li>الكائن الحالي</li><li>ملف CSS</li><li>المتصفح فقط</li><li>Array دائمًا</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>الكائن الحالي</strong></p></details></li><li><p><strong>كيف تستدعي greet داخل user؟</strong></p><ul><li>user.greet()</li><li>greet.user</li><li>user-&gt;greet</li><li>call.user</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>user.greet()</strong></p></details></li><li><p><strong>ما ناتج الكود؟ const c = { count: 0, inc() { this.count++; } }; c.inc(); c.inc(); console.log(c.count);</strong></p><ul><li>0</li><li>1</li><li>2</li><li>NaN</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>2</strong></p><p>عند استدعاء c.inc() يشير this إلى الكائن c، فيزيد count في كل استدعاء. بعد استدعاءين تصبح القيمة 2.</p></details></li><li><p><strong>ما المشكلة؟ const c = { count: 0, inc() { count++; } }; c.inc();</strong></p><ul><li>نسيان this فيبحث الكود عن متغير count منفصل غير موجود فيرمي ReferenceError</li><li>لا يمكن استخدام ++ داخل method</li><li>لا يمكن تعريف method داخل كائن بهذه الصيغة</li><li>count خاصية للقراءة فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>نسيان this فيبحث الكود عن متغير count منفصل غير موجود فيرمي ReferenceError</strong></p><p>خصائص الكائن لا تصبح متغيرات داخل الـ method، ويجب الوصول إليها عبر this.count. بدون this يُبحث عن متغير count في النطاق فلا يوجد.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-14">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/javascript-learning/lessons/js-13.html"><small>الدرس السابق</small><strong>الكائنات Objects</strong></a>
+        <a rel="next" href="/javascript-learning/lessons/js-15.html"><small>الدرس التالي</small><strong>مقدمة إلى DOM</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/javascript-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

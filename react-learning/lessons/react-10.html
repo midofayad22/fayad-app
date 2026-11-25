@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="react" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Forms — React | FAYBIT</title>
+    <meta name="description" content="تعلم كيفية التعامل مع حقول الإدخال والنماذج داخل تطبيقات React." />
+    <link rel="canonical" href="https://faybit.vercel.app/react-learning/lessons/react-10.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/react-learning/lessons/react-10.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/react-learning/lessons/react-10.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/react-learning/lessons/react-10.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Forms — React | FAYBIT" />
+    <meta property="og:description" content="تعلم كيفية التعامل مع حقول الإدخال والنماذج داخل تطبيقات React." />
+    <meta property="og:url" content="https://faybit.vercel.app/react-learning/lessons/react-10.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"React","item":"https://faybit.vercel.app/react-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Forms","item":"https://faybit.vercel.app/react-learning/lessons/react-10.html"}]},{"@type":"LearningResource","name":"Forms","description":"تعلم كيفية التعامل مع حقول الإدخال والنماذج داخل تطبيقات React.","url":"https://faybit.vercel.app/react-learning/lessons/react-10.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"React — FAYBIT","url":"https://faybit.vercel.app/react-learning/react-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="React"><a href="/react-learning/lessons/index.html">الدروس</a><a href="/en/react-learning/lessons/react-10.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/react-learning/lessons/index.html">React</a></nav>
+      <p class="lp-eyebrow">الدرس 10 من 30</p>
+      <h1 class="lp-h1">Forms</h1>
+      <p class="lp-lead">تعلم كيفية التعامل مع حقول الإدخال والنماذج داخل تطبيقات React.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-10">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<p>
+Forms تستخدم لجمع البيانات من المستخدم مثل الاسم والبريد
+الإلكتروني وكلمة المرور.
+</p>
+<p>
+يمكن التحكم في قيم الحقول باستخدام State، وهذا يسمى
+Controlled Components.
+</p>
+<p>
+يمكن التعامل مع إرسال النموذج باستخدام onSubmit ومنع السلوك
+الافتراضي للمتصفح عند الحاجة.
+</p>
+</div></article>
+<article class="body-card key-card"><p>React تسمح لك بربط قيم حقول النموذج مع State والتحكم فيها.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>الكود</h2></div>
+</div>
+<pre dir="ltr"><code>function App() {
+return (
+&lt;form&gt;
+&lt;input placeholder="اكتب اسمك" /&gt;
+&lt;button type="submit"&gt;إرسال&lt;/button&gt;
+&lt;/form&gt;
+);
+}</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>هذا يجعل التحقق من البيانات وإرسالها إلى API أسهل.</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span></div>
+</div>
+<p class="practice-description">أضف input آخر إلى النموذج.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ماذا تستخدم Forms لجمعه؟</strong></p><ul><li>بيانات المستخدم</li><li>ألوان CSS فقط</li><li>صور فقط</li><li>ملفات JavaScript فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>بيانات المستخدم</strong></p></details></li><li><p><strong>ما الحدث المستخدم غالبًا عند إرسال Form؟</strong></p><ul><li>onSubmit</li><li>onFormOnly</li><li>onSendCSS</li><li>submitHTML</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>onSubmit</strong></p></details></li><li><p><strong>ما معنى Controlled Component؟</strong></p><ul><li>قيمة الحقل يتم التحكم فيها من خلال React State</li><li>عنصر CSS</li><li>ملف HTML</li><li>قاعدة بيانات</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>قيمة الحقل يتم التحكم فيها من خلال React State</strong></p></details></li><li><p><strong>ما الذي يجعل حقل الإدخال Controlled؟</strong></p><ul><li>&lt;input value={name} onChange={e =&gt; setName(e.target.value)} /&gt;</li><li>&lt;input type=&quot;text&quot;&gt;</li><li>&lt;input id=&quot;name&quot;&gt;</li><li>&lt;input /&gt;</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>&lt;input value={name} onChange={e =&gt; setName(e.target.value)} /&gt;</strong></p><p>قيمة الحقل تأتي من state ويحدّثها onChange.</p></details></li><li><p><strong>لماذا نستدعي e.preventDefault() في onSubmit؟</strong></p><ul><li>لحذف النموذج</li><li>لتشفير البيانات</li><li>لتسريع الشبكة</li><li>لمنع إعادة تحميل الصفحة الافتراضية عند الإرسال</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لمنع إعادة تحميل الصفحة الافتراضية عند الإرسال</strong></p><p>بدونها يعيد المتصفح تحميل الصفحة ويضيع state.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-10">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/react-learning/lessons/react-09.html"><small>الدرس السابق</small><strong>Lists &amp; Keys</strong></a>
+        <a rel="next" href="/react-learning/lessons/react-11.html"><small>الدرس التالي</small><strong>تركيب المكونات Component Composition</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/react-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

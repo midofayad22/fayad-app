@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="css" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Selectors — CSS | FAYBIT</title>
+    <meta name="description" content="Selectors: Learn how CSS selectors target HTML elements. — CSS." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/css-learning/lessons/css-03.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/css-learning/lessons/css-03.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/css-learning/lessons/css-03.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/css-learning/lessons/css-03.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Selectors — CSS | FAYBIT" />
+    <meta property="og:description" content="Selectors: Learn how CSS selectors target HTML elements. — CSS." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/css-learning/lessons/css-03.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"CSS","item":"https://faybit.vercel.app/en/css-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Selectors","item":"https://faybit.vercel.app/en/css-learning/lessons/css-03.html"}]},{"@type":"LearningResource","name":"Selectors","description":"Selectors: Learn how CSS selectors target HTML elements. — CSS.","url":"https://faybit.vercel.app/en/css-learning/lessons/css-03.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"CSS — FAYBIT","url":"https://faybit.vercel.app/css-learning/css-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="CSS"><a href="/en/css-learning/lessons/index.html">Lessons</a><a href="/css-learning/lessons/css-03.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/css-learning/lessons/index.html">CSS</a></nav>
+      <p class="lp-eyebrow">Lesson 3 of 30</p>
+      <h1 class="lp-h1">Selectors</h1>
+      <p class="lp-lead">Learn how CSS selectors target HTML elements.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-3">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>Your first CSS code</h2></div>
+</div>
+<pre dir="ltr"><code>p {
+color: #0b5d91;
+}
+.title {
+color: #0f807a;
+}</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Write CSS and see the result</h2></div>
+</div>
+<p class="practice-description">Change the code below, then run it to see the result.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What does a selector do?</strong></p><ul><li>Selects elements to style</li><li>Creates HTML elements</li><li>Runs JavaScript</li><li>Creates a database</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Selects elements to style</strong></p></details></li><li><p><strong>Which selector targets a class named title?</strong></p><ul><li>.title</li><li>#title</li><li>title()</li><li>class-title</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>.title</strong></p></details></li><li><p><strong>What does the p selector target?</strong></p><ul><li>Paragraph elements</li><li>Elements with an ID</li><li>Elements with a class</li><li>Images</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Paragraph elements</strong></p></details></li><li><p><strong>A p element has the class note. The rules are .note { color: green; } and p { color: red; }. What is the text color?</strong></p><ul><li>Green, because a class selector is more specific than an element selector</li><li>Red, because p is written last</li><li>A mix of green and red</li><li>Black, because the two rules conflict and cancel out</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Green, because a class selector is more specific than an element selector</strong></p><p>A class selector is stronger than an element selector, so green wins regardless of order. A conflict does not cancel both rules; the stronger one is chosen.</p></details></li><li><p><strong>What does the selector h1, h2 { color: blue; } target?</strong></p><ul><li>Only h2 elements located inside an h1</li><li>All h1 elements and all h2 elements</li><li>An h1 immediately followed by an h2</li><li>An element named h1,h2</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>All h1 elements and all h2 elements</strong></p><p>A comma groups several selectors into one rule so it applies to each separately. Nesting one element inside another requires a space, not a comma.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-3">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/css-learning/lessons/css-02.html"><small>Previous lesson</small><strong>CSS Syntax</strong></a>
+        <a rel="next" href="/en/css-learning/lessons/css-04.html"><small>Next lesson</small><strong>Colors</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/css-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

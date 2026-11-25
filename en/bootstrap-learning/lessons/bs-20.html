@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>Project: A Responsive Landing Page — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="Combine what you've learned in a full page: navbar, hero section, cards, form, and footer." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-20.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-20.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-20.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-20.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Project: A Responsive Landing Page — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="Combine what you've learned in a full page: navbar, hero section, cards, form, and footer." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-20.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Project: A Responsive Landing Page","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-20.html"}]},{"@type":"LearningResource","name":"Project: A Responsive Landing Page","description":"Combine what you've learned in a full page: navbar, hero section, cards, form, and footer.","url":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-20.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/en/bootstrap-learning/lessons/index.html">Lessons</a><a href="/bootstrap-learning/lessons/bs-20.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">Lesson 20 of 20</p>
+      <h1 class="lp-h1">Project: A Responsive Landing Page</h1>
+      <p class="lp-lead">Combine what you've learned in a full page: navbar, hero section, cards, form, and footer.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-20">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Project plan</h2><ol><li>A <code>navbar-expand-md</code> navbar.</li><li>A hero section with a heading and a call-to-action button.</li><li>A <code>row-cols-1 row-cols-md-3</code> card grid.</li><li>A simple subscription form with validation.</li><li>A footer with a <code>bg-body-tertiary</code> background.</li></ol></article><article class="content-card"><h2>Tips</h2><ul><li>Start with mobile, then expand with breakpoints.</li><li>Use <code>container</code> once per section.</li><li>Test dark mode and RTL direction.</li></ul></article></div>
+<article class="body-card key-card"><p>Start from mobile, build each section with a container and a grid, then test both modes and both directions.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;nav class="navbar navbar-expand-md bg-body-tertiary border-bottom"&gt;
+&lt;div class="container"&gt;&lt;a class="navbar-brand fw-bold" href="#"&gt;FAYBIT&lt;/a&gt;&lt;a href="#join" class="btn btn-sm btn-primary"&gt;Join&lt;/a&gt;&lt;/div&gt;
+&lt;/nav&gt;
+&lt;header class="py-5 text-center bg-primary-subtle"&gt;
+&lt;div class="container"&gt;
+&lt;h1 class="display-5 fw-bold"&gt;Learn the web hands-on&lt;/h1&gt;
+&lt;p class="lead mx-auto" style="max-width:36rem"&gt;Interactive lessons, exercises, and live preview.&lt;/p&gt;
+&lt;a href="#join" class="btn btn-primary btn-lg"&gt;Start now&lt;/a&gt;
+&lt;/div&gt;
+&lt;/header&gt;
+&lt;section class="container py-5"&gt;
+&lt;div class="row row-cols-1 row-cols-md-3 g-3"&gt;
+&lt;div class="col"&gt;&lt;div class="card h-100"&gt;&lt;div class="card-body"&gt;&lt;h2 class="h5 card-title"&gt;Short lessons&lt;/h2&gt;&lt;p class="card-text mb-0"&gt;One idea in each lesson.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="col"&gt;&lt;div class="card h-100"&gt;&lt;div class="card-body"&gt;&lt;h2 class="h5 card-title"&gt;Practical exercises&lt;/h2&gt;&lt;p class="card-text mb-0"&gt;Write the code and try it right away.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="col"&gt;&lt;div class="card h-100"&gt;&lt;div class="card-body"&gt;&lt;h2 class="h5 card-title"&gt;Quizzes&lt;/h2&gt;&lt;p class="card-text mb-0"&gt;Check your understanding after each lesson.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+&lt;section id="join" class="container pb-5" style="max-width:520px"&gt;
+&lt;form class="input-group" onsubmit="return false"&gt;
+&lt;input type="email" class="form-control" placeholder="Your email address" aria-label="Email address" required&gt;
+&lt;button class="btn btn-primary" type="submit"&gt;Subscribe&lt;/button&gt;
+&lt;/form&gt;
+&lt;/section&gt;
+&lt;footer class="py-3 text-center text-body-secondary bg-body-tertiary border-top"&gt;&lt;small&gt;© FAYBIT&lt;/small&gt;&lt;/footer&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>The page uses everything you've learned: navbar, hero, card grid, input-group, and footer. Try shrinking the preview to see the columns turn into a single column.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Add a fourth FAQ section using the accordion, then test dark mode by putting &lt;code&gt;data-bs-theme="dark"&lt;/code&gt; on the first tag.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Where do you start when designing a responsive page with Bootstrap?</strong></p><ul><li>From the mobile design, then expanding with breakpoints</li><li>From the large screen only</li><li>From print</li><li>From the JavaScript file</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>From the mobile design, then expanding with breakpoints</strong></p></details></li><li><p><strong>Which class gives a secondary background for the footer that adapts to dark mode?</strong></p><ul><li>bg-body-tertiary</li><li>bg-white</li><li>bg-light always</li><li>bg-transparent</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>bg-body-tertiary</strong></p></details></li><li><p><strong>Where is container usually placed in the page?</strong></p><ul><li>Inside each section to align the content</li><li>Around the html</li><li>Inside each button</li><li>It is never used</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Inside each section to align the content</strong></p></details></li><li><p><strong>Which classes show one card per line on phones and three from md?</strong></p><ul><li>row row-cols-1 row-cols-md-3</li><li>row col-1 col-md-3</li><li>row cols-1 cols-md-3</li><li>container col-md-3</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>row row-cols-1 row-cols-md-3</strong></p><p>row-cols-* sets columns per row without writing col on each item.</p></details></li><li><p><strong>What is the recommended last step before finalizing the landing page?</strong></p><ul><li>Removing the viewport tag</li><li>Replacing the grid with tables</li><li>Testing dark mode and the RTL direction</li><li>Adding a single container for the whole page</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Testing dark mode and the RTL direction</strong></p><p>Testing in both modes and directions reveals late design bugs.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-20">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/bootstrap-learning/lessons/bs-19.html"><small>Previous lesson</small><strong>Dark Mode, RTL, and Customization with CSS Variables</strong></a>
+        <span></span>
+      </nav>
+      <p class="lp-all"><a href="/en/bootstrap-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

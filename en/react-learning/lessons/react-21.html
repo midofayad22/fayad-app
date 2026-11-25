@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="react" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Performance Optimization — React | FAYBIT</title>
+    <meta name="description" content="Learn the basic principles of improving React app performance and reducing unnecessary work." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/react-learning/lessons/react-21.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/react-learning/lessons/react-21.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/react-learning/lessons/react-21.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/react-learning/lessons/react-21.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Performance Optimization — React | FAYBIT" />
+    <meta property="og:description" content="Learn the basic principles of improving React app performance and reducing unnecessary work." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/react-learning/lessons/react-21.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"React","item":"https://faybit.vercel.app/en/react-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Performance Optimization","item":"https://faybit.vercel.app/en/react-learning/lessons/react-21.html"}]},{"@type":"LearningResource","name":"Performance Optimization","description":"Learn the basic principles of improving React app performance and reducing unnecessary work.","url":"https://faybit.vercel.app/en/react-learning/lessons/react-21.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"React — FAYBIT","url":"https://faybit.vercel.app/react-learning/react-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="React"><a href="/en/react-learning/lessons/index.html">Lessons</a><a href="/react-learning/lessons/react-21.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/react-learning/lessons/index.html">React</a></nav>
+      <p class="lp-eyebrow">Lesson 21 of 30</p>
+      <h1 class="lp-h1">Performance Optimization</h1>
+      <p class="lp-lead">Learn the basic principles of improving React app performance and reducing unnecessary work.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-21">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<p>
+Performance optimization means reducing the unnecessary work the app does.
+</p>
+<p>
+It is important first to understand why re-renders happen, and then identify the part that needs improvement.
+</p>
+<p>
+Tools such as React.memo, useMemo, and useCallback may help in certain cases, but they are not needed for every Component.
+</p>
+</div></article>
+<article class="body-card key-card"><p>Performance optimization starts with understanding the problem, not with randomly adding Optimization tools.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>The code</h2></div>
+</div>
+<pre dir="ltr"><code>function ProductList({ products }) {
+return products.map((product) =&gt; (
+&lt;Product
+key={product.id}
+product={product}
+/&gt;
+));
+}</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>Observe Render operations and heavy computations before choosing an optimization approach.</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span></div>
+</div>
+<p class="practice-description">Try to identify which Component in the example might need optimization.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is the goal of Performance Optimization?</strong></p><ul><li>Reducing unnecessary work and operations</li><li>Adding more CSS</li><li>Deleting Components</li><li>Disabling JavaScript</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Reducing unnecessary work and operations</strong></p></details></li><li><p><strong>What should you do before Optimization?</strong></p><ul><li>Understand the cause of the problem first</li><li>Use all Hooks</li><li>Delete State</li><li>Delete Components</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Understand the cause of the problem first</strong></p></details></li><li><p><strong>Should memoization be used in every Component?</strong></p><ul><li>No</li><li>Yes, always</li><li>Only in HTML</li><li>Only in CSS</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>No</strong></p></details></li><li><p><strong>What causes a component to re-render?</strong></p><ul><li>Only saving a file</li><li>A change in state or props, or the parent re-rendering</li><li>Just time passing</li><li>Changing screen color</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A change in state or props, or the parent re-rendering</strong></p><p>Understanding why renders happen comes before any optimization.</p></details></li><li><p><strong>What is the first step for a noticeable slowdown?</strong></p><ul><li>Add memo everywhere</li><li>Measure and find the slow part</li><li>Delete components</li><li>Rewrite the project</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Measure and find the slow part</strong></p><p>Measure first so you don't optimize what doesn't need it.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-21">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/react-learning/lessons/react-20.html"><small>Previous lesson</small><strong>Loading and Error States</strong></a>
+        <a rel="next" href="/en/react-learning/lessons/react-22.html"><small>Next lesson</small><strong>React.memo</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/react-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

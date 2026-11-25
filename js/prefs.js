@@ -53,7 +53,7 @@
   function applyTheme(theme) {
     root.setAttribute("data-theme", theme);
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", theme === "light" ? "#f5f9fa" : "#071014");
+    if (meta) meta.setAttribute("content", theme === "light" ? "#f4f8f9" : "#07121c");
   }
 
   function applyLang(lang) {

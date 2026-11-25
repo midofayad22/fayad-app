@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>شريط التنقل Navbar و Nav — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="شريط تنقل متجاوب يتحول إلى قائمة منسدلة على الهاتف، مع التبويبات." />
+    <link rel="canonical" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-11.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-11.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-11.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-11.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="شريط التنقل Navbar و Nav — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="شريط تنقل متجاوب يتحول إلى قائمة منسدلة على الهاتف، مع التبويبات." />
+    <meta property="og:url" content="https://faybit.vercel.app/bootstrap-learning/lessons/bs-11.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"شريط التنقل Navbar و Nav","item":"https://faybit.vercel.app/bootstrap-learning/lessons/bs-11.html"}]},{"@type":"LearningResource","name":"شريط التنقل Navbar و Nav","description":"شريط تنقل متجاوب يتحول إلى قائمة منسدلة على الهاتف، مع التبويبات.","url":"https://faybit.vercel.app/bootstrap-learning/lessons/bs-11.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/bootstrap-learning/lessons/index.html">الدروس</a><a href="/en/bootstrap-learning/lessons/bs-11.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">الدرس 11 من 20</p>
+      <h1 class="lp-h1">شريط التنقل Navbar و Nav</h1>
+      <p class="lp-lead">شريط تنقل متجاوب يتحول إلى قائمة منسدلة على الهاتف، مع التبويبات.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-11">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>Navbar</h2><p><code>.navbar</code> مع <code>.navbar-expand-lg</code> يظهر مفتوحًا من lg ومطويًا قبلها. المكونات: <code>.navbar-brand</code> و<code>.navbar-toggler</code> و<code>.collapse.navbar-collapse</code> و<code>.navbar-nav</code> و<code>.nav-link</code>. الزر يتحكم عبر <code>data-bs-toggle="collapse"</code> و<code>data-bs-target</code>.</p></article><article class="content-card"><h2>إمكانية الوصول</h2><p>أضف <code>aria-controls</code> و<code>aria-expanded</code> و<code>aria-label</code> لزر القائمة، و<code>aria-current="page"</code> للرابط الحالي.</p></article></div>
+<article class="body-card key-card"><p>navbar-expand-{bp} يحدد النقطة التي تُفتح عندها القائمة، والزر يفتحها بـ data-bs-toggle.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;nav class="navbar navbar-expand-md bg-body-tertiary border-bottom"&gt;
+&lt;div class="container-fluid"&gt;
+&lt;a class="navbar-brand fw-bold" href="#"&gt;FAYBIT&lt;/a&gt;
+&lt;button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="فتح القائمة"&gt;
+&lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+&lt;/button&gt;
+&lt;div class="collapse navbar-collapse" id="nav"&gt;
+&lt;ul class="navbar-nav me-auto mb-2 mb-md-0"&gt;
+&lt;li class="nav-item"&gt;&lt;a class="nav-link active" aria-current="page" href="#"&gt;الرئيسية&lt;/a&gt;&lt;/li&gt;
+&lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;الدورات&lt;/a&gt;&lt;/li&gt;
+&lt;li class="nav-item"&gt;&lt;a class="nav-link disabled" aria-disabled="true"&gt;قريبًا&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a class="btn btn-primary" href="#"&gt;تسجيل الدخول&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>صغّر عرض المعاينة (أقل من 768px) لتظهر أيقونة القائمة. <code>me-auto</code> تدفع الروابط إلى البداية والزر إلى النهاية.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">أضف رابطًا رابعًا باسم «من نحن» في القائمة.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أي فئة تحدد متى تنفتح القائمة أفقيًا؟</strong></p><ul><li>navbar-expand-md</li><li>navbar-open</li><li>navbar-fixed</li><li>navbar-md-only</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>navbar-expand-md</strong></p></details></li><li><p><strong>أي خاصية تربط الزر بالعنصر الذي يفتحه؟</strong></p><ul><li>data-bs-target</li><li>href فقط</li><li>id فقط</li><li>for</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>data-bs-target</strong></p></details></li><li><p><strong>ما فائدة aria-current=&quot;page&quot;؟</strong></p><ul><li>إعلام التقنيات المساعدة بالصفحة الحالية</li><li>تلوين الرابط</li><li>تعطيل الرابط</li><li>فتح الرابط في نافذة جديدة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>إعلام التقنيات المساعدة بالصفحة الحالية</strong></p></details></li><li><p><strong>الشاشة 800px والـ navbar يحمل navbar-expand-lg. كيف تظهر القائمة؟</strong></p><ul><li>مطوية خلف زر التبديل</li><li>ممتدة أفقياً</li><li>مخفية نهائياً</li><li>تظهر كنافذة Modal</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>مطوية خلف زر التبديل</strong></p><p>lg يبدأ من 992px، وما دونه تبقى القائمة مطوية.</p></details></li><li><p><strong>أي عنصر يغلّف الروابط ليُطوى ويُفتح بزر التبديل؟</strong></p><ul><li>navbar-brand</li><li>nav-link-wrap</li><li>collapse navbar-collapse</li><li>navbar-expand</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>collapse navbar-collapse</strong></p><p>الغلاف collapse navbar-collapse هو ما يستهدفه data-bs-target.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-11">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/bootstrap-learning/lessons/bs-10.html"><small>الدرس السابق</small><strong>البطاقات Cards</strong></a>
+        <a rel="next" href="/bootstrap-learning/lessons/bs-12.html"><small>الدرس التالي</small><strong>النماذج Forms</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/bootstrap-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

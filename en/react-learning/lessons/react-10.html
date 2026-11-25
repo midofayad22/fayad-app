@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="react" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Forms — React | FAYBIT</title>
+    <meta name="description" content="Learn how to work with input fields and forms in React applications." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/react-learning/lessons/react-10.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/react-learning/lessons/react-10.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/react-learning/lessons/react-10.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/react-learning/lessons/react-10.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Forms — React | FAYBIT" />
+    <meta property="og:description" content="Learn how to work with input fields and forms in React applications." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/react-learning/lessons/react-10.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"React","item":"https://faybit.vercel.app/en/react-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Forms","item":"https://faybit.vercel.app/en/react-learning/lessons/react-10.html"}]},{"@type":"LearningResource","name":"Forms","description":"Learn how to work with input fields and forms in React applications.","url":"https://faybit.vercel.app/en/react-learning/lessons/react-10.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"React — FAYBIT","url":"https://faybit.vercel.app/react-learning/react-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="React"><a href="/en/react-learning/lessons/index.html">Lessons</a><a href="/react-learning/lessons/react-10.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/react-learning/lessons/index.html">React</a></nav>
+      <p class="lp-eyebrow">Lesson 10 of 30</p>
+      <h1 class="lp-h1">Forms</h1>
+      <p class="lp-lead">Learn how to work with input fields and forms in React applications.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-10">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<p>
+Forms are used to collect data from the user, such as name, email, and password.
+</p>
+<p>
+You can control field values using State, which is called Controlled Components.
+</p>
+<p>
+You can handle form submission with onSubmit and prevent the browser's default behavior when needed.
+</p>
+</div></article>
+<article class="body-card key-card"><p>React lets you bind form field values to State and control them.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>The code</h2></div>
+</div>
+<pre dir="ltr"><code>function App() {
+return (
+&lt;form&gt;
+&lt;input placeholder="Type your name" /&gt;
+&lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+);
+}</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>This makes validating data and sending it to an API easier.</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span></div>
+</div>
+<p class="practice-description">Add another input to the form.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What are Forms used to collect?</strong></p><ul><li>User data</li><li>CSS colors only</li><li>Images only</li><li>JavaScript files only</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>User data</strong></p></details></li><li><p><strong>Which event is commonly used when submitting a Form?</strong></p><ul><li>onSubmit</li><li>onFormOnly</li><li>onSendCSS</li><li>submitHTML</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>onSubmit</strong></p></details></li><li><p><strong>What does Controlled Component mean?</strong></p><ul><li>The field's value is controlled through React State</li><li>A CSS element</li><li>An HTML file</li><li>A database</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The field's value is controlled through React State</strong></p></details></li><li><p><strong>What makes an input controlled?</strong></p><ul><li>&lt;input value={name} onChange={e =&gt; setName(e.target.value)} /&gt;</li><li>&lt;input type=&quot;text&quot;&gt;</li><li>&lt;input id=&quot;name&quot;&gt;</li><li>&lt;input /&gt;</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>&lt;input value={name} onChange={e =&gt; setName(e.target.value)} /&gt;</strong></p><p>The value comes from state and onChange updates it.</p></details></li><li><p><strong>Why call e.preventDefault() in onSubmit?</strong></p><ul><li>To delete the form</li><li>To encrypt the data</li><li>To speed up the network</li><li>To stop the default page reload on submit</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>To stop the default page reload on submit</strong></p><p>Without it the browser reloads the page and state is lost.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-10">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/react-learning/lessons/react-09.html"><small>Previous lesson</small><strong>Lists &amp; Keys</strong></a>
+        <a rel="next" href="/en/react-learning/lessons/react-11.html"><small>Next lesson</small><strong>Component Composition</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/react-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <title>الحالات: hover و focus و active و disabled — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="الحالات: hover و focus و active و disabled: تغيير المظهر حسب حالة العنصر عبر variants. — Tailwind CSS." />
+    <link rel="canonical" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-12.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-12.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-12.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-12.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="الحالات: hover و focus و active و disabled — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="الحالات: hover و focus و active و disabled: تغيير المظهر حسب حالة العنصر عبر variants. — Tailwind CSS." />
+    <meta property="og:url" content="https://faybit.vercel.app/tailwind-learning/lessons/tw-12.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"الحالات: hover و focus و active و disabled","item":"https://faybit.vercel.app/tailwind-learning/lessons/tw-12.html"}]},{"@type":"LearningResource","name":"الحالات: hover و focus و active و disabled","description":"الحالات: hover و focus و active و disabled: تغيير المظهر حسب حالة العنصر عبر variants. — Tailwind CSS.","url":"https://faybit.vercel.app/tailwind-learning/lessons/tw-12.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/tailwind-learning/lessons/index.html">الدروس</a><a href="/en/tailwind-learning/lessons/tw-12.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">الدرس 12 من 20</p>
+      <h1 class="lp-h1">الحالات: hover و focus و active و disabled</h1>
+      <p class="lp-lead">تغيير المظهر حسب حالة العنصر عبر variants.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-12">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>variants</h2><p>ضع البادئة قبل الفئة: <code>hover:bg-sky-700</code> <code>focus:ring-2</code> <code>focus-visible:outline-2</code> <code>active:scale-95</code> <code>disabled:opacity-50</code>. ويمكن دمجها مع المتجاوب: <code>md:hover:bg-sky-700</code>.</p></article><article class="content-card"><h2>إمكانية الوصول</h2><p>استخدم <code>focus-visible</code> لإظهار مؤشر التركيز عند التنقل بلوحة المفاتيح، وتأكد أن <code>hover</code> ليس الطريقة الوحيدة لكشف معلومة (لأن اللمس لا يملك hover).</p></article></div>
+<article class="body-card key-card"><p>اجمع hover وfocus-visible وactive وdisabled لكل عنصر تفاعلي.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="space-x-3 p-4"&gt;
+&lt;button id="btn" class="rounded-lg bg-sky-600 px-4 py-2 font-semibold text-white transition hover:bg-sky-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 active:scale-95"&gt;تفاعلي&lt;/button&gt;
+&lt;button class="rounded-lg bg-slate-300 px-4 py-2 font-semibold text-slate-600 disabled:cursor-not-allowed disabled:opacity-50" disabled&gt;معطل&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>مرّر الفأرة فوق الزر الأول أو انقر عليه. الزر الثاني معطل فيظهر بشفافية 50% بفضل <code>disabled:opacity-50</code>.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">أضف &lt;code&gt;hover:-translate-y-0.5&lt;/code&gt; للزر الأول.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما الذي تفعله hover:bg-sky-700؟</strong></p><ul><li>تغيّر الخلفية عند مرور المؤشر</li><li>تغيّرها دائمًا</li><li>تغيرها عند الضغط</li><li>تخفي العنصر</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تغيّر الخلفية عند مرور المؤشر</strong></p></details></li><li><p><strong>لماذا نفضل focus-visible على focus أحيانًا؟</strong></p><ul><li>يظهر المؤشر عند التنقل بلوحة المفاتيح لا عند كل نقرة</li><li>أسرع</li><li>لا يعمل مع الأزرار</li><li>يغير اللون</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يظهر المؤشر عند التنقل بلوحة المفاتيح لا عند كل نقرة</strong></p></details></li><li><p><strong>ماذا تفعل disabled:opacity-50؟</strong></p><ul><li>تقلل شفافية العنصر المعطل</li><li>تعطل العنصر</li><li>تحذف العنصر</li><li>تغير الخط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تقلل شفافية العنصر المعطل</strong></p></details></li><li><p><strong>أي فئة تصغّر الزر قليلاً أثناء الضغط عليه؟</strong></p><ul><li>active:scale-95</li><li>hover:scale-95</li><li>focus:scale-0</li><li>pressed:shrink</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>active:scale-95</strong></p><p>active: يعمل لحظة الضغط، و scale-95 يصغّره إلى 95%.</p></details></li><li><p><strong>لماذا لا يجب أن يكون hover الطريقة الوحيدة لإظهار معلومة؟</strong></p><ul><li>لأن شاشات اللمس لا تدعم hover</li><li>لأن hover بطيء</li><li>لأن hover يعطل الألوان</li><li>لأن Tailwind لا يدعمه</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لأن شاشات اللمس لا تدعم hover</strong></p><p>مستخدمو اللمس لن يروا المعلومة، فنوفر بديلاً.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-12">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/tailwind-learning/lessons/tw-11.html"><small>الدرس السابق</small><strong>التصميم المتجاوب</strong></a>
+        <a rel="next" href="/tailwind-learning/lessons/tw-13.html"><small>الدرس التالي</small><strong>group و peer وبقية الـ variants</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/tailwind-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

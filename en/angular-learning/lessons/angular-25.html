@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="angular" />
+    <meta name="robots" content="noindex, follow" />
+    <title>RxJS Basics — Angular | FAYBIT</title>
+    <meta name="description" content="Learn the basic ideas behind RxJS and operators used with Observables." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/angular-learning/lessons/angular-25.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/angular-learning/lessons/angular-25.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/angular-learning/lessons/angular-25.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/angular-learning/lessons/angular-25.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="RxJS Basics — Angular | FAYBIT" />
+    <meta property="og:description" content="Learn the basic ideas behind RxJS and operators used with Observables." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/angular-learning/lessons/angular-25.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Angular","item":"https://faybit.vercel.app/en/angular-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"RxJS Basics","item":"https://faybit.vercel.app/en/angular-learning/lessons/angular-25.html"}]},{"@type":"LearningResource","name":"RxJS Basics","description":"Learn the basic ideas behind RxJS and operators used with Observables.","url":"https://faybit.vercel.app/en/angular-learning/lessons/angular-25.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Angular — FAYBIT","url":"https://faybit.vercel.app/angular-learning/angular-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Angular"><a href="/en/angular-learning/lessons/index.html">Lessons</a><a href="/angular-learning/lessons/angular-25.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/angular-learning/lessons/index.html">Angular</a></nav>
+      <p class="lp-eyebrow">Lesson 25 of 32</p>
+      <h1 class="lp-h1">RxJS Basics</h1>
+      <p class="lp-lead">Learn the basic ideas behind RxJS and operators used with Observables.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/angular-learning/angular-learning.html#lesson-25">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>RxJS is a reactive programming library built around Observables. Operators such as map, filter, switchMap, debounceTime, and catchError help transform and control asynchronous streams.</div></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>Code Example</h2></div>
+</div>
+<pre dir="ltr"><code>import { map } from 'rxjs/operators';
+users$
+.pipe(
+map(users =&gt; users.length)
+)
+.subscribe(count =&gt; {
+console.log(count);
+});</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Try It Yourself</h2></div>
+</div>
+<p class="practice-description">Modify the example below and run your code to explore the Angular syntax.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is RxJS mainly used for?</strong></p><ul><li>Working with reactive and asynchronous data</li><li>Creating HTML files</li><li>Designing images</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Working with reactive and asynchronous data</strong></p></details></li><li><p><strong>What is the main focus of this lesson?</strong></p><ul><li>RxJS Basics</li><li>Lifecycle Hooks</li><li>Pipes</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>RxJS Basics</strong></p></details></li><li><p><strong>Which statement best describes this topic?</strong></p><ul><li>RxJS is a reactive programming library built around Observables. Operators such as map, filter, switchMap, debounceTime, and catchError help transform and control asynchronous streams.</li><li>Angular components have lifecycle stages from creation to destruction. Lifecycle hooks such as ngOnInit, ngOnChanges, ngAfterViewInit, and ngOnDestroy allow developers to run logic at specific points.</li><li>Pipes transform values for presentation without changing the original data. Angular provides built-in pipes such as uppercase, lowercase, date, currency, number, and percent. Developers can also create custom pipes.</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>RxJS is a reactive programming library built around Observables. Operators such as map, filter, switchMap, debounceTime, and catchError help transform and control asynchronous streams.</strong></p></details></li><li><p><strong>What is a practical goal of this lesson?</strong></p><ul><li>Learn the basic ideas behind RxJS and operators used with Observables.</li><li>Learn how Angular components move through different lifecycle stages.</li><li>Learn how Angular pipes transform and format data directly inside templates.</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Learn the basic ideas behind RxJS and operators used with Observables.</strong></p></details></li><li><p><strong>Which Angular concept is directly related to this lesson?</strong></p><ul><li>RxJS</li><li>Lifecycle hooks</li><li>Pipes</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>RxJS</strong></p></details></li><li><p><strong>Which syntax or API is most closely associated with this lesson?</strong></p><ul><li>pipe()</li><li>ngOnInit()</li><li>| date</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>pipe()</strong></p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/angular-learning/angular-learning.html#lesson-25">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/angular-learning/lessons/angular-24.html"><small>Previous lesson</small><strong>Observables</strong></a>
+        <a rel="next" href="/en/angular-learning/lessons/angular-26.html"><small>Next lesson</small><strong>Lifecycle Hooks</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/angular-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

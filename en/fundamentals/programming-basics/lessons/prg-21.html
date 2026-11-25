@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <title>Recursion — Programming Basics | FAYBIT</title>
+    <meta name="description" content="RECURSION Understand the base case and the recursive case. Trace a recursive function by hand. Know when a loop is the better choice. The Functions lesson…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-21.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-21.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-21.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-21.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Recursion — Programming Basics | FAYBIT" />
+    <meta property="og:description" content="RECURSION Understand the base case and the recursive case. Trace a recursive function by hand. Know when a loop is the better choice. The Functions lesson…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-21.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Programming Basics","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Recursion","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-21.html"}]},{"@type":"LearningResource","name":"Recursion","description":"RECURSION Understand the base case and the recursive case. Trace a recursive function by hand. Know when a loop is the better choice. The Functions lesson…","url":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-21.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Programming Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Programming Basics"><a href="/en/fundamentals/programming-basics/lessons/index.html">Lessons</a><a href="/fundamentals/programming-basics/lessons/prg-21.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/programming-basics/lessons/index.html">Programming Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 21 of 31 · RECURSION</p>
+      <h1 class="lp-h1">Recursion</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-21">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">RECURSION</span>
+<h2>A function that calls itself to solve a smaller problem</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content"><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Understand the base case and the recursive case.</li><li>Trace a recursive function by hand.</li><li>Know when a loop is the better choice.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>The Functions lesson (prg-12) and the Scope lesson (prg-14).</li></ul>
+</section>
+<section class="lesson-section "><h3>The idea</h3>
+<p>Some problems contain a smaller copy of themselves. <span class="term">5!</span> equals <code>5 × 4!</code>, and <code>4!</code> equals <code>4 × 3!</code>, and so on. Instead of a loop we write a function that solves the smaller case by calling itself. Every recursive function needs two parts:</p>
+<ul><li><strong>Base case</strong>: a simple case answered directly, which stops the recursion.</li><li><strong>Recursive case</strong>: the function calls itself on an input closer to the base case.</li></ul>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>function factorial(n) {
+if (n &lt;= 1) return 1;          // base case
+return n * factorial(n - 1);   // recursive case
+}
+console.log(factorial(5)); // 120</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>What happens in memory?</h3>
+<p>Each call reserves a new frame on the <span class="term">call stack</span> holding its own <code>n</code>. Calls pile up until the base case is reached, then results return and the frames unwind in reverse order.</p>
+<figure class="code-ex code-ex-out"><figcaption><span class="code-ex-lang">Output</span></figcaption><pre dir="ltr"><code>factorial(3)
+3 * factorial(2)
+2 * factorial(1)
+1            &lt;- base case
+2 * 1 = 2
+3 * 2 = 6</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>A second example: summing an array</h3>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>function sum(list) {
+if (list.length === 0) return 0;      // base case: empty list
+return list[0] + sum(list.slice(1)); // first + sum of the rest
+}
+console.log(sum([4, 6, 10])); // 20</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>Recursion or a loop?</h3>
+<p>A loop is simpler and faster for linear tasks. Recursion shines when the structure itself is nested: folders inside folders, trees, or splitting in half as in binary search.</p>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>Forgetting the base case.</li><li>Calling the function with the same input so it never gets closer to the end.</li><li>Forgetting <code>return</code> before the recursive call, so you get <code>undefined</code>.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> What does <code>factorial(0)</code> return in the function above, and why?</summary><div class="doc-solution"><strong>Show solution</strong><p>It returns <code>1</code> because <code>n &lt;= 1</code> holds and the base case runs immediately, which matches the mathematical definition 0! = 1.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>A base case plus a smaller recursive case.</li><li>Every call has a frame on the call stack.</li><li>Choose loops for linear tasks and recursion for nested structures.</li></ul><p class="doc-next"><strong>Next step:</strong> Next we store data in different shapes: stacks, queues and maps.</p>
+</section></div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong>Core idea</strong>
+<p>Recursion solves a problem by solving a smaller copy of it, and stops at the base case.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Worked example</span>
+<h3>See the idea in code</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>function countdown(n) {
+if (n === 0) { console.log("Go!"); return; }
+console.log(n);
+countdown(n - 1);
+}
+countdown(3);</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Practice</span>
+<h3>Challenge yourself</h3>
+</div>
+</div>
+<p></p>
+<div class="fd-exercise"><h4>Interactive exercise</h4><p class="fd-ex-prompt">Write a recursive function factorial(n) that returns 1 × 2 × … × n (and 0! = 1).</p><p class="fd-ex-status" role="status"></p></div>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is the job of the base case?</strong></p><ul><li>Stop the recursion at the simplest case</li><li>Speed up the computer</li><li>Delete variables</li><li>Print the result</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Stop the recursion at the simplest case</strong></p><p>Without it the calls continue until the stack is exhausted.</p></details></li><li><p><strong>What happens if you remove the base case from factorial?</strong></p><ul><li>RangeError: stack size exceeded</li><li>It returns 0</li><li>It always returns 1</li><li>Nothing</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>RangeError: stack size exceeded</strong></p><p>The calls never end, so the call stack fills up.</p></details></li><li><p><strong>Which data structure naturally suits recursion?</strong></p><ul><li>Trees and nested folders</li><li>A single number</li><li>A colour</li><li>An image</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Trees and nested folders</strong></p><p>Each node contains smaller trees, so a self-repeating solution fits.</p></details></li><li><p><strong>What is sum([1,2]) by the function above?</strong></p><ul><li>3</li><li>2</li><li>1</li><li>undefined</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>3</strong></p><p>1 + sum([2]) = 1 + (2 + sum([])) = 1 + 2 + 0.</p></details></li><li><p><strong>What is the output? function pow2(n) { if (n === 0) return 1; return 2 * pow2(n - 1); } console.log(pow2(5));</strong></p><ul><li>10</li><li>25</li><li>32</li><li>16</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>32</strong></p><p>The function multiplies by 2 five times before reaching the base case n === 0 that returns 1, so 2*2*2*2*2*1 = 32. 10 would come from adding, not multiplying.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-21">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/programming-basics/lessons/prg-20.html"><small>Previous lesson</small><strong>Comprehensive Review</strong></a>
+        <a rel="next" href="/en/fundamentals/programming-basics/lessons/prg-22.html"><small>Next lesson</small><strong>Data Structures: Stack, Queue, Map and Set</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/programming-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="js" />
+    <meta name="robots" content="noindex, follow" />
+    <title>المصفوفات Arrays — JavaScript | FAYBIT</title>
+    <meta name="description" content="تعلّم كيف تخزن المصفوفات عدة قيم داخل متغير واحد وكيف تصل إلى عناصرها." />
+    <link rel="canonical" href="https://faybit.vercel.app/javascript-learning/lessons/js-11.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/javascript-learning/lessons/js-11.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-11.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/javascript-learning/lessons/js-11.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="المصفوفات Arrays — JavaScript | FAYBIT" />
+    <meta property="og:description" content="تعلّم كيف تخزن المصفوفات عدة قيم داخل متغير واحد وكيف تصل إلى عناصرها." />
+    <meta property="og:url" content="https://faybit.vercel.app/javascript-learning/lessons/js-11.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript","item":"https://faybit.vercel.app/javascript-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"المصفوفات Arrays","item":"https://faybit.vercel.app/javascript-learning/lessons/js-11.html"}]},{"@type":"LearningResource","name":"المصفوفات Arrays","description":"تعلّم كيف تخزن المصفوفات عدة قيم داخل متغير واحد وكيف تصل إلى عناصرها.","url":"https://faybit.vercel.app/javascript-learning/lessons/js-11.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript — FAYBIT","url":"https://faybit.vercel.app/javascript-learning/javascript-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript"><a href="/javascript-learning/lessons/index.html">الدروس</a><a href="/en/javascript-learning/lessons/js-11.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/javascript-learning/lessons/index.html">JavaScript</a></nav>
+      <p class="lp-eyebrow">الدرس 11 من 25</p>
+      <h1 class="lp-h1">المصفوفات Arrays</h1>
+      <p class="lp-lead">تعلّم كيف تخزن المصفوفات عدة قيم داخل متغير واحد وكيف تصل إلى عناصرها.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-11">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>const fruits = [
+"Apple",
+"Banana",
+"Orange"
+];
+document.getElementById("jsResult").textContent =
+fruits[0];</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>
+<p><strong>Array</strong> هي بنية بيانات تسمح بتخزين عدة قيم داخل متغير واحد.</p>
+<p>العناصر داخل Array لها ترتيب رقمي يبدأ من <strong>0</strong>.</p>
+<p>للوصول إلى أول عنصر نستخدم <strong>array[0]</strong>.</p>
+<p>المصفوفات مهمة جدًا عند التعامل مع مجموعات البيانات.</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>اكتب JavaScript</h2></div>
+</div>
+<p class="practice-description">غيّر الكود الموجود بالأسفل ثم شغّله لترى النتيجة.</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ماذا تخزن Array؟</strong></p><ul><li>عدة قيم داخل متغير واحد</li><li>قيمة واحدة فقط</li><li>CSS فقط</li><li>HTML فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>عدة قيم داخل متغير واحد</strong></p></details></li><li><p><strong>ما رقم فهرس أول عنصر في Array؟</strong></p><ul><li>0</li><li>1</li><li>-1</li><li>10</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>0</strong></p></details></li><li><p><strong>كيف تصل إلى أول عنصر في fruits؟</strong></p><ul><li>fruits[0]</li><li>fruits[1]</li><li>fruits.first</li><li>fruits()</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>fruits[0]</strong></p></details></li><li><p><strong>ما ناتج الكود؟ const a = [1, 2, 3]; a[5] = 9; console.log(a.length);</strong></p><ul><li>4</li><li>3</li><li>6</li><li>5</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>6</strong></p><p>length يساوي أكبر index زائد واحد، والإسناد إلى index 5 يجعل الطول 6 ويترك فجوات فارغة في المنتصف. لا يضيف العنصر في المكان التالي مباشرة.</p></details></li><li><p><strong>كيف نصل إلى آخر عنصر في المصفوفة arr مهما كان طولها؟</strong></p><ul><li>arr[arr.length]</li><li>arr[arr.length - 1]</li><li>arr[-1]</li><li>arr.last</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>arr[arr.length - 1]</strong></p><p>الفهرسة تبدأ من 0 لذلك آخر index هو length ناقص واحد. arr[arr.length] يعطي undefined، و arr[-1] ليست index صالحاً في JavaScript، و last غير موجودة.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-11">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/javascript-learning/lessons/js-10.html"><small>الدرس السابق</small><strong>Arrow Functions</strong></a>
+        <a rel="next" href="/javascript-learning/lessons/js-12.html"><small>الدرس التالي</small><strong>دوال المصفوفات</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/javascript-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

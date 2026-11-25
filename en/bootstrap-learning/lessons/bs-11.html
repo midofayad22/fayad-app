@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>Navbar and Nav — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="A responsive navigation bar that collapses into a dropdown menu on mobile, along with tabs." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-11.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-11.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-11.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-11.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Navbar and Nav — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="A responsive navigation bar that collapses into a dropdown menu on mobile, along with tabs." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-11.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Navbar and Nav","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-11.html"}]},{"@type":"LearningResource","name":"Navbar and Nav","description":"A responsive navigation bar that collapses into a dropdown menu on mobile, along with tabs.","url":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-11.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/en/bootstrap-learning/lessons/index.html">Lessons</a><a href="/bootstrap-learning/lessons/bs-11.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">Lesson 11 of 20</p>
+      <h1 class="lp-h1">Navbar and Nav</h1>
+      <p class="lp-lead">A responsive navigation bar that collapses into a dropdown menu on mobile, along with tabs.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-11">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Navbar</h2><p><code>.navbar</code> with <code>.navbar-expand-lg</code> appears expanded from lg and collapsed below it. The components: <code>.navbar-brand</code>, <code>.navbar-toggler</code>, <code>.collapse.navbar-collapse</code>, <code>.navbar-nav</code>, and <code>.nav-link</code>. The button controls it through <code>data-bs-toggle="collapse"</code> and <code>data-bs-target</code>.</p></article><article class="content-card"><h2>Accessibility</h2><p>Add <code>aria-controls</code>, <code>aria-expanded</code>, and <code>aria-label</code> to the menu button, and <code>aria-current="page"</code> to the current link.</p></article></div>
+<article class="body-card key-card"><p>navbar-expand-{bp} sets the breakpoint at which the menu expands, and the button opens it with data-bs-toggle.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;nav class="navbar navbar-expand-md bg-body-tertiary border-bottom"&gt;
+&lt;div class="container-fluid"&gt;
+&lt;a class="navbar-brand fw-bold" href="#"&gt;FAYBIT&lt;/a&gt;
+&lt;button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Open menu"&gt;
+&lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+&lt;/button&gt;
+&lt;div class="collapse navbar-collapse" id="nav"&gt;
+&lt;ul class="navbar-nav me-auto mb-2 mb-md-0"&gt;
+&lt;li class="nav-item"&gt;&lt;a class="nav-link active" aria-current="page" href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+&lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Courses&lt;/a&gt;&lt;/li&gt;
+&lt;li class="nav-item"&gt;&lt;a class="nav-link disabled" aria-disabled="true"&gt;Coming soon&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a class="btn btn-primary" href="#"&gt;Log in&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>Shrink the preview width (below 768px) to show the menu icon. <code>me-auto</code> pushes the links to the start and the button to the end.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Add a fourth link named "About Us" to the menu.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which class determines when the menu expands horizontally?</strong></p><ul><li>navbar-expand-md</li><li>navbar-open</li><li>navbar-fixed</li><li>navbar-md-only</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>navbar-expand-md</strong></p></details></li><li><p><strong>Which attribute links the button to the element it opens?</strong></p><ul><li>data-bs-target</li><li>href only</li><li>id only</li><li>for</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>data-bs-target</strong></p></details></li><li><p><strong>What is aria-current=&quot;page&quot; for?</strong></p><ul><li>Informing assistive technologies of the current page</li><li>Coloring the link</li><li>Disabling the link</li><li>Opening the link in a new window</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Informing assistive technologies of the current page</strong></p></details></li><li><p><strong>The screen is 800px and the navbar has navbar-expand-lg. How does the menu appear?</strong></p><ul><li>Collapsed behind the toggler button</li><li>Expanded horizontally</li><li>Hidden permanently</li><li>Shown as a Modal</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Collapsed behind the toggler button</strong></p><p>lg starts at 992px, and below it the menu stays collapsed.</p></details></li><li><p><strong>Which element wraps the links so they fold and open with the toggler?</strong></p><ul><li>navbar-brand</li><li>nav-link-wrap</li><li>collapse navbar-collapse</li><li>navbar-expand</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>collapse navbar-collapse</strong></p><p>The collapse navbar-collapse wrapper is what data-bs-target points to.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-11">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/bootstrap-learning/lessons/bs-10.html"><small>Previous lesson</small><strong>Cards</strong></a>
+        <a rel="next" href="/en/bootstrap-learning/lessons/bs-12.html"><small>Next lesson</small><strong>Forms</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/bootstrap-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

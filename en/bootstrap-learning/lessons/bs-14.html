@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>Tables and Lists — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="Styling tables and making them responsive, and list-group lists." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-14.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-14.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-14.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-14.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Tables and Lists — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="Styling tables and making them responsive, and list-group lists." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-14.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Tables and Lists","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-14.html"}]},{"@type":"LearningResource","name":"Tables and Lists","description":"Styling tables and making them responsive, and list-group lists.","url":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-14.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/en/bootstrap-learning/lessons/index.html">Lessons</a><a href="/bootstrap-learning/lessons/bs-14.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">Lesson 14 of 20</p>
+      <h1 class="lp-h1">Tables and Lists</h1>
+      <p class="lp-lead">Styling tables and making them responsive, and list-group lists.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-14">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Tables</h2><p><code>.table</code> is the base, and you can add <code>table-striped</code> (stripes), <code>table-hover</code>, <code>table-bordered</code>, <code>table-sm</code>, and <code>table-dark</code>. To scroll a table horizontally on mobile, wrap it in <code>.table-responsive</code>.</p></article><article class="content-card"><h2>Lists</h2><p><code>.list-group</code> + <code>.list-group-item</code> (they can be links with <code>list-group-item-action</code>), and to add a badge use <code>d-flex justify-content-between</code> with <code>.badge</code>.</p></article></div>
+<article class="body-card key-card"><p>Put wide tables inside table-responsive.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="container py-3"&gt;
+&lt;div class="table-responsive"&gt;
+&lt;table class="table table-striped table-hover align-middle"&gt;
+&lt;thead class="table-dark"&gt;&lt;tr&gt;&lt;th scope="col"&gt;#&lt;/th&gt;&lt;th scope="col"&gt;Lesson&lt;/th&gt;&lt;th scope="col"&gt;Status&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;&lt;th scope="row"&gt;1&lt;/th&gt;&lt;td&gt;Grid&lt;/td&gt;&lt;td&gt;&lt;span class="badge text-bg-success"&gt;Completed&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;th scope="row"&gt;2&lt;/th&gt;&lt;td&gt;Forms&lt;/td&gt;&lt;td&gt;&lt;span class="badge text-bg-warning"&gt;In progress&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;ul class="list-group mt-3"&gt;
+&lt;li class="list-group-item d-flex justify-content-between align-items-center"&gt;Notifications &lt;span class="badge text-bg-primary rounded-pill"&gt;3&lt;/span&gt;&lt;/li&gt;
+&lt;a href="#" class="list-group-item list-group-item-action active" aria-current="true"&gt;Messages&lt;/a&gt;
+&lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>The alternating shading and the hover highlight come from <code>table-striped</code> and <code>table-hover</code>. The table inside <code>table-responsive</code> scrolls horizontally instead of breaking the layout.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Add a third row to the table and a third item to the list.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which class wraps a table so it scrolls horizontally on small screens?</strong></p><ul><li>table-responsive</li><li>table-scroll</li><li>overflow-table</li><li>table-mobile</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>table-responsive</strong></p></details></li><li><p><strong>What is scope=&quot;col&quot; in th for?</strong></p><ul><li>Specifying that the cell is a column header for a screen reader</li><li>Coloring the header</li><li>Merging columns</li><li>Sorting the table</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Specifying that the cell is a column header for a screen reader</strong></p></details></li><li><p><strong>Which class makes a list item interactive as a link?</strong></p><ul><li>list-group-item-action</li><li>list-link</li><li>list-active</li><li>item-click</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>list-group-item-action</strong></p></details></li><li><p><strong>Which class adds alternating stripes to table rows?</strong></p><ul><li>table-zebra</li><li>table-alt</li><li>table-striped</li><li>table-lined</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>table-striped</strong></p><p>table-striped shades alternate rows with a light background.</p></details></li><li><p><strong>How do you put a badge at the end of a list-group-item?</strong></p><ul><li>d-flex justify-content-between with a badge</li><li>badge-end on the item</li><li>table-responsive around the item</li><li>list-group-badge only</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>d-flex justify-content-between with a badge</strong></p><p>Flex with between spacing pushes the badge to the opposite edge.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-14">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/bootstrap-learning/lessons/bs-13.html"><small>Previous lesson</small><strong>Validation, Input Groups, and Floating Labels</strong></a>
+        <a rel="next" href="/en/bootstrap-learning/lessons/bs-15.html"><small>Next lesson</small><strong>Alerts, Badges, Progress, and Spinners</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/bootstrap-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

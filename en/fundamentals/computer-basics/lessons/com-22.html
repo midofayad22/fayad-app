@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>Processes and Threads — Computer Basics | FAYBIT</title>
+    <meta name="description" content="Distinguish a program from a process. Know the process states and life cycle. Compare a process with a thread. A program is a static file on disk holding…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-22.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-22.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-22.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-22.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Processes and Threads — Computer Basics | FAYBIT" />
+    <meta property="og:description" content="Distinguish a program from a process. Know the process states and life cycle. Compare a process with a thread. A program is a static file on disk holding…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-22.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Computer Basics","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Processes and Threads","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-22.html"}]},{"@type":"LearningResource","name":"Processes and Threads","description":"Distinguish a program from a process. Know the process states and life cycle. Compare a process with a thread. A program is a static file on disk holding…","url":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-22.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Computer Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Computer Basics"><a href="/en/fundamentals/computer-basics/lessons/index.html">Lessons</a><a href="/fundamentals/computer-basics/lessons/com-22.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/computer-basics/lessons/index.html">Computer Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 22 of 30</p>
+      <h1 class="lp-h1">Processes and Threads</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-22">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>Processes and Threads</h2>
+<div><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Distinguish a program from a process.</li><li>Know the process states and life cycle.</li><li>Compare a process with a thread.</li></ul>
+</section>
+<section class="lesson-section "><h3>Program versus process</h3>
+<p>A <span class="term">program</span> is a static file on disk holding instructions. A <span class="term">process</span> is one running instance of it: it has its own memory, open files and an identifier, the <code>PID</code>. Run the same program twice and you get two separate processes.</p>
+<p>What does the kernel keep for each process? A table called the <span class="term">PCB</span> (Process Control Block): the PID, the process state, the CPU register values, memory information and the open files.</p>
+</section>
+<section class="lesson-section "><h3>Process states</h3>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">State</th><th scope="col">Meaning</th></tr></thead><tbody><tr><th scope="row">New</th><td>Just being created</td></tr><tr><th scope="row">Ready</th><td>Ready and waiting for a CPU turn</td></tr><tr><th scope="row">Running</th><td>Executing instructions right now</td></tr><tr><th scope="row">Waiting</th><td>Waiting for an event such as a disk read or a key press</td></tr><tr><th scope="row">Terminated</th><td>Finished; its resources are released</td></tr></tbody></table></div>
+</section>
+<section class="lesson-section "><h3>Threads</h3>
+<p>One process may contain several <span class="term">threads</span>: execution paths that share the same memory and files but each have their own stack and registers. A browser, for example, uses one thread to draw the page and another to download images, so the interface does not freeze.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Comparison</th><th scope="col">Process</th><th scope="col">Thread</th></tr></thead><tbody><tr><th scope="row">Memory</th><td>Separate and isolated</td><td>Shared within the process</td></tr><tr><th scope="row">Creation cost</th><td>Higher</td><td>Lower</td></tr><tr><th scope="row">Effect of a crash</th><td>Only it crashes</td><td>Can take down the whole process</td></tr><tr><th scope="row">Communication</th><td>Needs IPC (pipes, sockets)</td><td>Directly through shared memory</td></tr></tbody></table></div>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">bash</span></figcaption><pre dir="ltr"><code>ps -eo pid,ppid,stat,comm | head -5
+kill -SIGTERM 4321   # ask process 4321 to exit politely</code></pre></figure>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>Saying a process and a program are the same thing.</li><li>Assuming more threads is always faster; a CPU has a limited number of cores.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> You started the same editor three times. How many programs and how many processes do you have?</summary><div class="doc-solution"><strong>Show solution</strong><p>One program (one file on disk) and three processes, each with its own PID and separate memory.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>A process is a running program plus its resources.</li><li>The kernel tracks it through a PCB and well-defined states.</li><li>Threads share the process memory and enable concurrency.</li></ul><p class="doc-next"><strong>Next step:</strong> Who decides which process gets the CPU now? Scheduling.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>Core concept</strong>
+<p>A process is an isolated container for execution; a thread is a path of execution inside it.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Hands-on practice</span>
+<h3>Try it yourself</h3>
+</div>
+</div>
+<p>Open your system monitor and find the total process and thread counts, then pick one process and write down how many threads it has.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What happens when a system call is made?</strong></p><ul><li>Execution moves into the kernel with higher privilege, then returns</li><li>The machine restarts</li><li>The program is deleted</li><li>The program bypasses the system and reaches the hardware</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Execution moves into the kernel with higher privilege, then returns</strong></p></details></li><li><p><strong>What role does the number 3 play in openat(...) = 3?</strong></p><ul><li>The file size in bytes</li><li>A file descriptor the kernel gives to the open file</li><li>The process PID</li><li>An error code</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A file descriptor the kernel gives to the open file</strong></p><p>The descriptor is a handle later calls like read and close use to refer to the file.</p></details></li><li><p><strong>What is wrong with the statement: the shell is part of the kernel?</strong></p><ul><li>Nothing is wrong</li><li>The shell is an ordinary User Space program that asks the kernel to run programs</li><li>The shell is hardware</li><li>The shell always runs in Kernel Mode</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The shell is an ordinary User Space program that asks the kernel to run programs</strong></p><p>The shell is an application like any other, text-based like Bash or graphical like a desktop.</p></details></li><li><p><strong>Which order is correct when reading a file?</strong></p><ul><li>Kernel reads, then library calls, then the application</li><li>The app calls a library function, then the trap instruction, then the kernel checks and reads, then data returns</li><li>The app reads the disk directly then tells the kernel</li><li>Trap first, then the app, then the library</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The app calls a library function, then the trap instruction, then the kernel checks and reads, then data returns</strong></p><p>A special CPU instruction enters kernel mode, and the kernel checks permissions before reading.</p></details></li><li><p><strong>Why do libraries batch small operations (buffering)?</strong></p><ul><li>Because a system call is slower than a normal function call, so entries into the kernel are reduced</li><li>Because the kernel accepts only one byte</li><li>To hide files from the user</li><li>To increase the number of system calls</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Because a system call is slower than a normal function call, so entries into the kernel are reduced</strong></p><p>Each kernel entry has a cost, so batching lowers it.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-22">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/computer-basics/lessons/com-21.html"><small>Previous lesson</small><strong>System Calls and the Shell</strong></a>
+        <a rel="next" href="/en/fundamentals/computer-basics/lessons/com-23.html"><small>Next lesson</small><strong>CPU Scheduling</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/computer-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

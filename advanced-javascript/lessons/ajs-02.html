@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>Closures — JavaScript المتقدم | FAYBIT</title>
+    <meta name="description" content="الدالة التي تتذكر النطاق الذي وُلدت فيه: أساس الخصوصية والحالة المخبأة في JavaScript." />
+    <link rel="canonical" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-02.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-02.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-02.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-02.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Closures — JavaScript المتقدم | FAYBIT" />
+    <meta property="og:description" content="الدالة التي تتذكر النطاق الذي وُلدت فيه: أساس الخصوصية والحالة المخبأة في JavaScript." />
+    <meta property="og:url" content="https://faybit.vercel.app/advanced-javascript/lessons/ajs-02.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript المتقدم","item":"https://faybit.vercel.app/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Closures","item":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-02.html"}]},{"@type":"LearningResource","name":"Closures","description":"الدالة التي تتذكر النطاق الذي وُلدت فيه: أساس الخصوصية والحالة المخبأة في JavaScript.","url":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-02.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript المتقدم — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript المتقدم"><a href="/advanced-javascript/lessons/index.html">الدروس</a><a href="/en/advanced-javascript/lessons/ajs-02.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/advanced-javascript/lessons/index.html">JavaScript المتقدم</a></nav>
+      <p class="lp-eyebrow">الدرس 2 من 22</p>
+      <h1 class="lp-h1">Closures</h1>
+      <p class="lp-lead">الدالة التي تتذكر النطاق الذي وُلدت فيه: أساس الخصوصية والحالة المخبأة في JavaScript.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-2">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>ما هو Closure؟</h2><p>الـ <strong>Closure</strong> هو دالة مع إشارة إلى بيئتها المعجمية (المتغيرات المحيطة بها وقت تعريفها). تبقى هذه المتغيرات حيّة ما دامت الدالة قابلة للاستدعاء حتى بعد انتهاء الدالة الخارجية.</p></article><article class="content-card"><h2>استخدامات عملية</h2><ul><li>عدادات وحالة خاصة لا يمكن الوصول إليها من الخارج.</li><li>مصانع الدوال (Function Factories).</li><li>معالجات الأحداث التي تحتاج بيانات من وقت الإنشاء.</li></ul></article></div>
+<article class="body-card key-card"><p>كل استدعاء للدالة الخارجية ينشئ بيئة جديدة مستقلة، والدوال الداخلية تحتفظ بها.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>function makeCounter(start = 0) {
+let count = start;
+return {
+inc: () =&gt; ++count,
+value: () =&gt; count,
+};
+}
+const a = makeCounter();
+const b = makeCounter(10);
+a.inc();
+a.inc();
+b.inc();
+console.log(a.value(), b.value());
+const fns = [];
+for (var i = 0; i &lt; 3; i++) fns.push(() =&gt; i);
+console.log(fns.map((f) =&gt; f()));
+const fns2 = [];
+for (let j = 0; j &lt; 3; j++) fns2.push(() =&gt; j);
+console.log(fns2.map((f) =&gt; f()));</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">2 11
+[ 3, 3, 3 ]
+[ 0, 1, 2 ]</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>كل عداد له <code>count</code> خاص به. مع <code>var</code> توجد نسخة واحدة من <code>i</code> يشاركها الجميع فتصبح 3. مع <code>let</code> تُنشأ نسخة جديدة لكل دورة.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>جرّب بنفسك</h2></div>
+</div>
+<p class="practice-description">اكتب دالة &lt;code&gt;makeAdder(n)&lt;/code&gt; ترجع دالة تضيف &lt;code&gt;n&lt;/code&gt; إلى أي رقم، ثم اطبع &lt;code&gt;makeAdder(5)(3)&lt;/code&gt;.</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>لماذا تعطي حلقة var مع دوال مؤجلة نفس القيمة؟</strong></p><ul><li>لأن هناك متغيرًا واحدًا مشتركًا في نطاق الدالة</li><li>لأن var أبطأ</li><li>لأن الدوال لا تتذكر شيئًا</li><li>بسبب خطأ في المحرك</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لأن هناك متغيرًا واحدًا مشتركًا في نطاق الدالة</strong></p></details></li><li><p><strong>ماذا يضمن الـ Closure؟</strong></p><ul><li>بقاء المتغيرات المحيطة متاحة للدالة</li><li>تنفيذ الدالة مرتين</li><li>منع الأخطاء</li><li>تسريع الكود</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>بقاء المتغيرات المحيطة متاحة للدالة</strong></p></details></li><li><p><strong>كيف نخفي حالة داخلية عن الخارج؟</strong></p><ul><li>بتعريفها داخل دالة وإرجاع دوال تستخدمها فقط</li><li>بتسميتها بحرف كبير</li><li>باستخدام console.log</li><li>لا يمكن</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>بتعريفها داخل دالة وإرجاع دوال تستخدمها فقط</strong></p></details></li><li><p><strong>ما ناتج الكود؟ const mk = () =&gt; { let c = 0; return () =&gt; ++c; }; const a = mk(), b = mk(); a(); a(); console.log(a(), b());</strong></p><ul><li>3 و 1</li><li>3 و 3</li><li>1 و 1</li><li>2 و 1</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>3 و 1</strong></p><p>كل استدعاء لـ mk ينشئ نطاقاً جديداً بمتغير c مستقل تحتفظ به الدالة المعادة. لذلك a تعد وحدها حتى 3، و b تبدأ من 1.</p></details></li><li><p><strong>ما ناتج الكود؟ let n = 1; const f = () =&gt; n; n = 2; console.log(f());</strong></p><ul><li>1 لأن الدالة نسخت القيمة عند إنشائها</li><li>2 لأن closure تحتفظ بالمتغير نفسه لا بنسخة من قيمته</li><li>undefined</li><li>خطأ لأن n تغيرت بعد الإنشاء</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>2 لأن closure تحتفظ بالمتغير نفسه لا بنسخة من قيمته</strong></p><p>الـ closure تلتقط الربط بالمتغير وليس قيمته وقت الإنشاء، فترى التغييرات اللاحقة. لذلك تُقرأ القيمة الحالية 2 عند الاستدعاء.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-2">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/advanced-javascript/lessons/ajs-01.html"><small>الدرس السابق</small><strong>النطاق والرفع و TDZ</strong></a>
+        <a rel="next" href="/advanced-javascript/lessons/ajs-03.html"><small>الدرس التالي</small><strong>this و call / apply / bind</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/advanced-javascript/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

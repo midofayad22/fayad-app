@@ -73,28 +73,22 @@
     <script defer src="/_vercel/speed-insights/script.js"></script>
   
     <!-- FAYBIT design system (loaded after page CSS so tokens win) -->
+    <link rel="preload" href="/assets/fonts/readex-pro-arabic-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/css/tokens.css" />
     <link rel="stylesheet" href="/css/theme.css" />
     <link rel="stylesheet" href="/css/theme-overrides.css" />
     <link rel="stylesheet" href="/css/shell.css" />
     <link rel="stylesheet" href="/css/home.css" />
-    <link rel="stylesheet" href="/css/home-platform.css" />
+    <link rel="stylesheet" href="/css/motion.css" />
     <script src="/js/i18n.js" defer></script>
     <script src="/js/shell.js" defer></script>
     <script src="/js/catalog.js" defer></script>
     <script src="/js/home.js" defer></script>
-    <script src="/js/home-platform.js" defer></script>
-    <script src="/vendor/gsap-3.13.0/gsap.min.js" defer></script>
-    <script src="/vendor/gsap-3.13.0/ScrollTrigger.min.js" defer></script>
-    <script src="/js/home-motion.js" defer></script>
+    <script src="/js/home-tracks.js" defer></script>
+    <script src="/js/motion.js" defer></script>
   </head>
-  <body class="fayad-page">
-    <div class="page-background" aria-hidden="true">
-      <div class="background-grid"></div>
-      <div class="background-glow background-glow-one"></div>
-      <div class="background-glow background-glow-two"></div>
-    </div>
-
+  <body class="fayad-page has-bn">
     <a class="fy-skip" href="#main" data-i18n="common.skip">تخطي إلى المحتوى</a>
 
     <header class="navbar" id="navbar">
@@ -107,6 +101,7 @@
         <a href="#home" class="nav-link active" data-i18n="nav.home">الرئيسية</a>
         <a href="#courses" class="nav-link" data-i18n="nav.courses">المسارات</a>
         <a href="#how" class="nav-link" data-i18n="nav.how">كيف تتعلم</a>
+        <a href="#games" class="nav-link" data-i18n="menu.game">الألعاب</a>
         <a href="about/about.html" class="nav-link" data-i18n="nav.about">عن المنصة</a>
       </nav>
 
@@ -116,8 +111,7 @@
     </header>
 
     <main id="main">
-      <section id="home" class="hm-sec hm-hero" aria-labelledby="heroTitle">
-        <div class="hm-bg" aria-hidden="true"><i class="hm-orb hm-orb-a"></i><i class="hm-orb hm-orb-b"></i><i class="hm-grid"></i></div>
+      <section id="home" class="hm-hero" aria-labelledby="heroTitle">
         <div class="hm-wrap hm-hero-grid">
           <div class="hm-hero-copy">
             <div class="hm-welcome" id="hmWelcome" hidden>
@@ -125,328 +119,272 @@
               <div class="hm-welcome-t"><strong id="hmWelcomeHi"></strong><span id="hmWelcomeSum"></span></div>
               <a class="hm-welcome-me" href="/profile.html" id="hmWelcomeMe"></a>
             </div>
-            <span class="hm-kicker" data-i18n="h.kicker">منصة FAYBIT التعليمية</span>
-            <h1 id="heroTitle"><span class="hm-t1" data-i18n="h.t1">من أول سطر كود</span> <span class="hm-t2 hm-grad" data-i18n="h.t2">إلى تطبيق ويب حقيقي</span></h1>
-            <p class="hm-lead" data-i18n="h.desc">مسار مرتّب يبدأ بأساسيات الحاسوب والبرمجة، ثم HTML وCSS وJavaScript، وينتهي بأطر العمل. كل درس: شرح، مثال، تمرين، واختبار.</p>
+            <p class="hm-kicker" data-i18n="h.kicker">منصة FAYBIT التعليمية</p>
+            <h1 id="heroTitle"><span class="hm-t1" data-i18n="h.t1">من أول سطر كود</span> <span class="hm-t2" data-i18n="h.t2">إلى تطبيق ويب حقيقي</span></h1>
+            <p class="hm-lead" data-i18n="h.desc2">تتعلم تطوير الويب خطوة بخطوة بالعربية والإنجليزية: تقرأ الدرس، تجرّب الكود في محرر داخل الصفحة، ثم تختبر فهمك وتتمرّن.</p>
             <div class="hm-actions">
               <a class="hm-cta" id="heroCta" href="fundamentals/computer-basics/com.html"><span data-i18n="h.cta">ابدأ من الأساسيات</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-              <a class="hm-cta2" href="play/index.html"><span data-i18n="h.cta2">العب وتعلّم</span></a>
+              <a class="hm-cta2" href="#courses"><span data-i18n="h.cta3">استعرض المسارات</span></a>
             </div>
-            <ul class="hm-stats" aria-label="FAYBIT">
-              <li><b data-stat="tracks">11</b><span data-i18n="h.stat.tracks">مسارات</span></li>
-              <li><b data-stat="lessons">271</b><span data-i18n="h.stat.lessons">درسًا</span></li>
-            </ul>
+            <p class="hm-fine"><b data-stat="tracks">11</b> <span data-i18n="h.stat.tracks">مسارات</span> · <b data-stat="lessons">292</b> <span data-i18n="h.stat.lessons">درسًا</span> · <span data-i18n="h.f2d">من الصفر، دون خبرة سابقة</span></p>
           </div>
-          <div class="hm-hero-art">
-            <div class="hm-floaters" aria-hidden="true"><span class="hm-fl hm-fl-1">HTML</span><span class="hm-fl hm-fl-2">CSS</span><span class="hm-fl hm-fl-3">JS</span><span class="hm-fl hm-fl-4">React</span></div>
-            <div class="hm-win" aria-hidden="true">
-              <div class="hm-win-bar"><i></i><i></i><i></i><span>lesson.html</span></div>
-              <pre><code id="heroCode"><span class="c">&lt;!-- FAYBIT --&gt;</span>
-<span class="t">&lt;h1&gt;</span>Hello, FAYBIT<span class="t">&lt;/h1&gt;</span>
-<span class="t">&lt;button</span> <span class="a">class</span>=<span class="s">"start"</span><span class="t">&gt;</span>Start<span class="t">&lt;/button&gt;</span></code></pre>
-              <div class="hm-win-out"><strong>Hello, FAYBIT</strong><span class="hm-fake-btn">Start</span></div>
-              <small class="hm-win-cap" data-i18n="h.preview">مثال من درس تفاعلي</small>
+
+          <aside class="hm-next" id="nextStep" aria-labelledby="nextLabel" data-course="com">
+            <h2 class="hm-next-label" id="nextLabel" data-i18n="n.start">ابدأ من هنا</h2>
+            <div class="hm-next-head">
+              <span class="hm-badge hm-badge-lg" aria-hidden="true" id="nextBadge">CS</span>
+              <div><strong id="nextName">Computer Fundamentals</strong><span id="nextStatus" data-i18n="n.start.d">الخطوة الأولى في المسار</span></div>
             </div>
-            <aside class="hm-next" id="nextStep" aria-labelledby="nextLabel" data-course="com">
-              <span class="hm-next-label" id="nextLabel" data-i18n="n.start">ابدأ من هنا</span>
-              <div class="hm-next-head">
-                <span class="hm-badge hm-badge-lg" aria-hidden="true" id="nextBadge">CS</span>
-                <div><strong id="nextName">Computer Fundamentals</strong><span id="nextStatus" data-i18n="n.start.d">الخطوة الأولى في المسار</span></div>
+            <span class="hm-bar" id="nextBar" role="progressbar" aria-label="progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
+            <a class="hm-next-go" id="nextGo" href="fundamentals/computer-basics/com.html"><span id="nextGoText" data-i18n="n.open">افتح المسار</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <h3 class="hm-seg-title" data-i18n="s.title">تقدمك في المراحل</h3>
+            <ol class="hm-segs">
+              <li class="hm-seg" data-seg="1"><a href="#courses"><span class="hm-seg-n">1</span><span class="hm-seg-name" data-i18n="st.1.s">الأساسيات</span><span class="hm-seg-pct" data-pct></span><span class="hm-seg-bar"><span></span></span></a></li>
+              <li class="hm-seg" data-seg="2"><a href="#courses"><span class="hm-seg-n">2</span><span class="hm-seg-name" data-i18n="st.2.s">أساسيات الويب</span><span class="hm-seg-pct" data-pct></span><span class="hm-seg-bar"><span></span></span></a></li>
+              <li class="hm-seg" data-seg="3"><a href="#courses"><span class="hm-seg-n">3</span><span class="hm-seg-name" data-i18n="st.3.s">تعمّق</span><span class="hm-seg-pct" data-pct></span><span class="hm-seg-bar"><span></span></span></a></li>
+              <li class="hm-seg" data-seg="4"><a href="#courses"><span class="hm-seg-n">4</span><span class="hm-seg-name" data-i18n="st.4.s">أطر العمل</span><span class="hm-seg-pct" data-pct></span><span class="hm-seg-bar"><span></span></span></a></li>
+            </ol>
+            <p class="hm-next-note" data-i18n="s.note">يُحفظ تقدمك على هذا الجهاز، ومع حسابك إن سجّلت الدخول.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section id="courses" class="tk-sec" aria-labelledby="coursesTitle">
+        <div class="hm-wrap">
+          <header class="tk-head rv">
+            <h2 id="coursesTitle" data-i18n="tk.title">اختر مسارك</h2>
+            <p data-i18n="tk.sub">ابدأ من الأساسيات أو انتقل مباشرة إلى ما تحتاجه. تقدمك في كل مسار يُحفظ تلقائيًا.</p>
+          </header>
+
+          <div class="tk-group">
+            <h3 class="tk-label rv" data-i18n="tk.found">قبل أن تبدأ</h3>
+            <div class="tk-found">
+              <a class="tk tk-row" href="fundamentals/computer-basics/com.html" data-course="com" data-course-card="com" style="--i:0">
+                <span class="tk-glyph" aria-hidden="true">CS</span>
+                <span class="tk-body">
+                  <span class="tk-title"><strong>Computer Fundamentals</strong><span class="tk-lv" data-i18n="lv.b">مبتدئ</span></span>
+                  <span class="tk-oc" data-i18n="oc.com">تفهم كيف يعمل الحاسوب من العتاد إلى الشبكات والأمن السيبراني.</span>
+                  <span class="tk-meta"><span class="hm-count" data-lessons-for="com"></span><span data-i18n="pr.com">دون متطلبات</span></span>
+                  <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
+                  <span class="hm-progress-label" hidden></span>
+                </span>
+                <span class="tk-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </a>
+              <a class="tk tk-row" href="fundamentals/programming-basics/prg.html" data-course="prg" data-course-card="prg" style="--i:1">
+                <span class="tk-glyph" aria-hidden="true">{ }</span>
+                <span class="tk-body">
+                  <span class="tk-title"><strong>Programming Fundamentals</strong><span class="tk-lv" data-i18n="lv.b">مبتدئ</span></span>
+                  <span class="tk-oc" data-i18n="oc.prg">تفكّر كمبرمج: متغيرات وشروط وحلقات ودوال، وتحلّ مسائل صغيرة بنفسك.</span>
+                  <span class="tk-meta"><span class="hm-count" data-lessons-for="prg"></span><span data-i18n="pr.prg">مفضّل: أساسيات الحاسوب</span></span>
+                  <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
+                  <span class="hm-progress-label" hidden></span>
+                </span>
+                <span class="tk-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </a>
+            </div>
+          </div>
+
+          <div class="tk-group">
+            <h3 class="tk-label rv" data-i18n="tk.core">الأساس: ثلاث لغات خلف كل صفحة ويب</h3>
+            <div class="tk-core">
+              <a class="tk tk-feature" href="html-learning/html-learning.html" data-course="html" data-course-card="html" style="--i:0">
+                <span class="tk-art tk-art-html" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                <span class="tk-glyph" aria-hidden="true">HTML</span>
+                <span class="tk-body">
+                  <span class="tk-title"><strong>HTML</strong><span class="tk-lv" data-i18n="lv.b">مبتدئ</span></span>
+                  <span class="tk-oc" data-i18n="oc.html">تبني صفحة ويب سليمة البنية بعناصر دلالية ونماذج وجداول وإمكانية وصول.</span>
+                <span class="tk-topics" data-i18n="t.html">بنية الصفحة والنصوص والروابط والجداول والنماذج والعناصر الدلالية وإمكانية الوصول.</span>
+                  <span class="tk-meta"><span class="hm-count" data-lessons-for="html"></span><span data-i18n="pr.html">دون متطلبات</span></span>
+                  <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
+                  <span class="hm-progress-label" hidden></span>
+                </span>
+                <span class="tk-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </a>
+              <a class="tk tk-half" href="css-learning/css-learning.html" data-course="css" data-course-card="css" style="--i:1">
+                <span class="tk-art tk-art-css" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="tk-glyph" aria-hidden="true">CSS</span>
+                <span class="tk-body">
+                  <span class="tk-title"><strong>CSS</strong><span class="tk-lv" data-i18n="lv.b">مبتدئ</span></span>
+                  <span class="tk-oc" data-i18n="oc.css">تصمّم صفحات متجاوبة: المحددات والتتابع ونموذج الصندوق وFlexbox وGrid.</span>
+                  <span class="tk-meta"><span class="hm-count" data-lessons-for="css"></span><span data-i18n="pr.css">يتطلب: HTML</span></span>
+                  <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
+                  <span class="hm-progress-label" hidden></span>
+                </span>
+                <span class="tk-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </a>
+              <a class="tk tk-half" href="javascript-learning/javascript-learning.html" data-course="js" data-course-card="js" style="--i:2">
+                <span class="tk-art tk-art-js" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="tk-glyph" aria-hidden="true">JS</span>
+                <span class="tk-body">
+                  <span class="tk-title"><strong>JavaScript</strong><span class="tk-lv" data-i18n="lv.i">متوسط</span></span>
+                  <span class="tk-oc" data-i18n="oc.js">تجعل الصفحة تتفاعل: أساسيات اللغة وDOM والأحداث والوحدات وPromises وFetch.</span>
+                  <span class="tk-meta"><span class="hm-count" data-lessons-for="js"></span><span data-i18n="pr.js">يتطلب: HTML وCSS</span></span>
+                  <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
+                  <span class="hm-progress-label" hidden></span>
+                </span>
+                <span class="tk-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </a>
+            </div>
+          </div>
+
+          <div class="tk-group">
+            <div class="tk-label-row rv">
+              <h3 class="tk-label" id="tkMore" data-i18n="tk.more">تعمّق وأدوات وأطر عمل</h3>
+              <div class="tk-rail-ctl">
+                <button type="button" class="tk-nav" data-rail="prev" aria-label="السابق" data-i18n-attr="aria-label:tk.prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+                <button type="button" class="tk-nav" data-rail="next" aria-label="التالي" data-i18n-attr="aria-label:tk.next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
               </div>
-              <span class="hm-bar" id="nextBar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
-              <a class="hm-next-go" id="nextGo" href="fundamentals/computer-basics/com.html"><span id="nextGoText" data-i18n="n.open">افتح المسار</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            </aside>
-          </div>
-        </div>
-        <div class="hm-marquee" aria-hidden="true"><ul><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Advanced JS</li><li>Bootstrap</li><li>Tailwind</li><li>React</li><li>Vue</li><li>Angular</li></ul><ul><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Advanced JS</li><li>Bootstrap</li><li>Tailwind</li><li>React</li><li>Vue</li><li>Angular</li></ul></div>
-      </section>
-
-      <section id="platform" class="hm-sec hm-plat" aria-labelledby="platTitle">
-        <div class="hm-wrap">
-          <div class="hm-head">
-            <span class="hm-eyebrow" data-i18n="pl.eyebrow">ما تقدمه FAYBIT</span>
-            <h2 id="platTitle" data-i18n="pl.title">منصة تعليم كاملة، لا مجرد دروس</h2>
-            <p data-i18n="pl.lead">كل ما تحتاجه لتتعلم البرمجة وتطبّقها في مكان واحد، بالعربية والإنجليزية.</p>
-          </div>
-          <ul class="pl-grid" role="list">
-            <li class="pl"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h6a3 3 0 013 3v11a2 2 0 00-2-2H4zM20 5h-6a3 3 0 00-3 3v11a2 2 0 012-2h7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><h3 data-i18n="pl.1.t">دروس منظّمة بالترتيب</h3><p data-i18n="pl.1.d">مسارات تبدأ من أساسيات الحاسوب وتنتهي بأطر العمل، وفي كل درس شرح ومثال وتمرين.</p></li>
-            <li class="pl"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3 data-i18n="pl.2.t">محرر تفاعلي</h3><p data-i18n="pl.2.d">عدّل الكود وشاهد النتيجة فورًا داخل الدرس في بيئة معزولة وآمنة.</p></li>
-            <li class="pl"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3 data-i18n="pl.3.t">اختبارات وتغذية راجعة</h3><p data-i18n="pl.3.d">أسئلة بعد الدروس وتصحيح فوري مع تلميحات وشرح للإجابة.</p></li>
-            <li class="pl"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 9h10a4 4 0 014 4v1a3 3 0 01-5.2 2L14 14h-4l-1.800 2A3 3 0 013 14v-1a4 4 0 014-4zM8 11v3M6.500 12.500h3M16 12h.01M18 13.500h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3 data-i18n="pl.4.t">ألعاب برمجة</h3><p data-i18n="pl.4.d">مغامرة من 120 مرحلة، وبقاء من الزومبي بالقواعد المنطقية، وتحديات للمتصفح.</p></li>
-            <li class="pl"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l2.700 5.600 6.100.9-4.400 4.300 1 6.100L12 17l-5.400 2.900 1-6.100L3.200 9.500l6.100-.9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><h3 data-i18n="pl.5.t">تقدّم ونقاط</h3><p data-i18n="pl.5.d">لوحة تقدم وسلاسل أيام ونقاط تُحفظ على جهازك ومع حسابك.</p></li>
-            <li class="pl"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><h3 data-i18n="pl.6.t">عربي وإنجليزي</h3><p data-i18n="pl.6.d">واجهة كاملة من اليمين لليسار ومن اليسار لليمين، مع وضع فاتح وداكن.</p></li>
-          </ul>
-        </div>
-      </section>
-
-      <section id="courses" class="hm-sec hm-path" aria-labelledby="coursesTitle">
-        <div class="hm-wrap">
-          <div class="hm-head">
-            <span class="hm-eyebrow" data-i18n="t.eyebrow">المسار التعليمي</span>
-            <h2 id="coursesTitle" data-i18n="t.title">المسار التعليمي</h2>
-            <p data-i18n="t.sub">أربع مراحل مرتّبة. اتبعها بالترتيب، أو ابدأ من المرحلة التي تناسبك.</p>
-          </div>
-          <div class="hm-tabs" id="roadmap" role="tablist" aria-label="خريطة التعلم" data-i18n-attr="aria-label:r.title">
-            <button class="hm-tab" role="tab" id="tab-1" aria-controls="stage-1" aria-selected="true" tabindex="0" data-seg="1"><span class="hm-tab-n">01</span><span class="hm-tab-name" data-i18n="st.1.s">الأساسيات</span><span class="hm-seg-bar"><span></span></span></button>
-            <button class="hm-tab" role="tab" id="tab-2" aria-controls="stage-2" aria-selected="false" tabindex="-1" data-seg="2"><span class="hm-tab-n">02</span><span class="hm-tab-name" data-i18n="st.2.s">أساسيات الويب</span><span class="hm-seg-bar"><span></span></span></button>
-            <button class="hm-tab" role="tab" id="tab-3" aria-controls="stage-3" aria-selected="false" tabindex="-1" data-seg="3"><span class="hm-tab-n">03</span><span class="hm-tab-name" data-i18n="st.3.s">تعمّق</span><span class="hm-seg-bar"><span></span></span></button>
-            <button class="hm-tab" role="tab" id="tab-4" aria-controls="stage-4" aria-selected="false" tabindex="-1" data-seg="4"><span class="hm-tab-n">04</span><span class="hm-tab-name" data-i18n="st.4.s">أطر العمل</span><span class="hm-seg-bar"><span></span></span></button>
-          </div>
-          <div class="hm-stages">
-          <section class="hm-stage" id="stage-1" role="tabpanel" aria-labelledby="tab-1" data-stage="1">
-            <header class="hm-stage-rail">
-              <h3 data-i18n="st.1">الأساسيات</h3>
-              <p data-i18n="st.1.d">افهم كيف يعمل الحاسوب وكيف يفكر المبرمج قبل أي لغة.</p>
-              <span class="hm-stage-meta" data-stage-meta="com,prg"></span>
-            </header>
-            <ul class="hm-rows">
-              <li><a class="hm-row" href="fundamentals/computer-basics/com.html" data-course="com" data-course-card="com">
-                <span class="hm-badge" aria-hidden="true">CS</span>
-                <span class="hm-row-body">
-                  <span class="hm-row-title"><strong>Computer Fundamentals</strong><span class="hm-count" data-lessons-for="com"></span></span>
-                  <span class="hm-row-desc" data-i18n="t.com">من العتاد والمعالج والذاكرة إلى أنظمة التشغيل والشبكات والأمن السيبراني.</span>
+            </div>
+            <div class="tk-rail" id="tkRail" tabindex="0" role="region" aria-labelledby="tkMore">
+              <a class="tk tk-card" href="advanced-javascript/advanced-javascript.html" data-course="ajs" data-course-card="ajs" style="--i:0">
+                <span class="tk-glyph" aria-hidden="true">+JS</span>
+                <span class="tk-body">
+                  <span class="tk-title"><strong>Advanced JavaScript</strong><span class="tk-lv" data-i18n="lv.a">متقدم</span></span>
+                  <span class="tk-oc" data-i18n="oc.ajs">تفهم ما تحت الغطاء: النطاق والـ Closures وحلقة الأحداث والمولدات وأنماط التصميم.</span>
+                  <span class="tk-meta"><span class="hm-count" data-lessons-for="ajs"></span><span data-i18n="pr.ajs">يتطلب: JavaScript</span></span>
                   <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
                   <span class="hm-progress-label" hidden></span>
                 </span>
-                <span class="hm-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-              </a></li>
-              <li><a class="hm-row" href="fundamentals/programming-basics/prg.html" data-course="prg" data-course-card="prg">
-                <span class="hm-badge" aria-hidden="true">{ }</span>
-                <span class="hm-row-body">
-                  <span class="hm-row-title"><strong>Programming Fundamentals</strong><span class="hm-count" data-lessons-for="prg"></span></span>
-                  <span class="hm-row-desc" data-i18n="t.prg">المتغيرات والشروط والحلقات والدوال والمصفوفات والكائنات وحل المشكلات.</span>
+                <span class="tk-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </a>
+              <a class="tk tk-card" href="bootstrap-learning/bootstrap-learning.html" data-course="bs" data-course-card="bs" style="--i:1">
+                <span class="tk-glyph" aria-hidden="true">BS</span>
+                <span class="tk-body">
+                  <span class="tk-title"><strong>Bootstrap 5</strong><span class="tk-lv" data-i18n="lv.b">مبتدئ</span></span>
+                  <span class="tk-oc" data-i18n="oc.bs">تبني واجهات جاهزة بسرعة بالشبكة والمكونات والأدوات المساعدة.</span>
+                  <span class="tk-meta"><span class="hm-count" data-lessons-for="bs"></span><span data-i18n="pr.bs">يتطلب: HTML وCSS</span></span>
                   <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
                   <span class="hm-progress-label" hidden></span>
                 </span>
-                <span class="hm-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-              </a></li>
-            </ul>
-          </section>
-          <section class="hm-stage" id="stage-2" role="tabpanel" aria-labelledby="tab-2" data-stage="2" hidden>
-            <header class="hm-stage-rail">
-              <h3 data-i18n="st.2">أساسيات الويب</h3>
-              <p data-i18n="st.2.d">ابنِ الصفحة وصمّمها وأضف التفاعل: HTML وCSS وJavaScript.</p>
-              <span class="hm-stage-meta" data-stage-meta="html,css,js"></span>
-            </header>
-            <ul class="hm-rows">
-              <li><a class="hm-row" href="html-learning/html-learning.html" data-course="html" data-course-card="html">
-                <span class="hm-badge" aria-hidden="true">HTML</span>
-                <span class="hm-row-body">
-                  <span class="hm-row-title"><strong>HTML</strong><span class="hm-count" data-lessons-for="html"></span></span>
-                  <span class="hm-row-desc" data-i18n="t.html">بنية الصفحة والنصوص والروابط والجداول والنماذج والعناصر الدلالية وإمكانية الوصول.</span>
+                <span class="tk-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </a>
+              <a class="tk tk-card" href="tailwind-learning/tailwind-learning.html" data-course="tw" data-course-card="tw" style="--i:2">
+                <span class="tk-glyph" aria-hidden="true">TW</span>
+                <span class="tk-body">
+                  <span class="tk-title"><strong>Tailwind CSS</strong><span class="tk-lv" data-i18n="lv.i">متوسط</span></span>
+                  <span class="tk-oc" data-i18n="oc.tw">تصمّم مباشرة في الـ HTML بفئات Utility، مع التجاوب والوضع الداكن والتخصيص.</span>
+                  <span class="tk-meta"><span class="hm-count" data-lessons-for="tw"></span><span data-i18n="pr.tw">يتطلب: CSS</span></span>
                   <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
                   <span class="hm-progress-label" hidden></span>
                 </span>
-                <span class="hm-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-              </a></li>
-              <li><a class="hm-row" href="css-learning/css-learning.html" data-course="css" data-course-card="css">
-                <span class="hm-badge" aria-hidden="true">CSS</span>
-                <span class="hm-row-body">
-                  <span class="hm-row-title"><strong>CSS</strong><span class="hm-count" data-lessons-for="css"></span></span>
-                  <span class="hm-row-desc" data-i18n="t.css">المحددات ونموذج الصندوق وFlexbox وGrid والتصميم المتجاوب والحركة.</span>
+                <span class="tk-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </a>
+              <a class="tk tk-card" href="angular-learning/angular-learning.html" data-course="angular" data-course-card="angular" style="--i:3">
+                <span class="tk-glyph" aria-hidden="true">Ng</span>
+                <span class="tk-body">
+                  <span class="tk-title"><strong>Angular</strong><span class="tk-lv" data-i18n="lv.a">متقدم</span></span>
+                  <span class="tk-oc" data-i18n="oc.angular">تبني تطبيقًا منظمًا: مكونات وقوالب وخدمات وتوجيه ونماذج وRxJS.</span>
+                  <span class="tk-meta"><span class="hm-count" data-lessons-for="angular"></span><span data-i18n="pr.angular">يتطلب: JavaScript</span></span>
                   <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
                   <span class="hm-progress-label" hidden></span>
                 </span>
-                <span class="hm-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-              </a></li>
-              <li><a class="hm-row" href="javascript-learning/javascript-learning.html" data-course="js" data-course-card="js">
-                <span class="hm-badge" aria-hidden="true">JS</span>
-                <span class="hm-row-body">
-                  <span class="hm-row-title"><strong>JavaScript</strong><span class="hm-count" data-lessons-for="js"></span></span>
-                  <span class="hm-row-desc" data-i18n="t.js">أساسيات اللغة وDOM والأحداث والوحدات وPromises وFetch.</span>
+                <span class="tk-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </a>
+              <a class="tk tk-card" href="react-learning/react-learning.html" data-course="react" data-course-card="react" style="--i:4">
+                <span class="tk-glyph" aria-hidden="true">Re</span>
+                <span class="tk-body">
+                  <span class="tk-title"><strong>React</strong><span class="tk-lv" data-i18n="lv.i">متوسط</span></span>
+                  <span class="tk-oc" data-i18n="oc.react">تبني واجهات من مكونات: JSX وProps وState وHooks والتوجيه.</span>
+                  <span class="tk-meta"><span class="hm-count" data-lessons-for="react"></span><span data-i18n="pr.react">يتطلب: JavaScript</span></span>
                   <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
                   <span class="hm-progress-label" hidden></span>
                 </span>
-                <span class="hm-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-              </a></li>
-            </ul>
-          </section>
-          <section class="hm-stage" id="stage-3" role="tabpanel" aria-labelledby="tab-3" data-stage="3" hidden>
-            <header class="hm-stage-rail">
-              <h3 data-i18n="st.3">تعمّق وأدوات</h3>
-              <p data-i18n="st.3.d">JavaScript المتقدم، وأطر CSS الجاهزة لتسريع العمل.</p>
-              <span class="hm-stage-meta" data-stage-meta="ajs,bs,tw"></span>
-            </header>
-            <ul class="hm-rows">
-              <li><a class="hm-row" href="advanced-javascript/advanced-javascript.html" data-course="ajs" data-course-card="ajs">
-                <span class="hm-badge" aria-hidden="true">+JS</span>
-                <span class="hm-row-body">
-                  <span class="hm-row-title"><strong>Advanced JavaScript</strong><span class="hm-count" data-lessons-for="ajs"></span></span>
-                  <span class="hm-row-desc" data-i18n="t.ajs">النطاق والـ Closures والـ prototypes وProxy والمولدات وحلقة الأحداث والـ async وأنماط التصميم.</span>
+                <span class="tk-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </a>
+              <a class="tk tk-card" href="vue-learning/vue-learning.html" data-course="vue" data-course-card="vue" style="--i:5">
+                <span class="tk-glyph" aria-hidden="true">Vue</span>
+                <span class="tk-body">
+                  <span class="tk-title"><strong>Vue</strong><span class="tk-lv" data-i18n="lv.i">متوسط</span></span>
+                  <span class="tk-oc" data-i18n="oc.vue">تبني واجهات تفاعلية بقوالب بسيطة وComposition API وVue Router.</span>
+                  <span class="tk-meta"><span class="hm-count" data-lessons-for="vue"></span><span data-i18n="pr.vue">يتطلب: JavaScript</span></span>
                   <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
                   <span class="hm-progress-label" hidden></span>
                 </span>
-                <span class="hm-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-              </a></li>
-              <li><a class="hm-row" href="bootstrap-learning/bootstrap-learning.html" data-course="bs" data-course-card="bs">
-                <span class="hm-badge" aria-hidden="true">BS</span>
-                <span class="hm-row-body">
-                  <span class="hm-row-title"><strong>Bootstrap 5</strong><span class="hm-count" data-lessons-for="bs"></span></span>
-                  <span class="hm-row-desc" data-i18n="t.bs">الشبكة والأدوات المساعدة والنماذج والمكونات التفاعلية والوضع الداكن وRTL (Bootstrap 5.3).</span>
-                  <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
-                  <span class="hm-progress-label" hidden></span>
-                </span>
-                <span class="hm-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-              </a></li>
-              <li><a class="hm-row" href="tailwind-learning/tailwind-learning.html" data-course="tw" data-course-card="tw">
-                <span class="hm-badge" aria-hidden="true">TW</span>
-                <span class="hm-row-body">
-                  <span class="hm-row-title"><strong>Tailwind CSS</strong><span class="hm-count" data-lessons-for="tw"></span></span>
-                  <span class="hm-row-desc" data-i18n="t.tw">فلسفة Utility-First والتخطيط والتجاوب والحالات والوضع الداكن والتخصيص بـ @theme (Tailwind v4).</span>
-                  <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
-                  <span class="hm-progress-label" hidden></span>
-                </span>
-                <span class="hm-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-              </a></li>
-            </ul>
-          </section>
-          <section class="hm-stage" id="stage-4" role="tabpanel" aria-labelledby="tab-4" data-stage="4" hidden>
-            <header class="hm-stage-rail">
-              <h3 data-i18n="st.4">أطر العمل</h3>
-              <p data-i18n="st.4.d">ابنِ واجهات كاملة بإطار حديث: اختر React أو Vue أو Angular.</p>
-              <span class="hm-stage-meta" data-stage-meta="react,vue,angular"></span>
-            </header>
-            <ul class="hm-rows">
-              <li><a class="hm-row" href="react-learning/react-learning.html" data-course="react" data-course-card="react">
-                <span class="hm-badge" aria-hidden="true">Re</span>
-                <span class="hm-row-body">
-                  <span class="hm-row-title"><strong>React</strong><span class="hm-count" data-lessons-for="react"></span></span>
-                  <span class="hm-row-desc" data-i18n="t.react">المكونات وJSX وProps وState وHooks والتوجيه وبنية التطبيق.</span>
-                  <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
-                  <span class="hm-progress-label" hidden></span>
-                </span>
-                <span class="hm-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-              </a></li>
-              <li><a class="hm-row" href="vue-learning/vue-learning.html" data-course="vue" data-course-card="vue">
-                <span class="hm-badge" aria-hidden="true">Vue</span>
-                <span class="hm-row-body">
-                  <span class="hm-row-title"><strong>Vue</strong><span class="hm-count" data-lessons-for="vue"></span></span>
-                  <span class="hm-row-desc" data-i18n="t.vue">القوالب والتفاعلية والمكونات وComposition API وVue Router.</span>
-                  <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
-                  <span class="hm-progress-label" hidden></span>
-                </span>
-                <span class="hm-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-              </a></li>
-              <li><a class="hm-row" href="angular-learning/angular-learning.html" data-course="angular" data-course-card="angular">
-                <span class="hm-badge" aria-hidden="true">Ng</span>
-                <span class="hm-row-body">
-                  <span class="hm-row-title"><strong>Angular</strong><span class="hm-count" data-lessons-for="angular"></span></span>
-                  <span class="hm-row-desc" data-i18n="t.angular">المكونات والقوالب والتوجيهات والخدمات والتوجيه والنماذج وRxJS.</span>
-                  <span class="hm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></span>
-                  <span class="hm-progress-label" hidden></span>
-                </span>
-                <span class="hm-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-              </a></li>
-            </ul>
-          </section>
+                <span class="tk-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="games" class="hm-sec hm-games" aria-labelledby="gamesTitle">
-        <div class="hm-wrap">
-          <div class="hm-head">
-            <span class="hm-eyebrow" data-i18n="g.eyebrow">ألعاب FAYBIT</span>
-            <h2 id="gamesTitle" data-i18n="g.title">تعلّم باللعب</h2>
-            <p data-i18n="g.lead">تحديات برمجية قصيرة بمراحل متدرجة، والتحقق منها فوري داخل متصفحك.</p>
-          </div>
-          <div class="gm-grid">
-            <a class="gm gm-main" href="play/arena.html?track=js" data-game="js">
-              <span class="gm-tag" data-i18n="g.arena.tag">ساحة التحديات</span>
-              <h3 data-i18n="g.arena.t">تحديات برمجية حقيقية</h3>
-              <p data-i18n="g.arena.d">محرر ومعاينة حية وتحقق فوري، بمستويات من المبتدئ إلى الخبير في HTML وCSS وJavaScript.</p>
-              <div class="gm-code" aria-hidden="true"><span class="k">const</span> <span class="f">solve</span> = (x) =&gt; <span class="k">x</span> * <span class="n">2</span><i></i></div>
-              <span class="gm-prog" data-prog="arena"></span>
-              <span class="gm-go"><span data-i18n="g.play">العب الآن</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            </a>
-            <a class="gm gm-flex" href="play/flex-quest.html" data-game="flex">
-              <span class="gm-tag" data-i18n="g.css">CSS</span>
-              <h3>Flex Quest</h3>
-              <p data-i18n="g.flex.d">رتّب العناصر بخصائص Flexbox حتى تطابق الهدف.</p>
-              <span class="gm-prog" data-prog="flex"></span>
-            </a>
-            <a class="gm gm-sel" href="play/selector-quest.html" data-game="sel">
-              <span class="gm-tag" data-i18n="g.css">CSS</span>
-              <h3>Selector Quest</h3>
-              <p data-i18n="g.sel.d">اكتب محدد CSS يختار العناصر المطلوبة فقط.</p>
-              <span class="gm-prog" data-prog="sel"></span>
-            </a>
-            <a class="gm gm-zombie" href="play/zombie.html" data-game="zombie">
-              <span class="gm-art" aria-hidden="true"><svg viewBox="0 0 400 118" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="gzS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#050a14"/><stop offset="1" stop-color="#17402f"/></linearGradient></defs><rect width="400" height="118" fill="url(#gzS)"/><circle cx="318" cy="30" r="17" fill="#eaeef5"/><circle cx="311" cy="26" r="17" fill="#07101e"/><g fill="#0c211c"><path d="M30 118l18-60 18 60zM70 118l14-44 14 44zM330 118l16-52 16 52zM370 118l12-38 12 38z"/></g><rect x="0" y="100" width="400" height="18" fill="#0c211c"/><g fill="#5f8f3a"><rect x="236" y="62" width="20" height="38" rx="6"/><circle cx="246" cy="56" r="10"/><rect x="215" y="68" width="24" height="6" rx="3"/><rect x="262" y="68" width="22" height="6" rx="3"/></g><circle cx="243" cy="55" r="2.200" fill="#e5393f"/><circle cx="250" cy="55" r="2.200" fill="#e5393f"/><g fill="#3d78c8"><rect x="120" y="64" width="18" height="36" rx="6"/><circle cx="129" cy="58" r="9" fill="#f1c8a0"/><rect x="136" y="72" width="22" height="5" rx="2.500" fill="#ffb02e"/></g><path d="M160 74h40" stroke="#b6f23a" stroke-width="2" stroke-dasharray="3 5"/></svg></span>
-              <span class="gm-tag" data-i18n="g.zombie.tag">HTML وCSS وJS</span>
-              <h3>Zombie Survival</h3>
-              <p data-i18n="g.zombie.d">دافع عن الناجين بكود حقيقي: Flexbox وGrid وposition وtransition، ونماذج HTML الدلالية، وأحداث JavaScript — 15 مهمة.</p>
-              <span class="gm-prog" data-prog="zombie"></span>
-            </a>
-            <a class="gm gm-adv" href="play/adventure.html" data-game="adventure">
-              <span class="gm-art" aria-hidden="true"><svg viewBox="0 0 400 118" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="gaS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfe6ff"/><stop offset="1" stop-color="#fff2b8"/></linearGradient></defs><rect width="400" height="118" fill="url(#gaS)"/><circle cx="330" cy="30" r="20" fill="#ffd54a"/><path d="M0 84q60-40 130-14t140-10q70 6 130-18v76H0z" fill="#8ed98f"/><path d="M0 100q90-30 200-6t200-14v38H0z" fill="#2f9a62"/><g fill="#1b6b42"><path d="M60 94l14-34 14 34zM92 96l11-26 11 26z"/></g><rect x="268" y="60" width="3" height="34" fill="#7a4a1d"/><path d="M271 60l22 8-22 9z" fill="#e5393f"/><rect x="170" y="70" width="26" height="24" rx="7" fill="#12a89a"/><rect x="175" y="76" width="16" height="9" rx="4" fill="#0b2b36"/><circle cx="180" cy="80.500" r="2" fill="#6ff"/><circle cx="187" cy="80.500" r="2" fill="#6ff"/></svg></span>
-              <span class="gm-tag" data-i18n="g.adv.tag">برمجة بالكتل</span>
-              <h3 data-i18n="g.adv.t">FAYAD: المغامرة الكبرى</h3>
-              <p data-i18n="g.adv.d">120 مرحلة في 6 عوالم: تسلسل وحلقات وشروط ودوال.</p>
-              <span class="gm-prog" data-prog="adventure"></span>
-            </a>
-          </div>
-          <a class="hm-chip gm-all" href="play/index.html"><span data-i18n="g.all">مركز الألعاب ولوحة الترتيب</span></a>
-        </div>
-      </section>
-
-      <section id="how" class="hm-sec hm-how" aria-labelledby="howTitle">
-        <div class="hm-wrap">
-          <div class="hm-head">
-            <span class="hm-eyebrow" data-i18n="how.eyebrow">طريقة التعلم</span>
-            <h2 id="howTitle" data-i18n="how.title">كيف يعمل كل درس</h2>
-          </div>
-          <ol class="hm-how-list">
-            <li class="hm-step">
-              <span class="hm-step-n" aria-hidden="true">01</span>
-              <div class="hm-step-art" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-              <h3 data-i18n="how.1">افهم الفكرة</h3><p data-i18n="how.1.d">شرح مختصر للمفهوم مع مثال كامل يمكنك قراءته.</p>
-            </li>
-            <li class="hm-step">
-              <span class="hm-step-n" aria-hidden="true">02</span>
-              <div class="hm-step-art hm-step-code" aria-hidden="true"><code>&lt;h1&gt;<b></b></code></div>
-              <h3 data-i18n="how.2">جرّب بنفسك</h3><p data-i18n="how.2.d">عدّل المثال وشغّله في محرر الدرس، ويُنفَّذ كودك في بيئة معزولة لا تمس الموقع.</p>
-            </li>
-            <li class="hm-step">
-              <span class="hm-step-n" aria-hidden="true">03</span>
-              <div class="hm-step-art hm-step-quiz" aria-hidden="true"><i></i><i class="ok"></i><i></i></div>
-              <h3 data-i18n="how.3">اختبر نفسك</h3><p data-i18n="how.3.d">أسئلة بعد كل درس، ويُحسب الدرس منجزًا عند الإجابة الصحيحة. يُحفظ تقدمك على جهازك.</p>
-            </li>
+      <section id="how" class="hm-how" aria-labelledby="howTitle">
+        <div class="hm-wrap hm-how-grid">
+          <h2 id="howTitle" data-i18n="how.title2">كيف يسير كل درس</h2>
+          <ol class="hm-steps rv">
+            <li><b>1</b><div><strong data-i18n="how.1">افهم الفكرة</strong><span data-i18n="how.1.d2">شرح قصير ثم مثال كامل يمكنك قراءته.</span></div></li>
+            <li><b>2</b><div><strong data-i18n="how.2">جرّب بنفسك</strong><span data-i18n="how.2.d2">عدّل المثال وشغّله في محرر الدرس، داخل بيئة معزولة.</span></div></li>
+            <li><b>3</b><div><strong data-i18n="how.3">اختبر نفسك</strong><span data-i18n="how.3.d2">أسئلة بعد كل درس مع شرح للإجابة.</span></div></li>
+            <li><b>4</b><div><strong data-i18n="how.4">تمرّن باللعب</strong><span data-i18n="how.4.d">طبّق ما تعلمته في تحديات الكود والألعاب.</span></div></li>
           </ol>
         </div>
       </section>
 
-      <section id="owner" class="hm-sec hm-owner" aria-labelledby="ownerTitle">
-        <div class="hm-bg" aria-hidden="true"><i class="hm-orb hm-orb-b"></i></div>
-        <div class="hm-wrap"><div class="hm-owner-card">
-          <figure class="hm-owner-photo">
-            <img src="/assets/images/profile-560.webp" width="560" height="560" loading="lazy" decoding="async" alt="صورة عبد الحميد فياض" data-i18n-attr="alt:o.alt" />
-            </figure>
-          <div class="hm-owner-body">
-            <span class="hm-eyebrow" data-i18n="o.eyebrow">صاحب المنصة</span>
-            <h2 id="ownerTitle" data-i18n="o.name">عبد الحميد فياض</h2>
-            <p class="hm-owner-role" data-i18n="o.role">أبني FAYBIT لأن أفضل طريقة للتعلم هي أن تكتب الكود بنفسك.</p>
-            <p class="hm-owner-edu" data-i18n="o.edu">طالب هندسة حاسبات في جامعة طنطا</p>
-            <ul class="hm-owner-links">
-              <li><a class="hm-chip" href="https://abdullhamid-fayad-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer"><span data-i18n="o.portfolio">الـ Portfolio</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
-              <li><a class="hm-chip" href="https://github.com/midofayad22" target="_blank" rel="noopener noreferrer"><span>GitHub</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
-              <li><a class="hm-chip" href="https://www.linkedin.com/in/abdullhamid-f-800bb5379" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
-            </ul>
-            <a class="hm-link" href="about/about.html" data-i18n="o.more">المزيد عن المنصة وصاحبها</a>
+      <section id="games" class="pl" aria-labelledby="gamesTitle">
+        <div class="hm-wrap">
+          <header class="pl-head rv">
+            <h2 id="gamesTitle" data-i18n="g.title2">تمرّن بالكود</h2>
+            <p data-i18n="g.lead2">ألعاب وتحديات تكتب فيها كودًا حقيقيًا، ويُفحص فورًا داخل متصفحك.</p>
+          </header>
+          <div class="gt-grid">
+            <a class="gt gt-arena rv" style="--i:0" href="play/index.html" data-game="arena">
+              <span class="gt-arena-copy">
+                <span class="gt-eyebrow" data-i18n="gm.arena.lv">من مبتدئ إلى خبير</span>
+                <strong class="gt-title" data-i18n="gm.arena.t">ساحات الكود</strong>
+                <span class="gt-desc" data-i18n="gm.arena.d">محرر ومعاينة حية في HTML وCSS وJavaScript، 20 تحديًا في كل ساحة.</span>
+                <span class="gt-prog" data-prog="arena"></span>
+                <span class="gt-cta"><span data-i18n="pl.cta2">افتح الساحات</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </span>
+              <span class="pl-demo" id="plDemo">
+                <span class="pl-demo-lab" data-i18n="pl.lab">تحدٍّ حقيقي من ساحة CSS</span>
+                <span class="pl-demo-brief" data-i18n="pl.brief">اجعل العنوان برتقاليًا (#e34f26)، بحجم 40px، في منتصف السطر.</span>
+                <span class="pl-code" dir="ltr"><code>.title {
+  color: #e34f26;
+  font-size: 40px;
+  text-align: center;
+}</code></span>
+                <span class="pl-checks"><span data-i18n="pl.c1">اللون #e34f26</span><span data-i18n="pl.c2">الحجم 40px</span><span data-i18n="pl.c3">المحاذاة center</span></span>
+              </span>
+            </a>
+            <a class="gt gt-flex rv" style="--i:1" href="play/flex-quest.html" data-game="flex">
+              <span class="gt-vis gt-vis-flex" aria-hidden="true"><i></i><i></i><i></i></span>
+              <strong class="gt-title">Flex Quest</strong>
+              <span class="gt-desc" data-i18n="gm.flex.d">اضبط خصائص Flexbox حتى يطابق التخطيط الهدف.</span>
+              <span class="gt-foot"><span class="gt-eyebrow" data-i18n="gm.flex.lv">CSS · مبتدئ إلى متوسط</span><span class="gt-prog" data-prog="flex"></span></span>
+              <span class="gt-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg></span>
+            </a>
+            <a class="gt gt-sel rv" style="--i:2" href="play/selector-quest.html" data-game="sel">
+              <span class="gt-vis gt-vis-sel" aria-hidden="true"><code>.card &gt; .title</code><i></i><i class="on"></i><i></i></span>
+              <strong class="gt-title">Selector Quest</strong>
+              <span class="gt-desc" data-i18n="gm.sel.d">اكتب محدد CSS يختار العناصر المطلوبة فقط.</span>
+              <span class="gt-foot"><span class="gt-eyebrow" data-i18n="gm.sel.lv">CSS · مبتدئ إلى متوسط</span><span class="gt-prog" data-prog="sel"></span></span>
+              <span class="gt-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg></span>
+            </a>
+            <a class="gt gt-zombie rv" style="--i:3" href="play/zombie.html" data-game="zombie">
+              <span class="gt-vis gt-vis-zombie" aria-hidden="true"><b>HTML</b><b>CSS</b><b>JS</b></span>
+              <strong class="gt-title">Zombie Survival</strong>
+              <span class="gt-desc" data-i18n="gm.zombie.d">دافع عن الناجين بكود HTML وCSS وJavaScript حقيقي في 15 مهمة.</span>
+              <span class="gt-foot"><span class="gt-eyebrow" data-i18n="gm.zombie.lv">مشروع تطبيقي · متوسط</span><span class="gt-prog" data-prog="zombie"></span></span>
+              <span class="gt-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg></span>
+            </a>
+            <a class="gt gt-adv rv" style="--i:4" href="play/adventure.html" data-game="adventure">
+              <span class="gt-vis gt-vis-adv" aria-hidden="true"><i></i><i></i><i></i></span>
+              <strong class="gt-title" data-i18n="gm.adv.t">المغامرة الكبرى</strong>
+              <span class="gt-desc" data-i18n="gm.adv.d">برمجة بالكتل عبر 120 مرحلة: تسلسل وحلقات وشروط ودوال.</span>
+              <span class="gt-foot"><span class="gt-eyebrow" data-i18n="gm.adv.lv">منطق برمجي · مبتدئ</span><span class="gt-prog" data-prog="adventure"></span></span>
+              <span class="gt-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg></span>
+            </a>
           </div>
-        </div></div>
-      </section>
-
-      <section id="start" class="hm-sec hm-final" aria-labelledby="finalTitle">
-        <div class="hm-bg" aria-hidden="true"><i class="hm-orb hm-orb-a"></i><i class="hm-orb hm-orb-b"></i></div>
-        <div class="hm-wrap hm-final-box">
-          <h2 id="finalTitle" data-i18n="fin.title">جاهز لتبدأ؟</h2>
-          <p data-i18n="fin.sub">افتح الدرس الأول الآن. لا حاجة لتسجيل الدخول للبدء.</p>
-          <a class="hm-cta" id="finalCta" href="fundamentals/computer-basics/com.html"><span data-i18n="h.cta">ابدأ من الأساسيات</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="hm-link" href="play/index.html"><span data-i18n="g.all">مركز الألعاب ولوحة الترتيب</span></a>
         </div>
       </section>
     </main>
 
+    <nav class="bn" aria-label="التنقل السريع" data-i18n-attr="aria-label:bn.label">
+      <a href="#home" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4v-5H9v5H5a1 1 0 0 1-1-1z"/></svg><span data-i18n="nav.home">الرئيسية</span></a>
+      <a href="#courses"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 5.5A1.5 1.5 0 0 1 6.5 4H19v14H6.5A1.5 1.5 0 0 0 5 19.5z"/><path d="M5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3"/></svg><span data-i18n="nav.courses">المسارات</span></a>
+      <a href="#games"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><rect x="3" y="7" width="18" height="11" rx="4"/><path d="M8 10.5v4M6 12.5h4M16 11h.01M18 14h.01"/></svg><span data-i18n="menu.game">الألعاب</span></a>
+      <button type="button" id="bnMenu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg><span data-i18n="bn.menu">القائمة</span></button>
+    </nav>
     <footer class="ft" id="footer">
       <div class="hm-wrap ft-bar">
         <a href="index.html" class="logo ft-logo" aria-label="FAYBIT">
@@ -467,7 +405,7 @@
           </div>
       </div>
       <div class="hm-wrap ft-bottom">
-        <p data-i18n="f.rights">© 2026 FAYBIT. من تطوير Abdullhamid, Fayad.</p>
+        <p data-i18n="f.rights">© 2026 FAYBIT. منصة تعليمية لتطوير الويب.</p>
       </div>
     </footer>
 

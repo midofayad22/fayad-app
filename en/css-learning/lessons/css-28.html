@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="css" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Media Queries — CSS | FAYBIT</title>
+    <meta name="description" content="Learn how media queries apply styles based on screen conditions." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/css-learning/lessons/css-28.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/css-learning/lessons/css-28.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/css-learning/lessons/css-28.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/css-learning/lessons/css-28.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Media Queries — CSS | FAYBIT" />
+    <meta property="og:description" content="Learn how media queries apply styles based on screen conditions." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/css-learning/lessons/css-28.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"CSS","item":"https://faybit.vercel.app/en/css-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Media Queries","item":"https://faybit.vercel.app/en/css-learning/lessons/css-28.html"}]},{"@type":"LearningResource","name":"Media Queries","description":"Learn how media queries apply styles based on screen conditions.","url":"https://faybit.vercel.app/en/css-learning/lessons/css-28.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"CSS — FAYBIT","url":"https://faybit.vercel.app/css-learning/css-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="CSS"><a href="/en/css-learning/lessons/index.html">Lessons</a><a href="/css-learning/lessons/css-28.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/css-learning/lessons/index.html">CSS</a></nav>
+      <p class="lp-eyebrow">Lesson 28 of 30</p>
+      <h1 class="lp-h1">Media Queries</h1>
+      <p class="lp-lead">Learn how media queries apply styles based on screen conditions.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-28">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>Your first CSS code</h2></div>
+</div>
+<pre dir="ltr"><code>@media (max-width: 768px) {
+body {
+font-size: 14px;
+}
+}</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Write CSS and see the result</h2></div>
+</div>
+<p class="practice-description">Change the code below, then run it to see the result.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What are media queries commonly used for?</strong></p><ul><li>Responsive design</li><li>Database connections</li><li>HTML structure</li><li>JavaScript execution</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Responsive design</strong></p></details></li><li><p><strong>Which keyword starts a media query?</strong></p><ul><li>@media</li><li>@screen</li><li>@responsive</li><li>@device</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>@media</strong></p></details></li><li><p><strong>What does max-width define?</strong></p><ul><li>A maximum viewport width condition</li><li>The maximum font size</li><li>The maximum height of every element</li><li>The maximum page length</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A maximum viewport width condition</strong></p></details></li><li><p><strong>We have p { color: blue; } and inside @media (min-width: 768px) { p { color: red; } }. What is p's color on a 500px screen?</strong></p><ul><li>Blue</li><li>Red</li><li>Green</li><li>Black</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Blue</strong></p><p>The min-width: 768px condition is false at 500px, so the base rule stays. This is the mobile-first approach.</p></details></li><li><p><strong>@media (max-width: 600px) { .a { color: red; } } is written, then .a { color: blue; } after it outside. Why is red never seen on mobile?</strong></p><ul><li>Because max-width does not work on mobile</li><li>Because the later rule with equal specificity overrides the one inside the query</li><li>Because the query needs screen</li><li>Because red is not supported</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Because the later rule with equal specificity overrides the one inside the query</strong></p><p>A media query does not raise specificity, so the last rule written wins. Put media query rules after the base rules.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-28">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/css-learning/lessons/css-27.html"><small>Previous lesson</small><strong>Specificity</strong></a>
+        <a rel="next" href="/en/css-learning/lessons/css-29.html"><small>Next lesson</small><strong>Advanced Selectors</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/css-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

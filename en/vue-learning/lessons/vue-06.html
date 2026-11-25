@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="vue" />
+    <title>Computed Properties — Vue.js | FAYBIT</title>
+    <meta name="description" content="Learn how to create values derived from data using Computed Properties." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/vue-learning/lessons/vue-06.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/vue-learning/lessons/vue-06.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/vue-learning/lessons/vue-06.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/vue-learning/lessons/vue-06.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Computed Properties — Vue.js | FAYBIT" />
+    <meta property="og:description" content="Learn how to create values derived from data using Computed Properties." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/vue-learning/lessons/vue-06.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Vue.js","item":"https://faybit.vercel.app/en/vue-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Computed Properties","item":"https://faybit.vercel.app/en/vue-learning/lessons/vue-06.html"}]},{"@type":"LearningResource","name":"Computed Properties","description":"Learn how to create values derived from data using Computed Properties.","url":"https://faybit.vercel.app/en/vue-learning/lessons/vue-06.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Vue.js — FAYBIT","url":"https://faybit.vercel.app/vue-learning/vue-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Vue.js"><a href="/en/vue-learning/lessons/index.html">Lessons</a><a href="/vue-learning/lessons/vue-06.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/vue-learning/lessons/index.html">Vue.js</a></nav>
+      <p class="lp-eyebrow">Lesson 6 of 22</p>
+      <h1 class="lp-h1">Computed Properties</h1>
+      <p class="lp-lead">Learn how to create values derived from data using Computed Properties.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-6">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<h2>Computed Properties</h2>
+<p>
+A Computed Property is a value calculated from other data.
+</p>
+<p>
+It is useful when we need a result derived from the data we
+already have.
+</p>
+</div></article>
+<article class="body-card key-card"><div class="info-label">Computed for derived values</div><p>Use Computed when you need to calculate a value based on other data.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>The code</h2></div>
+</div>
+<pre dir="ltr"><code>
+&lt;div id="app"&gt;
+&lt;h2&gt;{{ fullName }}&lt;/h2&gt;
+&lt;/div&gt;
+&lt;script&gt;
+const { createApp } = Vue;
+createApp({
+data() {
+return {
+firstName: "Abdullhamid",
+lastName: "Fayad"
+};
+},
+computed: {
+fullName() {
+return this.firstName + " " + this.lastName;
+}
+}
+}).mount("#app");
+&lt;/script&gt;
+</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static">
+<div style="padding:20px;font-family:Arial;">
+<div class="lp-demo-h2">Abdullhamid Fayad</div>
+</div>
+</div></div>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>
+<p>
+<code>computed</code> holds the derived values.
+</p>
+<p>
+<code>fullName()</code> depends on <code>firstName</code>
+and <code>lastName</code>.
+</p>
+<p>
+When the data a Computed depends on changes, Vue
+recalculates it when needed.
+</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span></div>
+</div>
+<p class="practice-description">Create a Computed Property that combines the first name and the last name.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What are Computed Properties used for?</strong></p><ul><li>Creating values derived from data</li><li>Creating CSS files</li><li>Creating images</li><li>Managing the operating system</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Creating values derived from data</strong></p></details></li><li><p><strong>What does a Computed usually depend on?</strong></p><ul><li>Other Reactive data</li><li>Images only</li><li>HTML comments</li><li>The operating system</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Other Reactive data</strong></p></details></li><li><p><strong>Where do we put Computed in the Options API?</strong></p><ul><li>computed</li><li>derived</li><li>calculations</li><li>values</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>computed</strong></p></details></li><li><p><strong>What is the practical difference between a computed and a method for fullName?</strong></p><ul><li>A computed caches its result and recalculates only when its dependencies change</li><li>There is no difference at all</li><li>A method always caches the result</li><li>A computed does not work in templates</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A computed caches its result and recalculates only when its dependencies change</strong></p><p>Caching is the main advantage of computed over methods, which run on every call.</p></details></li><li><p><strong>How do we display a computed named total in the template?</strong></p><ul><li>{{ total() }}</li><li>{{ total }}</li><li>{{ computed.total }}</li><li>{{ this.total() }}</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>{{ total }}</strong></p><p>A computed is used like a normal property, without call parentheses.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-6">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/vue-learning/lessons/vue-05.html"><small>Previous lesson</small><strong>Methods</strong></a>
+        <a rel="next" href="/en/vue-learning/lessons/vue-07.html"><small>Next lesson</small><strong>v-bind</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/vue-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

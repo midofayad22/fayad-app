@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>The Browser and the Web — Computer Basics | FAYBIT</title>
+    <meta name="description" content="Tell the Internet , the Web and a Browser apart and explain how they relate. Break a URL into its parts and trace what happens from clicking a link to…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-16.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-16.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-16.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-16.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="The Browser and the Web — Computer Basics | FAYBIT" />
+    <meta property="og:description" content="Tell the Internet , the Web and a Browser apart and explain how they relate. Break a URL into its parts and trace what happens from clicking a link to…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-16.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Computer Basics","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"The Browser and the Web","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-16.html"}]},{"@type":"LearningResource","name":"The Browser and the Web","description":"Tell the Internet , the Web and a Browser apart and explain how they relate. Break a URL into its parts and trace what happens from clicking a link to…","url":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-16.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Computer Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Computer Basics"><a href="/en/fundamentals/computer-basics/lessons/index.html">Lessons</a><a href="/fundamentals/computer-basics/lessons/com-16.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/computer-basics/lessons/index.html">Computer Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 16 of 30</p>
+      <h1 class="lp-h1">The Browser and the Web</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-16">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>The Browser and the Web</h2>
+<div><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Tell the <span class="term">Internet</span>, the <span class="term">Web</span> and a <span class="term">Browser</span> apart and explain how they relate.</li><li>Break a <span class="term">URL</span> into its parts and trace what happens from clicking a link to seeing the page.</li><li>Use the browser developer tools to read requests and status codes yourself.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>The lesson “Internet and networks” (com-15); “How a program runs” (com-14) also helps.</li></ul>
+</section>
+<section class="lesson-section "><h3>Introduction: three things people mix up</h3>
+<p>Many people say “I opened the internet” when they mean they opened a website. In reality there are three different layers. The <span class="term">Internet</span> is the network of networks: the cables, routers and agreements that move packets between devices. The <span class="term">Web</span> is a service running on top of it, a vast collection of linked documents and applications reached through addresses and the <span class="term">HTTP</span> protocol. A <span class="term">Browser</span> is the program on your device that requests those documents and displays them. Email and online games use the same internet without being part of the web.</p>
+<figure class="doc-diagram" role="group" aria-label="Diagram"><figcaption>The layers, top to bottom</figcaption><ol class="doc-layers"><li><strong>Browser</strong><span>a program on your device that displays pages and runs their code</span></li><li><strong>The Web</strong><span>pages and applications reached by URLs over HTTP</span></li><li><strong>The Internet</strong><span>the network that carries packets between any two devices using IP addresses</span></li></ol></figure>
+</section>
+<section class="lesson-section "><h3>Anatomy of a URL</h3>
+<p>A <span class="term">URL</span> (Uniform Resource Locator) states where a resource is and how to reach it. Take this example and split it up:</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">text</span></figcaption><pre dir="ltr"><code>https://shop.example.com:443/books/search?q=linux&amp;page=2#reviews
+scheme    https
+host      shop.example.com
+port      443
+path      /books/search
+query     q=linux&amp;page=2
+fragment  reviews</code></pre></figure>
+<ul><li><strong>Scheme:</strong> the protocol, here <code>https</code>, meaning HTTP with encryption.</li><li><strong>Host:</strong> the server name <code>shop.example.com</code>, which <span class="term">DNS</span> translates into an IP address.</li><li><strong>Port:</strong> the door number on the server; 443 is the default for HTTPS, so it is usually omitted.</li><li><strong>Path:</strong> which resource we want on that server.</li><li><strong>Query:</strong> parameters sent to the server after the <code>?</code> sign, separated by <code>&amp;</code>.</li><li><strong>Fragment:</strong> what follows <code>#</code> stays in the browser and is not sent to the server; it points to a spot inside the page.</li></ul>
+</section>
+<section class="lesson-section "><h3>The request and response journey</h3>
+<p>When you type the address and press Enter a chain of steps begins, and all of it usually finishes in a fraction of a second:</p>
+<figure class="doc-diagram" role="group" aria-label="Diagram"><figcaption>From pressing Enter to the page</figcaption><ol class="doc-flow"><li><strong>DNS</strong><span>your device asks for the IP address behind shop.example.com, using a cache if it already knows</span></li><li><strong>TCP</strong><span>a reliable connection to the server is set up by exchanging short messages called a handshake</span></li><li><strong>TLS</strong><span>the browser checks the site certificate and both sides agree on encryption keys</span></li><li><strong>HTTP request</strong><span>the browser sends a GET request for the wanted path</span></li><li><strong>HTTP response</strong><span>the server returns a status code and the page content, and the browser starts rendering it</span></li></ol></figure>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">http</span></figcaption><pre dir="ltr"><code>GET /books/search?q=linux&amp;page=2 HTTP/1.1
+Host: shop.example.com
+Accept: text/html
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+Content-Length: 18342</code></pre></figure>
+<p>The first lines are a request, and the lines after the blank one are a response header. <span class="term">HTTP</span> is a simple text protocol of request and response, and by itself the server does not remember who you are between two requests; that is where cookies come in, as we will see.</p>
+</section>
+<section class="lesson-section "><h3>HTTP methods and status codes</h3>
+<p>A request states <em>what we want</em> with a <span class="term">Method</span>, and the response answers with a three-digit <span class="term">Status Code</span> showing the outcome. The first digit gives the class.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Item</th><th scope="col">Meaning</th><th scope="col">Example</th></tr></thead><tbody><tr><th scope="row">GET</th><td>fetch a resource without changing anything</td><td>opening a page</td></tr><tr><th scope="row">POST</th><td>send data to be processed</td><td>submitting a login form</td></tr><tr><th scope="row">200</th><td>success</td><td>the page loaded</td></tr><tr><th scope="row">301</th><td>moved permanently to another address</td><td>from http to https</td></tr><tr><th scope="row">404</th><td>the server works but cannot find the resource</td><td>a broken link</td></tr><tr><th scope="row">500</th><td>an error inside the server itself</td><td>a bug in the site code</td></tr></tbody></table></div>
+</section>
+<section class="lesson-section "><h3>What the browser does with the page</h3>
+<p>The response is <span class="term">HTML</span> text describing the page structure: headings, paragraphs, images and links. The browser reads it and builds a tree called the <span class="term">DOM</span>. While reading it finds references to other files and requests them: <span class="term">CSS</span>, which sets colours and layout; <span class="term">JavaScript</span>, which adds behaviour and interactivity; and images and fonts. Then it paints the page on screen. This is why a single page often needs dozens of requests.</p>
+<p>To save time the browser keeps copies of files in a <span class="term">Cache</span> on your device, so it does not re-download the same logo on every page. <span class="term">Cookies</span> are small pieces of text the browser stores at a site's request and sends back with every later request to it; that is how a site remembers you are signed in or that you picked a language. A cookie is not a program and executes nothing; it is only data.</p>
+</section>
+<section class="lesson-section "><h3>Hands-on: the Network tab in developer tools</h3>
+<p>Open any site, press <code>F12</code> (or <code>Ctrl+Shift+I</code>, and on macOS <code>Cmd+Option+I</code>) and choose the Network tab, then reload the page. You will see a table of every request the browser made.</p>
+<figure class="code-ex code-ex-out"><figcaption><span class="code-ex-lang">Output</span></figcaption><pre dir="ltr"><code>Name         Status  Type        Size     Time
+search       200     document    18.3 kB  120 ms
+style.css    200     stylesheet  9.1 kB   45 ms
+app.js       200     script      64 kB    80 ms
+logo.svg     304     svg+xml     (cache)  8 ms
+old-page     301     document    0.4 kB   60 ms
+missing.png  404     png         0.2 kB   50 ms</code></pre></figure>
+<ul><li>The <strong>Status</strong> column shows the status code; look for the red ones (4xx and 5xx).</li><li>The <strong>Time</strong> column reveals slow requests that delay the page.</li><li>Click any request to see its request headers, response headers and the cookies sent.</li></ul>
+</section>
+<section class="lesson-section "><h3>Real-world applications</h3>
+<ul><li><strong>Debugging:</strong> seeing 500 in the Network tab tells a developer the fault is on the server, not in the browser.</li><li><strong>Performance tuning:</strong> site teams shrink images and cut request counts to load faster.</li><li><strong>Search visibility:</strong> a permanent 301 redirect preserves the value of an old link when a site moves.</li><li><strong>Privacy:</strong> understanding cookies helps you manage what each site tracks about you.</li></ul>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>“The internet and the web are the same”: the web is one service on top of the internet; email, video calls and system updates use the internet without a browser.</li><li>“The browser is the search engine”: the browser is a program on your device, while a search engine is a site on remote servers that you open through it.</li><li>“The HTTPS padlock means the site is safe and honest”: the padlock only means the connection to that server is encrypted; the site's intentions are another matter.</li><li>“Cookies are viruses”: a cookie is text holding a small piece of information and never runs, though some are used for tracking, so managing them is your right.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Analysis:</strong> split <code>https://docs.example.org/guide/install?lang=ar#step-3</code> into its parts and say which part never reaches the server.</summary><div class="doc-solution"><strong>Show solution</strong><p>The scheme is <code>https</code>, the host is <code>docs.example.org</code>, the path is <code>/guide/install</code>, the query is <code>lang=ar</code> and the fragment is <code>step-3</code>. The part that is not sent to the server is the fragment; the browser uses it locally to scroll to a position in the page.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Reasoning:</strong> you revisit a known site and the page appears faster than the first time. Name two steps in the journey that caching saved.</summary><div class="doc-solution"><strong>Show solution</strong><p>First the DNS step: your system or browser keeps the IP address for a while, so it does not ask again. Second, downloading static files such as CSS and images: if the stored copy is still valid it is not downloaded again, and the server may just answer 304. In some cases an existing connection is reused, which also skips the handshake.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Hands-on:</strong> open the Network tab on a site you visit often and reload. Record the number of requests, the largest file, and any status code other than 200.</summary><div class="doc-solution"><strong>Show solution</strong><p>You will typically see dozens to hundreds of requests for one page. The largest file is usually an image, a JavaScript bundle or a video; sort the Size column in descending order to find it. Codes such as 304 appear for cached files, 301 or 302 for redirects, and you may spot a 404 for a missing file the visitor never notices. If you tick Disable cache and reload, you will see full sizes and longer times, which shows the effect of caching in practice.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>The internet is a network, the web is a service over it, and the browser is the program that shows it.</li><li>A URL has scheme, host, path, query and fragment, and a request passes through DNS, TCP, TLS and then HTTP.</li><li>The 2xx, 3xx, 4xx and 5xx codes summarise each request, and the Network tab displays them.</li><li>Cache and cookies make the web faster and keep sessions continuous.</li></ul><p class="doc-next"><strong>Next step:</strong> Cybersecurity: now that you know how data travels, we learn how to protect it.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>Core concept</strong>
+<p>The browser is the program the user uses to view and interact with web content.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Hands-on practice</span>
+<h3>Try it yourself</h3>
+</div>
+</div>
+<p>Open DevTools in your browser and look at the HTML and CSS of a simple page.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which of the following is a Web Browser?</strong></p><ul><li>Chrome</li><li>RAM</li><li>CPU</li><li>SSD</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Chrome</strong></p></details></li><li><p><strong>In the link https://shop.example.com/books?q=linux#reviews, which part is not sent to the server?</strong></p><ul><li>q=linux</li><li>books</li><li>reviews after the # sign</li><li>shop.example.com</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>reviews after the # sign</strong></p><p>The fragment after # stays in the browser and only points to a spot inside the page.</p></details></li><li><p><strong>A user opens a page and sees status 404. What does it mean?</strong></p><ul><li>The server itself crashed because of a bug</li><li>The server works but cannot find the requested resource</li><li>The page was moved permanently to another address</li><li>The request succeeded and the page loaded</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The server works but cannot find the requested resource</strong></p><p>4xx codes mean a problem with the request, and 404 means the resource is missing, like a broken link.</p></details></li><li><p><strong>Which order is correct for what happens after typing an address and pressing Enter?</strong></p><ul><li>TLS, then DNS, then HTTP, then TCP</li><li>HTTP, then DNS, then TCP, then TLS</li><li>TCP, then HTTP, then DNS, then TLS</li><li>DNS, then TCP, then TLS, then the HTTP request</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>DNS, then TCP, then TLS, then the HTTP request</strong></p><p>The name is resolved to an IP first, then TCP connects, TLS secures it, and only then is the HTTP request sent.</p></details></li><li><p><strong>In the Network tab, logo.svg shows 304 and is served from cache. What does that mean?</strong></p><ul><li>Your cached copy is still valid so the content was not sent again</li><li>The file does not exist on the server</li><li>An error occurred inside the server</li><li>The file was moved permanently to a new address</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Your cached copy is still valid so the content was not sent again</strong></p><p>Code 304 means the cached copy is still good, which saves time and bandwidth.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-16">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/computer-basics/lessons/com-15.html"><small>Previous lesson</small><strong>Internet and Networking Basics</strong></a>
+        <a rel="next" href="/en/fundamentals/computer-basics/lessons/com-17.html"><small>Next lesson</small><strong>Cybersecurity</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/computer-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>أنظمة التشغيل — أساسيات الكمبيوتر | FAYBIT</title>
+    <meta name="description" content="تعرّف Operating System وتعدد مهامه الأساسية. تفرّق بين Kernel والتطبيقات والواجهة وتفهم فكرة تعدد المهام. تتعرف على Windows وmacOS وLinux وAndroid وiOS…" />
+    <link rel="canonical" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-10.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-10.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-10.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-10.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="أنظمة التشغيل — أساسيات الكمبيوتر | FAYBIT" />
+    <meta property="og:description" content="تعرّف Operating System وتعدد مهامه الأساسية. تفرّق بين Kernel والتطبيقات والواجهة وتفهم فكرة تعدد المهام. تتعرف على Windows وmacOS وLinux وAndroid وiOS…" />
+    <meta property="og:url" content="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-10.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"أساسيات الكمبيوتر","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"أنظمة التشغيل","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-10.html"}]},{"@type":"LearningResource","name":"أنظمة التشغيل","description":"تعرّف Operating System وتعدد مهامه الأساسية. تفرّق بين Kernel والتطبيقات والواجهة وتفهم فكرة تعدد المهام. تتعرف على Windows وmacOS وLinux وAndroid وiOS…","url":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-10.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"أساسيات الكمبيوتر — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="أساسيات الكمبيوتر"><a href="/fundamentals/computer-basics/lessons/index.html">الدروس</a><a href="/en/fundamentals/computer-basics/lessons/com-10.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/fundamentals/computer-basics/lessons/index.html">أساسيات الكمبيوتر</a></nav>
+      <p class="lp-eyebrow">الدرس 10 من 30</p>
+      <h1 class="lp-h1">أنظمة التشغيل</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-10">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>أنظمة التشغيل</h2>
+<div><section class="lesson-section doc-objectives"><h3>أهداف الدرس</h3><ul><li>تعرّف <span class="term">Operating System</span> وتعدد مهامه الأساسية.</li><li>تفرّق بين <span class="term">Kernel</span> والتطبيقات والواجهة وتفهم فكرة تعدد المهام.</li><li>تتعرف على Windows وmacOS وLinux وAndroid وiOS وتختار ما يناسب الحاجة.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>المتطلبات السابقة</h3><ul><li>دروس العتاد والبرمجيات (com-03) والذاكرة (com-05) وأجهزة الإدخال والإخراج (com-09).</li></ul>
+</section>
+<section class="lesson-section "><h3>مقدمة: من يدير الحفلة؟</h3>
+<p>تخيل عشرة برامج تريد كلها المعالج والذاكرة والشاشة والقرص في الوقت ذاته. لو تُركت وشأنها لتصادمت وأفسد كل منها بيانات الآخر. <span class="term">Operating System</span> أو نظام التشغيل هو البرنامج الأساسي الذي يدير العتاد ويتيح للبرامج الأخرى استعماله بأمان وبترتيب. هو الوسيط بينك وبين الجهاز، وبين البرامج والجهاز.</p>
+<p>هذا الدرس مقدمة عامة. وفي القسم المتقدم من المسار (الدروس 21–30) ندرس المعمارية الداخلية للأنظمة بالتفصيل، فلن نكررها هنا.</p>
+</section>
+<section class="lesson-section "><h3>ما الذي يفعله نظام التشغيل؟</h3>
+<ul><li><strong>إدارة العمليات:</strong> يقرر أي برنامج يستعمل المعالج ولأي مدة، وكل برنامج قيد التشغيل يسمى <span class="term">Process</span>.</li><li><strong>إدارة الذاكرة:</strong> يعطي كل برنامج مساحة من RAM ويمنعه من الوصول إلى مساحة غيره.</li><li><strong>إدارة الملفات:</strong> ينظم التخزين في ملفات ومجلدات بحسب نظام الملفات.</li><li><strong>إدارة الأجهزة:</strong> يتعامل مع لوحة المفاتيح والشاشة والشبكة عبر التعريفات Drivers.</li><li><strong>الأمان والمستخدمون:</strong> حسابات وصلاحيات وتحديثات أمنية.</li><li><strong>الواجهة:</strong> سطح مكتب أو شاشة لمس أو سطر أوامر للتعامل معه.</li></ul>
+</section>
+<section class="lesson-section "><h3>الطبقات: العتاد والنواة والتطبيقات</h3>
+<figure class="doc-diagram" role="group" aria-label="مخطط"><figcaption>موقع نظام التشغيل بين العتاد والبرامج</figcaption><ol class="doc-layers"><li><strong>المستخدم</strong><span>يتعامل مع الواجهة وينقر ويكتب</span></li><li><strong>التطبيقات</strong><span>متصفح، محرر نصوص، لعبة — تطلب الخدمات ولا تلمس العتاد مباشرة</span></li><li><strong>النواة Kernel</strong><span>قلب النظام، تعمل بأعلى صلاحية وتتحكم بالمعالج والذاكرة والأجهزة</span></li><li><strong>العتاد Hardware</strong><span>المعالج والذاكرة والتخزين والأجهزة الطرفية</span></li></ol></figure>
+<p><span class="term">Kernel</span> هي الجزء الأساسي من النظام وتعمل بصلاحية عليا، بينما تعمل التطبيقات بصلاحية محدودة. وحين يحتاج تطبيق إلى قراءة ملف مثلًا فلا يقرأ القرص بنفسه، بل يطلب ذلك من النواة عبر ما يسمى <span class="term">System Call</span>. هذا الفصل يحمي النظام: فتعطل تطبيق لا يسقط الجهاز كله. وللتوسع في ذلك ارجع إلى درس المعمارية في القسم المتقدم.</p>
+</section>
+<section class="lesson-section "><h3>تعدد المهام: وهم التوازي</h3>
+<p>حين تستمع إلى الموسيقى وتكتب وتحمّل ملفًا، يبدو أن كل ذلك يحدث معًا. والحقيقة أن النواة تقسم الزمن إلى شرائح صغيرة جدًا (<span class="term">Time Slice</span>) من أجزاء الميلي ثانية، وتنقل المعالج بين البرامج بسرعة تفوق إدراكك. وفي المعالجات متعددة الأنوية يعمل فعلًا عدة برامج في اللحظة نفسها، كل منها على نواة.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">text</span></figcaption><pre dir="ltr"><code>Single core, time slice = 10 ms, 4 processes
+0-10 ms   process A
+10-20 ms  process B
+20-30 ms  process C
+30-40 ms  process D
+40-50 ms  process A  (again)</code></pre></figure>
+<p>في هذا المثال يعود كل برنامج ليعمل كل 40 ميلي ثانية، وحصته 25% من الزمن، وهو أقل مما يلاحظه المستخدم فتبدو الاستجابة متواصلة.</p>
+</section>
+<section class="lesson-section "><h3>أنظمة التشغيل الشائعة</h3>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">النظام</th><th scope="col">المطوّر</th><th scope="col">الأجهزة</th><th scope="col">ما يميزه</th></tr></thead><tbody><tr><th scope="row">Windows</th><td>Microsoft</td><td>حواسيب شخصية وأجهزة محمولة</td><td>أوسع دعم للبرامج والألعاب والعتاد</td></tr><tr><th scope="row">macOS</th><td>Apple</td><td>حواسيب Mac</td><td>مبني على أساس يونكس، تكامل مع أجهزة Apple</td></tr><tr><th scope="row">Linux</th><td>مجتمع مفتوح المصدر</td><td>خوادم وحواسيب وأجهزة مدمجة</td><td>مجاني ومفتوح ومرن، ويأتي في توزيعات مثل Ubuntu وFedora</td></tr><tr><th scope="row">Android</th><td>Google</td><td>هواتف ولوحيات وتلفازات</td><td>مبني على نواة Linux، وأكثر نظام تشغيل هواتف انتشارًا</td></tr><tr><th scope="row">iOS</th><td>Apple</td><td>iPhone وiPad</td><td>نظام مغلق ومتكامل مع تطبيقات App Store</td></tr></tbody></table></div>
+<p>يُلاحظ أن Linux هي في الحقيقة اسم النواة التي بدأها لينوس تورفالدز عام 1991، أما ما يثبّته الناس فهو <span class="term">Distribution</span> تجمع النواة مع الأدوات والواجهة. ولا يوجد نظام «أفضل» مطلقًا: يعتمد الاختيار على البرامج التي تحتاجها، والعتاد، والخبرة، والميزانية.</p>
+</section>
+<section class="lesson-section "><h3>تطبيقات من الواقع</h3>
+<ul><li><strong>التحديثات:</strong> تصلح ثغرات النظام وتضيف ميزات، وتأجيلها يترك الجهاز معرّضًا للهجمات.</li><li><strong>الأجهزة الافتراضية:</strong> تشغيل أكثر من نظام على جهاز واحد لاختبار برنامج أو تجربة Linux بأمان.</li><li><strong>اختيار الجهاز:</strong> قبل الشراء تحقق من أن البرامج التي تعتمد عليها تعمل على نظام الجهاز.</li></ul>
+<div class="doc-mistakes"><h4>أخطاء شائعة</h4><ul><li>«نظام التشغيل هو الواجهة التي أراها»: الواجهة جزء واحد، وأغلب عمل النظام يجري في النواة خلف الكواليس.</li><li>«Linux نظام واحد»: توجد عشرات التوزيعات تختلف في الواجهة والأدوات وعمر الدعم.</li><li>«تعدد المهام يعني أن كل شيء يعمل حرفيًا في الوقت نفسه»: على نواة واحدة يتناوب النظام بين البرامج بسرعة فائقة.</li><li>«Android وiOS نظام واحد لأنهما للهواتف»: لهما أصلان مختلفان وشركتان مختلفتان وأساليب مختلفة.</li></ul></div>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>حساب:</strong> نظام بنواة واحدة وشريحة زمنية 20 ميلي ثانية يشغّل 5 عمليات بالتناوب. بعد كم ميلي ثانية يعود دور العملية الأولى؟ وكم نسبة الزمن التي تنالها كل عملية؟</summary><div class="doc-solution"><strong>عرض الحل</strong><p>الدورة الكاملة = 5 × 20 = 100 ميلي ثانية، فتعود العملية الأولى بعد 100 ميلي ثانية. حصة كل عملية = 1 ÷ 5 = 20% (وهذا مع إهمال زمن التبديل نفسه الذي يأخذ جزءًا صغيرًا). وبما أن 100 ميلي ثانية قريبة من حد الإدراك البشري فقد يبدأ المستخدم بملاحظة بعض البطء؛ لذا تستعمل الأنظمة شرائح أقصر وأولويات.</p></div></details>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>استدلال:</strong> لماذا لا يسمح النظام لتطبيق بقراءة الذاكرة التي يستعملها تطبيق آخر؟ ماذا قد يحدث لو سمح؟</summary><div class="doc-solution"><strong>عرض الحل</strong><p>العزل يحقق الاستقرار والأمان معًا. لو استطاع برنامج الكتابة في ذاكرة غيره لأفسد بياناته أو أسقطه بخطأ بسيط، ولاستطاع برنامج خبيث قراءة كلمات المرور من المتصفح. لذلك تمنح النواة كل عملية فضاء عناوين خاصًا بها، وأي محاولة للتعدي تُوقف البرنامج المخالف وحده برسالة خطأ، ويستمر الباقي بالعمل.</p></div></details>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>تطبيق عملي:</strong> اعرف نظام التشغيل وإصداره على جهازك، ثم افتح قائمة العمليات الجارية واذكر ثلاث عمليات ووظيفة كل منها.</summary><div class="doc-solution"><strong>عرض الحل</strong><p>في Windows اضغط مفتاح Windows مع R واكتب <code>winver</code>. في macOS اختر «حول هذا الـ Mac». في Linux افتح الطرفية واكتب <code>uname -a</code>. ثم افتح مدير المهام أو مراقب النشاط: ستجد غالبًا عملية المتصفح (تطبيق)، وعملية مثل Explorer أو Finder (الواجهة وإدارة الملفات)، وعملية خدمة نظام أو مضاد فيروسات (خدمة تعمل في الخلفية). لاحظ عدد العمليات الكبير حتى حين لا تفتح تطبيقات، وهذا دليل على أن النظام يدير الكثير خلف الكواليس.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>الخلاصة</h3><ul><li>نظام التشغيل يدير المعالج والذاكرة والملفات والأجهزة والأمان ويوفر الواجهة.</li><li>النواة تعمل بصلاحية عليا، والتطبيقات تطلب منها الخدمات عبر System Calls.</li><li>تعدد المهام تناوب سريع بين البرامج وتشغيل متوازٍ حقيقي على الأنوية المتعددة.</li><li>لا يوجد نظام أفضل بإطلاق؛ يُختار بحسب الحاجة.</li></ul><p class="doc-next"><strong>الخطوة التالية:</strong> الملفات والمجلدات: كيف ينظم النظام ما نخزنه ونجد به ملفاتنا.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>المفهوم الأساسي</strong>
+<p>Operating System يعمل كوسيط بين المستخدم والتطبيقات من جهة وHardware من جهة أخرى.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>تطبيق عملي</span>
+<h3>جرّب بنفسك</h3>
+</div>
+</div>
+<p>حدد نظام التشغيل الذي تستخدمه الآن، ثم ابحث عن إصدار النظام.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما الوظيفة الأساسية لنظام التشغيل؟</strong></p><ul><li>إدارة موارد الجهاز</li><li>زيادة حجم الشاشة</li><li>استبدال CPU</li><li>صنع الإنترنت</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>إدارة موارد الجهاز</strong></p></details></li><li><p><strong>ما هي System Call؟</strong></p><ul><li>خطأ يوقف الجهاز</li><li>اتصال هاتفي عبر الشبكة</li><li>أداة لتسريع المعالج</li><li>طلب من التطبيق إلى النواة للقيام بعمل مثل قراءة ملف</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>طلب من التطبيق إلى النواة للقيام بعمل مثل قراءة ملف</strong></p><p>التطبيق لا يقرأ القرص بنفسه بل يطلب من النواة، وهذا يحمي النظام.</p></details></li><li><p><strong>نواة وحيدة وشريحة زمن 10 ms مع 4 عمليات. كم تنتظر كل عملية بين دورين؟</strong></p><ul><li>10 ms</li><li>30 ms</li><li>40 ms</li><li>100 ms</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>30 ms</strong></p><p>تعمل العمليات الثلاث الأخرى 30 ms قبل عودة دورك، فيحصل كل برنامج على 25% من الوقت.</p></details></li><li><p><strong>ما علاقة Android بـ Linux؟</strong></p><ul><li>لا علاقة بينهما</li><li>Linux مبني فوق Android</li><li>Android مبني على نواة Linux</li><li>Android نسخة من Windows</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Android مبني على نواة Linux</strong></p><p>Linux اسم النواة، وأندرويد نظام مبني عليها وهو الأكثر استخداماً على الهواتف.</p></details></li><li><p><strong>لماذا لا ينهار الجهاز كله عندما ينهار تطبيق واحد؟</strong></p><ul><li>لأن التطبيقات تعمل بصلاحيات محدودة والنواة وحدها تتحكم بالعتاد</li><li>لأن التطبيقات لا تستخدم المعالج</li><li>لأن النظام يتجاهل الأخطاء</li><li>لأن الانهيار مستحيل</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لأن التطبيقات تعمل بصلاحيات محدودة والنواة وحدها تتحكم بالعتاد</strong></p><p>فصل الامتيازات بين النواة والتطبيقات يعزل أخطاء التطبيق عن بقية النظام.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-10">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/fundamentals/computer-basics/lessons/com-09.html"><small>الدرس السابق</small><strong>أجهزة الإدخال والإخراج</strong></a>
+        <a rel="next" href="/fundamentals/computer-basics/lessons/com-11.html"><small>الدرس التالي</small><strong>الملفات والمجلدات</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/fundamentals/computer-basics/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

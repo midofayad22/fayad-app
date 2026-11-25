@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="vue" />
+    <title>المكونات Components — Vue.js | FAYBIT</title>
+    <meta name="description" content="تعلّم مفهوم Components وكيف تساعدك على بناء واجهات قابلة لإعادة الاستخدام." />
+    <link rel="canonical" href="https://faybit.vercel.app/vue-learning/lessons/vue-13.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/vue-learning/lessons/vue-13.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/vue-learning/lessons/vue-13.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/vue-learning/lessons/vue-13.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="المكونات Components — Vue.js | FAYBIT" />
+    <meta property="og:description" content="تعلّم مفهوم Components وكيف تساعدك على بناء واجهات قابلة لإعادة الاستخدام." />
+    <meta property="og:url" content="https://faybit.vercel.app/vue-learning/lessons/vue-13.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Vue.js","item":"https://faybit.vercel.app/vue-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"المكونات Components","item":"https://faybit.vercel.app/vue-learning/lessons/vue-13.html"}]},{"@type":"LearningResource","name":"المكونات Components","description":"تعلّم مفهوم Components وكيف تساعدك على بناء واجهات قابلة لإعادة الاستخدام.","url":"https://faybit.vercel.app/vue-learning/lessons/vue-13.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Vue.js — FAYBIT","url":"https://faybit.vercel.app/vue-learning/vue-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Vue.js"><a href="/vue-learning/lessons/index.html">الدروس</a><a href="/en/vue-learning/lessons/vue-13.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/vue-learning/lessons/index.html">Vue.js</a></nav>
+      <p class="lp-eyebrow">الدرس 13 من 22</p>
+      <h1 class="lp-h1">المكونات Components</h1>
+      <p class="lp-lead">تعلّم مفهوم Components وكيف تساعدك على بناء واجهات قابلة لإعادة الاستخدام.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-13">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<h2>Components</h2>
+<p>
+Component هو جزء مستقل وقابل لإعادة الاستخدام من واجهة المستخدم.
+</p>
+<p>
+تقسيم التطبيق إلى Components يجعل الكود أكثر تنظيمًا
+وأسهل في الصيانة.
+</p>
+</div></article>
+<article class="body-card key-card"><div class="info-label">Components تجعل الواجهة قابلة لإعادة الاستخدام</div><p>قسّم الواجهة إلى أجزاء صغيرة مستقلة يمكن إعادة استخدامها في أكثر من مكان.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>الكود</h2></div>
+</div>
+<pre dir="ltr"><code>
+&lt;div id="app"&gt;
+&lt;user-card&gt;&lt;/user-card&gt;
+&lt;/div&gt;
+&lt;script&gt;
+const { createApp } = Vue;
+const UserCard = {
+template: `
+&lt;div&gt;
+&lt;h2&gt;FAYBIT&lt;/h2&gt;
+&lt;p&gt;Vue Developer&lt;/p&gt;
+&lt;/div&gt;
+`
+};
+createApp({
+components: {
+UserCard
+}
+}).mount("#app");
+&lt;/script&gt;
+</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static">
+<div style="padding:20px;font-family:Arial;">
+<div class="lp-demo-h2">FAYBIT</div>
+<p style="margin:0;">Vue Developer</p>
+</div>
+</div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>
+<p>
+<code>UserCard</code> هو Component قابل لإعادة الاستخدام.
+</p>
+<p>
+قمنا بتسجيله داخل <code>components</code>.
+</p>
+<p>
+بعد ذلك يمكن استخدامه داخل Template باستخدام
+<code>&lt;user-card&gt;</code>.
+</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span></div>
+</div>
+<p class="practice-description">أنشئ Component بسيطًا يعرض اسمًا ووصفًا ويمكن إعادة استخدامه.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>لماذا نستخدم Components؟</strong></p><ul><li>لإنشاء أجزاء قابلة لإعادة الاستخدام</li><li>لاستبدال JavaScript</li><li>لإنشاء نظام تشغيل</li><li>لحذف HTML</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لإنشاء أجزاء قابلة لإعادة الاستخدام</strong></p></details></li><li><p><strong>ما فائدة تقسيم التطبيق إلى Components؟</strong></p><ul><li>تنظيم الكود وإعادة استخدام الأجزاء</li><li>إلغاء CSS</li><li>منع JavaScript</li><li>حذف البيانات</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تنظيم الكود وإعادة استخدام الأجزاء</strong></p></details></li><li><p><strong>هل يمكن استخدام Component أكثر من مرة؟</strong></p><ul><li>نعم</li><li>لا</li><li>فقط داخل CSS</li><li>فقط داخل Database</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>نعم</strong></p></details></li><li><p><strong>ما الخطأ عند استخدام &lt;Card /&gt; في القالب إذا لم نسجل المكون أو نستورده؟</strong></p><ul><li>لا يوجد خطأ</li><li>القوالب لا تقبل المكونات</li><li>Vue لن يعرف المكون ولن يعرضه</li><li>يجب أن يكون الاسم بالأرقام</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Vue لن يعرف المكون ولن يعرضه</strong></p><p>يجب تسجيل أو استيراد المكون قبل استخدامه في القالب.</p></details></li><li><p><strong>ما الذي يحصل عند وضع &lt;Counter /&gt; ثلاث مرات في الصفحة؟</strong></p><ul><li>تظهر نسخة واحدة فقط</li><li>تُنشأ ثلاث نسخ مستقلة لكل منها حالتها</li><li>يحدث خطأ</li><li>تشترك النسخ في نفس البيانات دائماً</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تُنشأ ثلاث نسخ مستقلة لكل منها حالتها</strong></p><p>كل استخدام ينشئ نسخة مستقلة من المكون ببياناته الخاصة.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-13">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/vue-learning/lessons/vue-12.html"><small>الدرس السابق</small><strong>ربط Class و Style</strong></a>
+        <a rel="next" href="/vue-learning/lessons/vue-14.html"><small>الدرس التالي</small><strong>Props</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/vue-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

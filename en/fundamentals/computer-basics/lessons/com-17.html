@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>Cybersecurity — Computer Basics | FAYBIT</title>
+    <meta name="description" content="Explain the CIA triad of confidentiality, integrity and availability, and classify any incident with it. Recognise common threats and match each with a…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-17.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-17.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-17.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-17.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Cybersecurity — Computer Basics | FAYBIT" />
+    <meta property="og:description" content="Explain the CIA triad of confidentiality, integrity and availability, and classify any incident with it. Recognise common threats and match each with a…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-17.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Computer Basics","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Cybersecurity","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-17.html"}]},{"@type":"LearningResource","name":"Cybersecurity","description":"Explain the CIA triad of confidentiality, integrity and availability, and classify any incident with it. Recognise common threats and match each with a…","url":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-17.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Computer Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Computer Basics"><a href="/en/fundamentals/computer-basics/lessons/index.html">Lessons</a><a href="/fundamentals/computer-basics/lessons/com-17.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/computer-basics/lessons/index.html">Computer Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 17 of 30</p>
+      <h1 class="lp-h1">Cybersecurity</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-17">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>Cybersecurity</h2>
+<div><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Explain the <span class="term">CIA</span> triad of confidentiality, integrity and availability, and classify any incident with it.</li><li>Recognise common threats and match each with a suitable defence.</li><li>Tell <span class="term">Hashing</span> from <span class="term">Encryption</span> and carry out a self-audit of your own accounts.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>The lessons “Internet and networks” and “Browser and web”.</li></ul>
+</section>
+<section class="lesson-section "><h3>Introduction: protecting what matters</h3>
+<p><span class="term">Cybersecurity</span> is the set of practices that protect devices, accounts and data from unauthorised access, damage or disruption. This lesson is entirely defensive: its aim is to know what you are protecting, from which danger, and with which measure. Most real breaches do not begin with a genius breaking encryption but with a weak password, a deceptive message or a postponed update.</p>
+</section>
+<section class="lesson-section "><h3>The CIA triad: three goals of security</h3>
+<p>Almost every security incident touches one of three goals, so this triad is used to analyse them:</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Goal</th><th scope="col">Meaning</th><th scope="col">Example of a breach</th><th scope="col">Protection</th></tr></thead><tbody><tr><th scope="row">Confidentiality</th><td>only authorised people can read the data</td><td>a customer database leaks</td><td>encryption and access control</td></tr><tr><th scope="row">Integrity</th><td>data has not been changed unnoticed</td><td>an amount altered in a transfer</td><td>hashes and digital signatures</td></tr><tr><th scope="row">Availability</th><td>the service is usable when needed</td><td>a site down because of ransomware</td><td>backups and redundancy</td></tr></tbody></table></div>
+</section>
+<section class="lesson-section "><h3>Common threats</h3>
+<ul><li><strong><span class="term">Phishing</span>:</strong> a message impersonating a trusted party to push you to type your password into a fake page or open an attachment.</li><li><strong><span class="term">Malware</span>:</strong> a general name for malicious software, such as viruses and spyware, usually arriving through a pirated program or an attachment.</li><li><strong><span class="term">Ransomware</span>:</strong> a kind that encrypts your files and demands payment to unlock them; it attacks availability.</li><li><strong><span class="term">Social Engineering</span>:</strong> tricking the person instead of breaking the technology, such as a call claiming to be tech support that rushes you.</li><li><strong>Weak or reused passwords:</strong> if your password leaks from one site, it is tried automatically on other sites.</li></ul>
+</section>
+<section class="lesson-section "><h3>Lines of defence</h3>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Threat</th><th scope="col">Main defence</th><th scope="col">Why it works</th></tr></thead><tbody><tr><th scope="row">Phishing</th><td>check sender and link, plus MFA</td><td>even a stolen password is not enough without a second factor</td></tr><tr><th scope="row">Malware</th><td>updates and installing from official sources</td><td>updates close known vulnerabilities</td></tr><tr><th scope="row">Ransomware</th><td>3-2-1 backups</td><td>you restore your files without paying</td></tr><tr><th scope="row">Social engineering</th><td>verify through a second channel and do not rush</td><td>it removes the pressure the trick relies on</td></tr><tr><th scope="row">Weak passwords</th><td>a password manager and a unique password per account</td><td>one leak does not open other accounts</td></tr></tbody></table></div>
+<h4>Passwords</h4>
+<p>Length matters more than cosmetic complexity: a passphrase of four or more random words is harder to guess than a short word full of symbols. More important still, it must be <strong>unique</strong> per account. Nobody can memorise dozens of unique passwords, so a <span class="term">Password Manager</span> generates and stores them, and you remember one strong master password.</p>
+<h4>Multi-factor authentication</h4>
+<p><span class="term">MFA</span> adds to “something you know” (the password) a factor of “something you have”, such as an authenticator app or security key, or “something you are”, such as a fingerprint. An authenticator app or key is generally stronger than a code sent by text message, since texts are easier to intercept or redirect.</p>
+<h4>The 3-2-1 backup rule</h4>
+<p>Keep <strong>3</strong> copies of important data, on <strong>2</strong> different kinds of media, with <strong>1</strong> copy off-site (a cloud service or a disk elsewhere). And actually test a restore; a backup that was never tested may fail when needed.</p>
+</section>
+<section class="lesson-section "><h3>Hashing and encryption: two different ideas</h3>
+<p><span class="term">Encryption</span> turns data into an unreadable form with a key and can be reversed with the right key; it is used when data travels, as in HTTPS, and when it is stored. <span class="term">Hashing</span> is a one-way conversion: any input gives a fixed-length fingerprint from which the input cannot be recovered. A responsible site does not store your password itself but its hash together with a random value called a <span class="term">Salt</span>, so a leaked database does not directly reveal the passwords.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">bash</span></figcaption><pre dir="ltr"><code>echo -n "hello" | sha256sum
+echo -n "hello!" | sha256sum</code></pre></figure>
+<figure class="code-ex code-ex-out"><figcaption><span class="code-ex-lang">Output</span></figcaption><pre dir="ltr"><code>2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824  -
+ce06092fb948d9ffac7d1a376e404b26b7575bcc11ee05a4615fef4fec3a308b  -</code></pre></figure>
+<p>The inputs differ by one exclamation mark yet the two fingerprints are completely different, which makes hashing excellent for detecting any change to a file (integrity). Run the command on your own machine and confirm both values yourself.</p>
+</section>
+<section class="lesson-section "><h3>Least privilege</h3>
+<p>The <span class="term">Least Privilege</span> principle means each user or program holds only the permissions it needs. Use a standard account for daily work and run as administrator only when required, and do not give an app camera or location access if its job does not need it. If a limited account is compromised, the damage is limited too.</p>
+</section>
+<section class="lesson-section "><h3>Real-world applications</h3>
+<ul><li><strong>Banks:</strong> ask for a second code on a sensitive operation, which is MFA in practice.</li><li><strong>Companies:</strong> roll out system updates and train staff to spot phishing messages.</li><li><strong>Downloading software:</strong> comparing the SHA-256 hash a developer publishes with the hash of your downloaded file confirms it was not corrupted or altered.</li><li><strong>Homes:</strong> changing the router's default password and updating its firmware closes some of the most common entry points.</li></ul>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>“Nobody cares about hacking my ordinary account”: attacks run automatically against millions of accounts, and an ordinary account is used for identity theft or to message your friends.</li><li>“Encryption and hashing are the same”: encryption is reversible with a key, while hashing is one-way and the input cannot be recovered.</li><li>“Antivirus is enough”: it is one layer, and it will not save you from a stolen password or from being tricked yourself.</li><li>“Private browsing makes me invisible”: it only stops history being saved locally; the site and your internet provider still see your activity as usual.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Classification:</strong> classify each incident by CIA: (a) an employee emails a confidential file to the wrong address, (b) ransomware encrypts a hospital's servers, (c) someone edits grades in a school database.</summary><div class="doc-solution"><strong>Show solution</strong><p>(a) A confidentiality breach, since someone not entitled saw the file. (b) An availability breach because systems stop working; it may also touch confidentiality if copies were stolen before encryption. (c) An integrity breach because data was altered without authorisation. Note that one incident can touch more than one goal; the point is to identify the most significant impact.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Reasoning:</strong> why is a very strong password not enough if you use it on ten sites?</summary><div class="doc-solution"><strong>Show solution</strong><p>Strength protects against guessing, but not against the site itself being breached. If an attacker compromises the least secure of those sites, they obtain your password as it is (or a hash that may be crackable if poorly hashed) and automatically try it on your other accounts, which is called credential stuffing. Uniqueness confines the damage to one site, which is why a password manager with MFA is recommended.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Self-audit (on your own device):</strong> run five checks on your digital life and record the result of each.</summary><div class="doc-solution"><strong>Show solution</strong><p>1) List your important accounts (email, bank, social networks) and confirm each has a unique password, with your main email protected by the strongest. 2) Enable MFA on email and bank first, preferring an authenticator app. 3) Open system settings and verify automatic updates are on for the system and the browser. 4) Ask: what are my most important files, and do they have three copies by 3-2-1? Then try restoring one file. 5) Review app permissions on your phone (camera, location, microphone) and revoke what an app does not need. Note the gaps by importance and fix one a day.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>Security aims at confidentiality, integrity and availability, and every incident touches at least one.</li><li>Most threats target the person, so caution and verification are core defences.</li><li>Long unique passwords, MFA, updates and 3-2-1 backups cover most everyday risks.</li><li>Encryption reverses with a key, hashing is one-way, and least privilege limits damage.</li></ul><p class="doc-next"><strong>Next step:</strong> History of Computing: we look back to see how we reached these devices.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>Core concept</strong>
+<p>Cybersecurity is not only the responsibility of companies; it starts with the user's everyday habits.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Hands-on practice</span>
+<h3>Try it yourself</h3>
+</div>
+</div>
+<p>Review your important accounts and make sure you use different passwords and have multi-factor authentication enabled.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which practice increases the security of your accounts?</strong></p><ul><li>Using the same password on all websites</li><li>Sharing your password</li><li>Enabling MFA</li><li>Opening any unknown link</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Enabling MFA</strong></p></details></li><li><p><strong>A company's customer database leaked and strangers read it. Which CIA goal was broken?</strong></p><ul><li>Confidentiality</li><li>Integrity</li><li>Availability</li><li>Authentication only</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Confidentiality</strong></p><p>Reading data by unauthorised people is a breach of confidentiality.</p></details></li><li><p><strong>Your files are encrypted and a message demands payment. What is the best defence in advance?</strong></p><ul><li>Pay quickly</li><li>A tested 3-2-1 backup</li><li>Using a shorter password</li><li>Always keeping the device off</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A tested 3-2-1 backup</strong></p><p>With good backups you restore your files without paying.</p></details></li><li><p><strong>Someone claiming to be tech support demands your verification code at once or your account will be closed. What is the right move?</strong></p><ul><li>Give the code so the account is not closed</li><li>Send the code by text</li><li>Pause and verify through another official channel</li><li>Change the password to my own name</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Pause and verify through another official channel</strong></p><p>Urgency and fear mark social engineering; the fix is checking through a second channel.</p></details></li><li><p><strong>What is the difference between hashing and encryption?</strong></p><ul><li>Both can be reversed with a key</li><li>Hashing cannot be reversed while encryption can be undone with the key</li><li>Encryption always gives a fixed length</li><li>Hashing needs a secret key to undo</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Hashing cannot be reversed while encryption can be undone with the key</strong></p><p>Hashing is one-way, good for detecting change and storing passwords, while encryption is reversed with a key.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-17">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/computer-basics/lessons/com-16.html"><small>Previous lesson</small><strong>The Browser and the Web</strong></a>
+        <a rel="next" href="/en/fundamentals/computer-basics/lessons/com-18.html"><small>Next lesson</small><strong>History of Computers</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/computer-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>استدعاءات النظام والـ Shell — أساسيات الكمبيوتر | FAYBIT</title>
+    <meta name="description" content="تشرح ما هو System Call وكيف ينتقل البرنامج من User Mode إلى Kernel Mode. تتتبع ما يحدث عند قراءة ملف. تفهم دور الـ Shell. درس معمارية نظام التشغيل…" />
+    <link rel="canonical" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-21.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-21.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-21.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-21.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="استدعاءات النظام والـ Shell — أساسيات الكمبيوتر | FAYBIT" />
+    <meta property="og:description" content="تشرح ما هو System Call وكيف ينتقل البرنامج من User Mode إلى Kernel Mode. تتتبع ما يحدث عند قراءة ملف. تفهم دور الـ Shell. درس معمارية نظام التشغيل…" />
+    <meta property="og:url" content="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-21.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"أساسيات الكمبيوتر","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"استدعاءات النظام والـ Shell","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-21.html"}]},{"@type":"LearningResource","name":"استدعاءات النظام والـ Shell","description":"تشرح ما هو System Call وكيف ينتقل البرنامج من User Mode إلى Kernel Mode. تتتبع ما يحدث عند قراءة ملف. تفهم دور الـ Shell. درس معمارية نظام التشغيل…","url":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-21.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"أساسيات الكمبيوتر — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="أساسيات الكمبيوتر"><a href="/fundamentals/computer-basics/lessons/index.html">الدروس</a><a href="/en/fundamentals/computer-basics/lessons/com-21.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/fundamentals/computer-basics/lessons/index.html">أساسيات الكمبيوتر</a></nav>
+      <p class="lp-eyebrow">الدرس 21 من 30</p>
+      <h1 class="lp-h1">استدعاءات النظام والـ Shell</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-21">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>استدعاءات النظام والـ Shell</h2>
+<div><section class="lesson-section doc-objectives"><h3>أهداف الدرس</h3><ul><li>تشرح ما هو <span class="term">System Call</span> وكيف ينتقل البرنامج من User Mode إلى Kernel Mode.</li><li>تتتبع ما يحدث عند قراءة ملف.</li><li>تفهم دور الـ Shell.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>المتطلبات السابقة</h3><ul><li>درس معمارية نظام التشغيل (com-21).</li></ul>
+</section>
+<section class="lesson-section "><h3>البوابة الوحيدة إلى النواة</h3>
+<p>بما أن التطبيقات لا تملك صلاحية التعامل مع العتاد، فهي تطلب كل خدمة عبر <span class="term">System Call</span>: طلب منظّم للنواة، مثل فتح ملف أو إنشاء عملية أو إرسال بيانات على الشبكة. تعليمة خاصة في المعالج تنقل التنفيذ إلى النواة في Kernel Mode، وبعد انتهاء الطلب يعود التنفيذ إلى البرنامج.</p>
+<figure class="doc-diagram" role="group" aria-label="مخطط"><figcaption>ما يحدث عند قراءة ملف</figcaption><ol class="doc-flow"><li><strong>التطبيق</strong><span>يستدعي دالة مكتبة مثل read()</span></li><li><strong>المكتبة</strong><span>تضع رقم الاستدعاء والمعاملات في السجلات</span></li><li><strong>تعليمة الانتقال</strong><span>المعالج يرفع الصلاحية ويقفز إلى النواة</span></li><li><strong>النواة</strong><span>تتحقق من الصلاحيات وتقرأ من القرص أو الذاكرة المؤقتة</span></li><li><strong>العودة</strong><span>تُنسخ البيانات للبرنامج ويعود إلى User Mode</span></li></ol></figure>
+</section>
+<section class="lesson-section "><h3>مشاهدة الاستدعاءات فعليًا</h3>
+<p>على Linux تُظهر الأداة <code>strace</code> كل استدعاء ينفذه برنامج. هذا مثال مبسّط لما ينتج عند طباعة محتوى ملف:</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">bash</span></figcaption><pre dir="ltr"><code>strace -e trace=openat,read,write,close cat notes.txt</code></pre></figure>
+<figure class="code-ex code-ex-out"><figcaption><span class="code-ex-lang">الناتج</span></figcaption><pre dir="ltr"><code>openat(AT_FDCWD, "notes.txt", O_RDONLY) = 3
+read(3, "Hello FAYBIT\n", 131072)     = 13
+write(1, "Hello FAYBIT\n", 13)         = 13
+close(3)                            = 0</code></pre></figure>
+<p>الرقم <code>3</code> هو <span class="term">File Descriptor</span>: مقبض تعطيه النواة للملف المفتوح. والرقم <code>1</code> هو الإخراج القياسي (الشاشة).</p>
+</section>
+<section class="lesson-section "><h3>الـ Shell</h3>
+<p><span class="term">Shell</span> برنامج عادي في User Space يقرأ ما تكتبه، ويطلب من النواة تشغيل البرامج. سطر الأوامر (Bash أو PowerShell) هو Shell نصي، وسطح المكتب الرسومي هو Shell رسومي. لا يوجد شيء سحري فيه: إنه تطبيق مثل غيره.</p>
+<details class="doc-exercise"><summary><span>تمرين</span> لماذا لا يستطيع برنامج تنفيذ تعليمة قراءة القرص مباشرة؟</summary><div class="doc-solution"><strong>عرض الحل</strong><p>لأن تعليمات الإدخال والإخراج محجوزة لـ Kernel Mode. لو سُمح بها لأي برنامج لتجاوز فحص الصلاحيات وقرأ ملفات غيره. النظام يجعل النواة نقطة التحكم الوحيدة.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>الخلاصة</h3><ul><li>System Call هو الطريقة المنظمة لطلب خدمة من النواة.</li><li>الانتقال بين الوضعين تفرضه تعليمة خاصة في المعالج.</li><li>الـ Shell تطبيق عادي وليس جزءًا من النواة.</li></ul><p class="doc-next"><strong>الخطوة التالية:</strong> ما الفرق بين البرنامج والعملية؟ الدرس القادم.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>المفهوم الأساسي</strong>
+<p>كل ما يفعله تطبيق خارج حدوده، من فتح ملف إلى فتح اتصال، يمر عبر System Call.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>تطبيق عملي</span>
+<h3>جرّب بنفسك</h3>
+</div>
+</div>
+<p>إن كنت على Linux أو macOS جرّب &lt;code&gt;ls -l&lt;/code&gt; ثم &lt;code&gt;strace -c ls&lt;/code&gt; (أو &lt;code&gt;dtruss&lt;/code&gt;) وقارن عدد الاستدعاءات. وإن كنت على Windows فاقرأ عن Process Monitor.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أين تعمل التطبيقات العادية؟</strong></p><ul><li>User Space بصلاحيات محدودة</li><li>Kernel Space بصلاحيات كاملة</li><li>داخل المعالج فقط</li><li>داخل القرص</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>User Space بصلاحيات محدودة</strong></p></details></li><li><p><strong>لماذا ينهار المتصفح وحده عند وقوع خطأ فيه بينما قد يُسقط خطأ في مشغّل جهاز النظام كله؟</strong></p><ul><li>المتصفح يعمل في Kernel Space</li><li>المشغّل يعمل في User Space بلا صلاحيات</li><li>المتصفح معزول في User Space والمشغّل يعمل بصلاحيات كاملة داخل النواة</li><li>كلاهما يعمل بالصلاحيات نفسها</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>المتصفح معزول في User Space والمشغّل يعمل بصلاحيات كاملة داخل النواة</strong></p><p>خطأ في الفضاء الكامل الصلاحيات قد يفسد الذاكرة والعتاد، أما خطأ التطبيق فيُنهى عمليته فقط.</p></details></li><li><p><strong>أي نواة تُبقي الحد الأدنى فيها وتشغّل باقي الخدمات كعمليات عادية؟</strong></p><ul><li>النواة المتراصة</li><li>النواة الدقيقة</li><li>لا يوجد هذا النوع</li><li>نواة المتصفح</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>النواة الدقيقة</strong></p><p>النواة الدقيقة مثل MINIX وQNX أعزل لكنها أبطأ قليلاً.</p></details></li><li><p><strong>أي عبارة تخلط بين النواة ونظام التشغيل؟</strong></p><ul><li>النواة جزء من نظام التشغيل</li><li>Ubuntu نواة Linux مع مكتبات وأدوات وسطح مكتب</li><li>النواة هي نظام التشغيل كله ولا شيء غيرها</li><li>Linux بالمعنى الدقيق نواة فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>النواة هي نظام التشغيل كله ولا شيء غيرها</strong></p><p>النواة جزء من النظام وليست كله، فالنظام يشمل المكتبات والأدوات أيضاً.</p></details></li><li><p><strong>ماذا يحدث عندما ينفّذ تطبيق في User Mode تعليمة حساسة كتعديل جداول الذاكرة؟</strong></p><ul><li>تُنفَّذ بصمت</li><li>يرفضها المعالج ويُطلق استثناءً يعالجه النظام</li><li>يعيد الحاسوب التشغيل فوراً</li><li>تُنقل إلى القرص</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يرفضها المعالج ويُطلق استثناءً يعالجه النظام</strong></p><p>المعالج نفسه يفرض الفصل بين الأوضاع ويمنع التعليمات الحساسة خارج وضع النواة.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-21">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/fundamentals/computer-basics/lessons/com-20.html"><small>الدرس السابق</small><strong>معمارية نظام التشغيل: النواة والفضاءان</strong></a>
+        <a rel="next" href="/fundamentals/computer-basics/lessons/com-22.html"><small>الدرس التالي</small><strong>العمليات والخيوط</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/fundamentals/computer-basics/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="html" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Audio &amp; Video — HTML | FAYBIT</title>
+    <meta name="description" content="Audio &amp; Video: تعلّم إضافة محتوى صوتي ومرئي إلى صفحات HTML. — HTML." />
+    <link rel="canonical" href="https://faybit.vercel.app/html-learning/lessons/html-22.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/html-learning/lessons/html-22.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/html-learning/lessons/html-22.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/html-learning/lessons/html-22.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Audio &amp; Video — HTML | FAYBIT" />
+    <meta property="og:description" content="Audio &amp; Video: تعلّم إضافة محتوى صوتي ومرئي إلى صفحات HTML. — HTML." />
+    <meta property="og:url" content="https://faybit.vercel.app/html-learning/lessons/html-22.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"HTML","item":"https://faybit.vercel.app/html-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Audio & Video","item":"https://faybit.vercel.app/html-learning/lessons/html-22.html"}]},{"@type":"LearningResource","name":"Audio & Video","description":"Audio & Video: تعلّم إضافة محتوى صوتي ومرئي إلى صفحات HTML. — HTML.","url":"https://faybit.vercel.app/html-learning/lessons/html-22.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"HTML — FAYBIT","url":"https://faybit.vercel.app/html-learning/html-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="HTML"><a href="/html-learning/lessons/index.html">الدروس</a><a href="/en/html-learning/lessons/html-22.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/html-learning/lessons/index.html">HTML</a></nav>
+      <p class="lp-eyebrow">الدرس 22 من 30</p>
+      <h1 class="lp-h1">Audio &amp; Video</h1>
+      <p class="lp-lead">تعلّم إضافة محتوى صوتي ومرئي إلى صفحات HTML.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/html-learning/html-learning.html#lesson-22">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<article class="content-card">
+<h2>الوسائط الصوتية والمرئية</h2>
+<p>استخدم <code>&lt;audio&gt;</code> للصوتيات و <code>&lt;video&gt;</code> لمقاطع الفيديو.</p>
+</article>
+</div></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>تضمين فيديو وصوت</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;video controls width="300"&gt;
+&lt;source src="video.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><p>مشغل وسائط يدعم أزرار التحكم controls</p></div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>الخاصية controls تضيف أزرار التشغيل والتحكم بالصوت.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>اكتب كود HTML</h2></div>
+</div>
+<p class="practice-description">أنشئ عنصر فيديو يحتوي على خاصية controls.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما هي الخاصية التي تُظهر أزرار التشغيل والإيقاف للوسائط على الشاشة؟</strong></p><ul><li>controls</li><li>autoplay</li><li>loop</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>controls</strong></p></details></li><li><p><strong>ما هو الوسم المخصص لإدراج الصوتيات في HTML5؟</strong></p><ul><li>&lt;audio&gt;</li><li>&lt;sound&gt;</li><li>&lt;mp3&gt;</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>&lt;audio&gt;</strong></p></details></li><li><p><strong>أي وسم فرعي يحدد مصدر ورابط ملف الميديا داخل وسم الفيديو؟</strong></p><ul><li>&lt;source&gt;</li><li>&lt;src&gt;</li><li>&lt;file&gt;</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>&lt;source&gt;</strong></p></details></li><li><p><strong>عنصر video بدون controls وبدون autoplay. ماذا يرى الزائر؟</strong></p><ul><li>فيديو لا يبدأ وبلا أزرار تشغيل ظاهرة للمستخدم</li><li>فيديو يعمل تلقائياً بصوت</li><li>خطأ في الصفحة</li><li>أزرار التحكم تظهر دائماً</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>فيديو لا يبدأ وبلا أزرار تشغيل ظاهرة للمستخدم</strong></p><p>controls هي التي تعرض واجهة التشغيل، وبدون autoplay لا يبدأ الفيديو وحده. النتيجة عملياً مقطع لا يمكن تشغيله بسهولة.</p></details></li><li><p><strong>وُضعت عدة عناصر source داخل video بصيغ مختلفة. كيف يتصرف المتصفح؟</strong></p><ul><li>يشغل جميعها معاً</li><li>يستخدم الأخير دائماً</li><li>يختار أول صيغة يدعمها</li><li>يعرض خطأ إن لم تتطابق</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يختار أول صيغة يدعمها</strong></p><p>يقرأ المتصفح عناصر source بالترتيب ويستخدم أول ملف يستطيع تشغيله، لذلك نوفر عدة صيغ للتوافق.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/html-learning/html-learning.html#lesson-22">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/html-learning/lessons/html-21.html"><small>الدرس السابق</small><strong>SEO Basics</strong></a>
+        <a rel="next" href="/html-learning/lessons/html-23.html"><small>الدرس التالي</small><strong>Div &amp; Span</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/html-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

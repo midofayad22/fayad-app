@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>Buttons and Button Groups — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="Buttons and Button Groups: Button styles, sizes, states, and groups. — Bootstrap 5." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-09.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-09.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-09.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-09.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Buttons and Button Groups — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="Buttons and Button Groups: Button styles, sizes, states, and groups. — Bootstrap 5." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-09.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Buttons and Button Groups","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-09.html"}]},{"@type":"LearningResource","name":"Buttons and Button Groups","description":"Buttons and Button Groups: Button styles, sizes, states, and groups. — Bootstrap 5.","url":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-09.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/en/bootstrap-learning/lessons/index.html">Lessons</a><a href="/bootstrap-learning/lessons/bs-09.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">Lesson 9 of 20</p>
+      <h1 class="lp-h1">Buttons and Button Groups</h1>
+      <p class="lp-lead">Button styles, sizes, states, and groups.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-9">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Styles</h2><p><code>btn</code> + <code>btn-primary|secondary|success|danger|warning|info|light|dark|link</code>. The outline version: <code>btn-outline-*</code>. Sizes: <code>btn-lg</code> and <code>btn-sm</code>. Disabling: <code>disabled</code> (and for links <code>aria-disabled="true"</code>). A full-width button: <code>w-100</code> or inside <code>d-grid</code>.</p></article><article class="content-card"><h2>Groups</h2><p><code>.btn-group</code> combines buttons into a single bar, and it is best to add <code>role="group"</code> and <code>aria-label</code> for accessibility.</p></article></div>
+<article class="body-card key-card"><p>Use button for actions and a for navigation, and add aria-label to button groups.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="container py-3 d-grid gap-3"&gt;
+&lt;div&gt;
+&lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="btn btn-outline-danger"&gt;Delete&lt;/button&gt;
+&lt;button class="btn btn-secondary btn-sm"&gt;Small&lt;/button&gt;
+&lt;button class="btn btn-success btn-lg" disabled&gt;Disabled&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class="btn-group" role="group" aria-label="Formatting group"&gt;
+&lt;button type="button" class="btn btn-outline-dark"&gt;Bold&lt;/button&gt;
+&lt;button type="button" class="btn btn-outline-dark"&gt;Italic&lt;/button&gt;
+&lt;button type="button" class="btn btn-outline-dark"&gt;Underline&lt;/button&gt;
+&lt;/div&gt;
+&lt;a class="btn btn-link" href="#"&gt;Link that looks like a button&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>The first row shows the different styles, and the group merges the borders between buttons. The <code>d-grid</code> class on the container makes its children full width.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Add a &lt;code&gt;btn-warning btn-lg&lt;/code&gt; button with the text "Warning".</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>How do we make a button with only a border?</strong></p><ul><li>btn-outline-primary</li><li>btn-border</li><li>btn-ghost</li><li>btn-line</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>btn-outline-primary</strong></p></details></li><li><p><strong>What is role=group with aria-label in btn-group for?</strong></p><ul><li>Telling a screen reader that the buttons are one described group</li><li>Coloring the buttons</li><li>Speeding up the page</li><li>Disabling the buttons</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Telling a screen reader that the buttons are one described group</strong></p></details></li><li><p><strong>Which class makes a button larger?</strong></p><ul><li>btn-lg</li><li>btn-xl</li><li>btn-big</li><li>btn-large</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>btn-lg</strong></p></details></li><li><p><strong>How do you correctly disable a link styled as a btn?</strong></p><ul><li>Add the disabled class with aria-disabled=&quot;true&quot;</li><li>Only write the disabled attribute on a</li><li>Add btn-off</li><li>Just remove href</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Add the disabled class with aria-disabled=&quot;true&quot;</strong></p><p>Links do not support the disabled attribute, so use the class plus aria-disabled for screen readers.</p></details></li><li><p><strong>Which class makes a button as wide as its container?</strong></p><ul><li>btn-wide</li><li>btn-block-100</li><li>d-inline</li><li>w-100</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>w-100</strong></p><p>w-100 gives 100% width; the alternative is placing the button inside d-grid.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-9">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/bootstrap-learning/lessons/bs-08.html"><small>Previous lesson</small><strong>Borders, Shadows, Position, and Display</strong></a>
+        <a rel="next" href="/en/bootstrap-learning/lessons/bs-10.html"><small>Next lesson</small><strong>Cards</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/bootstrap-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

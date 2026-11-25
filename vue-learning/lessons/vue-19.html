@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="vue" />
+    <title>Lifecycle Hooks — Vue.js | FAYBIT</title>
+    <meta name="description" content="تعلّم فكرة Lifecycle Hooks وكيف تنفذ كودًا في مراحل معينة من حياة Component." />
+    <link rel="canonical" href="https://faybit.vercel.app/vue-learning/lessons/vue-19.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/vue-learning/lessons/vue-19.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/vue-learning/lessons/vue-19.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/vue-learning/lessons/vue-19.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Lifecycle Hooks — Vue.js | FAYBIT" />
+    <meta property="og:description" content="تعلّم فكرة Lifecycle Hooks وكيف تنفذ كودًا في مراحل معينة من حياة Component." />
+    <meta property="og:url" content="https://faybit.vercel.app/vue-learning/lessons/vue-19.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Vue.js","item":"https://faybit.vercel.app/vue-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Lifecycle Hooks","item":"https://faybit.vercel.app/vue-learning/lessons/vue-19.html"}]},{"@type":"LearningResource","name":"Lifecycle Hooks","description":"تعلّم فكرة Lifecycle Hooks وكيف تنفذ كودًا في مراحل معينة من حياة Component.","url":"https://faybit.vercel.app/vue-learning/lessons/vue-19.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Vue.js — FAYBIT","url":"https://faybit.vercel.app/vue-learning/vue-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Vue.js"><a href="/vue-learning/lessons/index.html">الدروس</a><a href="/en/vue-learning/lessons/vue-19.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/vue-learning/lessons/index.html">Vue.js</a></nav>
+      <p class="lp-eyebrow">الدرس 19 من 22</p>
+      <h1 class="lp-h1">Lifecycle Hooks</h1>
+      <p class="lp-lead">تعلّم فكرة Lifecycle Hooks وكيف تنفذ كودًا في مراحل معينة من حياة Component.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-19">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<h2>Lifecycle Hooks</h2>
+<p>
+تمر Components في Vue بمراحل مختلفة أثناء حياتها.
+</p>
+<p>
+Lifecycle Hooks تسمح لك بتنفيذ Logic في مراحل محددة،
+مثل لحظة Mounting الخاصة بالمكون.
+</p>
+</div></article>
+<article class="body-card key-card"><div class="info-label">Hooks تعمل في مراحل محددة</div><p>يمكنك تنفيذ Logic عند حدوث مراحل مهمة في دورة حياة Component.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>الكود</h2></div>
+</div>
+<pre dir="ltr"><code>
+&lt;div id="app"&gt;
+&lt;h2&gt;مرحبًا Vue&lt;/h2&gt;
+&lt;/div&gt;
+&lt;script&gt;
+const { createApp, onMounted } = Vue;
+createApp({
+setup() {
+onMounted(() =&gt; {
+console.log("Component mounted!");
+});
+}
+}).mount("#app");
+&lt;/script&gt;
+</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static">
+<div style="padding:20px;font-family:Arial;">
+<div class="lp-demo-h2">مرحبًا Vue</div>
+<p style="margin-bottom:0;">تم تشغيل onMounted بعد تركيب Component.</p>
+</div>
+</div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>
+<p>
+<code>onMounted()</code> هو Lifecycle Hook من Composition API.
+</p>
+<p>
+يتم تشغيل Callback بعد أن يتم Mount للـ Component في DOM.
+</p>
+<p>
+توجد Hooks أخرى مثل <code>onUpdated()</code> و
+<code>onUnmounted()</code>.
+</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span></div>
+</div>
+<p class="practice-description">استخدم onMounted لتنفيذ كود بعد تركيب Component.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>متى يعمل onMounted()؟</strong></p><ul><li>بعد Mount الـ Component</li><li>قبل تحميل JavaScript</li><li>عند تغيير CSS فقط</li><li>عند حذف HTML</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>بعد Mount الـ Component</strong></p></details></li><li><p><strong>ما وظيفة Lifecycle Hooks؟</strong></p><ul><li>تنفيذ Logic في مراحل معينة من حياة Component</li><li>إنشاء قواعد بيانات</li><li>تغيير نظام التشغيل</li><li>إنشاء الصور</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تنفيذ Logic في مراحل معينة من حياة Component</strong></p></details></li><li><p><strong>أي Hook تستخدم لتنفيذ Logic بعد Mount؟</strong></p><ul><li>onMounted()</li><li>onStarted()</li><li>onLoadedCSS()</li><li>afterVue()</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>onMounted()</strong></p></details></li><li><p><strong>أين نضع طلب جلب البيانات الذي نريده عند ظهور المكون على الصفحة؟</strong></p><ul><li>داخل onMounted</li><li>داخل &lt;style&gt;</li><li>بعد حذف المكون</li><li>داخل الـ props</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>داخل onMounted</strong></p><p>onMounted يعمل بعد إدخال المكون في DOM، وهو مكان شائع لجلب البيانات الأولية.</p></details></li><li><p><strong>أي hook مناسب لتنظيف مؤقت setInterval قبل إزالة المكون؟</strong></p><ul><li>onMounted</li><li>onUpdated</li><li>onBeforeUnmount</li><li>watch</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>onBeforeUnmount</strong></p><p>onBeforeUnmount يعمل قبل إزالة المكون فنوقف فيه المؤقتات والمستمعات لتجنب التسريب.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-19">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/vue-learning/lessons/vue-18.html"><small>الدرس السابق</small><strong>watch</strong></a>
+        <a rel="next" href="/vue-learning/lessons/vue-20.html"><small>الدرس التالي</small><strong>النماذج والتحقق</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/vue-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

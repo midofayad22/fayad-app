@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <title>group, peer, and Other Variants — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="One element's state affecting another, child patterns, and aria and data variants." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-13.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-13.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-13.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-13.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="group, peer, and Other Variants — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="One element's state affecting another, child patterns, and aria and data variants." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-13.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"group, peer, and Other Variants","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-13.html"}]},{"@type":"LearningResource","name":"group, peer, and Other Variants","description":"One element's state affecting another, child patterns, and aria and data variants.","url":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-13.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/en/tailwind-learning/lessons/index.html">Lessons</a><a href="/tailwind-learning/lessons/tw-13.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">Lesson 13 of 20</p>
+      <h1 class="lp-h1">group, peer, and Other Variants</h1>
+      <p class="lp-lead">One element's state affecting another, child patterns, and aria and data variants.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-13">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>group</h2><p>Put <code>group</code> on the parent and then <code>group-hover:*</code> on the children so they change when the parent is hovered.</p></article><article class="content-card"><h2>peer</h2><p>Put <code>peer</code> on a <strong>preceding</strong> element and then <code>peer-checked:*</code> or <code>peer-invalid:*</code> on the next sibling. Great for custom checkboxes.</p></article><article class="content-card"><h2>Others</h2><p><code>first:</code> <code>last:</code> <code>odd:</code> <code>even:</code> for children, and <code>aria-expanded:*</code> and <code>data-[state=open]:*</code> for states expressed through attributes.</p></article></div>
+<article class="body-card key-card"><p>peer must come before the affected element in HTML order.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="space-y-4 p-4"&gt;
+&lt;a href="#" class="group flex items-center gap-3 rounded-lg border p-3 hover:border-sky-500"&gt;
+&lt;span class="text-slate-700 group-hover:text-sky-700"&gt;Hover over the whole card&lt;/span&gt;
+&lt;span id="arrow" class="ms-auto opacity-0 transition group-hover:opacity-100"&gt;←&lt;/span&gt;
+&lt;/a&gt;
+&lt;label class="flex items-center gap-2"&gt;
+&lt;input type="checkbox" id="chk" class="peer size-5"&gt;
+&lt;span class="text-slate-500 peer-checked:font-bold peer-checked:text-emerald-700"&gt;I agree to the terms&lt;/span&gt;
+&lt;/label&gt;
+&lt;ul&gt;&lt;li class="odd:bg-slate-100 p-2"&gt;1&lt;/li&gt;&lt;li class="odd:bg-slate-100 p-2"&gt;2&lt;/li&gt;&lt;li class="odd:bg-slate-100 p-2"&gt;3&lt;/li&gt;&lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>The arrow appears when the whole card is hovered thanks to <code>group</code>. The text changes when the checkbox is checked thanks to <code>peer-checked</code>. <code>odd:</code> shades the odd-numbered items.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Add &lt;code&gt;first:rounded-t-lg&lt;/code&gt; to the items and notice that it applies to the first one only.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is the purpose of group?</strong></p><ul><li>It lets children react to the parent's state via group-hover</li><li>Groups colors</li><li>Creates a grid</li><li>Hides children</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>It lets children react to the parent's state via group-hover</strong></p></details></li><li><p><strong>What is the requirement for peer-checked?</strong></p><ul><li>The peer must come before the affected element in HTML</li><li>The element must be a div</li><li>The parent must be a grid</li><li>No requirement</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The peer must come before the affected element in HTML</strong></p></details></li><li><p><strong>What does odd:bg-slate-100 do?</strong></p><ul><li>Shades only the odd-numbered items</li><li>Shades the even-numbered items</li><li>Shades only the first</li><li>Hides the odd-numbered items</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Shades only the odd-numbered items</strong></p></details></li><li><p><strong>Which prefix styles only the first child?</strong></p><ul><li>start:</li><li>first:</li><li>top:</li><li>head:</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>first:</strong></p><p>first: and last: target the first and last child.</p></details></li><li><p><strong>Which prefix styles an element when aria-expanded is true?</strong></p><ul><li>aria-expanded:</li><li>expanded-aria:</li><li>open:aria</li><li>state-expanded:</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>aria-expanded:</strong></p><p>aria-* variants read the attribute state directly.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-13">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/tailwind-learning/lessons/tw-12.html"><small>Previous lesson</small><strong>States: hover, focus, active, and disabled</strong></a>
+        <a rel="next" href="/en/tailwind-learning/lessons/tw-14.html"><small>Next lesson</small><strong>Dark Mode</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/tailwind-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

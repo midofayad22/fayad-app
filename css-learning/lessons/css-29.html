@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="css" />
+    <meta name="robots" content="noindex, follow" />
+    <title>المحددات المتقدمة — CSS | FAYBIT</title>
+    <meta name="description" content="تعلم المحددات المتقدمة مثل Child وSibling وAttribute وDescendant Selectors." />
+    <link rel="canonical" href="https://faybit.vercel.app/css-learning/lessons/css-29.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/css-learning/lessons/css-29.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/css-learning/lessons/css-29.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/css-learning/lessons/css-29.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="المحددات المتقدمة — CSS | FAYBIT" />
+    <meta property="og:description" content="تعلم المحددات المتقدمة مثل Child وSibling وAttribute وDescendant Selectors." />
+    <meta property="og:url" content="https://faybit.vercel.app/css-learning/lessons/css-29.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"CSS","item":"https://faybit.vercel.app/css-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"المحددات المتقدمة","item":"https://faybit.vercel.app/css-learning/lessons/css-29.html"}]},{"@type":"LearningResource","name":"المحددات المتقدمة","description":"تعلم المحددات المتقدمة مثل Child وSibling وAttribute وDescendant Selectors.","url":"https://faybit.vercel.app/css-learning/lessons/css-29.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"CSS — FAYBIT","url":"https://faybit.vercel.app/css-learning/css-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="CSS"><a href="/css-learning/lessons/index.html">الدروس</a><a href="/en/css-learning/lessons/css-29.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/css-learning/lessons/index.html">CSS</a></nav>
+      <p class="lp-eyebrow">الدرس 29 من 30</p>
+      <h1 class="lp-h1">المحددات المتقدمة</h1>
+      <p class="lp-lead">تعلم المحددات المتقدمة مثل Child وSibling وAttribute وDescendant Selectors.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-29">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>أول كود CSS لك</h2></div>
+</div>
+<pre dir="ltr"><code>nav &gt; a {
+color: #0b5d91;
+}
+input[type="text"] {
+border-color: #0f807a;
+}</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>اكتب CSS وشاهد النتيجة</h2></div>
+</div>
+<p class="practice-description">غيّر الكود الموجود بالأسفل ثم شغّله لترى النتيجة.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أي Selector يستهدف العناصر الأبناء المباشرة؟</strong></p><ul><li>&gt;</li><li>+</li><li>~</li><li>*</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>&gt;</strong></p></details></li><li><p><strong>أي Selector يستهدف عنصرًا بناءً على Attribute؟</strong></p><ul><li>[attribute]</li><li>.attribute</li><li>#attribute</li><li>:attribute</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>[attribute]</strong></p></details></li><li><p><strong>ماذا يحدد الـ + Combinator؟</strong></p><ul><li>العنصر الشقيق المباشر التالي</li><li>كل العناصر الأبناء</li><li>العنصر الأب</li><li>كل العناصر</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>العنصر الشقيق المباشر التالي</strong></p></details></li><li><p><strong>h2 ~ p بعد h2 يتبعه ثلاث فقرات. كم فقرة تستهدف؟</strong></p><ul><li>الأولى فقط</li><li>الثلاث كلها</li><li>الأخيرة فقط</li><li>لا شيء</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>الثلاث كلها</strong></p><p>المقرن ~ يستهدف كل الأشقاء التالين، بينما + يستهدف الشقيق المباشر فقط.</p></details></li><li><p><strong>أي عناصر يستهدفها a[href^='https']؟</strong></p><ul><li>الروابط التي تنتهي قيمتها بـ https</li><li>الروابط التي تحتوي https في أي موضع</li><li>الروابط التي تبدأ قيمة href فيها بـ https</li><li>الروابط بدون href</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>الروابط التي تبدأ قيمة href فيها بـ https</strong></p><p>العلامة ^= تعني يبدأ بـ، و$= تعني ينتهي بـ، و*= تعني يحتوي.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-29">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/css-learning/lessons/css-28.html"><small>الدرس السابق</small><strong>Media Queries</strong></a>
+        <a rel="next" href="/css-learning/lessons/css-30.html"><small>الدرس التالي</small><strong>أفضل ممارسات CSS</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/css-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

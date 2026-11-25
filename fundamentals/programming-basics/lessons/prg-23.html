@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <title>التعقيد الزمني Big-O — أساسيات البرمجة | FAYBIT</title>
+    <meta name="description" content="COMPLEXITY تفهم ماذا يعني O(n) و O(n²) . تقارن بين حلّين لنفس المشكلة. تحسّن حلًا بطيئًا باستخدام بنية مناسبة. درس Loops (prg-11) ودرس هياكل البيانات…" />
+    <link rel="canonical" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-23.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-23.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-23.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-23.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="التعقيد الزمني Big-O — أساسيات البرمجة | FAYBIT" />
+    <meta property="og:description" content="COMPLEXITY تفهم ماذا يعني O(n) و O(n²) . تقارن بين حلّين لنفس المشكلة. تحسّن حلًا بطيئًا باستخدام بنية مناسبة. درس Loops (prg-11) ودرس هياكل البيانات…" />
+    <meta property="og:url" content="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-23.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"أساسيات البرمجة","item":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"التعقيد الزمني Big-O","item":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-23.html"}]},{"@type":"LearningResource","name":"التعقيد الزمني Big-O","description":"COMPLEXITY تفهم ماذا يعني O(n) و O(n²) . تقارن بين حلّين لنفس المشكلة. تحسّن حلًا بطيئًا باستخدام بنية مناسبة. درس Loops (prg-11) ودرس هياكل البيانات…","url":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-23.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"أساسيات البرمجة — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="أساسيات البرمجة"><a href="/fundamentals/programming-basics/lessons/index.html">الدروس</a><a href="/en/fundamentals/programming-basics/lessons/prg-23.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/fundamentals/programming-basics/lessons/index.html">أساسيات البرمجة</a></nav>
+      <p class="lp-eyebrow">الدرس 23 من 31</p>
+      <h1 class="lp-h1">التعقيد الزمني Big-O</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-23">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">COMPLEXITY</span>
+<h2>كيف يتغير الزمن عندما تكبر البيانات؟</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content"><section class="lesson-section doc-objectives"><h3>أهداف الدرس</h3><ul><li>تفهم ماذا يعني <span class="term">O(n)</span> و<span class="term">O(n²)</span>.</li><li>تقارن بين حلّين لنفس المشكلة.</li><li>تحسّن حلًا بطيئًا باستخدام بنية مناسبة.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>المتطلبات السابقة</h3><ul><li>درس Loops (prg-11) ودرس هياكل البيانات (prg-22).</li></ul>
+</section>
+<section class="lesson-section "><h3>لا نقيس بالثواني</h3>
+<p>زمن التنفيذ بالثواني يتغير بحسب الجهاز. لذلك نصف الخوارزمية بكيفية <strong>نموّ عدد الخطوات</strong> مع حجم المدخل <code>n</code>. هذا هو <span class="term">Big-O</span>: يعطي الحد الأعلى التقريبي للنمو ويتجاهل الثوابت.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">الرمز</th><th scope="col">الاسم</th><th scope="col">مثال</th></tr></thead><tbody><tr><th scope="row">O(1)</th><td>ثابت</td><td>الوصول لعنصر بفهرسه <code>list[3]</code></td></tr><tr><th scope="row">O(log n)</th><td>لوغاريتمي</td><td>البحث الثنائي</td></tr><tr><th scope="row">O(n)</th><td>خطي</td><td>المرور على كل عنصر مرة</td></tr><tr><th scope="row">O(n²)</th><td>تربيعي</td><td>حلقة داخل حلقة على نفس البيانات</td></tr></tbody></table></div>
+</section>
+<section class="lesson-section "><h3>مثال: البحث عن تكرار</h3>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>// O(n^2): compare every pair
+function hasDuplicateSlow(a) {
+for (let i = 0; i &lt; a.length; i++)
+for (let j = i + 1; j &lt; a.length; j++)
+if (a[i] === a[j]) return true;
+return false;
+}
+// O(n): remember what we have seen in a Set
+function hasDuplicateFast(a) {
+const seen = new Set();
+for (const x of a) {
+if (seen.has(x)) return true;
+seen.add(x);
+}
+return false;
+}</code></pre></figure>
+<p>مع 1000 عنصر يفحص الحل الأول نحو نصف مليون مقارنة، والثاني ألف خطوة فقط. ومع مليون عنصر يصبح الأول غير عملي (نحو 500 مليار مقارنة) بينما يبقى الثاني سريعًا.</p>
+<div class="doc-mistakes"><h4>أخطاء شائعة</h4><ul><li>تحسين الشيفرة قبل قياس المشكلة (Premature Optimization).</li><li>الاعتقاد أن O(n²) سيئ دائمًا؛ مع بيانات صغيرة جدًا قد يكون كافيًا وأوضح.</li></ul></div>
+<details class="doc-exercise"><summary><span>تمرين</span> ما تعقيد حلقتين متتاليتين (لا متداخلتين) كل منهما على n عنصر؟</summary><div class="doc-solution"><strong>عرض الحل</strong><p>O(n): نجمع n + n = 2n، والثابت 2 يُتجاهل في Big-O.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>الخلاصة</h3><ul><li>Big-O يصف نمو الخطوات لا الثواني.</li><li>حلقة داخل حلقة غالبًا O(n²).</li><li>البنية المناسبة قد تحوّل O(n²) إلى O(n).</li></ul><p class="doc-next"><strong>الخطوة التالية:</strong> أساليب التفكير المختلفة في البرمجة: Paradigms.</p>
+</section></div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong> الفكرة الأساسية </strong>
+<p>الخوارزمية الجيدة هي التي يبقى زمنها مقبولًا حين تكبر البيانات.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>مثال عملي</span>
+<h3>شاهد الفكرة في كود</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>const data = Array.from({ length: 5 }, (_, i) =&gt; i * 2);
+let steps = 0;
+for (const x of data) { steps++; }
+console.log("n =", data.length, "steps =", steps);</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>تطبيق</span>
+<h3>تحدَّ نفسك</h3>
+</div>
+</div>
+<p></p>
+<div class="fd-exercise"><h4>تمرين تفاعلي</h4><p class="fd-ex-prompt">اكتب hasDuplicate(arr) بتعقيد O(n) باستخدام Set. سيُختبر على 200 ألف عنصر، والحل التربيعي سيتجاوز الزمن.</p><p class="fd-ex-status" role="status"></p></div>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما تعقيد حلقة for واحدة تمر على n عنصر؟</strong></p><ul><li>O(n)</li><li>O(1)</li><li>O(n²)</li><li>O(log n)</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>O(n)</strong></p><p>عدد الخطوات يتناسب طرديًا مع n.</p></details></li><li><p><strong>ما تعقيد حلقتين متداخلتين على n عنصر؟</strong></p><ul><li>O(n²)</li><li>O(n)</li><li>O(1)</li><li>O(2n)</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>O(n²)</strong></p><p>لكل عنصر في الحلقة الخارجية نمر على n في الداخلية.</p></details></li><li><p><strong>لماذا نتجاهل الثوابت في Big-O؟</strong></p><ul><li>لأن ما يهم هو شكل النمو عند الأحجام الكبيرة</li><li>لأنها خاطئة</li><li>لأن الحاسوب لا يعدّها</li><li>لا سبب</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لأن ما يهم هو شكل النمو عند الأحجام الكبيرة</strong></p><p>عند n الكبير يطغى شكل النمو على الثابت.</p></details></li><li><p><strong>ما فائدة Set في hasDuplicateFast؟</strong></p><ul><li>يجعل التحقق من وجود قيمة سريعًا</li><li>يرتّب المصفوفة</li><li>يحذف المصفوفة</li><li>يطبع النتيجة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يجعل التحقق من وجود قيمة سريعًا</strong></p><p>has() لا تمسح كل العناصر.</p></details></li><li><p><strong>ما تعقيد هذا الكود بالنسبة لـ n؟ for (const x of arr) { f(x); } ثم بعده مباشرة (وليس بداخله) for (const y of arr) { g(y); }</strong></p><ul><li>O(n)</li><li>O(n squared)</li><li>O(1)</li><li>O(log n)</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>O(n)</strong></p><p>الحلقتان متتاليتان فيكون الجهد n + n = 2n، وبحذف الثابت يصبح O(n). التربيع يحدث فقط عند تداخل الحلقات.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-23">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/fundamentals/programming-basics/lessons/prg-22.html"><small>الدرس السابق</small><strong>هياكل البيانات: Stack وQueue وMap وSet</strong></a>
+        <a rel="next" href="/fundamentals/programming-basics/lessons/prg-24.html"><small>الدرس التالي</small><strong>نماذج البرمجة Paradigms</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/fundamentals/programming-basics/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

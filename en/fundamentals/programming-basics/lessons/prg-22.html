@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <title>Data Structures: Stack, Queue, Map and Set — Programming Basics | FAYBIT</title>
+    <meta name="description" content="DATA STRUCTURES Know the stack and the queue . Use Map and Set in JavaScript. Choose a structure by the operations you need. The Arrays (prg-15) and…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-22.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-22.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-22.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-22.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Data Structures: Stack, Queue, Map and Set — Programming Basics | FAYBIT" />
+    <meta property="og:description" content="DATA STRUCTURES Know the stack and the queue . Use Map and Set in JavaScript. Choose a structure by the operations you need. The Arrays (prg-15) and…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-22.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Programming Basics","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Data Structures: Stack, Queue, Map and Set","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-22.html"}]},{"@type":"LearningResource","name":"Data Structures: Stack, Queue, Map and Set","description":"DATA STRUCTURES Know the stack and the queue . Use Map and Set in JavaScript. Choose a structure by the operations you need. The Arrays (prg-15) and…","url":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-22.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Programming Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Programming Basics"><a href="/en/fundamentals/programming-basics/lessons/index.html">Lessons</a><a href="/fundamentals/programming-basics/lessons/prg-22.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/programming-basics/lessons/index.html">Programming Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 22 of 31 · DATA STRUCTURES</p>
+      <h1 class="lp-h1">Data Structures: Stack, Queue, Map and Set</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-22">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">DATA STRUCTURES</span>
+<h2>Pick the storage shape that fits the task</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content"><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Know the <span class="term">stack</span> and the <span class="term">queue</span>.</li><li>Use <code>Map</code> and <code>Set</code> in JavaScript.</li><li>Choose a structure by the operations you need.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>The Arrays (prg-15) and Objects (prg-16) lessons.</li></ul>
+</section>
+<section class="lesson-section "><h3>Why structure matters</h3>
+<p>A <span class="term">data structure</span> is an organised way of storing data that makes certain operations fast and simple. Arrays are great for lists, but not for every task. Choosing the structure is part of designing the algorithm.</p>
+</section>
+<section class="lesson-section "><h3>Stack: last in, first out</h3>
+<p>Like a pile of plates: you add and remove only at the top. Used by the Undo button, the call stack and bracket checking.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>const stack = [];
+stack.push("a");   // add on top
+stack.push("b");
+console.log(stack.pop()); // "b"  (last in, first out)
+console.log(stack);       // ["a"]</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>Queue: first in, first out</h3>
+<p>Like a waiting line: items are added at the end and taken from the front. Used for printing, CPU tasks and server requests.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>const queue = [];
+queue.push("job1");
+queue.push("job2");
+console.log(queue.shift()); // "job1"  (first in, first out)</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>Map and Set</h3>
+<ul><li><strong>Map</strong>: key to value pairs with fast lookup by key; any type can be a key.</li><li><strong>Set</strong>: a collection of unique values with no duplicates and fast membership checks.</li></ul>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>const ages = new Map([["Sara", 20], ["Omar", 22]]);
+console.log(ages.get("Sara")); // 20
+const unique = new Set([1, 2, 2, 3, 3, 3]);
+console.log(unique.size, unique.has(2)); // 3 true</code></pre></figure>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Task</th><th scope="col">Suitable structure</th></tr></thead><tbody><tr><th scope="row">Undo / redo</th><td>Stack</td></tr><tr><th scope="row">Task queue</th><td>Queue</td></tr><tr><th scope="row">Counting word frequency</th><td>Map</td></tr><tr><th scope="row">Removing duplicates</th><td>Set</td></tr></tbody></table></div>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>Using <code>shift()</code> on a huge array as a queue: it moves every element. For large sizes use a dedicated structure.</li><li>Confusing Map with a plain object <code>{}</code>: object keys are converted to strings.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> Which structure would you use to know whether a user has visited a page before?</summary><div class="doc-solution"><strong>Show solution</strong><p>A <code>Set</code> storing unique page URLs; <code>has(url)</code> answers immediately.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>Stack: last in, first out.</li><li>Queue: first in, first out.</li><li>Map for lookup by key, Set for unique values.</li></ul><p class="doc-next"><strong>Next step:</strong> How do we measure the efficiency of our choice? Time complexity.</p>
+</section></div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong>Core idea</strong>
+<p>The right structure makes a solution simpler and faster; choose by the operations you need.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Worked example</span>
+<h3>See the idea in code</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>const stack = [];
+for (const ch of "abc") stack.push(ch);
+let reversed = "";
+while (stack.length) reversed += stack.pop();
+console.log(reversed);</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Practice</span>
+<h3>Challenge yourself</h3>
+</div>
+</div>
+<p></p>
+<div class="fd-exercise"><h4>Interactive exercise</h4><p class="fd-ex-prompt">Write isBalanced(text) that returns true when the () brackets are balanced (every opening has a matching closing in the right order), otherwise false. Use a stack.</p><p class="fd-ex-status" role="status"></p></div>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which structure gives last-in, first-out order?</strong></p><ul><li>Stack</li><li>Queue</li><li>Set</li><li>Map</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Stack</strong></p><p>In a stack elements are added and removed at the top.</p></details></li><li><p><strong>What is new Set([1,1,2]).size?</strong></p><ul><li>2</li><li>3</li><li>1</li><li>0</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>2</strong></p><p>A Set removes duplicates, leaving 1 and 2.</p></details></li><li><p><strong>Which structure suits counting how often each word appears?</strong></p><ul><li>A Map from word to count</li><li>A single number</li><li>One long string</li><li>A stack</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A Map from word to count</strong></p><p>We look the word up by key and increment its counter.</p></details></li><li><p><strong>Which operation takes the oldest item from a queue?</strong></p><ul><li>shift()</li><li>pop()</li><li>push()</li><li>length</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>shift()</strong></p><p>shift() removes the first item, while pop() removes the last.</p></details></li><li><p><strong>What is the output? const m = new Map(); m.set(&quot;a&quot;, 1); m.set(&quot;a&quot;, 2); console.log(m.size, m.get(&quot;a&quot;));</strong></p><ul><li>2 1</li><li>1 2</li><li>1 1</li><li>2 2</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>1 2</strong></p><p>A Map key is unique, so the second set for &quot;a&quot; replaces the old value instead of adding an entry. Hence the size is 1 and the value is 2.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-22">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/programming-basics/lessons/prg-21.html"><small>Previous lesson</small><strong>Recursion</strong></a>
+        <a rel="next" href="/en/fundamentals/programming-basics/lessons/prg-23.html"><small>Next lesson</small><strong>Time Complexity and Big-O</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/programming-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

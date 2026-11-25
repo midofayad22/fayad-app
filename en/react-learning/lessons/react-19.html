@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="react" />
+    <meta name="robots" content="noindex, follow" />
+    <title>API Requests — React | FAYBIT</title>
+    <meta name="description" content="Learn how React applications communicate with APIs to get external data." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/react-learning/lessons/react-19.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/react-learning/lessons/react-19.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/react-learning/lessons/react-19.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/react-learning/lessons/react-19.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="API Requests — React | FAYBIT" />
+    <meta property="og:description" content="Learn how React applications communicate with APIs to get external data." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/react-learning/lessons/react-19.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"React","item":"https://faybit.vercel.app/en/react-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"API Requests","item":"https://faybit.vercel.app/en/react-learning/lessons/react-19.html"}]},{"@type":"LearningResource","name":"API Requests","description":"Learn how React applications communicate with APIs to get external data.","url":"https://faybit.vercel.app/en/react-learning/lessons/react-19.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"React — FAYBIT","url":"https://faybit.vercel.app/react-learning/react-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="React"><a href="/en/react-learning/lessons/index.html">Lessons</a><a href="/react-learning/lessons/react-19.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/react-learning/lessons/index.html">React</a></nav>
+      <p class="lp-eyebrow">Lesson 19 of 30</p>
+      <h1 class="lp-h1">API Requests</h1>
+      <p class="lp-lead">Learn how React applications communicate with APIs to get external data.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-19">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<p>
+Real applications often need data from a Server or an external service.
+</p>
+<p>
+You can use fetch or other libraries to send HTTP Requests and receive data.
+</p>
+<p>
+Once the data arrives, it can be stored in State and displayed inside Components.
+</p>
+</div></article>
+<article class="body-card key-card"><p>An API is the communication link between the React UI and an external data source.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>The code</h2></div>
+</div>
+<pre dir="ltr"><code>async function getUsers() {
+const response = await fetch(
+"https://example.com/users"
+);
+const data = await response.json();
+return data;
+}</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>Typically you fetch the data, convert the Response to JSON, and then store it in State.</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span></div>
+</div>
+<p class="practice-description">Change the function name or the API path in the example.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Why does React use APIs?</strong></p><ul><li>To communicate with external data sources</li><li>To create CSS</li><li>To disable JavaScript</li><li>To create HTML only</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>To communicate with external data sources</strong></p></details></li><li><p><strong>What is the common function for sending an HTTP Request in JavaScript?</strong></p><ul><li>fetch</li><li>style</li><li>renderCSS</li><li>queryHTML</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>fetch</strong></p></details></li><li><p><strong>What does response.json() do?</strong></p><ul><li>Converts the Response into JSON data</li><li>Adds CSS</li><li>Creates a Component</li><li>Deletes data</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Converts the Response into JSON data</strong></p></details></li><li><p><strong>What is the bug? fetch(url).then(res =&gt; setData(res))</strong></p><ul><li>setData rejects objects</li><li>None</li><li>res is a Response, not data; call res.json() first</li><li>then is forbidden</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>res is a Response, not data; call res.json() first</strong></p><p>Convert the response to JSON, then store the data.</p></details></li><li><p><strong>Which HTTP method is usually used to create a new record?</strong></p><ul><li>GET</li><li>POST</li><li>HEAD</li><li>TRACE</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>POST</strong></p><p>POST sends new data to the server.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-19">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/react-learning/lessons/react-18.html"><small>Previous lesson</small><strong>React Router</strong></a>
+        <a rel="next" href="/en/react-learning/lessons/react-20.html"><small>Next lesson</small><strong>Loading and Error States</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/react-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

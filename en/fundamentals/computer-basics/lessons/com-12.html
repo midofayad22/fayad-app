@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>Binary and Data — Computer Basics | FAYBIT</title>
+    <meta name="description" content="Explain why computers rely on Binary and convert numbers between decimal, binary and hexadecimal. Describe how text is represented with ASCII and Unicode…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-12.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-12.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-12.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-12.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Binary and Data — Computer Basics | FAYBIT" />
+    <meta property="og:description" content="Explain why computers rely on Binary and convert numbers between decimal, binary and hexadecimal. Describe how text is represented with ASCII and Unicode…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-12.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Computer Basics","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Binary and Data","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-12.html"}]},{"@type":"LearningResource","name":"Binary and Data","description":"Explain why computers rely on Binary and convert numbers between decimal, binary and hexadecimal. Describe how text is represented with ASCII and Unicode…","url":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-12.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Computer Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Computer Basics"><a href="/en/fundamentals/computer-basics/lessons/index.html">Lessons</a><a href="/fundamentals/computer-basics/lessons/com-12.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/computer-basics/lessons/index.html">Computer Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 12 of 30</p>
+      <h1 class="lp-h1">Binary and Data</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-12">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>Binary and Data</h2>
+<div><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Explain why computers rely on <span class="term">Binary</span> and convert numbers between decimal, binary and hexadecimal.</li><li>Describe how text is represented with <span class="term">ASCII</span> and <span class="term">Unicode</span> and how <span class="term">UTF-8</span> encodes characters.</li><li>Interpret colours in the <span class="term">RGB</span> model and count the possible colours.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>The files and folders lesson (com-11) and knowing that memory and storage hold data.</li></ul>
+</section>
+<section class="lesson-section "><h3>Introduction: everything is numbers</h3>
+<p>The picture you see, the song you hear and this very sentence are all stored in a computer as numbers, without exception. The working idea is <span class="term">Encoding</span>: an agreement that a given number stands for a letter, a colour or a sound level. When both sides know the agreement, they can rebuild the meaning from the numbers.</p>
+<p>But why binary numbers in particular? Because electronic circuits tell two states apart easily and reliably: low voltage or high voltage, current flowing or not. Telling ten delicate electrical levels apart is far more error-prone because of noise and heat. Two states are all we need to build the binary system.</p>
+</section>
+<section class="lesson-section "><h3>Binary versus decimal</h3>
+<p>Our <span class="term">Decimal</span> system has ten symbols (0 to 9) and the value of each place is a power of 10: ones, tens, hundreds. Binary has just two symbols (0 and 1) and each place is a power of 2. Each binary digit is called a <span class="term">Bit</span>, short for Binary Digit.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Place (from the right)</th><th scope="col">8</th><th scope="col">7</th><th scope="col">6</th><th scope="col">5</th><th scope="col">4</th><th scope="col">3</th><th scope="col">2</th><th scope="col">1</th></tr></thead><tbody><tr><th scope="row">Value</th><td>128</td><td>64</td><td>32</td><td>16</td><td>8</td><td>4</td><td>2</td><td>1</td></tr><tr><th scope="row">The number 156</th><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td></tr></tbody></table></div>
+<h4>Binary to decimal</h4>
+<p>Add the values of the places that hold a 1. For <code>101101</code> the places are 32, 8, 4 and 1, so the result is 32 + 8 + 4 + 1 = 45. In the table above, 156 equals 128 + 16 + 8 + 4 = 156, which is <code>10011100</code>.</p>
+<h4>Decimal to binary: repeated division</h4>
+<p>Divide by 2 repeatedly and keep the remainder (0 or 1) each time, then read the remainders from last to first. To convert 156:</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">text</span></figcaption><pre dir="ltr"><code>156 / 2 = 78  remainder 0
+78 / 2 = 39  remainder 0
+39 / 2 = 19  remainder 1
+19 / 2 =  9  remainder 1
+9 / 2 =  4  remainder 1
+4 / 2 =  2  remainder 0
+2 / 2 =  1  remainder 0
+1 / 2 =  0  remainder 1
+Read upward: 10011100</code></pre></figure>
+<p>To check, add back: 128 + 16 + 8 + 4 = 156. Every new place doubles the range, so n bits can represent 2 to the power n different values, from 0 up to 2 to the power n minus 1. Eight bits give 256 values, from 0 to 255.</p>
+</section>
+<section class="lesson-section "><h3>Hexadecimal</h3>
+<p>Reading long strings of zeros and ones is tiring, so programmers use <span class="term">Hexadecimal</span>, which has 16 symbols: 0–9 then A–F, where A=10 and F=15. The beauty is that each hex symbol corresponds to exactly four binary digits, so we split the binary into groups of four and convert each group.</p>
+<p>For <code>10011100</code>: the group <code>1001</code> is 9 and the group <code>1100</code> is 12, which is C, so the hex form is <code>9C</code>. By direct calculation 9 × 16 + 12 = 156. The largest value in one byte is <code>FF</code>, that is 15 × 16 + 15 = 255. In code, hex numbers usually carry the prefix <code>0x</code>, as in <code>0x9C</code>.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">python</span></figcaption><pre dir="ltr"><code>print(bin(156))        # decimal -&gt; binary
+print(int("101101", 2)) # binary -&gt; decimal
+print(hex(156))        # decimal -&gt; hex
+print(ord("A"))        # character -&gt; code number
+print("é".encode("utf-8"))  # character -&gt; UTF-8 bytes</code></pre></figure>
+<figure class="code-ex code-ex-out"><figcaption><span class="code-ex-lang">Output</span></figcaption><pre dir="ltr"><code>0b10011100
+45
+0x9c
+65
+b'\xc3\xa9'</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>Text as numbers: ASCII, Unicode and UTF-8</h3>
+<p>The oldest widespread agreement is <span class="term">ASCII</span>, which gave 128 symbols numbers from 0 to 127: the letter <code>A</code> is 65, <code>a</code> is 97 and the digit character <code>0</code> is 48. So the word <code>Hi</code> is stored as the two numbers 72 and 105, that is <code>01001000 01101001</code>. Note that the character <code>0</code> is not the number zero: the first is a symbol with code 48, the second is a value.</p>
+<p>ASCII is not enough for Arabic, Chinese or emoji, so <span class="term">Unicode</span> appeared: a standard that gives every character in every language a unique number called a <span class="term">Code Point</span>, written like <code>U+0639</code> for the Arabic letter ain. But Unicode fixes only the numbers; how they are stored as bytes is decided by an encoding, the best known being <span class="term">UTF-8</span>.</p>
+<p>UTF-8 uses one to four bytes per character: ASCII letters take one byte so it stays compatible with the old standard, <code>é</code> takes two (<code>C3 A9</code>), the Arabic letter ain takes two (<code>D8 B9</code>), the symbol <code>€</code> takes three (<code>E2 82 AC</code>), and emoji usually take four. That is why the number of bytes differs from the number of characters in Arabic text.</p>
+</section>
+<section class="lesson-section "><h3>Colours as numbers: the RGB model</h3>
+<p>A dot on a screen is made of red, green and blue light at varying strengths, so the <span class="term">RGB</span> model describes each colour with three numbers, each from 0 to 255, that is one byte: the strength of red, green and blue. Orange <code>(255, 128, 0)</code> is full red, half green and no blue, written in hex as <code>#FF8000</code> because 255 is FF and 128 is 80.</p>
+<p>Three bytes means 24 bits, so 2 to the power 24 = 16,777,216 possible colours, and a pixel of an ordinary picture takes 3 bytes. The related term <span class="term">Pixel</span> means the smallest dot in an image.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Colour</th><th scope="col">RGB</th><th scope="col">Hex</th></tr></thead><tbody><tr><th scope="row">Black</th><td>(0, 0, 0)</td><td>#000000</td></tr><tr><th scope="row">White</th><td>(255, 255, 255)</td><td>#FFFFFF</td></tr><tr><th scope="row">Red</th><td>(255, 0, 0)</td><td>#FF0000</td></tr><tr><th scope="row">Orange</th><td>(255, 128, 0)</td><td>#FF8000</td></tr></tbody></table></div>
+</section>
+<section class="lesson-section "><h3>Real-world applications</h3>
+<ul><li><strong>Web design:</strong> colour codes like <code>#FF8000</code> in CSS are hexadecimal RGB numbers.</li><li><strong>Networking:</strong> MAC and IPv6 addresses are written in hex because it is compact.</li><li><strong>Multilingual messaging:</strong> UTF-8 lets Arabic, English and symbols share one file.</li></ul>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>“A computer understands letters and pictures directly”: it handles only numbers, and meaning comes from the encoding we agree on.</li><li>“Binary means a computer only knows true and false”: one bit is two states, but grouping bits represents numbers and data without a practical limit.</li><li>“The character 5 is the number 5”: the character is a symbol with a code (53 in ASCII), while the number 5 is a value stored differently.</li><li>“Every character is exactly one byte”: true only for ASCII; in UTF-8 a character can take from one to four bytes.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Calculation:</strong> convert 200 to binary and hex, then convert <code>11010110</code> to decimal.</summary><div class="doc-solution"><strong>Show solution</strong><p>200 = 128 + 64 + 8, that is <code>11001000</code>. By division: 200÷2=100 (0), 100÷2=50 (0), 50÷2=25 (0), 25÷2=12 (1), 12÷2=6 (0), 6÷2=3 (0), 3÷2=1 (1), 1÷2=0 (1); reading from the bottom gives 11001000. Split into <code>1100</code> and <code>1000</code>, which are C and 8, so hex is <code>C8</code>; check: 12 × 16 + 8 = 200. As for <code>11010110</code>, it is 128 + 64 + 16 + 4 + 2 = 214.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Reasoning:</strong> how many bytes does the text <code>Hi €</code> occupy in UTF-8, and why does it differ from the character count?</summary><div class="doc-solution"><strong>Show solution</strong><p>The text has four characters: <code>H</code> is one byte, <code>i</code> is one byte, the space is one byte, and <code>€</code> is three bytes (<code>E2 82 AC</code>). The total is 1 + 1 + 1 + 3 = 6 bytes for four characters. UTF-8 is variable-length: English characters use a single byte while the others need more to cover the huge number of Unicode characters.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Hands-on:</strong> discover for yourself how your name is encoded as numbers using Python or a similar tool.</summary><div class="doc-solution"><strong>Show solution</strong><p>Open the Python interpreter and type <code>[ord(c) for c in "Sara"]</code> to get <code>[83, 97, 114, 97]</code>, the ASCII numbers of the letters. Then try <code>"Sara".encode("utf-8")</code> to see the same bytes. For an Arabic name each letter gives a large number (for example 1593 for the letter ain) and <code>encode("utf-8")</code> yields two bytes per letter. Compare the number of characters with the number of bytes.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>A computer stores everything as binary numbers because circuits distinguish two states reliably.</li><li>Binary and decimal convert by adding powers or by repeated division, and hex is a shorthand for every four bits.</li><li>Text is numbers in ASCII or Unicode, and UTF-8 stores them with variable length.</li><li>A colour is three RGB bytes, giving 16,777,216 possibilities.</li></ul><p class="doc-next"><strong>Next step:</strong> Bits and bytes: the units that measure all this data and how to compute sizes.</p>
+</section>
+<section class="lesson-section doc-refs"><h3>Further reading</h3><ul><li>The Unicode Standard published by the Unicode Consortium.</li><li>Joel Spolsky's essay "The Absolute Minimum Every Software Developer Must Know About Unicode".</li></ul>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>Core concept</strong>
+<p>A digital computer represents data in a binary way based on 0 and 1.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Hands-on practice</span>
+<h3>Try it yourself</h3>
+</div>
+</div>
+<p>Learn how to represent small numbers in binary, such as 1, 2, 4, and 8.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What are the basic symbols in Binary?</strong></p><ul><li>0 and 1</li><li>1 and 2</li><li>A and B</li><li>0 and 9</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>0 and 1</strong></p></details></li><li><p><strong>What is the decimal value of the binary number 101101?</strong></p><ul><li>45</li><li>54</li><li>36</li><li>101</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>45</strong></p><p>32 + 8 + 4 + 1 = 45: add the values of the places holding 1.</p></details></li><li><p><strong>What is the hexadecimal form of 156?</strong></p><ul><li>9C</li><li>C9</li><li>F9</li><li>A6</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>9C</strong></p><p>156 = 10011100; the groups 1001 = 9 and 1100 = C give 9C.</p></details></li><li><p><strong>How many different values can 8 bits represent?</strong></p><ul><li>8</li><li>128</li><li>255</li><li>256</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>256</strong></p><p>n bits give 2^n values, so 256 values from 0 to 255.</p></details></li><li><p><strong>In ASCII, what is the difference between the character '0' and the value zero?</strong></p><ul><li>There is no difference</li><li>The character '0' has code 48, while zero is a numeric value</li><li>The character '0' has code 0</li><li>The character '0' has code 65</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The character '0' has code 48, while zero is a numeric value</strong></p><p>A is 65 and the character 0 is 48; a character is just an encoded symbol, not a value.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-12">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/computer-basics/lessons/com-11.html"><small>Previous lesson</small><strong>Files and Folders</strong></a>
+        <a rel="next" href="/en/fundamentals/computer-basics/lessons/com-13.html"><small>Next lesson</small><strong>Bits and Bytes</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/computer-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

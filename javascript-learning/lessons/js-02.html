@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="js" />
+    <meta name="robots" content="noindex, follow" />
+    <title>المتغيرات — JavaScript | FAYBIT</title>
+    <meta name="description" content="تعلّم كيف تخزن المتغيرات القيم والبيانات داخل برنامج JavaScript." />
+    <link rel="canonical" href="https://faybit.vercel.app/javascript-learning/lessons/js-02.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/javascript-learning/lessons/js-02.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-02.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/javascript-learning/lessons/js-02.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="المتغيرات — JavaScript | FAYBIT" />
+    <meta property="og:description" content="تعلّم كيف تخزن المتغيرات القيم والبيانات داخل برنامج JavaScript." />
+    <meta property="og:url" content="https://faybit.vercel.app/javascript-learning/lessons/js-02.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript","item":"https://faybit.vercel.app/javascript-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"المتغيرات","item":"https://faybit.vercel.app/javascript-learning/lessons/js-02.html"}]},{"@type":"LearningResource","name":"المتغيرات","description":"تعلّم كيف تخزن المتغيرات القيم والبيانات داخل برنامج JavaScript.","url":"https://faybit.vercel.app/javascript-learning/lessons/js-02.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript — FAYBIT","url":"https://faybit.vercel.app/javascript-learning/javascript-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript"><a href="/javascript-learning/lessons/index.html">الدروس</a><a href="/en/javascript-learning/lessons/js-02.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/javascript-learning/lessons/index.html">JavaScript</a></nav>
+      <p class="lp-eyebrow">الدرس 2 من 25</p>
+      <h1 class="lp-h1">المتغيرات</h1>
+      <p class="lp-lead">تعلّم كيف تخزن المتغيرات القيم والبيانات داخل برنامج JavaScript.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-2">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>let name = "FAYBIT";
+let age = 20;
+document.getElementById("jsResult").textContent =
+name + " - " + age;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>
+<p><strong>let</strong> تُستخدم لإنشاء متغير يمكن تغيير قيمته لاحقًا.</p>
+<p><strong>name</strong> يخزن قيمة نصية.</p>
+<p><strong>age</strong> يخزن قيمة رقمية.</p>
+<p>يمكن إعادة إسناد قيمة جديدة للمتغير الذي تم إنشاؤه باستخدام <strong>let</strong>.</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>اكتب JavaScript</h2></div>
+</div>
+<p class="practice-description">غيّر الكود الموجود بالأسفل ثم شغّله لترى النتيجة.</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أي كلمة مفتاحية تسمح بتغيير قيمة المتغير؟</strong></p><ul><li>let</li><li>const</li><li>fixed</li><li>value</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>let</strong></p></details></li><li><p><strong>ماذا يخزن المتغير؟</strong></p><ul><li>قيمة أو بيانات</li><li>لون الشاشة فقط</li><li>ملف HTML فقط</li><li>صورة فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>قيمة أو بيانات</strong></p></details></li><li><p><strong>أي متغير يمكن إعادة إسناد قيمته؟</strong></p><ul><li>let</li><li>const</li><li>static</li><li>constant</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>let</strong></p></details></li><li><p><strong>ما ناتج الكود التالي؟ const user = { n: 1 }; user.n = 2; console.log(user.n);</strong></p><ul><li>1</li><li>2</li><li>خطأ TypeError لأن user معرّف بـ const</li><li>undefined</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>2</strong></p><p>const يمنع إعادة إسناد المتغير نفسه إلى قيمة جديدة، لكنه لا يمنع تعديل خصائص الكائن الذي يشير إليه. لذلك يطبع 2 دون خطأ.</p></details></li><li><p><strong>ما الخطأ في هذا الكود؟ const total = 0; total = total + 5;</strong></p><ul><li>لا يمكن إعادة إسناد متغير معرّف بـ const، ويجب استخدام let هنا</li><li>لا يمكن جمع رقم مع نفسه</li><li>يجب كتابة اسم المتغير بحروف كبيرة</li><li>الصفر ليس قيمة صالحة للمتغيرات</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لا يمكن إعادة إسناد متغير معرّف بـ const، ويجب استخدام let هنا</strong></p><p>الإسناد الثاني يحاول تغيير ارتباط const فيرمي TypeError. عندما نعرف أن القيمة ستتغير نستخدم let.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-2">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/javascript-learning/lessons/js-01.html"><small>الدرس السابق</small><strong>مقدمة إلى JavaScript</strong></a>
+        <a rel="next" href="/javascript-learning/lessons/js-03.html"><small>الدرس التالي</small><strong>أنواع البيانات</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/javascript-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

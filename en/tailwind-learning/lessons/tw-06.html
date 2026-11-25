@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Flexbox — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="Row and column layouts, alignment, and distribution." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-06.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-06.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-06.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-06.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Flexbox — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="Row and column layouts, alignment, and distribution." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-06.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Flexbox","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-06.html"}]},{"@type":"LearningResource","name":"Flexbox","description":"Row and column layouts, alignment, and distribution.","url":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-06.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/en/tailwind-learning/lessons/index.html">Lessons</a><a href="/tailwind-learning/lessons/tw-06.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">Lesson 6 of 20</p>
+      <h1 class="lp-h1">Flexbox</h1>
+      <p class="lp-lead">Row and column layouts, alignment, and distribution.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-6">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>The Basics</h2><p><code>flex</code> for the container, <code>flex-col</code> for vertical direction, <code>flex-wrap</code> for wrapping, <code>items-start|center|end|stretch</code> for the cross axis, <code>justify-start|center|between|around|evenly</code> for the main axis, and <code>gap-*</code> for spacing.</p></article><article class="content-card"><h2>On Items</h2><p><code>flex-1</code> makes the item expand to fill the available space, <code>shrink-0</code> prevents shrinking, plus <code>grow</code>, <code>order-*</code>, and <code>ms-auto</code> to push the item to the end.</p></article></div>
+<article class="body-card key-card"><p>flex + items-center + justify-between + gap covers most cases.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;nav id="nav" class="flex items-center justify-between gap-4 bg-slate-900 px-4 py-3 text-white"&gt;
+&lt;span class="font-bold"&gt;FAYBIT&lt;/span&gt;
+&lt;div class="flex gap-4 text-sm"&gt;&lt;a href="#"&gt;Courses&lt;/a&gt;&lt;a href="#"&gt;Blog&lt;/a&gt;&lt;/div&gt;
+&lt;button class="rounded bg-sky-500 px-3 py-1 text-sm font-semibold"&gt;Sign in&lt;/button&gt;
+&lt;/nav&gt;
+&lt;div class="mt-4 flex flex-col gap-2 p-4 sm:flex-row"&gt;
+&lt;div class="flex-1 bg-slate-100 p-3"&gt;Grows&lt;/div&gt;
+&lt;div class="shrink-0 bg-slate-200 p-3"&gt;Fixed&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>The bar spreads the items to the edges and aligns them vertically. The second container is a column on small screens and a row from <code>sm</code> up.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Make the bar &lt;code&gt;justify-center&lt;/code&gt;, then change it back to &lt;code&gt;justify-between&lt;/code&gt;.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which class vertically aligns items in a horizontal flex container?</strong></p><ul><li>items-center</li><li>justify-center</li><li>text-center</li><li>place-center only</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>items-center</strong></p></details></li><li><p><strong>What does flex-1 do?</strong></p><ul><li>Makes the item expand to fill the available space</li><li>Fixes its width at 1px</li><li>Reverses the direction</li><li>Hides it</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Makes the item expand to fill the available space</strong></p></details></li><li><p><strong>What does sm:flex-row mean?</strong></p><ul><li>The direction becomes horizontal from the sm breakpoint and up</li><li>Always horizontal</li><li>Always vertical</li><li>Hidden at sm</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The direction becomes horizontal from the sm breakpoint and up</strong></p></details></li><li><p><strong>An element has items-center justify-between but nothing happens. What is the likely cause?</strong></p><ul><li>Forgetting the flex class on the container</li><li>A missing gap class</li><li>Using Tailwind v4</li><li>A missing shrink-0 class</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Forgetting the flex class on the container</strong></p><p>Alignment classes do nothing until flex or grid is set on the container.</p></details></li><li><p><strong>How do you push the last item in a flex row to the end?</strong></p><ul><li>me-0</li><li>flex-1 only</li><li>ms-auto</li><li>shrink-0</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>ms-auto</strong></p><p>The auto margin absorbs the free space before the item.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-6">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/tailwind-learning/lessons/tw-05.html"><small>Previous lesson</small><strong>Sizing: Width and Height</strong></a>
+        <a rel="next" href="/en/tailwind-learning/lessons/tw-07.html"><small>Next lesson</small><strong>Grid</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/tailwind-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

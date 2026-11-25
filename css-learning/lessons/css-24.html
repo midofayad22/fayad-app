@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="css" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Transforms — CSS | FAYBIT</title>
+    <meta name="description" content="تعلم كيف تستخدم transform لتحريك العناصر وتكبيرها وتدويرها وميلها." />
+    <link rel="canonical" href="https://faybit.vercel.app/css-learning/lessons/css-24.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/css-learning/lessons/css-24.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/css-learning/lessons/css-24.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/css-learning/lessons/css-24.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Transforms — CSS | FAYBIT" />
+    <meta property="og:description" content="تعلم كيف تستخدم transform لتحريك العناصر وتكبيرها وتدويرها وميلها." />
+    <meta property="og:url" content="https://faybit.vercel.app/css-learning/lessons/css-24.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"CSS","item":"https://faybit.vercel.app/css-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Transforms","item":"https://faybit.vercel.app/css-learning/lessons/css-24.html"}]},{"@type":"LearningResource","name":"Transforms","description":"تعلم كيف تستخدم transform لتحريك العناصر وتكبيرها وتدويرها وميلها.","url":"https://faybit.vercel.app/css-learning/lessons/css-24.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"CSS — FAYBIT","url":"https://faybit.vercel.app/css-learning/css-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="CSS"><a href="/css-learning/lessons/index.html">الدروس</a><a href="/en/css-learning/lessons/css-24.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/css-learning/lessons/index.html">CSS</a></nav>
+      <p class="lp-eyebrow">الدرس 24 من 30</p>
+      <h1 class="lp-h1">Transforms</h1>
+      <p class="lp-lead">تعلم كيف تستخدم transform لتحريك العناصر وتكبيرها وتدويرها وميلها.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-24">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>أول كود CSS لك</h2></div>
+</div>
+<pre dir="ltr"><code>.card:hover {
+transform: translateY(-5px) scale(1.02);
+}</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>اكتب CSS وشاهد النتيجة</h2></div>
+</div>
+<p class="practice-description">غيّر الكود الموجود بالأسفل ثم شغّله لترى النتيجة.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أي خاصية تستخدم للتحويلات؟</strong></p><ul><li>transform</li><li>change</li><li>motion</li><li>move-element</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>transform</strong></p></details></li><li><p><strong>أي دالة من Transform تستخدم لتحريك العنصر؟</strong></p><ul><li>translate()</li><li>move-css()</li><li>position()</li><li>shift-element()</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>translate()</strong></p></details></li><li><p><strong>أي دالة تغير حجم العنصر؟</strong></p><ul><li>scale()</li><li>size()</li><li>resize-css()</li><li>zoom-element-only</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>scale()</strong></p></details></li><li><p><strong>ماذا يحدث لباقي العناصر عند transform: translateY(-5px) على بطاقة؟</strong></p><ul><li>تتحرك للأعلى معها</li><li>لا تتأثر لأن transform لا يغير التخطيط</li><li>تُدفع للأسفل 5px</li><li>تختفي</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لا تتأثر لأن transform لا يغير التخطيط</strong></p><p>التحويل يغير الرسم فقط ولا يغير المساحة المحجوزة في التخطيط، لذلك لا تتحرك الجوار. وهذا يجعله مناسباً لتأثيرات hover.</p></details></li><li><p><strong>كيف تدوّر عنصراً حول زاويته العلوية اليسرى بدل مركزه؟</strong></p><ul><li>transform-origin: top left</li><li>rotate: left</li><li>transform: top left</li><li>margin: 0</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>transform-origin: top left</strong></p><p>نقطة الأصل الافتراضية هي المركز، وtransform-origin يغيّرها لتصبح محور الدوران أو التحجيم.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-24">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/css-learning/lessons/css-23.html"><small>الدرس السابق</small><strong>Transitions</strong></a>
+        <a rel="next" href="/css-learning/lessons/css-25.html"><small>الدرس التالي</small><strong>Animations</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/css-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="react" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Lists &amp; Keys — React | FAYBIT</title>
+    <meta name="description" content="Learn how to display a collection of data using map and why React needs Keys." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/react-learning/lessons/react-09.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/react-learning/lessons/react-09.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/react-learning/lessons/react-09.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/react-learning/lessons/react-09.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Lists &amp; Keys — React | FAYBIT" />
+    <meta property="og:description" content="Learn how to display a collection of data using map and why React needs Keys." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/react-learning/lessons/react-09.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"React","item":"https://faybit.vercel.app/en/react-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Lists & Keys","item":"https://faybit.vercel.app/en/react-learning/lessons/react-09.html"}]},{"@type":"LearningResource","name":"Lists & Keys","description":"Learn how to display a collection of data using map and why React needs Keys.","url":"https://faybit.vercel.app/en/react-learning/lessons/react-09.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"React — FAYBIT","url":"https://faybit.vercel.app/react-learning/react-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="React"><a href="/en/react-learning/lessons/index.html">Lessons</a><a href="/react-learning/lessons/react-09.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/react-learning/lessons/index.html">React</a></nav>
+      <p class="lp-eyebrow">Lesson 9 of 30</p>
+      <h1 class="lp-h1">Lists &amp; Keys</h1>
+      <p class="lp-lead">Learn how to display a collection of data using map and why React needs Keys.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-9">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<p>
+In applications, data is often in the form of an Array, such as a list of users or products.
+</p>
+<p>
+You can use map to create a UI element for each item in an Array.
+</p>
+<p>
+The elements produced from lists need a stable key that helps React identify each item.
+</p>
+</div></article>
+<article class="body-card key-card"><p>map renders the list items, and key helps React identify each item.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>The code</h2></div>
+</div>
+<pre dir="ltr"><code>const skills = ["HTML", "CSS", "JavaScript"];
+function App() {
+return (
+&lt;ul&gt;
+{skills.map((skill) =&gt; (
+&lt;li key={skill}&gt;{skill}&lt;/li&gt;
+))}
+&lt;/ul&gt;
+);
+}</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>It is preferable to use a unique ID as the key rather than the index when the list can change.</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span></div>
+</div>
+<p class="practice-description">Add a new skill to the Array.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Why do we use map in React?</strong></p><ul><li>To display a collection of data</li><li>To create CSS</li><li>To create a Database</li><li>To run the server</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>To display a collection of data</strong></p></details></li><li><p><strong>Why do we use key?</strong></p><ul><li>To help React identify list items</li><li>To change the color</li><li>To create a variable</li><li>To add CSS</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>To help React identify list items</strong></p></details></li><li><p><strong>What is usually the best value for a key?</strong></p><ul><li>A unique, stable identifier</li><li>A random value that always changes</li><li>A CSS class</li><li>The file name</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A unique, stable identifier</strong></p></details></li><li><p><strong>What is the problem? items.map(i =&gt; &lt;li&gt;{i}&lt;/li&gt;)</strong></p><ul><li>li is forbidden</li><li>No problem at all</li><li>Each element is missing a key</li><li>map does not work on arrays</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Each element is missing a key</strong></p><p>React needs a stable key to identify each item in the list.</p></details></li><li><p><strong>Which key is best for a reorderable list of users?</strong></p><ul><li>The array index</li><li>Math.random()</li><li>user.id</li><li>The fixed text 'a'</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>user.id</strong></p><p>A stable id stays with the item when reordered, unlike the index.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-9">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/react-learning/lessons/react-08.html"><small>Previous lesson</small><strong>Conditional Rendering</strong></a>
+        <a rel="next" href="/en/react-learning/lessons/react-10.html"><small>Next lesson</small><strong>Forms</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/react-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

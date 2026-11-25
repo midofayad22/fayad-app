@@ -7,7 +7,7 @@
     en: { "g.eyebrow": "FAYBIT Games", "g.title": "Learn by playing", "g.lead": "Short coding challenges with growing levels, checked instantly in your browser.", "g.arena.tag": "Challenge arena", "g.arena.t": "Real coding challenges", "g.arena.d": "Editor, live preview and instant checks, from beginner to expert in HTML, CSS and JavaScript.", "g.play": "Play now", "g.css": "CSS", "g.flex.d": "Arrange items with Flexbox properties until they match the target.", "g.sel.d": "Write a CSS selector that picks only the wanted elements.", "g.soon": "In development", "g.zombie.tag": "HTML, CSS and JS", "g.zombie.d": "Defend the survivors with real code: Flexbox, Grid, position, transitions, semantic HTML forms and JavaScript events — 15 missions.", "g.adv.t": "FAYAD: The Grand Adventure", "g.adv.tag": "Block coding", "g.adv.d": "120 levels in 6 worlds: sequences, loops, conditions and functions.", "g.all": "Games hub and leaderboard", "g.prog": "{n} of {t} levels" },
   };
   if (F.i18n && F.i18n.extend) F.i18n.extend(DICT);
-  var TOTAL = { arena: 30, flex: 10, sel: 10, adventure: 120, zombie: 15 };
+  var TOTAL = { arena: 60, flex: 24, sel: 24, adventure: 120, zombie: 15 };
   function solved(d, ids) { var n = 0; ids.forEach(function (id) { n += Object.keys((d.games && d.games[id] && d.games[id].solved) || {}).length; }); return n; }
   function paint() {
     var d = { games: {} };

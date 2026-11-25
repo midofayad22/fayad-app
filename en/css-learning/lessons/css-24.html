@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="css" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Transforms — CSS | FAYBIT</title>
+    <meta name="description" content="Learn how transform moves, scales, rotates, and skews elements." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/css-learning/lessons/css-24.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/css-learning/lessons/css-24.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/css-learning/lessons/css-24.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/css-learning/lessons/css-24.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Transforms — CSS | FAYBIT" />
+    <meta property="og:description" content="Learn how transform moves, scales, rotates, and skews elements." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/css-learning/lessons/css-24.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"CSS","item":"https://faybit.vercel.app/en/css-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Transforms","item":"https://faybit.vercel.app/en/css-learning/lessons/css-24.html"}]},{"@type":"LearningResource","name":"Transforms","description":"Learn how transform moves, scales, rotates, and skews elements.","url":"https://faybit.vercel.app/en/css-learning/lessons/css-24.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"CSS — FAYBIT","url":"https://faybit.vercel.app/css-learning/css-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="CSS"><a href="/en/css-learning/lessons/index.html">Lessons</a><a href="/css-learning/lessons/css-24.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/css-learning/lessons/index.html">CSS</a></nav>
+      <p class="lp-eyebrow">Lesson 24 of 30</p>
+      <h1 class="lp-h1">Transforms</h1>
+      <p class="lp-lead">Learn how transform moves, scales, rotates, and skews elements.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-24">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>Your first CSS code</h2></div>
+</div>
+<pre dir="ltr"><code>.card:hover {
+transform: translateY(-5px) scale(1.02);
+}</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Write CSS and see the result</h2></div>
+</div>
+<p class="practice-description">Change the code below, then run it to see the result.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which property is used for transformations?</strong></p><ul><li>transform</li><li>change</li><li>motion</li><li>move-element</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>transform</strong></p></details></li><li><p><strong>Which transform function moves an element?</strong></p><ul><li>translate()</li><li>move-css()</li><li>position()</li><li>shift-element()</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>translate()</strong></p></details></li><li><p><strong>Which transform function changes an element's size?</strong></p><ul><li>scale()</li><li>size()</li><li>resize-css()</li><li>zoom-element-only</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>scale()</strong></p></details></li><li><p><strong>What happens to surrounding elements when a card gets transform: translateY(-5px)?</strong></p><ul><li>They move up with it</li><li>They are unaffected, because transform does not change the layout</li><li>They are pushed down 5px</li><li>They disappear</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>They are unaffected, because transform does not change the layout</strong></p><p>A transform changes only the rendering and not the space reserved in layout, so neighbors stay put. That makes it ideal for hover effects.</p></details></li><li><p><strong>How do you rotate an element around its top-left corner instead of its center?</strong></p><ul><li>transform-origin: top left</li><li>rotate: left</li><li>transform: top left</li><li>margin: 0</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>transform-origin: top left</strong></p><p>The default origin is the center, and transform-origin changes it to set the pivot of rotation or scaling.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-24">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/css-learning/lessons/css-23.html"><small>Previous lesson</small><strong>Transitions</strong></a>
+        <a rel="next" href="/en/css-learning/lessons/css-25.html"><small>Next lesson</small><strong>Animations</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/css-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

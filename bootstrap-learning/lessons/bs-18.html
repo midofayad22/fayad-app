@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>Tooltips و Popovers و Toasts — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="المكونات التي تحتاج تهيئة JavaScript، وكيف نفعّلها." />
+    <link rel="canonical" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-18.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-18.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-18.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-18.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Tooltips و Popovers و Toasts — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="المكونات التي تحتاج تهيئة JavaScript، وكيف نفعّلها." />
+    <meta property="og:url" content="https://faybit.vercel.app/bootstrap-learning/lessons/bs-18.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Tooltips و Popovers و Toasts","item":"https://faybit.vercel.app/bootstrap-learning/lessons/bs-18.html"}]},{"@type":"LearningResource","name":"Tooltips و Popovers و Toasts","description":"المكونات التي تحتاج تهيئة JavaScript، وكيف نفعّلها.","url":"https://faybit.vercel.app/bootstrap-learning/lessons/bs-18.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/bootstrap-learning/lessons/index.html">الدروس</a><a href="/en/bootstrap-learning/lessons/bs-18.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">الدرس 18 من 20</p>
+      <h1 class="lp-h1">Tooltips و Popovers و Toasts</h1>
+      <p class="lp-lead">المكونات التي تحتاج تهيئة JavaScript، وكيف نفعّلها.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-18">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>لماذا تحتاج تهيئة؟</h2><p>Tooltips وPopovers لا تعمل تلقائيًا لأسباب أداء، فيجب إنشاؤها: <code>new bootstrap.Tooltip(el)</code> (أو لكل العناصر ذات <code>data-bs-toggle="tooltip"</code>). Toast كذلك: <code>new bootstrap.Toast(el).show()</code>.</p></article><article class="content-card"><h2>إمكانية الوصول</h2><p>الـ Tooltip لا يظهر للمستخدمين على اللمس بسهولة ولا يجوز وضع معلومة أساسية فيه فقط. استخدمه كمساعد وليس كمحتوى رئيسي.</p></article></div>
+<article class="body-card key-card"><p>فعّل Tooltips/Popovers/Toasts يدويًا، ولا تضع المعلومات الحرجة فيها.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="container py-4"&gt;
+&lt;button id="tipBtn" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-title="نص المساعدة"&gt;مرّر الفأرة&lt;/button&gt;
+&lt;button id="toastBtn" class="btn btn-primary"&gt;أظهر Toast&lt;/button&gt;
+&lt;div class="toast-container position-fixed bottom-0 end-0 p-3"&gt;
+&lt;div id="liveToast" class="toast" role="status" aria-live="polite" aria-atomic="true"&gt;
+&lt;div class="toast-header"&gt;&lt;strong class="me-auto"&gt;FAYBIT&lt;/strong&gt;&lt;small&gt;الآن&lt;/small&gt;&lt;button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="إغلاق"&gt;&lt;/button&gt;&lt;/div&gt;
+&lt;div class="toast-body"&gt;تم حفظ التقدم.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+new bootstrap.Tooltip(document.getElementById('tipBtn'));
+document.getElementById('toastBtn').addEventListener('click', () =&gt; {
+bootstrap.Toast.getOrCreateInstance(document.getElementById('liveToast')).show();
+});
+&lt;/script&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>الـ Tooltip أنشئ برمجيًا لأن Bootstrap لا يفعّله تلقائيًا. <code>getOrCreateInstance</code> تنشئ النسخة إن لم توجد أو تعيد الموجودة.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">أضف زرًا ثالثًا مع Tooltip آخر وفعّله بنفس الطريقة.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>لماذا لا تعمل Tooltips بدون كود JavaScript؟</strong></p><ul><li>لأنها تحتاج تهيئة صريحة لأسباب الأداء</li><li>لأنها محذوفة</li><li>لأنها تحتاج الإنترنت</li><li>لأنها للطابعات</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لأنها تحتاج تهيئة صريحة لأسباب الأداء</strong></p></details></li><li><p><strong>ما الدالة التي تُظهر Toast؟</strong></p><ul><li>bootstrap.Toast(el).show()</li><li>toast.open()</li><li>el.showToast()</li><li>alert(el)</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>bootstrap.Toast(el).show()</strong></p></details></li><li><p><strong>ما التحفظ الأساسي على استخدام Tooltip؟</strong></p><ul><li>لا تضع فيه معلومات أساسية لأنه صعب الوصول على اللمس</li><li>يبطئ الشبكة</li><li>يلغي النموذج</li><li>يحتاج ترخيصًا</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لا تضع فيه معلومات أساسية لأنه صعب الوصول على اللمس</strong></p></details></li><li><p><strong>كيف تفعّل كل الـ Tooltips في الصفحة؟</strong></p><ul><li>تحديد العناصر ذات data-bs-toggle=&quot;tooltip&quot; وإنشاء new bootstrap.Tooltip لكل منها</li><li>إضافة الفئة tooltip فقط</li><li>لا حاجة لشيء</li><li>استدعاء bootstrap.Modal</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تحديد العناصر ذات data-bs-toggle=&quot;tooltip&quot; وإنشاء new bootstrap.Tooltip لكل منها</strong></p><p>السمة وحدها لا تكفي، يلزم إنشاء كائن Tooltip لكل عنصر.</p></details></li><li><p><strong>وضع شروط كلمة المرور داخل Tooltip فقط. ما المشكلة؟</strong></p><ul><li>الـ Tooltip يبطئ الخادم</li><li>لا يدعم الـ Tooltip النصوص</li><li>مستخدمو اللمس قد لا يصلون إليه</li><li>يمنع إرسال النموذج</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>مستخدمو اللمس قد لا يصلون إليه</strong></p><p>الـ Tooltip مساعد فقط، والمعلومة الأساسية يجب أن تظهر في الصفحة نفسها.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-18">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/bootstrap-learning/lessons/bs-17.html"><small>الدرس السابق</small><strong>Collapse و Accordion و Dropdown</strong></a>
+        <a rel="next" href="/bootstrap-learning/lessons/bs-19.html"><small>الدرس التالي</small><strong>الوضع الداكن و RTL والتخصيص بمتغيرات CSS</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/bootstrap-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

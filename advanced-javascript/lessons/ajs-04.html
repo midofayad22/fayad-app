@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>الدوال عالية المرتبة والتركيب — JavaScript المتقدم | FAYBIT</title>
+    <meta name="description" content="اكتب دوالًا تأخذ دوالًا وتُرجعها: Currying وCompose وPipe." />
+    <link rel="canonical" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-04.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-04.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-04.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-04.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="الدوال عالية المرتبة والتركيب — JavaScript المتقدم | FAYBIT" />
+    <meta property="og:description" content="اكتب دوالًا تأخذ دوالًا وتُرجعها: Currying وCompose وPipe." />
+    <meta property="og:url" content="https://faybit.vercel.app/advanced-javascript/lessons/ajs-04.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript المتقدم","item":"https://faybit.vercel.app/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"الدوال عالية المرتبة والتركيب","item":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-04.html"}]},{"@type":"LearningResource","name":"الدوال عالية المرتبة والتركيب","description":"اكتب دوالًا تأخذ دوالًا وتُرجعها: Currying وCompose وPipe.","url":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-04.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript المتقدم — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript المتقدم"><a href="/advanced-javascript/lessons/index.html">الدروس</a><a href="/en/advanced-javascript/lessons/ajs-04.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/advanced-javascript/lessons/index.html">JavaScript المتقدم</a></nav>
+      <p class="lp-eyebrow">الدرس 4 من 22</p>
+      <h1 class="lp-h1">الدوال عالية المرتبة والتركيب</h1>
+      <p class="lp-lead">اكتب دوالًا تأخذ دوالًا وتُرجعها: Currying وCompose وPipe.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-4">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>Higher-Order Functions</h2><p>الدالة عالية المرتبة تأخذ دالة كوسيط أو تُرجع دالة. <code>map</code> و<code>filter</code> و<code>reduce</code> أمثلة معروفة، ويمكنك بناء أدواتك.</p></article><article class="content-card"><h2>Currying والتركيب</h2><p><strong>Currying</strong> تحويل دالة متعددة الوسائط إلى سلسلة دوال بوسيط واحد. <strong>Pipe</strong> تمرر النتيجة من دالة لأخرى من اليسار لليمين.</p></article></div>
+<article class="body-card key-card"><p>ابنِ الدوال الصغيرة النقية ثم ركّبها بدل كتابة دالة ضخمة واحدة.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>const curry = (fn) =&gt; function curried(...args) {
+return args.length &gt;= fn.length
+? fn(...args)
+: (...more) =&gt; curried(...args, ...more);
+};
+const add3 = curry((a, b, c) =&gt; a + b + c);
+console.log(add3(1)(2)(3), add3(1, 2)(3));
+const pipe = (...fns) =&gt; (x) =&gt; fns.reduce((v, f) =&gt; f(v), x);
+const slugify = pipe(
+(s) =&gt; s.trim(),
+(s) =&gt; s.toLowerCase(),
+(s) =&gt; s.replace(/\s+/g, "-"),
+);
+console.log(slugify("  Advanced JS Course "));</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">6 6
+advanced-js-course</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p><code>fn.length</code> هو عدد الوسائط المعلنة، فنستمر في جمع الوسائط حتى تكتمل. <code>pipe</code> تستخدم <code>reduce</code> لتمرير القيمة عبر سلسلة التحويلات.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>جرّب بنفسك</h2></div>
+</div>
+<p class="practice-description">عرّف &lt;code&gt;compose&lt;/code&gt; (تنفذ من اليمين لليسار) وجرّبها على &lt;code&gt;double&lt;/code&gt; و&lt;code&gt;inc&lt;/code&gt;.</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما الدالة عالية المرتبة؟</strong></p><ul><li>دالة تأخذ دالة أو تُرجع دالة</li><li>دالة بأكثر من 5 وسائط</li><li>دالة داخل كائن</li><li>دالة async</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>دالة تأخذ دالة أو تُرجع دالة</strong></p></details></li><li><p><strong>ما هو Currying؟</strong></p><ul><li>تحويل دالة متعددة الوسائط إلى دوال بوسيط واحد متتالية</li><li>نسخ الدوال</li><li>حذف الدوال</li><li>تسريع الحلقات</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تحويل دالة متعددة الوسائط إلى دوال بوسيط واحد متتالية</strong></p></details></li><li><p><strong>بماذا تختلف pipe عن compose؟</strong></p><ul><li>pipe من اليسار لليمين و compose من اليمين لليسار</li><li>لا فرق إطلاقًا</li><li>pipe للأرقام فقط</li><li>compose غير موجودة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>pipe من اليسار لليمين و compose من اليمين لليسار</strong></p></details></li><li><p><strong>ما ناتج الكود؟ const add = a =&gt; b =&gt; a + b; console.log([1, 2].map(add(10)));</strong></p><ul><li>[11, 12]</li><li>[10, 10]</li><li>[1, 2]</li><li>[NaN, NaN]</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>[11, 12]</strong></p><p>add(10) تعيد دالة تنتظر b وتتذكر a = 10، و map تمرر لها كل عنصر. هذا مثال على currying وتطبيق جزئي.</p></details></li><li><p><strong>إذا كانت inc = x =&gt; x + 1 و dbl = x =&gt; x * 2، فما ناتج compose(inc, dbl)(5) و pipe(inc, dbl)(5) على الترتيب؟</strong></p><ul><li>12 و 12</li><li>11 و 12</li><li>12 و 11</li><li>11 و 11</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>11 و 12</strong></p><p>compose تطبق الدوال من اليمين: dbl(5) = 10 ثم inc = 11. pipe تطبقها من اليسار: inc(5) = 6 ثم dbl = 12.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-4">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/advanced-javascript/lessons/ajs-03.html"><small>الدرس السابق</small><strong>this و call / apply / bind</strong></a>
+        <a rel="next" href="/advanced-javascript/lessons/ajs-05.html"><small>الدرس التالي</small><strong>Memoization و Debounce و Throttle</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/advanced-javascript/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

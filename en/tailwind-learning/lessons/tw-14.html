@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <title>Dark Mode — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="dark: in both forms (system-based or class-based) and designing colors that adapt to both modes." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-14.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-14.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-14.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-14.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Dark Mode — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="dark: in both forms (system-based or class-based) and designing colors that adapt to both modes." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-14.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Dark Mode","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-14.html"}]},{"@type":"LearningResource","name":"Dark Mode","description":"dark: in both forms (system-based or class-based) and designing colors that adapt to both modes.","url":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-14.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/en/tailwind-learning/lessons/index.html">Lessons</a><a href="/tailwind-learning/lessons/tw-14.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">Lesson 14 of 20</p>
+      <h1 class="lp-h1">Dark Mode</h1>
+      <p class="lp-lead">dark: in both forms (system-based or class-based) and designing colors that adapt to both modes.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-14">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Default</h2><p>The <code>dark:</code> prefix applies by default when the system prefers dark mode (<code>prefers-color-scheme: dark</code>).</p></article><article class="content-card"><h2>Manual Control</h2><p>For a manual toggle with the <code>.dark</code> class, define the variant: <code>@custom-variant dark (&amp;:where(.dark, .dark *));</code> inside <code>&lt;style type="text/tailwindcss"&gt;</code> (or a CSS file). Then add the <code>dark</code> class to the parent to enable it.</p></article></div>
+<article class="body-card key-card"><p>Write colors for both modes together: bg-white dark:bg-slate-900.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;style type="text/tailwindcss"&gt;
+@custom-variant dark (&amp;:where(.dark, .dark *));
+&lt;/style&gt;
+&lt;div class="dark"&gt;
+&lt;div id="panel" class="rounded-xl bg-white p-4 text-slate-900 dark:bg-slate-900 dark:text-white"&gt;
+&lt;h1 class="font-bold"&gt;Dark mode panel&lt;/h1&gt;
+&lt;p class="text-slate-600 dark:text-slate-300"&gt;The dark class on the parent enabled dark: for the children.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="mt-3 rounded-xl bg-white p-4 text-slate-900 dark:bg-slate-900 dark:text-white"&gt;Without the dark class: appears light&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>After defining <code>@custom-variant</code>, <code>dark:</code> is tied to the presence of the <code>dark</code> class rather than the system setting. The first panel is inside <code>.dark</code>, so it appears dark.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Remove the &lt;code&gt;dark&lt;/code&gt; class from the parent and notice the panel return to light mode.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>When does dark: apply by default?</strong></p><ul><li>When the system prefers dark mode</li><li>Always</li><li>Never</li><li>In print only</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>When the system prefers dark mode</strong></p></details></li><li><p><strong>How do we tie dark: to a manual class?</strong></p><ul><li>@custom-variant dark (&amp;:where(.dark, .dark *));</li><li>dark: true</li><li>data-dark</li><li>&lt;dark&gt;</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>@custom-variant dark (&amp;:where(.dark, .dark *));</strong></p></details></li><li><p><strong>Which pair supports both modes?</strong></p><ul><li>bg-white dark:bg-slate-900</li><li>bg-white only</li><li>dark:bg-white only</li><li>text-black only</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>bg-white dark:bg-slate-900</strong></p></details></li><li><p><strong>A user's system is in light mode. What happens to dark: classes by default?</strong></p><ul><li>They are not applied</li><li>They always apply</li><li>They apply at half strength</li><li>They cause an error</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>They are not applied</strong></p><p>dark: follows prefers-color-scheme unless a manual variant is defined.</p></details></li><li><p><strong>After defining @custom-variant with a dark class, where do you put the dark class to enable the mode?</strong></p><ul><li>On each child element alone</li><li>Only inside a JavaScript file</li><li>On a parent element such as html</li><li>In the title tag</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>On a parent element such as html</strong></p><p>Children inherit the activation from the parent that carries dark.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-14">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/tailwind-learning/lessons/tw-13.html"><small>Previous lesson</small><strong>group, peer, and Other Variants</strong></a>
+        <a rel="next" href="/en/tailwind-learning/lessons/tw-15.html"><small>Next lesson</small><strong>Transitions, Transforms, and Animation</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/tailwind-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>Bits و Bytes — أساسيات الكمبيوتر | FAYBIT</title>
+    <meta name="description" content="تعرّف Bit و Byte وتحسب عدد القيم الممكنة بـ n خانة. تفرّق بين وحدات 1000 (KB, MB) ووحدات 1024 (KiB, MiB) وتفسر اختلاف سعة القرص. تقدّر حجم ملف غير مضغوط…" />
+    <link rel="canonical" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-13.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-13.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-13.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-13.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Bits و Bytes — أساسيات الكمبيوتر | FAYBIT" />
+    <meta property="og:description" content="تعرّف Bit و Byte وتحسب عدد القيم الممكنة بـ n خانة. تفرّق بين وحدات 1000 (KB, MB) ووحدات 1024 (KiB, MiB) وتفسر اختلاف سعة القرص. تقدّر حجم ملف غير مضغوط…" />
+    <meta property="og:url" content="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-13.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"أساسيات الكمبيوتر","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Bits و Bytes","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-13.html"}]},{"@type":"LearningResource","name":"Bits و Bytes","description":"تعرّف Bit و Byte وتحسب عدد القيم الممكنة بـ n خانة. تفرّق بين وحدات 1000 (KB, MB) ووحدات 1024 (KiB, MiB) وتفسر اختلاف سعة القرص. تقدّر حجم ملف غير مضغوط…","url":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-13.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"أساسيات الكمبيوتر — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="أساسيات الكمبيوتر"><a href="/fundamentals/computer-basics/lessons/index.html">الدروس</a><a href="/en/fundamentals/computer-basics/lessons/com-13.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/fundamentals/computer-basics/lessons/index.html">أساسيات الكمبيوتر</a></nav>
+      <p class="lp-eyebrow">الدرس 13 من 30</p>
+      <h1 class="lp-h1">Bits و Bytes</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-13">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>Bits و Bytes</h2>
+<div><section class="lesson-section doc-objectives"><h3>أهداف الدرس</h3><ul><li>تعرّف <span class="term">Bit</span> و<span class="term">Byte</span> وتحسب عدد القيم الممكنة بـ n خانة.</li><li>تفرّق بين وحدات 1000 (KB, MB) ووحدات 1024 (KiB, MiB) وتفسر اختلاف سعة القرص.</li><li>تقدّر حجم ملف غير مضغوط وتحوّل بين Mbps وMB/s وتحسب زمن التنزيل.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>المتطلبات السابقة</h3><ul><li>درس النظام الثنائي والبيانات (com-12).</li></ul>
+</section>
+<section class="lesson-section "><h3>مقدمة: لغة القياس في الحوسبة</h3>
+<p>حين تقرأ «صورة 5 ميغابايت» أو «إنترنت 100 ميغابت» فأنت أمام وحدات تبدو متشابهة وهي مختلفة اختلافًا كبيرًا. فهم هذه الوحدات هو ما يجعلك تحسب سعة قرص وزمن تنزيل وحجم فيديو بدلًا من التخمين. وكل شيء يبدأ من أصغر وحدة: <span class="term">Bit</span>.</p>
+</section>
+<section class="lesson-section "><h3>البت والبايت</h3>
+<p><span class="term">Bit</span> خانة واحدة تحمل 0 أو 1، وهي أصغر معلومة ممكنة. ولأن بتًا واحدًا لا يكفي لتمثيل شيء مفيد، جُمعت ثماني خانات في <span class="term">Byte</span> (بايت)، وهو الوحدة التي يعنون بها الحاسوب ذاكرته. ويُكتب البت بحرف صغير <code>b</code> والبايت بحرف كبير <code>B</code>، وهذا فرق جوهري: 8 bits = 1 B.</p>
+<p>وكل خانة تضاعف عدد الاحتمالات، فبـ n خانة نحصل على 2 أس n قيمة:</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">عدد الخانات</th><th scope="col">عدد القيم</th><th scope="col">مثال استعمال</th></tr></thead><tbody><tr><th scope="row">1</th><td>2</td><td>مفتاح تشغيل/إيقاف</td></tr><tr><th scope="row">4</th><td>16</td><td>رمز ست عشري واحد</td></tr><tr><th scope="row">8</th><td>256</td><td>حرف ASCII الموسع، أو قناة لون</td></tr><tr><th scope="row">16</th><td>65,536</td><td>صوت CD بدقة 16 بت</td></tr><tr><th scope="row">24</th><td>16,777,216</td><td>لون RGB كامل</td></tr><tr><th scope="row">32</th><td>4,294,967,296</td><td>عنوان IPv4</td></tr><tr><th scope="row">64</th><td>18,446,744,073,709,551,616</td><td>معالجات 64 بت</td></tr></tbody></table></div>
+<p>ومن هنا تفهم عبارة «معالج 32 بت» و«معالج 64 بت»: عرض العنوان الذي يستطيع المعالج استعماله لتحديد مواضع الذاكرة. ثلاثون واثنتان خانة تعني 4,294,967,296 عنوانًا، أي 4 GiB كحد أقصى من الذاكرة، ولهذا احتاجت الأجهزة الحديثة إلى 64 بت.</p>
+</section>
+<section class="lesson-section "><h3>KB أم KiB؟ مشكلة الألف والـ 1024</h3>
+<p>المنطق الثنائي يجعل 1024 (أي 2 أس 10) قريبًا جدًا من الألف، فجرت العادة على استعمال «كيلو» للرقمين. ولإنهاء الالتباس حدد المعيار الدولي وحدتين: الوحدات العشرية <span class="term">SI</span> (KB وMB وGB وTB) وقيمتها 1000 أس ن، والوحدات الثنائية <span class="term">IEC</span> (KiB وMiB وGiB وTiB) وقيمتها 1024 أس ن.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">الوحدة</th><th scope="col">عشرية (SI)</th><th scope="col">ثنائية (IEC)</th><th scope="col">الفرق</th></tr></thead><tbody><tr><th scope="row">كيلو</th><td>KB = 1,000 B</td><td>KiB = 1,024 B</td><td>2.4%</td></tr><tr><th scope="row">ميغا</th><td>MB = 1,000,000 B</td><td>MiB = 1,048,576 B</td><td>4.9%</td></tr><tr><th scope="row">جيجا</th><td>GB = 1,000,000,000 B</td><td>GiB = 1,073,741,824 B</td><td>7.4%</td></tr><tr><th scope="row">تيرا</th><td>TB = 10^12 B</td><td>TiB = 1,099,511,627,776 B</td><td>10.0%</td></tr></tbody></table></div>
+<p>يتضاعف الفرق مع كل درجة، وهذا سر اختلاف سعة القرص: قرص 256 GB كما كُتب على علبته يحوي 256,000,000,000 بايت، وحين يقسمها النظام على 1,073,741,824 يعرضها نحو 238.4 فقط، أي 238.4 GiB. ويستعمل Windows الرمز GB لوحدة هي في الحقيقة GiB، بينما macOS الحديث ومعظم الشركات المصنّعة تستعمل العشرية.</p>
+</section>
+<section class="lesson-section "><h3>تقدير أحجام الملفات</h3>
+<p>حجم صورة غير مضغوطة = العرض × الارتفاع × عدد البايتات لكل بكسل. صورة Full HD أبعادها 1920 × 1080 بنظام RGB (3 بايتات للبكسل) تحتوي 2,073,600 بكسل، فحجمها 2,073,600 × 3 = 6,220,800 بايت، أي نحو 6.22 MB أو 5.93 MiB. بينما ملف JPG لصورة بهذه الدقة قد يكون بضع مئات من الكيلوبايت لأن <span class="term">Compression</span> أي الضغط يلغي التكرار.</p>
+<figure class="doc-diagram" role="group" aria-label="مخطط"><figcaption>خطوات تقدير حجم فيديو غير مضغوط (دقيقة واحدة)</figcaption><ol class="doc-flow"><li><strong>حجم الإطار</strong><span>1920 × 1080 × 3 = 6,220,800 بايت</span></li><li><strong>إطارات الثانية</strong><span>30 إطارًا ← 6,220,800 × 30 = 186,624,000 بايت/ث</span></li><li><strong>الدقيقة</strong><span>× 60 = 11,197,440,000 بايت</span></li><li><strong>النتيجة</strong><span>نحو 11.2 GB، ولذلك تُضغط الفيديوهات دائمًا</span></li></ol></figure>
+<p>ومثال الصوت: قرص CD يأخذ 44,100 عينة في الثانية، لكل عينة 16 بت، وفي قناتين: 44,100 × 16 × 2 = 1,411,200 بت/ث، أي 176,400 بايت/ث، فالدقيقة 10,584,000 بايت ≈ 10.6 MB.</p>
+</section>
+<section class="lesson-section "><h3>سرعة الشبكة: Mbps أم MB/s؟</h3>
+<p>تقيس شركات الإنترنت السرعة بـ <span class="term">Mbps</span> أي ميغابت في الثانية (b صغيرة)، بينما يعرض المتصفح التنزيل بـ MB/s أي ميغابايت في الثانية (B كبيرة). التحويل: اقسم على 8. فاتصال 100 Mbps يعطي نظريًا 100 ÷ 8 = 12.5 MB/s، واتصال 500 Mbps يعطي 62.5 MB/s. والسرعة الفعلية أقل بقليل بسبب بيانات التحكم في البروتوكول وازدحام الشبكة.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">python</span></figcaption><pre dir="ltr"><code>size_mb = 1000          # a 1 GB file, decimal
+speed_mbps = 100        # advertised speed in megabits/s
+speed_MBps = speed_mbps / 8
+print(speed_MBps)       # megabytes per second
+print(size_mb / speed_MBps)  # seconds</code></pre></figure>
+<figure class="code-ex code-ex-out"><figcaption><span class="code-ex-lang">الناتج</span></figcaption><pre dir="ltr"><code>12.5
+80.0</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>تطبيقات من الواقع</h3>
+<ul><li><strong>شراء التخزين:</strong> تقدّر كم صورة تتسع لها ذاكرة هاتفك قبل الشراء.</li><li><strong>حصص الإنترنت:</strong> باقة 50 GB شهريًا تكفي لعدد معين من ساعات الفيديو بحسب جودته.</li><li><strong>اختيار الجودة:</strong> فهم معدل البت (Bitrate) يساعدك على اختيار إعدادات التسجيل والبث.</li></ul>
+<div class="doc-mistakes"><h4>أخطاء شائعة</h4><ul><li>«Mb وMB شيء واحد»: الأول ميغابت والثاني ميغابايت، وبينهما ثمانية أضعاف.</li><li>«قرصي ناقص أو الشركة تخدعني»: الفرق ناتج عن وحدة العد (1000 مقابل 1024) لا عن فقد بيانات.</li><li>«ملف JPG يحتوي على عدد البكسلات نفسه فحجمه مثل الخام»: الضغط يقلل الحجم كثيرًا مع بقاء الأبعاد نفسها.</li><li>«سرعة 100 Mbps تنزّل 100 ميغابايت كل ثانية»: هي 12.5 MB/s نظريًا فقط.</li></ul></div>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>حساب:</strong> ما حجم صورة غير مضغوطة أبعادها 4000 × 3000 بكسل بنظام RGB؟ وكم صورة منها تتسع على قرص 64 GB (عشري)؟</summary><div class="doc-solution"><strong>عرض الحل</strong><p>عدد البكسلات = 4000 × 3000 = 12,000,000. الحجم = 12,000,000 × 3 = 36,000,000 بايت = 36 MB. على قرص 64 GB = 64,000 MB يتسع 64,000 ÷ 36 ≈ 1,777 صورة (بعد تقريب الناتج للأسفل). وفي الواقع تُضغط الصورة إلى بضعة ميغابايتات، فيتسع أكثر بكثير.</p></div></details>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>استدلال:</strong> اشتريت اتصالًا بسرعة 200 Mbps. كم تنتظر لتنزيل لعبة حجمها 40 GB، نظريًا؟</summary><div class="doc-solution"><strong>عرض الحل</strong><p>السرعة بالبايت = 200 ÷ 8 = 25 MB/s. اللعبة = 40 × 1000 = 40,000 MB. الزمن = 40,000 ÷ 25 = 1,600 ثانية ≈ 26.7 دقيقة. عمليًا يزيد الزمن قليلًا بسبب تحميل الخادم والبيانات الإضافية وازدحام الشبكة، وقد يحدّه كذلك قرص بطيء.</p></div></details>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>تطبيق عملي:</strong> اعرف حجم ملف على جهازك بالبايت، ثم حوّله إلى KB وKiB وقارن.</summary><div class="doc-solution"><strong>عرض الحل</strong><p>في Windows انقر بزر الفأرة الأيمن على الملف واختر «خصائص» فيظهر الحجم بالبايت. نفترض 5,242,880 بايت: بالوحدات العشرية = 5,242.88 KB أي نحو 5.24 MB. وبالثنائية = 5,242,880 ÷ 1,024 = 5,120 KiB = 5 MiB بالضبط. فتفسير اختلاف الرقمين هو الوحدة وليس الملف. جرّب الأمر <code>ls -l</code> في Linux للحصول على الحجم بالبايت.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>الخلاصة</h3><ul><li>البت أصغر معلومة، والبايت ثماني خانات، وn خانة تعطي 2 أس n قيمة.</li><li>KB وMB عشريان (1000)، وKiB وMiB ثنائيان (1024)، وهذا يفسر سعة الأقراص.</li><li>حجم الصورة الخام = العرض × الارتفاع × بايتات البكسل، والضغط يقلله كثيرًا.</li><li>Mbps يقسم على 8 ليصبح MB/s.</li></ul><p class="doc-next"><strong>الخطوة التالية:</strong> كيف يعمل البرنامج: كيف تتحول تعليماتك إلى أرقام ينفذها المعالج.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>المفهوم الأساسي</strong>
+<p>Byte واحد يتكون من 8 Bits.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>تطبيق عملي</span>
+<h3>جرّب بنفسك</h3>
+</div>
+</div>
+<p>حاول ترتيب KB وMB وGB وTB من الأصغر إلى الأكبر.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>كم Bit يوجد في Byte واحد؟</strong></p><ul><li>2</li><li>4</li><li>8</li><li>16</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>8</strong></p></details></li><li><p><strong>قرص 256 GB يظهر بنحو 238.4 في ويندوز. لماذا؟</strong></p><ul><li>بسبب القسمة على 1,073,741,824 بدلاً من 1,000,000,000 (وحدة GiB)</li><li>بسبب عطل في القرص</li><li>بسبب فيروس</li><li>لأن الشركة غشّت</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>بسبب القسمة على 1,073,741,824 بدلاً من 1,000,000,000 (وحدة GiB)</strong></p><p>ويندوز يكتب GB لما هو فعلاً GiB، والفجوة 7.4% عند مستوى الجيجا.</p></details></li><li><p><strong>لماذا حُدّت ذاكرة المعالجات 32 بت بنحو 4 GiB؟</strong></p><ul><li>لأن الذاكرة 4 جيجا فقط في كل الأجهزة</li><li>لأن 32 بت تعطي 4,294,967,296 عنواناً فقط</li><li>بسبب سرعة الساعة</li><li>بسبب حجم الشاشة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لأن 32 بت تعطي 4,294,967,296 عنواناً فقط</strong></p><p>عرض العنوان 32 بت يعني 2^32 موقعاً، أي 4 GiB.</p></details></li><li><p><strong>ما حجم صورة 1920×1080 غير مضغوطة بثلاثة بايت لكل بكسل؟</strong></p><ul><li>نحو 2 MB</li><li>نحو 600 KB</li><li>نحو 6.22 MB</li><li>نحو 62 MB</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>نحو 6.22 MB</strong></p><p>2,073,600 بكسل × 3 = 6,220,800 بايت، أي نحو 6.22 MB.</p></details></li><li><p><strong>اتصال إنترنت بسرعة 100 Mbps. كم MB/s هي تقريباً؟</strong></p><ul><li>800 MB/s</li><li>100 MB/s</li><li>50 MB/s</li><li>12.5 MB/s</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>12.5 MB/s</strong></p><p>الميغابت (b صغيرة) ثُمن الميغابايت، فـ 100 ÷ 8 = 12.5 MB/s.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-13">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/fundamentals/computer-basics/lessons/com-12.html"><small>الدرس السابق</small><strong>Binary و Data</strong></a>
+        <a rel="next" href="/fundamentals/computer-basics/lessons/com-14.html"><small>الدرس التالي</small><strong>كيف يعمل البرنامج؟</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/fundamentals/computer-basics/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

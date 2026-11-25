@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="angular" />
+    <meta name="robots" content="noindex, follow" />
+    <title>التواصل بين المكونات — Angular | FAYBIT</title>
+    <meta name="description" content="تعرف على كيفية تواصل Components في Angular وتبادل البيانات والأحداث." />
+    <link rel="canonical" href="https://faybit.vercel.app/angular-learning/lessons/angular-14.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/angular-learning/lessons/angular-14.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/angular-learning/lessons/angular-14.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/angular-learning/lessons/angular-14.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="التواصل بين المكونات — Angular | FAYBIT" />
+    <meta property="og:description" content="تعرف على كيفية تواصل Components في Angular وتبادل البيانات والأحداث." />
+    <meta property="og:url" content="https://faybit.vercel.app/angular-learning/lessons/angular-14.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Angular","item":"https://faybit.vercel.app/angular-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"التواصل بين المكونات","item":"https://faybit.vercel.app/angular-learning/lessons/angular-14.html"}]},{"@type":"LearningResource","name":"التواصل بين المكونات","description":"تعرف على كيفية تواصل Components في Angular وتبادل البيانات والأحداث.","url":"https://faybit.vercel.app/angular-learning/lessons/angular-14.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Angular — FAYBIT","url":"https://faybit.vercel.app/angular-learning/angular-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Angular"><a href="/angular-learning/lessons/index.html">الدروس</a><a href="/en/angular-learning/lessons/angular-14.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/angular-learning/lessons/index.html">Angular</a></nav>
+      <p class="lp-eyebrow">الدرس 14 من 32</p>
+      <h1 class="lp-h1">التواصل بين المكونات</h1>
+      <p class="lp-lead">تعرف على كيفية تواصل Components في Angular وتبادل البيانات والأحداث.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/angular-learning/angular-learning.html#lesson-14">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>يصبح التواصل بين Components مهمًا مع زيادة حجم التطبيق. يستطيع الـParent تمرير البيانات إلى الـChild باستخدام Inputs، بينما يستطيع الـChild إرسال Events إلى الـParent باستخدام Outputs.</div></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>مثال على الكود</h2></div>
+</div>
+<pre dir="ltr"><code>@Input()
+title = '';
+@Output()
+selected = new EventEmitter&lt;string&gt;();</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>جرب بنفسك</h2></div>
+</div>
+<p class="practice-description">عدّل المثال بالأسفل وشغّل الكود لاستكشاف صيغة Angular بنفسك.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما الـDecorators المستخدمة عادةً للتواصل بين المكونات؟</strong></p><ul><li>@Input و @Output</li><li>@CSS و @HTML</li><li>@Route و @Style</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>@Input و @Output</strong></p></details></li><li><p><strong>ما هو الموضوع الرئيسي لهذا الدرس؟</strong></p><ul><li>التواصل بين المكونات</li><li>Inputs</li><li>Outputs</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>التواصل بين المكونات</strong></p></details></li><li><p><strong>أي عبارة تصف هذا الموضوع بشكل أفضل؟</strong></p><ul><li>يصبح التواصل بين Components مهمًا مع زيادة حجم التطبيق. يستطيع الـParent تمرير البيانات إلى الـChild باستخدام Inputs، بينما يستطيع الـChild إرسال Events إلى الـParent باستخدام Outputs.</li><li>الـInput هو قيمة يستطيع الـChild Component استقبالها من الـParent. وهذا يجعل Components قابلة لإعادة الاستخدام لأن الـParent يستطيع إرسال قيم مختلفة إلى نفس المكون.</li><li>تُستخدم Outputs غالبًا مع EventEmitter. يقوم الـChild بإطلاق Event ويستمع الـParent إلى هذا الحدث. وهذا يوفر طريقة واضحة للتواصل من Child إلى Parent.</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يصبح التواصل بين Components مهمًا مع زيادة حجم التطبيق. يستطيع الـParent تمرير البيانات إلى الـChild باستخدام Inputs، بينما يستطيع الـChild إرسال Events إلى الـParent باستخدام Outputs.</strong></p></details></li><li><p><strong>ما الهدف العملي من هذا الدرس؟</strong></p><ul><li>تعرف على كيفية تواصل Components في Angular وتبادل البيانات والأحداث.</li><li>تعرف على كيفية تمرير البيانات من Parent Component إلى Child Component باستخدام Inputs.</li><li>تعرف على كيفية إرسال Child Components للأحداث إلى Parent Components.</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تعرف على كيفية تواصل Components في Angular وتبادل البيانات والأحداث.</strong></p></details></li><li><p><strong>أي مفهوم في Angular يرتبط مباشرة بهذا الدرس؟</strong></p><ul><li>التواصل بين المكوّنات</li><li>Input</li><li>Output</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>التواصل بين المكوّنات</strong></p></details></li><li><p><strong>أي صيغة أو API ترتبط بشكل أكبر بهذا الدرس؟</strong></p><ul><li>@Input</li><li>input()</li><li>@Output</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>@Input</strong></p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/angular-learning/angular-learning.html#lesson-14">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/angular-learning/lessons/angular-13.html"><small>الدرس السابق</small><strong>عرض القوائم</strong></a>
+        <a rel="next" href="/angular-learning/lessons/angular-15.html"><small>الدرس التالي</small><strong>Inputs</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/angular-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

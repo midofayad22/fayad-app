@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="react" />
+    <title>المكونات Components — React | FAYBIT</title>
+    <meta name="description" content="تعلم مفهوم Components وكيف تستخدمها React لتقسيم الواجهة إلى أجزاء مستقلة وقابلة لإعادة الاستخدام." />
+    <link rel="canonical" href="https://faybit.vercel.app/react-learning/lessons/react-03.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/react-learning/lessons/react-03.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/react-learning/lessons/react-03.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/react-learning/lessons/react-03.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="المكونات Components — React | FAYBIT" />
+    <meta property="og:description" content="تعلم مفهوم Components وكيف تستخدمها React لتقسيم الواجهة إلى أجزاء مستقلة وقابلة لإعادة الاستخدام." />
+    <meta property="og:url" content="https://faybit.vercel.app/react-learning/lessons/react-03.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"React","item":"https://faybit.vercel.app/react-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"المكونات Components","item":"https://faybit.vercel.app/react-learning/lessons/react-03.html"}]},{"@type":"LearningResource","name":"المكونات Components","description":"تعلم مفهوم Components وكيف تستخدمها React لتقسيم الواجهة إلى أجزاء مستقلة وقابلة لإعادة الاستخدام.","url":"https://faybit.vercel.app/react-learning/lessons/react-03.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"React — FAYBIT","url":"https://faybit.vercel.app/react-learning/react-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="React"><a href="/react-learning/lessons/index.html">الدروس</a><a href="/en/react-learning/lessons/react-03.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/react-learning/lessons/index.html">React</a></nav>
+      <p class="lp-eyebrow">الدرس 3 من 30</p>
+      <h1 class="lp-h1">المكونات Components</h1>
+      <p class="lp-lead">تعلم مفهوم Components وكيف تستخدمها React لتقسيم الواجهة إلى أجزاء مستقلة وقابلة لإعادة الاستخدام.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-3">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<p>
+Component هو جزء مستقل من واجهة المستخدم يمكن أن يحتوي على
+HTML-like JSX، وبيانات، وسلوك.
+</p>
+<p>
+يمكن أن يكون المكون بسيطًا جدًا مثل Button، أو كبيرًا مثل
+Dashboard يحتوي على عدة مكونات أخرى.
+</p>
+<p>
+هذه الطريقة تجعل بناء التطبيقات أكثر تنظيمًا بدلًا من وضع
+كل شيء في ملف واحد.
+</p>
+</div></article>
+<article class="body-card key-card"><p>Component هو وحدة بناء أساسية في React تمثل جزءًا من واجهة المستخدم.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>الكود</h2></div>
+</div>
+<pre dir="ltr"><code>function Welcome() {
+return &lt;h1&gt;مرحبًا بك في FAYBIT&lt;/h1&gt;;
+}</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>يمكنك تركيب Components متعددة معًا لبناء صفحة كاملة.</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span></div>
+</div>
+<p class="practice-description">أنشئ Component باسم Welcome يعرض عنوان ترحيبي.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما هو React Component؟</strong></p><ul><li>جزء قابل لإعادة الاستخدام من الواجهة</li><li>جدول قاعدة بيانات</li><li>خاصية CSS</li><li>ملف SQL</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>جزء قابل لإعادة الاستخدام من الواجهة</strong></p></details></li><li><p><strong>هل يمكن أن يحتوي Component على Components أخرى؟</strong></p><ul><li>نعم</li><li>لا</li><li>فقط في CSS</li><li>فقط في HTML</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>نعم</strong></p></details></li><li><p><strong>ما الهدف من تقسيم الواجهة إلى Components؟</strong></p><ul><li>تنظيم وإعادة استخدام الكود</li><li>إلغاء JavaScript</li><li>إلغاء HTML</li><li>منع التفاعل</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تنظيم وإعادة استخدام الكود</strong></p></details></li><li><p><strong>أي مما يلي يُعد مكوناً صحيحاً في React؟</strong></p><ul><li>return Card;</li><li>const x = 5;</li><li>function Card() { return &lt;div&gt;Hi&lt;/div&gt;; }</li><li>Card = &lt;div&gt;</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>function Card() { return &lt;div&gt;Hi&lt;/div&gt;; }</strong></p><p>المكون دالة تعيد JSX، ويفضّل أن يبدأ اسمها بحرف كبير.</p></details></li><li><p><strong>ما الخطأ في هذا الكود؟ function card(){ return &lt;p&gt;Hi&lt;/p&gt;; } ثم استخدام &lt;card /&gt;</strong></p><ul><li>لا يوجد خطأ</li><li>React تعامل card كوسم HTML عادي لأن اسمه يبدأ بحرف صغير</li><li>لا يمكن إرجاع p</li><li>الدالة يجب ألا تعيد شيئاً</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>React تعامل card كوسم HTML عادي لأن اسمه يبدأ بحرف صغير</strong></p><p>أسماء المكونات تبدأ بحرف كبير، وإلا اعتبرتها React عنصر HTML.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-3">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/react-learning/lessons/react-02.html"><small>الدرس السابق</small><strong>لماذا React؟</strong></a>
+        <a rel="next" href="/react-learning/lessons/react-04.html"><small>الدرس التالي</small><strong>JSX</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/react-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

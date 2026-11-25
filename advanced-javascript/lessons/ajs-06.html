@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>Prototypes وسلسلة الوراثة — JavaScript المتقدم | FAYBIT</title>
+    <meta name="description" content="كيف تعمل الوراثة فعلًا في JavaScript من خلال الكائنات النموذجية." />
+    <link rel="canonical" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-06.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-06.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-06.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-06.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Prototypes وسلسلة الوراثة — JavaScript المتقدم | FAYBIT" />
+    <meta property="og:description" content="كيف تعمل الوراثة فعلًا في JavaScript من خلال الكائنات النموذجية." />
+    <meta property="og:url" content="https://faybit.vercel.app/advanced-javascript/lessons/ajs-06.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript المتقدم","item":"https://faybit.vercel.app/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Prototypes وسلسلة الوراثة","item":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-06.html"}]},{"@type":"LearningResource","name":"Prototypes وسلسلة الوراثة","description":"كيف تعمل الوراثة فعلًا في JavaScript من خلال الكائنات النموذجية.","url":"https://faybit.vercel.app/advanced-javascript/lessons/ajs-06.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript المتقدم — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript المتقدم"><a href="/advanced-javascript/lessons/index.html">الدروس</a><a href="/en/advanced-javascript/lessons/ajs-06.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/advanced-javascript/lessons/index.html">JavaScript المتقدم</a></nav>
+      <p class="lp-eyebrow">الدرس 6 من 22</p>
+      <h1 class="lp-h1">Prototypes وسلسلة الوراثة</h1>
+      <p class="lp-lead">كيف تعمل الوراثة فعلًا في JavaScript من خلال الكائنات النموذجية.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-6">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>Prototype Chain</h2><p>لكل كائن رابط داخلي إلى كائن آخر هو <code>prototype</code>. عند قراءة خاصية غير موجودة يبحث المحرك في السلسلة حتى <code>Object.prototype</code> ثم <code>null</code>.</p></article><article class="content-card"><h2>أدوات</h2><ul><li><code>Object.create(proto)</code> ينشئ كائنًا برابط مباشر.</li><li><code>Object.getPrototypeOf(obj)</code> لقراءة الرابط.</li><li><code>hasOwn</code> للتمييز بين الخاصية الخاصة والموروثة.</li></ul></article></div>
+<article class="body-card key-card"><p>الوراثة في JavaScript تفويض عبر السلسلة، لا نسخ للخصائص.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>const animal = {
+speak() { return this.name + " makes a sound"; },
+};
+const dog = Object.create(animal);
+dog.name = "Rex";
+console.log(dog.speak());
+console.log(Object.hasOwn(dog, "speak"), "speak" in dog);
+console.log(Object.getPrototypeOf(dog) === animal);
+function Person(name) { this.name = name; }
+Person.prototype.hi = function () { return "hi " + this.name; };
+const p = new Person("Mona");
+console.log(p.hi(), p instanceof Person);</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">Rex makes a sound
+false true
+true
+hi Mona true</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p><code>speak</code> غير موجودة على <code>dog</code> نفسه لذا <code>hasOwn</code> ترجع false لكن عامل <code>in</code> يبحث في السلسلة فيرجع true. الدوال المنشئة تضع الأساليب على <code>prototype</code> لمشاركتها بين كل الكائنات.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>جرّب بنفسك</h2></div>
+</div>
+<p class="practice-description">أنشئ كائنًا &lt;code&gt;child&lt;/code&gt; يرث من &lt;code&gt;parent&lt;/code&gt; الذي فيه الدالة &lt;code&gt;hello&lt;/code&gt; ثم استدعها.</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>كيف يبحث المحرك عن خاصية غير موجودة على الكائن؟</strong></p><ul><li>يتتبع سلسلة prototype حتى null</li><li>يرمي خطأ فورًا</li><li>يبحث في النطاق العام فقط</li><li>ينشئها تلقائيًا</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يتتبع سلسلة prototype حتى null</strong></p></details></li><li><p><strong>ماذا تفعل Object.hasOwn؟</strong></p><ul><li>تتحقق أن الخاصية موجودة على الكائن نفسه لا الموروثة</li><li>تحذف الخاصية</li><li>تنسخ الكائن</li><li>تبحث في السلسلة كلها</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تتحقق أن الخاصية موجودة على الكائن نفسه لا الموروثة</strong></p></details></li><li><p><strong>أين تُوضع الأساليب المشتركة في الدوال المنشئة؟</strong></p><ul><li>على Constructor.prototype</li><li>داخل كل كائن</li><li>في النطاق العام</li><li>في localStorage</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>على Constructor.prototype</strong></p></details></li><li><p><strong>ما ناتج الكود؟ function A() {} A.prototype.hi = function () {}; const a = new A(); console.log(a.hasOwnProperty(&quot;hi&quot;), &quot;hi&quot; in a);</strong></p><ul><li>true true</li><li>false true</li><li>true false</li><li>false false</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>false true</strong></p><p>الدالة hi موجودة على A.prototype وليست خاصية ذاتية للكائن a، فتعيد hasOwnProperty قيمة false. أما عامل in فيبحث في سلسلة prototype أيضاً فيعيد true.</p></details></li><li><p><strong>ما ناتج console.log(&quot;toString&quot; in Object.create(null))؟</strong></p><ul><li>true لأن كل كائن يرث toString</li><li>undefined</li><li>خطأ TypeError</li><li>false لأن الكائن بلا prototype فلا يرث شيئاً</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>false لأن الكائن بلا prototype فلا يرث شيئاً</strong></p><p>Object.create(null) ينشئ كائناً بدون prototype، فلا تصله خصائص Object.prototype مثل toString. لذلك هو مناسب كقاموس خالٍ من الخصائص الموروثة.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-6">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/advanced-javascript/lessons/ajs-05.html"><small>الدرس السابق</small><strong>Memoization و Debounce و Throttle</strong></a>
+        <a rel="next" href="/advanced-javascript/lessons/ajs-07.html"><small>الدرس التالي</small><strong>Classes: الخصوصية والـ static</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/advanced-javascript/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>Map, Set, WeakMap, and WeakRef — Advanced JavaScript | FAYBIT</title>
+    <meta name="description" content="Choose the right data structure, and understand weak references and when they help prevent memory leaks." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-13.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-13.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-13.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-13.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Map, Set, WeakMap, and WeakRef — Advanced JavaScript | FAYBIT" />
+    <meta property="og:description" content="Choose the right data structure, and understand weak references and when they help prevent memory leaks." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-13.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Advanced JavaScript","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Map, Set, WeakMap, and WeakRef","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-13.html"}]},{"@type":"LearningResource","name":"Map, Set, WeakMap, and WeakRef","description":"Choose the right data structure, and understand weak references and when they help prevent memory leaks.","url":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-13.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Advanced JavaScript — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Advanced JavaScript"><a href="/en/advanced-javascript/lessons/index.html">Lessons</a><a href="/advanced-javascript/lessons/ajs-13.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/advanced-javascript/lessons/index.html">Advanced JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 13 of 22</p>
+      <h1 class="lp-h1">Map, Set, WeakMap, and WeakRef</h1>
+      <p class="lp-lead">Choose the right data structure, and understand weak references and when they help prevent memory leaks.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-13">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Map and Set</h2><p><code>Map</code> accepts any key type and preserves insertion order. <code>Set</code> is a collection of unique values. Both are faster and clearer than objects in many cases.</p></article><article class="content-card"><h2>Weak References</h2><p><code>WeakMap</code> and <code>WeakSet</code> hold object keys without preventing the garbage collector from removing them. They suit attaching private data to an object without leaking memory. Their keys must be objects and they cannot be enumerated.</p></article></div>
+<article class="body-card key-card"><p>WeakMap does not prevent the key from being removed from memory, and its entries cannot be iterated.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>const counts = new Map();
+for (const w of "to be or not to be".split(" ")) {
+counts.set(w, (counts.get(w) ?? 0) + 1);
+}
+console.log([...counts].filter(([, n]) =&gt; n &gt; 1));
+const unique = [...new Set([3, 1, 3, 2, 1])];
+console.log(unique);
+const keyObj = { id: 1 };
+const m = new Map([[keyObj, "object key"], [NaN, "nan key"]]);
+console.log(m.get(keyObj), m.get(NaN), m.size);
+const meta = new WeakMap();
+const el = {};
+meta.set(el, { clicks: 0 });
+meta.get(el).clicks++;
+console.log(meta.get(el), meta.has({}));</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">[ [ 'to', 2 ], [ 'be', 2 ] ]
+[ 3, 1, 2 ]
+object key nan key 2
+{ clicks: 1 } false</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>Map accepts an object and <code>NaN</code> as keys, which plain objects do not offer. WeakMap attaches data to the object, and the data disappears automatically if the object disappears.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Try it yourself</h2></div>
+</div>
+<p class="practice-description">Count the frequency of each letter in the word &lt;code&gt;banana&lt;/code&gt; using &lt;code&gt;Map&lt;/code&gt;.</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which structure accepts an object as a key and is also enumerable?</strong></p><ul><li>Map</li><li>Plain Object</li><li>Array</li><li>JSON</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Map</strong></p></details></li><li><p><strong>What is the advantage of WeakMap?</strong></p><ul><li>It does not prevent the garbage collector from removing the key</li><li>Always faster than Map</li><li>Accepts any key type</li><li>Enumerable</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>It does not prevent the garbage collector from removing the key</strong></p></details></li><li><p><strong>How do you quickly remove duplicates from an array?</strong></p><ul><li>[...new Set(arr)]</li><li>arr.unique()</li><li>arr.deleteDuplicates()</li><li>Object.keys(arr)</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>[...new Set(arr)]</strong></p></details></li><li><p><strong>What does this code print? console.log(new Map([[{}, 1]]).get({}));</strong></p><ul><li>1</li><li>undefined</li><li>null</li><li>An error</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>undefined</strong></p><p>Object keys in a Map are compared by identity, not content, and the second {} is a new, different object. So the key is not found and the result is undefined.</p></details></li><li><p><strong>What does this code print? console.log(new Set([{ a: 1 }, { a: 1 }]).size, new Set([NaN, NaN]).size);</strong></p><ul><li>1 and 1</li><li>1 and 2</li><li>2 and 2</li><li>2 and 1</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>2 and 1</strong></p><p>The two look-alike objects are different references, so both stay and the size is 2. Set treats NaN as equal to itself, unlike ===, so only one remains.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-13">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/advanced-javascript/lessons/ajs-12.html"><small>Previous lesson</small><strong>Generators</strong></a>
+        <a rel="next" href="/en/advanced-javascript/lessons/ajs-14.html"><small>Next lesson</small><strong>Symbols and Tagged Templates</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/advanced-javascript/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

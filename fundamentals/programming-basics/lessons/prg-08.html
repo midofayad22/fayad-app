@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <title>أنواع البيانات — أساسيات البرمجة | FAYBIT</title>
+    <meta name="description" content="DATA TYPES البيانات ليست كلها من النوع نفسه. الرقم يختلف عن النص، والقيمة المنطقية تختلف عن Array أو Object. نص مثل &quot;Hello&quot;. رقم مثل 25. true أو false.…" />
+    <link rel="canonical" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-08.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-08.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-08.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-08.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="أنواع البيانات — أساسيات البرمجة | FAYBIT" />
+    <meta property="og:description" content="DATA TYPES البيانات ليست كلها من النوع نفسه. الرقم يختلف عن النص، والقيمة المنطقية تختلف عن Array أو Object. نص مثل &quot;Hello&quot;. رقم مثل 25. true أو false.…" />
+    <meta property="og:url" content="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-08.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"أساسيات البرمجة","item":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"أنواع البيانات","item":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-08.html"}]},{"@type":"LearningResource","name":"أنواع البيانات","description":"DATA TYPES البيانات ليست كلها من النوع نفسه. الرقم يختلف عن النص، والقيمة المنطقية تختلف عن Array أو Object. نص مثل \"Hello\". رقم مثل 25. true أو false.…","url":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-08.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"أساسيات البرمجة — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="أساسيات البرمجة"><a href="/fundamentals/programming-basics/lessons/index.html">الدروس</a><a href="/en/fundamentals/programming-basics/lessons/prg-08.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/fundamentals/programming-basics/lessons/index.html">أساسيات البرمجة</a></nav>
+      <p class="lp-eyebrow">الدرس 8 من 31</p>
+      <h1 class="lp-h1">أنواع البيانات</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-8">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">DATA TYPES</span>
+<h2>افهم نوع القيمة التي يتعامل معها برنامجك</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content">
+<section class="lesson-section">
+<h3>لماذا توجد Data Types؟</h3>
+<p>
+البيانات ليست كلها من النوع نفسه. الرقم يختلف
+عن النص، والقيمة المنطقية تختلف عن Array أو Object.
+</p>
+<div class="info-grid">
+<div class="info-box">
+<h4>String</h4>
+<p>نص مثل "Hello".</p>
+</div>
+<div class="info-box">
+<h4>Number</h4>
+<p>رقم مثل 25.</p>
+</div>
+<div class="info-box">
+<h4>Boolean</h4>
+<p>true أو false.</p>
+</div>
+<div class="info-box">
+<h4>Object</h4>
+<p>مجموعة بيانات مرتبطة ببعضها.</p>
+</div>
+</div>
+</section>
+<section class="lesson-section"><h3>الأنواع الأساسية</h3><div class="info-grid"><div class="info-box"><h4>String</h4><p>نص بين علامتي اقتباس: <span class="term">"مرحبا"</span></p></div><div class="info-box"><h4>Number</h4><p>أعداد صحيحة وعشرية: <span class="term">42</span> و<span class="term">3.14</span></p></div><div class="info-box"><h4>Boolean</h4><p>قيمتان فقط: <span class="term">true</span> و<span class="term">false</span></p></div><div class="info-box"><h4>undefined / null</h4><p>undefined: لم تُعطَ قيمة بعد. null: «لا شيء» نختاره نحن عمدًا.</p></div></div></section><section class="lesson-section"><h3>النوع يحدد السلوك</h3><p>العامل <span class="term">+</span> يجمع الأرقام لكنه يدمج النصوص. لذلك فهم النوع يفسّر نتائج تبدو غريبة:</p><pre class="fd-code" dir="ltr"><code>console.log(5 + 2);      // 7   (أرقام)
+console.log("5" + 2);    // "52" (نص + رقم: دمج)
+console.log("5" * 2);    // 10  (* لا يدمج، فيحوّل النص لرقم)
+console.log(typeof "5"); // "string"</code></pre><p class="fd-note">القيمة التي تأتي من مربع إدخال أو من ملف تكون <strong>نصًا</strong> دائمًا حتى لو بدت رقمًا. حوّلها بـ <span class="term">Number("20")</span> قبل الحساب.</p></section><section class="lesson-section"><h3>الكسور العشرية</h3><p>الحاسوب يخزّن الأعداد العشرية بالنظام الثنائي، لذا قد تظهر فروق صغيرة:</p><pre class="fd-code" dir="ltr"><code>console.log(0.1 + 0.2);            // 0.30000000000000004
+console.log((0.1 + 0.2).toFixed(2)); // "0.30" (للعرض فقط)</code></pre></section></div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong> الفكرة الأساسية </strong>
+<p>معرفة نوع البيانات مهمة لأن العمليات التي يمكن تنفيذها تعتمد على نوع القيمة.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>مثال عملي</span>
+<h3>شاهد الفكرة في كود</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>const name = "Abdullhamid";
+const age = 20;
+const isStudent = true;
+console.log(typeof name);
+console.log(typeof age);
+console.log(typeof isStudent);</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>تطبيق</span>
+<h3>تحدَّ نفسك</h3>
+</div>
+</div>
+<p></p>
+<div class="fd-exercise"><h4>تمرين تفاعلي</h4><p class="fd-ex-prompt">المتغير price يحتوي النص "20". أنشئ متغيرًا باسم total يساوي price بعد تحويله إلى رقم ثم ضربه في 2.</p><p class="fd-ex-status" role="status"></p></div>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أي نوع يستخدم لتخزين true أو false؟</strong></p><ul><li>String</li><li>Number</li><li>Boolean</li><li>Array</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Boolean</strong></p><p>النوع Boolean يحمل إحدى قيمتين فقط: true أو false، وهو الأساس في اتخاذ القرارات داخل الشروط.</p></details></li><li><p><strong>ما ناتج: &quot;5&quot; + 2</strong></p><ul><li>7</li><li>&quot;52&quot;</li><li>Error</li><li>NaN</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>&quot;52&quot;</strong></p><p>عندما يكون أحد طرفي + نصًا، تدمج JavaScript القيمتين كنصين فتصبح النتيجة &quot;52&quot;.</p></details></li><li><p><strong>ماذا يطبع: console.log(typeof 42)</strong></p><ul><li>&quot;number&quot;</li><li>&quot;integer&quot;</li><li>&quot;string&quot;</li><li>42</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>&quot;number&quot;</strong></p><p>typeof يُرجع اسم النوع كنص. كل الأعداد، صحيحة أو عشرية، من النوع number.</p></details></li><li><p><strong>المتغير let city; لم نعطه قيمة. ما قيمته؟</strong></p><ul><li>null</li><li>0</li><li>undefined</li><li>&quot;&quot;</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>undefined</strong></p><p>المتغير الذي يُعرَّف دون قيمة يحمل القيمة undefined تلقائيًا. أما null فنكتبه نحن عمدًا.</p></details></li><li><p><strong>ما ناتج هذا السطر؟ console.log(&quot;7&quot; - 2);</strong></p><ul><li>72</li><li>5</li><li>NaN</li><li>خطأ</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>5</strong></p><p>عامل الطرح يحوّل النص &quot;7&quot; إلى الرقم 7 فتكون النتيجة 5. أما + فيدمج النصوص، ولهذا &quot;7&quot; + 2 تعطي 72.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-8">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/fundamentals/programming-basics/lessons/prg-07.html"><small>الدرس السابق</small><strong>المتغيرات</strong></a>
+        <a rel="next" href="/fundamentals/programming-basics/lessons/prg-09.html"><small>الدرس التالي</small><strong>Operators</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/fundamentals/programming-basics/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

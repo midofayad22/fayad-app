@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="js" />
+    <meta name="robots" content="noindex, follow" />
+    <title>تغيير المحتوى — JavaScript | FAYBIT</title>
+    <meta name="description" content="تعلّم كيف تغيّر JavaScript النصوص والمحتوى الموجود داخل عناصر HTML." />
+    <link rel="canonical" href="https://faybit.vercel.app/javascript-learning/lessons/js-17.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/javascript-learning/lessons/js-17.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-17.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/javascript-learning/lessons/js-17.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="تغيير المحتوى — JavaScript | FAYBIT" />
+    <meta property="og:description" content="تعلّم كيف تغيّر JavaScript النصوص والمحتوى الموجود داخل عناصر HTML." />
+    <meta property="og:url" content="https://faybit.vercel.app/javascript-learning/lessons/js-17.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript","item":"https://faybit.vercel.app/javascript-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"تغيير المحتوى","item":"https://faybit.vercel.app/javascript-learning/lessons/js-17.html"}]},{"@type":"LearningResource","name":"تغيير المحتوى","description":"تعلّم كيف تغيّر JavaScript النصوص والمحتوى الموجود داخل عناصر HTML.","url":"https://faybit.vercel.app/javascript-learning/lessons/js-17.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript — FAYBIT","url":"https://faybit.vercel.app/javascript-learning/javascript-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript"><a href="/javascript-learning/lessons/index.html">الدروس</a><a href="/en/javascript-learning/lessons/js-17.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/javascript-learning/lessons/index.html">JavaScript</a></nav>
+      <p class="lp-eyebrow">الدرس 17 من 25</p>
+      <h1 class="lp-h1">تغيير المحتوى</h1>
+      <p class="lp-lead">تعلّم كيف تغيّر JavaScript النصوص والمحتوى الموجود داخل عناصر HTML.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-17">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>const title =
+document.querySelector("h1");
+title.textContent = "مرحبًا من JavaScript";
+document.getElementById("jsResult").textContent =
+title.textContent;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>
+<p><strong>textContent</strong> تسمح بقراءة أو تغيير النص الموجود داخل العنصر.</p>
+<p>يمكن استخدامها لتحديث محتوى الصفحة بناءً على تفاعل المستخدم أو البيانات.</p>
+<p>عند إسناد قيمة جديدة إلى textContent يتم تحديث النص في الصفحة مباشرة.</p>
+<p>هذه من أكثر عمليات DOM استخدامًا.</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>اكتب JavaScript</h2></div>
+</div>
+<p class="practice-description">غيّر الكود الموجود بالأسفل ثم شغّله لترى النتيجة.</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أي Property تغيّر النص داخل العنصر؟</strong></p><ul><li>textContent</li><li>textChange</li><li>contentText</li><li>changeText</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>textContent</strong></p></details></li><li><p><strong>ماذا يحدث عند كتابة element.textContent = &quot;Hello&quot;؟</strong></p><ul><li>يتغير النص داخل العنصر</li><li>يتم حذف JavaScript</li><li>يتغير CSS فقط</li><li>يتم إنشاء Array</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يتغير النص داخل العنصر</strong></p></details></li><li><p><strong>هل يمكن استخدام textContent لقراءة النص؟</strong></p><ul><li>نعم</li><li>لا</li><li>فقط داخل CSS</li><li>فقط داخل HTML</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>نعم</strong></p></details></li><li><p><strong>تضع في textContent نصاً يحتوي على علامات HTML مثل عنصر b. كيف يظهر في الصفحة؟</strong></p><ul><li>كنص حرفي كما كُتب، فتظهر العلامات نفسها</li><li>كنص بخط عريض</li><li>لا يظهر شيء</li><li>يرمي خطأ في الصياغة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>كنص حرفي كما كُتب، فتظهر العلامات نفسها</strong></p><p>textContent يعامل القيمة كنص عادي ولا يحللها كـ HTML، لذلك تظهر العلامات كما هي. هذا يجعله أكثر أماناً عند عرض نصوص قادمة من المستخدم.</p></details></li><li><p><strong>ما الخطأ في هذا الكود؟ document.querySelector(&quot;#msg&quot;).textContent(&quot;Hi&quot;);</strong></p><ul><li>textContent خاصية وليست دالة، والصحيح textContent = &quot;Hi&quot;</li><li>يجب استخدام getElementById فقط</li><li>لا يمكن كتابة نص داخل عنصر</li><li>علامة # ممنوعة في querySelector</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>textContent خاصية وليست دالة، والصحيح textContent = &quot;Hi&quot;</strong></p><p>textContent خاصية نسندها بعلامة = ، واستدعاؤها بأقواس يرمي TypeError لأنها ليست دالة. علامة # صحيحة مع querySelector.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-17">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/javascript-learning/lessons/js-16.html"><small>الدرس السابق</small><strong>اختيار العناصر</strong></a>
+        <a rel="next" href="/javascript-learning/lessons/js-18.html"><small>الدرس التالي</small><strong>الأحداث Events</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/javascript-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

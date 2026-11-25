@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="vue" />
+    <title>Computed Properties — Vue.js | FAYBIT</title>
+    <meta name="description" content="تعلّم كيف تنشئ قيمًا مشتقة من البيانات باستخدام Computed Properties." />
+    <link rel="canonical" href="https://faybit.vercel.app/vue-learning/lessons/vue-06.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/vue-learning/lessons/vue-06.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/vue-learning/lessons/vue-06.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/vue-learning/lessons/vue-06.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Computed Properties — Vue.js | FAYBIT" />
+    <meta property="og:description" content="تعلّم كيف تنشئ قيمًا مشتقة من البيانات باستخدام Computed Properties." />
+    <meta property="og:url" content="https://faybit.vercel.app/vue-learning/lessons/vue-06.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Vue.js","item":"https://faybit.vercel.app/vue-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Computed Properties","item":"https://faybit.vercel.app/vue-learning/lessons/vue-06.html"}]},{"@type":"LearningResource","name":"Computed Properties","description":"تعلّم كيف تنشئ قيمًا مشتقة من البيانات باستخدام Computed Properties.","url":"https://faybit.vercel.app/vue-learning/lessons/vue-06.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Vue.js — FAYBIT","url":"https://faybit.vercel.app/vue-learning/vue-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Vue.js"><a href="/vue-learning/lessons/index.html">الدروس</a><a href="/en/vue-learning/lessons/vue-06.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/vue-learning/lessons/index.html">Vue.js</a></nav>
+      <p class="lp-eyebrow">الدرس 6 من 22</p>
+      <h1 class="lp-h1">Computed Properties</h1>
+      <p class="lp-lead">تعلّم كيف تنشئ قيمًا مشتقة من البيانات باستخدام Computed Properties.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-6">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<h2>Computed Properties</h2>
+<p>
+Computed Property هي قيمة يتم حسابها اعتمادًا على بيانات أخرى.
+</p>
+<p>
+وهي مفيدة عندما نحتاج إلى إنشاء نتيجة مشتقة من البيانات
+الموجودة لدينا.
+</p>
+</div></article>
+<article class="body-card key-card"><div class="info-label">Computed للقيم المشتقة</div><p>استخدم Computed عندما تحتاج إلى حساب قيمة اعتمادًا على بيانات أخرى.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>الكود</h2></div>
+</div>
+<pre dir="ltr"><code>
+&lt;div id="app"&gt;
+&lt;h2&gt;{{ fullName }}&lt;/h2&gt;
+&lt;/div&gt;
+&lt;script&gt;
+const { createApp } = Vue;
+createApp({
+data() {
+return {
+firstName: "Abdullhamid",
+lastName: "Fayad"
+};
+},
+computed: {
+fullName() {
+return this.firstName + " " + this.lastName;
+}
+}
+}).mount("#app");
+&lt;/script&gt;
+</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static">
+<div style="padding:20px;font-family:Arial;">
+<div class="lp-demo-h2">Abdullhamid Fayad</div>
+</div>
+</div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>
+<p>
+<code>computed</code> تحتوي على القيم المشتقة.
+</p>
+<p>
+<code>fullName()</code> تعتمد على <code>firstName</code>
+و<code>lastName</code>.
+</p>
+<p>
+عندما تتغير البيانات التي تعتمد عليها Computed، تقوم Vue
+بإعادة حسابها عند الحاجة.
+</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span></div>
+</div>
+<p class="practice-description">أنشئ Computed Property تجمع الاسم الأول واسم العائلة.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما استخدام Computed Properties؟</strong></p><ul><li>إنشاء قيم مشتقة من البيانات</li><li>إنشاء ملفات CSS</li><li>إنشاء صور</li><li>إدارة نظام التشغيل</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>إنشاء قيم مشتقة من البيانات</strong></p></details></li><li><p><strong>على ماذا تعتمد Computed عادةً؟</strong></p><ul><li>على بيانات Reactive أخرى</li><li>على الصور فقط</li><li>على HTML comments</li><li>على نظام التشغيل</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>على بيانات Reactive أخرى</strong></p></details></li><li><p><strong>أين نضع Computed في Options API؟</strong></p><ul><li>computed</li><li>derived</li><li>calculations</li><li>values</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>computed</strong></p></details></li><li><p><strong>ما الفرق العملي بين Computed وMethod لحساب fullName؟</strong></p><ul><li>Computed تُخزّن نتيجتها وتعيد الحساب فقط عند تغير اعتماداتها</li><li>لا فرق إطلاقاً</li><li>Method تُخزّن النتيجة دائماً</li><li>Computed لا تعمل في القالب</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Computed تُخزّن نتيجتها وتعيد الحساب فقط عند تغير اعتماداتها</strong></p><p>التخزين المؤقت هو ميزة Computed الأساسية مقارنة بالـ Methods التي تُنفَّذ في كل استدعاء.</p></details></li><li><p><strong>كيف نعرض computed اسمها total في القالب؟</strong></p><ul><li>{{ total() }}</li><li>{{ total }}</li><li>{{ computed.total }}</li><li>{{ this.total() }}</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>{{ total }}</strong></p><p>Computed تُستخدم كأنها خاصية عادية دون أقواس استدعاء.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-6">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/vue-learning/lessons/vue-05.html"><small>الدرس السابق</small><strong>Methods</strong></a>
+        <a rel="next" href="/vue-learning/lessons/vue-07.html"><small>الدرس التالي</small><strong>v-bind</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/vue-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

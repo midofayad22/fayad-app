@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>الحوسبة الحديثة — أساسيات الكمبيوتر | FAYBIT</title>
+    <meta name="description" content="تشرح كيف انتقل جزء كبير من الحوسبة إلى Cloud ومراكز البيانات، وتفرّق بين Virtual Machine و Container . تقارن نماذج SaaS و PaaS و IaaS وتختار المناسب لمثال…" />
+    <link rel="canonical" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-19.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-19.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-19.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-19.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="الحوسبة الحديثة — أساسيات الكمبيوتر | FAYBIT" />
+    <meta property="og:description" content="تشرح كيف انتقل جزء كبير من الحوسبة إلى Cloud ومراكز البيانات، وتفرّق بين Virtual Machine و Container . تقارن نماذج SaaS و PaaS و IaaS وتختار المناسب لمثال…" />
+    <meta property="og:url" content="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-19.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"أساسيات الكمبيوتر","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"الحوسبة الحديثة","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-19.html"}]},{"@type":"LearningResource","name":"الحوسبة الحديثة","description":"تشرح كيف انتقل جزء كبير من الحوسبة إلى Cloud ومراكز البيانات، وتفرّق بين Virtual Machine و Container . تقارن نماذج SaaS و PaaS و IaaS وتختار المناسب لمثال…","url":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-19.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"أساسيات الكمبيوتر — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="أساسيات الكمبيوتر"><a href="/fundamentals/computer-basics/lessons/index.html">الدروس</a><a href="/en/fundamentals/computer-basics/lessons/com-19.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/fundamentals/computer-basics/lessons/index.html">أساسيات الكمبيوتر</a></nav>
+      <p class="lp-eyebrow">الدرس 19 من 30</p>
+      <h1 class="lp-h1">الحوسبة الحديثة</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-19">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>الحوسبة الحديثة</h2>
+<div><section class="lesson-section doc-objectives"><h3>أهداف الدرس</h3><ul><li>تشرح كيف انتقل جزء كبير من الحوسبة إلى <span class="term">Cloud</span> ومراكز البيانات، وتفرّق بين <span class="term">Virtual Machine</span> و<span class="term">Container</span>.</li><li>تقارن نماذج <span class="term">SaaS</span> و<span class="term">PaaS</span> و<span class="term">IaaS</span> وتختار المناسب لمثال معين.</li><li>تحلل مفاضلات الحوسبة الحديثة: التأخر والتكلفة والخصوصية والطاقة.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>المتطلبات السابقة</h3><ul><li>دروس المعالج والذاكرة والتخزين والشبكات وتاريخ الحوسبة.</li></ul>
+</section>
+<section class="lesson-section "><h3>مقدمة: الحاسوب لم يعد أمامك فقط</h3>
+<p>حين تطلب سيارة عبر تطبيق أو تشاهد فيلمًا أو تحرّر مستندًا مع زملائك، فإن الجهاز الذي بين يديك يؤدي جزءًا صغيرًا من العمل، أما الجزء الأكبر فيجري على حواسيب بعيدة لا تراها. الحوسبة الحديثة هي هذا التوزيع: أجهزة محمولة في اليد، وخوادم في مراكز بيانات، وأجهزة صغيرة في كل مكان، وكلها متصلة. وهي ليست شيئًا جديدًا كليًا؛ فكل ما فيها مبني على المكونات التي درستها، لكنه مرتب بطريقة مختلفة.</p>
+</section>
+<section class="lesson-section "><h3>الهاتف والسحابة ومراكز البيانات</h3>
+<p>الهاتف الذكي حاسوب كامل مبني حول رقاقة واحدة تسمى <span class="term">SoC</span> (System on a Chip) تجمع المعالج والرسوميات ومكونات أخرى لتوفير الطاقة والحجم، ويعمل ببطارية، ولذلك يصمم كل شيء فيه حول الكفاءة. وخلف تطبيقاتك يقف <span class="term">Data Center</span>: مبنى يضم آلاف الخوادم مع شبكات سريعة وأنظمة تبريد وكهرباء احتياطية. و<span class="term">Cloud</span> هو استئجار قدرات هذه المراكز عبر الإنترنت عند الطلب بدل شراء الأجهزة وتشغيلها بنفسك.</p>
+<figure class="doc-diagram" role="group" aria-label="مخطط"><figcaption>ماذا يحدث حين تفتح تطبيق مشاهدة</figcaption><ol class="doc-flow"><li><strong>الجهاز</strong><span>الهاتف يرسل الطلب ويعرض الواجهة ويفك ضغط الفيديو</span></li><li><strong>الشبكة</strong><span>تنتقل الحزم عبر شبكة الاتصالات إلى أقرب خادم</span></li><li><strong>مركز البيانات</strong><span>خوادم تتحقق من حسابك وتبحث في قواعد بيانات</span></li><li><strong>التخزين والتوصيل</strong><span>يُرسل الفيديو من نسخ قريبة منك لتقليل التأخر</span></li></ol></figure>
+</section>
+<section class="lesson-section "><h3>المحاكاة الافتراضية والحاويات</h3>
+<p>لا تستعمل السحابة خادمًا فعليًا لكل عميل، بل تقسم الخادم الواحد. في <span class="term">Virtualization</span> يشغّل برنامج يسمى <span class="term">Hypervisor</span> عدة <strong>أجهزة افتراضية</strong> على عتاد واحد، لكل منها نظام تشغيل كامل خاص بها يظن أنه يملك جهازًا مستقلًا. أما <span class="term">Containers</span> فأخف: تتشارك فيها الحاويات نواة نظام التشغيل نفسها لكنها تُعزل عن بعضها في ما تراه من ملفات وعمليات وشبكة. تبدأ الحاوية بسرعة وتستهلك أقل، لكن عزلها أضعف من عزل جهاز افتراضي كامل، لأن النواة مشتركة. ويحدد هذا الفرق جزءًا مما سنتعلمه في قسم أنظمة التشغيل.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">الجانب</th><th scope="col">جهاز افتراضي</th><th scope="col">حاوية</th></tr></thead><tbody><tr><th scope="row">نظام التشغيل</th><td>نظام كامل لكل جهاز</td><td>نواة مشتركة مع المضيف</td></tr><tr><th scope="row">زمن البدء</th><td>دقائق أو ثوانٍ طويلة</td><td>ثوانٍ أو أقل</td></tr><tr><th scope="row">الحجم</th><td>كبير (غيغابايتات)</td><td>أصغر عادة</td></tr><tr><th scope="row">العزل</th><td>أقوى</td><td>أخف وأضعف نسبيًا</td></tr></tbody></table></div>
+</section>
+<section class="lesson-section "><h3>نماذج الخدمة: SaaS وPaaS وIaaS</h3>
+<p>تختلف الخدمات السحابية بمقدار ما تديره أنت وما يديره المزوّد. كلما صعدنا نحو SaaS قلّ ما تتحكم به وقلّ ما تصونه.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">النموذج</th><th scope="col">ماذا تحصل عليه</th><th scope="col">ماذا تديره أنت</th><th scope="col">مثال</th></tr></thead><tbody><tr><th scope="row">IaaS</th><td>خوادم وشبكة وتخزين افتراضية</td><td>نظام التشغيل والبرامج والبيانات</td><td>استئجار جهاز افتراضي</td></tr><tr><th scope="row">PaaS</th><td>منصة جاهزة لتشغيل تطبيقك</td><td>الشيفرة والبيانات فقط</td><td>منصة تستضيف تطبيق ويب</td></tr><tr><th scope="row">SaaS</th><td>تطبيق كامل جاهز</td><td>حسابك وإعداداتك وبياناتك</td><td>بريد إلكتروني ومحرر مستندات عبر المتصفح</td></tr></tbody></table></div>
+</section>
+<section class="lesson-section "><h3>إنترنت الأشياء والحافة</h3>
+<p><span class="term">IoT</span> (Internet of Things) هو أجهزة يومية فيها حاسوب صغير ومستشعرات واتصال: ساعة ذكية، ومقياس حرارة منزلي، وحساسات في مزرعة. وتولّد كمية هائلة من البيانات، وإرسالها كلها إلى السحابة مكلف وبطيء. لذلك ظهرت <span class="term">Edge Computing</span>: معالجة جزء من البيانات قريبًا من مصدرها، على الجهاز نفسه أو على خادم محلي، وإرسال النتائج المهمة فقط. كاميرا ذكية تكتشف الحركة بنفسها وترسل مقطعًا قصيرًا بدل بث ساعات.</p>
+</section>
+<section class="lesson-section "><h3>الذكاء الاصطناعي وتعلّم الآلة بصورة مفاهيمية</h3>
+<p>في البرمجة التقليدية تكتب أنت القواعد، أما في <span class="term">Machine Learning</span> فتعطي النظام أمثلة كثيرة ويستخلص هو النمط بنفسه: يُدرَّب على آلاف الصور المصنّفة ليتعرف على صورة جديدة. التدريب عمل ثقيل يحتاج وحدات رسوميات وكميات كبيرة من الذاكرة، ولهذا يجري عادة في مراكز البيانات. أما استعمال النموذج المدرَّب فأخف، وقد يعمل على الهاتف. هذه النماذج تتنبأ بما يشبه الأمثلة التي رأتها، فهي قد تخطئ وتحتاج إلى مراجعة بشرية في المواقف المهمة.</p>
+</section>
+<section class="lesson-section "><h3>المفاضلات: لا يوجد خيار مجاني</h3>
+<ul><li><strong>التأخر <span class="term">Latency</span>:</strong> كلما بعد الحاسوب عنك زاد زمن الاستجابة؛ والحافة تقلله.</li><li><strong>التكلفة:</strong> السحابة تحوّل شراء الأجهزة إلى دفع بحسب الاستعمال، وهذا رخيص عند الحاجة المتقطعة لكنه قد يغلو مع الحمل الدائم.</li><li><strong>الخصوصية:</strong> بياناتك على خوادم جهة أخرى، فيجب أن تعرف أين تُخزّن ومن يصل إليها وكيف تُشفّر.</li><li><strong>الطاقة:</strong> مراكز البيانات تستهلك كهرباء وتبريدًا ضخمين، ولذلك تُقاس الكفاءة بالعمل المنجز لكل وحدة طاقة.</li><li><strong>الاعتماد على الاتصال:</strong> إن انقطعت الشبكة تعطلت الخدمات التي تعتمد على السحابة بالكامل.</li></ul>
+</section>
+<section class="lesson-section "><h3>تطبيقات من الواقع</h3>
+<ul><li><strong>المتاجر الإلكترونية:</strong> تزيد عدد الخوادم الافتراضية في موسم التخفيضات ثم تقللها بعده.</li><li><strong>الزراعة الذكية:</strong> مستشعرات تقيس الرطوبة وتقرر الري محليًا وترسل ملخصًا للسحابة.</li><li><strong>التعاون:</strong> يحرّر فريق كامل مستندًا واحدًا لأن النسخة الواحدة مخزنة في السحابة.</li><li><strong>التطوير:</strong> المبرمجون يغلّفون تطبيقهم في حاوية ليعمل بالطريقة نفسها على أي جهاز.</li></ul>
+<div class="doc-mistakes"><h4>أخطاء شائعة</h4><ul><li>«السحابة مكان غامض بلا عتاد»: هي خوادم حقيقية في مبانٍ حقيقية يملكها طرف آخر.</li><li>«الحاوية جهاز افتراضي مصغّر»: الحاوية تشارك نواة المضيف، والجهاز الافتراضي يحمل نظامًا كاملًا.</li><li>«السحابة دائمًا أرخص وأكثر أمانًا»: الأمر يعتمد على الحمل والإعداد، وكثير من التسريبات سببها خطأ في إعدادات العميل.</li><li>«الذكاء الاصطناعي يفهم كما يفهم الإنسان»: النموذج يكتشف أنماطًا إحصائية في البيانات، وقد يعطي إجابة واثقة وخاطئة.</li></ul></div>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>اختيار نموذج:</strong> شركة صغيرة تريد (أ) بريدًا ومستندات لموظفيها، (ب) استضافة تطبيق ويب كتبه مطوّرها، (ج) تشغيل برنامج قديم يحتاج نظام تشغيل بعينه. اختر SaaS أو PaaS أو IaaS لكل حالة.</summary><div class="doc-solution"><strong>عرض الحل</strong><p>(أ) SaaS لأن المطلوب تطبيق جاهز ولا داعي لإدارة خوادم. (ب) PaaS لأن الفريق يريد التركيز على الشيفرة وتتولى المنصة التشغيل والتحديثات. (ج) IaaS لأنك تحتاج التحكم في نظام التشغيل نفسه، فتستأجر جهازًا افتراضيًا وتثبّت عليه ما تريد. القاعدة: اختر أعلى مستوى يلبي حاجتك لتقل أعباء الصيانة.</p></div></details>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>مفاضلة:</strong> كاميرا مراقبة تبث فيديو على مدار الساعة. قارن بين إرسال كل الفيديو إلى السحابة ومعالجته على الحافة من حيث التأخر والتكلفة والخصوصية.</summary><div class="doc-solution"><strong>عرض الحل</strong><p>الإرسال الكامل يستهلك نطاقًا ترددًا كبيرًا وتخزينًا مكلفًا، ويضيف تأخرًا قبل أن يأتي أي تنبيه، ويعرّض كل اللقطات لمخاطر النقل والتخزين البعيد. المعالجة على الحافة تكتشف الحدث محليًا فتنبّه فورًا وترسل مقاطع قليلة فقط، فتنخفض التكلفة وتتحسن الخصوصية. ثمن ذلك أن الجهاز المحلي يحتاج قدرة معالجة أعلى وصيانة وتحديثًا، وقد لا يكون نموذجه بدقة نموذج السحابة الأكبر. فالحل العملي غالبًا مزيج بين الاثنين.</p></div></details>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>تطبيق عملي:</strong> اختر ثلاث خدمات تستعملها يوميًا (بريد، فيديو، تخزين صور). لكل منها: أين تعمل الأجزاء، وهل تعمل دون إنترنت، وما نوعها SaaS أو غيره؟</summary><div class="doc-solution"><strong>عرض الحل</strong><p>أغلبها SaaS لأنك تستعمل تطبيقًا جاهزًا. جرّب وضع الطيران وافتح كل واحدة: ستجد أن بعضها يعرض ما خُزّن مسبقًا على جهازك (ذاكرة مؤقتة ونسخ محلية)، وبعضها لا يعمل أبدًا. هذا يبيّن أي جزء يعمل محليًا وأي جزء في السحابة. ثم افتح إعدادات الخصوصية وانظر ما الذي يُرفع إلى الخادم. اكتب لكل خدمة جدولًا صغيرًا: ما يُحفظ محليًا وما يُحفظ في السحابة وما أثر انقطاع الشبكة.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>الخلاصة</h3><ul><li>الحوسبة اليوم موزعة بين أجهزة محمولة ومراكز بيانات وأجهزة IoT وطبقة حافة قريبة.</li><li>الأجهزة الافتراضية والحاويات تقسم العتاد؛ الأولى بنظام كامل، والثانية بنواة مشتركة.</li><li>SaaS وPaaS وIaaS تختلف بمقدار ما تديره أنت مقابل المزوّد.</li><li>كل خيار له ثمن في التأخر والتكلفة والخصوصية والطاقة.</li></ul><p class="doc-next"><strong>الخطوة التالية:</strong> معمارية نظام التشغيل: النواة والفضاءان. نفتح الطبقة التي تقف بين البرامج والعتاد، وبعدها ننتقل إلى أساسيات البرمجة.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>المفهوم الأساسي</strong>
+<p>الحوسبة الحديثة تعتمد على منظومة ضخمة من الأجهزة والشبكات والخدمات السحابية والبيانات.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>تطبيق عملي</span>
+<h3>جرّب بنفسك</h3>
+</div>
+</div>
+<p>فكر في التطبيقات التي تستخدمها يوميًا وحدد أيها يعتمد على Cloud Computing.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أي مفهوم يشير إلى استخدام موارد حوسبية عبر الإنترنت؟</strong></p><ul><li>Cloud Computing</li><li>Keyboard</li><li>RAM</li><li>BIOS</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>Cloud Computing</strong></p></details></li><li><p><strong>شركة تحتاج خادماً افتراضياً لتثبّت عليه نظامها وبرامجها بنفسها. أي نموذج يناسبها؟</strong></p><ul><li>SaaS</li><li>IaaS</li><li>PaaS</li><li>IoT</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>IaaS</strong></p><p>IaaS يعطيك الخادم والشبكة والتخزين وتدير أنت النظام والبرامج.</p></details></li><li><p><strong>ما الفرق الأساسي بين الحاوية والآلة الافتراضية؟</strong></p><ul><li>الحاوية تحمل نظام تشغيل كاملاً خاصاً بها</li><li>الآلة الافتراضية تشارك نواة المضيف دائماً</li><li>الحاوية تشارك نواة النظام المضيف فتبدأ أسرع وأخف</li><li>لا فرق بينهما في العزل</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>الحاوية تشارك نواة النظام المضيف فتبدأ أسرع وأخف</strong></p><p>مشاركة النواة تجعل الحاوية أخف لكن عزلها أضعف من الآلة الافتراضية.</p></details></li><li><p><strong>كاميرا ذكية تكتشف الحركة بنفسها وترفع مقطعاً قصيراً بدل بث ساعات. ما هذا النمط؟</strong></p><ul><li>الحوسبة الطرفية</li><li>الحوسبة السحابية الكاملة</li><li>التجزئة</li><li>الترحيل الدائم للبيانات</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>الحوسبة الطرفية</strong></p><p>معالجة جزء من البيانات قرب مصدرها توفر النطاق وتقلل التأخير.</p></details></li><li><p><strong>أي جملة صحيحة عن تعلّم الآلة؟</strong></p><ul><li>النموذج لا يخطئ أبداً</li><li>يتدرب على أمثلة كثيرة فيتعلم النمط وقد يخطئ فيحتاج مراجعة بشرية</li><li>المبرمج يكتب كل القواعد يدوياً</li><li>التدريب أخف من الاستخدام</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يتدرب على أمثلة كثيرة فيتعلم النمط وقد يخطئ فيحتاج مراجعة بشرية</strong></p><p>النموذج يتنبأ بما يشبه أمثلته، لذلك تلزم المراجعة في المواقف المهمة.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-19">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/fundamentals/computer-basics/lessons/com-18.html"><small>الدرس السابق</small><strong>تاريخ الكمبيوتر</strong></a>
+        <a rel="next" href="/fundamentals/computer-basics/lessons/com-20.html"><small>الدرس التالي</small><strong>معمارية نظام التشغيل: النواة والفضاءان</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/fundamentals/computer-basics/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

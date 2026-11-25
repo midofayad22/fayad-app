@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>Modal and Offcanvas — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="Dialog windows and side panels with data attributes and a JavaScript API." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-16.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-16.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-16.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-16.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Modal and Offcanvas — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="Dialog windows and side panels with data attributes and a JavaScript API." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-16.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Modal and Offcanvas","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-16.html"}]},{"@type":"LearningResource","name":"Modal and Offcanvas","description":"Dialog windows and side panels with data attributes and a JavaScript API.","url":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-16.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/en/bootstrap-learning/lessons/index.html">Lessons</a><a href="/bootstrap-learning/lessons/bs-16.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">Lesson 16 of 20</p>
+      <h1 class="lp-h1">Modal and Offcanvas</h1>
+      <p class="lp-lead">Dialog windows and side panels with data attributes and a JavaScript API.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-16">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Modal</h2><p>A button with <code>data-bs-toggle="modal" data-bs-target="#id"</code> opens the <code>.modal</code> element, which contains <code>.modal-dialog &gt; .modal-content</code> with <code>.modal-header</code>, <code>.modal-body</code>, and <code>.modal-footer</code>. Bootstrap handles focus trapping and closing with Escape.</p></article><article class="content-card"><h2>Offcanvas</h2><p>A panel that slides in from the side: <code>.offcanvas.offcanvas-start|end|top|bottom</code>, opened the same way with <code>data-bs-toggle="offcanvas"</code>.</p></article><article class="content-card"><h2>JavaScript API</h2><p><code>const m = new bootstrap.Modal(el); m.show(); m.hide();</code> and it fires events such as <code>shown.bs.modal</code> and <code>hidden.bs.modal</code>.</p></article></div>
+<article class="body-card key-card"><p>Use aria-labelledby for the dialog, and let Bootstrap manage focus.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="container py-3"&gt;
+&lt;button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#demoModal"&gt;Open modal&lt;/button&gt;
+&lt;button class="btn btn-outline-secondary" data-bs-toggle="offcanvas" data-bs-target="#side"&gt;Side panel&lt;/button&gt;
+&lt;div class="modal fade" id="demoModal" tabindex="-1" aria-labelledby="demoTitle" aria-hidden="true"&gt;
+&lt;div class="modal-dialog modal-dialog-centered"&gt;
+&lt;div class="modal-content"&gt;
+&lt;div class="modal-header"&gt;&lt;h2 class="modal-title fs-5" id="demoTitle"&gt;Confirm&lt;/h2&gt;&lt;button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"&gt;&lt;/button&gt;&lt;/div&gt;
+&lt;div class="modal-body"&gt;Do you want to continue?&lt;/div&gt;
+&lt;div class="modal-footer"&gt;&lt;button class="btn btn-secondary" data-bs-dismiss="modal"&gt;Cancel&lt;/button&gt;&lt;button class="btn btn-primary"&gt;Yes&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="offcanvas offcanvas-end" tabindex="-1" id="side" aria-labelledby="sideTitle"&gt;
+&lt;div class="offcanvas-header"&gt;&lt;h2 class="offcanvas-title fs-5" id="sideTitle"&gt;Menu&lt;/h2&gt;&lt;button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"&gt;&lt;/button&gt;&lt;/div&gt;
+&lt;div class="offcanvas-body"&gt;Side panel content.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>Try both buttons. The modal has a dimmed backdrop and closes with Escape. The side panel slides in from the end (<code>offcanvas-end</code>).</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Change the panel to come from the start with the class &lt;code&gt;offcanvas-start&lt;/code&gt;.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which two attributes open a Modal from a button?</strong></p><ul><li>data-bs-toggle=&quot;modal&quot; and data-bs-target</li><li>href and onclick</li><li>data-open and data-id</li><li>role and tabindex</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>data-bs-toggle=&quot;modal&quot; and data-bs-target</strong></p></details></li><li><p><strong>How do you open a Modal programmatically?</strong></p><ul><li>new bootstrap.Modal(el).show()</li><li>el.openModal()</li><li>bootstrap.show(el)</li><li>modal(el)</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>new bootstrap.Modal(el).show()</strong></p></details></li><li><p><strong>Which class makes the panel slide in from the right in LTR?</strong></p><ul><li>offcanvas-end</li><li>offcanvas-right</li><li>offcanvas-slide</li><li>offcanvas-open</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>offcanvas-end</strong></p></details></li><li><p><strong>Which element contains modal-header, modal-body and modal-footer?</strong></p><ul><li>modal-backdrop</li><li>modal-trigger</li><li>modal-content</li><li>modal-root</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>modal-content</strong></p><p>The order is modal, then modal-dialog, then modal-content, then the parts.</p></details></li><li><p><strong>Which event fires after the Modal is fully shown?</strong></p><ul><li>shown.bs.modal</li><li>hidden.bs.modal</li><li>open.bs.modal</li><li>load.bs.modal</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>shown.bs.modal</strong></p><p>shown fires after the animation ends, while hidden fires after closing.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-16">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/bootstrap-learning/lessons/bs-15.html"><small>Previous lesson</small><strong>Alerts, Badges, Progress, and Spinners</strong></a>
+        <a rel="next" href="/en/bootstrap-learning/lessons/bs-17.html"><small>Next lesson</small><strong>Collapse, Accordion, and Dropdown</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/bootstrap-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

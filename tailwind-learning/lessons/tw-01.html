@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <title>مقدمة: فلسفة Utility-First وطرق الإعداد — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="ما هو Tailwind CSS، ولماذا نكتب الفئات الصغيرة مباشرة في HTML، وكيف نبدأ." />
+    <link rel="canonical" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-01.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-01.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-01.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-01.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="مقدمة: فلسفة Utility-First وطرق الإعداد — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="ما هو Tailwind CSS، ولماذا نكتب الفئات الصغيرة مباشرة في HTML، وكيف نبدأ." />
+    <meta property="og:url" content="https://faybit.vercel.app/tailwind-learning/lessons/tw-01.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"مقدمة: فلسفة Utility-First وطرق الإعداد","item":"https://faybit.vercel.app/tailwind-learning/lessons/tw-01.html"}]},{"@type":"LearningResource","name":"مقدمة: فلسفة Utility-First وطرق الإعداد","description":"ما هو Tailwind CSS، ولماذا نكتب الفئات الصغيرة مباشرة في HTML، وكيف نبدأ.","url":"https://faybit.vercel.app/tailwind-learning/lessons/tw-01.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/tailwind-learning/lessons/index.html">الدروس</a><a href="/en/tailwind-learning/lessons/tw-01.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">الدرس 1 من 20</p>
+      <h1 class="lp-h1">مقدمة: فلسفة Utility-First وطرق الإعداد</h1>
+      <p class="lp-lead">ما هو Tailwind CSS، ولماذا نكتب الفئات الصغيرة مباشرة في HTML، وكيف نبدأ.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-1">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>Utility-First</h2><p>بدل كتابة ملف CSS وتسمية الفئات، تركّب الواجهة من <strong>فئات صغيرة بغرض واحد</strong>: <code>p-4</code> حشوة، <code>text-lg</code> حجم خط، <code>bg-sky-600</code> خلفية. كل فئة تقابل خاصية CSS واحدة تقريبًا، فتبقى التصاميم متسقة دون مغادرة ملف HTML.</p></article><article class="content-card"><h2>كيف نبدأ (الإصدار 4)</h2><p>هذا الكورس مبني على <strong>Tailwind CSS v4</strong> (المثبت في المعاينة 4.3.3). في المشاريع الحقيقية تثبّت Tailwind وتضيف في ملف CSS السطر <code>@import "tailwindcss";</code> (عبر إضافة Vite أو واجهة الأوامر). أما هنا فالمعاينة تستخدم نسخة <strong>المتصفح</strong> التي تحوّل الفئات إلى CSS لحظيًا، وهي للتجربة والتعلم فقط، لا للإنتاج.</p></article></div>
+<article class="body-card key-card"><p>فئة صغيرة لكل غرض، وتركّبها في HTML. الإصدار 4 يبدأ بـ @import "tailwindcss".</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div id="card" class="m-6 max-w-sm rounded-xl bg-white p-6 shadow-lg"&gt;
+&lt;h1 class="text-xl font-bold text-slate-900"&gt;أول بطاقة Tailwind&lt;/h1&gt;
+&lt;p class="mt-2 text-slate-600"&gt;بدون أي سطر CSS مكتوب يدويًا.&lt;/p&gt;
+&lt;button class="mt-4 rounded-lg bg-sky-600 px-4 py-2 font-semibold text-white"&gt;ابدأ&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p><code>p-6</code> حشوة 1.5rem، <code>rounded-xl</code> زوايا دائرية، <code>shadow-lg</code> ظل كبير، <code>mt-2</code> هامش علوي، و<code>px-4 py-2</code> حشوة أفقية ورأسية للزر.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">غيّر لون الزر إلى &lt;code&gt;bg-emerald-600&lt;/code&gt; وزد الحشوة إلى &lt;code&gt;px-6&lt;/code&gt;.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما فكرة Utility-First؟</strong></p><ul><li>تركيب الواجهة من فئات صغيرة بغرض واحد</li><li>كتابة CSS ضخم لكل صفحة</li><li>استخدام JavaScript لكل نمط</li><li>تجنب HTML</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تركيب الواجهة من فئات صغيرة بغرض واحد</strong></p></details></li><li><p><strong>ما السطر الذي يبدأ به Tailwind v4 في ملف CSS؟</strong></p><ul><li>@import &quot;tailwindcss&quot;;</li><li>@tailwind base;</li><li>import tailwind</li><li>&lt;tailwind&gt;</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>@import &quot;tailwindcss&quot;;</strong></p></details></li><li><p><strong>لماذا نسخة المتصفح مناسبة للتعلم فقط؟</strong></p><ul><li>تحوّل الفئات داخل المتصفح لحظيًا وهو غير مثالي للأداء في الإنتاج</li><li>لأنها لا تعمل أبدًا</li><li>لأنها مدفوعة</li><li>لأنها بدون ألوان</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تحوّل الفئات داخل المتصفح لحظيًا وهو غير مثالي للأداء في الإنتاج</strong></p></details></li><li><p><strong>أي فئة تعطي خلفية زرقاء سماوية بدرجة 600؟</strong></p><ul><li>bg-sky-600</li><li>text-sky-600</li><li>sky-600-bg</li><li>background-sky:600</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>bg-sky-600</strong></p><p>الصيغة bg-{اللون}-{الدرجة}.</p></details></li><li><p><strong>لماذا يبقى التصميم متسقاً مع فئات Tailwind؟</strong></p><ul><li>لأن Tailwind يمنع تغيير الألوان</li><li>لأن كل فئة تقابل خاصية واحدة تقريباً وقيمها من مقياس موحد</li><li>لأن كل صفحة تحتاج ملف CSS مختلف</li><li>لأن الفئات تُكتب بأسماء عشوائية</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لأن كل فئة تقابل خاصية واحدة تقريباً وقيمها من مقياس موحد</strong></p><p>القيم تأتي من مقياس ثابت فتتشابه المسافات والأحجام في كل مكان.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-1">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <span></span>
+        <a rel="next" href="/tailwind-learning/lessons/tw-02.html"><small>الدرس التالي</small><strong>المسافات: padding و margin و gap</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/tailwind-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

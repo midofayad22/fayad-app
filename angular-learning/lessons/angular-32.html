@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="angular" />
+    <meta name="robots" content="noindex, follow" />
+    <title>أفضل ممارسات Angular — Angular | FAYBIT</title>
+    <meta name="description" content="تعرف على مبادئ عملية لكتابة تطبيقات Angular نظيفة وقابلة للصيانة والأداء والتوسع." />
+    <link rel="canonical" href="https://faybit.vercel.app/angular-learning/lessons/angular-32.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/angular-learning/lessons/angular-32.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/angular-learning/lessons/angular-32.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/angular-learning/lessons/angular-32.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="أفضل ممارسات Angular — Angular | FAYBIT" />
+    <meta property="og:description" content="تعرف على مبادئ عملية لكتابة تطبيقات Angular نظيفة وقابلة للصيانة والأداء والتوسع." />
+    <meta property="og:url" content="https://faybit.vercel.app/angular-learning/lessons/angular-32.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Angular","item":"https://faybit.vercel.app/angular-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"أفضل ممارسات Angular","item":"https://faybit.vercel.app/angular-learning/lessons/angular-32.html"}]},{"@type":"LearningResource","name":"أفضل ممارسات Angular","description":"تعرف على مبادئ عملية لكتابة تطبيقات Angular نظيفة وقابلة للصيانة والأداء والتوسع.","url":"https://faybit.vercel.app/angular-learning/lessons/angular-32.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Angular — FAYBIT","url":"https://faybit.vercel.app/angular-learning/angular-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Angular"><a href="/angular-learning/lessons/index.html">الدروس</a><a href="/en/angular-learning/lessons/angular-32.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/angular-learning/lessons/index.html">Angular</a></nav>
+      <p class="lp-eyebrow">الدرس 32 من 32</p>
+      <h1 class="lp-h1">أفضل ممارسات Angular</h1>
+      <p class="lp-lead">تعرف على مبادئ عملية لكتابة تطبيقات Angular نظيفة وقابلة للصيانة والأداء والتوسع.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/angular-learning/angular-learning.html#lesson-32">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>تطوير Angular بشكل جيد يعني الحفاظ على Components مركزة، وإعادة استخدام Services، واستخدام أسماء واضحة، وتنظيم الملفات منطقيًا، وإدارة Subscriptions بشكل صحيح، وتجنب التعقيد غير الضروري، وتصميم Components بمسؤوليات واضحة. ويجب الاهتمام أيضًا بالأداء وAccessibility والأمان وسهولة الصيانة منذ بداية المشروع.</div></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>مثال على الكود</h2></div>
+</div>
+<pre dir="ltr"><code>src/
+├── app/
+│   ├── components/
+│   ├── services/
+│   ├── pages/
+│   ├── models/
+│   └── shared/
+└── assets/</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>جرب بنفسك</h2></div>
+</div>
+<p class="practice-description">عدّل المثال بالأسفل وشغّل الكود لاستكشاف صيغة Angular بنفسك.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>لماذا يجب تنظيم مشروع Angular بشكل جيد؟</strong></p><ul><li>لجعل التطبيق أسهل في الصيانة</li><li>لإزالة TypeScript</li><li>لتجنب استخدام Components</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لجعل التطبيق أسهل في الصيانة</strong></p></details></li><li><p><strong>ما هو الموضوع الرئيسي لهذا الدرس؟</strong></p><ul><li>أفضل ممارسات Angular</li><li>مقدمة إلى Angular</li><li>Angular CLI</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>أفضل ممارسات Angular</strong></p></details></li><li><p><strong>أي عبارة تصف هذا الموضوع بشكل أفضل؟</strong></p><ul><li>تطوير Angular بشكل جيد يعني الحفاظ على Components مركزة، وإعادة استخدام Services، واستخدام أسماء واضحة، وتنظيم الملفات منطقيًا، وإدارة Subscriptions بشكل صحيح، وتجنب التعقيد غير الضروري، وتصميم Components بمسؤوليات واضحة. ويجب الاهتمام أيضًا بالأداء وAccessibility والأمان وسهولة الصيانة منذ بداية المشروع.</li><li>Angular هو إطار عمل متكامل لتطوير تطبيقات الويب ويعتمد بشكل أساسي على TypeScript. يوفر Components وTemplates وRouting وForms وDependency Injection وأدوات HTTP وميزات تفاعلية. ويساعدك على تنظيم التطبيقات الكبيرة إلى أجزاء قابلة لإعادة الاستخدام والصيانة.</li><li>Angular CLI هي أداة سطر الأوامر الرسمية لتطوير Angular. يمكنك استخدامها لإنشاء المشاريع والمكونات وتشغيل خادم التطوير وبناء نسخة Production وتنفيذ العديد من المهام الشائعة.</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تطوير Angular بشكل جيد يعني الحفاظ على Components مركزة، وإعادة استخدام Services، واستخدام أسماء واضحة، وتنظيم الملفات منطقيًا، وإدارة Subscriptions بشكل صحيح، وتجنب التعقيد غير الضروري، وتصميم Components بمسؤوليات واضحة. ويجب الاهتمام أيضًا بالأداء وAccessibility والأمان وسهولة الصيانة منذ بداية المشروع.</strong></p></details></li><li><p><strong>ما الهدف العملي من هذا الدرس؟</strong></p><ul><li>تعرف على مبادئ عملية لكتابة تطبيقات Angular نظيفة وقابلة للصيانة والأداء والتوسع.</li><li>تعرف على Angular، ولماذا يستخدمه المطورون، وكيف يساعد في بناء تطبيقات ويب حديثة وقابلة للتوسع.</li><li>تعرف على كيفية استخدام Angular CLI لإنشاء وتطوير واختبار وبناء تطبيقات Angular.</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تعرف على مبادئ عملية لكتابة تطبيقات Angular نظيفة وقابلة للصيانة والأداء والتوسع.</strong></p></details></li><li><p><strong>أي مفهوم في Angular يرتبط مباشرة بهذا الدرس؟</strong></p><ul><li>أفضل الممارسات</li><li>إطار Angular</li><li>Angular CLI</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>أفضل الممارسات</strong></p></details></li><li><p><strong>أي صيغة أو API ترتبط بشكل أكبر بهذا الدرس؟</strong></p><ul><li>كود قابل لإعادة الاستخدام</li><li>ng new</li><li>ng generate</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>كود قابل لإعادة الاستخدام</strong></p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/angular-learning/angular-learning.html#lesson-32">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/angular-learning/lessons/angular-31.html"><small>الدرس السابق</small><strong>معمارية Angular</strong></a>
+        <span></span>
+      </nav>
+      <p class="lp-all"><a href="/angular-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

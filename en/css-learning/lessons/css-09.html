@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="css" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Padding — CSS | FAYBIT</title>
+    <meta name="description" content="Learn how padding creates space inside an element." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/css-learning/lessons/css-09.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/css-learning/lessons/css-09.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/css-learning/lessons/css-09.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/css-learning/lessons/css-09.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Padding — CSS | FAYBIT" />
+    <meta property="og:description" content="Learn how padding creates space inside an element." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/css-learning/lessons/css-09.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"CSS","item":"https://faybit.vercel.app/en/css-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Padding","item":"https://faybit.vercel.app/en/css-learning/lessons/css-09.html"}]},{"@type":"LearningResource","name":"Padding","description":"Learn how padding creates space inside an element.","url":"https://faybit.vercel.app/en/css-learning/lessons/css-09.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"CSS — FAYBIT","url":"https://faybit.vercel.app/css-learning/css-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="CSS"><a href="/en/css-learning/lessons/index.html">Lessons</a><a href="/css-learning/lessons/css-09.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/css-learning/lessons/index.html">CSS</a></nav>
+      <p class="lp-eyebrow">Lesson 9 of 30</p>
+      <h1 class="lp-h1">Padding</h1>
+      <p class="lp-lead">Learn how padding creates space inside an element.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-9">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>Your first CSS code</h2></div>
+</div>
+<pre dir="ltr"><code>.box {
+padding: 30px;
+background: #eaf3f8;
+}</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Write CSS and see the result</h2></div>
+</div>
+<p class="practice-description">Change the code below, then run it to see the result.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Where does padding create space?</strong></p><ul><li>Inside the element</li><li>Outside the element</li><li>Outside the page</li><li>Inside the margin</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Inside the element</strong></p></details></li><li><p><strong>Which property controls space between content and border?</strong></p><ul><li>padding</li><li>margin</li><li>gap-outside</li><li>content-space</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>padding</strong></p></details></li><li><p><strong>What does padding: 20px add?</strong></p><ul><li>20px of inner space</li><li>20px of outer space</li><li>20px border</li><li>20px height only</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>20px of inner space</strong></p></details></li><li><p><strong>A box has width: 200px; padding: 20px, no border, and the default content-box sizing. What is its total width?</strong></p><ul><li>200px</li><li>220px</li><li>240px</li><li>160px</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>240px</strong></p><p>In content-box the width applies to the content only, and padding is added on both sides: 200 + 20 + 20 = 240px.</p></details></li><li><p><strong>In padding: 10px 20px 30px 40px, what is the left padding?</strong></p><ul><li>10px</li><li>20px</li><li>30px</li><li>40px</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>40px</strong></p><p>The order is clockwise: top, right, bottom, left, so the fourth value, 40px, is the left padding.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/css-learning/css-learning.html#lesson-9">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/css-learning/lessons/css-08.html"><small>Previous lesson</small><strong>Margin</strong></a>
+        <a rel="next" href="/en/css-learning/lessons/css-10.html"><small>Next lesson</small><strong>Box Model</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/css-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

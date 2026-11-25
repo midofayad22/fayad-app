@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="js" />
+    <meta name="robots" content="noindex, follow" />
+    <title>معالجة الأخطاء — JavaScript | FAYBIT</title>
+    <meta name="description" content="تعلّم كيف تتعامل مع الأخطاء باستخدام try وcatch وfinally." />
+    <link rel="canonical" href="https://faybit.vercel.app/javascript-learning/lessons/js-25.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/javascript-learning/lessons/js-25.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-25.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/javascript-learning/lessons/js-25.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="معالجة الأخطاء — JavaScript | FAYBIT" />
+    <meta property="og:description" content="تعلّم كيف تتعامل مع الأخطاء باستخدام try وcatch وfinally." />
+    <meta property="og:url" content="https://faybit.vercel.app/javascript-learning/lessons/js-25.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript","item":"https://faybit.vercel.app/javascript-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"معالجة الأخطاء","item":"https://faybit.vercel.app/javascript-learning/lessons/js-25.html"}]},{"@type":"LearningResource","name":"معالجة الأخطاء","description":"تعلّم كيف تتعامل مع الأخطاء باستخدام try وcatch وfinally.","url":"https://faybit.vercel.app/javascript-learning/lessons/js-25.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript — FAYBIT","url":"https://faybit.vercel.app/javascript-learning/javascript-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript"><a href="/javascript-learning/lessons/index.html">الدروس</a><a href="/en/javascript-learning/lessons/js-25.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/javascript-learning/lessons/index.html">JavaScript</a></nav>
+      <p class="lp-eyebrow">الدرس 25 من 25</p>
+      <h1 class="lp-h1">معالجة الأخطاء</h1>
+      <p class="lp-lead">تعلّم كيف تتعامل مع الأخطاء باستخدام try وcatch وfinally.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-25">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>try {
+const result = unknownVariable;
+document.getElementById("jsResult").textContent =
+result;
+} catch (error) {
+document.getElementById("jsResult").textContent =
+"حدث خطأ";
+}</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>
+<p>الأخطاء يمكن أن تحدث أثناء تشغيل JavaScript لأسباب مختلفة.</p>
+<p><strong>try</strong> تحتوي على الكود الذي قد ينتج عنه خطأ.</p>
+<p><strong>catch</strong> تستقبل الخطأ وتسمح لنا بالتعامل معه بدلًا من ترك البرنامج يتوقف بشكل غير متوقع.</p>
+<p><strong>finally</strong> يمكن استخدامها لتنفيذ كود سواء حدث خطأ أم لا.</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>اكتب JavaScript</h2></div>
+</div>
+<p class="practice-description">غيّر الكود الموجود بالأسفل ثم شغّله لترى النتيجة.</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أي Block تستخدم للتعامل مع الخطأ؟</strong></p><ul><li>catch</li><li>errorBlock</li><li>handle</li><li>exceptOnly</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>catch</strong></p></details></li><li><p><strong>أين نضع الكود الذي قد ينتج عنه خطأ؟</strong></p><ul><li>try</li><li>catch</li><li>finally</li><li>error</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>try</strong></p></details></li><li><p><strong>متى يمكن استخدام finally؟</strong></p><ul><li>لتنفيذ كود بعد انتهاء try/catch سواء حدث خطأ أم لا</li><li>فقط عند حدوث خطأ</li><li>فقط عند نجاح try</li><li>لإنشاء Function</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لتنفيذ كود بعد انتهاء try/catch سواء حدث خطأ أم لا</strong></p></details></li><li><p><strong>ماذا يطبع الكود؟ try { JSON.parse(&quot;{bad&quot;); } catch (e) { console.log(&quot;err&quot;); } finally { console.log(&quot;done&quot;); }</strong></p><ul><li>done فقط</li><li>err فقط</li><li>done ثم err</li><li>err ثم done</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>err ثم done</strong></p><p>JSON.parse يرمي خطأً لأن النص غير صالح، فينفذ catch ثم يعمل finally دائماً في النهاية. الترتيب إذاً err ثم done.</p></details></li><li><p><strong>ماذا يطبع الكود؟ function f() { try { return 1; } finally { console.log(&quot;f&quot;); } } console.log(f());</strong></p><ul><li>1 فقط</li><li>f ثم 1</li><li>1 ثم f</li><li>f فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>f ثم 1</strong></p><p>finally تعمل حتى مع وجود return داخل try، وتنفذ قبل أن تغادر الدالة. لذلك يطبع f أولاً ثم تُطبع القيمة المعادة 1.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-25">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/javascript-learning/lessons/js-24.html"><small>الدرس السابق</small><strong>Fetch API</strong></a>
+        <span></span>
+      </nav>
+      <p class="lp-all"><a href="/javascript-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

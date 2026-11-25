@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <title>التصميم المتجاوب — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="mobile-first والنقاط الفاصلة وvariants مثل md: وmax-md:." />
+    <link rel="canonical" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-11.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-11.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-11.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-11.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="التصميم المتجاوب — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="mobile-first والنقاط الفاصلة وvariants مثل md: وmax-md:." />
+    <meta property="og:url" content="https://faybit.vercel.app/tailwind-learning/lessons/tw-11.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"التصميم المتجاوب","item":"https://faybit.vercel.app/tailwind-learning/lessons/tw-11.html"}]},{"@type":"LearningResource","name":"التصميم المتجاوب","description":"mobile-first والنقاط الفاصلة وvariants مثل md: وmax-md:.","url":"https://faybit.vercel.app/tailwind-learning/lessons/tw-11.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/tailwind-learning/lessons/index.html">الدروس</a><a href="/en/tailwind-learning/lessons/tw-11.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">الدرس 11 من 20</p>
+      <h1 class="lp-h1">التصميم المتجاوب</h1>
+      <p class="lp-lead">mobile-first والنقاط الفاصلة وvariants مثل md: وmax-md:.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-11">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>mobile-first</h2><p>الفئة بلا بادئة تنطبق على كل الشاشات، والبادئة تنطبق من تلك النقطة <strong>فما فوق</strong>: <code>sm</code> ≥640px، <code>md</code> ≥768px، <code>lg</code> ≥1024px، <code>xl</code> ≥1280px، <code>2xl</code> ≥1536px. مثال: <code>text-sm md:text-lg</code>.</p></article><article class="content-card"><h2>نطاقات وحاويات</h2><p><code>max-md:hidden</code> يخفي حتى أقل من md. <code>md:max-lg:flex</code> لنطاق محدد. و<code>@container</code> مع <code>@md:</code> تجعل المكوّن يتجاوب مع حجم حاويته لا الشاشة.</p></article></div>
+<article class="body-card key-card"><p>صمّم للهاتف أولًا ثم أضف md: وlg: للتوسع.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="p-4"&gt;
+&lt;h1 id="r" class="text-lg font-bold md:text-3xl lg:text-5xl"&gt;عنوان متجاوب&lt;/h1&gt;
+&lt;div class="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4"&gt;
+&lt;div class="bg-sky-100 p-3"&gt;1&lt;/div&gt;&lt;div class="bg-sky-100 p-3"&gt;2&lt;/div&gt;
+&lt;div class="bg-sky-100 p-3"&gt;3&lt;/div&gt;&lt;div class="bg-sky-100 p-3"&gt;4&lt;/div&gt;
+&lt;/div&gt;
+&lt;p class="mt-3 hidden text-slate-600 md:block"&gt;تظهر هذه الفقرة من md فما فوق.&lt;/p&gt;
+&lt;div class="@container mt-3"&gt;&lt;div class="grid grid-cols-1 gap-2 @md:grid-cols-2"&gt;&lt;div class="bg-amber-100 p-2"&gt;أ&lt;/div&gt;&lt;div class="bg-amber-100 p-2"&gt;ب&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>غيّر عرض نافذة المتصفح لترى حجم العنوان وعدد الأعمدة يتغيران. الحاوية <code>@container</code> تتجاوب مع عرضها هي لا عرض الشاشة.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">أضف &lt;code&gt;xl:text-7xl&lt;/code&gt; للعنوان وراقب النتيجة على شاشة عريضة.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ماذا يعني md:text-lg؟</strong></p><ul><li>حجم lg من md فما فوق</li><li>حجم lg حتى md فقط</li><li>حجم lg دائمًا</li><li>يخفي النص</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>حجم lg من md فما فوق</strong></p></details></li><li><p><strong>كيف نخفي عنصرًا على الهاتف ونظهره من md؟</strong></p><ul><li>hidden md:block</li><li>md:hidden</li><li>block md:none</li><li>invisible md:visible</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>hidden md:block</strong></p></details></li><li><p><strong>ماذا تفيد @container؟</strong></p><ul><li>جعل المكون يتجاوب مع عرض حاويته</li><li>تغيير لون الصفحة</li><li>إنشاء مكتبة</li><li>تحميل خطوط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>جعل المكون يتجاوب مع عرض حاويته</strong></p></details></li><li><p><strong>ماذا تفعل max-md:hidden؟</strong></p><ul><li>تخفي العنصر على الشاشات الأصغر من md</li><li>تخفيه من md فما فوق</li><li>تخفيه دائماً</li><li>تخفيه عند hover</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تخفي العنصر على الشاشات الأصغر من md</strong></p><p>البادئة max- تعمل أسفل النقطة المحددة.</p></details></li><li><p><strong>الشاشة 500px والفئات text-sm md:text-lg. ما حجم الخط؟</strong></p><ul><li>text-lg</li><li>text-sm</li><li>text-base</li><li>text-md</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>text-sm</strong></p><p>md لا تبدأ إلا عند 768px فتبقى الفئة الأساسية.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-11">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/tailwind-learning/lessons/tw-10.html"><small>الدرس السابق</small><strong>الخلفيات والتدرجات والصور</strong></a>
+        <a rel="next" href="/tailwind-learning/lessons/tw-12.html"><small>الدرس التالي</small><strong>الحالات: hover و focus و active و disabled</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/tailwind-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

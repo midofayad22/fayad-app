@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Arrays — أساسيات البرمجة | FAYBIT</title>
+    <meta name="description" content="DATA STRUCTURES Array هي بنية بيانات تسمح بتخزين عدة قيم داخل متغير واحد. يمكن الوصول إلى العناصر باستخدام Index، ويبدأ الـ Index في JavaScript من الرقم…" />
+    <link rel="canonical" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-15.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-15.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-15.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-15.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Arrays — أساسيات البرمجة | FAYBIT" />
+    <meta property="og:description" content="DATA STRUCTURES Array هي بنية بيانات تسمح بتخزين عدة قيم داخل متغير واحد. يمكن الوصول إلى العناصر باستخدام Index، ويبدأ الـ Index في JavaScript من الرقم…" />
+    <meta property="og:url" content="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-15.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"أساسيات البرمجة","item":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Arrays","item":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-15.html"}]},{"@type":"LearningResource","name":"Arrays","description":"DATA STRUCTURES Array هي بنية بيانات تسمح بتخزين عدة قيم داخل متغير واحد. يمكن الوصول إلى العناصر باستخدام Index، ويبدأ الـ Index في JavaScript من الرقم…","url":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-15.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"أساسيات البرمجة — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="أساسيات البرمجة"><a href="/fundamentals/programming-basics/lessons/index.html">الدروس</a><a href="/en/fundamentals/programming-basics/lessons/prg-15.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/fundamentals/programming-basics/lessons/index.html">أساسيات البرمجة</a></nav>
+      <p class="lp-eyebrow">الدرس 15 من 31</p>
+      <h1 class="lp-h1">Arrays</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-15">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">DATA STRUCTURES</span>
+<h2>خزن مجموعة من القيم في مكان واحد</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content">
+<section class="lesson-section">
+<h3>ما هي Array؟</h3>
+<p>
+Array هي بنية بيانات تسمح بتخزين عدة قيم
+داخل متغير واحد.
+</p>
+<p>
+يمكن الوصول إلى العناصر باستخدام Index،
+ويبدأ الـ Index في JavaScript من الرقم 0.
+</p>
+</section>
+</div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong> الفكرة الأساسية </strong>
+<p>Array مناسبة عندما تحتاج إلى التعامل مع مجموعة عناصر مرتبطة ببعضها مثل أسماء المستخدمين أو المنتجات.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>مثال عملي</span>
+<h3>شاهد الفكرة في كود</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>const languages = [
+"HTML",
+"CSS",
+"JavaScript"
+];
+console.log(languages[0]);
+console.log(languages[2]);</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>تطبيق</span>
+<h3>تحدَّ نفسك</h3>
+</div>
+</div>
+<p></p>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما هو Index أول عنصر في Array؟</strong></p><ul><li>0</li><li>1</li><li>-1</li><li>10</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>0</strong></p></details></li><li><p><strong>ما الناتج؟ const a = [10, 20, 30]; console.log(a[a.length - 1]);</strong></p><ul><li>30</li><li>20</li><li>undefined</li><li>3</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>30</strong></p><p>الطول 3 والفهرس يبدأ من 0، فآخر عنصر في الفهرس 2 وهو 30. الخطأ الشائع هو a[a.length] الذي يعطي undefined.</p></details></li><li><p><strong>ما محتوى المصفوفة؟ let a = [1, 2]; a.push(3); a.pop(); a.pop(); console.log(a);</strong></p><ul><li>[1]</li><li>[1, 2]</li><li>[]</li><li>[1, 2, 3]</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>[1]</strong></p><p>push تضيف 3 إلى النهاية فتصبح [1,2,3]، ثم pop الأولى تزيل 3 والثانية تزيل 2، فيبقى [1]. pop تُزيل دائماً آخر عنصر.</p></details></li><li><p><strong>الحلقة: for (let i = 0; i &lt;= arr.length; i++) { console.log(arr[i]); } على مصفوفة بها 3 عناصر. ما المشكلة؟</strong></p><ul><li>لا مشكلة</li><li>يجب أن يبدأ i من 1</li><li>الشرط &lt;= يجعلها تقرأ الفهرس 3 غير الموجود فتطبع undefined في النهاية</li><li>arr.length لا يعمل داخل الحلقات</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>الشرط &lt;= يجعلها تقرأ الفهرس 3 غير الموجود فتطبع undefined في النهاية</strong></p><p>الفهارس الصحيحة 0 و 1 و 2، والشرط i &lt;= 3 يضيف دورة رابعة. الحل هو استخدام i &lt; arr.length.</p></details></li><li><p><strong>ما الناتج؟ const arr = [1, 2, 3]; arr.push(4); console.log(arr);</strong></p><ul><li>خطأ لأن arr معرّف بـ const</li><li>[1, 2, 3]</li><li>[4]</li><li>[1, 2, 3, 4]</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>[1, 2, 3, 4]</strong></p><p>const تمنع إعادة إسناد المتغير لكنها لا تمنع تعديل محتوى المصفوفة. push تعدّل المصفوفة نفسها فتنجح العملية.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-15">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/fundamentals/programming-basics/lessons/prg-14.html"><small>الدرس السابق</small><strong>Scope</strong></a>
+        <a rel="next" href="/fundamentals/programming-basics/lessons/prg-16.html"><small>الدرس التالي</small><strong>Objects</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/fundamentals/programming-basics/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

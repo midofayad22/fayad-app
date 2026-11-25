@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="angular" />
+    <meta name="robots" content="noindex, follow" />
+    <title>هيكل المشروع — Angular | FAYBIT</title>
+    <meta name="description" content="افهم أهم الملفات والمجلدات الموجودة داخل مشروع Angular." />
+    <link rel="canonical" href="https://faybit.vercel.app/angular-learning/lessons/angular-03.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/angular-learning/lessons/angular-03.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/angular-learning/lessons/angular-03.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/angular-learning/lessons/angular-03.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="هيكل المشروع — Angular | FAYBIT" />
+    <meta property="og:description" content="افهم أهم الملفات والمجلدات الموجودة داخل مشروع Angular." />
+    <meta property="og:url" content="https://faybit.vercel.app/angular-learning/lessons/angular-03.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Angular","item":"https://faybit.vercel.app/angular-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"هيكل المشروع","item":"https://faybit.vercel.app/angular-learning/lessons/angular-03.html"}]},{"@type":"LearningResource","name":"هيكل المشروع","description":"افهم أهم الملفات والمجلدات الموجودة داخل مشروع Angular.","url":"https://faybit.vercel.app/angular-learning/lessons/angular-03.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Angular — FAYBIT","url":"https://faybit.vercel.app/angular-learning/angular-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Angular"><a href="/angular-learning/lessons/index.html">الدروس</a><a href="/en/angular-learning/lessons/angular-03.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/angular-learning/lessons/index.html">Angular</a></nav>
+      <p class="lp-eyebrow">الدرس 3 من 32</p>
+      <h1 class="lp-h1">هيكل المشروع</h1>
+      <p class="lp-lead">افهم أهم الملفات والمجلدات الموجودة داخل مشروع Angular.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/angular-learning/angular-learning.html#lesson-3">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>تحتوي مشاريع Angular على كود المصدر وملفات الإعداد والـAssets ومنطق التطبيق. يحتوي مجلد src على الكود الأساسي للتطبيق، بينما تتحكم ملفات مثل package.json وangular.json في Dependencies وإعدادات المشروع.</div></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>مثال على الكود</h2></div>
+</div>
+<pre dir="ltr"><code>src/
+├── app/
+│   ├── components/
+│   ├── services/
+│   └── pages/
+├── assets/
+├── index.html
+└── main.ts</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>جرب بنفسك</h2></div>
+</div>
+<p class="practice-description">عدّل المثال بالأسفل وشغّل الكود لاستكشاف صيغة Angular بنفسك.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أين يوجد معظم كود التطبيق؟</strong></p><ul><li>داخل مجلد src</li><li>داخل المتصفح</li><li>داخل package.json فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>داخل مجلد src</strong></p></details></li><li><p><strong>ما هو الموضوع الرئيسي لهذا الدرس؟</strong></p><ul><li>هيكل المشروع</li><li>المكونات Components</li><li>القوالب Templates</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>هيكل المشروع</strong></p></details></li><li><p><strong>أي عبارة تصف هذا الموضوع بشكل أفضل؟</strong></p><ul><li>تحتوي مشاريع Angular على كود المصدر وملفات الإعداد والـAssets ومنطق التطبيق. يحتوي مجلد src على الكود الأساسي للتطبيق، بينما تتحكم ملفات مثل package.json وangular.json في Dependencies وإعدادات المشروع.</li><li>يمثل الـComponent جزءًا من واجهة المستخدم. يحتوي عادةً على TypeScript Class للمنطق وHTML Template للواجهة وCSS اختياريًا للتنسيق. وتُعد المكونات اللبنات الأساسية لتطبيقات Angular.</li><li>Angular Templates هي HTML مدعومة بخصائص Angular. تسمح لك بعرض بيانات الـComponent والتعامل مع Events واستخدام Bindings وعرض القوائم والمحتوى الشرطي.</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تحتوي مشاريع Angular على كود المصدر وملفات الإعداد والـAssets ومنطق التطبيق. يحتوي مجلد src على الكود الأساسي للتطبيق، بينما تتحكم ملفات مثل package.json وangular.json في Dependencies وإعدادات المشروع.</strong></p></details></li><li><p><strong>ما الهدف العملي من هذا الدرس؟</strong></p><ul><li>افهم أهم الملفات والمجلدات الموجودة داخل مشروع Angular.</li><li>تعلم كيف تنظم Components في Angular التطبيق إلى أجزاء مستقلة وقابلة لإعادة الاستخدام.</li><li>تعرف على كيفية استخدام Angular Templates لتحديد بنية HTML التي تعرضها Components.</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>افهم أهم الملفات والمجلدات الموجودة داخل مشروع Angular.</strong></p></details></li><li><p><strong>أي مفهوم في Angular يرتبط مباشرة بهذا الدرس؟</strong></p><ul><li>هيكل المشروع</li><li>المكوّن</li><li>القالب</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>هيكل المشروع</strong></p></details></li><li><p><strong>أي صيغة أو API ترتبط بشكل أكبر بهذا الدرس؟</strong></p><ul><li>angular.json</li><li>@Component</li><li>template</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>angular.json</strong></p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/angular-learning/angular-learning.html#lesson-3">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/angular-learning/lessons/angular-02.html"><small>الدرس السابق</small><strong>Angular CLI</strong></a>
+        <a rel="next" href="/angular-learning/lessons/angular-04.html"><small>الدرس التالي</small><strong>المكونات Components</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/angular-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

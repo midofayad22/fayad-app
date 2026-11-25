@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>Custom Errors and Handling Strategies — Advanced JavaScript | FAYBIT</title>
+    <meta name="description" content="Design clear error types with the original cause, and decide where to catch errors." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-19.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-19.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-19.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-19.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Custom Errors and Handling Strategies — Advanced JavaScript | FAYBIT" />
+    <meta property="og:description" content="Design clear error types with the original cause, and decide where to catch errors." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-19.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Advanced JavaScript","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Custom Errors and Handling Strategies","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-19.html"}]},{"@type":"LearningResource","name":"Custom Errors and Handling Strategies","description":"Design clear error types with the original cause, and decide where to catch errors.","url":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-19.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Advanced JavaScript — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Advanced JavaScript"><a href="/en/advanced-javascript/lessons/index.html">Lessons</a><a href="/advanced-javascript/lessons/ajs-19.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/advanced-javascript/lessons/index.html">Advanced JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 19 of 22</p>
+      <h1 class="lp-h1">Custom Errors and Handling Strategies</h1>
+      <p class="lp-lead">Design clear error types with the original cause, and decide where to catch errors.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-19">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Custom Errors</h2><p>Extend <code>Error</code> and set <code>name</code> and additional properties. Use the <code>cause</code> option to keep the original error when wrapping it.</p></article><article class="content-card"><h2>Where Do We Catch?</h2><p>Catch the error where you can <strong>do something useful</strong> with it (retry, a message to the user); otherwise let it bubble up. Do not swallow errors silently.</p></article></div>
+<article class="body-card key-card"><p>Add context when rethrowing instead of hiding the original error.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>class ValidationError extends Error {
+constructor(field, message, options) {
+super(message, options);
+this.name = "ValidationError";
+this.field = field;
+}
+}
+function parseAge(input) {
+const n = Number(input);
+if (!Number.isInteger(n) || n &lt; 0) {
+throw new ValidationError("age", "invalid age: " + input);
+}
+return n;
+}
+function load(input) {
+try { return parseAge(input); }
+catch (e) { throw new Error("load failed", { cause: e }); }
+}
+try { load("abc"); }
+catch (e) {
+console.log(e.message, "|", e.cause.name, e.cause.field);
+console.log(e instanceof Error, e.cause instanceof ValidationError);
+}
+console.log(load("42"));</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">load failed | ValidationError age
+true true
+42</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>The wrapped error keeps the original cause in <code>cause</code>, making it easier to trace. <code>instanceof</code> lets you distinguish between types inside <code>catch</code>.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Try it yourself</h2></div>
+</div>
+<p class="practice-description">Define &lt;code&gt;NotFoundError extends Error&lt;/code&gt;, throw it, catch it, and print &lt;code&gt;e.name&lt;/code&gt;.</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is the purpose of the cause option?</strong></p><ul><li>Preserving the original error when rethrowing</li><li>Stopping the program</li><li>Converting the error to a string</li><li>Ignoring the error</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Preserving the original error when rethrowing</strong></p></details></li><li><p><strong>What is the best place to catch an error?</strong></p><ul><li>Where you can handle it usefully</li><li>On every line</li><li>Always in the global scope only</li><li>Never catch it</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Where you can handle it usefully</strong></p></details></li><li><p><strong>Why do we define custom error types?</strong></p><ul><li>To distinguish them with instanceof and attach data</li><li>To speed up the code</li><li>Because they are mandatory</li><li>To hide messages</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>To distinguish them with instanceof and attach data</strong></p></details></li><li><p><strong>What does this code print? class MyErr extends Error { constructor(m) { super(m); this.name = &quot;MyErr&quot;; } } const e = new MyErr(&quot;x&quot;); console.log(e instanceof Error, String(e));</strong></p><ul><li>false and Error: x</li><li>true and Error: x</li><li>true and MyErr: x</li><li>true and x</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>true and MyErr: x</strong></p><p>The class extends Error so it is an instanceof Error, and String uses name and message to give MyErr: x. Without setting name it would show Error: x.</p></details></li><li><p><strong>Which approach is best in a catch block when you do not recognize the error type?</strong></p><ul><li>Swallow it with an empty catch so the program does not stop</li><li>Check the type with instanceof, handle the known ones and rethrow the unknown ones</li><li>Turn every error into a generic text message</li><li>Only log it and carry on as if nothing happened</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Check the type with instanceof, handle the known ones and rethrow the unknown ones</strong></p><p>Handle the errors you understand and can recover from, and rethrow the rest so a higher level can deal with them. Swallowing hides real bugs and makes them hard to find.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-19">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/advanced-javascript/lessons/ajs-18.html"><small>Previous lesson</small><strong>AbortController and Async Iterators</strong></a>
+        <a rel="next" href="/en/advanced-javascript/lessons/ajs-20.html"><small>Next lesson</small><strong>Advanced Regular Expressions</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/advanced-javascript/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <meta name="robots" content="noindex, follow" />
+    <title>القيم الاعتباطية Arbitrary Values — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="عندما لا يكفي المقياس الجاهز: w-[17rem] وbg-[#...] وخصائص كاملة." />
+    <link rel="canonical" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-16.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-16.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-16.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-16.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="القيم الاعتباطية Arbitrary Values — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="عندما لا يكفي المقياس الجاهز: w-[17rem] وbg-[#...] وخصائص كاملة." />
+    <meta property="og:url" content="https://faybit.vercel.app/tailwind-learning/lessons/tw-16.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"القيم الاعتباطية Arbitrary Values","item":"https://faybit.vercel.app/tailwind-learning/lessons/tw-16.html"}]},{"@type":"LearningResource","name":"القيم الاعتباطية Arbitrary Values","description":"عندما لا يكفي المقياس الجاهز: w-[17rem] وbg-[#...] وخصائص كاملة.","url":"https://faybit.vercel.app/tailwind-learning/lessons/tw-16.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/tailwind-learning/lessons/index.html">الدروس</a><a href="/en/tailwind-learning/lessons/tw-16.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">الدرس 16 من 20</p>
+      <h1 class="lp-h1">القيم الاعتباطية Arbitrary Values</h1>
+      <p class="lp-lead">عندما لا يكفي المقياس الجاهز: w-[17rem] وbg-[#...] وخصائص كاملة.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-16">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>الأقواس المربعة</h2><p><code>w-[17rem]</code> <code>top-[117px]</code> <code>bg-[#0b6b78]</code> <code>grid-cols-[1fr_2fr]</code> (الشرطة السفلية تعني مسافة). للمتغيرات في v4: <code>w-(--sidebar-width)</code>.</p></article><article class="content-card"><h2>خصائص اعتباطية و variants</h2><p><code>[mask-type:luminance]</code> خاصية CSS كاملة. وvariants اعتباطية: <code>[&amp;&gt;p]:mt-2</code> و<code>[@media(min-width:900px)]:flex</code>. استخدمها باعتدال: إن تكررت القيمة فأضفها إلى <code>@theme</code>.</p></article></div>
+<article class="body-card key-card"><p>القيمة المتكررة مكانها @theme، والاعتباطية للحالات الاستثنائية.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="space-y-3 p-4" style="--sidebar-width: 12rem"&gt;
+&lt;div id="w" class="w-[17rem] rounded bg-[#0b6b78] p-2 text-white"&gt;w-[17rem] bg-[#0b6b78]&lt;/div&gt;
+&lt;div class="w-(--sidebar-width) rounded bg-slate-200 p-2"&gt;w-(--sidebar-width)&lt;/div&gt;
+&lt;div class="grid grid-cols-[1fr_2fr] gap-2"&gt;&lt;div class="bg-amber-100 p-2"&gt;1fr&lt;/div&gt;&lt;div class="bg-amber-200 p-2"&gt;2fr&lt;/div&gt;&lt;/div&gt;
+&lt;div class="[&amp;&gt;p]:mt-2 rounded border p-2"&gt;&lt;p&gt;فقرة أولى&lt;/p&gt;&lt;p&gt;فقرة ثانية&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>الأقواس تتيح قيمًا غير موجودة في المقياس. الصيغة <code>w-(--sidebar-width)</code> تقرأ متغير CSS مباشرة (v4).</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">غيّر العرض الأول إلى &lt;code&gt;w-[20rem]&lt;/code&gt; ولون الخلفية إلى &lt;code&gt;bg-[#7c3aed]&lt;/code&gt;.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ماذا تعني الشرطة السفلية داخل grid-cols-[1fr_2fr]؟</strong></p><ul><li>مسافة بين القيمتين</li><li>نقص</li><li>تعليق</li><li>خطأ</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>مسافة بين القيمتين</strong></p></details></li><li><p><strong>متى تفضل @theme على القيم الاعتباطية؟</strong></p><ul><li>عندما تتكرر القيمة في أكثر من مكان</li><li>عندما تُستخدم مرة واحدة</li><li>عند كتابة نص</li><li>لا تفضّل أبدًا</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>عندما تتكرر القيمة في أكثر من مكان</strong></p></details></li><li><p><strong>ما صيغة استعمال متغير CSS في v4؟</strong></p><ul><li>w-(--my-var)</li><li>w-$my-var</li><li>w-@my-var</li><li>w-var</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>w-(--my-var)</strong></p></details></li><li><p><strong>ماذا تفعل الفئة w-[17rem]؟</strong></p><ul><li>تجعل العرض 17rem بالضبط</li><li>تجعل العرض 17 عنصراً</li><li>تضيف حشوة 17rem</li><li>ترفض القيمة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تجعل العرض 17rem بالضبط</strong></p><p>القوسان المربعان يقبلان أي قيمة CSS مباشرة.</p></details></li><li><p><strong>ماذا تفعل الفئة [&amp;&gt;p]:mt-2؟</strong></p><ul><li>تضيف هامشاً علوياً للفقرات الأبناء المباشرين</li><li>تضيف هامشاً للعنصر نفسه فقط</li><li>تحذف الفقرات</li><li>تخفي الفقرات</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تضيف هامشاً علوياً للفقرات الأبناء المباشرين</strong></p><p>المتغير العشوائي يكتب محدد CSS مخصصاً قبل الفئة.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-16">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/tailwind-learning/lessons/tw-15.html"><small>الدرس السابق</small><strong>الانتقالات والتحويلات والحركة</strong></a>
+        <a rel="next" href="/tailwind-learning/lessons/tw-17.html"><small>الدرس التالي</small><strong>التخصيص بـ @theme</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/tailwind-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

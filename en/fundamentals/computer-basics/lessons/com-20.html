@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>OS Architecture: Kernel, User Space and Kernel Space — Computer Basics | FAYBIT</title>
+    <meta name="description" content="Describe the layers of a computer from application to hardware. Explain the difference between the Kernel and User Space , and why the split exists.…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-20.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-20.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-20.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-20.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="OS Architecture: Kernel, User Space and Kernel Space — Computer Basics | FAYBIT" />
+    <meta property="og:description" content="Describe the layers of a computer from application to hardware. Explain the difference between the Kernel and User Space , and why the split exists.…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-20.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Computer Basics","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"OS Architecture: Kernel, User Space and Kernel Space","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-20.html"}]},{"@type":"LearningResource","name":"OS Architecture: Kernel, User Space and Kernel Space","description":"Describe the layers of a computer from application to hardware. Explain the difference between the Kernel and User Space , and why the split exists.…","url":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-20.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Computer Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Computer Basics"><a href="/en/fundamentals/computer-basics/lessons/index.html">Lessons</a><a href="/fundamentals/computer-basics/lessons/com-20.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/computer-basics/lessons/index.html">Computer Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 20 of 30</p>
+      <h1 class="lp-h1">OS Architecture: Kernel, User Space and Kernel Space</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-20">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>OS Architecture: Kernel, User Space and Kernel Space</h2>
+<div><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Describe the layers of a computer from application to hardware.</li><li>Explain the difference between the <span class="term">Kernel</span> and <span class="term">User Space</span>, and why the split exists.</li><li>Compare monolithic kernels with microkernels.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>The lessons “Operating Systems” (com-10) and “Hardware and Software”.</li></ul>
+</section>
+<section class="lesson-section "><h3>Why does an OS need an architecture?</h3>
+<p>If every program could write to any memory address and talk directly to the disk and the network, a single bug in your browser could bring the whole machine down. So the operating system splits the world into two privilege levels: a small trusted level that owns everything, and an ordinary level where applications run with limits.</p>
+<figure class="doc-diagram" role="group" aria-label="Diagram"><figcaption>The layers, top to bottom</figcaption><ol class="doc-layers"><li><strong>Applications</strong><span>browser, editor, game — run in User Space</span></li><li><strong>Libraries and system APIs</strong><span>such as libc and Win32 — make requesting kernel services easier</span></li><li><strong>The Kernel</strong><span>processes, memory, files, drivers — runs in Kernel Space</span></li><li><strong>Hardware</strong><span>CPU, memory, disk, network</span></li></ol></figure>
+</section>
+<section class="lesson-section "><h3>User mode and kernel mode</h3>
+<p>The CPU itself supports at least two modes: <span class="term">User Mode</span> (restricted) and <span class="term">Kernel Mode</span> (full privilege). Sensitive instructions, such as changing memory tables or touching hardware directly, are refused outside kernel mode and raise an exception that the OS handles.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Aspect</th><th scope="col">User Space</th><th scope="col">Kernel Space</th></tr></thead><tbody><tr><th scope="row">Who runs there</th><td>Applications and libraries</td><td>The kernel and drivers</td></tr><tr><th scope="row">Hardware access</th><td>Indirect, through the kernel</td><td>Direct</td></tr><tr><th scope="row">Effect of a bug</th><td>Usually only that program crashes</td><td>Can crash the whole system</td></tr></tbody></table></div>
+</section>
+<section class="lesson-section "><h3>Kernel designs</h3>
+<ul><li><strong>Monolithic kernel</strong>: most services (files, network, drivers) live inside the kernel. Faster, but a faulty driver can take the system down. Example: Linux.</li><li><strong>Microkernel</strong>: the kernel keeps the minimum (scheduling, memory, inter-process messaging) and other services run as ordinary processes. More isolated, slightly slower. Examples: MINIX and QNX.</li><li><strong>Hybrid</strong>: a practical mix of both, as in Windows NT and macOS.</li></ul>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>Confusing “the operating system” with “the kernel”: the kernel is part of the system, not all of it.</li><li>Believing an application talks to the disk directly; it asks the kernel to do so.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> Why can a faulty driver crash Linux, while a browser crash only closes the browser?</summary><div class="doc-solution"><strong>Show solution</strong><p>A driver runs in Kernel Space with full privilege and shares memory with the kernel, so nothing shields the rest of the system. The browser runs in User Space with memory isolation, so the kernel detects the fault and terminates only that process.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>The OS separates restricted User Space from fully privileged Kernel Space.</li><li>The CPU itself enforces the split through execution modes.</li><li>Kernel designs differ in how they trade speed for isolation.</li></ul><p class="doc-next"><strong>Next step:</strong> How does an application request a service from the kernel? The next lesson covers System Calls.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>Core concept</strong>
+<p>The kernel is the only trusted part that talks to hardware; applications run in isolation and ask it for services.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Hands-on practice</span>
+<h3>Try it yourself</h3>
+</div>
+</div>
+<p>Open Task Manager (Windows) or run top (Linux/macOS). Pick one application process and one system process, and write down what distinguishes them.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which component is primarily responsible for executing program instructions?</strong></p><ul><li>CPU</li><li>Monitor</li><li>Keyboard</li><li>SSD</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>CPU</strong></p></details></li><li><p><strong>Which component temporarily stores data at high speed while programs run?</strong></p><ul><li>RAM</li><li>The hard disk only</li><li>The power supply</li><li>The keyboard</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>RAM</strong></p><p>RAM is fast temporary memory and loses its contents without power.</p></details></li><li><p><strong>What is the difference between the Internet and the Web?</strong></p><ul><li>They are two names for the same thing</li><li>The Web is the cables and the Internet is the browser</li><li>The Internet is the network of networks and the Web is a service on top of it</li><li>The Web is older than the Internet</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The Internet is the network of networks and the Web is a service on top of it</strong></p><p>Email and games use the Internet without being part of the Web.</p></details></li><li><p><strong>How does a computer ultimately store text, images and sound?</strong></p><ul><li>As binary numbers made of 0s and 1s</li><li>As Arabic letters only</li><li>As tiny drawings inside the CPU</li><li>Each type in an entirely non-digital system</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>As binary numbers made of 0s and 1s</strong></p><p>All data is represented in bits, and programs interpret them as text, images or sound.</p></details></li><li><p><strong>Which line best describes the operating system's relation to hardware and applications?</strong></p><ul><li>It forbids applications from using hardware at all</li><li>It acts as a go-between, managing hardware and letting applications use it</li><li>It is part of the motherboard and cannot change</li><li>It only works when online</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>It acts as a go-between, managing hardware and letting applications use it</strong></p><p>The OS manages resources and gives applications a uniform interface.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-20">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/computer-basics/lessons/com-19.html"><small>Previous lesson</small><strong>Modern Computing</strong></a>
+        <a rel="next" href="/en/fundamentals/computer-basics/lessons/com-21.html"><small>Next lesson</small><strong>System Calls and the Shell</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/computer-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

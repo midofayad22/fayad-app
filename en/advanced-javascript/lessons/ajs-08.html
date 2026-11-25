@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>Class Inheritance and Mixins — Advanced JavaScript | FAYBIT</title>
+    <meta name="description" content="extends, super, and combining behaviors via Mixins, and preferring composition over inheritance." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-08.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-08.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-08.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-08.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Class Inheritance and Mixins — Advanced JavaScript | FAYBIT" />
+    <meta property="og:description" content="extends, super, and combining behaviors via Mixins, and preferring composition over inheritance." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-08.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Advanced JavaScript","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Class Inheritance and Mixins","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-08.html"}]},{"@type":"LearningResource","name":"Class Inheritance and Mixins","description":"extends, super, and combining behaviors via Mixins, and preferring composition over inheritance.","url":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-08.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Advanced JavaScript — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Advanced JavaScript"><a href="/en/advanced-javascript/lessons/index.html">Lessons</a><a href="/advanced-javascript/lessons/ajs-08.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/advanced-javascript/lessons/index.html">Advanced JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 8 of 22</p>
+      <h1 class="lp-h1">Class Inheritance and Mixins</h1>
+      <p class="lp-lead">extends, super, and combining behaviors via Mixins, and preferring composition over inheritance.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-8">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>extends and super</h2><p><code>extends</code> links the child class's prototype to the parent's. <code>super()</code> is mandatory in the constructor before using <code>this</code>, and <code>super.method()</code> calls the parent's version.</p></article><article class="content-card"><h2>Composition First</h2><p>Deep inheritance chains become brittle. When you need shared behavior from more than one source, use <strong>Mixins</strong> or pass in dependencies (Composition).</p></article></div>
+<article class="body-card key-card"><p>Prefer composition (has-a) over inheritance (is-a) unless there is a genuine relationship.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>class Shape {
+constructor(name) { this.name = name; }
+area() { return 0; }
+describe() { return this.name + " area=" + this.area().toFixed(1); }
+}
+class Circle extends Shape {
+constructor(r) { super("circle"); this.r = r; }
+area() { return Math.PI * this.r ** 2; }
+describe() { return super.describe() + "!"; }
+}
+console.log(new Circle(2).describe());
+const Serializable = (Base) =&gt; class extends Base {
+toJSON() { return { type: this.name }; }
+};
+class Tagged extends Serializable(Shape) {}
+console.log(JSON.stringify(new Tagged("tag")));
+console.log(new Circle(1) instanceof Shape);</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">circle area=12.6!
+{"type":"tag"}
+true</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p><code>Serializable</code> is a function that takes a class and returns a new class that extends it, so we add behavior without complicating the hierarchy.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Try it yourself</h2></div>
+</div>
+<p class="practice-description">Create &lt;code&gt;Square extends Shape&lt;/code&gt; that returns the area &lt;code&gt;side ** 2&lt;/code&gt; and print the description.</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Why must super() be called before this in the child's constructor?</strong></p><ul><li>Because the object is only created after the parent constructor runs</li><li>For speed</li><li>It is optional</li><li>Because it deletes the parent</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Because the object is only created after the parent constructor runs</strong></p></details></li><li><p><strong>What is the purpose of a Mixin?</strong></p><ul><li>Adding shared behavior without a deep inheritance chain</li><li>Deleting classes</li><li>Speeding up the network</li><li>Encrypting data</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Adding shared behavior without a deep inheritance chain</strong></p></details></li><li><p><strong>What does the rule &quot;composition over inheritance&quot; mean?</strong></p><ul><li>Building objects from independent parts instead of expanding the hierarchy</li><li>Not using classes</li><li>Using var</li><li>Not writing tests</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Building objects from independent parts instead of expanding the hierarchy</strong></p></details></li><li><p><strong>What does this code print? class A { hi() { return &quot;A&quot;; } } class B extends A { hi() { return super.hi() + &quot;B&quot;; } } console.log(new B().hi());</strong></p><ul><li>B</li><li>A</li><li>AB</li><li>BA</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>AB</strong></p><p>super.hi() calls the parent version returning A, then the child appends B to give AB. Overriding does not discard the parent; it lets you build on it.</p></details></li><li><p><strong>What does this code print? const Fly = Base =&gt; class extends Base { fly() { return &quot;fly&quot;; } }; class Bird extends Fly(Object) {} console.log(new Bird().fly(), new Bird() instanceof Bird);</strong></p><ul><li>fly true</li><li>fly false</li><li>undefined true</li><li>An error because a class cannot be returned from a function</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>fly true</strong></p><p>A class is an ordinary value in JavaScript, so a function can create a class extending the Base it receives, which is the mixin pattern. Bird inherits fly through the chain and stays an instanceof itself.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-8">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/advanced-javascript/lessons/ajs-07.html"><small>Previous lesson</small><strong>Classes: Privacy and static</strong></a>
+        <a rel="next" href="/en/advanced-javascript/lessons/ajs-09.html"><small>Next lesson</small><strong>Property Descriptors and Freezing</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/advanced-javascript/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

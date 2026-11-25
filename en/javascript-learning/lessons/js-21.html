@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="js" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Modules — JavaScript | FAYBIT</title>
+    <meta name="description" content="Learn how to split JavaScript into separate files using export and import." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-21.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-21.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/javascript-learning/lessons/js-21.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/javascript-learning/lessons/js-21.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Modules — JavaScript | FAYBIT" />
+    <meta property="og:description" content="Learn how to split JavaScript into separate files using export and import." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/javascript-learning/lessons/js-21.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript","item":"https://faybit.vercel.app/en/javascript-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Modules","item":"https://faybit.vercel.app/en/javascript-learning/lessons/js-21.html"}]},{"@type":"LearningResource","name":"Modules","description":"Learn how to split JavaScript into separate files using export and import.","url":"https://faybit.vercel.app/en/javascript-learning/lessons/js-21.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript — FAYBIT","url":"https://faybit.vercel.app/javascript-learning/javascript-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript"><a href="/en/javascript-learning/lessons/index.html">Lessons</a><a href="/javascript-learning/lessons/js-21.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/javascript-learning/lessons/index.html">JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 21 of 25</p>
+      <h1 class="lp-h1">Modules</h1>
+      <p class="lp-lead">Learn how to split JavaScript into separate files using export and import.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-21">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>// math.js
+export function add(a, b) {
+return a + b;
+}
+// app.js
+import { add } from "./math.js";
+document.getElementById("jsResult").textContent =
+add(5, 3);</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>
+<p><strong>Modules</strong> let you split a program into separate, organized files.</p>
+<p><strong>export</strong> makes a value or Function available to other files.</p>
+<p><strong>import</strong> is used to bring in what was exported from another Module.</p>
+<p>Using Modules helps organize large projects.</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Write JavaScript</h2></div>
+</div>
+<p class="practice-description">Change the code below, then run it to see the result.</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Why do we use Modules?</strong></p><ul><li>To split and organize code across multiple files</li><li>To change CSS colors</li><li>To replace HTML</li><li>To create images</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>To split and organize code across multiple files</strong></p></details></li><li><p><strong>Which keyword is used to export a Function?</strong></p><ul><li>export</li><li>send</li><li>public</li><li>share</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>export</strong></p></details></li><li><p><strong>Which keyword is used to import a value?</strong></p><ul><li>import</li><li>include</li><li>requireOnly</li><li>load</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>import</strong></p></details></li><li><p><strong>The file contains export default add;. Which import is correct?</strong></p><ul><li>import { add } from &quot;./math.js&quot;;</li><li>import add from &quot;./math.js&quot;;</li><li>import * add from &quot;./math.js&quot;;</li><li>require add from &quot;./math.js&quot;;</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>import add from &quot;./math.js&quot;;</strong></p><p>A default export is imported without braces under any name you choose. Braces are for named exports.</p></details></li><li><p><strong>We declared const secret = 1 in a module file without export. Can another file read it?</strong></p><ul><li>Yes, because it is a global variable</li><li>Yes, if we just write import secret</li><li>Yes, but read-only</li><li>No, everything in a module is private unless exported with export</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>No, everything in a module is private unless exported with export</strong></p><p>A module has its own scope, so its variables do not leak into the global scope. Others can see only what is explicitly exported, which is a key benefit of modules.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-21">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/javascript-learning/lessons/js-20.html"><small>Previous lesson</small><strong>Spread and Rest</strong></a>
+        <a rel="next" href="/en/javascript-learning/lessons/js-22.html"><small>Next lesson</small><strong>Asynchronous JavaScript</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/javascript-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

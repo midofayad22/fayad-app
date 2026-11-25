@@ -10,14 +10,7 @@
       "nav.about": "عن المنصة",
       "nav.label": "التنقل الرئيسي",
       "a.kicker": "عن المنصة وصاحبها",
-      "a.name": "عبد الحميد فياض",
-      "a.role": "صاحب منصة FAYBIT التعليمية",
-      "a.edu": "طالب هندسة حاسبات في جامعة طنطا",
-      "a.portfolio": "زيارة الـ Portfolio",
       "a.explore": "استكشف المسارات",
-      "a.who.title": "من أنا",
-      "a.who.p1": "تركز رحلتي في التكنولوجيا على فهم كيف تعمل الأشياء، ثم تحويل هذه المعرفة إلى مشاريع عملية.",
-      "a.who.p2": "يهمني تطوير الويب بشكل خاص، وأعمل بـ HTML وCSS وJavaScript وأستكشف التقنيات الحديثة خطوة بخطوة.",
       "a.fayad.title": "عن منصة FAYBIT",
       "a.fayad.p1": "FAYBIT منصة تعليمية تفاعلية تهدف إلى جعل تعلم تطوير الويب أكثر تنظيمًا وعملية: تبدأ من أساسيات الحاسوب والبرمجة، ثم HTML وCSS وJavaScript، ثم أطر العمل.",
       "a.fact.tracks": "مسارات",
@@ -44,8 +37,6 @@
       "a.state.title": "تقدمك وحسابك",
       "a.state.p1": "يُحفظ تقدمك في متصفحك على هذا الجهاز. يمكنك إنشاء حساب وتسجيل الدخول ليحفظ اسمك وصورتك وتفضيلاتك.",
       "a.state.p2": "قيد العمل: تعميق شرح الدروس وإضافة المزيد من التمارين التطبيقية.",
-      "a.links.title": "روابطي",
-      "a.footer": "© 2026 FAYBIT. من تطوير عبد الحميد فياض.",
       "a.back": "العودة إلى FAYBIT",
     },
     en: {
@@ -59,14 +50,7 @@
       "nav.about": "About",
       "nav.label": "Main navigation",
       "a.kicker": "About the platform and its creator",
-      "a.name": "Abdullhamid, Fayad",
-      "a.role": "Creator of the FAYBIT learning platform",
-      "a.edu": "Computer engineering student at Tanta University",
-      "a.portfolio": "Visit the portfolio",
       "a.explore": "Explore the courses",
-      "a.who.title": "About me",
-      "a.who.p1": "My journey in technology is about understanding how things work, then turning that knowledge into practical projects.",
-      "a.who.p2": "I care about web development in particular. I work with HTML, CSS and JavaScript and explore modern tools step by step.",
       "a.fayad.title": "About FAYBIT",
       "a.fayad.p1": "FAYBIT is an interactive learning platform that makes learning web development more organised and hands-on: it starts with computer and programming fundamentals, then HTML, CSS and JavaScript, then frameworks.",
       "a.fact.tracks": "courses",
@@ -88,17 +72,57 @@
       "a.state.title": "Your progress and account",
       "a.state.p1": "Your progress is saved in your browser on this device. You can create an account and sign in to keep your name, picture and preferences.",
       "a.state.p2": "In progress: deepening lesson explanations and adding more hands-on exercises.",
-      "a.links.title": "Find me online",
-      "a.footer": "© 2026 FAYBIT. Built by Abdullhamid, Fayad.",
       "a.back": "Back to FAYBIT",
     },
   });
 
+  F.i18n.extend({
+    ar: {
+      "menu.game": "الألعاب", "menu.dashboard": "لوحة التقدم", "f.about": "عن المنصة", "f.rights": "© 2026 FAYBIT. منصة تعليمية لتطوير الويب.", "ft.learn": "المسارات",
+      "a.kicker": "عن المنصة",
+      "a.h1": "مكان هادئ لتتعلم تطوير الويب خطوة بخطوة",
+      "a.lead": "FAYBIT منصة تعليمية مستقلة. تبدأ من أساسيات الحاسوب والبرمجة، ثم تبني مهارات HTML وCSS وJavaScript، وتنتقل إلى الأدوات والأطر، وتتمرّن بالكود الحقيقي في كل خطوة.",
+      "a.play": "جرّب الألعاب",
+      "a.fact.games": "ألعاب وتحديات", "a.fact.lang2": "لغتان: عربي وإنجليزي",
+      "a.how.title": "كيف يسير التعلّم",
+      "a.how.2": "أمثلة قابلة للتجربة في معظم الدروس، تُنفَّذ داخل بيئة معزولة في المتصفح.",
+      "a.how.4": "ألعاب وتحديات برمجية تثبّت ما تعلمته وتقيس تقدمك.",
+      "a.pr.title": "تمرّن بالكود", "a.pr.p": "ألعاب وتحديات تكتب فيها كودًا حقيقيًا ويُفحص فورًا داخل متصفحك، مع تقدم محفوظ ولوحة ترتيب.",
+      "a.pr.1": "تحديات HTML وCSS وJavaScript بمحرر ومعاينة حية.", "a.pr.2": "اضبط Flexbox حتى يطابق التخطيط الهدف.", "a.pr.3": "اكتب محددات CSS تختار العناصر المطلوبة فقط.", "a.pr.4": "دافع عن الناجين بكود حقيقي في 15 مهمة.", "a.pr.5": "برمجة بالكتل عبر 120 مرحلة.",
+      "gm.arena.t": "ساحات الكود", "gm.adv.t": "المغامرة الكبرى",
+      "a.state.p1": "يُحفظ تقدمك على هذا الجهاز دون حساب، وعند تسجيل الدخول يرتبط بحسابك. الحساب اختياري ويضيف المزامنة فقط.",
+      "a.state.p2": "قيد العمل: تعميق شرح بعض الدروس وإضافة المزيد من التمارين التطبيقية وترجمة بقية الدروس.",
+      "a.arch.1.d": "صفحات HTML وCSS وJavaScript بلا إطار ثقيل.", "a.arch.2.d": "كل المسارات تعمل بنفس المحرك، فتتشابه التجربة.", "a.arch.4.d": "شرح ثم مثال ثم تجربة ثم اختبار قصير.",
+      "a.arch.5.t": "يعمل دون اتصال", "a.arch.5.d": "يمكن تثبيت الموقع كتطبيق، وتبقى الصفحات التي زرتها متاحة دون إنترنت.",
+      "a.cta.t": "ابدأ من حيث تناسبك"
+    },
+    en: {
+      "menu.game": "Games", "menu.dashboard": "Progress dashboard", "f.about": "About", "f.rights": "© 2026 FAYBIT. A web development learning platform.", "ft.learn": "Courses",
+      "a.kicker": "About the platform",
+      "a.h1": "A calm place to learn web development, step by step",
+      "a.lead": "FAYBIT is an independent learning platform. Start with computer and programming fundamentals, build HTML, CSS and JavaScript skills, move on to tools and frameworks, and practise with real code at every step.",
+      "a.play": "Try the games",
+      "a.fact.games": "games and challenges", "a.fact.lang2": "languages: Arabic and English",
+      "a.how.title": "How learning works",
+      "a.how.2": "Most lessons have examples you can try, run inside an isolated sandbox in your browser.",
+      "a.how.4": "Coding games and challenges reinforce what you learned and track your progress.",
+      "a.pr.title": "Practise with code", "a.pr.p": "Games and challenges where you write real code that is checked instantly in your browser, with saved progress and a leaderboard.",
+      "a.pr.1": "HTML, CSS and JavaScript challenges with an editor and live preview.", "a.pr.2": "Set Flexbox properties until the layout matches the target.", "a.pr.3": "Write CSS selectors that pick only the required elements.", "a.pr.4": "Defend the survivors with real code across 15 missions.", "a.pr.5": "Block coding across 120 levels.",
+      "gm.arena.t": "Code arenas", "gm.adv.t": "The Grand Adventure",
+      "a.state.p1": "Your progress is saved on this device without an account, and linked to your account when you sign in. An account is optional and only adds syncing.",
+      "a.state.p2": "In progress: deeper explanations for some lessons, more practice exercises and translating the remaining lessons.",
+      "a.arch.1.d": "Plain HTML, CSS and JavaScript pages with no heavy framework.", "a.arch.2.d": "Every course runs on the same engine, so the experience stays consistent.", "a.arch.4.d": "Explanation, example, a try-it step, then a short quiz.",
+      "a.arch.5.t": "Works offline", "a.arch.5.d": "Install the site as an app; pages you have visited stay available without internet.",
+      "a.cta.t": "Start where it suits you"
+    }
+  });
   function facts() {
     if (!F.catalog) return;
     var tracks = F.catalog.tracks, byId = {};
     tracks.forEach(function (t) { byId[t.id] = t; });
     var c = String(tracks.length), l = String(F.catalog.totalLessons());
+    var ft = document.querySelector("[data-fact=tracks]"), fl = document.querySelector("[data-fact=lessons]");
+    if (ft) ft.textContent = c; if (fl) fl.textContent = l;
     var p = document.querySelector("[data-about-count]");
     if (p) p.textContent = F.i18n.t("a.avail.p1", { c: c, l: l });
     // the table rows are static for crawlers; flags and counts are re-read from the catalog so they can never drift

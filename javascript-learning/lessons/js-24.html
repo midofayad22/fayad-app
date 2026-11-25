@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="js" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Fetch API — JavaScript | FAYBIT</title>
+    <meta name="description" content="تعلّم كيف تستخدم Fetch API لإرسال طلبات HTTP والحصول على البيانات من Server أو API." />
+    <link rel="canonical" href="https://faybit.vercel.app/javascript-learning/lessons/js-24.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/javascript-learning/lessons/js-24.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-24.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/javascript-learning/lessons/js-24.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Fetch API — JavaScript | FAYBIT" />
+    <meta property="og:description" content="تعلّم كيف تستخدم Fetch API لإرسال طلبات HTTP والحصول على البيانات من Server أو API." />
+    <meta property="og:url" content="https://faybit.vercel.app/javascript-learning/lessons/js-24.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript","item":"https://faybit.vercel.app/javascript-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Fetch API","item":"https://faybit.vercel.app/javascript-learning/lessons/js-24.html"}]},{"@type":"LearningResource","name":"Fetch API","description":"تعلّم كيف تستخدم Fetch API لإرسال طلبات HTTP والحصول على البيانات من Server أو API.","url":"https://faybit.vercel.app/javascript-learning/lessons/js-24.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript — FAYBIT","url":"https://faybit.vercel.app/javascript-learning/javascript-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript"><a href="/javascript-learning/lessons/index.html">الدروس</a><a href="/en/javascript-learning/lessons/js-24.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/javascript-learning/lessons/index.html">JavaScript</a></nav>
+      <p class="lp-eyebrow">الدرس 24 من 25</p>
+      <h1 class="lp-h1">Fetch API</h1>
+      <p class="lp-lead">تعلّم كيف تستخدم Fetch API لإرسال طلبات HTTP والحصول على البيانات من Server أو API.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-24">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>fetch("https://example.com/data")
+.then(response =&gt; response.json())
+.then(data =&gt; {
+console.log(data);
+})
+.catch(error =&gt; {
+console.error(error);
+});</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>
+<p><strong>Fetch API</strong> توفر طريقة حديثة لإرسال HTTP Requests من JavaScript.</p>
+<p>يمكن استخدامها لجلب بيانات من API أو Server.</p>
+<p>النتيجة الأولية تكون Response ويمكن تحويلها إلى JSON باستخدام <strong>response.json()</strong>.</p>
+<p>عادةً يتم التعامل مع النتيجة باستخدام Promises أو <strong>async/await</strong>.</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>اكتب JavaScript</h2></div>
+</div>
+<p class="practice-description">غيّر الكود الموجود بالأسفل ثم شغّله لترى النتيجة.</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>فيما تستخدم fetch() غالبًا؟</strong></p><ul><li>إرسال طلبات والحصول على بيانات من Server</li><li>تغيير ألوان CSS</li><li>إنشاء HTML Tags</li><li>إنشاء صور</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>إرسال طلبات والحصول على بيانات من Server</strong></p></details></li><li><p><strong>ماذا تفعل response.json()؟</strong></p><ul><li>تحول Response إلى بيانات JSON قابلة للاستخدام</li><li>تحذف Response</li><li>ترسل CSS</li><li>تنشئ HTML</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تحول Response إلى بيانات JSON قابلة للاستخدام</strong></p></details></li><li><p><strong>هل fetch() مرتبطة بالتعامل مع الشبكة؟</strong></p><ul><li>نعم</li><li>لا</li><li>فقط مع CSS</li><li>فقط مع Arrays</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>نعم</strong></p></details></li><li><p><strong>ما المشكلة في هذا الكود؟ const data = fetch(url).json();</strong></p><ul><li>fetch تعيد promise لا يملك json()، والصحيح انتظار fetch ثم استدعاء json() على response</li><li>json() تعمل مع POST فقط</li><li>يجب إضافة new قبل fetch</li><li>url يجب أن يكون كائناً وليس نصاً</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>fetch تعيد promise لا يملك json()، والصحيح انتظار fetch ثم استدعاء json() على response</strong></p><p>fetch تعيد Promise وليس response مباشرة، ولذلك استدعاء json() عليه يرمي TypeError. نكتب const res = await fetch(url); const data = await res.json().</p></details></li><li><p><strong>يعيد الخادم الحالة 404 عند طلب fetch. ماذا يحدث للـ promise؟</strong></p><ul><li>يُرفض ويذهب إلى catch تلقائياً</li><li>يتحقق عادة ونفحص response.ok لاكتشاف الخطأ</li><li>يبقى معلقاً pending إلى الأبد</li><li>تعاد المحاولة تلقائياً</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يتحقق عادة ونفحص response.ok لاكتشاف الخطأ</strong></p><p>fetch ترفض الـ promise فقط عند فشل الشبكة نفسها، أما حالات HTTP مثل 404 و 500 فتصل كـ response عادي. لذلك نفحص response.ok أو status ونرمي الخطأ بأنفسنا.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-24">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/javascript-learning/lessons/js-23.html"><small>الدرس السابق</small><strong>Promises</strong></a>
+        <a rel="next" href="/javascript-learning/lessons/js-25.html"><small>الدرس التالي</small><strong>معالجة الأخطاء</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/javascript-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

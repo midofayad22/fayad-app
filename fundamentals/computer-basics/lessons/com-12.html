@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>Binary و Data — أساسيات الكمبيوتر | FAYBIT</title>
+    <meta name="description" content="تشرح لماذا تعتمد الحواسيب على النظام Binary وتحوّل الأعداد بين العشري والثنائي والست عشري. توضح كيف يُمثَّل النص بـ ASCII و Unicode وكيف يرمّز UTF-8…" />
+    <link rel="canonical" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-12.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-12.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-12.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-12.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Binary و Data — أساسيات الكمبيوتر | FAYBIT" />
+    <meta property="og:description" content="تشرح لماذا تعتمد الحواسيب على النظام Binary وتحوّل الأعداد بين العشري والثنائي والست عشري. توضح كيف يُمثَّل النص بـ ASCII و Unicode وكيف يرمّز UTF-8…" />
+    <meta property="og:url" content="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-12.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"أساسيات الكمبيوتر","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Binary و Data","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-12.html"}]},{"@type":"LearningResource","name":"Binary و Data","description":"تشرح لماذا تعتمد الحواسيب على النظام Binary وتحوّل الأعداد بين العشري والثنائي والست عشري. توضح كيف يُمثَّل النص بـ ASCII و Unicode وكيف يرمّز UTF-8…","url":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-12.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"أساسيات الكمبيوتر — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="أساسيات الكمبيوتر"><a href="/fundamentals/computer-basics/lessons/index.html">الدروس</a><a href="/en/fundamentals/computer-basics/lessons/com-12.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/fundamentals/computer-basics/lessons/index.html">أساسيات الكمبيوتر</a></nav>
+      <p class="lp-eyebrow">الدرس 12 من 30</p>
+      <h1 class="lp-h1">Binary و Data</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-12">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>Binary و Data</h2>
+<div><section class="lesson-section doc-objectives"><h3>أهداف الدرس</h3><ul><li>تشرح لماذا تعتمد الحواسيب على النظام <span class="term">Binary</span> وتحوّل الأعداد بين العشري والثنائي والست عشري.</li><li>توضح كيف يُمثَّل النص بـ <span class="term">ASCII</span> و<span class="term">Unicode</span> وكيف يرمّز <span class="term">UTF-8</span> الحروف.</li><li>تفسر تمثيل الألوان بنموذج <span class="term">RGB</span> وتحسب عدد الألوان الممكنة.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>المتطلبات السابقة</h3><ul><li>درس الملفات والمجلدات (com-11) وفهم أن الذاكرة والتخزين يحفظان بيانات.</li></ul>
+</section>
+<section class="lesson-section "><h3>مقدمة: كل شيء أرقام</h3>
+<p>الصورة التي تراها والأغنية التي تسمعها وهذه الجملة نفسها تُخزَّن داخل الحاسوب بلا استثناء كأرقام. الفكرة العملية هي <span class="term">Encoding</span> أي الترميز: اتفاق على أن رقمًا معينًا يمثل حرفًا أو لونًا أو درجة صوت. فإذا عرف الطرفان الاتفاق استطاعا إعادة بناء المعنى من الأرقام.</p>
+<p>ولكن لماذا الأرقام الثنائية بالذات؟ لأن الدوائر الإلكترونية تفرّق بسهولة وثبات بين حالتين: جهد منخفض وجهد مرتفع، أو تيار يمر ولا يمر. أما التفريق بين عشر حالات كهربائية دقيقة فأكثر عرضة للخطأ بسبب الضجيج والحرارة. ومن حالتين فقط نصنع النظام الثنائي.</p>
+</section>
+<section class="lesson-section "><h3>النظام الثنائي والعشري</h3>
+<p>نظامنا العشري <span class="term">Decimal</span> له عشرة رموز (0 إلى 9) وقيمة كل خانة قوة للعدد 10: آحاد ثم عشرات ثم مئات. والثنائي له رمزان فقط (0 و1) وقيمة كل خانة قوة للعدد 2. نسمي كل خانة ثنائية <span class="term">Bit</span>، وهي اختصار Binary Digit.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">موضع الخانة (من اليمين)</th><th scope="col">8</th><th scope="col">7</th><th scope="col">6</th><th scope="col">5</th><th scope="col">4</th><th scope="col">3</th><th scope="col">2</th><th scope="col">1</th></tr></thead><tbody><tr><th scope="row">القيمة</th><td>128</td><td>64</td><td>32</td><td>16</td><td>8</td><td>4</td><td>2</td><td>1</td></tr><tr><th scope="row">العدد 156</th><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td></tr></tbody></table></div>
+<h4>من ثنائي إلى عشري</h4>
+<p>اجمع قيم الخانات التي فيها 1. للعدد <code>101101</code> الخانات هي 32 و8 و4 و1، فالناتج 32 + 8 + 4 + 1 = 45. وفي الجدول أعلاه 156 يساوي 128 + 16 + 8 + 4 = 156 أي <code>10011100</code>.</p>
+<h4>من عشري إلى ثنائي: القسمة المتكررة</h4>
+<p>اقسم على 2 مرارًا واحفظ الباقي (0 أو 1) في كل مرة، ثم اقرأ البواقي من الأخير إلى الأول. ولتحويل 156:</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">text</span></figcaption><pre dir="ltr"><code>156 / 2 = 78  remainder 0
+78 / 2 = 39  remainder 0
+39 / 2 = 19  remainder 1
+19 / 2 =  9  remainder 1
+9 / 2 =  4  remainder 1
+4 / 2 =  2  remainder 0
+2 / 2 =  1  remainder 0
+1 / 2 =  0  remainder 1
+Read upward: 10011100</code></pre></figure>
+<p>وللتحقق نعيد الجمع: 128 + 16 + 8 + 4 = 156. وتتبع كل خانة جديدة مضاعفة القيمة، فبـ n خانة يمكن تمثيل 2 أس n قيمة مختلفة، أي من 0 إلى 2 أس n ناقص 1. ثمانية خانات تعطي 256 قيمة من 0 إلى 255.</p>
+</section>
+<section class="lesson-section "><h3>النظام الست عشري Hex</h3>
+<p>قراءة سلاسل طويلة من الأصفار والآحاد متعبة، فيستعمل المبرمجون نظام <span class="term">Hexadecimal</span> أي الست عشري، وله 16 رمزًا: 0–9 ثم A–F حيث A=10 وF=15. وجمال الأمر أن كل رمز ست عشري يقابل بالضبط أربع خانات ثنائية، فنقسم الثنائي إلى مجموعات من أربع ونحوّل كل مجموعة.</p>
+<p>للعدد <code>10011100</code>: المجموعة <code>1001</code> تساوي 9، والمجموعة <code>1100</code> تساوي 12 أي C، فيكون الست عشري <code>9C</code>. وبالحساب المباشر 9 × 16 + 12 = 156. وأكبر قيمة في بايت واحد هي <code>FF</code> أي 15 × 16 + 15 = 255. وتبدأ الأعداد الست عشرية في الكود غالبًا بالبادئة <code>0x</code> مثل <code>0x9C</code>.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">python</span></figcaption><pre dir="ltr"><code>print(bin(156))        # decimal -&gt; binary
+print(int("101101", 2)) # binary -&gt; decimal
+print(hex(156))        # decimal -&gt; hex
+print(ord("A"))        # character -&gt; code number
+print("é".encode("utf-8"))  # character -&gt; UTF-8 bytes</code></pre></figure>
+<figure class="code-ex code-ex-out"><figcaption><span class="code-ex-lang">الناتج</span></figcaption><pre dir="ltr"><code>0b10011100
+45
+0x9c
+65
+b'\xc3\xa9'</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>النص كأرقام: ASCII وUnicode وUTF-8</h3>
+<p>أقدم اتفاق شائع هو <span class="term">ASCII</span> الذي يعطي 128 رمزًا رقمًا من 0 إلى 127: الحرف <code>A</code> يساوي 65 و<code>a</code> يساوي 97 والرقم <code>0</code> كحرف يساوي 48. فالكلمة <code>Hi</code> تُخزَّن بالرقمين 72 و105 أي <code>01001000 01101001</code>. لاحظ أن الحرف <code>0</code> غير العدد صفر: الأول رمز رقمه 48 والثاني قيمة.</p>
+<p>لا يكفي ASCII للعربية ولا للصينية ولا للرموز التعبيرية، فظهر <span class="term">Unicode</span>: معيار يعطي لكل حرف في كل اللغات رقمًا فريدًا يسمى <span class="term">Code Point</span> ويُكتب هكذا <code>U+0639</code> للحرف «ع». لكن Unicode يحدد الأرقام فقط، أما طريقة تخزينها بايتات فيحددها الترميز، وأشهره <span class="term">UTF-8</span>.</p>
+<p>يستعمل UTF-8 من بايت إلى أربعة لكل حرف: حروف ASCII تأخذ بايتًا واحدًا فتبقى متوافقة مع القديم، والحرف <code>é</code> يأخذ بايتين (<code>C3 A9</code>)، والحرف العربي «ع» بايتين (<code>D8 B9</code>)، والرمز <code>€</code> ثلاثة بايتات (<code>E2 82 AC</code>)، والرموز التعبيرية غالبًا أربعة. ولهذا يختلف عدد البايتات عن عدد الحروف في النص العربي.</p>
+</section>
+<section class="lesson-section "><h3>الألوان كأرقام: نموذج RGB</h3>
+<p>تتكون النقطة على الشاشة من ضوء أحمر وأخضر وأزرق بدرجات مختلفة، ولذلك يصف نموذج <span class="term">RGB</span> كل لون بثلاثة أرقام، كل منها من 0 إلى 255 أي بايت واحد: شدة الأحمر والأخضر والأزرق. فاللون البرتقالي <code>(255, 128, 0)</code> أحمر كامل ونصف أخضر وبلا أزرق، ويُكتب بالست عشري <code>#FF8000</code> لأن 255 هي FF و128 هي 80.</p>
+<p>ثلاثة بايتات تعني 24 خانة، أي 2 أس 24 = 16,777,216 لونًا ممكنًا. وبكسل صورة عادية يأخذ إذن 3 بايتات. ومن المصطلحات المرتبطة <span class="term">Pixel</span> وهو أصغر نقطة في الصورة.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">اللون</th><th scope="col">RGB</th><th scope="col">Hex</th></tr></thead><tbody><tr><th scope="row">أسود</th><td>(0, 0, 0)</td><td>#000000</td></tr><tr><th scope="row">أبيض</th><td>(255, 255, 255)</td><td>#FFFFFF</td></tr><tr><th scope="row">أحمر</th><td>(255, 0, 0)</td><td>#FF0000</td></tr><tr><th scope="row">برتقالي</th><td>(255, 128, 0)</td><td>#FF8000</td></tr></tbody></table></div>
+</section>
+<section class="lesson-section "><h3>تطبيقات من الواقع</h3>
+<ul><li><strong>تصميم الويب:</strong> أكواد الألوان <code>#FF8000</code> في CSS هي أرقام RGB ست عشرية.</li><li><strong>الشبكات:</strong> عناوين MAC وIPv6 تُكتب بالست عشري لأنه مختصر.</li><li><strong>الرسائل متعددة اللغات:</strong> UTF-8 يتيح مزج العربية والإنجليزية والرموز في ملف واحد.</li></ul>
+<div class="doc-mistakes"><h4>أخطاء شائعة</h4><ul><li>«الحاسوب يفهم الحروف والصور مباشرة»: لا يتعامل إلا مع أرقام، والمعنى يأتي من الترميز الذي نتفق عليه.</li><li>«الثنائي يعني أن الحاسوب يعرف الصحيح والخطأ فقط»: الخانة الواحدة حالتان، لكن تجميع الخانات يمثل أعدادًا وبيانات بلا حد عملي.</li><li>«الحرف 5 هو العدد 5»: الحرف رمز له رقم ترميز (53 في ASCII)، والعدد 5 قيمة تُخزَّن بطريقة مختلفة.</li><li>«كل حرف يساوي بايتًا واحدًا دائمًا»: ينطبق على ASCII فقط؛ في UTF-8 قد يأخذ الحرف من بايت إلى أربعة.</li></ul></div>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>حساب:</strong> حوّل 200 إلى ثنائي وست عشري، ثم حوّل <code>11010110</code> إلى عشري.</summary><div class="doc-solution"><strong>عرض الحل</strong><p>200 = 128 + 64 + 8 أي <code>11001000</code>. بالقسمة: 200÷2=100 (0)، 100÷2=50 (0)، 50÷2=25 (0)، 25÷2=12 (1)، 12÷2=6 (0)، 6÷2=3 (0)، 3÷2=1 (1)، 1÷2=0 (1) فنقرأ من الأسفل: 11001000. ثم نقسم إلى <code>1100</code> و<code>1000</code> فهما C و8 أي <code>C8</code>، وللتحقق 12 × 16 + 8 = 200. أما <code>11010110</code> فهو 128 + 64 + 16 + 4 + 2 = 214.</p></div></details>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>استدلال:</strong> كم بايتًا يشغل النص <code>Hi €</code> بترميز UTF-8؟ ولماذا لا يساوي عدد الحروف؟</summary><div class="doc-solution"><strong>عرض الحل</strong><p>النص أربعة رموز: <code>H</code> بايت واحد، <code>i</code> بايت واحد، المسافة بايت واحد، و<code>€</code> ثلاثة بايتات (<code>E2 82 AC</code>). المجموع 1 + 1 + 1 + 3 = 6 بايتات لأربعة رموز. السبب أن UTF-8 متغير الطول: الرموز الإنجليزية تستعمل بايتًا، وما عداها يحتاج أكثر حتى يتسع لعدد الرموز الكبير في Unicode.</p></div></details>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>تطبيق عملي:</strong> اكتشف بنفسك كيف يُرمَّز اسمك بالأرقام باستعمال بايثون أو أداة مشابهة.</summary><div class="doc-solution"><strong>عرض الحل</strong><p>افتح مفسر بايثون واكتب <code>[ord(c) for c in "Sara"]</code> فتحصل على <code>[83, 97, 114, 97]</code>، وهي أرقام ASCII للحروف. ثم جرّب <code>"Sara".encode("utf-8")</code> لترى البايتات نفسها. وللاسم العربي ستجد أن كل حرف يعطي رقمًا كبيرًا (مثل 1593 للحرف «ع»)، وأن <code>encode("utf-8")</code> يعطي بايتين لكل حرف. قارن بين عدد الحروف وعدد البايتات.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>الخلاصة</h3><ul><li>الحاسوب يخزن كل شيء أرقامًا ثنائية لأن الدوائر تميّز حالتين بثبات.</li><li>يمكن التحويل بين الثنائي والعشري بجمع القوى أو بالقسمة المتكررة، والست عشري اختصار لكل أربع خانات.</li><li>النص أرقام بترميز ASCII أو Unicode، وUTF-8 يخزنها بطول متغير.</li><li>اللون ثلاثة بايتات RGB، أي 16,777,216 احتمالًا.</li></ul><p class="doc-next"><strong>الخطوة التالية:</strong> البت والبايت: وحدات قياس كل هذه البيانات وكيف نحسب أحجامها.</p>
+</section>
+<section class="lesson-section doc-refs"><h3>مراجع للاستزادة</h3><ul><li>معيار Unicode الذي يصدره Unicode Consortium.</li><li>مقال «The Absolute Minimum Every Software Developer Must Know About Unicode» لجويل سبولسكي.</li></ul>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>المفهوم الأساسي</strong>
+<p>الكمبيوتر الرقمي يمثل البيانات بطريقة ثنائية تعتمد على 0 و1.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>تطبيق عملي</span>
+<h3>جرّب بنفسك</h3>
+</div>
+</div>
+<p>تعلم تمثيل الأرقام الصغيرة بالنظام الثنائي، مثل 1 و2 و4 و8.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما الرموز الأساسية في Binary؟</strong></p><ul><li>0 و1</li><li>1 و2</li><li>A وB</li><li>0 و9</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>0 و1</strong></p></details></li><li><p><strong>ما القيمة العشرية للعدد الثنائي 101101؟</strong></p><ul><li>45</li><li>54</li><li>36</li><li>101</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>45</strong></p><p>32 + 8 + 4 + 1 = 45، فنجمع قيم الخانات التي تحمل 1.</p></details></li><li><p><strong>ما الصيغة السداسية العشرية (Hex) للعدد 156؟</strong></p><ul><li>9C</li><li>C9</li><li>F9</li><li>A6</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>9C</strong></p><p>156 = 10011100، المجموعتان 1001 = 9 و1100 = C فتصبح 9C.</p></details></li><li><p><strong>كم قيمة مختلفة يمكن لـ 8 بتات تمثيلها؟</strong></p><ul><li>8</li><li>128</li><li>255</li><li>256</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>256</strong></p><p>n بتات تعطي 2^n قيمة، أي 256 قيمة من 0 إلى 255.</p></details></li><li><p><strong>في ASCII، ما الفرق بين الرمز '0' والقيمة صفر؟</strong></p><ul><li>لا فرق</li><li>الرمز '0' له الرمز 48 أما القيمة صفر فهي عدد</li><li>الرمز '0' له الرمز 0</li><li>الرمز '0' له الرمز 65</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>الرمز '0' له الرمز 48 أما القيمة صفر فهي عدد</strong></p><p>الحرف A يساوي 65 والرمز 0 يساوي 48؛ فالرمز مجرد حرف مشفّر وليس قيمة.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-12">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/fundamentals/computer-basics/lessons/com-11.html"><small>الدرس السابق</small><strong>الملفات والمجلدات</strong></a>
+        <a rel="next" href="/fundamentals/computer-basics/lessons/com-13.html"><small>الدرس التالي</small><strong>Bits و Bytes</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/fundamentals/computer-basics/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

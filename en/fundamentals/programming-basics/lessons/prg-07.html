@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <title>Variables — Programming Basics | FAYBIT</title>
+    <meta name="description" content="DATA A variable is a name we use to refer to a stored value that the program can use while it runs. In JavaScript you can create variables using let and…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-07.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-07.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-07.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-07.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Variables — Programming Basics | FAYBIT" />
+    <meta property="og:description" content="DATA A variable is a name we use to refer to a stored value that the program can use while it runs. In JavaScript you can create variables using let and…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-07.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Programming Basics","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Variables","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-07.html"}]},{"@type":"LearningResource","name":"Variables","description":"DATA A variable is a name we use to refer to a stored value that the program can use while it runs. In JavaScript you can create variables using let and…","url":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-07.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Programming Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Programming Basics"><a href="/en/fundamentals/programming-basics/lessons/index.html">Lessons</a><a href="/fundamentals/programming-basics/lessons/prg-07.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/programming-basics/lessons/index.html">Programming Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 7 of 31 · DATA</p>
+      <h1 class="lp-h1">Variables</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-7">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">DATA</span>
+<h2>How do we store information inside a program?</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content"><section class="lesson-section"><h3>What is a Variable?</h3><p>A variable is a name we use to refer to a stored value that the program can use while it runs.</p><p>In JavaScript you can create variables using <span class="term">let</span> and <span class="term">const</span>.</p></section><section class="lesson-section"><div class="info-grid"><div class="info-box"><h4>let</h4><p>Used when you expect the value to change.</p></div><div class="info-box"><h4>const</h4><p>Used when you do not want the value to be reassigned.</p></div></div></section><section class="lesson-section"><h3>Choosing a name: rules and convention</h3><p>A variable name must start with a letter, <span class="term">_</span> or <span class="term">$</span>, and cannot contain spaces or hyphens. Case matters: <span class="term">score</span> is not <span class="term">Score</span>. The JavaScript convention is <span class="term">camelCase</span>.</p><pre class="fd-code" dir="ltr"><code>let userName = "Sara";   // good: describes the content
+let x1 = "Sara";         // valid but says nothing
+let user-name = 1;       // error: the hyphen is the minus operator
+let 2score = 5;          // error: cannot start with a digit</code></pre><p class="fd-note">A good name saves a whole comment: <strong>remainingLives</strong> is clearer than <strong>r</strong>.</p></section><section class="lesson-section"><h3>let or const? A practical rule</h3><p>Always start with <span class="term">const</span>. Switch to <span class="term">let</span> only when you really need to reassign. This stops accidental changes and tells the reader what can and cannot change.</p><pre class="fd-code" dir="ltr"><code>const pi = 3.14159;   // will not change
+let lives = 3;          // changes during the game
+lives = lives - 1;      // allowed
+pi = 3;                 // TypeError: Assignment to constant variable.</code></pre></section><section class="lesson-section"><h3>Assignment is not mathematical equality</h3><p>The <span class="term">=</span> sign means: “calculate the right side, then store the result under the name on the left”. That is why <span class="term">x = x + 1</span> is a sensible line: take the current value, add 1, and save it again.</p><pre class="fd-code" dir="ltr"><code>let count = 5;
+count = count + 1;   // 6
+count += 1;          // shorthand: 7
+console.log(count);  // 7</code></pre></section></div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong>Core idea</strong>
+<p>A variable makes a program's data nameable and usable, instead of handling values in a haphazard way.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Worked example</span>
+<h3>See the idea in code</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>let score = 100;
+score = 150;
+const username = "FAYBIT";
+console.log(username);
+console.log(score);</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Practice</span>
+<h3>Challenge yourself</h3>
+</div>
+</div>
+<p></p>
+<div class="fd-exercise"><h4>Interactive exercise</h4><p class="fd-ex-prompt">Create a variable named name that holds your name (a string) and a variable named age that holds your age (a number), then print both with console.log.</p><p class="fd-ex-status" role="status"></p></div>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which keyword is used to declare a variable whose value can change?</strong></p><ul><li>const</li><li>let</li><li>fixed</li><li>change</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>let</strong></p><p>let allows assigning a new value to the same name, while const fixes the assignment. fixed and change are not JavaScript keywords.</p></details></li><li><p><strong>What happens when this code runs: const a = 1; a = 2;</strong></p><ul><li>It prints 2</li><li>A TypeError is thrown</li><li>a stays 1 with no error</li><li>Nothing, the line is ignored</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A TypeError is thrown</strong></p><p>A const binding cannot be reassigned, so JavaScript stops with: Assignment to constant variable.</p></details></li><li><p><strong>Which variable name is valid and follows the usual convention?</strong></p><ul><li>2score</li><li>user-name</li><li>userName</li><li>let</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>userName</strong></p><p>userName is valid and written in camelCase. 2score starts with a digit, user-name contains a hyphen read as minus, and let is a reserved word.</p></details></li><li><p><strong>What is x after: let x = 5; x = x + 3;</strong></p><ul><li>5</li><li>3</li><li>8</li><li>53</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>8</strong></p><p>The right side is evaluated first (5 + 3 = 8), then the result is stored in x.</p></details></li><li><p><strong>What does this code print? let a = 1; let b = a; b = 5; console.log(a, b);</strong></p><ul><li>5 5</li><li>1 5</li><li>1 1</li><li>5 1</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>1 5</strong></p><p>With b = a the value 1 is copied into b, so the two are independent. Changing b to 5 does not affect a, which stays 1.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-7">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/programming-basics/lessons/prg-06.html"><small>Previous lesson</small><strong>Syntax</strong></a>
+        <a rel="next" href="/en/fundamentals/programming-basics/lessons/prg-08.html"><small>Next lesson</small><strong>Data Types</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/programming-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

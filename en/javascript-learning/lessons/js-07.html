@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="js" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Functions — JavaScript | FAYBIT</title>
+    <meta name="description" content="Learn how to create reusable functions to organize code and reduce repetition." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-07.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-07.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/javascript-learning/lessons/js-07.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/javascript-learning/lessons/js-07.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Functions — JavaScript | FAYBIT" />
+    <meta property="og:description" content="Learn how to create reusable functions to organize code and reduce repetition." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/javascript-learning/lessons/js-07.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript","item":"https://faybit.vercel.app/en/javascript-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Functions","item":"https://faybit.vercel.app/en/javascript-learning/lessons/js-07.html"}]},{"@type":"LearningResource","name":"Functions","description":"Learn how to create reusable functions to organize code and reduce repetition.","url":"https://faybit.vercel.app/en/javascript-learning/lessons/js-07.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript — FAYBIT","url":"https://faybit.vercel.app/javascript-learning/javascript-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript"><a href="/en/javascript-learning/lessons/index.html">Lessons</a><a href="/javascript-learning/lessons/js-07.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/javascript-learning/lessons/index.html">JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 7 of 25</p>
+      <h1 class="lp-h1">Functions</h1>
+      <p class="lp-lead">Learn how to create reusable functions to organize code and reduce repetition.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-7">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>function greet() {
+return "Welcome to FAYBIT";
+}
+document.getElementById("jsResult").textContent = greet();</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>
+<p>A <strong>Function</strong> is a set of instructions that can be reused.</p>
+<p>A function is defined using the <strong>function</strong> keyword.</p>
+<p>A function can be run by writing its name followed by parentheses.</p>
+<p>Using functions makes a program more organized and easier to maintain.</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Write JavaScript</h2></div>
+</div>
+<p class="practice-description">Change the code below, then run it to see the result.</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is a function?</strong></p><ul><li>A reusable set of instructions</li><li>An HTML element</li><li>A CSS property</li><li>A type of image</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A reusable set of instructions</strong></p></details></li><li><p><strong>Which keyword is used to define a traditional function?</strong></p><ul><li>function</li><li>def</li><li>method</li><li>func</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>function</strong></p></details></li><li><p><strong>How do you call the greet function?</strong></p><ul><li>greet()</li><li>call greet</li><li>run.greet</li><li>function.greet</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>greet()</strong></p></details></li><li><p><strong>What does console.log(typeof greet) print if function greet() {} is defined?</strong></p><ul><li>string</li><li>undefined</li><li>object</li><li>function</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>function</strong></p><p>Writing greet without parentheses refers to the function itself as a value and does not call it, and its type is function. Calling needs parentheses: greet().</p></details></li><li><p><strong>What happens? sayHi(); function sayHi() { console.log(&quot;Hi&quot;); }</strong></p><ul><li>It prints Hi because function declarations are hoisted completely</li><li>A ReferenceError because the call comes before the definition</li><li>It prints undefined</li><li>It prints nothing and raises no error</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>It prints Hi because function declarations are hoisted completely</strong></p><p>Function declarations are hoisted together with their body, so they can be called before their line. This does not apply to a function stored in const or let.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-7">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/javascript-learning/lessons/js-06.html"><small>Previous lesson</small><strong>Loops</strong></a>
+        <a rel="next" href="/en/javascript-learning/lessons/js-08.html"><small>Next lesson</small><strong>Parameters and Arguments</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/javascript-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

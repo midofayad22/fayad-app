@@ -32,25 +32,49 @@ test("every internal link on the homepage resolves to an existing file", async (
   }
 });
 
-test("the path has 4 ordered stages containing all 11 courses once, in learning order", async () => {
+test("the homepage presents the real tracks, with no 18-week roadmap or timeline", async () => {
   const { ctx, page } = await open({}, "en");
-  const stages = await page.$$eval(".hm-stage", (els) => els.map((e) => ({ n: e.id, title: e.querySelector("h3").textContent, courses: [...e.querySelectorAll(".hm-row")].map((r) => r.dataset.courseCard) })));
-  assert.deepEqual(stages.map((x) => x.title), ["Fundamentals", "Web foundations", "Go deeper", "Frameworks"]);
-  assert.deepEqual(stages.flatMap((x) => x.courses), ["com", "prg", "html", "css", "js", "ajs", "bs", "tw", "react", "vue", "angular"]);
-  const rows = await page.$$eval(".hm-row", (els) => els.map((r) => ({ href: r.getAttribute("href"), count: r.querySelector(".hm-count").textContent })));
-  assert.equal(rows.length, 11); assert.ok(rows.every((r) => /\d+ lessons/.test(r.count) && r.href.endsWith(".html")));
-  assert.equal(await page.locator(".hm-tabs [role=tab]").count(), 4);
-  // desktop (journey layout): all four stages are visible side by side
-  assert.equal(await page.locator(".hm-stage:visible").count(), 4);
-  await page.setViewportSize({ width: 800, height: 900 }); await page.waitForTimeout(300);
-  assert.equal(await page.locator(".hm-stage:visible").count(), 1);
-  await page.locator(".hm-tab[data-seg='3']").click();
-  assert.equal(await page.locator("#stage-3").isVisible(), true);
-  assert.equal(await page.locator("#stage-1").isVisible(), false);
-  assert.equal(await page.locator(".hm-tab[data-seg='3']").getAttribute("aria-selected"), "true");
-  await page.keyboard.press("ArrowRight");
-  assert.equal(await page.locator(".hm-tab[data-seg='4']").getAttribute("aria-selected"), "true");
-  assert.equal(await page.locator("text=/coming soon|قريبًا/i").count(), 0);
+  const html = fs.readFileSync(path.join(ROOT, "index.html"), "utf8");
+  assert.doesNotMatch(html, /18[- ]week|roadmap|rm-weeks|rm-seg|class="rm/i);
+  const ids = await page.$$eval("[data-course-card]", (els) => els.map((e) => e.dataset.courseCard));
+  assert.deepEqual(ids.sort(), ["ajs", "angular", "bs", "com", "css", "html", "js", "prg", "react", "tw", "vue"].sort());
+  assert.equal(await page.locator("[data-course-card=python]").count(), 0);
+  for (const id of ids) assert.match(await page.locator(`[data-course-card="${id}"]`).getAttribute("href"), /\.html$/);
+  await ctx.close();
+});
+
+test("tools rail buttons scroll the rail in both directions and layouts", async () => {
+  for (const lang of ["en", "ar"]) {
+    const { ctx, page } = await open({}, lang);
+    await page.evaluate(() => document.documentElement.style.scrollBehavior = "auto");
+    await page.setViewportSize({ width: 900, height: 800 });
+    await page.locator("#tkRail").scrollIntoViewIfNeeded();
+    const start = await page.$eval("#tkRail", (r) => r.scrollLeft);
+    await page.click('[data-rail="next"]'); await page.waitForTimeout(900);
+    const moved = await page.$eval("#tkRail", (r) => r.scrollLeft);
+    assert.notEqual(moved, start, lang + ": next moved the rail");
+    await page.click('[data-rail="prev"]'); await page.waitForTimeout(900);
+    const back = await page.$eval("#tkRail", (r) => r.scrollLeft);
+    assert.ok(Math.abs(back - start) < Math.abs(moved - start), lang + ": prev moved back");
+    await ctx.close();
+  }
+});
+
+test("games keep their links and per-game totals; no animation library is loaded", async () => {
+  const { ctx, page } = await open({}, "en");
+  const html = fs.readFileSync(path.join(ROOT, "index.html"), "utf8");
+  assert.doesNotMatch(html, /gsap|lenis/i);
+  for (const g of ["arena", "flex", "sel", "zombie", "adventure"]) assert.ok(await page.locator(`[data-prog="${g}"]`).count() >= 1, g);
+  assert.equal(await page.locator(".gt").count(), 5);
+  await ctx.close();
+});
+
+test("with reduced motion nothing is hidden or armed for animation", async () => {
+  const ctx = await browser.newContext({ reducedMotion: "reduce" });
+  const page = await ctx.newPage(); await offline(page);
+  await page.goto(base + "/"); await page.waitForSelector("[data-course-card]", { state: "attached" });
+  assert.equal(await page.evaluate(() => document.documentElement.classList.contains("tk-anim")), false);
+  assert.equal(await page.evaluate(() => getComputedStyle(document.querySelector(".tk-feature")).opacity), "1");
   await ctx.close();
 });
 
@@ -85,7 +109,7 @@ test("the next-step card starts at the first course, then continues from real sa
 test("corrupt progress data does not break the page", async () => {
   const { ctx, page } = await open({ "fayad-html-progress": "{not json", "fayad-js-current-lesson": "banana", "fayad-last-track": "###" });
   assert.equal(await page.locator("#nextLabel").textContent(), "ابدأ من هنا");
-  assert.equal(await page.locator(".hm-row").count(), 11);
+  assert.equal(await page.locator("[data-course-card]").count(), 11);
   await ctx.close();
 });
 
@@ -194,11 +218,11 @@ test("viewport-fit=cover and safe-area padding are present for iPhone notches", 
 
 test("the hero's 4-stage overview reflects real saved progress per stage (and is empty without any)", async () => {
   let { ctx, page } = await open({}, "en");
-  assert.deepEqual(await page.$$eval(".hm-tab[data-seg] .hm-seg-bar > span", (els) => els.map((e) => e.style.width)), ["0%", "0%", "0%", "0%"]);
+  assert.deepEqual(await page.$$eval(".hm-seg[data-seg] .hm-seg-bar > span", (els) => els.map((e) => e.style.width)), ["0%", "0%", "0%", "0%"]);
   await ctx.close();
   // html: 15 of 30 done; stage 2 = (html+css+js) = 85 lessons -> 15/85 = 18%; other stages untouched
   ({ ctx, page } = await open({ "fayad-html-progress": JSON.stringify(Array.from({ length: 15 }, (_, i) => i + 1)) }, "en"));
-  assert.deepEqual(await page.$$eval(".hm-tab[data-seg] .hm-seg-bar > span", (els) => els.map((e) => e.style.width)), ["0%", "18%", "0%", "0%"]);
+  assert.deepEqual(await page.$$eval(".hm-seg[data-seg] .hm-seg-bar > span", (els) => els.map((e) => e.style.width)), ["0%", "18%", "0%", "0%"]);
   await ctx.close();
 });
 
@@ -206,11 +230,10 @@ test("homepage sections flow continuously: never overlap, never overflow sideway
   for (const lang of ["ar", "en"]) for (const [w, h] of [[360, 740], [390, 844], [768, 1024], [1280, 800], [1440, 900]]) {
     const { ctx, page } = await open({}, lang);
     await page.setViewportSize({ width: w, height: h }); await page.waitForTimeout(1500);
-    const r = await page.evaluate(() => [...document.querySelectorAll("main > .hm-sec")].map((s) => { const b = s.getBoundingClientRect(); return { id: s.id, top: b.top + scrollY, bottom: b.bottom + scrollY, h: b.height, sh: s.scrollHeight }; }));
-    assert.equal(r.length, 7);
+    const r = await page.evaluate(() => [...document.querySelectorAll("main > section")].map((s) => { const b = s.getBoundingClientRect(); return { id: s.id, top: b.top + scrollY, bottom: b.bottom + scrollY, h: b.height, sh: s.scrollHeight }; }));
+    assert.equal(r.length, 4);
     r.forEach((s, i) => {
-      if (i === 0) assert.ok(s.h >= Math.min(h, 860) - 1, `${lang}@${w}x${h}: hero shorter than the screen (${s.h})`);
-      assert.ok(s.h > 200, `${lang}@${w}x${h}: #${s.id} collapsed (${s.h})`);
+            assert.ok(s.h > 150, `${lang}@${w}x${h}: #${s.id} collapsed (${s.h})`);
       if (i) assert.ok(s.top >= r[i - 1].bottom - 1, `${lang}@${w}x${h}: #${s.id} overlaps previous`);
     });
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${lang}@${w}: x overflow`);
@@ -218,21 +241,18 @@ test("homepage sections flow continuously: never overlap, never overflow sideway
   }
 });
 
-test("motion is skipped under prefers-reduced-motion and content stays visible", async () => {
-  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, reducedMotion: "reduce" });
-  const page = await ctx.newPage(); await offline(page);
-  await page.goto(base + "/"); await page.waitForSelector("[data-course-card]"); await page.waitForTimeout(500);
-  assert.equal(await page.locator(".hm-word").count(), 0);
+test("the homepage has no entrance animation: hero text is fully visible immediately and no GSAP is loaded", async () => {
+  const { ctx, page } = await open({}, "ar");
   assert.equal(await page.locator("h1").evaluate((e) => getComputedStyle(e).opacity), "1");
   assert.equal(await page.locator(".hm-lead").evaluate((e) => getComputedStyle(e).opacity), "1");
+  assert.equal(await page.evaluate(() => typeof window.gsap), "undefined");
   await ctx.close();
 });
 
-test("hero animates (CSS) when motion is allowed and ends fully visible", async () => {
-  const { ctx, page } = await open({}, "ar");
-  await page.waitForTimeout(4500);
-  assert.equal(await page.locator(".hm-t1").evaluate((e) => getComputedStyle(e).opacity), "1");
-  assert.equal(await page.locator(".hm-lead").evaluate((e) => getComputedStyle(e).opacity), "1");
-  assert.match(await page.locator("#heroCode").innerText(), /Hello, FAYBIT[\s\S]*Start/);
+test("practice list shows real per-game totals and distinct game identities", async () => {
+  const { ctx, page } = await open({}, "en");
+  const t = await page.$$eval("[data-prog]", (els) => els.map((e) => e.querySelector(".gm-meta").textContent));
+  assert.deepEqual(t, ["0 of 60 levels", "0 of 24 levels", "0 of 24 levels", "0 of 15 levels", "0 of 120 levels"]);
+  assert.equal(await page.locator(".gt").count(), 5);
   await ctx.close();
 });

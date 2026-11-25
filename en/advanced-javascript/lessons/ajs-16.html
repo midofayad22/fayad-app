@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>Promise.all, allSettled, race, and any — Advanced JavaScript | FAYBIT</title>
+    <meta name="description" content="Coordinate several asynchronous operations with the right strategy for each case." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-16.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-16.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-16.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-16.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Promise.all, allSettled, race, and any — Advanced JavaScript | FAYBIT" />
+    <meta property="og:description" content="Coordinate several asynchronous operations with the right strategy for each case." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-16.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Advanced JavaScript","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Promise.all, allSettled, race, and any","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-16.html"}]},{"@type":"LearningResource","name":"Promise.all, allSettled, race, and any","description":"Coordinate several asynchronous operations with the right strategy for each case.","url":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-16.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Advanced JavaScript — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Advanced JavaScript"><a href="/en/advanced-javascript/lessons/index.html">Lessons</a><a href="/advanced-javascript/lessons/ajs-16.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/advanced-javascript/lessons/index.html">Advanced JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 16 of 22</p>
+      <h1 class="lp-h1">Promise.all, allSettled, race, and any</h1>
+      <p class="lp-lead">Coordinate several asynchronous operations with the right strategy for each case.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-16">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>The Comparison</h2><ul><li><code>all</code>: waits for everyone and fails at the first failure.</li><li><code>allSettled</code>: waits for everyone and returns the status of each one.</li><li><code>race</code>: the first one to finish (success or failure).</li><li><code>any</code>: the first success, and fails only if all fail.</li></ul></article></div>
+<article class="body-card key-card"><p>Choose all when you need every result, and allSettled when some may fail.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>const ok = (v, ms) =&gt; new Promise((r) =&gt; setTimeout(() =&gt; r(v), ms));
+const fail = (m, ms) =&gt; new Promise((_, j) =&gt; setTimeout(() =&gt; j(new Error(m)), ms));
+(async () =&gt; {
+console.log(await Promise.all([ok("a", 20), ok("b", 5)]));
+try { await Promise.all([ok("a", 20), fail("boom", 5)]); }
+catch (e) { console.log("all failed:", e.message); }
+const settled = await Promise.allSettled([ok("x", 5), fail("no", 5)]);
+console.log(settled.map((s) =&gt; s.status));
+console.log(await Promise.race([ok("slow", 30), ok("fast", 5)]));
+console.log(await Promise.any([fail("e1", 5), ok("winner", 15)]));
+})();</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">[ 'a', 'b' ]
+all failed: boom
+[ 'fulfilled', 'rejected' ]
+fast
+winner</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>The order of results in <code>all</code> matches the order of the inputs, not the order of completion. <code>any</code> ignores early failures and waits for the first success.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Try it yourself</h2></div>
+</div>
+<p class="practice-description">Use &lt;code&gt;allSettled&lt;/code&gt; to count the successful operations out of three (two succeed and one fails).</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which function fails at the first failure?</strong></p><ul><li>Promise.all</li><li>Promise.allSettled</li><li>Promise.any</li><li>None of them</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Promise.all</strong></p></details></li><li><p><strong>Which function gives you the status of every promise no matter what?</strong></p><ul><li>Promise.allSettled</li><li>Promise.race</li><li>Promise.all</li><li>Promise.resolve</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Promise.allSettled</strong></p></details></li><li><p><strong>What does Promise.any return when all fail?</strong></p><ul><li>It rejects with an AggregateError</li><li>It succeeds with an empty array</li><li>It returns undefined</li><li>It freezes</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>It rejects with an AggregateError</strong></p></details></li><li><p><strong>What does this code print? Promise.allSettled([Promise.resolve(1), Promise.reject(&quot;x&quot;)]).then(r =&gt; console.log(r.map(i =&gt; i.status)));</strong></p><ul><li>[&quot;fulfilled&quot;, &quot;rejected&quot;]</li><li>[&quot;fulfilled&quot;]</li><li>Nothing, with an unhandled error</li><li>[1, &quot;x&quot;]</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>[&quot;fulfilled&quot;, &quot;rejected&quot;]</strong></p><p>allSettled never rejects because of one element and returns an object per promise with a status and a value or reason. So then runs and both statuses appear.</p></details></li><li><p><strong>One promise rejects after 10ms and another fulfills after 50ms. What do Promise.race and Promise.any give for them?</strong></p><ul><li>race fulfills with the second value and any rejects</li><li>Both race and any reject</li><li>Both race and any fulfill with the second value</li><li>race rejects because the first settled first, and any fulfills with the second value</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>race rejects because the first settled first, and any fulfills with the second value</strong></p><p>race follows the first promise to settle, whether it fulfills or rejects, and here the rejection comes at 10ms. any ignores rejections and waits for the first success, so it fulfills with the second value.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-16">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/advanced-javascript/lessons/ajs-15.html"><small>Previous lesson</small><strong>The Event Loop: Microtasks and Macrotasks</strong></a>
+        <a rel="next" href="/en/advanced-javascript/lessons/ajs-17.html"><small>Next lesson</small><strong>Practical async/await Patterns</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/advanced-javascript/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

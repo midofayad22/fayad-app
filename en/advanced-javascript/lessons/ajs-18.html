@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="ajs" />
+    <title>AbortController and Async Iterators — Advanced JavaScript | FAYBIT</title>
+    <meta name="description" content="Cancel in-flight operations and read asynchronous streams with for await...of." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-18.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-18.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-18.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/advanced-javascript/lessons/ajs-18.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="AbortController and Async Iterators — Advanced JavaScript | FAYBIT" />
+    <meta property="og:description" content="Cancel in-flight operations and read asynchronous streams with for await...of." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-18.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Advanced JavaScript","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/index.html"},{"@type":"ListItem","position":3,"name":"AbortController and Async Iterators","item":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-18.html"}]},{"@type":"LearningResource","name":"AbortController and Async Iterators","description":"Cancel in-flight operations and read asynchronous streams with for await...of.","url":"https://faybit.vercel.app/en/advanced-javascript/lessons/ajs-18.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Advanced JavaScript — FAYBIT","url":"https://faybit.vercel.app/advanced-javascript/advanced-javascript.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Advanced JavaScript"><a href="/en/advanced-javascript/lessons/index.html">Lessons</a><a href="/advanced-javascript/lessons/ajs-18.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/advanced-javascript/lessons/index.html">Advanced JavaScript</a></nav>
+      <p class="lp-eyebrow">Lesson 18 of 22</p>
+      <h1 class="lp-h1">AbortController and Async Iterators</h1>
+      <p class="lp-lead">Cancel in-flight operations and read asynchronous streams with for await...of.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-18">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Cancelling Operations</h2><p><code>AbortController</code> produces a <code>signal</code> that you pass to the operation (such as fetch). Calling <code>abort()</code> makes the operation reject with an <code>AbortError</code> and stop.</p></article><article class="content-card"><h2>Async Iterators</h2><p>The async generator <code>async function*</code> produces values over time, and we read it with <code>for await...of</code>. It suits streams and successive pages.</p></article></div>
+<article class="body-card key-card"><p>Pass the signal and check it, and treat cancellation as a normal case, not a surprise error.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>JavaScript code</h2></div>
+</div>
+<pre dir="ltr"><code>const sleep = (ms, signal) =&gt; new Promise((resolve, reject) =&gt; {
+const t = setTimeout(resolve, ms);
+signal?.addEventListener("abort", () =&gt; {
+clearTimeout(t);
+reject(signal.reason);
+});
+});
+(async () =&gt; {
+const ctrl = new AbortController();
+setTimeout(() =&gt; ctrl.abort(new Error("cancelled")), 10);
+try { await sleep(200, ctrl.signal); }
+catch (e) { console.log(e.message); }
+async function* pages() {
+for (let p = 1; p &lt;= 3; p++) {
+await sleep(5);
+yield [p * 10, p * 10 + 1];
+}
+}
+const all = [];
+for await (const items of pages()) all.push(...items);
+console.log(all);
+})();</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static"><pre dir="ltr">cancelled
+[ 10, 11, 20, 21, 30, 31 ]</pre></div></div>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>Cancellation avoids waiting the full time (200ms). The async generator hands out successive pages, and <code>for await</code> waits for each page before moving to the next.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Try it yourself</h2></div>
+</div>
+<p class="practice-description">Create an &lt;code&gt;AbortController&lt;/code&gt;, tell it to abort immediately, then print the value of &lt;code&gt;signal.aborted&lt;/code&gt;.</p>
+<div class="practice-output">
+<span>Output</span>
+<div aria-live="polite">The result will appear here.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What does AbortController produce?</strong></p><ul><li>A signal that can be passed to operations</li><li>A new window</li><li>A file</li><li>A new thread</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A signal that can be passed to operations</strong></p></details></li><li><p><strong>What reads an async generator?</strong></p><ul><li>for await...of</li><li>for...in</li><li>while only</li><li>switch</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>for await...of</strong></p></details></li><li><p><strong>What do you do when an operation is cancelled?</strong></p><ul><li>Treat AbortError as an expected case</li><li>Always ignore it</li><li>Reload the page</li><li>Delete the variables</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Treat AbortError as an expected case</strong></p></details></li><li><p><strong>What is the output? const c = new AbortController(); c.signal.addEventListener(&quot;abort&quot;, () =&gt; console.log(&quot;ab&quot;)); c.abort(); c.abort(); console.log(c.signal.aborted);</strong></p><ul><li>ab, ab, true</li><li>ab, true</li><li>true only</li><li>An error on the second call</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>ab, true</strong></p><p>Aborting happens only once, and later abort calls do nothing and do not fire the event again. Afterwards signal.aborted is true.</p></details></li><li><p><strong>What is printed? async function* g() { try { yield 1; yield 2; } finally { console.log(&quot;cleanup&quot;); } } (async () =&gt; { for await (const x of g()) { console.log(x); break; } })();</strong></p><ul><li>1 only</li><li>1, 2, cleanup</li><li>1, cleanup</li><li>cleanup, 1</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>1, cleanup</strong></p><p>Leaving for await early with break calls the generator's return, which runs the finally block and prints cleanup after 1. That is why cleanup belongs in finally, so it runs even on early exit.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/advanced-javascript/advanced-javascript.html#lesson-18">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/advanced-javascript/lessons/ajs-17.html"><small>Previous lesson</small><strong>Practical async/await Patterns</strong></a>
+        <a rel="next" href="/en/advanced-javascript/lessons/ajs-19.html"><small>Next lesson</small><strong>Custom Errors and Handling Strategies</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/advanced-javascript/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

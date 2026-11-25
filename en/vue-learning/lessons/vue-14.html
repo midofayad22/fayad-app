@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="vue" />
+    <title>Props — Vue.js | FAYBIT</title>
+    <meta name="description" content="Learn how to pass data from a parent component to a child component using props." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/vue-learning/lessons/vue-14.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/vue-learning/lessons/vue-14.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/vue-learning/lessons/vue-14.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/vue-learning/lessons/vue-14.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Props — Vue.js | FAYBIT" />
+    <meta property="og:description" content="Learn how to pass data from a parent component to a child component using props." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/vue-learning/lessons/vue-14.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Vue.js","item":"https://faybit.vercel.app/en/vue-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Props","item":"https://faybit.vercel.app/en/vue-learning/lessons/vue-14.html"}]},{"@type":"LearningResource","name":"Props","description":"Learn how to pass data from a parent component to a child component using props.","url":"https://faybit.vercel.app/en/vue-learning/lessons/vue-14.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Vue.js — FAYBIT","url":"https://faybit.vercel.app/vue-learning/vue-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Vue.js"><a href="/en/vue-learning/lessons/index.html">Lessons</a><a href="/vue-learning/lessons/vue-14.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/vue-learning/lessons/index.html">Vue.js</a></nav>
+      <p class="lp-eyebrow">Lesson 14 of 22</p>
+      <h1 class="lp-h1">Props</h1>
+      <p class="lp-lead">Learn how to pass data from a parent component to a child component using props.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-14">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<h2>Props</h2>
+<p>
+Props are the primary way to pass data from a parent component to a child component.
+</p>
+<p>
+Props help make components more flexible and reusable.
+</p>
+</div></article>
+<article class="body-card key-card"><div class="info-label">Props pass data to child components</div><p>A parent can send data to a child through props.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>The code</h2></div>
+</div>
+<pre dir="ltr"><code>
+&lt;div id="app"&gt;
+&lt;user-card name="FAYBIT"&gt;&lt;/user-card&gt;
+&lt;/div&gt;
+&lt;script&gt;
+const { createApp } = Vue;
+const UserCard = {
+props: ["name"],
+template: `
+&lt;h2&gt;Hello {{ name }}&lt;/h2&gt;
+`
+};
+createApp({
+components: {
+UserCard
+}
+}).mount("#app");
+&lt;/script&gt;
+</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static">
+<div style="padding:20px;font-family:Arial;">
+<div class="lp-demo-h2">Hello FAYBIT</div>
+</div>
+</div></div>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div>
+<p>
+<code>props: ["name"]</code> specifies that the component receives a prop named <code>name</code>.
+</p>
+<p>
+The parent passes the value using <code>&lt;user-card name="FAYBIT"&gt;</code>.
+</p>
+<p>
+Inside the child, you can use <code>{{ name }}</code>.
+</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span></div>
+</div>
+<p class="practice-description">Pass a name from the parent to UserCard using props.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is the primary use of props?</strong></p><ul><li>Passing data to a child component</li><li>Creating CSS</li><li>Creating a database</li><li>Running a browser</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Passing data to a child component</strong></p></details></li><li><p><strong>Where do props usually come from?</strong></p><ul><li>From the parent component</li><li>From the operating system</li><li>From CSS</li><li>Only from the browser</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>From the parent component</strong></p></details></li><li><p><strong>Can the child use a prop's value?</strong></p><ul><li>Yes</li><li>No</li><li>Only in CSS</li><li>Only in a database</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Yes</strong></p></details></li><li><p><strong>How does a parent pass the text 'Ali' to a prop named name?</strong></p><ul><li>&lt;Child name=&quot;Ali&quot; /&gt;</li><li>&lt;Child {{ name }} /&gt;</li><li>&lt;Child @name=&quot;Ali&quot; /&gt;</li><li>&lt;Child v-on:name=&quot;Ali&quot; /&gt;</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>&lt;Child name=&quot;Ali&quot; /&gt;</strong></p><p>A static string is passed as a normal attribute; to pass a variable we use :name.</p></details></li><li><p><strong>Why should a child not modify a prop directly?</strong></p><ul><li>Because it cannot be read</li><li>Because data flows from parent to child and the parent owns it</li><li>Because Vue deletes props</li><li>There is no problem modifying it</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Because data flows from parent to child and the parent owns it</strong></p><p>One-way data flow keeps the app easy to follow; to change it, the child emits an event to the parent.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-14">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/vue-learning/lessons/vue-13.html"><small>Previous lesson</small><strong>Components</strong></a>
+        <a rel="next" href="/en/vue-learning/lessons/vue-15.html"><small>Next lesson</small><strong>Events and Emits</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/vue-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>العمليات والخيوط — أساسيات الكمبيوتر | FAYBIT</title>
+    <meta name="description" content="تفرّق بين البرنامج والعملية. تعرف حالات العملية ودورة حياتها. تقارن العملية بالخيط (Thread). البرنامج Program ملف ساكن على القرص يحوي تعليمات. أما Process…" />
+    <link rel="canonical" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-22.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-22.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-22.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-22.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="العمليات والخيوط — أساسيات الكمبيوتر | FAYBIT" />
+    <meta property="og:description" content="تفرّق بين البرنامج والعملية. تعرف حالات العملية ودورة حياتها. تقارن العملية بالخيط (Thread). البرنامج Program ملف ساكن على القرص يحوي تعليمات. أما Process…" />
+    <meta property="og:url" content="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-22.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"أساسيات الكمبيوتر","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"العمليات والخيوط","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-22.html"}]},{"@type":"LearningResource","name":"العمليات والخيوط","description":"تفرّق بين البرنامج والعملية. تعرف حالات العملية ودورة حياتها. تقارن العملية بالخيط (Thread). البرنامج Program ملف ساكن على القرص يحوي تعليمات. أما Process…","url":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-22.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"أساسيات الكمبيوتر — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="أساسيات الكمبيوتر"><a href="/fundamentals/computer-basics/lessons/index.html">الدروس</a><a href="/en/fundamentals/computer-basics/lessons/com-22.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/fundamentals/computer-basics/lessons/index.html">أساسيات الكمبيوتر</a></nav>
+      <p class="lp-eyebrow">الدرس 22 من 30</p>
+      <h1 class="lp-h1">العمليات والخيوط</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-22">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>العمليات والخيوط</h2>
+<div><section class="lesson-section doc-objectives"><h3>أهداف الدرس</h3><ul><li>تفرّق بين البرنامج والعملية.</li><li>تعرف حالات العملية ودورة حياتها.</li><li>تقارن العملية بالخيط (Thread).</li></ul>
+</section>
+<section class="lesson-section "><h3>البرنامج مقابل العملية</h3>
+<p>البرنامج <span class="term">Program</span> ملف ساكن على القرص يحوي تعليمات. أما <span class="term">Process</span> فهي نسخة منه وهو يعمل: لها ذاكرتها الخاصة، وملفاتها المفتوحة، ورقم هوية <code>PID</code>. يمكن تشغيل البرنامج نفسه مرتين فتحصل على عمليتين منفصلتين.</p>
+<p>ما الذي تحتفظ به النواة لكل عملية؟ جدولًا يسمى <span class="term">PCB</span> (Process Control Block) يضم: الـ PID، حالة العملية، قيم سجلات المعالج، معلومات الذاكرة، والملفات المفتوحة.</p>
+</section>
+<section class="lesson-section "><h3>حالات العملية</h3>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">الحالة</th><th scope="col">المعنى</th></tr></thead><tbody><tr><th scope="row">New</th><td>تُنشأ للتو</td></tr><tr><th scope="row">Ready</th><td>جاهزة وتنتظر دورها على المعالج</td></tr><tr><th scope="row">Running</th><td>تنفّذ تعليماتها الآن</td></tr><tr><th scope="row">Waiting</th><td>تنتظر حدثًا مثل قراءة قرص أو ضغط مفتاح</td></tr><tr><th scope="row">Terminated</th><td>انتهت وتُحرَّر مواردها</td></tr></tbody></table></div>
+</section>
+<section class="lesson-section "><h3>الخيوط Threads</h3>
+<p>العملية الواحدة قد تحتوي عدة <span class="term">Threads</span>: مسارات تنفيذ تتشارك نفس الذاكرة والملفات لكن لكلٍّ منها مكدّسه (Stack) وسجلاته. المتصفح مثلًا يستخدم خيطًا لرسم الصفحة وآخر لتحميل الصور فلا تتجمد الواجهة.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">المقارنة</th><th scope="col">عملية</th><th scope="col">خيط</th></tr></thead><tbody><tr><th scope="row">الذاكرة</th><td>مستقلة ومعزولة</td><td>مشتركة داخل العملية</td></tr><tr><th scope="row">كلفة الإنشاء</th><td>أعلى</td><td>أقل</td></tr><tr><th scope="row">أثر الانهيار</th><td>تنهار وحدها</td><td>قد يُسقط العملية كلها</td></tr><tr><th scope="row">التواصل</th><td>يحتاج IPC (أنابيب، مقابس)</td><td>مباشر عبر الذاكرة المشتركة</td></tr></tbody></table></div>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">bash</span></figcaption><pre dir="ltr"><code>ps -eo pid,ppid,stat,comm | head -5
+kill -SIGTERM 4321   # ask process 4321 to exit politely</code></pre></figure>
+<div class="doc-mistakes"><h4>أخطاء شائعة</h4><ul><li>القول إن العملية والبرنامج شيء واحد.</li><li>افتراض أن زيادة الخيوط تزيد السرعة دائمًا؛ المعالج له عدد أنوية محدود.</li></ul></div>
+<details class="doc-exercise"><summary><span>تمرين</span> شغّلت المحرر نفسه ثلاث مرات. كم برنامجًا وكم عملية لديك؟</summary><div class="doc-solution"><strong>عرض الحل</strong><p>برنامج واحد (ملف واحد على القرص) وثلاث عمليات، لكل منها PID وذاكرة مستقلة.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>الخلاصة</h3><ul><li>العملية = برنامج قيد التشغيل مع مواردها.</li><li>النواة تتتبعها عبر PCB وحالات محددة.</li><li>الخيوط تتشارك ذاكرة العملية وتتيح التوازي.</li></ul><p class="doc-next"><strong>الخطوة التالية:</strong> من يقرر أي عملية تأخذ المعالج الآن؟ الجدولة.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>المفهوم الأساسي</strong>
+<p>العملية وعاء معزول للتنفيذ، والخيط مسار تنفيذ داخل ذلك الوعاء.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>تطبيق عملي</span>
+<h3>جرّب بنفسك</h3>
+</div>
+</div>
+<p>افتح مراقب النظام وابحث عن عدد العمليات وعدد الخيوط الكلي، ثم اختر عملية واحدة واكتب كم خيطًا لديها.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ماذا يحدث عند تنفيذ System Call؟</strong></p><ul><li>ينتقل التنفيذ إلى النواة بصلاحيات أعلى ثم يعود</li><li>يُعاد تشغيل الجهاز</li><li>يُحذف البرنامج</li><li>يتجاوز البرنامج النظام ويصل للعتاد</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>ينتقل التنفيذ إلى النواة بصلاحيات أعلى ثم يعود</strong></p></details></li><li><p><strong>ما الدور الذي يؤديه الرقم 3 في الناتج openat(...) = 3؟</strong></p><ul><li>حجم الملف بالبايت</li><li>واصف ملف يمنحه النواة للملف المفتوح</li><li>رقم العملية PID</li><li>رمز الخطأ</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>واصف ملف يمنحه النواة للملف المفتوح</strong></p><p>الواصف مقبض تستعمله الاستدعاءات التالية مثل read وclose للإشارة إلى الملف.</p></details></li><li><p><strong>ما الخطأ في العبارة: الصدفة shell جزء من النواة؟</strong></p><ul><li>لا خطأ فيها</li><li>الصدفة برنامج عادي في User Space يطلب من النواة تشغيل البرامج</li><li>الصدفة عتاد</li><li>الصدفة تعمل في Kernel Mode دائماً</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>الصدفة برنامج عادي في User Space يطلب من النواة تشغيل البرامج</strong></p><p>الصدفة تطبيق مثل غيره، سواء نصية كـ Bash أو رسومية كسطح المكتب.</p></details></li><li><p><strong>أي ترتيب صحيح لقراءة ملف؟</strong></p><ul><li>النواة تقرأ ثم المكتبة تتصل ثم التطبيق</li><li>التطبيق يستدعي دالة مكتبة، ثم تعليمة trap، ثم تفحص النواة وتقرأ، ثم تعود البيانات</li><li>التطبيق يقرأ القرص مباشرة ثم يخبر النواة</li><li>trap أولاً ثم التطبيق ثم المكتبة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>التطبيق يستدعي دالة مكتبة، ثم تعليمة trap، ثم تفحص النواة وتقرأ، ثم تعود البيانات</strong></p><p>الانتقال إلى وضع النواة يتم بتعليمة معالج خاصة، والنواة تتحقق من الأذونات قبل القراءة.</p></details></li><li><p><strong>لماذا تجمّع المكتبات العمليات الصغيرة في دفعات (buffering)؟</strong></p><ul><li>لأن استدعاء النظام أبطأ من استدعاء دالة عادية فتقلّ مرات دخول النواة</li><li>لأن النواة لا تقبل أكثر من بايت واحد</li><li>لتخفي الملفات عن المستخدم</li><li>لتزيد عدد استدعاءات النظام</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لأن استدعاء النظام أبطأ من استدعاء دالة عادية فتقلّ مرات دخول النواة</strong></p><p>كل دخول للنواة له كلفة، فتجميع العمليات يخفضها.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-22">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/fundamentals/computer-basics/lessons/com-21.html"><small>الدرس السابق</small><strong>استدعاءات النظام والـ Shell</strong></a>
+        <a rel="next" href="/fundamentals/computer-basics/lessons/com-23.html"><small>الدرس التالي</small><strong>جدولة المعالج</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/fundamentals/computer-basics/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <title>النماذج وحالات الحقول — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="Tailwind لا ينسق النماذج افتراضيًا: صمّم الحقول وحالات التركيز والخطأ بنفسك." />
+    <link rel="canonical" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-19.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-19.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-19.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-19.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="النماذج وحالات الحقول — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="Tailwind لا ينسق النماذج افتراضيًا: صمّم الحقول وحالات التركيز والخطأ بنفسك." />
+    <meta property="og:url" content="https://faybit.vercel.app/tailwind-learning/lessons/tw-19.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"النماذج وحالات الحقول","item":"https://faybit.vercel.app/tailwind-learning/lessons/tw-19.html"}]},{"@type":"LearningResource","name":"النماذج وحالات الحقول","description":"Tailwind لا ينسق النماذج افتراضيًا: صمّم الحقول وحالات التركيز والخطأ بنفسك.","url":"https://faybit.vercel.app/tailwind-learning/lessons/tw-19.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/tailwind-learning/lessons/index.html">الدروس</a><a href="/en/tailwind-learning/lessons/tw-19.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">الدرس 19 من 20</p>
+      <h1 class="lp-h1">النماذج وحالات الحقول</h1>
+      <p class="lp-lead">Tailwind لا ينسق النماذج افتراضيًا: صمّم الحقول وحالات التركيز والخطأ بنفسك.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-19">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>أساس الحقل</h2><p>Preflight يزيل التنسيقات الافتراضية، فاكتب: <code>w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-sky-500 focus:ring-2 focus:ring-sky-200 focus:outline-hidden</code>. وللنص البديل <code>placeholder:text-slate-400</code>.</p></article><article class="content-card"><h2>الحالات</h2><p><code>invalid:border-rose-500</code> مع <code>required</code>، و<code>user-invalid:</code> (يظهر بعد تفاعل المستخدم)، و<code>disabled:bg-slate-100</code>، و<code>accent-sky-600</code> للخانات الأصلية.</p></article></div>
+<article class="body-card key-card"><p>اربط كل حقل بـ label، وأعطِ التركيز مؤشرًا بصريًا واضحًا.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;form class="max-w-sm space-y-4 p-4" onsubmit="return false"&gt;
+&lt;div&gt;
+&lt;label for="mail" class="mb-1 block text-sm font-medium text-slate-700"&gt;البريد&lt;/label&gt;
+&lt;input id="mail" type="email" required placeholder="name@example.com"
+class="w-full rounded-lg border border-slate-300 px-3 py-2 placeholder:text-slate-400 focus:border-sky-500 focus:ring-2 focus:ring-sky-200 focus:outline-hidden user-invalid:border-rose-500"&gt;
+&lt;/div&gt;
+&lt;label class="flex items-center gap-2 text-sm"&gt;&lt;input type="checkbox" class="size-4 accent-sky-600"&gt; تذكرني&lt;/label&gt;
+&lt;button class="w-full rounded-lg bg-sky-600 py-2 font-semibold text-white hover:bg-sky-700"&gt;إرسال&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>الحقل يحصل على حلقة زرقاء عند التركيز، وحدود حمراء عند كتابة بريد غير صالح بعد التفاعل (<code>user-invalid</code>).</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">أضف حقل كلمة مرور بنفس التنسيق مع label مرتبطة.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>لماذا نحتاج تنسيق الحقول يدويًا؟</strong></p><ul><li>لأن Preflight يزيل تنسيقات المتصفح الافتراضية</li><li>لأن Tailwind لا يدعم الحقول</li><li>لأن الحقول محذوفة</li><li>لا نحتاج</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لأن Preflight يزيل تنسيقات المتصفح الافتراضية</strong></p></details></li><li><p><strong>ما فائدة user-invalid؟</strong></p><ul><li>يظهر حالة الخطأ بعد تفاعل المستخدم</li><li>يعطل الحقل</li><li>يحذف الحقل</li><li>يغير اللغة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يظهر حالة الخطأ بعد تفاعل المستخدم</strong></p></details></li><li><p><strong>ما الشرط عند إخفاء outline عن الحقل؟</strong></p><ul><li>توفير بديل مرئي كـ ring</li><li>لا شرط</li><li>حذف الـ label</li><li>استخدام div</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>توفير بديل مرئي كـ ring</strong></p></details></li><li><p><strong>أي فئة تلوّن نص الـ placeholder؟</strong></p><ul><li>text-placeholder-slate</li><li>hover:text-slate-400</li><li>placeholder:text-slate-400</li><li>ph-slate-400</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>placeholder:text-slate-400</strong></p><p>البادئة placeholder: تستهدف نص التلميح داخل الحقل.</p></details></li><li><p><strong>أي فئة تغيّر لون خانة checkbox الأصلية؟</strong></p><ul><li>bg-sky-600</li><li>accent-sky-600</li><li>check-sky-600</li><li>ring-checkbox</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>accent-sky-600</strong></p><p>accent-* تلوّن عناصر النموذج الأصلية دون إعادة بنائها.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-19">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/tailwind-learning/lessons/tw-18.html"><small>الدرس السابق</small><strong>@apply و @layer وإعادة الاستخدام</strong></a>
+        <a rel="next" href="/tailwind-learning/lessons/tw-20.html"><small>الدرس التالي</small><strong>مشروع: بطاقات تسعير وأفضل الممارسات</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/tailwind-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

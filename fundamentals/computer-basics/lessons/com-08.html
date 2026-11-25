@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>بطاقة الرسوميات GPU — أساسيات الكمبيوتر | FAYBIT</title>
+    <meta name="description" content="تشرح الفرق بين GPU و CPU من حيث التصميم والمهام. تفرّق بين الرسوميات المدمجة والمنفصلة وتفهم دور VRAM . تحسب عدد البكسلات والزمن المتاح لكل إطار، وتعرف…" />
+    <link rel="canonical" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-08.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-08.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-08.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-08.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="بطاقة الرسوميات GPU — أساسيات الكمبيوتر | FAYBIT" />
+    <meta property="og:description" content="تشرح الفرق بين GPU و CPU من حيث التصميم والمهام. تفرّق بين الرسوميات المدمجة والمنفصلة وتفهم دور VRAM . تحسب عدد البكسلات والزمن المتاح لكل إطار، وتعرف…" />
+    <meta property="og:url" content="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-08.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"أساسيات الكمبيوتر","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"بطاقة الرسوميات GPU","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-08.html"}]},{"@type":"LearningResource","name":"بطاقة الرسوميات GPU","description":"تشرح الفرق بين GPU و CPU من حيث التصميم والمهام. تفرّق بين الرسوميات المدمجة والمنفصلة وتفهم دور VRAM . تحسب عدد البكسلات والزمن المتاح لكل إطار، وتعرف…","url":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-08.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"أساسيات الكمبيوتر — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="أساسيات الكمبيوتر"><a href="/fundamentals/computer-basics/lessons/index.html">الدروس</a><a href="/en/fundamentals/computer-basics/lessons/com-08.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/fundamentals/computer-basics/lessons/index.html">أساسيات الكمبيوتر</a></nav>
+      <p class="lp-eyebrow">الدرس 8 من 30</p>
+      <h1 class="lp-h1">بطاقة الرسوميات GPU</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-8">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>بطاقة الرسوميات GPU</h2>
+<div><section class="lesson-section doc-objectives"><h3>أهداف الدرس</h3><ul><li>تشرح الفرق بين <span class="term">GPU</span> و<span class="term">CPU</span> من حيث التصميم والمهام.</li><li>تفرّق بين الرسوميات المدمجة والمنفصلة وتفهم دور <span class="term">VRAM</span>.</li><li>تحسب عدد البكسلات والزمن المتاح لكل إطار، وتعرف استعمالات GPU غير الألعاب.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>المتطلبات السابقة</h3><ul><li>دروس المعالج CPU (com-04) واللوحة الأم (com-07).</li></ul>
+</section>
+<section class="lesson-section "><h3>مقدمة: لماذا نحتاج معالجًا ثانيًا؟</h3>
+<p>شاشة بدقة Full HD تحتوي نحو مليوني نقطة ضوئية، ويجب تحديد لون كل منها عشرات المرات في الثانية. لو كُلّف المعالج الرئيسي بذلك وحده لانشغل به عن بقية عمل النظام. لهذا وُجدت <span class="term">GPU</span> (Graphics Processing Unit)، وهي معالج متخصص في إنتاج الصورة، يعمل جنبًا إلى جنب مع CPU.</p>
+<p>ليست GPU «معالجًا أقوى»، بل معالجًا مختلف التصميم. <span class="term">CPU</span> مثل مجموعة قليلة من الخبراء ينجزون مهامًا معقدة متتابعة، و GPU مثل آلاف العمال البسطاء ينفذون العملية البسيطة نفسها في وقت واحد على بيانات كثيرة.</p>
+</section>
+<section class="lesson-section "><h3>تصميم يعتمد على التوازي</h3>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">الخاصية</th><th scope="col">CPU</th><th scope="col">GPU</th></tr></thead><tbody><tr><th scope="row">عدد الأنوية</th><td>بضع إلى عشرات الأنوية القوية</td><td>آلاف الأنوية الأبسط</td></tr><tr><th scope="row">الأفضل في</th><td>منطق معقد وقرارات وتفرعات</td><td>حسابات متكررة على كمٍّ ضخم من البيانات</td></tr><tr><th scope="row">الذاكرة</th><td>RAM النظام</td><td>ذاكرة خاصة VRAM ذات نطاق عريض</td></tr><tr><th scope="row">مثال</th><td>تشغيل نظام التشغيل وتنفيذ برنامج</td><td>حساب لون كل بكسل في الصورة</td></tr></tbody></table></div>
+<p>تصلح هذه الفكرة للرسوميات لأن لون كل بكسل لا يعتمد غالبًا على بكسل مجاور، فيمكن حسابها كلها في آن واحد. ويسمى هذا النوع من المسائل <span class="term">Data Parallelism</span>.</p>
+</section>
+<section class="lesson-section "><h3>كيف تُرسم الصورة؟</h3>
+<figure class="doc-diagram" role="group" aria-label="مخطط"><figcaption>مسار الرسوميات المبسط لإطار واحد</figcaption><ol class="doc-flow"><li><strong>وصف المشهد</strong><span>يرسل البرنامج عبر CPU مجسمات ثلاثية الأبعاد كمجموعة نقاط (رؤوس) ومثلثات</span></li><li><strong>معالجة الرؤوس</strong><span>تحسب GPU موقع كل رأس على الشاشة بحسب زاوية الكاميرا</span></li><li><strong>التحويل إلى بكسلات (Rasterization)</strong><span>تُحوَّل المثلثات إلى نقاط ضوئية</span></li><li><strong>التظليل (Shading)</strong><span>يحسب لون كل بكسل بحسب الإضاءة والخامة</span></li><li><strong>الإخراج</strong><span>يُكتب الإطار في ذاكرة الإطار ثم يُرسل إلى الشاشة</span></li></ol></figure>
+<p>تتم هذه الخطوات بتطبيقات برمجية مسماة <span class="term">Graphics API</span> مثل DirectX وVulkan وOpenGL وMetal، تتولى الربط بين اللعبة وبين تعريفات الجهاز. وتكتب برامج صغيرة تسمى <span class="term">Shader</span> تُنفَّذ على آلاف الأنوية معًا.</p>
+</section>
+<section class="lesson-section "><h3>مدمجة أم منفصلة؟ ودور VRAM</h3>
+<p><span class="term">Integrated GPU</span> جزء من شريحة المعالج نفسها وتستعمل RAM النظام، وهي كافية لتصفح الويب والفيديو والمكتب وألعاب خفيفة، وتوفر الطاقة والحرارة. أما <span class="term">Dedicated GPU</span> فبطاقة مستقلة تركّب في فتحة PCIe على اللوحة الأم ولها ذاكرتها <span class="term">VRAM</span> ومبرّدها وتغذيتها الكهربائية؛ تعطي أداءً أعلى لكن تستهلك طاقة وتحتاج مساحة وتبريدًا.</p>
+<p>تحتفظ VRAM بالخامات (Textures) وبيانات المشهد وذاكرة الإطار. فإن امتلأت اضطرت البطاقة إلى استعارة RAM النظام عبر PCIe الأبطأ بكثير، فيحدث تقطّع واضح. ولذلك تُهم سعة VRAM عند اللعب بدقة عالية أو العمل على نماذج ثلاثية الأبعاد كبيرة.</p>
+</section>
+<section class="lesson-section "><h3>أبعد من الألعاب: الحوسبة العامة على GPU</h3>
+<p>لأن GPU تنفذ عمليات حسابية كثيرة متوازية فقد استُعملت في مجالات لا علاقة لها بالرسم، ويسمى ذلك <span class="term">GPGPU</span>، عبر منصات مثل CUDA وOpenCL. أبرز استعمالاتها اليوم تدريب نماذج الذكاء الاصطناعي، لأن التدريب يقوم على ضرب مصفوفات ضخمة. وتستعمل كذلك في المحاكاة العلمية وتحرير الفيديو وفك التشفير والتنقيب عن العملات المشفرة. وتحوي معظم البطاقات دوائر مخصصة لترميز الفيديو وفك ترميزه تخفف العبء عن CPU.</p>
+</section>
+<section class="lesson-section "><h3>تطبيقات من الواقع</h3>
+<ul><li><strong>الألعاب:</strong> تحدد البطاقة الدقة ومعدل الإطارات وجودة الإضاءة.</li><li><strong>التصميم والمونتاج:</strong> برامج الرسم ثلاثي الأبعاد والمونتاج تسرّع المعاينة والتصدير باستعمال GPU.</li><li><strong>الذكاء الاصطناعي:</strong> مراكز بيانات تضم آلاف الـ GPU لتدريب النماذج.</li><li><strong>الهواتف:</strong> رقاقة الهاتف تضم GPU صغيرة ترسم الواجهة والألعاب بأقل طاقة.</li></ul>
+<div class="doc-mistakes"><h4>أخطاء شائعة</h4><ul><li>«GPU تعني بطاقة ألعاب فقط»: تستعملها الواجهة الرسومية وتصفح الويب والمونتاج والذكاء الاصطناعي، وكل جهاز له شاشة فيه GPU ما.</li><li>«GPU أقوى من CPU في كل شيء»: GPU ضعيفة في المنطق المتتابع المعقد، ولا تغني عن CPU؛ كلاهما يكمل الآخر.</li><li>«الذاكرة الأكبر تعني بطاقة أسرع»: VRAM تمنع التقطع عند امتلائها فقط، لكن سرعة البطاقة تتحدد بعدد الأنوية وتصميمها ونطاق الذاكرة.</li><li>«ترقية GPU وحدها ترفع أداء أي جهاز»: قد يصبح المعالج أو ضعف مزود الطاقة هو عنق الزجاجة.</li></ul></div>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>حساب:</strong> كم بكسلًا في شاشة 1920×1080؟ وكم في شاشة 4K بدقة 3840×2160؟ وكم بكسلًا تحتاج GPU إلى إنتاجها في الثانية عند 60 إطارًا في الثانية على كل منهما؟</summary><div class="doc-solution"><strong>عرض الحل</strong><p>1920 × 1080 = 2,073,600 بكسل. و3840 × 2160 = 8,294,400 بكسل، أي أربعة أضعاف بالضبط. عند 60 إطارًا: 2,073,600 × 60 ≈ 124.4 مليون بكسل في الثانية، وللـ 4K: 8,294,400 × 60 ≈ 497.7 مليون بكسل في الثانية. لهذا يثقل رفع الدقة على البطاقة حتى لو لم تتغير اللعبة.</p></div></details>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>حساب واستدلال:</strong> كم ميلي ثانية تتاح لإنتاج كل إطار عند 60 و144 إطارًا في الثانية؟ وكم يحتاج إطار 4K واحد من الذاكرة إن خُزّن كل بكسل في 4 بايت؟</summary><div class="doc-solution"><strong>عرض الحل</strong><p>عند 60: 1000 ÷ 60 ≈ 16.7 ميلي ثانية للإطار. عند 144: 1000 ÷ 144 ≈ 6.9 ميلي ثانية، أي أقل من نصف الزمن، فيجب أن تكون الحسابات أسرع بكثير. حجم إطار 4K: 8,294,400 × 4 = 33,177,600 بايت، أي نحو 33 MB. وتحتفظ البطاقة بعدة إطارات مع الخامات، لذلك تحتاج إلى VRAM بسعة كبيرة.</p></div></details>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>تطبيق عملي:</strong> اعرف اسم GPU في جهازك، وهل هي مدمجة أم منفصلة، وكم VRAM فيها، وراقب استعمالها أثناء تشغيل فيديو.</summary><div class="doc-solution"><strong>عرض الحل</strong><p>في Windows افتح مدير المهام ثم الأداء ثم GPU: ترى الاسم والذاكرة المخصصة (VRAM) والمشتركة (من RAM النظام). إن ظهرت ذاكرة مشتركة فقط فهي غالبًا مدمجة. يمكنك استعمال <code>dxdiag</code> أيضًا. في macOS افتح «حول هذا الـ Mac». شغّل فيديو بدقة عالية وراقب خانة «Video Decode» أو الاستعمال العام: سترى ارتفاعًا طفيفًا لأن فك الترميز يعالج في GPU، بينما يبقى استعمال CPU منخفضًا.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>الخلاصة</h3><ul><li>GPU معالج متخصص بآلاف الأنوية البسيطة لتنفيذ عمليات متوازية.</li><li>المدمجة تشارك RAM مع المعالج، والمنفصلة لها VRAM وفتحة PCIe خاصة.</li><li>الدقة ومعدل الإطارات يحددان حجم العمل، وكل زيادة فيهما تضاعف الحساب.</li><li>تُستعمل GPU اليوم في الذكاء الاصطناعي والحوسبة العلمية إلى جانب الرسوميات.</li></ul><p class="doc-next"><strong>الخطوة التالية:</strong> أجهزة الإدخال والإخراج: كيف يتصل الإنسان بكل هذه الآلة.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>المفهوم الأساسي</strong>
+<p>GPU متخصص في معالجة الرسوميات والعمليات المتوازية، وليس مجرد نسخة ثانية من CPU.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>تطبيق عملي</span>
+<h3>جرّب بنفسك</h3>
+</div>
+</div>
+<p>ابحث عن مواصفات جهازك لمعرفة اسم الـGPU الموجود فيه.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما المجال الذي يرتبط بشكل مباشر بالـGPU؟</strong></p><ul><li>الرسوميات</li><li>الطباعة الورقية فقط</li><li>إدارة الملفات فقط</li><li>لوحة المفاتيح</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>الرسوميات</strong></p></details></li><li><p><strong>ما الفرق التصميمي الأساسي بين GPU و CPU؟</strong></p><ul><li>GPU آلاف أنوية بسيطة تعمل بالتوازي، وCPU أنوية قليلة قوية</li><li>GPU أنوية قليلة جداً وأقوى</li><li>لا فرق بينهما</li><li>GPU لا يملك ذاكرة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>GPU آلاف أنوية بسيطة تعمل بالتوازي، وCPU أنوية قليلة قوية</strong></p><p>الرسوميات تتطلب عملية بسيطة مكررة على بيانات ضخمة، وهذا ما يناسب التوازي في البيانات.</p></details></li><li><p><strong>أي عبارة تصف الكرت المدمج (Integrated GPU)؟</strong></p><ul><li>بطاقة منفصلة لها VRAM خاصة</li><li>جزء من شريحة المعالج ويشارك ذاكرة النظام</li><li>يتطلب مصدر طاقة مستقلاً</li><li>يعمل فقط للذكاء الاصطناعي</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>جزء من شريحة المعالج ويشارك ذاكرة النظام</strong></p><p>المدمج يوفر الطاقة والحرارة ويكفي للتصفح والمكتب والألعاب الخفيفة.</p></details></li><li><p><strong>ماذا يحدث حين تمتلئ VRAM في لعبة عالية الدقة؟</strong></p><ul><li>تزداد سرعة الإطارات</li><li>تُغلق اللعبة دائماً</li><li>يستعير الكرت ذاكرة النظام عبر PCIe الأبطأ فيحدث تقطّع</li><li>يتحول إلى استخدام القرص كشاشة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يستعير الكرت ذاكرة النظام عبر PCIe الأبطأ فيحدث تقطّع</strong></p><p>ذاكرة النظام أبطأ كثيراً من VRAM، لذلك يظهر التقطع.</p></details></li><li><p><strong>اشترى أحمد بطاقة لأن عدد أنويتها أكبر من الأخرى فقط. ما الخطأ؟</strong></p><ul><li>لا خطأ؛ الأنوية الأكثر تعني دائماً أداءً أفضل</li><li>تصاميم الأنوية تختلف بين الشركات والأجيال فيجب الاعتماد على اختبارات الأداء</li><li>الأنوية لا تؤثر في الأداء إطلاقاً</li><li>الحل في مقارنة حجم الصندوق</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تصاميم الأنوية تختلف بين الشركات والأجيال فيجب الاعتماد على اختبارات الأداء</strong></p><p>عدد الأنوية وحده لا يصلح للمقارنة بين بطاقات مختلفة؛ انظر إلى benchmarks لعملك.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-8">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/fundamentals/computer-basics/lessons/com-07.html"><small>الدرس السابق</small><strong>اللوحة الأم Motherboard</strong></a>
+        <a rel="next" href="/fundamentals/computer-basics/lessons/com-09.html"><small>الدرس التالي</small><strong>أجهزة الإدخال والإخراج</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/fundamentals/computer-basics/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

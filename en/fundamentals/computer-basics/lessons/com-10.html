@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>Operating Systems — Computer Basics | FAYBIT</title>
+    <meta name="description" content="Define an Operating System and list its core duties. Distinguish the Kernel , applications and interface, and grasp multitasking. Recognise Windows,…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-10.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-10.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-10.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-10.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Operating Systems — Computer Basics | FAYBIT" />
+    <meta property="og:description" content="Define an Operating System and list its core duties. Distinguish the Kernel , applications and interface, and grasp multitasking. Recognise Windows,…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-10.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Computer Basics","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Operating Systems","item":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-10.html"}]},{"@type":"LearningResource","name":"Operating Systems","description":"Define an Operating System and list its core duties. Distinguish the Kernel , applications and interface, and grasp multitasking. Recognise Windows,…","url":"https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-10.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Computer Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Computer Basics"><a href="/en/fundamentals/computer-basics/lessons/index.html">Lessons</a><a href="/fundamentals/computer-basics/lessons/com-10.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/computer-basics/lessons/index.html">Computer Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 10 of 30</p>
+      <h1 class="lp-h1">Operating Systems</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-10">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>Operating Systems</h2>
+<div><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Define an <span class="term">Operating System</span> and list its core duties.</li><li>Distinguish the <span class="term">Kernel</span>, applications and interface, and grasp multitasking.</li><li>Recognise Windows, macOS, Linux, Android and iOS and choose what fits a need.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>The hardware and software (com-03), RAM (com-05) and I/O devices (com-09) lessons.</li></ul>
+</section>
+<section class="lesson-section "><h3>Introduction: who runs the show?</h3>
+<p>Imagine ten programs all wanting the processor, memory, screen and disk at the same time. Left alone they would collide and corrupt each other's data. The <span class="term">Operating System</span> is the foundational program that manages the hardware and lets other programs use it safely and in order. It is the go-between for you and the machine, and for programs and the machine.</p>
+<p>This lesson is a general introduction. The advanced section of the path (lessons 21–30) studies OS internals in detail, so we will not repeat that here.</p>
+</section>
+<section class="lesson-section "><h3>What does an operating system do?</h3>
+<ul><li><strong>Process management:</strong> decides which program uses the CPU and for how long; each running program is called a <span class="term">Process</span>.</li><li><strong>Memory management:</strong> gives each program a region of RAM and stops it from touching anyone else's.</li><li><strong>File management:</strong> organises storage into files and folders using the file system.</li><li><strong>Device management:</strong> deals with the keyboard, screen and network through drivers.</li><li><strong>Security and users:</strong> accounts, permissions and security updates.</li><li><strong>Interface:</strong> a desktop, touchscreen or command line for interacting with it.</li></ul>
+</section>
+<section class="lesson-section "><h3>The layers: hardware, kernel and applications</h3>
+<figure class="doc-diagram" role="group" aria-label="Diagram"><figcaption>Where the OS sits between hardware and programs</figcaption><ol class="doc-layers"><li><strong>User</strong><span>works with the interface, clicking and typing</span></li><li><strong>Applications</strong><span>browser, editor, game — they request services and never touch hardware directly</span></li><li><strong>Kernel</strong><span>the heart of the system, running with top privilege and controlling the CPU, memory and devices</span></li><li><strong>Hardware</strong><span>processor, memory, storage and peripherals</span></li></ol></figure>
+<p>The <span class="term">Kernel</span> is the core of the system and runs with high privilege, while applications run with limited privilege. When an application wants to read a file, it does not read the disk itself; it asks the kernel through what is called a <span class="term">System Call</span>. This separation protects the system: a crashing application does not bring down the whole machine. The advanced section's architecture lesson covers this in depth.</p>
+</section>
+<section class="lesson-section "><h3>Multitasking: the illusion of parallelism</h3>
+<p>While you listen to music, type and download a file, it seems everything happens together. In truth, the kernel carves time into very short <span class="term">Time Slice</span>s measured in milliseconds and switches the processor between programs faster than you can perceive. On multi-core processors several programs really do run at the same instant, each on its own core.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">text</span></figcaption><pre dir="ltr"><code>Single core, time slice = 10 ms, 4 processes
+0-10 ms   process A
+10-20 ms  process B
+20-30 ms  process C
+30-40 ms  process D
+40-50 ms  process A  (again)</code></pre></figure>
+<p>In this example each program gets another turn every 40 ms and 25% of the time, which is below what a user notices, so responses seem continuous.</p>
+</section>
+<section class="lesson-section "><h3>Common operating systems</h3>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">System</th><th scope="col">Developer</th><th scope="col">Devices</th><th scope="col">Highlights</th></tr></thead><tbody><tr><th scope="row">Windows</th><td>Microsoft</td><td>PCs and laptops</td><td>the widest software, gaming and hardware support</td></tr><tr><th scope="row">macOS</th><td>Apple</td><td>Mac computers</td><td>built on a Unix foundation, integrated with Apple devices</td></tr><tr><th scope="row">Linux</th><td>open-source community</td><td>servers, PCs and embedded devices</td><td>free, open and flexible, shipped as distributions such as Ubuntu and Fedora</td></tr><tr><th scope="row">Android</th><td>Google</td><td>phones, tablets and TVs</td><td>built on the Linux kernel, the most widely used phone OS</td></tr><tr><th scope="row">iOS</th><td>Apple</td><td>iPhone and iPad</td><td>closed and integrated, with apps from the App Store</td></tr></tbody></table></div>
+<p>Note that Linux is really the name of the kernel started by Linus Torvalds in 1991; what people install is a <span class="term">Distribution</span> that bundles the kernel with tools and an interface. There is no single “best” system: the choice depends on the software you need, your hardware, your experience and your budget.</p>
+</section>
+<section class="lesson-section "><h3>Real-world applications</h3>
+<ul><li><strong>Updates:</strong> they patch OS vulnerabilities and add features; postponing them leaves a machine exposed to attacks.</li><li><strong>Virtual machines:</strong> running more than one OS on a single device to test software or try Linux safely.</li><li><strong>Choosing a device:</strong> before buying, check that the programs you rely on run on that device's OS.</li></ul>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>“The OS is the interface I see”: the interface is one part; most of the OS's work happens in the kernel behind the scenes.</li><li>“Linux is one system”: there are dozens of distributions differing in interface, tools and support period.</li><li>“Multitasking means everything runs literally at once”: on one core the system alternates between programs extremely quickly.</li><li>“Android and iOS are the same since both are for phones”: they have different origins, different companies and different approaches.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Calculation:</strong> a single-core system with a 20 ms time slice runs 5 processes in turn. After how many milliseconds does the first process get another turn, and what share of time does each receive?</summary><div class="doc-solution"><strong>Show solution</strong><p>A full round = 5 × 20 = 100 ms, so the first process runs again after 100 ms. Each process gets 1 ÷ 5 = 20% (ignoring the switching cost itself, which takes a small slice). Since 100 ms is near the threshold of human perception, a user might begin to notice lag, so systems use shorter slices and priorities.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Reasoning:</strong> why does the OS not let an application read memory used by another application? What could happen if it did?</summary><div class="doc-solution"><strong>Show solution</strong><p>Isolation delivers stability and security together. If a program could write into another's memory, it could corrupt its data or crash it with a simple bug, and a malicious program could read passwords from the browser. So the kernel gives each process its own address space, and any attempt to trespass stops only the offending program with an error while the rest keep running.</p></div></details>
+<details class="doc-exercise"><summary><span>Exercise</span> <strong>Hands-on:</strong> find the operating system and version on your device, then open the list of running processes and name three of them with their roles.</summary><div class="doc-solution"><strong>Show solution</strong><p>On Windows press the Windows key with R and type <code>winver</code>. On macOS choose About This Mac. On Linux open a terminal and type <code>uname -a</code>. Then open Task Manager or Activity Monitor: you will typically find a browser process (an application), a process such as Explorer or Finder (the interface and file management), and a system service or antivirus process (a background service). Notice how many processes run even with no applications open; that shows how much the system manages behind the scenes.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>The operating system manages the processor, memory, files, devices and security, and provides the interface.</li><li>The kernel runs with top privilege, and applications request services from it through system calls.</li><li>Multitasking is rapid alternation between programs plus true parallel running on multiple cores.</li><li>No system is best in absolute terms; choose by need.</li></ul><p class="doc-next"><strong>Next step:</strong> Files and Folders: how the system organises what we store and how we find our files.</p>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>Core concept</strong>
+<p>The Operating System acts as an intermediary between the user and applications on one side and the Hardware on the other.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Hands-on practice</span>
+<h3>Try it yourself</h3>
+</div>
+</div>
+<p>Identify the operating system you are using right now, then look up its version.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is the main function of an operating system?</strong></p><ul><li>Managing the device's resources</li><li>Enlarging the screen</li><li>Replacing the CPU</li><li>Creating the internet</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Managing the device's resources</strong></p></details></li><li><p><strong>What is a system call?</strong></p><ul><li>An error that halts the machine</li><li>A phone call over the network</li><li>A tool to speed up the processor</li><li>A request from an application to the kernel to do something such as read a file</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A request from an application to the kernel to do something such as read a file</strong></p><p>An application does not read the disk itself but asks the kernel, which protects the system.</p></details></li><li><p><strong>A single core, a 10 ms time slice and 4 processes. How long does each process wait between turns?</strong></p><ul><li>10 ms</li><li>30 ms</li><li>40 ms</li><li>100 ms</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>30 ms</strong></p><p>The other three run for 30 ms before your turn returns, so each gets 25% of the time.</p></details></li><li><p><strong>How is Android related to Linux?</strong></p><ul><li>They are unrelated</li><li>Linux is built on top of Android</li><li>Android is built on the Linux kernel</li><li>Android is a copy of Windows</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Android is built on the Linux kernel</strong></p><p>Linux is the kernel's name, and Android is a system built on it and the most widely used phone OS.</p></details></li><li><p><strong>Why does the whole machine not go down when a single application crashes?</strong></p><ul><li>Because applications run with limited privilege and only the kernel controls the hardware</li><li>Because applications do not use the CPU</li><li>Because the system ignores errors</li><li>Because crashes are impossible</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Because applications run with limited privilege and only the kernel controls the hardware</strong></p><p>Privilege separation between kernel and applications isolates an application's faults from the rest.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-10">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/computer-basics/lessons/com-09.html"><small>Previous lesson</small><strong>Input and Output Devices</strong></a>
+        <a rel="next" href="/en/fundamentals/computer-basics/lessons/com-11.html"><small>Next lesson</small><strong>Files and Folders</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/computer-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

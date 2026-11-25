@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <title>التموضع والـ container وترتيب الطبقات — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="relative وabsolute وsticky وinset وz-index والتجاوز." />
+    <link rel="canonical" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-08.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-08.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-08.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-08.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="التموضع والـ container وترتيب الطبقات — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="relative وabsolute وsticky وinset وz-index والتجاوز." />
+    <meta property="og:url" content="https://faybit.vercel.app/tailwind-learning/lessons/tw-08.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"التموضع والـ container وترتيب الطبقات","item":"https://faybit.vercel.app/tailwind-learning/lessons/tw-08.html"}]},{"@type":"LearningResource","name":"التموضع والـ container وترتيب الطبقات","description":"relative وabsolute وsticky وinset وz-index والتجاوز.","url":"https://faybit.vercel.app/tailwind-learning/lessons/tw-08.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/tailwind-learning/lessons/index.html">الدروس</a><a href="/en/tailwind-learning/lessons/tw-08.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">الدرس 8 من 20</p>
+      <h1 class="lp-h1">التموضع والـ container وترتيب الطبقات</h1>
+      <p class="lp-lead">relative وabsolute وsticky وinset وz-index والتجاوز.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-8">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>Position</h2><p><code>relative</code> <code>absolute</code> <code>fixed</code> <code>sticky</code> مع <code>inset-0</code> <code>top-0</code> <code>start-0</code> <code>end-4</code> (المنطقية). العنصر المطلق يتمركز بالنسبة لأقرب أب <code>relative</code>.</p></article><article class="content-card"><h2>z-index والتجاوز</h2><p><code>z-10</code> <code>z-50</code> لترتيب الطبقات. <code>overflow-hidden</code> و<code>overflow-auto</code> لقص أو تمرير المحتوى. <code>container</code> يحدد أقصى عرض حسب النقطة الفاصلة، ويُستخدم عادة مع <code>mx-auto px-4</code>.</p></article></div>
+<article class="body-card key-card"><p>اجعل الأب relative قبل وضع عنصر absolute بداخله.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="container mx-auto px-4 py-6"&gt;
+&lt;div id="wrap" class="relative h-32 overflow-hidden rounded-xl bg-slate-200"&gt;
+&lt;span class="absolute end-3 top-3 rounded-full bg-rose-500 px-2 py-1 text-xs font-bold text-white"&gt;جديد&lt;/span&gt;
+&lt;div class="absolute inset-x-0 bottom-0 bg-black/60 p-2 text-sm text-white"&gt;شريط سفلي&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sticky top-0 z-10 mt-4 bg-white p-2 shadow"&gt;شريط لاصق (sticky)&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>الشارة والشريط السفلي مطلقان داخل الأب النسبي. <code>inset-x-0</code> يمدّد الشريط أفقيًا. <code>overflow-hidden</code> يقص ما يخرج عن الزوايا الدائرية.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">انقل الشارة إلى أسفل البداية بـ &lt;code&gt;start-3 bottom-3&lt;/code&gt;.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما الذي يجعل absolute يتمركز داخل الأب؟</strong></p><ul><li>أن يكون الأب relative</li><li>أن يكون الأب flex</li><li>وجود z-10</li><li>وجود gap</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>أن يكون الأب relative</strong></p></details></li><li><p><strong>ماذا تفعل inset-0؟</strong></p><ul><li>top/right/bottom/left = 0</li><li>تضيف حدودًا</li><li>تغير اللون</li><li>تخفي العنصر</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>top/right/bottom/left = 0</strong></p></details></li><li><p><strong>ما فائدة overflow-hidden مع rounded؟</strong></p><ul><li>قص المحتوى الخارج عن الزوايا الدائرية</li><li>تكبير الصورة</li><li>تحريك العنصر</li><li>تعطيل التمرير فقط دائمًا</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>قص المحتوى الخارج عن الزوايا الدائرية</strong></p></details></li><li><p><strong>ماذا تفعل الفئة container في Tailwind؟</strong></p><ul><li>تحدد أقصى عرض عند كل نقطة توقف</li><li>تمركز المحتوى تلقائياً</li><li>تضيف حشوة 1rem</li><li>تجعل العنصر position fixed</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تحدد أقصى عرض عند كل نقطة توقف</strong></p><p>لا تمركز بنفسها، فنضيف mx-auto و px-4.</p></details></li><li><p><strong>عنصران متداخلان z-10 و z-50. أيهما يظهر فوق الآخر؟</strong></p><ul><li>z-10</li><li>z-50</li><li>الاثنان بنفس المستوى</li><li>حسب ترتيب الأحرف</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>z-50</strong></p><p>الرقم الأعلى لـ z-index يظهر في الطبقة الأمامية.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-8">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/tailwind-learning/lessons/tw-07.html"><small>الدرس السابق</small><strong>Grid</strong></a>
+        <a rel="next" href="/tailwind-learning/lessons/tw-09.html"><small>الدرس التالي</small><strong>الحدود والظلال والحلقات</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/tailwind-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

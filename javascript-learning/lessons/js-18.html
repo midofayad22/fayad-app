@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="js" />
+    <meta name="robots" content="noindex, follow" />
+    <title>الأحداث Events — JavaScript | FAYBIT</title>
+    <meta name="description" content="تعلّم كيف تستجيب JavaScript لأفعال المستخدم مثل الضغط والكتابة وتحريك الماوس." />
+    <link rel="canonical" href="https://faybit.vercel.app/javascript-learning/lessons/js-18.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/javascript-learning/lessons/js-18.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/javascript-learning/lessons/js-18.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/javascript-learning/lessons/js-18.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="الأحداث Events — JavaScript | FAYBIT" />
+    <meta property="og:description" content="تعلّم كيف تستجيب JavaScript لأفعال المستخدم مثل الضغط والكتابة وتحريك الماوس." />
+    <meta property="og:url" content="https://faybit.vercel.app/javascript-learning/lessons/js-18.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"JavaScript","item":"https://faybit.vercel.app/javascript-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"الأحداث Events","item":"https://faybit.vercel.app/javascript-learning/lessons/js-18.html"}]},{"@type":"LearningResource","name":"الأحداث Events","description":"تعلّم كيف تستجيب JavaScript لأفعال المستخدم مثل الضغط والكتابة وتحريك الماوس.","url":"https://faybit.vercel.app/javascript-learning/lessons/js-18.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"JavaScript — FAYBIT","url":"https://faybit.vercel.app/javascript-learning/javascript-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="JavaScript"><a href="/javascript-learning/lessons/index.html">الدروس</a><a href="/en/javascript-learning/lessons/js-18.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/javascript-learning/lessons/index.html">JavaScript</a></nav>
+      <p class="lp-eyebrow">الدرس 18 من 25</p>
+      <h1 class="lp-h1">الأحداث Events</h1>
+      <p class="lp-lead">تعلّم كيف تستجيب JavaScript لأفعال المستخدم مثل الضغط والكتابة وتحريك الماوس.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-18">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود JavaScript</h2></div>
+</div>
+<pre dir="ltr"><code>const button =
+document.querySelector("button");
+button.addEventListener("click", () =&gt; {
+document.getElementById("jsResult").textContent =
+"تم الضغط على الزر";
+});</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>
+<p><strong>Event</strong> هو حدث يحدث داخل الصفحة مثل الضغط على زر.</p>
+<p><strong>addEventListener()</strong> تُستخدم للاستماع إلى حدث معين.</p>
+<p>في المثال نستمع إلى حدث <strong>click</strong>.</p>
+<p>عند حدوث الحدث يتم تنفيذ Function معينة.</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>اكتب JavaScript</h2></div>
+</div>
+<p class="practice-description">غيّر الكود الموجود بالأسفل ثم شغّله لترى النتيجة.</p>
+<div class="practice-output">
+<span>الناتج</span>
+<div aria-live="polite">ستظهر النتيجة هنا.</div>
+</div>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أي Method تستمع إلى الأحداث؟</strong></p><ul><li>addEventListener()</li><li>listenEvent()</li><li>eventClick()</li><li>watchEvent()</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>addEventListener()</strong></p></details></li><li><p><strong>ما اسم الحدث الذي يحدث عند الضغط على زر؟</strong></p><ul><li>click</li><li>press</li><li>button</li><li>tapOnly</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>click</strong></p></details></li><li><p><strong>ماذا يحدث عند وقوع Event؟</strong></p><ul><li>يمكن تنفيذ Function مرتبطة به</li><li>يتوقف المتصفح</li><li>يُحذف HTML</li><li>يتم حذف CSS</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يمكن تنفيذ Function مرتبطة به</strong></p></details></li><li><p><strong>ما الخطأ في هذا الكود؟ btn.addEventListener(&quot;click&quot;, handle());</strong></p><ul><li>اسم الحدث click خاطئ</li><li>handle() تُستدعى فوراً ويُمرَّر ناتجها، والصحيح تمرير handle بدون أقواس</li><li>addEventListener تقبل دوال سهمية فقط</li><li>لا يمكن ربط الحدث بزر</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>handle() تُستدعى فوراً ويُمرَّر ناتجها، والصحيح تمرير handle بدون أقواس</strong></p><p>الأقواس تنفذ الدالة لحظة تسجيل المستمع، فيُمرَّر undefined بدل الدالة ولا تعمل عند الضغط. نمرر مرجع الدالة لينفذها المتصفح عند وقوع الحدث.</p></details></li><li><p><strong>سُجّل مستمعان لحدث click على الزر نفسه، الأول يطبع A والثاني يطبع B. ماذا يحدث عند الضغط؟</strong></p><ul><li>يطبع A فقط لأن الثاني يستبدله</li><li>يطبع B فقط</li><li>يطبع A ثم B بترتيب التسجيل</li><li>يحدث خطأ لأن الحدث له مستمع واحد فقط</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يطبع A ثم B بترتيب التسجيل</strong></p><p>addEventListener تضيف مستمعاً جديداً ولا تستبدل القديم، وتُنفذ المستمعات بترتيب إضافتها. الاستبدال يحدث مع الخاصية onclick فقط.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/javascript-learning/javascript-learning.html#lesson-18">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/javascript-learning/lessons/js-17.html"><small>الدرس السابق</small><strong>تغيير المحتوى</strong></a>
+        <a rel="next" href="/javascript-learning/lessons/js-19.html"><small>الدرس التالي</small><strong>Destructuring</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/javascript-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

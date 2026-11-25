@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <title>المتغيرات — أساسيات البرمجة | FAYBIT</title>
+    <meta name="description" content="DATA المتغير هو اسم نستخدمه للإشارة إلى قيمة مخزنة يمكن للبرنامج استخدامها أثناء التنفيذ. في JavaScript يمكنك إنشاء المتغيرات باستخدام let و const .…" />
+    <link rel="canonical" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-07.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-07.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-07.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-07.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="المتغيرات — أساسيات البرمجة | FAYBIT" />
+    <meta property="og:description" content="DATA المتغير هو اسم نستخدمه للإشارة إلى قيمة مخزنة يمكن للبرنامج استخدامها أثناء التنفيذ. في JavaScript يمكنك إنشاء المتغيرات باستخدام let و const .…" />
+    <meta property="og:url" content="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-07.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"أساسيات البرمجة","item":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"المتغيرات","item":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-07.html"}]},{"@type":"LearningResource","name":"المتغيرات","description":"DATA المتغير هو اسم نستخدمه للإشارة إلى قيمة مخزنة يمكن للبرنامج استخدامها أثناء التنفيذ. في JavaScript يمكنك إنشاء المتغيرات باستخدام let و const .…","url":"https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-07.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"أساسيات البرمجة — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="أساسيات البرمجة"><a href="/fundamentals/programming-basics/lessons/index.html">الدروس</a><a href="/en/fundamentals/programming-basics/lessons/prg-07.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/fundamentals/programming-basics/lessons/index.html">أساسيات البرمجة</a></nav>
+      <p class="lp-eyebrow">الدرس 7 من 31</p>
+      <h1 class="lp-h1">المتغيرات</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-7">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">DATA</span>
+<h2>كيف نخزن المعلومات داخل البرنامج؟</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content">
+<section class="lesson-section">
+<h3>ما هو Variable؟</h3>
+<p>
+المتغير هو اسم نستخدمه للإشارة إلى قيمة مخزنة
+يمكن للبرنامج استخدامها أثناء التنفيذ.
+</p>
+<p>
+في JavaScript يمكنك إنشاء المتغيرات باستخدام
+<span class="term">let</span> و
+<span class="term">const</span>.
+</p>
+</section>
+<section class="lesson-section">
+<div class="info-grid">
+<div class="info-box">
+<h4>let</h4>
+<p>
+تستخدم عندما تتوقع أن تتغير القيمة.
+</p>
+</div>
+<div class="info-box">
+<h4>const</h4>
+<p>
+تستخدم عندما لا تريد إعادة إسناد القيمة.
+</p>
+</div>
+</div>
+</section>
+<section class="lesson-section"><h3>اختيار الاسم: القواعد والعُرف</h3><p>اسم المتغير يجب أن يبدأ بحرف أو <span class="term">_</span> أو <span class="term">$</span>، ولا يحتوي مسافات أو شرطات، وحالة الأحرف مهمة: <span class="term">score</span> غير <span class="term">Score</span>. العُرف في JavaScript هو <span class="term">camelCase</span>.</p><pre class="fd-code" dir="ltr"><code>let userName = "Sara";   // جيد: يصف المحتوى
+let x1 = "Sara";         // صالح لكنه لا يعبّر
+let user-name = 1;       // خطأ: الشرطة عامل طرح
+let 2score = 5;          // خطأ: لا يبدأ برقم</code></pre><p class="fd-note">الاسم الجيد يوفّر عليك تعليقًا كاملًا: <strong>remainingLives</strong> أوضح من <strong>r</strong>.</p></section><section class="lesson-section"><h3>let أم const؟ قاعدة عملية</h3><p>ابدأ دائمًا بـ <span class="term">const</span>. حوّلها إلى <span class="term">let</span> فقط إذا احتجت فعلًا إلى إعادة الإسناد. هذا يمنعك من تغيير قيمة بالخطأ، ويُعلِم من يقرأ الكود بما يتغير وما لا يتغير.</p><pre class="fd-code" dir="ltr"><code>const pi = 3.14159;   // لن تتغير
+let lives = 3;          // ستتغير أثناء اللعبة
+lives = lives - 1;      // مسموح
+pi = 3;                 // TypeError: Assignment to constant variable.</code></pre></section><section class="lesson-section"><h3>الإسناد ليس مساواة رياضية</h3><p>علامة <span class="term">=</span> تعني: «احسب الطرف الأيمن ثم خزّن النتيجة في الاسم الذي على اليسار». لذلك <span class="term">x = x + 1</span> سطر منطقي: خذ القيمة الحالية، أضف 1، واحفظها مجددًا.</p><pre class="fd-code" dir="ltr"><code>let count = 5;
+count = count + 1;   // 6
+count += 1;          // اختصار: 7
+console.log(count);  // 7</code></pre></section></div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong> الفكرة الأساسية </strong>
+<p>المتغير يجعل بيانات البرنامج قابلة للتسمية والاستخدام بدل التعامل مع القيم بطريقة عشوائية.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>مثال عملي</span>
+<h3>شاهد الفكرة في كود</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>let score = 100;
+score = 150;
+const username = "FAYBIT";
+console.log(username);
+console.log(score);</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>تطبيق</span>
+<h3>تحدَّ نفسك</h3>
+</div>
+</div>
+<p></p>
+<div class="fd-exercise"><h4>تمرين تفاعلي</h4><p class="fd-ex-prompt">أنشئ متغيرًا باسم name يحتوي اسمك (نص) ومتغيرًا باسم age يحتوي عمرك (رقم)، ثم اطبع الاثنين بـ console.log.</p><p class="fd-ex-status" role="status"></p></div>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>أي كلمة تستخدم لتعريف متغير يمكن تغيير قيمته؟</strong></p><ul><li>const</li><li>let</li><li>fixed</li><li>change</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>let</strong></p><p>let تسمح بإعادة إسناد قيمة جديدة لنفس الاسم، أما const فتثبّت الإسناد. fixed و change ليستا كلمتين محجوزتين في JavaScript.</p></details></li><li><p><strong>ماذا يحدث عند تنفيذ الكود: const a = 1; a = 2;</strong></p><ul><li>يطبع 2</li><li>يظهر خطأ TypeError</li><li>يبقى a يساوي 1 دون أي خطأ</li><li>لا شيء، السطر يُتجاهل</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>يظهر خطأ TypeError</strong></p><p>المتغير المعرّف بـ const لا يقبل إعادة الإسناد، فتتوقف JavaScript وتُظهر: Assignment to constant variable.</p></details></li><li><p><strong>أي اسم متغير صالح ويتبع العُرف المتبع؟</strong></p><ul><li>2score</li><li>user-name</li><li>userName</li><li>let</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>userName</strong></p><p>userName صالح ومكتوب بنمط camelCase. 2score يبدأ برقم، وuser-name فيه شرطة تُفهم كعامل طرح، وlet كلمة محجوزة.</p></details></li><li><p><strong>ما قيمة x بعد: let x = 5; x = x + 3;</strong></p><ul><li>5</li><li>3</li><li>8</li><li>53</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>8</strong></p><p>يُحسب الطرف الأيمن أولًا (5 + 3 = 8) ثم تُخزَّن النتيجة في x.</p></details></li><li><p><strong>ما الذي يطبعه هذا الكود؟ let a = 1; let b = a; b = 5; console.log(a, b);</strong></p><ul><li>5 5</li><li>1 5</li><li>1 1</li><li>5 1</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>1 5</strong></p><p>عند b = a تُنسخ القيمة 1 إلى b، فيصبحان مستقلين. تغيير b إلى 5 لا يؤثر على a الذي يبقى 1.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-7">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/fundamentals/programming-basics/lessons/prg-06.html"><small>الدرس السابق</small><strong>Syntax</strong></a>
+        <a rel="next" href="/fundamentals/programming-basics/lessons/prg-08.html"><small>الدرس التالي</small><strong>أنواع البيانات</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/fundamentals/programming-basics/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

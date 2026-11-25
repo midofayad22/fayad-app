@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="vue" />
+    <meta name="robots" content="noindex, follow" />
+    <title>v-if و v-else — Vue.js | FAYBIT</title>
+    <meta name="description" content="تعلّم كيف تعرض أو تخفي عناصر HTML بناءً على شروط معينة." />
+    <link rel="canonical" href="https://faybit.vercel.app/vue-learning/lessons/vue-08.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/vue-learning/lessons/vue-08.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/vue-learning/lessons/vue-08.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/vue-learning/lessons/vue-08.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="v-if و v-else — Vue.js | FAYBIT" />
+    <meta property="og:description" content="تعلّم كيف تعرض أو تخفي عناصر HTML بناءً على شروط معينة." />
+    <meta property="og:url" content="https://faybit.vercel.app/vue-learning/lessons/vue-08.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Vue.js","item":"https://faybit.vercel.app/vue-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"v-if و v-else","item":"https://faybit.vercel.app/vue-learning/lessons/vue-08.html"}]},{"@type":"LearningResource","name":"v-if و v-else","description":"تعلّم كيف تعرض أو تخفي عناصر HTML بناءً على شروط معينة.","url":"https://faybit.vercel.app/vue-learning/lessons/vue-08.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Vue.js — FAYBIT","url":"https://faybit.vercel.app/vue-learning/vue-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Vue.js"><a href="/vue-learning/lessons/index.html">الدروس</a><a href="/en/vue-learning/lessons/vue-08.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/vue-learning/lessons/index.html">Vue.js</a></nav>
+      <p class="lp-eyebrow">الدرس 8 من 22</p>
+      <h1 class="lp-h1">v-if و v-else</h1>
+      <p class="lp-lead">تعلّم كيف تعرض أو تخفي عناصر HTML بناءً على شروط معينة.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-8">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<h2>v-if و v-else</h2>
+<p>
+تستخدم <code>v-if</code> لعرض عنصر عندما يكون الشرط صحيحًا.
+</p>
+<p>
+ويمكن استخدام <code>v-else</code> لعرض عنصر بديل عندما يكون
+الشرط غير صحيح.
+</p>
+</div></article>
+<article class="body-card key-card"><div class="info-label">v-if تتحكم في العرض</div><p>استخدم v-if وv-else لإظهار عناصر مختلفة حسب حالة البيانات.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>الكود</h2></div>
+</div>
+<pre dir="ltr"><code>
+&lt;div id="app"&gt;
+&lt;p v-if="isLoggedIn"&gt;
+مرحبًا بك مرة أخرى!
+&lt;/p&gt;
+&lt;p v-else&gt;
+من فضلك قم بتسجيل الدخول.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+const { createApp } = Vue;
+createApp({
+data() {
+return {
+isLoggedIn: true
+};
+}
+}).mount("#app");
+&lt;/script&gt;
+</code></pre>
+</article>
+<article class="result-card">
+<div class="result-preview"><div class="result-static">
+<div style="padding:20px;font-family:Arial;">
+<p>مرحبًا بك مرة أخرى!</p>
+</div>
+</div></div>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>
+<p>
+<code>v-if</code> تختبر الشرط.
+</p>
+<p>
+إذا كانت القيمة <code>true</code> يظهر العنصر.
+</p>
+<p>
+<code>v-else</code> يستخدم للفرع الآخر عندما يكون الشرط
+غير صحيح.
+</p>
+</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span></div>
+</div>
+<p class="practice-description">اعرض رسالة مختلفة عندما تكون قيمة isLoggedIn صحيحة أو خاطئة.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما Directive المستخدمة في Conditional Rendering؟</strong></p><ul><li>v-if</li><li>v-condition</li><li>v-show-text</li><li>v-check</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>v-if</strong></p></details></li><li><p><strong>متى يعمل v-else؟</strong></p><ul><li>عندما يكون شرط v-if غير صحيح</li><li>دائمًا</li><li>عندما يتغير CSS</li><li>عند تحميل الصورة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>عندما يكون شرط v-if غير صحيح</strong></p></details></li><li><p><strong>ماذا يتحكم v-if؟</strong></p><ul><li>عرض العنصر بناءً على شرط</li><li>لون النص فقط</li><li>حجم قاعدة البيانات</li><li>عنوان الصفحة</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>عرض العنصر بناءً على شرط</strong></p></details></li><li><p><strong>ما الخطأ هنا؟
+&lt;p v-if=&quot;ok&quot;&gt;نعم&lt;/p&gt;
+&lt;span&gt;فاصل&lt;/span&gt;
+&lt;p v-else&gt;لا&lt;/p&gt;</strong></p><ul><li>v-else يجب أن يأتي مباشرة بعد عنصر v-if</li><li>لا يمكن استخدام p مع v-if</li><li>v-else لا يقبل نصاً</li><li>لا يوجد خطأ</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>v-else يجب أن يأتي مباشرة بعد عنصر v-if</strong></p><p>v-else يجب أن يلي v-if أو v-else-if مباشرة، وإلا لن يتعرف Vue عليه.</p></details></li><li><p><strong>إذا كانت قيمة الشرط في v-if خاطئة، ماذا يحدث للعنصر؟</strong></p><ul><li>يُخفى بـ display:none فقط</li><li>يتحول لونه إلى الرمادي</li><li>لا يُعرض في DOM</li><li>يُعرض مرتين</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لا يُعرض في DOM</strong></p><p>v-if يضيف العنصر إلى DOM أو يزيله بحسب الشرط، وليس مجرد إخفاء بصري.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/vue-learning/vue-learning.html#lesson-8">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/vue-learning/lessons/vue-07.html"><small>الدرس السابق</small><strong>v-bind</strong></a>
+        <a rel="next" href="/vue-learning/lessons/vue-09.html"><small>الدرس التالي</small><strong>v-for</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/vue-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

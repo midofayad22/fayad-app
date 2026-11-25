@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="react" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Lists &amp; Keys — React | FAYBIT</title>
+    <meta name="description" content="تعلم كيفية عرض مجموعة من البيانات باستخدام map ولماذا تحتاج React إلى Keys." />
+    <link rel="canonical" href="https://faybit.vercel.app/react-learning/lessons/react-09.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/react-learning/lessons/react-09.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/react-learning/lessons/react-09.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/react-learning/lessons/react-09.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Lists &amp; Keys — React | FAYBIT" />
+    <meta property="og:description" content="تعلم كيفية عرض مجموعة من البيانات باستخدام map ولماذا تحتاج React إلى Keys." />
+    <meta property="og:url" content="https://faybit.vercel.app/react-learning/lessons/react-09.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"React","item":"https://faybit.vercel.app/react-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Lists & Keys","item":"https://faybit.vercel.app/react-learning/lessons/react-09.html"}]},{"@type":"LearningResource","name":"Lists & Keys","description":"تعلم كيفية عرض مجموعة من البيانات باستخدام map ولماذا تحتاج React إلى Keys.","url":"https://faybit.vercel.app/react-learning/lessons/react-09.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"React — FAYBIT","url":"https://faybit.vercel.app/react-learning/react-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="React"><a href="/react-learning/lessons/index.html">الدروس</a><a href="/en/react-learning/lessons/react-09.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/react-learning/lessons/index.html">React</a></nav>
+      <p class="lp-eyebrow">الدرس 9 من 30</p>
+      <h1 class="lp-h1">Lists &amp; Keys</h1>
+      <p class="lp-lead">تعلم كيفية عرض مجموعة من البيانات باستخدام map ولماذا تحتاج React إلى Keys.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-9">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>
+<p>
+غالبًا تكون البيانات في التطبيقات على شكل Array، مثل قائمة
+المستخدمين أو المنتجات.
+</p>
+<p>
+يمكن استخدام map لإنشاء عنصر UI لكل عنصر داخل Array.
+</p>
+<p>
+تحتاج العناصر الناتجة عن القوائم إلى key مستقرة تساعد React
+على معرفة هوية كل عنصر.
+</p>
+</div></article>
+<article class="body-card key-card"><p>map تعرض عناصر القائمة، وkey تساعد React على تحديد هوية كل عنصر.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>الكود</h2></div>
+</div>
+<pre dir="ltr"><code>const skills = ["HTML", "CSS", "JavaScript"];
+function App() {
+return (
+&lt;ul&gt;
+{skills.map((skill) =&gt; (
+&lt;li key={skill}&gt;{skill}&lt;/li&gt;
+))}
+&lt;/ul&gt;
+);
+}</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div>يفضل استخدام ID فريد كمفتاح بدلًا من استخدام index عندما تكون القائمة قابلة للتغيير.</div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span></div>
+</div>
+<p class="practice-description">أضف مهارة جديدة إلى Array.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>لماذا نستخدم map في React؟</strong></p><ul><li>لعرض مجموعة من البيانات</li><li>لإنشاء CSS</li><li>لإنشاء Database</li><li>لتشغيل الخادم</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لعرض مجموعة من البيانات</strong></p></details></li><li><p><strong>لماذا نستخدم key؟</strong></p><ul><li>لمساعدة React على تحديد عناصر القائمة</li><li>لتغيير اللون</li><li>لإنشاء variable</li><li>لإضافة CSS</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>لمساعدة React على تحديد عناصر القائمة</strong></p></details></li><li><p><strong>ما الأفضل عادة كقيمة لـ key؟</strong></p><ul><li>معرّف فريد ومستقر</li><li>قيمة عشوائية تتغير دائمًا</li><li>CSS class</li><li>اسم الملف</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>معرّف فريد ومستقر</strong></p></details></li><li><p><strong>ما المشكلة؟ items.map(i =&gt; &lt;li&gt;{i}&lt;/li&gt;)</strong></p><ul><li>li ممنوع</li><li>لا مشكلة إطلاقاً</li><li>ينقصه key لكل عنصر</li><li>map لا تعمل مع المصفوفات</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>ينقصه key لكل عنصر</strong></p><p>React تحتاج key ثابتاً لتتعرف على كل عنصر في القائمة.</p></details></li><li><p><strong>أي key أفضل لقائمة مستخدمين قد تُعاد ترتيبها؟</strong></p><ul><li>index الموضع</li><li>Math.random()</li><li>user.id</li><li>نص ثابت 'a'</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>user.id</strong></p><p>المعرّف الثابت يبقى مع العنصر عند إعادة الترتيب، بخلاف الفهرس.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/react-learning/react-learning.html#lesson-9">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/react-learning/lessons/react-08.html"><small>الدرس السابق</small><strong>العرض الشرطي</strong></a>
+        <a rel="next" href="/react-learning/lessons/react-10.html"><small>الدرس التالي</small><strong>Forms</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/react-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

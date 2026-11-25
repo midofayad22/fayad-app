@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="com" />
+    <title>الملفات والمجلدات — أساسيات الكمبيوتر | FAYBIT</title>
+    <meta name="description" content="تقرأ Path مطلقًا ونسبيًا وتحدد موقع أي ملف في شجرة المجلدات. تفهم دور Extension وقواعد تسمية الملفات وما يُمنع منها. تفرّق بين النسخ والنقل والحذف،…" />
+    <link rel="canonical" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-11.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-11.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/computer-basics/lessons/com-11.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-11.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="الملفات والمجلدات — أساسيات الكمبيوتر | FAYBIT" />
+    <meta property="og:description" content="تقرأ Path مطلقًا ونسبيًا وتحدد موقع أي ملف في شجرة المجلدات. تفهم دور Extension وقواعد تسمية الملفات وما يُمنع منها. تفرّق بين النسخ والنقل والحذف،…" />
+    <meta property="og:url" content="https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-11.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"أساسيات الكمبيوتر","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"الملفات والمجلدات","item":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-11.html"}]},{"@type":"LearningResource","name":"الملفات والمجلدات","description":"تقرأ Path مطلقًا ونسبيًا وتحدد موقع أي ملف في شجرة المجلدات. تفهم دور Extension وقواعد تسمية الملفات وما يُمنع منها. تفرّق بين النسخ والنقل والحذف،…","url":"https://faybit.vercel.app/fundamentals/computer-basics/lessons/com-11.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"أساسيات الكمبيوتر — FAYBIT","url":"https://faybit.vercel.app/fundamentals/computer-basics/com.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="أساسيات الكمبيوتر"><a href="/fundamentals/computer-basics/lessons/index.html">الدروس</a><a href="/en/fundamentals/computer-basics/lessons/com-11.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/fundamentals/computer-basics/lessons/index.html">أساسيات الكمبيوتر</a></nav>
+      <p class="lp-eyebrow">الدرس 11 من 30</p>
+      <h1 class="lp-h1">الملفات والمجلدات</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-11">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<article class="lesson-card">
+<h2>الملفات والمجلدات</h2>
+<div><section class="lesson-section doc-objectives"><h3>أهداف الدرس</h3><ul><li>تقرأ <span class="term">Path</span> مطلقًا ونسبيًا وتحدد موقع أي ملف في شجرة المجلدات.</li><li>تفهم دور <span class="term">Extension</span> وقواعد تسمية الملفات وما يُمنع منها.</li><li>تفرّق بين النسخ والنقل والحذف، وتنفذها بالواجهة وبسطر الأوامر.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>المتطلبات السابقة</h3><ul><li>دروس التخزين (com-06) ونظام التشغيل (com-10).</li></ul>
+</section>
+<section class="lesson-section "><h3>مقدمة: كيف يجد الجهاز ملفك بين ملايين الملفات؟</h3>
+<p>تعلمنا أن القرص يحفظ البيانات بشكل دائم، لكنه في الحقيقة مجرد مساحة هائلة من البايتات. ما يجعلها منظمة هو <span class="term">File System</span>: طبقة يديرها نظام التشغيل تسجّل لكل بيانات اسمًا وحجمًا وتاريخًا ومكانًا على القرص. والوحدة الأساسية التي نتعامل معها هي <span class="term">File</span> أي الملف: مجموعة بيانات واحدة لها اسم، سواء كانت مستندًا أو صورة أو برنامجًا.</p>
+<p>ولأن الملفات تبلغ عشرات الآلاف، نجمعها في <span class="term">Folder</span> (أو <span class="term">Directory</span> في لغة المطورين). المجلد حاوية تضم ملفات ومجلدات أخرى، وهذا التداخل يصنع هرمًا واضحًا يمكن تتبعه خطوة خطوة.</p>
+</section>
+<section class="lesson-section "><h3>شجرة المجلدات والمسارات</h3>
+<figure class="doc-diagram doc-tree-fig" role="group" aria-label="AST"><figcaption>جزء من شجرة ملفات مستخدم على Linux</figcaption><div class="doc-tree-wrap"><ul class="doc-tree"><li><span class="doc-node doc-node-op">/</span><ul><li><span class="doc-node doc-node-op">home</span><ul><li><span class="doc-node doc-node-op">sara</span><ul><li><span class="doc-node doc-node-op">Documents</span><ul><li><span class="doc-node doc-node-op">report.docx</span></li><li><span class="doc-node doc-node-op">budget.xlsx</span></li></ul></li><li><span class="doc-node doc-node-op">Pictures</span><ul><li><span class="doc-node doc-node-op">trip.jpg</span></li></ul></li></ul></li></ul></li><li><span class="doc-node doc-node-op">usr</span><ul><li><span class="doc-node doc-node-op">bin</span></li></ul></li></ul></li></ul></div></figure>
+<p>للشجرة <strong>جذر</strong> <span class="term">Root</span> واحد في Linux وmacOS يُكتب <code>/</code>. وفي Windows لكل قرص أو قسم جذر بحرف مثل <code>C:</code> و<code>D:</code>. أما <span class="term">Path</span> (المسار) فهو العنوان الذي يصف الطريق من نقطة معينة إلى الملف، وتفصل بين أجزائه شرطة مائلة <code>/</code> في Linux وmacOS، وشرطة عكسية في Windows.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">النوع</th><th scope="col">التعريف</th><th scope="col">مثال (Linux)</th></tr></thead><tbody><tr><th scope="row">مسار مطلق <span class="term">Absolute Path</span></th><td>يبدأ من الجذر، ويعني الشيء نفسه أينما كنت</td><td>/home/sara/Documents/report.docx</td></tr><tr><th scope="row">مسار نسبي <span class="term">Relative Path</span></th><td>يبدأ من المجلد الحالي، فيتغير معناه بتغير موقعك</td><td>Documents/report.docx</td></tr><tr><th scope="row">الرمز <code>.</code></th><td>المجلد الحالي</td><td>./report.docx</td></tr><tr><th scope="row">الرمز <code>..</code></th><td>المجلد الأب (درجة أعلى)</td><td>../Pictures/trip.jpg</td></tr></tbody></table></div>
+<p>إذا كنت داخل <code>/home/sara/Documents</code> فالمسار <code>../Pictures/trip.jpg</code> يعني: اصعد إلى <code>/home/sara</code> ثم ادخل <code>Pictures</code> واختر الصورة. ويُسمى المجلد الذي تعمل داخله الآن <span class="term">Working Directory</span>.</p>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">text</span></figcaption><pre dir="ltr"><code>Windows : C:\Users\Sara\Documents\report.docx
+Linux   : /home/sara/Documents/report.docx
+macOS   : /Users/sara/Documents/report.docx</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>الأسماء والامتدادات</h3>
+<p>يتكون اسم الملف عادة من جزأين تفصل بينهما نقطة: الاسم ثم <span class="term">Extension</span> أي الامتداد، مثل <code>report.docx</code>. الامتداد لا يغيّر محتوى الملف، بل هو إشارة يستعملها النظام ليعرف البرنامج الذي يفتحه. وإذا أعدت تسمية <code>photo.png</code> إلى <code>photo.txt</code> فلن تتحول الصورة إلى نص؛ سيحاول النظام فتحها بمحرر نصوص فتظهر رموز غير مفهومة.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">الامتداد</th><th scope="col">نوع المحتوى</th><th scope="col">ملاحظة</th></tr></thead><tbody><tr><th scope="row">.txt</th><td>نص بسيط</td><td>بلا تنسيق</td></tr><tr><th scope="row">.jpg / .png</th><td>صور</td><td>JPG مضغوط بفقد جودة، وPNG بلا فقد</td></tr><tr><th scope="row">.mp3 / .mp4</th><td>صوت / فيديو</td><td>مضغوطة</td></tr><tr><th scope="row">.pdf</th><td>مستند ثابت التخطيط</td><td>يظهر متطابقًا على الأجهزة</td></tr><tr><th scope="row">.zip</th><td>أرشيف مضغوط</td><td>يضم عدة ملفات في ملف واحد</td></tr><tr><th scope="row">.exe / .sh</th><td>برنامج / سكربت</td><td>قابل للتنفيذ، فكن حذرًا</td></tr></tbody></table></div>
+<ul><li><strong>أحرف ممنوعة في Windows:</strong> <code>&lt; &gt; : " / | ? *</code> ولا يجوز أن ينتهي الاسم بنقطة أو مسافة.</li><li><strong>الطول:</strong> يقبل الاسم عادة حتى 255 حرفًا، ويكون المسار الكامل أطول من ذلك محدودًا في بعض الإصدارات.</li><li><strong>حالة الأحرف:</strong> في Linux الاسمان <code>Report.txt</code> و<code>report.txt</code> ملفان مختلفان، أما Windows وmacOS فيعاملانهما بالعادة كاسم واحد.</li><li><strong>الملفات المخفية:</strong> في Linux وmacOS يبدأ اسم الملف المخفي بنقطة مثل <code>.config</code>.</li></ul>
+</section>
+<section class="lesson-section "><h3>النسخ والنقل والحذف</h3>
+<ul><li><strong><span class="term">Copy</span> (نسخ):</strong> ينشئ ملفًا مطابقًا في موضع آخر ويبقى الأصل؛ فتتضاعف المساحة المستعملة.</li><li><strong><span class="term">Move</span> (نقل):</strong> يغيّر مكان الملف فلا يبقى في موضعه القديم. داخل القرص نفسه يكتفي النظام بتعديل سجل الفهرس، فيكون النقل فوريًا مهما كبر الملف؛ أما بين قرصين فيُنسخ الملف ثم يُحذف الأصل.</li><li><strong><span class="term">Delete</span> (حذف):</strong> في الواجهة تذهب الملفات عادة إلى سلة المحذوفات (<span class="term">Recycle Bin</span>) ويمكن استرجاعها. أما الأمر <code>rm</code> في سطر الأوامر فيحذف مباشرة بلا سلة.</li></ul>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">bash</span></figcaption><pre dir="ltr"><code>pwd                          # where am I?
+mkdir -p projects/demo       # create nested folders
+cd projects/demo
+echo "hello" &gt; notes.txt     # create a small file
+cp notes.txt backup.txt      # copy
+mv backup.txt ../old.txt     # move up one level and rename
+ls -l . ..                   # list both folders
+rm notes.txt                 # delete (no recycle bin!)</code></pre></figure>
+<figure class="code-ex code-ex-out"><figcaption><span class="code-ex-lang">الناتج</span></figcaption><pre dir="ltr"><code>/home/sara
+.:
+total 0
+..:
+total 4
+-rw-r--r-- 1 sara sara 6 Nov 10 09:15 old.txt
+drwxr-xr-x 2 sara sara 4096 Nov 10 09:14 demo</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>تطبيقات من الواقع</h3>
+<ul><li><strong>تنظيم العمل:</strong> بنية مثل <code>project/source/images</code> تجعل الفريق يعثر على أي ملف بلا سؤال أحد.</li><li><strong>مواقع الويب:</strong> العنوان <code>/images/logo.png</code> في رابط هو مسار حقيقي لملف على الخادم.</li><li><strong>البرمجة:</strong> يعتمد الكود على مسارات نسبية لقراءة ملفات الإعداد، فينتقل المشروع من جهاز إلى آخر دون تعديل.</li></ul>
+<div class="doc-mistakes"><h4>أخطاء شائعة</h4><ul><li>«تغيير الامتداد يحوّل نوع الملف»: لا يتغير المحتوى؛ لتحويل <code>.png</code> إلى <code>.jpg</code> فعليًا تحتاج أداة تعيد ترميز البيانات.</li><li>«المجلد والملف شيء واحد»: المجلد يحتوي على بيانات تنظيمية فقط ولا يحمل محتوى مستند.</li><li>«النقل نسخ ثم حذف دائمًا»: داخل القرص نفسه هو تعديل في الفهرس لا يُنقل فيه شيء من البيانات.</li><li>«كل ما أحذفه يعود من السلة»: السلة لا تشمل الملفات المحذوفة بـ <code>rm</code> أو من الأقراص الخارجية في كثير من الحالات، أو بعد تفريغها.</li></ul></div>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>استدلال:</strong> أنت في <code>/home/sara/Documents</code>. اكتب المسار النسبي إلى <code>/home/sara/Pictures/trip.jpg</code>، ثم المسار المطلق.</summary><div class="doc-solution"><strong>عرض الحل</strong><p>للوصول إلى الصورة نصعد درجة واحدة إلى <code>/home/sara</code> بالرمز <code>..</code> ثم ندخل <code>Pictures</code>: المسار النسبي هو <code>../Pictures/trip.jpg</code>. والمسار المطلق يبدأ من الجذر ولا يتغير: <code>/home/sara/Pictures/trip.jpg</code>. لو نقلنا الجهاز إلى مجلد آخر فسيتغير النسبي دون المطلق.</p></div></details>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>حساب:</strong> تنسخ 40 ملفًا حجم كل منها 25 MB من قرص إلى آخر، ثم تريد النقل بدلًا من النسخ. كم مساحة تستهلك في كل حالة داخل القرص الهدف، وما المساحة الإجمالية على القرصين بعد العملية؟</summary><div class="doc-solution"><strong>عرض الحل</strong><p>الحجم الكلي = 40 × 25 = 1,000 MB أي نحو 1 GB. عند <strong>النسخ</strong> يستهلك القرص الهدف 1,000 MB ويبقى الأصل في القرص الأول، فالمجموع على القرصين 2,000 MB. وعند <strong>النقل</strong> بين قرصين يستهلك الهدف 1,000 MB كذلك لكن يُحذف الأصل بعد نجاح النسخ، فيبقى المجموع 1,000 MB. وإن كان النقل داخل القرص الواحد فلا مساحة إضافية ويتم في لحظات.</p></div></details>
+<details class="doc-exercise"><summary><span>تمرين</span> <strong>تطبيق عملي:</strong> أنشئ بنية مجلدات لمشروع دراسي بالأوامر، وانسخ إليها ملفًا، ثم تحقق من النتيجة.</summary><div class="doc-solution"><strong>عرض الحل</strong><p>افتح الطرفية ونفّذ: <code>mkdir -p study/notes study/files</code> لإنشاء المجلدين دفعة واحدة، ثم <code>echo "first note" &gt; study/notes/day1.txt</code> لإنشاء ملف، ثم <code>cp study/notes/day1.txt study/files/day1-copy.txt</code> للنسخ. أخيرًا <code>ls -R study</code> يعرض الشجرة كاملة، وتتوقع ظهور <code>day1.txt</code> في <code>notes</code> وظهور <code>day1-copy.txt</code> في <code>files</code>. جرّب <code>mv</code> لنقل أحدهما وراقب تغيّر الناتج. في Windows استعمل مستكشف الملفات بالنقر الأيمن لتحصل على النتيجة نفسها.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>الخلاصة</h3><ul><li>الملف بيانات لها اسم، والمجلد حاوية تنظم الملفات في شجرة لها جذر واحد.</li><li>المسار المطلق يبدأ من الجذر، والنسبي يبدأ من المجلد الحالي ويستعمل <code>.</code> و<code>..</code>.</li><li>الامتداد إشارة لنوع الملف وليس تحويلًا له، والأسماء الجيدة وصفية وواضحة.</li><li>النسخ يضاعف البيانات، والنقل ينقلها، والحذف قد لا يكون قابلًا للاسترجاع.</li></ul><p class="doc-next"><strong>الخطوة التالية:</strong> النظام الثنائي والبيانات: كيف تتحول كل هذه الملفات إلى أصفار وآحاد.</p>
+</section>
+<section class="lesson-section doc-refs"><h3>مراجع للاستزادة</h3><ul><li>دليل أوامر <code>man</code> في Linux للأوامر <code>cp</code> و<code>mv</code> و<code>rm</code>.</li><li>مواصفة Filesystem Hierarchy Standard لتخطيط المجلدات في Linux.</li></ul>
+</section></div>
+<!-- Key Concept -->
+<div class="key-concept">
+<div>
+<strong>المفهوم الأساسي</strong>
+<p>تنظيم الملفات والمجلدات مهارة أساسية لأي شخص يعمل مع الكمبيوتر.</p>
+</div>
+</div>
+<!-- Knowledge Check -->
+<!-- Practice -->
+<section class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>تطبيق عملي</span>
+<h3>جرّب بنفسك</h3>
+</div>
+</div>
+<p>أنشئ مجلدًا باسم FAYBIT ثم أنشئ داخله مجلدات باسم HTML وCSS وJavaScript.</p>
+</section>
+<!-- Completion -->
+</article>
+<!-- Navigation -->
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ما الهدف الأساسي من Folder؟</strong></p><ul><li>تبريد CPU</li><li>تنظيم الملفات</li><li>زيادة RAM</li><li>عرض الصور</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>تنظيم الملفات</strong></p></details></li><li><p><strong>أنت داخل /home/sara/Documents. إلى أين يشير المسار ../Pictures/trip.jpg؟</strong></p><ul><li>/home/sara/Documents/Pictures/trip.jpg</li><li>/Pictures/trip.jpg</li><li>/home/sara/Pictures/trip.jpg</li><li>/home/Pictures/trip.jpg</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>/home/sara/Pictures/trip.jpg</strong></p><p>النقطتان .. تعنيان المجلد الأب /home/sara، ثم ندخل Pictures.</p></details></li><li><p><strong>غيّرت اسم photo.png إلى photo.txt. ماذا حدث للصورة؟</strong></p><ul><li>صارت نصاً فعلاً</li><li>بقي المحتوى كما هو، لكن النظام سيحاول فتحه بمحرر نصوص ويعرض رموزاً غير مفهومة</li><li>حُذفت الصورة</li><li>صغر حجمها</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>بقي المحتوى كما هو، لكن النظام سيحاول فتحه بمحرر نصوص ويعرض رموزاً غير مفهومة</strong></p><p>الامتداد مجرد تلميح لاختيار البرنامج، ولا يغيّر ما بداخل الملف.</p></details></li><li><p><strong>في Linux، ما العلاقة بين Report.txt و report.txt؟</strong></p><ul><li>ملفان مختلفان لأن حالة الأحرف مهمة</li><li>الملف نفسه</li><li>كلاهما غير مسموح</li><li>الثاني نسخة مخفية من الأول</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>ملفان مختلفان لأن حالة الأحرف مهمة</strong></p><p>لينكس حساس لحالة الأحرف، بينما يعاملهما ويندوز وماك عادةً كاسم واحد.</p></details></li><li><p><strong>أي اسم ملف غير صالح على ويندوز؟</strong></p><ul><li>budget-2026-q1.xlsx</li><li>my report.docx</li><li>notes_final.txt</li><li>budget:q1?.xlsx</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>budget:q1?.xlsx</strong></p><p>الرموز : و ؟ و * و | و / و &lt; و &gt; و &quot; ممنوعة في أسماء الملفات على ويندوز.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/computer-basics/com.html#lesson-11">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/fundamentals/computer-basics/lessons/com-10.html"><small>الدرس السابق</small><strong>أنظمة التشغيل</strong></a>
+        <a rel="next" href="/fundamentals/computer-basics/lessons/com-12.html"><small>الدرس التالي</small><strong>Binary و Data</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/fundamentals/computer-basics/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

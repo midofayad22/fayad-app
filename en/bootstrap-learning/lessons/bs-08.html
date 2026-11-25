@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>Borders, Shadows, Position, and Display — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="borders, rounded, shadow, position, and d-none to show and hide elements by screen size." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-08.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-08.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-08.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-08.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Borders, Shadows, Position, and Display — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="borders, rounded, shadow, position, and d-none to show and hide elements by screen size." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-08.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Borders, Shadows, Position, and Display","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-08.html"}]},{"@type":"LearningResource","name":"Borders, Shadows, Position, and Display","description":"borders, rounded, shadow, position, and d-none to show and hide elements by screen size.","url":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-08.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/en/bootstrap-learning/lessons/index.html">Lessons</a><a href="/bootstrap-learning/lessons/bs-08.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">Lesson 8 of 20</p>
+      <h1 class="lp-h1">Borders, Shadows, Position, and Display</h1>
+      <p class="lp-lead">borders, rounded, shadow, position, and d-none to show and hide elements by screen size.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-8">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Borders, corners, and shadows</h2><p><code>border</code> <code>border-top</code> <code>border-primary</code> <code>border-2</code>, the corners <code>rounded</code> <code>rounded-3</code> <code>rounded-circle</code> <code>rounded-pill</code>, and the shadows <code>shadow-sm</code> <code>shadow</code> <code>shadow-lg</code>.</p></article><article class="content-card"><h2>Display and position</h2><p>Hide/show by breakpoint: <code>d-none d-md-block</code> (hidden on mobile, visible from md). Position: <code>position-relative</code> and <code>position-absolute</code> with <code>top-0 start-0 translate-middle</code>, plus <code>sticky-top</code> and <code>fixed-bottom</code>.</p></article></div>
+<article class="body-card key-card"><p>d-none d-md-block hides the element on mobile and shows it from md.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="container py-3"&gt;
+&lt;div class="p-3 border border-2 border-primary rounded-3 shadow-sm mb-3"&gt;Card with border and shadow&lt;/div&gt;
+&lt;div class="d-none d-md-block p-3 bg-success-subtle mb-3"&gt;Visible from md and up&lt;/div&gt;
+&lt;div class="d-md-none p-3 bg-danger-subtle mb-3"&gt;Visible on phones only&lt;/div&gt;
+&lt;div class="position-relative d-inline-block"&gt;
+&lt;button class="btn btn-outline-dark"&gt;Messages&lt;/button&gt;
+&lt;span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"&gt;9&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>The red badge is absolutely positioned at the corner of the button that has <code>position-relative</code>, and <code>translate-middle</code> shifts it so it is centered on the corner.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Give the first element a &lt;code&gt;shadow-lg&lt;/code&gt; shadow and &lt;code&gt;rounded-pill&lt;/code&gt; corners.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Which classes hide the element on mobile and show it from md?</strong></p><ul><li>d-none d-md-block</li><li>d-md-none</li><li>invisible</li><li>hidden-xs</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>d-none d-md-block</strong></p></details></li><li><p><strong>What is position-relative on the parent for?</strong></p><ul><li>So it becomes the positioning reference for the absolutely positioned elements inside it</li><li>To enlarge the parent</li><li>To hide it</li><li>To color it</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>So it becomes the positioning reference for the absolutely positioned elements inside it</strong></p></details></li><li><p><strong>Which class gives fully rounded corners (like a pill)?</strong></p><ul><li>rounded-pill</li><li>rounded-0</li><li>border-0</li><li>shadow</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>rounded-pill</strong></p></details></li><li><p><strong>Which class shows an element on phones only and hides it from md?</strong></p><ul><li>d-md-none</li><li>d-none d-md-block</li><li>d-md-block</li><li>d-none</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>d-md-none</strong></p><p>d-md-none hides the element from md up, so it stays visible on smaller screens.</p></details></li><li><p><strong>Which class makes a bar stick to the top while scrolling?</strong></p><ul><li>fixed-bottom</li><li>sticky-top</li><li>position-static</li><li>top-0 only</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>sticky-top</strong></p><p>sticky-top pins the element at the top once scrolling reaches it.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-8">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/bootstrap-learning/lessons/bs-07.html"><small>Previous lesson</small><strong>Flexbox and Utilities</strong></a>
+        <a rel="next" href="/en/bootstrap-learning/lessons/bs-09.html"><small>Next lesson</small><strong>Buttons and Button Groups</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/bootstrap-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="bs" />
+    <title>Containers and Breakpoints — Bootstrap 5 | FAYBIT</title>
+    <meta name="description" content="container, container-fluid, and the breakpoints on which all responsive classes are built." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-02.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-02.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-02.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/bootstrap-learning/lessons/bs-02.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Containers and Breakpoints — Bootstrap 5 | FAYBIT" />
+    <meta property="og:description" content="container, container-fluid, and the breakpoints on which all responsive classes are built." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-02.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Bootstrap 5","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Containers and Breakpoints","item":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-02.html"}]},{"@type":"LearningResource","name":"Containers and Breakpoints","description":"container, container-fluid, and the breakpoints on which all responsive classes are built.","url":"https://faybit.vercel.app/en/bootstrap-learning/lessons/bs-02.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Bootstrap 5 — FAYBIT","url":"https://faybit.vercel.app/bootstrap-learning/bootstrap-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Bootstrap 5"><a href="/en/bootstrap-learning/lessons/index.html">Lessons</a><a href="/bootstrap-learning/lessons/bs-02.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/bootstrap-learning/lessons/index.html">Bootstrap 5</a></nav>
+      <p class="lp-eyebrow">Lesson 2 of 20</p>
+      <h1 class="lp-h1">Containers and Breakpoints</h1>
+      <p class="lp-lead">container, container-fluid, and the breakpoints on which all responsive classes are built.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-2">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Containers</h2><p><code>.container</code> has a fixed width that changes at each breakpoint, <code>.container-fluid</code> is always 100% wide, and <code>.container-md</code> and its siblings are 100% wide until the specified breakpoint and then become fixed.</p></article><article class="content-card"><h2>Breakpoints</h2><p>The breakpoints (mobile-first): <strong>sm ≥576px</strong>, <strong>md ≥768px</strong>, <strong>lg ≥992px</strong>, <strong>xl ≥1200px</strong>, <strong>xxl ≥1400px</strong>. A class without a breakpoint (such as <code>col-6</code>) applies from the smallest screens, and a class with a breakpoint (<code>col-md-6</code>) applies from that breakpoint upward.</p></article></div>
+<article class="body-card key-card"><p>Bootstrap is mobile-first: a class without a breakpoint always applies, and responsive classes apply from the breakpoint and above.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="container bg-light border py-2 mb-3"&gt;.container&lt;/div&gt;
+&lt;div class="container-fluid bg-light border py-2 mb-3"&gt;.container-fluid&lt;/div&gt;
+&lt;div class="container-md bg-light border py-2"&gt;.container-md&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>Change the preview width or open the page on different screens: the first container changes its width at the breakpoints, the second fills the full width, and the third fills the full width until 768px.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Add a fourth container with the class &lt;code&gt;container-lg&lt;/code&gt; and write the class name inside it.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>At what width does the md breakpoint start?</strong></p><ul><li>768px</li><li>576px</li><li>992px</li><li>1200px</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>768px</strong></p></details></li><li><p><strong>What is the difference between container and container-fluid?</strong></p><ul><li>The first has a fixed width per breakpoint, and the second is always 100%</li><li>No difference</li><li>The second is for mobile only</li><li>The first is for print</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>The first has a fixed width per breakpoint, and the second is always 100%</strong></p></details></li><li><p><strong>What does mobile-first mean?</strong></p><ul><li>Base styles target small screens and are extended with breakpoints for larger ones</li><li>Designing for desktop first</li><li>Removing small screens</li><li>It doesn't support mobile</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Base styles target small screens and are extended with breakpoints for larger ones</strong></p></details></li><li><p><strong>You want a container that is 100% wide on phones and becomes fixed-width from lg. Which class do you use?</strong></p><ul><li>container-fluid</li><li>container-lg</li><li>container-sm</li><li>container-xxl-fluid</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>container-lg</strong></p><p>container-lg stays 100% wide until the lg breakpoint and then becomes fixed.</p></details></li><li><p><strong>The screen is 700px wide. Which statement is correct?</strong></p><ul><li>col-md-6 applies and col-6 does not</li><li>Both apply together</li><li>Neither applies</li><li>col-6 applies and col-md-6 does not</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>col-6 applies and col-md-6 does not</strong></p><p>A class with no breakpoint always applies, while md starts at 768px and above.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/bootstrap-learning/bootstrap-learning.html#lesson-2">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/bootstrap-learning/lessons/bs-01.html"><small>Previous lesson</small><strong>Introduction: What Is Bootstrap and How Do We Start</strong></a>
+        <a rel="next" href="/en/bootstrap-learning/lessons/bs-03.html"><small>Next lesson</small><strong>The Grid System</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/bootstrap-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

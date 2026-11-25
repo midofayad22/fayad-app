@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <title>Responsive Design — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="mobile-first, breakpoints, and variants like md: and max-md:." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-11.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-11.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-11.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-11.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Responsive Design — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="mobile-first, breakpoints, and variants like md: and max-md:." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-11.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Responsive Design","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-11.html"}]},{"@type":"LearningResource","name":"Responsive Design","description":"mobile-first, breakpoints, and variants like md: and max-md:.","url":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-11.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/en/tailwind-learning/lessons/index.html">Lessons</a><a href="/tailwind-learning/lessons/tw-11.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">Lesson 11 of 20</p>
+      <h1 class="lp-h1">Responsive Design</h1>
+      <p class="lp-lead">mobile-first, breakpoints, and variants like md: and max-md:.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-11">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>mobile-first</h2><p>A class without a prefix applies to all screens, and a prefix applies from that breakpoint <strong>and up</strong>: <code>sm</code> ≥640px, <code>md</code> ≥768px, <code>lg</code> ≥1024px, <code>xl</code> ≥1280px, <code>2xl</code> ≥1536px. Example: <code>text-sm md:text-lg</code>.</p></article><article class="content-card"><h2>Ranges and Containers</h2><p><code>max-md:hidden</code> hides below md. <code>md:max-lg:flex</code> targets a specific range. And <code>@container</code> with <code>@md:</code> makes a component respond to its container's size rather than the screen's.</p></article></div>
+<article class="body-card key-card"><p>Design for the phone first, then add md: and lg: to scale up.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="p-4"&gt;
+&lt;h1 id="r" class="text-lg font-bold md:text-3xl lg:text-5xl"&gt;Responsive heading&lt;/h1&gt;
+&lt;div class="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4"&gt;
+&lt;div class="bg-sky-100 p-3"&gt;1&lt;/div&gt;&lt;div class="bg-sky-100 p-3"&gt;2&lt;/div&gt;
+&lt;div class="bg-sky-100 p-3"&gt;3&lt;/div&gt;&lt;div class="bg-sky-100 p-3"&gt;4&lt;/div&gt;
+&lt;/div&gt;
+&lt;p class="mt-3 hidden text-slate-600 md:block"&gt;This paragraph appears from md and up.&lt;/p&gt;
+&lt;div class="@container mt-3"&gt;&lt;div class="grid grid-cols-1 gap-2 @md:grid-cols-2"&gt;&lt;div class="bg-amber-100 p-2"&gt;A&lt;/div&gt;&lt;div class="bg-amber-100 p-2"&gt;B&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>Resize the browser window to see the heading size and the number of columns change. The <code>@container</code> responds to its own width, not the screen width.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Add &lt;code&gt;xl:text-7xl&lt;/code&gt; to the heading and watch the result on a wide screen.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What does md:text-lg mean?</strong></p><ul><li>lg size from md and up</li><li>lg size up to md only</li><li>lg size always</li><li>Hides the text</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>lg size from md and up</strong></p></details></li><li><p><strong>How do we hide an element on phones and show it from md?</strong></p><ul><li>hidden md:block</li><li>md:hidden</li><li>block md:none</li><li>invisible md:visible</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>hidden md:block</strong></p></details></li><li><p><strong>What is @container useful for?</strong></p><ul><li>Making a component respond to its container's width</li><li>Changing the page color</li><li>Creating a library</li><li>Loading fonts</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Making a component respond to its container's width</strong></p></details></li><li><p><strong>What does max-md:hidden do?</strong></p><ul><li>Hides the element on screens smaller than md</li><li>Hides it from md and up</li><li>Always hides it</li><li>Hides it on hover</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Hides the element on screens smaller than md</strong></p><p>The max- prefix applies below the given breakpoint.</p></details></li><li><p><strong>The screen is 500px with text-sm md:text-lg. What is the font size?</strong></p><ul><li>text-lg</li><li>text-sm</li><li>text-base</li><li>text-md</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>text-sm</strong></p><p>md only starts at 768px, so the base class stays.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-11">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/tailwind-learning/lessons/tw-10.html"><small>Previous lesson</small><strong>Backgrounds, Gradients, and Images</strong></a>
+        <a rel="next" href="/en/tailwind-learning/lessons/tw-12.html"><small>Next lesson</small><strong>States: hover, focus, active, and disabled</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/tailwind-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Arbitrary Values — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="When the built-in scale isn't enough: w-[17rem], bg-[#...], and full properties." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-16.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-16.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-16.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-16.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Arbitrary Values — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="When the built-in scale isn't enough: w-[17rem], bg-[#...], and full properties." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-16.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Arbitrary Values","item":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-16.html"}]},{"@type":"LearningResource","name":"Arbitrary Values","description":"When the built-in scale isn't enough: w-[17rem], bg-[#...], and full properties.","url":"https://faybit.vercel.app/en/tailwind-learning/lessons/tw-16.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/en/tailwind-learning/lessons/index.html">Lessons</a><a href="/tailwind-learning/lessons/tw-16.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">Lesson 16 of 20</p>
+      <h1 class="lp-h1">Arbitrary Values</h1>
+      <p class="lp-lead">When the built-in scale isn't enough: w-[17rem], bg-[#...], and full properties.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-16">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="en" dir="ltr"><article class="content-card"><h2>Square Brackets</h2><p><code>w-[17rem]</code> <code>top-[117px]</code> <code>bg-[#0b6b78]</code> <code>grid-cols-[1fr_2fr]</code> (the underscore means a space). For variables in v4: <code>w-(--sidebar-width)</code>.</p></article><article class="content-card"><h2>Arbitrary Properties and Variants</h2><p><code>[mask-type:luminance]</code> is a full CSS property. And arbitrary variants: <code>[&amp;&gt;p]:mt-2</code> and <code>[@media(min-width:900px)]:flex</code>. Use them sparingly: if a value repeats, add it to <code>@theme</code>.</p></article></div>
+<article class="body-card key-card"><p>A repeated value belongs in @theme; arbitrary values are for exceptional cases.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>HTML code</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="space-y-3 p-4" style="--sidebar-width: 12rem"&gt;
+&lt;div id="w" class="w-[17rem] rounded bg-[#0b6b78] p-2 text-white"&gt;w-[17rem] bg-[#0b6b78]&lt;/div&gt;
+&lt;div class="w-(--sidebar-width) rounded bg-slate-200 p-2"&gt;w-(--sidebar-width)&lt;/div&gt;
+&lt;div class="grid grid-cols-[1fr_2fr] gap-2"&gt;&lt;div class="bg-amber-100 p-2"&gt;1fr&lt;/div&gt;&lt;div class="bg-amber-200 p-2"&gt;2fr&lt;/div&gt;&lt;/div&gt;
+&lt;div class="[&amp;&gt;p]:mt-2 rounded border p-2"&gt;&lt;p&gt;First paragraph&lt;/p&gt;&lt;p&gt;Second paragraph&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>Understanding the code</h3>
+<div><p>Brackets allow values that aren't in the scale. The <code>w-(--sidebar-width)</code> syntax reads a CSS variable directly (v4).</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Edit and try</h2></div>
+</div>
+<p class="practice-description">Change the first width to &lt;code&gt;w-[20rem]&lt;/code&gt; and the background color to &lt;code&gt;bg-[#7c3aed]&lt;/code&gt;.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What does the underscore mean inside grid-cols-[1fr_2fr]?</strong></p><ul><li>A space between the two values</li><li>A minus</li><li>A comment</li><li>An error</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A space between the two values</strong></p></details></li><li><p><strong>When do you prefer @theme over arbitrary values?</strong></p><ul><li>When the value repeats in more than one place</li><li>When it is used once</li><li>When writing text</li><li>Never prefer it</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>When the value repeats in more than one place</strong></p></details></li><li><p><strong>What is the syntax for using a CSS variable in v4?</strong></p><ul><li>w-(--my-var)</li><li>w-$my-var</li><li>w-@my-var</li><li>w-var</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>w-(--my-var)</strong></p></details></li><li><p><strong>What does the class w-[17rem] do?</strong></p><ul><li>Sets the width to exactly 17rem</li><li>Sets the width to 17 items</li><li>Adds 17rem of padding</li><li>Rejects the value</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Sets the width to exactly 17rem</strong></p><p>Square brackets accept any CSS value directly.</p></details></li><li><p><strong>What does the class [&amp;&gt;p]:mt-2 do?</strong></p><ul><li>Adds a top margin to direct-child paragraphs</li><li>Adds a margin only to the element itself</li><li>Deletes paragraphs</li><li>Hides paragraphs</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Adds a top margin to direct-child paragraphs</strong></p><p>An arbitrary variant writes a custom CSS selector before the utility.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-16">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/tailwind-learning/lessons/tw-15.html"><small>Previous lesson</small><strong>Transitions, Transforms, and Animation</strong></a>
+        <a rel="next" href="/en/tailwind-learning/lessons/tw-17.html"><small>Next lesson</small><strong>Customizing with @theme</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/tailwind-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

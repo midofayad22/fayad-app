@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="tw" />
+    <title>الألوان والشفافية — Tailwind CSS | FAYBIT</title>
+    <meta name="description" content="لوحة الألوان بدرجاتها من 50 إلى 950 وطريقة التحكم في الشفافية." />
+    <link rel="canonical" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-03.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-03.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/tailwind-learning/lessons/tw-03.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/tailwind-learning/lessons/tw-03.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="الألوان والشفافية — Tailwind CSS | FAYBIT" />
+    <meta property="og:description" content="لوحة الألوان بدرجاتها من 50 إلى 950 وطريقة التحكم في الشفافية." />
+    <meta property="og:url" content="https://faybit.vercel.app/tailwind-learning/lessons/tw-03.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tailwind CSS","item":"https://faybit.vercel.app/tailwind-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"الألوان والشفافية","item":"https://faybit.vercel.app/tailwind-learning/lessons/tw-03.html"}]},{"@type":"LearningResource","name":"الألوان والشفافية","description":"لوحة الألوان بدرجاتها من 50 إلى 950 وطريقة التحكم في الشفافية.","url":"https://faybit.vercel.app/tailwind-learning/lessons/tw-03.html","inLanguage":"ar","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Tailwind CSS — FAYBIT","url":"https://faybit.vercel.app/tailwind-learning/tailwind-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">تخطي إلى المحتوى</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Tailwind CSS"><a href="/tailwind-learning/lessons/index.html">الدروس</a><a href="/en/tailwind-learning/lessons/tw-03.html" hreflang="en" lang="en">English</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/tailwind-learning/lessons/index.html">Tailwind CSS</a></nav>
+      <p class="lp-eyebrow">الدرس 3 من 20</p>
+      <h1 class="lp-h1">الألوان والشفافية</h1>
+      <p class="lp-lead">لوحة الألوان بدرجاتها من 50 إلى 950 وطريقة التحكم في الشفافية.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-3">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a><small>يعمل التمرين والاختبار وحفظ التقدم في الصفحة التفاعلية.</small></p>
+      <div class="lp-body lesson-content">
+<div lang="ar" dir="rtl"><article class="content-card"><h2>اللوحة</h2><p>لكل لون درجات: <code>50, 100, 200 … 900, 950</code>. الصيغة: <code>bg-{لون}-{درجة}</code> و<code>text-</code> و<code>border-</code> و<code>ring-</code> و<code>fill-</code>. مثل <code>bg-sky-600</code> و<code>text-slate-700</code>. ألوان خاصة: <code>white</code> <code>black</code> <code>transparent</code> <code>current</code>.</p></article><article class="content-card"><h2>الشفافية</h2><p>أضف <code>/نسبة</code> بعد اللون: <code>bg-black/50</code> و<code>text-sky-700/80</code>. وللعنصر كله <code>opacity-50</code>. اختر درجات متباعدة (مثل 50 للخلفية و800 للنص) لضمان التباين.</p></article></div>
+<article class="body-card key-card"><p>bg-sky-600/50 يعني اللون نفسه بشفافية 50%. تأكد من تباين كافٍ بين النص والخلفية.</p></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>مثال برمجي</span><h2>كود HTML</h2></div>
+</div>
+<pre dir="ltr"><code>&lt;div class="space-y-3 p-4"&gt;
+&lt;div class="rounded bg-sky-100 p-3 text-sky-900"&gt;خلفية فاتحة بنص داكن&lt;/div&gt;
+&lt;div class="rounded bg-slate-800 p-3 text-white"&gt;خلفية داكنة بنص أبيض&lt;/div&gt;
+&lt;div class="rounded bg-black/10 p-3"&gt;أسود بشفافية 10%&lt;/div&gt;
+&lt;div id="o" class="rounded bg-emerald-500 p-3 opacity-50"&gt;opacity-50&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</article>
+<section class="explanation-card">
+<h3>فهم الكود</h3>
+<div><p>الدرجات القريبة من 50 فاتحة، والقريبة من 900 داكنة. <code>/10</code> يغير شفافية اللون فقط، أما <code>opacity-50</code> فتؤثر على العنصر ومحتواه.</p></div>
+</section>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>جرّب بنفسك</span><h2>عدّل وجرّب</h2></div>
+</div>
+<p class="practice-description">اجعل الخلفية الأولى &lt;code&gt;bg-rose-100&lt;/code&gt; والنص &lt;code&gt;text-rose-900&lt;/code&gt;.</p>
+</article>
+<section class="lp-quiz"><h2>اختبر نفسك</h2><ol><li><p><strong>ماذا يعني bg-black/50؟</strong></p><ul><li>خلفية سوداء بشفافية 50%</li><li>خلفية بعرض 50</li><li>50 عنصرًا أسود</li><li>ظل أسود</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>خلفية سوداء بشفافية 50%</strong></p></details></li><li><p><strong>أي ثنائي يعطي تباينًا جيدًا؟</strong></p><ul><li>bg-slate-800 مع text-white</li><li>bg-sky-100 مع text-white</li><li>bg-white مع text-yellow-100</li><li>bg-gray-300 مع text-gray-400</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>bg-slate-800 مع text-white</strong></p></details></li><li><p><strong>ما الفرق بين bg-black/50 و opacity-50؟</strong></p><ul><li>الأولى للون الخلفية فقط والثانية للعنصر كله</li><li>لا فرق</li><li>الثانية للون فقط</li><li>الأولى تخفي العنصر</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>الأولى للون الخلفية فقط والثانية للعنصر كله</strong></p></details></li><li><p><strong>ماذا تعني text-sky-700/80؟</strong></p><ul><li>نص بلون sky-700 بشفافية 80%</li><li>نص بحجم 80px</li><li>نص بدرجة 780</li><li>80 حرفاً كحد أقصى</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>نص بلون sky-700 بشفافية 80%</strong></p><p>الرقم بعد الشرطة المائلة هو نسبة الشفافية.</p></details></li><li><p><strong>ما أغمق درجة في مقياس الألوان الافتراضي؟</strong></p><ul><li>50</li><li>500</li><li>1000</li><li>950</li></ul><details><summary>الإجابة والشرح</summary><p>الإجابة الصحيحة: <strong>950</strong></p><p>الدرجات تمتد من 50 إلى 950.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/tailwind-learning/tailwind-learning.html#lesson-3">افتح الدرس التفاعلي (محرر + اختبار + تتبّع التقدم)</a></p>
+      <nav class="lp-pager" aria-label="كل دروس المسار">
+        <a rel="prev" href="/tailwind-learning/lessons/tw-02.html"><small>الدرس السابق</small><strong>المسافات: padding و margin و gap</strong></a>
+        <a rel="next" href="/tailwind-learning/lessons/tw-04.html"><small>الدرس التالي</small><strong>الطباعة</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/tailwind-learning/lessons/index.html">كل دروس المسار</a></p>
+    </main>
+  </body>
+</html>

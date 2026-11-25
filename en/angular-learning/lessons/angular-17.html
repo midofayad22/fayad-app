@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="angular" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Services — Angular | FAYBIT</title>
+    <meta name="description" content="Learn how Angular services organize reusable application logic and shared functionality." />
+    <link rel="canonical" href="https://faybit.vercel.app/en/angular-learning/lessons/angular-17.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/angular-learning/lessons/angular-17.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/angular-learning/lessons/angular-17.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/angular-learning/lessons/angular-17.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="Services — Angular | FAYBIT" />
+    <meta property="og:description" content="Learn how Angular services organize reusable application logic and shared functionality." />
+    <meta property="og:url" content="https://faybit.vercel.app/en/angular-learning/lessons/angular-17.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Angular","item":"https://faybit.vercel.app/en/angular-learning/lessons/index.html"},{"@type":"ListItem","position":3,"name":"Services","item":"https://faybit.vercel.app/en/angular-learning/lessons/angular-17.html"}]},{"@type":"LearningResource","name":"Services","description":"Learn how Angular services organize reusable application logic and shared functionality.","url":"https://faybit.vercel.app/en/angular-learning/lessons/angular-17.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Angular — FAYBIT","url":"https://faybit.vercel.app/angular-learning/angular-learning.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Angular"><a href="/en/angular-learning/lessons/index.html">Lessons</a><a href="/angular-learning/lessons/angular-17.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/angular-learning/lessons/index.html">Angular</a></nav>
+      <p class="lp-eyebrow">Lesson 17 of 32</p>
+      <h1 class="lp-h1">Services</h1>
+      <p class="lp-lead">Learn how Angular services organize reusable application logic and shared functionality.</p>
+      <p class="lp-cta"><a class="lp-btn" href="/angular-learning/angular-learning.html#lesson-17">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<article class="body-card"><div>Services are classes designed to contain reusable logic. They are commonly used for API communication, authentication, shared data, business logic, logging, and other functionality that should not live directly inside a component.</div></article>
+<article class="example-card">
+<div class="example-header">
+<div><span>Code example</span><h2>Code Example</h2></div>
+</div>
+<pre dir="ltr"><code>import { Injectable } from '@angular/core';
+@Injectable({
+providedIn: 'root'
+})
+export class UserService {
+getUsers() {
+return ['Ali', 'Mido', 'Sara'];
+}
+}</code></pre>
+</article>
+<article class="practice-card">
+<div class="practice-header">
+<div><span>Try it yourself</span><h2>Try It Yourself</h2></div>
+</div>
+<p class="practice-description">Modify the example below and run your code to explore the Angular syntax.</p>
+</article>
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>Why are Angular services commonly used?</strong></p><ul><li>To share reusable logic and data</li><li>To style buttons</li><li>To create HTML tags</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>To share reusable logic and data</strong></p></details></li><li><p><strong>What is the main focus of this lesson?</strong></p><ul><li>Services</li><li>Dependency Injection</li><li>Angular Routing</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Services</strong></p></details></li><li><p><strong>Which statement best describes this topic?</strong></p><ul><li>Services are classes designed to contain reusable logic. They are commonly used for API communication, authentication, shared data, business logic, logging, and other functionality that should not live directly inside a component.</li><li>Dependency Injection allows a class to receive the objects it needs instead of creating them itself. This improves reusability, testing, and separation of responsibilities.</li><li>Angular Router maps URLs to components. It allows applications to behave like multi-page experiences while remaining a single-page application. Routes can also use guards, parameters, child routes, and lazy loading.</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Services are classes designed to contain reusable logic. They are commonly used for API communication, authentication, shared data, business logic, logging, and other functionality that should not live directly inside a component.</strong></p></details></li><li><p><strong>What is a practical goal of this lesson?</strong></p><ul><li>Learn how Angular services organize reusable application logic and shared functionality.</li><li>Understand how Angular provides required services and dependencies to classes.</li><li>Learn how Angular Router allows users to navigate between application views.</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Learn how Angular services organize reusable application logic and shared functionality.</strong></p></details></li><li><p><strong>Which Angular concept is directly related to this lesson?</strong></p><ul><li>Service</li><li>Dependency Injection</li><li>Routing</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Service</strong></p></details></li><li><p><strong>Which syntax or API is most closely associated with this lesson?</strong></p><ul><li>@Injectable</li><li>constructor injection</li><li>Router</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>@Injectable</strong></p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/angular-learning/angular-learning.html#lesson-17">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/angular-learning/lessons/angular-16.html"><small>Previous lesson</small><strong>Outputs</strong></a>
+        <a rel="next" href="/en/angular-learning/lessons/angular-18.html"><small>Next lesson</small><strong>Dependency Injection</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/angular-learning/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>

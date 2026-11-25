@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="fayad-content" content="prg" />
+    <title>The Tokenizer (Lexer) — Programming Basics | FAYBIT</title>
+    <meta name="description" content="TOKENIZER Understand what a token is. Write a tokenizer for arithmetic. Handle whitespace and errors. The compilers lesson (prg-25) and the Loops and…" />
+    <link rel="canonical" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-26.html" />
+    <link rel="alternate" hreflang="en" href="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-26.html" />
+    <link rel="alternate" hreflang="ar" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-26.html" />
+    <link rel="alternate" hreflang="x-default" href="https://faybit.vercel.app/fundamentals/programming-basics/lessons/prg-26.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FAYBIT" />
+    <meta property="og:title" content="The Tokenizer (Lexer) — Programming Basics | FAYBIT" />
+    <meta property="og:description" content="TOKENIZER Understand what a token is. Write a tokenizer for arithmetic. Handle whitespace and errors. The compilers lesson (prg-25) and the Loops and…" />
+    <meta property="og:url" content="https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-26.html" />
+    <meta property="og:image" content="https://faybit.vercel.app/assets/brand/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0D9488" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+    <link rel="stylesheet" href="/css/lesson-doc.css" />
+    <link rel="stylesheet" href="/css/lesson-page.css" />
+    <script type="application/ld+json" id="ld-seo">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FAYBIT","item":"https://faybit.vercel.app/"},{"@type":"ListItem","position":2,"name":"Programming Basics","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/index.html"},{"@type":"ListItem","position":3,"name":"The Tokenizer (Lexer)","item":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-26.html"}]},{"@type":"LearningResource","name":"The Tokenizer (Lexer)","description":"TOKENIZER Understand what a token is. Write a tokenizer for arithmetic. Handle whitespace and errors. The compilers lesson (prg-25) and the Loops and…","url":"https://faybit.vercel.app/en/fundamentals/programming-basics/lessons/prg-26.html","inLanguage":"en","learningResourceType":"lesson","isAccessibleForFree":true,"isPartOf":{"@type":"Course","name":"Programming Basics — FAYBIT","url":"https://faybit.vercel.app/fundamentals/programming-basics/prg.html","provider":{"@type":"Organization","name":"FAYBIT","url":"https://faybit.vercel.app/"}}}]}</script>
+  </head>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
+    <header class="lp-top">
+      <a class="lp-brand" href="/index.html" aria-label="FAYBIT"><img src="/assets/brand/logo-mark.svg" alt="" width="28" height="28" /><span>FAYBIT</span></a>
+      <nav class="lp-nav" aria-label="Programming Basics"><a href="/en/fundamentals/programming-basics/lessons/index.html">Lessons</a><a href="/fundamentals/programming-basics/lessons/prg-26.html" hreflang="ar" lang="ar">العربية</a></nav>
+    </header>
+    <main id="main" class="lp-main">
+      <nav class="lp-crumbs" aria-label="breadcrumb"><a href="/index.html">FAYBIT</a> <span aria-hidden="true">/</span> <a href="/en/fundamentals/programming-basics/lessons/index.html">Programming Basics</a></nav>
+      <p class="lp-eyebrow">Lesson 26 of 31 · TOKENIZER</p>
+      <h1 class="lp-h1">The Tokenizer (Lexer)</h1>
+      
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-26">Open the interactive lesson (editor + quiz + progress)</a><small>The exercise, quiz and progress tracking run on the interactive page.</small></p>
+      <div class="lp-body lesson-content">
+<!-- TOP BAR -->
+<!-- =================================================
+LESSON CARD
+================================================== -->
+<article class="lesson-card">
+<span class="lesson-level">TOKENIZER</span>
+<h2>Splitting text into meaningful tokens</h2>
+<!-- DYNAMIC CONTENT -->
+<div class="lesson-content"><section class="lesson-section doc-objectives"><h3>Learning objectives</h3><ul><li>Understand what a <span class="term">token</span> is.</li><li>Write a tokenizer for arithmetic.</li><li>Handle whitespace and errors.</li></ul>
+</section>
+<section class="lesson-section doc-prereq"><h3>Prerequisites</h3><ul><li>The compilers lesson (prg-25) and the Loops and Strings lessons.</li></ul>
+</section>
+<section class="lesson-section "><h3>What is a token?</h3>
+<p>When you read <code>12 + 3*4</code> you see numbers and operations. The computer sees only a string of characters. The tokenizer groups characters into meaningful units: a number, an operator, a bracket. Each token has a <strong>type</strong> and a <strong>value</strong>.</p>
+<figure class="code-ex code-ex-out"><figcaption><span class="code-ex-lang">Output</span></figcaption><pre dir="ltr"><code>input : "12 + 3*4"
+tokens: NUMBER(12)  PLUS  NUMBER(3)  STAR  NUMBER(4)</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>The algorithm</h3>
+<ol><li>Start at position 0.</li><li>Skip whitespace.</li><li>If the character is a digit, read all consecutive digits as one number.</li><li>If it is an operator or bracket, create a token for it.</li><li>Otherwise it is an unknown character: report an error with its position.</li></ol>
+<figure class="code-ex"><figcaption><span class="code-ex-lang">javascript</span></figcaption><pre dir="ltr"><code>function tokenize(src) {
+const tokens = [];
+let i = 0;
+while (i &lt; src.length) {
+const ch = src[i];
+if (ch === " ") { i++; continue; }
+if (ch &gt;= "0" &amp;&amp; ch &lt;= "9") {
+let num = "";
+while (i &lt; src.length &amp;&amp; src[i] &gt;= "0" &amp;&amp; src[i] &lt;= "9") num += src[i++];
+tokens.push({ type: "num", value: Number(num) });
+} else if ("+-*/()".includes(ch)) {
+tokens.push({ type: "op", value: ch }); i++;
+} else {
+throw new Error("Unexpected character '" + ch + "' at " + i);
+}
+}
+return tokens;
+}
+console.log(tokenize("12 + 3*4").map((t) =&gt; t.value)); // [12, "+", 3, "*", 4]</code></pre></figure>
+</section>
+<section class="lesson-section "><h3>A step-by-step trace</h3>
+<p>We walk through <code>3 * (2 + 4)</code> one character at a time. The tokenizer keeps a position <code>i</code> and decides at each step what to do:</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th scope="col">Position i</th><th scope="col">Character</th><th scope="col">Decision</th><th scope="col">Token produced</th></tr></thead><tbody><tr><th scope="row">0</th><td><code>3</code></td><td>a digit: read consecutive digits</td><td><code>num 3</code></td></tr><tr><th scope="row">1</th><td><code> </code> (space)</td><td>skip</td><td>—</td></tr><tr><th scope="row">2</th><td><code>*</code></td><td>an operator</td><td><code>op *</code></td></tr><tr><th scope="row">4</th><td><code>(</code></td><td>a bracket</td><td><code>op (</code></td></tr><tr><th scope="row">5</th><td><code>2</code></td><td>a digit</td><td><code>num 2</code></td></tr><tr><th scope="row">7</th><td><code>+</code></td><td>an operator</td><td><code>op +</code></td></tr><tr><th scope="row">9</th><td><code>4</code></td><td>a digit</td><td><code>num 4</code></td></tr><tr><th scope="row">10</th><td><code>)</code></td><td>a bracket</td><td><code>op )</code></td></tr></tbody></table></div>
+</section>
+<section class="lesson-section "><h3>When it fails: tokenizer errors</h3>
+<p>The tokenizer does not understand meaning, but it knows the allowed characters. Any character outside the list is a lexical error. Example: <code>3 $ 4</code> produces the message below, which names the position so the user can find the problem quickly:</p>
+<figure class="code-ex code-ex-out"><figcaption><span class="code-ex-lang">Output</span></figcaption><pre dir="ltr"><code>Error: Unexpected character '$' at 2
+3 $ 4
+^</code></pre></figure>
+<div class="doc-mistakes"><h4>Common mistakes</h4><ul><li>Reading a number one character at a time: <code>12</code> becomes <code>1</code> and <code>2</code>.</li><li>Forgetting to advance the index <code>i</code>, causing an infinite loop.</li></ul></div>
+<details class="doc-exercise"><summary><span>Exercise</span> How many tokens are in <code>(1+2)*3</code>?</summary><div class="doc-solution"><strong>Show solution</strong><p>Seven: <code>(</code>, <code>1</code>, <code>+</code>, <code>2</code>, <code>)</code>, <code>*</code> and <code>3</code>.</p></div></details>
+</section>
+<section class="lesson-section doc-summary"><h3>Summary</h3><ul><li>The tokenizer turns characters into units with a type and a value.</li><li>It skips whitespace and reports unknown characters.</li></ul><p class="doc-next"><strong>Next step:</strong> We turn the token list into a tree: the parser.</p>
+</section></div>
+<!-- KEY CONCEPT -->
+<div class="key-concept">
+<div>
+<strong>Core idea</strong>
+<p>The tokenizer is the first stage: it turns raw text into symbols the parser can understand.</p>
+</div>
+</div>
+<!-- EXAMPLE -->
+<div class="example-section">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Worked example</span>
+<h3>See the idea in code</h3>
+</div>
+</div>
+<div class="code-block">
+<div class="code-header">
+<span> JavaScript </span>
+</div>
+<pre><code>const src = "7 * (2 + 1)";
+const tokens = src.match(/\d+|[-+*/()]/g);
+console.log(tokens);</code></pre>
+</div>
+</div>
+<!-- KNOWLEDGE CHECK -->
+<!-- PRACTICE -->
+<div class="practice-box">
+<div class="section-heading">
+<div class="section-heading-icon">
+</div>
+<div>
+<span>Practice</span>
+<h3>Challenge yourself</h3>
+</div>
+</div>
+<p></p>
+<div class="fd-exercise"><h4>Interactive exercise</h4><p class="fd-ex-prompt">Write tokenize(src) returning an array of strings: numbers (possibly decimal) and the operators + - * / ( ), skipping whitespace. Example: "12 + 3.5*4" gives ["12","+","3.5","*","4"].</p><p class="fd-ex-status" role="status"></p></div>
+</div>
+<!-- INTERACTIVE PLAYGROUND -->
+<!-- COMPLETE BUTTON -->
+</article>
+<!-- =================================================
+NAVIGATION
+================================================== -->
+<section class="lp-quiz"><h2>Test yourself</h2><ol><li><p><strong>What is a token?</strong></p><ul><li>A meaningful unit such as a number or operator</li><li>A password</li><li>A kind of error</li><li>A file</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>A meaningful unit such as a number or operator</strong></p><p>It has a type and a value and is produced by the lexer.</p></details></li><li><p><strong>Why do we read consecutive digits together?</strong></p><ul><li>So that 12 is one number, not two digits</li><li>Only to save memory</li><li>No reason</li><li>To change the colour</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>So that 12 is one number, not two digits</strong></p><p>A number is a single unit of meaning.</p></details></li><li><p><strong>What should the tokenizer do with an unknown character such as @?</strong></p><ul><li>Report an error naming the position</li><li>Always silently ignore it</li><li>Delete the program</li><li>Shut down the machine</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>Report an error naming the position</strong></p><p>A clear error is better than a silent wrong result.</p></details></li><li><p><strong>How many tokens are in 8/2?</strong></p><ul><li>3</li><li>2</li><li>1</li><li>4</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>3</strong></p><p>8, / and 2.</p></details></li><li><p><strong>How many tokens does the lexer produce from the text: (10 - 4) * 2?</strong></p><ul><li>5</li><li>7</li><li>9</li><li>11</li></ul><details><summary>Answer and explanation</summary><p>Correct answer: <strong>7</strong></p><p>The tokens are ( , 10 , - , 4 , ) , * , 2, which is 7. Multi-digit numbers like 10 count as one token and spaces are not counted.</p></details></li></ol></section>
+      </div>
+      <p class="lp-cta"><a class="lp-btn" href="/fundamentals/programming-basics/prg.html#lesson-26">Open the interactive lesson (editor + quiz + progress)</a></p>
+      <nav class="lp-pager" aria-label="All lessons in this course">
+        <a rel="prev" href="/en/fundamentals/programming-basics/lessons/prg-25.html"><small>Previous lesson</small><strong>How Languages Work: Compilers and Interpreters</strong></a>
+        <a rel="next" href="/en/fundamentals/programming-basics/lessons/prg-27.html"><small>Next lesson</small><strong>The Parser and the AST</strong></a>
+      </nav>
+      <p class="lp-all"><a href="/en/fundamentals/programming-basics/lessons/index.html">All lessons in this course</a></p>
+    </main>
+  </body>
+</html>
