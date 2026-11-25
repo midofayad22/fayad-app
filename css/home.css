@@ -201,6 +201,8 @@ html[dir="rtl"] .pl { background: radial-gradient(70% 60% at 15% 0, rgba(31,209,
 .gt-play { position: absolute; inset-block-end: 18px; inset-inline-end: 18px; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: var(--gc); color: #07121c; box-shadow: 0 10px 22px -10px var(--gc); transition: transform var(--fy-dur) var(--fy-ease); }
 .gt-play svg { width: 16px; height: 16px; margin-inline-start: 2px; } html[dir="rtl"] .gt-play svg { transform: scaleX(-1); margin-inline-start: 0; margin-inline-end: 2px; }
 .gt:hover .gt-play { transform: scale(1.12); }
+.gt-flex .gt-play, .gt-sel .gt-play { inset-block-end: auto; inset-block-start: 50%; margin-block-start: -21px; }
+.gt-flex, .gt-sel { padding-inline-end: 76px; }
 .gt-vis { position: relative; display: flex; height: 140px; padding: 16px; border-radius: 14px; background: rgba(5,13,21,.55); border: 1px solid var(--ink-line); overflow: hidden; }
 .gt-vis i, .gt-vis b { transition: transform var(--fy-dur) var(--fy-ease), width var(--fy-dur) var(--fy-ease); }
 .gt-vis-flex { justify-content: space-between; align-items: center; gap: 8px; }
