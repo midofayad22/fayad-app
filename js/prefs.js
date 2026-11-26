@@ -73,7 +73,7 @@
   /* ---- unified preference store: one JSON object (key fayad-prefs-v1) + legacy keys kept in step ---- */
   var KEY = "fayad-prefs-v1";
   var DEFAULTS = {
-    themeMode: "light", accent: "teal", fontScale: 100, contrast: "normal", motion: "system",
+    themeMode: "dark", accent: "teal", fontScale: 100, contrast: "normal", motion: "system",
     reading: "comfortable", sections: "expanded", explainLang: "auto", editorSize: 14, editorTheme: "dark",
   };
   var ENUMS = {

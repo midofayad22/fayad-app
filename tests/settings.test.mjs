@@ -53,21 +53,21 @@ test("appearance: live preview is not saved until applied; discard reverts; appl
   const { ctx, page } = await open("/settings/appearance.html");
   const apply = page.locator(".st-actions .st-btn").first(), discard = page.locator(".st-actions .st-btn").nth(1);
   assert.equal(await apply.isDisabled(), true);
-  await page.locator('[role="radio"][data-v="dark"]').click(); await page.locator('[role="radio"][data-v="violet"]').click();
-  assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), "dark");           // previewed everywhere on the page
+  await page.locator('[role="radio"][data-v="light"]').click(); await page.locator('[role="radio"][data-v="violet"]').click();
+  assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), "light");           // previewed everywhere on the page
   assert.equal(await page.evaluate(() => document.documentElement.dataset.accent), "violet");
-  assert.equal((await prefs(page)).themeMode, "light");                                              // ...but not saved
+  assert.equal((await prefs(page)).themeMode, "dark");                                              // ...but not saved
   assert.equal(await page.evaluate(() => localStorage.getItem("fayad-prefs-v1")), null);
   await discard.click();
-  assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), "light");
-  await page.locator('[role="radio"][data-v="dark"]').click(); await page.locator('[role="radio"][data-v="rose"]').click();
+  assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), "dark");
+  await page.locator('[role="radio"][data-v="light"]').click(); await page.locator('[role="radio"][data-v="rose"]').click();
   await page.locator("#fs").fill("120"); await apply.click();
-  assert.deepEqual([(await prefs(page)).themeMode, (await prefs(page)).accent, (await prefs(page)).fontScale], ["dark", "rose", 120]);
+  assert.deepEqual([(await prefs(page)).themeMode, (await prefs(page)).accent, (await prefs(page)).fontScale], ["light", "rose", 120]);
   await page.goto(base + "/about/about.html"); await page.waitForTimeout(300);                       // another page keeps them
-  assert.deepEqual(await page.evaluate(() => [document.documentElement.dataset.theme, document.documentElement.dataset.accent, document.documentElement.style.getPropertyValue("--fy-scale")]), ["dark", "rose", "1.2"]);
+  assert.deepEqual(await page.evaluate(() => [document.documentElement.dataset.theme, document.documentElement.dataset.accent, document.documentElement.style.getPropertyValue("--fy-scale")]), ["light", "rose", "1.2"]);
   await page.goto(base + "/settings/appearance.html"); await page.waitForSelector(".st-nav");
   await page.locator(".st-actions .st-btn").nth(2).click();
-  const a = await prefs(page); assert.deepEqual([a.themeMode, a.accent, a.fontScale], ["light", "teal", 100]);
+  const a = await prefs(page); assert.deepEqual([a.themeMode, a.accent, a.fontScale], ["dark", "teal", 100]);
   await ctx.close();
 });
 

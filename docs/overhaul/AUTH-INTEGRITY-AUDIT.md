@@ -17,7 +17,7 @@ Conclusion: server-side isolation between accounts is correct **as written in th
 
 ## Findings
 
-### 1. Device-local progress is shared between accounts on the same browser (documented, not changed)
+### 1. Device-local progress is shared between accounts on the same browser (V4: documented; V5: frontend mitigation added)
 
 Behaviour (code evidence):
 - Progress is stored once per browser: `fayad-progress-v1`, the legacy per-track keys (`fayad-html-progress`, `fayad-css-current-lesson`, `fayad-js-completed-lessons`, …) and game solves in `fayad-game-v1`. None is namespaced by user id.
@@ -44,3 +44,15 @@ Recommended separate fix (not implemented here): on `SIGNED_IN`, if the last sig
 ## Limitations
 - No real sign-in, registration, recovery email, token refresh, or two-account RLS test was performed.
 - Everything marked "Code read" reflects the repository at this commit, not the live database.
+
+## V5 update — frontend account-isolation guard (finding 1)
+
+Implemented without touching Supabase auth, schema, RPCs, scoring or the sync algorithm (`js/shell.js` guard + two idempotent calls in `js/engine/cloud.js`):
+- The device remembers the owning account in `fayad-device-owner`.
+- First sign-in on a device adopts existing guest progress (unchanged behaviour).
+- Sign-out, or signing in as a different account, **moves** the progress keys (`fayad-progress-v1`, `fayad-game-v1`, `fayad-last-track`, legacy `fayad-*-progress|current-lesson|completed-lessons|stars|quiz-progress-v2|learning-progress`) into `fayad-stash-v1:<uid>` first, and only then clears them. Nothing is deleted; if the stash cannot be written the data stays where it is.
+- Signing back in restores that account's stash into the (now empty) active keys; its cloud rows are pulled by the existing sync as before.
+- Preferences, language, theme and session keys are never touched.
+- Tests (`tests/account-isolation.test.mjs`): adoption, A→B switch, B sign-out, A returns with data intact, same-account no-ops. These drive the guard with synthetic `fayad-auth-changed` events — **not** a real Supabase login.
+
+Remaining limits: progress made as a guest *between* a sign-out and the next sign-in is adopted by the next account (same as any first-run guest progress); stashes live in the same browser storage (cleared if the user clears site data); not verified with two real Supabase accounts.

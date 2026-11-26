@@ -50,7 +50,7 @@ html[data-theme="dark"] .au-status.error { color: #fca5a5; } html[data-theme="da
   .au { grid-template-columns: minmax(0, 1fr); }
   .au-side { display: none; }
   .au-brand-m { display: inline-flex; }
-  .au-card { padding-block: max(24px, env(safe-area-inset-top)) max(96px, calc(env(safe-area-inset-bottom) + 84px)); } /* clears the floating shell bar */
+  .au-card { padding-block: max(24px, env(safe-area-inset-top)) max(28px, env(safe-area-inset-bottom)); } /* clears the floating shell bar */
 }
 @media (prefers-reduced-motion: reduce) { .au-submit, .au-meter i, .au-tabs button, .au-field input { transition: none; } .au-submit.is-loading::after { animation-duration: 2s; } }
 
@@ -82,4 +82,11 @@ html[data-theme="dark"] .au-card { box-shadow: 0 28px 60px -30px rgba(0,0,0,.7);
 @media (prefers-reduced-motion: reduce) { .au-card { animation: none; } .au-submit:hover:not(:disabled) { transform: none; } }
 
 /* phones: keep the last link clear of the floating controls bar */
-@media (max-width: 720px) { .au-body { padding-bottom: 96px; } }
+
+
+/* V5: language + theme live inside the card; the global dock is not used on auth pages */
+.au-card { position: relative; }
+.au-tools { position: absolute; inset-block-start: 14px; inset-inline-end: 14px; z-index: 2; }
+.au-tools .fy-controls { position: static; }
+.fy-controls--auth .fy-btn-search, .fy-controls--auth .fy-btn-account, .fy-controls--auth .fy-btn-menu, .fy-controls--auth .fy-auth { display: none !important; }
+@media (min-width: 721px) { .au-card { padding-block-start: 60px; } }

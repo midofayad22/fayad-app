@@ -26,11 +26,13 @@ for (const w of [1280, 390, 320]) {
     }
   });
 }
-test("login keeps the floating dock (it has no header) and the dock never covers the course sidebar", async () => {
+test("login has no floating dock: language + theme live inside the card", async () => {
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 800 } }); const page = await ctx.newPage();
   await page.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort());
   await page.goto(`${base}/login.html`); await page.waitForSelector(".fy-controls", { state: "attached" });
-  assert.equal(await page.locator(".fy-controls--dock").count(), 1);
+  assert.equal(await page.locator(".fy-controls--dock").count(), 0);
+  assert.equal(await page.locator("#auTools .fy-btn-theme").count(), 1); assert.equal(await page.locator("#auTools .fy-btn-lang").count(), 1);
+  assert.equal(await page.locator("#auTools .fy-btn-menu").isVisible(), false); assert.equal(await page.locator("#auTools .fy-btn-search").isVisible(), false);
   await ctx.close();
 });
 

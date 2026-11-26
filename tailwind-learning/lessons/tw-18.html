@@ -22,7 +22,7 @@
     <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
-    <script>try{var m=localStorage.getItem("fayad-theme");document.documentElement.setAttribute("data-theme",m==="dark"||m==="light"?m:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+    <script>try{var m=localStorage.getItem("fayad-theme"),s=0;try{s=JSON.parse(localStorage.getItem("fayad-prefs-v1")).themeMode==="system"}catch(e){}document.documentElement.setAttribute("data-theme",s?(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"):(m==="light"?"light":"dark"))}catch(e){}</script>
     <link rel="stylesheet" href="/css/tokens.css" />
     <link rel="stylesheet" href="/css/course.css" />
     <link rel="stylesheet" href="/css/docs.css" />

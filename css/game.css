@@ -129,3 +129,21 @@
 .gh-lb-list li.top-3{background:linear-gradient(90deg,rgba(180,110,60,.22),rgba(128,128,128,.08));box-shadow:inset 0 0 0 1px rgba(180,110,60,.5)}
 .gh-lb-list li.me:not(.top){outline:2px solid var(--fy-brand,#16a34a);outline-offset:-2px}
 @media (max-width:420px){.gh-lb-list li{grid-template-columns:1.6rem 1.8rem minmax(0,1fr) auto;gap:.5rem;padding:.5rem}}
+
+/* ===== V5 games hub: each game gets its own colour, glyph and header art ===== */
+.gh-card { --g: var(--fy-brand); --g2: var(--fy-warm, #e0883a); overflow: hidden; padding: 0 0 20px; gap: 10px; transition: transform .25s var(--fy-ease, ease), box-shadow .25s, border-color .25s; }
+.gh-card > :not(.gh-vis) { margin-inline: 22px; }
+.gh-card:hover, .gh-card:focus-visible { transform: translateY(-4px); border-color: color-mix(in srgb, var(--g) 60%, var(--fy-border-strong)); box-shadow: 0 22px 40px -26px var(--g); }
+.gh-card[data-game="html"] { --g: #e8683a; --g2: #f5a15d; } .gh-card[data-game="css"] { --g: #4b8df0; --g2: #7bb0ff; } .gh-card[data-game="js"] { --g: #e5b422; --g2: #f6d86a; }
+.gh-card[data-game="flex"] { --g: #22b8a6; --g2: #6fe0cf; } .gh-card[data-game="sel"] { --g: #8b6cf0; --g2: #b9a4ff; } .gh-card[data-game="adventure"] { --g: #e0883a; --g2: #f3b46c; } .gh-card[data-game="zombie"] { --g: #6bb04a; --g2: #a6dd7c; }
+.gh-vis { position: relative; display: block; height: 104px; margin: 0 0 6px; background: linear-gradient(135deg, color-mix(in srgb, var(--g) 28%, var(--fy-surface)), color-mix(in srgb, var(--g2) 10%, var(--fy-surface))); border-block-end: 1px solid var(--fy-border); overflow: hidden; }
+.gh-vis b { position: absolute; inset-inline-start: 22px; inset-block-end: 14px; direction: ltr; font: 800 2.1rem/1 var(--fy-font-en); color: var(--g); letter-spacing: -.02em; }
+.gh-vis i { position: absolute; border-radius: 8px; background: color-mix(in srgb, var(--g) 36%, transparent); transition: transform .4s var(--fy-ease, ease); }
+.gh-vis i:nth-of-type(1) { inset-inline-end: 22px; inset-block-start: 18px; width: 86px; height: 14px; }
+.gh-vis i:nth-of-type(2) { inset-inline-end: 44px; inset-block-start: 42px; width: 64px; height: 14px; background: color-mix(in srgb, var(--g2) 50%, transparent); }
+.gh-vis i:nth-of-type(3) { inset-inline-end: 22px; inset-block-start: 66px; width: 40px; height: 14px; }
+.gh-card:hover .gh-vis i:nth-of-type(1) { transform: translateX(-8px); } .gh-card:hover .gh-vis i:nth-of-type(3) { transform: translateX(8px); }
+html[dir="rtl"] .gh-card:hover .gh-vis i:nth-of-type(1) { transform: translateX(8px); } html[dir="rtl"] .gh-card:hover .gh-vis i:nth-of-type(3) { transform: translateX(-8px); }
+.gh-bar i { background: var(--g); } .gh-go { color: var(--g); } .gh-card[data-game="js"] .gh-go { color: color-mix(in srgb, var(--g) 70%, var(--fy-text)); }
+@media (prefers-reduced-motion: reduce) { .gh-card, .gh-vis i { transition: none; } .gh-card:hover { transform: none; } }
+html[dir="rtl"] .gh-vis b { inset-inline-start: auto; left: auto; right: 22px; }

@@ -158,3 +158,12 @@ Checklist: [x] Adventure mechanics v2  [x] Zombie web-lab (supersedes the JS-onl
 - Navbar: guest Sign in / Sign up in the header (desktop), compact Sign in (phone); phone pages without the bottom bar keep the account icon.
 - Login: `?mode=signup` opens the registration tab.
 - Audit: see `AUTH-INTEGRITY-AUDIT.md` (read-only; simulated sessions only; shared local progress keys documented, not changed).
+
+## V5 — Product UI redesign & functional quality pass
+- Theme: dark is the default for first visits (inline head script on all 606 pages + `prefs.js` default); saved choice and "system" mode are preserved. Light palette retinted (page/section/card tiers, teal + warm ambient glows); light text/brand tokens darkened so the WCAG AA audit passes in both themes.
+- Homepage: hero rebuilt around a lesson-window (editor + live preview + read/try/test), real-track finder strip, stacked groups on phones, visible rail arrows on phones, calmer/minimal footer (one compact link row on mobile).
+- Navbar: language control is now a globe icon (one stroke family with search/theme/menu); theme icon turns on change.
+- Login/signup: the floating dock is gone; language + theme sit inside the card.
+- Games hub: per-game colour, glyph and header art.
+- Account isolation: device-owner guard for local progress (see AUTH-INTEGRITY-AUDIT.md V5 update).
+- Settings/profile/dashboard: reviewed; existing controls are all wired to real preferences/backend, no controls removed in this pass.

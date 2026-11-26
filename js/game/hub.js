@@ -25,14 +25,16 @@ function render() {
   const ul = document.getElementById("ghGrid"); ul.textContent = "";
   for (const g of [...ARENA, ...GAMES]) {
     const n = solvedOf(d, g.id), li = document.createElement("li"), a = document.createElement("a");
-    a.href = g.href; a.className = "gh-card";
+    a.href = g.href; a.className = "gh-card"; a.dataset.game = g.id;
+    const vis = document.createElement("span"); vis.className = "gh-vis"; vis.setAttribute("aria-hidden", "true");
+    const glyph = document.createElement("b"); glyph.textContent = ({ html: "</>", css: "{ }", js: "JS", flex: "⇆", sel: ".#", adventure: "▶", zombie: "Z" })[g.id] || g.name.slice(0, 2); vis.append(glyph, document.createElement("i"), document.createElement("i"), document.createElement("i"));
     const tag = document.createElement("span"); tag.className = "gh-tag"; tag.textContent = g.arena ? T("gh.arena") : g.tag;
     const h = document.createElement("h2"); h.textContent = g.name;
     const p = document.createElement("p"); p.textContent = g[lang()];
     const bar = document.createElement("span"); bar.className = "gh-bar"; const fill = document.createElement("i"); fill.style.width = Math.round((n / g.total) * 100) + "%"; bar.appendChild(fill);
     const meta = document.createElement("span"); meta.className = "gh-meta"; meta.textContent = T("gh.levels", { n, t: g.total });
     const go = document.createElement("span"); go.className = "gh-go"; go.textContent = T("gh.play") + " →";
-    a.append(tag, h, p, bar, meta, go); li.appendChild(a); ul.appendChild(li);
+    a.append(vis, tag, h, p, bar, meta, go); li.appendChild(a); ul.appendChild(li);
   }
 }
 document.addEventListener("fayad:langchange", () => { F?.i18n?.apply?.(); render(); });

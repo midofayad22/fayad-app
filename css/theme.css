@@ -261,7 +261,7 @@ html[data-theme="dark"][data-track="html"] :is(.result-preview, .preview-panel) 
   --fy-brand-strong: #07505f;
   --fy-brand-soft: rgba(11, 113, 132, 0.09);
   --fy-on-brand: #ffffff;
-  --fy-gold: #86600a;
+  --fy-gold: #785508;
   --fy-gold-light: #9a6f0c;
   --fy-gold-soft: rgba(134, 96, 10, 0.12);
   --fy-success: #13805a;
@@ -437,7 +437,7 @@ html[data-theme="dark"][data-track="css"] :is(.result-card, .preview-panel) {
   --fy-brand-strong: #07505f;
   --fy-brand-soft: rgba(11, 113, 132, 0.09);
   --fy-on-brand: #ffffff;
-  --fy-gold: #86600a;
+  --fy-gold: #785508;
   --fy-gold-light: #9a6f0c;
   --fy-gold-soft: rgba(134, 96, 10, 0.12);
   --fy-success: #13805a;
@@ -702,7 +702,7 @@ html[data-theme="dark"][data-track="react"] :is(#reactResult, .practice-output) 
   --fy-brand-strong: #07505f;
   --fy-brand-soft: rgba(11, 113, 132, 0.09);
   --fy-on-brand: #ffffff;
-  --fy-gold: #86600a;
+  --fy-gold: #785508;
   --fy-gold-light: #9a6f0c;
   --fy-gold-soft: rgba(134, 96, 10, 0.12);
   --fy-success: #13805a;
@@ -856,7 +856,7 @@ html[data-theme="dark"][data-track="vue"] :is(.result-preview, .preview-panel) {
   --fy-brand-strong: #07505f;
   --fy-brand-soft: rgba(11, 113, 132, 0.09);
   --fy-on-brand: #ffffff;
-  --fy-gold: #86600a;
+  --fy-gold: #785508;
   --fy-gold-light: #9a6f0c;
   --fy-gold-soft: rgba(134, 96, 10, 0.12);
   --fy-success: #13805a;
@@ -1029,7 +1029,7 @@ html[data-theme="dark"][data-track="angular"] :is(#angularResult, .practice-outp
   --fy-brand-strong: #07505f;
   --fy-brand-soft: rgba(11, 113, 132, 0.09);
   --fy-on-brand: #ffffff;
-  --fy-gold: #86600a;
+  --fy-gold: #785508;
   --fy-gold-light: #9a6f0c;
   --fy-gold-soft: rgba(134, 96, 10, 0.12);
   --fy-success: #13805a;
