@@ -110,7 +110,7 @@ el.reset.addEventListener("submit", async (ev) => {
 function showRecovery() { el.form.hidden = true; document.querySelector(".au-tabs").hidden = true; $("welcomeBack").hidden = true; el.reset.hidden = false; $("newPw").focus(); }
 
 (async function init() {
-  setMode("signin");
+  setMode(new URLSearchParams(location.search).get("mode") === "signup" ? "signup" : "signin"); // ?mode=signup opens the registration tab (entry point only)
   try {
     const auth = await waitForAuth();
     auth.client.auth.onAuthStateChange((ev) => { if (ev === "PASSWORD_RECOVERY") showRecovery(); });

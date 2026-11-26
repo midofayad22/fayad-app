@@ -31,3 +31,8 @@ html.is-scrolled .sp { opacity: 1; }
   html.rv-on .rv:not(.is-in) { opacity: 1; transform: none; }
   html.rv-on .rv, .navbar, .sp { transition: none; }
 }
+
+/* V5: theme icon swaps with a short turn instead of snapping */
+@keyframes fy-icon-turn { from { transform: rotate(-70deg) scale(.6); opacity: 0; } to { transform: none; opacity: 1; } }
+.fy-btn-theme svg { animation: fy-icon-turn .38s var(--fy-ease, ease) both; }
+@media (prefers-reduced-motion: reduce) { .fy-btn-theme svg { animation: none; } }

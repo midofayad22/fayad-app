@@ -26,11 +26,13 @@ for (const w of [1280, 390, 320]) {
     }
   });
 }
-test("login keeps the floating dock (it has no header) and the dock never covers the course sidebar", async () => {
+test("login has no floating dock: language + theme live inside the card", async () => {
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 800 } }); const page = await ctx.newPage();
   await page.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort());
   await page.goto(`${base}/login.html`); await page.waitForSelector(".fy-controls", { state: "attached" });
-  assert.equal(await page.locator(".fy-controls--dock").count(), 1);
+  assert.equal(await page.locator(".fy-controls--dock").count(), 0);
+  assert.equal(await page.locator("#auTools .fy-btn-theme").count(), 1); assert.equal(await page.locator("#auTools .fy-btn-lang").count(), 1);
+  assert.equal(await page.locator("#auTools .fy-btn-menu").isVisible(), false); assert.equal(await page.locator("#auTools .fy-btn-search").isVisible(), false);
   await ctx.close();
 });
 
@@ -52,7 +54,7 @@ for (const lang of ["ar", "en"]) test(`header action group is identical and last
     const page = await ctx.newPage(); await page.goto(base + path); await page.waitForSelector(".fy-controls--inline .fy-btn-menu"); await page.waitForTimeout(500);
     const r = await page.evaluate(() => { const g = document.querySelector(".fy-controls"); const gx = g.getBoundingClientRect(), rtl = document.documentElement.dir === "rtl";
       return { order: [...g.querySelectorAll(".fy-btn")].map((x) => x.className.replace("fy-btn fy-btn-", "")).join(), last: [...(g.closest("header") || g.parentElement).querySelectorAll("a, button")].filter((e) => !g.contains(e) && e.getBoundingClientRect().width).every((e) => rtl ? e.getBoundingClientRect().left >= gx.left - 1 : e.getBoundingClientRect().right <= gx.right + 1) }; });
-    assert.equal(r.order, "search,lang,theme,account,menu", path); assert.equal(r.last, true, `${path}: group is not at the far edge`); await page.close();
+    assert.equal(r.order.replace(/ is-guest/g, ""), "search,lang,theme,account,menu", path); assert.equal(r.last, true, `${path}: group is not at the far edge`); await page.close();
   }
   await ctx.close();
 });

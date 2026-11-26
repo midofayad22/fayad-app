@@ -78,7 +78,7 @@
 
   F.i18n.extend({
     ar: {
-      "menu.game": "الألعاب", "menu.dashboard": "لوحة التقدم", "f.about": "عن المنصة", "f.rights": "© 2026 FAYBIT. منصة تعليمية لتطوير الويب.", "ft.learn": "المسارات",
+      "menu.game": "الألعاب", "ft.tag": "منصة تعليمية مستقلة لتعلم تطوير الويب بالعربية والإنجليزية.", "ft.learnH": "تعلّم", "ft.platH": "المنصة", "ft.settings": "الإعدادات", "menu.profile": "الملف الشخصي", "menu.dashboard": "لوحة التقدم", "f.about": "عن المنصة", "f.rights": "© 2026 FAYBIT. منصة تعليمية لتطوير الويب.", "ft.learn": "المسارات",
       "a.kicker": "عن المنصة",
       "a.h1": "مكان هادئ لتتعلم تطوير الويب خطوة بخطوة",
       "a.lead": "FAYBIT منصة تعليمية مستقلة. تبدأ من أساسيات الحاسوب والبرمجة، ثم تبني مهارات HTML وCSS وJavaScript، وتنتقل إلى الأدوات والأطر، وتتمرّن بالكود الحقيقي في كل خطوة.",
@@ -97,7 +97,7 @@
       "a.cta.t": "ابدأ من حيث تناسبك"
     },
     en: {
-      "menu.game": "Games", "menu.dashboard": "Progress dashboard", "f.about": "About", "f.rights": "© 2026 FAYBIT. A web development learning platform.", "ft.learn": "Courses",
+      "menu.game": "Games", "ft.tag": "An independent platform for learning web development in Arabic and English.", "ft.learnH": "Learn", "ft.platH": "Platform", "ft.settings": "Settings", "menu.profile": "Profile", "menu.dashboard": "Progress dashboard", "f.about": "About", "f.rights": "© 2026 FAYBIT. A web development learning platform.", "ft.learn": "Courses",
       "a.kicker": "About the platform",
       "a.h1": "A calm place to learn web development, step by step",
       "a.lead": "FAYBIT is an independent learning platform. Start with computer and programming fundamentals, build HTML, CSS and JavaScript skills, move on to tools and frameworks, and practise with real code at every step.",

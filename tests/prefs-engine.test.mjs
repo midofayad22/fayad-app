@@ -15,25 +15,25 @@ async function ctxPage(path, init, opts = {}) {
 }
 const attrs = (p) => p.evaluate(() => { const r = document.documentElement; return { theme: r.dataset.theme, accent: r.dataset.accent, contrast: r.dataset.contrast, motion: r.dataset.motion, reading: r.dataset.reading, sections: r.dataset.sections, scale: r.style.getPropertyValue("--fy-scale") }; });
 
-test("defaults: light, teal, normal contrast, comfortable reading", async () => {
+test("defaults: dark, teal, normal contrast, comfortable reading", async () => {
   const { ctx, page } = await ctxPage("/about/about.html");
   const a = await attrs(page);
-  assert.deepEqual([a.theme, a.accent, a.contrast, a.reading, a.sections, a.scale], ["light", "teal", "normal", "comfortable", "expanded", "1"]);
+  assert.deepEqual([a.theme, a.accent, a.contrast, a.reading, a.sections, a.scale], ["dark", "teal", "normal", "comfortable", "expanded", "1"]);
   await ctx.close();
 });
 
 test("set() validates, applies, persists across pages and reloads, and emits events", async () => {
   const { ctx, page } = await ctxPage("/about/about.html");
-  const ev = await page.evaluate(() => new Promise((res) => { addEventListener("fayad:prefschange", (e) => res(e.detail.changed), { once: true }); FAYAD.prefs.set({ accent: "violet", fontScale: 120, contrast: "high", reading: "compact", sections: "collapsed", themeMode: "dark" }); }));
+  const ev = await page.evaluate(() => new Promise((res) => { addEventListener("fayad:prefschange", (e) => res(e.detail.changed), { once: true }); FAYAD.prefs.set({ accent: "violet", fontScale: 120, contrast: "high", reading: "compact", sections: "collapsed", themeMode: "light" }); }));
   assert.ok(ev.includes("accent") && ev.includes("themeMode"));
   let a = await attrs(page);
-  assert.deepEqual([a.theme, a.accent, a.contrast, a.reading, a.sections, a.scale], ["dark", "violet", "high", "compact", "collapsed", "1.2"]);
+  assert.deepEqual([a.theme, a.accent, a.contrast, a.reading, a.sections, a.scale], ["light", "violet", "high", "compact", "collapsed", "1.2"]);
   await page.evaluate(() => FAYAD.prefs.set({ accent: "javascript", fontScale: 500, editorSize: "x" })); // invalid values fall back
   a = await attrs(page); assert.equal(a.accent, "teal"); assert.equal(a.scale, "1");
   await page.evaluate(() => FAYAD.prefs.set({ accent: "rose", fontScale: 110 }));
   await page.goto(base + "/"); await page.waitForTimeout(300);          // another page, same storage
   a = await attrs(page); assert.equal(a.accent, "rose"); assert.equal(a.scale, "1.1");
-  assert.equal(await page.evaluate(() => localStorage.getItem("fayad-theme")), "dark"); // legacy mirror
+  assert.equal(await page.evaluate(() => localStorage.getItem("fayad-theme")), "light"); // legacy mirror
   await ctx.close();
 });
 
@@ -57,12 +57,12 @@ test("system theme follows the OS; explicit light ignores it; reduced motion mir
 });
 
 test("legacy fayad-theme=dark is honoured; reset restores defaults; applyRemote does not bump timestamp", async () => {
-  const { ctx, page } = await ctxPage("/about/about.html", () => { if (!localStorage.getItem("fayad-prefs-v1")) localStorage.setItem("fayad-theme", "dark"); });
-  assert.equal((await attrs(page)).theme, "dark");
+  const { ctx, page } = await ctxPage("/about/about.html", () => { if (!localStorage.getItem("fayad-prefs-v1")) localStorage.setItem("fayad-theme", "light"); });
+  assert.equal((await attrs(page)).theme, "light");
   await page.evaluate(() => FAYAD.prefs.applyRemote({ accent: "blue" }, 1234));
   assert.equal(await page.evaluate(() => FAYAD.prefs.all.updatedAt), 1234);
   await page.evaluate(() => FAYAD.prefs.reset());
-  const a = await attrs(page); assert.deepEqual([a.theme, a.accent], ["light", "teal"]);
+  const a = await attrs(page); assert.deepEqual([a.theme, a.accent], ["dark", "teal"]);
   await ctx.close();
 });
 

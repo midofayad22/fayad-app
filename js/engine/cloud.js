@@ -27,8 +27,12 @@ export async function ensureClient() {
 }
 async function uid(c) { try { const { data } = await c.auth.getUser(); return data?.user?.id || null; } catch { return null; } }
 
+/** Same account-isolation rule as shell.js (idempotent): never sync another account's local progress into this user. Returns true when local data was swapped. */
+async function isolate(c) { try { const id = await uid(c); return !!(id && window.FAYAD?.deviceOwner?.guard(id, "SIGNED_IN")); } catch { return false; } }
+
 export async function syncProgress() {
   const c = await ensureClient(); if (!c) return { ok: false, reason: "no-client" };
+  if (await isolate(c)) return { ok: false, reason: "account-switched" };
   const r = await createSync({ client: c, progress: createProgress({ totals: TOTALS }), enabled: true }).sync();
   if (r.ok) {
     document.dispatchEvent(new CustomEvent("fayad:cloudsync", { detail: r }));
@@ -51,6 +55,7 @@ export async function gamification() {
 
 export async function syncGames() {
   const c = await ensureClient(); if (!c) return { ok: false, reason: "no-client" };
+  if (await isolate(c)) return { ok: false, reason: "account-switched" };
   try {
     const id = await uid(c); if (!id) return { ok: false, reason: "signed-out" };
     const { data, error } = await c.from("game_solves").select("game,level,points,hinted,solved_at").eq("user_id", id);

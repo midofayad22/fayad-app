@@ -104,7 +104,7 @@ test("opening the sidebar or search never changes the scroll position (top, midd
   }
 });
 
-for (const [lang, dir] of [["ar", "rtl"], ["en", "ltr"]]) test(`navbar: balanced action group, menu toggle at the far edge, no sign-in button (${lang})`, async () => {
+for (const [lang, dir] of [["ar", "rtl"], ["en", "ltr"]]) test(`navbar: balanced action group, menu toggle at the far edge, guest Sign in/up visible (${lang})`, async () => {
   for (const w of [1440, 768, 390, 320]) {
     const { ctx, page } = await open("/index.html", { w, lang });
     const r = await page.evaluate(() => { const bs = [...document.querySelectorAll(".navbar .fy-controls .fy-btn")].map((b) => { const x = b.getBoundingClientRect(); return { c: b.className.replace("fy-btn ", ""), l: Math.round(x.left), r: Math.round(x.right), w: Math.round(x.width), h: Math.round(x.height), t: Math.round(x.top) }; });
@@ -114,11 +114,12 @@ for (const [lang, dir] of [["ar", "rtl"], ["en", "ltr"]]) test(`navbar: balanced
       assert.equal(r.bs.find((b) => b.c === "fy-btn-menu").w, 0, `${w}: header menu toggle hidden`);
       r.bs = r.bs.filter((b) => b.c !== "fy-btn-menu");
     }
-    assert.deepEqual(r.bs.map((b) => b.c), w <= 720 ? ["fy-btn-search", "fy-btn-lang", "fy-btn-theme", "fy-btn-account"] : ["fy-btn-search", "fy-btn-lang", "fy-btn-theme", "fy-btn-account", "fy-btn-menu"], `${w}: order`);
+    r.bs = r.bs.map((b) => ({ ...b, c: b.c.replace(" is-guest", "") })).filter((b) => b.w > 0); // desktop guests get the Sign in / Sign up pair, the account icon is hidden
+    assert.deepEqual(r.bs.map((b) => b.c), w <= 720 ? ["fy-btn-search", "fy-btn-lang", "fy-btn-theme"] : ["fy-btn-search", "fy-btn-lang", "fy-btn-theme", "fy-btn-menu"], `${w}: order`);
     assert.equal(new Set(r.bs.map((b) => b.w)).size, 1, `${w}: equal widths`); assert.equal(new Set(r.bs.map((b) => b.h)).size, 1); assert.equal(new Set(r.bs.map((b) => b.t)).size, 1, `${w}: aligned`);
-    const gaps = r.bs.slice(1).map((b, i) => (dir === "ltr" ? b.l - r.bs[i].r : r.bs[i].l - b.r)); assert.ok(gaps.every((g) => g >= 0 && g <= 12), `${w}: gaps ${gaps}`);
+    const icons = r.bs.filter((b) => b.c !== "fy-btn-menu"); const gaps = icons.slice(1).map((b, i) => (dir === "ltr" ? b.l - icons[i].r : icons[i].l - b.r)); assert.ok(gaps.every((g) => g >= 0 && g <= 12), `${w}: gaps ${gaps}`);
     const menu = r.bs[r.bs.length - 1]; if (dir === "ltr") assert.ok(r.bs.every((b) => b.r <= menu.r)); else assert.ok(r.bs.every((b) => b.l >= menu.l)); // toggle is the last control in reading order
-    assert.equal(r.signin, 0, `${w}: sign-in must not be in the navbar`); assert.ok(r.bs.every((b) => b.l >= 0 && b.r <= w), `${w}: controls inside viewport`); assert.ok(r.over <= 0, `${w}: overflow`); await ctx.close();
+    assert.equal(await page.locator(".navbar .fy-auth-in").isVisible(), true, `${w}: guest Sign in is visible`); if (w > 720) assert.equal(await page.locator(".navbar .fy-auth-up").isVisible(), true, `${w}: guest Sign up is visible`); assert.ok(r.bs.every((b) => b.l >= 0 && b.r <= w), `${w}: controls inside viewport`); assert.ok(r.over <= 0, `${w}: overflow`); await ctx.close();
   }
 });
 

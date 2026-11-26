@@ -117,28 +117,28 @@ html[data-theme="dark"] {
 html[data-theme="light"] {
   color-scheme: light;
 
-  --fy-bg: #f4f8f9;
-  --fy-bg-soft: #e7eff1;
-  --fy-surface: #ffffff;
-  --fy-surface-2: #f7fafb;
-  --fy-surface-3: #e3ecef;
+  --fy-bg: #e8efed;
+  --fy-bg-soft: #dde8e6;
+  --fy-surface: #fbfdfc;
+  --fy-surface-2: #f0f5f3;
+  --fy-surface-3: #d5e3e0;
   --fy-surface-raised: #ffffff;
   --fy-glass: rgba(255,255,255,.82);
 
-  --fy-border: rgba(17,39,59,.14);
+  --fy-border: rgba(17,39,59,.17);
   --fy-border-strong: rgba(17,39,59,.28);
 
   --fy-text: #11273b;
-  --fy-text-soft: #3f566a;
-  --fy-text-muted: #52687a;
+  --fy-text-soft: #364d61;
+  --fy-text-muted: #455a6c;
 
-  --fy-brand: #097570;
+  --fy-brand: #07696a;
   --fy-brand-light: #0fa9a0;
-  --fy-brand-strong: #065c58;
+  --fy-brand-strong: #05504f;
   --fy-brand-soft: rgba(10,125,120,.09);
   --fy-on-brand: #ffffff;
 
-  --fy-gold: #86600a;
+  --fy-gold: #785508;
   --fy-gold-light: #9a6f0c;
   --fy-gold-soft: rgba(134, 96, 10, 0.12);
 
@@ -211,7 +211,7 @@ html[data-theme="light"] [data-course="react"] { --fy-course: #06708f; --fy-cour
 html[data-theme="dark"][data-track="vue"],
 html[data-theme="dark"] [data-course="vue"] { --fy-course: #42b883; --fy-course-on: #03221a; --fy-course-ink: #5fd9a0; --fy-course-strong: #35a572; --fy-course-soft: rgba(66,184,131,.13); --fy-course-glow: rgba(66,184,131,.28); }
 html[data-theme="light"][data-track="vue"],
-html[data-theme="light"] [data-course="vue"] { --fy-course: #16794f; --fy-course-on: #ffffff; --fy-course-ink: #136b45; --fy-course-strong: #0f5c3b; --fy-course-soft: rgba(29,138,92,.09); --fy-course-glow: rgba(29,138,92,.22); }
+html[data-theme="light"] [data-course="vue"] { --fy-course: #136f49; --fy-course-on: #ffffff; --fy-course-ink: #136b45; --fy-course-strong: #0f5c3b; --fy-course-soft: rgba(29,138,92,.09); --fy-course-glow: rgba(29,138,92,.22); }
 
 /* Angular — burgundy */
 html[data-theme="dark"][data-track="angular"],
@@ -224,7 +224,7 @@ html[data-theme="light"] [data-course="angular"] { --fy-course: #a3193d; --fy-co
 html[data-theme="dark"][data-track="prg"],
 html[data-theme="dark"] [data-course="prg"] { --fy-course: #e3b94e; --fy-course-on: #231a00; --fy-course-ink: #f0d58a; --fy-course-strong: #cfa536; --fy-course-soft: rgba(227,185,78,.12); --fy-course-glow: rgba(227,185,78,.28); }
 html[data-theme="light"][data-track="prg"],
-html[data-theme="light"] [data-course="prg"] { --fy-course: #80590a; --fy-course-on: #ffffff; --fy-course-ink: #6e4c07; --fy-course-strong: #6a4a08; --fy-course-soft: rgba(169,124,20,.1); --fy-course-glow: rgba(169,124,20,.24); }
+html[data-theme="light"] [data-course="prg"] { --fy-course: #6f4c08; --fy-course-on: #ffffff; --fy-course-ink: #6e4c07; --fy-course-strong: #6a4a08; --fy-course-soft: rgba(169,124,20,.1); --fy-course-glow: rgba(169,124,20,.24); }
 
 /* ---------------- SHARED BEHAVIOUR ---------------- */
 html {
@@ -331,3 +331,8 @@ html[data-editor-theme="light"][data-theme] .editor-panel .editor-top { color: #
   --fy-lh-tight: 1.2; --fy-lh-body: 1.7; --fy-lh-ar: 1.85;
   --fy-icon-sm: 16px; --fy-icon-md: 20px; --fy-icon-lg: 24px;
 }
+
+
+/* V5 ambient page backgrounds: layered teal + restrained warm glow, so light/dark are both designed, not flat */
+html[data-theme="light"] body { background-image: radial-gradient(900px 520px at 85% -8%, rgba(15,138,126,.14), transparent 70%), radial-gradient(700px 480px at -5% 12%, rgba(224,138,58,.12), transparent 70%); background-attachment: fixed; }
+html[data-theme="dark"] body { background-image: radial-gradient(900px 560px at 85% -10%, rgba(32,201,181,.10), transparent 70%), radial-gradient(700px 480px at -5% 10%, rgba(240,150,70,.07), transparent 70%); background-attachment: fixed; }

@@ -9,6 +9,44 @@
   var i18n = window.FAYAD && window.FAYAD.i18n;
   if (!prefs || !i18n) return;
 
+  /* Account isolation for device-local progress (V5).
+     Progress lives in browser localStorage under keys that are not per-account. To stop account A's local progress from
+     being shown to / uploaded for account B on the same browser, the device remembers which account owns the local data:
+       - first sign-in on a device adopts any guest progress (unchanged behaviour);
+       - sign-out, or signing in as someone else, MOVES the local progress into a per-account stash (nothing is deleted)
+         and starts the next person from a clean slate;
+       - signing back in restores that account's stash (its cloud rows are pulled by the existing sync as before).
+     No Supabase call, schema, scoring or sync logic is touched. */
+  var OWNER_KEY = "fayad-device-owner", STASH = "fayad-stash-v1:";
+  var PROGRESS_RE = /^fayad-(game-v1|last-track|progress-v1|.+-(progress|current-lesson|completed-lessons|stars|quiz-progress-v2|learning-progress))$/;
+  function ls() { try { return window.localStorage; } catch (e) { return null; } }
+  function progressKeys(st) { return Object.keys(st).filter(function (k) { return PROGRESS_RE.test(k); }); }
+  function stashAndClear(st, owner) {
+    var keys = progressKeys(st), box = {}; if (!keys.length) return false;
+    keys.forEach(function (k) { box[k] = st.getItem(k); });
+    try { st.setItem(STASH + owner, JSON.stringify({ v: 1, at: Date.now(), keys: box })); } catch (e) { return false; } // stash first: if it cannot be written, keep the data where it is
+    keys.forEach(function (k) { st.removeItem(k); }); return true;
+  }
+  function restoreStash(st, uid) {
+    var raw = st.getItem(STASH + uid); if (!raw) return false;
+    try { var box = JSON.parse(raw).keys || {}; Object.keys(box).forEach(function (k) { if (PROGRESS_RE.test(k) && st.getItem(k) === null && box[k] !== null) st.setItem(k, box[k]); }); st.removeItem(STASH + uid); return true; } catch (e) { return false; }
+  }
+  function guardAccount(uid, event) {
+    var st = ls(); if (!st) return false; var owner = st.getItem(OWNER_KEY), changed = false;
+    if (event === "SIGNED_OUT") { if (owner) { changed = stashAndClear(st, owner); st.removeItem(OWNER_KEY); } }
+    else if (uid && owner !== uid) {
+      if (owner) changed = stashAndClear(st, owner);
+      st.setItem(OWNER_KEY, uid); if (restoreStash(st, uid)) changed = true;
+    }
+    return changed;
+  }
+  (window.FAYAD = window.FAYAD || {}).deviceOwner = { guard: guardAccount };
+  window.addEventListener("fayad-auth-changed", function (e) {
+    var d = (e && e.detail) || {}; if (d.event !== "SIGNED_IN" && d.event !== "INITIAL_SESSION" && d.event !== "SIGNED_OUT") return;
+    if (guardAccount(d.user && d.user.id, d.event) && !/\/login\.html/.test(location.pathname)) location.reload(); // repaint from the clean state
+  });
+
+  var ICON_GLOBE = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.9 5.6 3.9 9S14.6 18.4 12 21c-2.6-2.6-3.9-5.6-3.9-9S9.4 5.6 12 3z"/></svg>';
   var ICON_MOON =
     '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
   var ICON_SUN =
@@ -115,9 +153,20 @@
     try { if (sessionStorage.getItem("fayad-welcomed") === u.id) return; sessionStorage.setItem("fayad-welcomed", u.id); } catch (x) { /* ignore */ }
     var n = (u.name || (u.email ? u.email.split("@")[0] : "")).split(/\s+/)[0]; toast(prefs.lang === "ar" ? "أهلاً بعودتك، " + n + "!" : "Welcome back, " + n + "!");
   });
+  var authCta = null;
+  function signupHref() { var h = loginHref(); return h.indexOf("?") > -1 ? h.replace("?", "?mode=signup&") : h + "?mode=signup"; }
   function paintAccount() {
     if (!accountBtn) return;
     var u = readUser(), ar = prefs.lang === "ar";
+    document.documentElement.setAttribute("data-auth", u ? "in" : "out");
+    var ba = document.getElementById("bnAccount");
+    if (ba) { ba.href = u ? "/profile.html" : loginHref(); var bt = ba.querySelector("span"); if (bt) bt.textContent = u ? (ar ? "حسابي" : "Account") : (ar ? "دخول" : "Sign in"); }
+    if (authCta) {
+      authCta.hidden = !!u; accountBtn.classList.toggle("is-guest", !u);
+      var ai = authCta.querySelector(".fy-auth-in"), au = authCta.querySelector(".fy-auth-up");
+      ai.href = loginHref(); ai.textContent = ar ? "دخول" : "Sign in";
+      au.href = signupHref(); au.textContent = ar ? "حساب جديد" : "Sign up";
+    }
     accountBtn.textContent = "";
     if (u) {
       var label = u.name || (u.email ? u.email.split("@")[0] : "") || "?";
@@ -207,6 +256,10 @@
     accountBtn = document.createElement("a");
     accountBtn.className = "fy-btn fy-btn-account";
     accountBtn.addEventListener("click", function (e) { if (readUser()) { e.preventDefault(); if (menuEl) closeMenu(false); else openMenu(); } });
+    // guests get visible Sign in / Sign up actions (replacing the bare user icon); signed-in users keep the avatar control
+    authCta = document.createElement("div");
+    authCta.className = "fy-auth";
+    authCta.innerHTML = '<a class="fy-auth-in" data-auth="in"></a><a class="fy-auth-up" data-auth="up"></a>';
     paintAccount();
 
     // order (start → end): search · language · theme · account · menu. The menu toggle always closes the group, at the far edge.
@@ -214,6 +267,7 @@
     group.appendChild(langBtn);
     group.appendChild(themeBtn);
     group.appendChild(accountBtn);
+    group.appendChild(authCta);
     group.appendChild(menuBtn);
     return group;
   }
@@ -225,7 +279,7 @@
     themeBtn.setAttribute("aria-label", i18n.t(dark ? "theme.toLight" : "theme.toDark"));
     themeBtn.setAttribute("title", i18n.t(dark ? "theme.toLight" : "theme.toDark"));
     var ml = prefs.lang === "ar" ? "القائمة" : "Menu"; menuBtn.setAttribute("aria-label", ml); menuBtn.setAttribute("title", ml);
-    langBtn.textContent = i18n.t("lang.short");
+    langBtn.innerHTML = ICON_GLOBE;
     paintAccount();
     var next = prefs.lang === "ar" ? "lang.toEn" : "lang.toAr";
     langBtn.setAttribute("aria-label", i18n.t(next));
@@ -263,7 +317,11 @@
   function mount() {
     var group = build();
     var navActions = findSlot();
-    if (navActions) {
+    var authTools = document.getElementById("auTools"); // login/signup: no floating dock, only a quiet language + theme pair inside the card
+    if (authTools) {
+      group.classList.add("fy-controls--inline", "fy-controls--auth");
+      authTools.appendChild(group);
+    } else if (navActions) {
       group.classList.add("fy-controls--inline");
       navActions.insertBefore(group, navActions.firstChild);
     } else {

@@ -151,3 +151,19 @@ Checklist: [x] Adventure mechanics v2  [x] Zombie web-lab (supersedes the JS-onl
 - Login: presentation only (auth.css). Markup, ids, handlers and Supabase untouched.
 - About: rewritten around the platform (no owner profile/portrait/personal links in the page body); facts read from the catalog. The shared footer keeps the existing social destinations; the homepage JSON-LD still carries the existing founder Person node (SEO data, not visible UI).
 - Limitations: learner progress on a device is stored in shared localStorage keys (not namespaced per account), so two accounts on one browser share local progress until cloud sync overwrites it; not changed (backend/contract). Supabase and CDN hosts are not reachable from the test sandbox, so login/registration/recovery were not exercised end-to-end; signed-in UI states were checked with simulated sessions only.
+
+## V4 — Final product experience & design system refinement
+- Homepage: guest hero (visible Sign up / Sign in, real-track picker built from the actual track tiles), returning/signed-in hero (continue + real progress), rebuilt footer.
+- Mobile: app-style header, 5-item labelled bottom bar incl. account tab, start-aligned compositions, safe-area handling; checked at 320/360/390/430/820 in AR/EN (no overflow, no page errors on 9 key pages).
+- Navbar: guest Sign in / Sign up in the header (desktop), compact Sign in (phone); phone pages without the bottom bar keep the account icon.
+- Login: `?mode=signup` opens the registration tab.
+- Audit: see `AUTH-INTEGRITY-AUDIT.md` (read-only; simulated sessions only; shared local progress keys documented, not changed).
+
+## V5 — Product UI redesign & functional quality pass
+- Theme: dark is the default for first visits (inline head script on all 606 pages + `prefs.js` default); saved choice and "system" mode are preserved. Light palette retinted (page/section/card tiers, teal + warm ambient glows); light text/brand tokens darkened so the WCAG AA audit passes in both themes.
+- Homepage: hero rebuilt around a lesson-window (editor + live preview + read/try/test), real-track finder strip, stacked groups on phones, visible rail arrows on phones, calmer/minimal footer (one compact link row on mobile).
+- Navbar: language control is now a globe icon (one stroke family with search/theme/menu); theme icon turns on change.
+- Login/signup: the floating dock is gone; language + theme sit inside the card.
+- Games hub: per-game colour, glyph and header art.
+- Account isolation: device-owner guard for local progress (see AUTH-INTEGRITY-AUDIT.md V5 update).
+- Settings/profile/dashboard: reviewed; existing controls are all wired to real preferences/backend, no controls removed in this pass.
