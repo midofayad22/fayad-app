@@ -80,3 +80,6 @@ html[data-theme="dark"] .au-card { box-shadow: 0 28px 60px -30px rgba(0,0,0,.7);
 .au-body #fy-notice { display: none; } /* the "lesson content not translated" prompt is irrelevant here */
 @media (max-width: 860px) { .au-card { margin: 0 auto; border: 0; box-shadow: none; background: transparent; border-radius: 0; padding: clamp(20px, 5vw, 32px); } }
 @media (prefers-reduced-motion: reduce) { .au-card { animation: none; } .au-submit:hover:not(:disabled) { transform: none; } }
+
+/* phones: keep the last link clear of the floating controls bar */
+@media (max-width: 720px) { .au-body { padding-bottom: 96px; } }

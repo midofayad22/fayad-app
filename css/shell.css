@@ -343,3 +343,35 @@ b, strong { font-weight: var(--fy-fw-strong); }
   .fy-controls--inline .fy-btn { width: 34px; height: 34px; min-width: 34px; }
   .navbar { padding-inline: 12px; }
 }
+
+/* ---------- V4 navigation: guest Sign in / Sign up, one icon family, compact mobile header ---------- */
+.fy-auth { display: flex; align-items: center; gap: 8px; margin-inline: 6px; }
+.fy-auth[hidden] { display: none; }
+.fy-auth a { display: inline-flex; align-items: center; justify-content: center; min-height: 38px; padding: 0 16px; border-radius: 999px; font: 600 .875rem var(--fy-font-ui, inherit); text-decoration: none; white-space: nowrap; transition: background-color var(--fy-dur-fast), color var(--fy-dur-fast), border-color var(--fy-dur-fast), box-shadow var(--fy-dur) var(--fy-ease), transform var(--fy-dur-fast); }
+.fy-auth-in { color: var(--fy-text); border: 1px solid var(--fy-border-strong); background: transparent; }
+.fy-auth-in:hover { border-color: var(--fy-brand); color: var(--fy-brand); }
+.fy-auth-up { color: var(--fy-on-brand, #fff); background: var(--fy-brand); border: 1px solid transparent; }
+.fy-auth-up:hover { box-shadow: 0 10px 20px -12px var(--fy-brand); transform: translateY(-1px); }
+.fy-auth a:active { transform: scale(.97); }
+.fy-auth a:focus-visible { outline: none; box-shadow: var(--fy-focus); }
+.fy-btn-account.is-guest { display: none; }
+.fy-btn:active { transform: scale(.94); }
+.fy-btn { position: relative; }
+.fy-btn svg { width: 20px; height: 20px; }
+@media (max-width: 720px) {
+  .navbar { min-height: 56px; }
+  .fy-auth { margin-inline: 4px 0; }
+  .fy-auth .fy-auth-up { display: none; } /* registration stays one tap away in the hero and the bottom bar */
+  .fy-auth .fy-auth-in { min-height: 36px; padding: 0 14px; color: var(--fy-on-brand, #fff); background: var(--fy-brand); border-color: transparent; }
+  body.has-bn .bn { grid-template-columns: repeat(5, 1fr); }
+  body.has-bn .bn a, body.has-bn .bn button { font-size: .6875rem; }
+  body.has-bn .bn a:active, body.has-bn .bn button:active { transform: scale(.94); }
+  body.has-bn .bn { border-radius: 20px 20px 0 0; box-shadow: 0 -10px 30px -18px rgba(7,18,28,.45); }
+}
+@media (max-width: 380px) { .fy-auth-in { padding: 0 11px; font-size: .8125rem; } }
+
+/* Phone pages without the bottom bar (docs, settings, lessons): keep the compact account icon instead of the text CTA */
+@media (max-width: 720px) {
+  body:not(.has-bn) .fy-auth { display: none; }
+  body:not(.has-bn) .fy-btn-account.is-guest { display: inline-flex; }
+}

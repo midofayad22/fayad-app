@@ -115,9 +115,20 @@
     try { if (sessionStorage.getItem("fayad-welcomed") === u.id) return; sessionStorage.setItem("fayad-welcomed", u.id); } catch (x) { /* ignore */ }
     var n = (u.name || (u.email ? u.email.split("@")[0] : "")).split(/\s+/)[0]; toast(prefs.lang === "ar" ? "أهلاً بعودتك، " + n + "!" : "Welcome back, " + n + "!");
   });
+  var authCta = null;
+  function signupHref() { var h = loginHref(); return h.indexOf("?") > -1 ? h.replace("?", "?mode=signup&") : h + "?mode=signup"; }
   function paintAccount() {
     if (!accountBtn) return;
     var u = readUser(), ar = prefs.lang === "ar";
+    document.documentElement.setAttribute("data-auth", u ? "in" : "out");
+    var ba = document.getElementById("bnAccount");
+    if (ba) { ba.href = u ? "/profile.html" : loginHref(); var bt = ba.querySelector("span"); if (bt) bt.textContent = u ? (ar ? "حسابي" : "Account") : (ar ? "دخول" : "Sign in"); }
+    if (authCta) {
+      authCta.hidden = !!u; accountBtn.classList.toggle("is-guest", !u);
+      var ai = authCta.querySelector(".fy-auth-in"), au = authCta.querySelector(".fy-auth-up");
+      ai.href = loginHref(); ai.textContent = ar ? "دخول" : "Sign in";
+      au.href = signupHref(); au.textContent = ar ? "حساب جديد" : "Sign up";
+    }
     accountBtn.textContent = "";
     if (u) {
       var label = u.name || (u.email ? u.email.split("@")[0] : "") || "?";
@@ -207,6 +218,10 @@
     accountBtn = document.createElement("a");
     accountBtn.className = "fy-btn fy-btn-account";
     accountBtn.addEventListener("click", function (e) { if (readUser()) { e.preventDefault(); if (menuEl) closeMenu(false); else openMenu(); } });
+    // guests get visible Sign in / Sign up actions (replacing the bare user icon); signed-in users keep the avatar control
+    authCta = document.createElement("div");
+    authCta.className = "fy-auth";
+    authCta.innerHTML = '<a class="fy-auth-in" data-auth="in"></a><a class="fy-auth-up" data-auth="up"></a>';
     paintAccount();
 
     // order (start → end): search · language · theme · account · menu. The menu toggle always closes the group, at the far edge.
@@ -214,6 +229,7 @@
     group.appendChild(langBtn);
     group.appendChild(themeBtn);
     group.appendChild(accountBtn);
+    group.appendChild(authCta);
     group.appendChild(menuBtn);
     return group;
   }

@@ -78,11 +78,42 @@ test("with reduced motion nothing is hidden or armed for animation", async () =>
   await ctx.close();
 });
 
-test("exactly one primary call to action in the hero", async () => {
-  const { ctx, page } = await open();
-  assert.equal(await page.locator(".hm-hero .hm-cta").count(), 1);
-  assert.match(await page.locator(".hm-hero .hm-cta").getAttribute("href"), /computer-basics\/com\.html$/);
+test("hero: a guest sees one visible primary action (sign up), Sign in and the track picker; signed-in/returning users see the continue view", async () => {
+  const { ctx, page } = await open({}, "en");
+  const vis = await page.locator(".hm-hero .hm-cta:visible").count(); assert.equal(vis, 1);
+  assert.match(await page.locator(".hm-hero .hm-cta:visible").getAttribute("href"), /login\.html\?mode=signup$/);
+  assert.equal(await page.locator("#heroSignin").isVisible(), true);
+  assert.equal(await page.locator("#hmPick").isVisible(), true, "picker visible for new visitors");
+  const tabs = await page.locator("#hmPick [role=tab]").count(); const tiles = await page.locator("[data-course-card]").count(); assert.ok(tabs >= 2 && tiles >= tabs, `${tabs} tabs / ${tiles} real tiles`);
   await ctx.close();
+  const r = await open({ "fayad-html-progress": JSON.stringify([1, 2, 3]) }, "en");
+  assert.equal(await r.page.locator("html").evaluate((h) => h.classList.contains("hero-back")), true);
+  assert.equal(await r.page.locator("#heroCta").isVisible(), true); assert.equal(await r.page.locator("#heroSignup").isVisible(), false);
+  await r.ctx.close();
+});
+
+test("footer: brand block, two link groups and social links keep their real URLs", async () => {
+  const { ctx, page } = await open({}, "en");
+  assert.equal(await page.locator(".ft-brand").count(), 1); assert.equal(await page.locator(".ft-col").count(), 2);
+  const hrefs = await page.locator(".ft-social a").evaluateAll((l) => l.map((a) => a.href)); assert.ok(hrefs.length >= 3 && hrefs.every((h) => /^https:\/\//.test(h)), hrefs.join());
+  assert.ok(hrefs.some((h) => h.includes("github.com/midofayad22")));
+  await ctx.close();
+});
+
+test("phone: bottom bar has labelled destinations including the account tab; guest tab leads to sign in", async () => {
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 800 } }); await ctx.addInitScript(() => localStorage.setItem("fayad-language", "en"));
+  const page = await ctx.newPage(); await offline(page); await page.goto(base + "/"); await page.waitForSelector("#bnAccount");
+  const items = await page.locator(".bn > *").count(); assert.ok(items >= 3 && items <= 5, `${items} items`);
+  assert.ok((await page.locator(".bn").innerText()).trim().length > 10, "labels present"); assert.match(await page.locator("#bnAccount").getAttribute("href"), /login\.html/);
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+  await ctx.close();
+});
+
+test("login page opens the sign-up tab for ?mode=signup", async () => {
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 800 } }); await ctx.addInitScript(() => localStorage.setItem("fayad-language", "en"));
+  const page = await ctx.newPage(); await offline(page); await page.goto(base + "/login.html?mode=signup"); await page.waitForTimeout(600);
+  const on = await page.evaluate(() => { const t = document.querySelector('[role=tab][aria-selected="true"], .tab.on, .is-active'); return t ? t.textContent.trim() : ""; });
+  assert.match(on, /sign up|create|register|حساب/i, on); await ctx.close();
 });
 
 test("the next-step card starts at the first course, then continues from real saved data", async () => {

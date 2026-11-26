@@ -151,3 +151,10 @@ Checklist: [x] Adventure mechanics v2  [x] Zombie web-lab (supersedes the JS-onl
 - Login: presentation only (auth.css). Markup, ids, handlers and Supabase untouched.
 - About: rewritten around the platform (no owner profile/portrait/personal links in the page body); facts read from the catalog. The shared footer keeps the existing social destinations; the homepage JSON-LD still carries the existing founder Person node (SEO data, not visible UI).
 - Limitations: learner progress on a device is stored in shared localStorage keys (not namespaced per account), so two accounts on one browser share local progress until cloud sync overwrites it; not changed (backend/contract). Supabase and CDN hosts are not reachable from the test sandbox, so login/registration/recovery were not exercised end-to-end; signed-in UI states were checked with simulated sessions only.
+
+## V4 — Final product experience & design system refinement
+- Homepage: guest hero (visible Sign up / Sign in, real-track picker built from the actual track tiles), returning/signed-in hero (continue + real progress), rebuilt footer.
+- Mobile: app-style header, 5-item labelled bottom bar incl. account tab, start-aligned compositions, safe-area handling; checked at 320/360/390/430/820 in AR/EN (no overflow, no page errors on 9 key pages).
+- Navbar: guest Sign in / Sign up in the header (desktop), compact Sign in (phone); phone pages without the bottom bar keep the account icon.
+- Login: `?mode=signup` opens the registration tab.
+- Audit: see `AUTH-INTEGRITY-AUDIT.md` (read-only; simulated sessions only; shared local progress keys documented, not changed).
