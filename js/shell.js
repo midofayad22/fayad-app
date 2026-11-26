@@ -97,7 +97,7 @@
   function ensureAuth() {
     if (window.FAYAD_AUTH || document.querySelector("script[data-fy-auth]") || !readUser()) return;
     function load(src, done) { var sc = document.createElement("script"); sc.src = src; sc.async = false; sc.setAttribute("data-fy-auth", ""); sc.onload = done; sc.onerror = function () { /* offline: stay on the cached session */ }; document.head.appendChild(sc); }
-    if (window.supabase) load("/js/main-auth.js"); else load("https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2", function () { load("/js/main-auth.js"); });
+    if (window.supabase) load("/js/main-auth.js"); else load("/vendor/supabase-js-2.119.2/supabase.js", function () { load("/js/main-auth.js"); });
   }
   document.addEventListener("DOMContentLoaded", ensureAuth);
   document.addEventListener("DOMContentLoaded", function () { refreshProfile(0); });

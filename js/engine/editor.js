@@ -6,7 +6,7 @@
   undo/redo, Ctrl/Cmd+Enter to run, Esc to leave the editor (keyboard-trap safe), live Ln/Col status bar.
 */
 let cmPromise = null;
-const loadCM = () => (cmPromise ||= import("/vendor/codemirror-6/cm.js"));
+const loadCM = () => (cmPromise = cmPromise || import("/vendor/codemirror-6/cm.js"));
 const rawGet = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, "value").get;
 const rawSet = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, "value").set;
 

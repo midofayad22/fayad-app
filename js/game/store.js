@@ -17,7 +17,7 @@ export const solvedOf = (d, game) => Object.keys(d.games[game]?.solved || {}).le
 /** Records a first-time solve; returns points earned (0 if already solved). */
 export function award(game, level, hinted, base = POINTS.solve) {
   const d = read();
-  const g = (d.games[game] ||= { solved: {} });
+  const g = (d.games[game] = d.games[game] || { solved: {} });
   if (g.solved[level]) return { earned: 0, data: d };
   const earned = base + (hinted ? 0 : POINTS.noHint);
   g.solved[level] = { at: Date.now(), hint: !!hinted, pts: earned };
@@ -31,7 +31,7 @@ export function award(game, level, hinted, base = POINTS.solve) {
 export function mergeSolves(rows) {
   const d = read(); let added = false;
   for (const r of rows) {
-    const g = (d.games[r.game] ||= { solved: {} });
+    const g = (d.games[r.game] = d.games[r.game] || { solved: {} });
     if (g.solved[r.level]) continue;
     g.solved[r.level] = { at: Date.parse(r.solved_at) || Date.now(), hint: !!r.hinted, pts: r.points };
     d.points += r.points; added = true;

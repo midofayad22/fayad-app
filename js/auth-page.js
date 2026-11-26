@@ -1,5 +1,5 @@
 /* Sign-in / sign-up page. Uses the shared Supabase client (window.FAYAD_AUTH.client from main-auth.js). */
-const F = (window.FAYAD ||= {});
+const F = (window.FAYAD = window.FAYAD || {});
 const D = {
   ar: { "au.title": "تعلّم، طبّق، وتابع تقدمك", "au.p1": "دروس تفاعلية بمحرر ومعاينة حية", "au.p2": "تقدمك يُحفظ ويتزامن بين أجهزتك", "au.p3": "ألعاب وتحديات برمجية بلوحة ترتيب", "au.guest": "يمكنك التعلم بدون حساب؛ الحساب يضيف المزامنة فقط.",
     "au.tabIn": "تسجيل الدخول", "au.tabUp": "حساب جديد", "au.welcome": "مرحبًا بعودتك", "au.use": "استخدام", "au.hIn": "أهلاً بعودتك", "au.sIn": "سجّل الدخول لتكمل من حيث توقفت.", "au.hUp": "أنشئ حسابك", "au.sUp": "مجاني، ويحفظ تقدمك بين الأجهزة.",

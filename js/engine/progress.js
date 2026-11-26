@@ -157,7 +157,7 @@ export function createProgress(opts) {
     return normalize(parsed, totals);
   }
 
-  function ensure(track) { return (doc.tracks[track] ||= emptyTrack()); }
+  function ensure(track) { return (doc.tracks[track] = doc.tracks[track] || emptyTrack()); }
 
   /** union-merge legacy keys into the document; returns true if anything changed */
   function mergeLegacy() {
@@ -267,7 +267,7 @@ export function createProgress(opts) {
       load(); checkId(track, id);
       if (!isInt(questionIndex) || questionIndex < 0 || questionIndex >= 50) throw new RangeError("invalid question index");
       const t = ensure(track);
-      const q = (t.quiz[id] ||= { passed: [], attempts: 0, lastAt: 0 });
+      const q = (t.quiz[id] = t.quiz[id] || { passed: [], attempts: 0, lastAt: 0 });
       q.attempts += 1; q.lastAt = now();
       if (correct && !q.passed.includes(questionIndex)) q.passed = [...q.passed, questionIndex].sort((a, b) => a - b);
       t.updatedAt = now();
@@ -279,7 +279,7 @@ export function createProgress(opts) {
       if (!(track in totals)) throw new RangeError(`unknown track ${track}`);
       if (!isInt(percent) || percent < 0 || percent > 100) throw new RangeError("invalid percentage");
       const t = ensure(track);
-      const a = (t.assessment ||= emptyAssessment());
+      const a = (t.assessment = t.assessment || emptyAssessment());
       a.attempts += 1; a.lastPct = percent; a.bestPct = Math.max(a.bestPct, percent); a.passed = a.passed || passed === true; a.lastAt = now();
       t.updatedAt = now();
       return persist();
@@ -309,12 +309,12 @@ export function createProgress(opts) {
         const before = JSON.stringify(t);
         t.completed = [...new Set([...t.completed, ...r.completed])].sort(byOrdinal);
         for (const [id, q] of Object.entries(r.quiz)) {
-          const l = (t.quiz[id] ||= { passed: [], attempts: 0, lastAt: 0 });
+          const l = (t.quiz[id] = t.quiz[id] || { passed: [], attempts: 0, lastAt: 0 });
           l.passed = [...new Set([...l.passed, ...q.passed])].sort((a, b) => a - b);
           l.attempts = Math.max(l.attempts, q.attempts); l.lastAt = Math.max(l.lastAt, q.lastAt);
         }
         if (r.assessment) {
-          const a = (t.assessment ||= emptyAssessment());
+          const a = (t.assessment = t.assessment || emptyAssessment());
           const newer = r.assessment.lastAt > a.lastAt;
           a.attempts = Math.max(a.attempts, r.assessment.attempts); a.bestPct = Math.max(a.bestPct, r.assessment.bestPct);
           a.passed = a.passed || r.assessment.passed;

@@ -20,7 +20,7 @@ export async function ensureClient() {
   if (client()) return client();
   if (!hasSession()) return null;
   try {
-    if (!window.supabase) await load("https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2");
+    if (!window.supabase) { try { await load("/vendor/supabase-js-2.119.2/supabase.js"); } catch { await load("https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"); } } // same-origin copy first, CDN only as a fallback
     if (!client()) await load("/js/main-auth.js");
   } catch { return null; }
   return client();

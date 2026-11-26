@@ -1,7 +1,7 @@
 /* Shared building blocks for the Settings pages: bilingual strings, nav, controls, status messages, auth gate. */
 import { ensureClient } from "/js/engine/cloud.js";
 
-export const F = (window.FAYAD ||= {});
+export const F = (window.FAYAD = window.FAYAD || {});
 const D = {
   ar: {
     "st.title": "الإعدادات", "st.sub": "تحكّم في حسابك وتجربة التعلّم. التغييرات تُطبَّق على المنصة كلها.", "st.nav": "أقسام الإعدادات", "st.home": "الرئيسية",
