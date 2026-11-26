@@ -157,8 +157,8 @@ test("language switch re-renders homepage text, numbers stay derived from the ca
   assert.equal((await page.locator("h1").innerText()).replace(/\s+/g, " "), "من أول سطر كود إلى تطبيق ويب حقيقي");
   await page.click(".fy-btn-lang");
   assert.equal((await page.locator("h1").innerText()).replace(/\s+/g, " "), "From your first line of code to a real web app");
-  const total = await page.evaluate(() => window.FAYAD.catalog.totalLessons());
-  assert.equal(await page.locator("[data-stat=lessons]").innerText(), String(total));
+  // the hero no longer carries statistics
+  assert.equal(await page.locator("[data-stat]").count(), 0);
   // the old "content not translated" notice is for untranslated pages only
   assert.equal(await page.locator("#fy-notice").count(), 0);
   await ctx.close();
