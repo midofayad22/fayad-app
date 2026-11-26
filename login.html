@@ -44,7 +44,7 @@
     <meta name="apple-mobile-web-app-title" content="FAYBIT" />
 
     <title>تسجيل الدخول — FAYBIT</title>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="/vendor/supabase-js-2.119.2/supabase.js" defer></script>
     <script src="/js/main-auth.js" defer></script>
     <link rel="stylesheet" href="/css/tokens.css" />
     <link rel="stylesheet" href="/css/theme.css" />
@@ -84,7 +84,7 @@
           <button type="button" id="useRemembered" data-i18n="au.use">استخدام</button>
         </div>
 
-        <form id="authForm" class="au-form" role="tabpanel" aria-labelledby="tabIn" novalidate>
+        <form id="authForm" class="au-form" role="tabpanel" aria-labelledby="tabIn" method="post" action="/login.html" onsubmit="return false" novalidate>
           <h2 id="auHead" data-i18n="au.hIn">أهلاً بعودتك</h2>
           <p class="au-sub" id="auSub" data-i18n="au.sIn">سجّل الدخول لتكمل من حيث توقفت.</p>
 
@@ -115,7 +115,7 @@
           <button type="button" class="au-link" id="forgot" data-only="signin" data-i18n="au.forgot">نسيت كلمة المرور؟</button>
         </form>
 
-        <form id="resetForm" class="au-form" hidden novalidate>
+        <form id="resetForm" class="au-form" hidden method="post" action="/login.html" onsubmit="return false" novalidate>
           <h2 data-i18n="au.hNew">كلمة مرور جديدة</h2>
           <p class="au-sub" data-i18n="au.sNew">اختر كلمة مرور جديدة لحسابك.</p>
           <div class="au-field"><label for="newPw" data-i18n="au.pass">كلمة المرور</label><input id="newPw" type="password" autocomplete="new-password" minlength="8" required /></div>

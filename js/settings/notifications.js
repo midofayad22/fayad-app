@@ -56,7 +56,7 @@ mount("notifications", async (body, { client, user }) => {
     if (b.dataset.act === "read") items.find((n) => n.id === id).read_at = new Date().toISOString(); else items = items.filter((n) => n.id !== id);
     st.clear(); paint(); tell();
   });
-  const markAll = el("button", { type: "button", class: "st-btn st-btn-ghost", onclick: async () => { if (await N.markAllRead()) { const t = new Date().toISOString(); items.forEach((n) => (n.read_at ||= t)); paint(); tell(); } else st.err(); } }, T("nt.markAll"));
+  const markAll = el("button", { type: "button", class: "st-btn st-btn-ghost", onclick: async () => { if (await N.markAllRead()) { const t = new Date().toISOString(); items.forEach((n) => (n.read_at = n.read_at || t)); paint(); tell(); } else st.err(); } }, T("nt.markAll"));
   const clear = el("button", { type: "button", class: "st-btn st-btn-ghost st-btn-danger", onclick: async () => { if (!confirm(T("nt.confirmClear"))) return; if (await N.clearAll()) { items = []; done = true; paint(); tell(); } else st.err(); } }, T("nt.clear"));
   more.addEventListener("click", () => load(true));
 

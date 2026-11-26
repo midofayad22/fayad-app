@@ -1,6 +1,6 @@
 /* Signed-in only: asks the server to generate due notifications, then shows the unread count on the menu button. */
 import { refresh, unreadCount } from "/js/notifications.js";
-const F = (window.FAYAD ||= {});
+const F = (window.FAYAD = window.FAYAD || {});
 let busy = false;
 export async function update(withRefresh) {
   if (busy) return; busy = true;

@@ -51,7 +51,7 @@ export function parseGrid(rows) {
     else if (c === "=") g.gate.add(id);
     else if (c === "T") g.tUp.add(id);
     else if (c === "t") g.tDown.add(id);
-    else if (c === "1" || c === "2") (g.portal[c] ||= []).push(id);
+    else if (c === "1" || c === "2") (g.portal[c] = g.portal[c] || []).push(id);
     else if (c === "G") g.goal = { x, y };
     else if ("^>v<".includes(c)) g.start = { x, y, dir: "^>v<".indexOf(c) };
   }));

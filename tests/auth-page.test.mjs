@@ -25,6 +25,7 @@ async function open({ lang = "ar", hash = "", session = null, signUpResult, sign
     window.__fire = (ev) => listeners.forEach((cb) => cb(ev));
   }, { lang, session, signUpResult, signInError });
   await ctx.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort());
+  await ctx.route(/\/vendor\/supabase-js-/, (r) => r.abort()); // these tests inject their own client; the real SDK is exercised in auth-flows.test.mjs
   const page = await ctx.newPage(); await page.goto(base + "/login.html" + hash); await page.waitForTimeout(400); return { ctx, page };
 }
 const status = (p) => p.locator("#status").innerText();

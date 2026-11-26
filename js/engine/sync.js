@@ -17,7 +17,7 @@ const TABLES = { completions: "lesson_completions", quiz: "quiz_results", assess
 /** Rows (as returned by Supabase for ONE user) -> a v1 document fragment. */
 export function rowsToSnapshot({ completions = [], quiz = [], assessments = [] }) {
   const doc = { v: 1, tracks: {}, imported: {} };
-  const t = (id) => (doc.tracks[id] ||= { completed: [], current: null, quiz: {}, updatedAt: 0 });
+  const t = (id) => (doc.tracks[id] = doc.tracks[id] || { completed: [], current: null, quiz: {}, updatedAt: 0 });
   for (const r of completions) t(r.track).completed.push(r.lesson_id);
   for (const r of quiz) t(r.track).quiz[r.lesson_id] = { passed: (r.passed || []).map(Number), attempts: r.attempts | 0, lastAt: Date.parse(r.last_at) || 0 };
   for (const r of assessments) t(r.track).assessment = { attempts: r.attempts | 0, bestPct: r.best_pct | 0, lastPct: r.last_pct | 0, passed: !!r.passed, lastAt: Date.parse(r.last_at) || 0 };
