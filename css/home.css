@@ -479,7 +479,8 @@ html[data-theme="light"] .hm-win-code em { color: #a04e0c; }
 
 /* ===== V6: the first viewport is one finished composition (the next section starts below the fold) ===== */
 .hm-hero { min-height: 100svh; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; padding-block: calc(var(--hm-nav) + 24px) 28px; }
-.hm-hero > .hm-wrap, .hm-hero > div { width: 100%; }
+.hm-hero > .hm-wrap { width: min(1180px, 100% - 32px); }
+@media (min-width: 720px) { .hm-hero > .hm-wrap { width: min(1180px, 100% - 64px); } }
 @media (max-width: 720px) {
   .hm-hero { min-height: calc(100svh - 0px); justify-content: flex-start; padding-block: calc(var(--hm-nav) + 22px) calc(96px + env(safe-area-inset-bottom)); }
   .hm-pick { padding: 0; border: 0; background: transparent; box-shadow: none; margin-block-start: 22px; }
@@ -487,4 +488,22 @@ html[data-theme="light"] .hm-win-code em { color: #a04e0c; }
   .hm-pick-panel { display: none; }
   .hm-pick-tabs { gap: 8px; padding-inline-end: 40px; -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 44px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 44px), transparent); }
   html[dir="rtl"] .hm-pick-tabs { -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 44px), transparent); mask-image: linear-gradient(to left, #000 calc(100% - 44px), transparent); padding-inline-end: 40px; }
+}
+/* V6b: phones — compact content-sized actions, one dominant CTA, quiet secondary; tracks stay a single swipeable rail with an edge fade */
+@media (max-width: 720px) {
+  .hm-hero { justify-content: center; padding-block: calc(var(--hm-nav) + 12px) calc(88px + env(safe-area-inset-bottom)); }
+  .hm-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; }
+  .hm-actions .hm-cta { grid-column: auto; width: auto; min-height: 48px; padding-inline: 24px; justify-content: center; gap: 10px; }
+  .hm-actions .hm-cta2 { grid-column: auto; width: auto; min-height: 44px; padding-inline: 14px; border: 0; background: transparent; color: var(--fy-text-soft); text-decoration: underline; text-underline-offset: 6px; text-decoration-color: var(--fy-border-strong); }
+  .hm-pick { margin-block-start: 18px; }
+}
+@media (max-width: 720px) and (max-height: 640px) { .hm-lead { font-size: var(--fy-text-sm); line-height: 1.55; } .hm-pick { margin-block-start: 10px; } }
+@media (min-width: 721px) { .hm-actions .hm-cta { width: auto; max-width: 320px; } .hm-actions .hm-cta2 { width: auto; } }
+/* short desktop/tablet viewports: the chip row is the whole picker (chips open the track directly), so the hero stays one screen */
+@media (min-width: 721px) and (max-height: 860px) {
+  .hm-pick-panel { display: none; }
+  .hm-pick { padding-block: 14px; }
+  .hm-pick-label { display: block; font-size: var(--fy-text-sm); color: var(--fy-text-muted); margin-block-end: 8px; }
+  .hm-hero h1 { font-size: clamp(2.2rem, 6.6vh, 3.4rem); }
+  .hm-hero { padding-block: calc(var(--hm-nav) + 8px) 20px; }
 }
