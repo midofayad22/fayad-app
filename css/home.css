@@ -646,3 +646,27 @@ html .hm-pick-hint { display: none; }
   html .hm-actions { gap: 0 10px; } html .hm-actions .hm-cta { min-height: 44px; }
 }
 @media (max-width: 720px) { html .hm-pick { position: relative; } html .hm-pick-hint { position: absolute; top: 12px; inset-inline-end: 14px; margin: 0; } html .hm-pick-label { display: block; } }
+
+/* V8c: footer logo hover gets room (underline no longer touches the tagline), smooth mark motion */
+html .ft-bar .ft-name { gap: 11px; padding-block-end: 2px; }
+html .ft-bar .ft-logo { padding: 8px 10px; margin: -8px -10px; border-radius: 14px; transition: background-color .25s ease; }
+html .ft-bar .ft-logo:hover { background: color-mix(in srgb, var(--fy-brand) 8%, transparent); }
+html .ft-bar .ft-logo .logo-text { position: relative; transition: transform .35s cubic-bezier(.2,.8,.2,1), color .25s; }
+html .ft-bar .ft-logo:hover .logo-text { letter-spacing: inherit; transform: translateY(-1px); color: var(--fy-brand); }
+html .ft-bar .ft-logo .logo-text::after { bottom: -8px; height: 2px; width: 0; right: auto; inset-inline-start: 0; transition: width .45s cubic-bezier(.2,.8,.2,1); }
+html .ft-bar .ft-logo:hover .logo-text::after { width: 100%; }
+html .ft-bar .ft-logo .logo-mark { transition: transform .45s cubic-bezier(.2,.8,.2,1); }
+html .ft-bar .ft-logo:hover .logo-mark { transform: rotate(-6deg) scale(1.06); }
+html .ft-bar .ft-social a { transition: transform .25s cubic-bezier(.2,.8,.2,1), background-color .25s, color .25s, border-color .25s, box-shadow .25s; }
+@media (min-width: 721px) { html .ft-bar { padding-block: 34px 18px; } html .ft-bottom { padding-block-end: 26px; } }
+
+/* V8d: signed-in hero = welcome + one continue card (no duplicate CTA, no guest note), always a complete screen */
+html.hero-back .hm-actions[data-for="user"] { display: none; }
+html[data-auth="in"] .hm-next-note { display: none; }
+@media (min-width: 721px) { html.hero-back .hm-hero { justify-content: center; } }
+@media (max-width: 720px) {
+  html.hero-back .hm-hero { justify-content: center; gap: 0; }
+  html.hero-back .hm-lead, html.hero-back .hm-kicker, html.hero-back .hm-seg-title, html.hero-back .hm-segs { display: none; }
+  html.hero-back .hm-hero h1 { margin-block: 14px 16px; }
+  html.hero-back .hm-next { margin-block-start: 6px; }
+}

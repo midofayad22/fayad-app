@@ -224,21 +224,20 @@
       var root = document.documentElement;
       var next = prefs.theme === "dark" ? "light" : "dark";
       var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      var apply = function () { prefs.setTheme(next); };
-      if (!calm && document.startViewTransition) {
-        // native View Transitions: a circular reveal growing from the button; falls back to a plain colour fade
-        var r = themeBtn.getBoundingClientRect();
-        root.style.setProperty("--vt-x", Math.round(r.left + r.width / 2) + "px");
-        root.style.setProperty("--vt-y", Math.round(r.top + r.height / 2) + "px");
-        root.classList.add("fy-vt-theme");
-        var t = document.startViewTransition(apply);
-        var done = function () { root.classList.remove("fy-vt-theme"); };
-        t.finished.then(done, done);
-        return;
-      }
+      if (calm) { prefs.setTheme(next); return; }
+      // slow, gradual day <-> night: every colour eases over ~1s while a sky overlay (stars + shooting star / sun glow) plays on top
+      var r = themeBtn.getBoundingClientRect();
+      var sky = document.createElement("div");
+      sky.className = "fy-sky fy-sky--" + next; sky.setAttribute("aria-hidden", "true");
+      sky.style.setProperty("--x", Math.round(r.left + r.width / 2) + "px"); sky.style.setProperty("--y", Math.round(r.top + r.height / 2) + "px");
+      if (next === "dark") { var h = ""; for (var i = 0; i < 26; i++) h += '<i class="st" style="left:' + ((i * 37 + 11) % 97) + '%;top:' + ((i * 53 + 7) % 83) + '%;--s:' + (1 + (i % 3)) + 'px;--dl:' + ((i * 0.07) % 0.9).toFixed(2) + 's"></i>'; sky.innerHTML = h + '<b class="shoot"></b><b class="shoot shoot2"></b>'; }
+      else sky.innerHTML = '<b class="sunburst"></b>';
+      (document.body || root).appendChild(sky);
       root.classList.add("fy-theme-switching");
-      apply();
-      window.setTimeout(function () { root.classList.remove("fy-theme-switching"); }, 320);
+      void root.offsetWidth;
+      prefs.setTheme(next);
+      window.setTimeout(function () { root.classList.remove("fy-theme-switching"); }, 1250);
+      window.setTimeout(function () { if (sky.parentNode) sky.parentNode.removeChild(sky); }, 2100);
     });
 
     langBtn = document.createElement("button");
@@ -246,10 +245,17 @@
     langBtn.className = "fy-btn fy-btn-lang";
     langBtn.addEventListener("click", function () {
       var root = document.documentElement;
-      root.classList.remove("fy-lang-switching"); void root.offsetWidth; root.classList.add("fy-lang-switching");
+      var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var next = prefs.lang === "ar" ? "en" : "ar";
+      if (calm) { prefs.setLang(next); return; }
+      // two phases: content eases out, language/direction swap while hidden, content eases back in (no visible re-layout jump)
       langBtn.classList.remove("is-spin"); void langBtn.offsetWidth; langBtn.classList.add("is-spin");
-      prefs.setLang(prefs.lang === "ar" ? "en" : "ar");
-      window.setTimeout(function () { root.classList.remove("fy-lang-switching"); langBtn.classList.remove("is-spin"); }, 520);
+      root.classList.add("fy-lang-out");
+      window.setTimeout(function () {
+        prefs.setLang(next);
+        window.setTimeout(function () { root.classList.remove("fy-lang-out"); root.classList.add("fy-lang-in"); }, 90);
+        window.setTimeout(function () { root.classList.remove("fy-lang-in"); langBtn.classList.remove("is-spin"); }, 800);
+      }, 260);
     });
 
     menuBtn = document.createElement("button");
@@ -293,7 +299,8 @@
   function refresh() {
     if (!themeBtn) return;
     var dark = prefs.theme === "dark";
-    themeBtn.innerHTML = dark ? ICON_SUN : ICON_MOON;
+    if (!themeBtn.querySelector(".th-ic")) themeBtn.innerHTML = '<span class="th-ic">' + ICON_SUN.replace("<svg ", '<svg class="sun" ') + ICON_MOON.replace("<svg ", '<svg class="moon" ').replace("</svg>", '<circle class="tw tw1" cx="19" cy="4" r="1" fill="currentColor" stroke="none"/><circle class="tw tw2" cx="15.5" cy="2.5" r=".7" fill="currentColor" stroke="none"/></svg>') + "</span>";
+    themeBtn.querySelector(".th-ic").setAttribute("data-t", dark ? "dark" : "light");
     themeBtn.setAttribute("aria-label", i18n.t(dark ? "theme.toLight" : "theme.toDark"));
     themeBtn.setAttribute("title", i18n.t(dark ? "theme.toLight" : "theme.toDark"));
     var ml = prefs.lang === "ar" ? "القائمة" : "Menu"; menuBtn.setAttribute("aria-label", ml); menuBtn.setAttribute("title", ml);

@@ -88,7 +88,7 @@ test("hero: a guest sees one visible primary action (sign up), Sign in and the t
   await ctx.close();
   const r = await open({ "fayad-html-progress": JSON.stringify([1, 2, 3]) }, "en");
   assert.equal(await r.page.locator("html").evaluate((h) => h.classList.contains("hero-back")), true);
-  assert.equal(await r.page.locator("#heroCta").isVisible(), true); assert.equal(await r.page.locator("#heroSignup").isVisible(), false);
+  assert.equal(await r.page.locator("#nextGo").isVisible(), true, "one continue action: the card"); assert.equal(await r.page.locator("#heroCta").isVisible(), false, "no duplicate CTA"); assert.equal(await r.page.locator("#heroSignup").isVisible(), false);
   await r.ctx.close();
 });
 
@@ -156,6 +156,7 @@ test("language switch re-renders homepage text, numbers stay derived from the ca
   const { ctx, page } = await open({}, "ar");
   assert.equal((await page.locator("h1").innerText()).replace(/\s+/g, " "), "من أول سطر كود إلى تطبيق ويب حقيقي");
   await page.click(".fy-btn-lang");
+  await page.waitForFunction(() => document.documentElement.lang === "en"); // the swap happens after the content has eased out
   assert.equal((await page.locator("h1").innerText()).replace(/\s+/g, " "), "From your first line of code to a real web app");
   // the hero no longer carries statistics
   assert.equal(await page.locator("[data-stat]").count(), 0);

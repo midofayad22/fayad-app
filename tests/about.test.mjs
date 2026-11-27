@@ -37,7 +37,7 @@ test("the page describes the platform in both languages and has no personal prof
     const { ctx, page } = await open(lang);
     assert.equal(await page.locator("h1").innerText(), h1);
     assert.equal(await page.locator("#who, #links, .ab-edu, .ab-role").count(), 0);
-    assert.equal(await page.locator("[data-fact=tracks]").innerText(), String(await page.evaluate(() => FAYAD.catalog.tracks.length)));
+    assert.equal(await page.locator("[data-fact]").count(), 0, "no statistics block in the hero");
     await ctx.close();
   }
 });

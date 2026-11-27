@@ -78,3 +78,16 @@ html[dir="rtl"] .ab-note { border-radius: 10px 0 0 10px; }
 @media (max-width: 560px) { .ab-actions .hm-cta { width: auto; min-height: 48px; } .ab-hero { padding-block-end: 36px; } }
 .ab-table caption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 @media (max-width: 560px) { .ab-table tbody { grid-template-columns: 1fr 1fr; gap: 10px; } .ab-table tbody tr { padding: 12px 14px; } .ab-table tbody th { font-size: var(--fy-text-sm); } }
+
+/* V8: hero illustration instead of statistics; "what you will find" cards */
+.ab-hero-grid { align-items: center; }
+.ab-win { justify-self: end; width: min(100%, 460px); }
+.ab-why { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+.ab-why li { display: grid; gap: 8px; align-content: start; padding: 22px; border-radius: 18px; border: 1px solid var(--fy-border); background: var(--fy-surface); transition: transform .3s cubic-bezier(.2,.8,.2,1), border-color .25s, box-shadow .3s; }
+.ab-why li:hover { transform: translateY(-4px); border-color: var(--fy-brand); box-shadow: 0 22px 40px -26px color-mix(in srgb, var(--fy-brand) 60%, transparent); }
+.ab-why .ab-ic { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 13px; background: color-mix(in srgb, var(--fy-brand) 14%, transparent); color: var(--fy-brand); margin-block-end: 6px; transition: transform .3s cubic-bezier(.2,.8,.2,1); }
+.ab-why li:hover .ab-ic { transform: rotate(-6deg) scale(1.08); }
+.ab-why .ab-ic svg { width: 22px; height: 22px; }
+.ab-why strong { font-size: 1.02rem; } .ab-why li > span:last-child { color: var(--fy-text-soft); line-height: 1.7; font-size: .92rem; }
+@media (max-width: 900px) { .ab-win { justify-self: stretch; width: 100%; } }
+.ab-actions .hm-cta { width: auto; max-width: 320px; }
