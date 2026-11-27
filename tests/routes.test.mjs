@@ -79,10 +79,12 @@ test("robots.txt and sitemap.xml list every public route", async () => {
   }
 });
 
-test("About page is platform-focused: no owner profile, portrait or personal links", async () => {
+test("About page is platform-focused: no portrait/avatar; the only personal links are the builder section's GitHub and LinkedIn", async () => {
   const html = fs.readFileSync("about/about.html", "utf8").replace(/<footer[\s\S]*<\/footer>/, ""); // the shared footer keeps the existing social destinations
   const js = fs.readFileSync("about/about.js", "utf8");
-  assert.ok(!/عبد الحميد فياض|Abdullhamid|portfolio|linkedin\.com\/in|<img[^>]+(portrait|avatar|owner)/i.test(html + js));
+  assert.ok(!/<img[^>]+(portrait|avatar|owner)/i.test(html + js));
+  const personal = html.match(/https:\/\/(www\.)?(linkedin\.com\/in|github\.com)\/[^"]+/g) || [];
+  assert.deepEqual([...new Set(personal)].sort(), ["https://github.com/midofayad22", "https://www.linkedin.com/in/abdullhamid-f-800bb5379"]);
 });
 
 test("service worker never intercepts cross-origin or Supabase requests", async () => {

@@ -507,3 +507,11 @@ html[data-theme="light"] .hm-win-code em { color: #a04e0c; }
   .hm-hero h1 { font-size: clamp(2.2rem, 6.6vh, 3.4rem); }
   .hm-hero { padding-block: calc(var(--hm-nav) + 8px) 20px; }
 }
+/* reserve the picker's space before js fills it, so the centred hero never shifts */
+.hm-pick { min-height: 270px; box-sizing: border-box; }
+@media (min-width: 721px) and (max-height: 860px) { .hm-pick { min-height: 158px; } }
+@media (max-width: 720px) { .hm-pick { min-height: 96px; } }
+html:not(.hero-back) #nextStep { display: none; }
+html:not(.hero-back) .hm-pick[hidden] { display: block; visibility: hidden; }
+/* desktop: anchor the hero copy to the top (a centred block re-centres whenever a font swap changes its height) */
+@media (min-width: 721px) { .hm-hero { justify-content: flex-start; padding-block-start: calc(var(--hm-nav) + clamp(12px, 5vh, 64px)); } }
