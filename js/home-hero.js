@@ -48,8 +48,9 @@
     tabsEl.innerHTML = "";
     tiles.forEach(function (d) {
       var b = document.createElement("button"); b.type = "button"; b.setAttribute("role", "tab"); b.setAttribute("data-id", d.id); b.setAttribute("data-course", d.id);
-      b.innerHTML = '<i aria-hidden="true"></i>'; b.appendChild(document.createTextNode(d.name));
-      b.addEventListener("click", function () { if (window.matchMedia("(max-width: 720px), (max-height: 860px)").matches) { location.href = d.href; return; } cur = d.id; paintPanel(true); }); // phones: the chip is a direct link, the details panel is hidden
+      b.innerHTML = '<i aria-hidden="true"></i><span class="pk-t"><b></b><small></small></span>';
+      b.querySelector("i").textContent = d.glyph || d.name.slice(0, 2); b.querySelector("b").textContent = d.name; b.querySelector("small").textContent = d.count || d.lv || "";
+      b.addEventListener("click", function () { if (window.matchMedia("(max-width: 960px), (max-height: 860px)").matches) { location.href = d.href; return; } cur = d.id; paintPanel(true); }); // phones: the chip is a direct link, the details panel is hidden
       b.addEventListener("keydown", function (e) {
         var k = e.key, i = tiles.indexOf(d), n = null, rtl = getComputedStyle(tabsEl).direction === "rtl";
         if (k === "ArrowRight") n = i + (rtl ? -1 : 1); else if (k === "ArrowLeft") n = i + (rtl ? 1 : -1); else if (k === "Home") n = 0; else if (k === "End") n = tiles.length - 1;

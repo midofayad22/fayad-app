@@ -36,3 +36,22 @@ html.is-scrolled .sp { opacity: 1; }
 @keyframes fy-icon-turn { from { transform: rotate(-70deg) scale(.6); opacity: 0; } to { transform: none; opacity: 1; } }
 .fy-btn-theme svg { animation: fy-icon-turn .38s var(--fy-ease, ease) both; }
 @media (prefers-reduced-motion: reduce) { .fy-btn-theme svg { animation: none; } }
+
+/* ===== V7: theme + language control motion ===== */
+.fy-btn-theme, .fy-btn-lang { transition: transform .18s var(--fy-ease, ease), background-color .18s, border-color .18s, color .18s; }
+.fy-btn-theme:hover, .fy-btn-lang:hover { transform: translateY(-1px); color: var(--fy-brand); border-color: var(--fy-brand); }
+.fy-btn-theme:hover svg { transform: rotate(18deg) scale(1.08); }
+.fy-btn-theme svg, .fy-btn-lang svg { transition: transform .25s var(--fy-ease, ease); }
+.fy-btn-theme:active, .fy-btn-lang:active { transform: scale(.88); }
+.fy-btn-lang.is-spin svg { animation: fy-globe-spin .5s var(--fy-ease, ease); }
+@keyframes fy-globe-spin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+html.fy-lang-switching main, html.fy-lang-switching footer, html.fy-lang-switching .bn { animation: fy-lang-in .42s var(--fy-ease, ease) both; }
+@keyframes fy-lang-in { from { opacity: .0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+html.fy-vt-theme::view-transition-old(root), html.fy-vt-theme::view-transition-new(root) { mix-blend-mode: normal; }
+html.fy-vt-theme::view-transition-new(root) { animation: fy-theme-reveal .55s cubic-bezier(.22,.8,.3,1) both; }
+html.fy-vt-theme::view-transition-old(root) { animation: none; z-index: 0; }
+@keyframes fy-theme-reveal { from { clip-path: circle(0 at var(--vt-x, 50%) var(--vt-y, 0)); } to { clip-path: circle(150vmax at var(--vt-x, 50%) var(--vt-y, 0)); } }
+@media (prefers-reduced-motion: reduce) {
+  .fy-btn-lang.is-spin svg, html.fy-lang-switching main, html.fy-lang-switching footer, html.fy-lang-switching .bn, html.fy-vt-theme::view-transition-new(root) { animation: none; }
+  .fy-btn-theme:hover, .fy-btn-lang:hover { transform: none; }
+}

@@ -222,8 +222,22 @@
     themeBtn.className = "fy-btn fy-btn-theme";
     themeBtn.addEventListener("click", function () {
       var root = document.documentElement;
+      var next = prefs.theme === "dark" ? "light" : "dark";
+      var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var apply = function () { prefs.setTheme(next); };
+      if (!calm && document.startViewTransition) {
+        // native View Transitions: a circular reveal growing from the button; falls back to a plain colour fade
+        var r = themeBtn.getBoundingClientRect();
+        root.style.setProperty("--vt-x", Math.round(r.left + r.width / 2) + "px");
+        root.style.setProperty("--vt-y", Math.round(r.top + r.height / 2) + "px");
+        root.classList.add("fy-vt-theme");
+        var t = document.startViewTransition(apply);
+        var done = function () { root.classList.remove("fy-vt-theme"); };
+        t.finished.then(done, done);
+        return;
+      }
       root.classList.add("fy-theme-switching");
-      prefs.setTheme(prefs.theme === "dark" ? "light" : "dark");
+      apply();
       window.setTimeout(function () { root.classList.remove("fy-theme-switching"); }, 320);
     });
 
@@ -231,7 +245,11 @@
     langBtn.type = "button";
     langBtn.className = "fy-btn fy-btn-lang";
     langBtn.addEventListener("click", function () {
+      var root = document.documentElement;
+      root.classList.remove("fy-lang-switching"); void root.offsetWidth; root.classList.add("fy-lang-switching");
+      langBtn.classList.remove("is-spin"); void langBtn.offsetWidth; langBtn.classList.add("is-spin");
       prefs.setLang(prefs.lang === "ar" ? "en" : "ar");
+      window.setTimeout(function () { root.classList.remove("fy-lang-switching"); langBtn.classList.remove("is-spin"); }, 520);
     });
 
     menuBtn = document.createElement("button");

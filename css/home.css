@@ -515,3 +515,61 @@ html:not(.hero-back) #nextStep { display: none; }
 html:not(.hero-back) .hm-pick[hidden] { display: block; visibility: hidden; }
 /* desktop: anchor the hero copy to the top (a centred block re-centres whenever a font swap changes its height) */
 @media (min-width: 721px) { .hm-hero { justify-content: flex-start; padding-block-start: calc(var(--hm-nav) + clamp(12px, 5vh, 64px)); } }
+
+/* ===== V7: track picker = tile grid (one design for phone, tablet, laptop); hero is top-anchored so there is no dead space ===== */
+html .hm-hero { justify-content: flex-start; padding-block: calc(var(--hm-nav) + clamp(14px, 3.5vh, 44px)) clamp(20px, 4vh, 40px); }
+@media (max-width: 720px) { html .hm-hero { padding-block: calc(var(--hm-nav) + 14px) calc(92px + env(safe-area-inset-bottom)); min-height: 0; } }
+html .hm-pick { min-height: 0; padding: clamp(14px, 2.2vw, 22px); border-radius: 20px; border: 1px solid var(--fy-border); background: var(--fy-surface); box-shadow: 0 18px 40px -28px rgba(0,0,0,.5); display: block; }
+html .hm-pick-label { display: block; margin: 0 0 12px; font-size: var(--fy-text-sm); font-weight: var(--fy-fw-strong); color: var(--fy-text-muted); }
+html .hm-pick-tabs { display: grid; grid-template-columns: repeat(auto-fill, minmax(176px, 1fr)); gap: 10px; overflow: visible; margin: 0; padding: 0; min-width: 0; -webkit-mask-image: none; mask-image: none; }
+html .hm-pick-tabs button { display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 8px 12px; border-radius: 14px; text-align: start; white-space: normal; background: var(--fy-surface-2); border: 1px solid var(--fy-border); color: var(--fy-text); transition: border-color var(--fy-dur-fast), background-color var(--fy-dur-fast), transform var(--fy-dur-fast); }
+html .hm-pick-tabs button i { flex: none; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: color-mix(in srgb, var(--fy-course, var(--fy-brand)) 22%, transparent); color: var(--fy-course-ink, var(--fy-course, var(--fy-brand))); font: 800 .62rem/1 var(--fy-font-en); font-style: normal; letter-spacing: 0; direction: ltr; }
+html .hm-pick-tabs .pk-t { display: grid; gap: 1px; min-width: 0; }
+html .hm-pick-tabs .pk-t b { font: 650 .9rem/1.25 var(--fy-font-en); overflow-wrap: normal; word-break: normal; hyphens: none; }
+html .hm-pick-tabs .pk-t small { color: var(--fy-text-muted); font-size: .75rem; }
+html .hm-pick-tabs button:hover { border-color: var(--fy-course, var(--fy-brand)); transform: translateY(-1px); }
+html .hm-pick-tabs button[aria-selected="true"] { background: color-mix(in srgb, var(--fy-course, var(--fy-brand)) 14%, var(--fy-surface-2)); border-color: var(--fy-course, var(--fy-brand)); color: var(--fy-text); }
+html .hm-pick-tabs button[aria-selected="true"] i { background: var(--fy-course, var(--fy-brand)); color: var(--fy-course-on, #fff); }
+html .hm-pick-panel { margin-block-start: 14px; }
+@media (max-width: 720px) {
+  html .hm-pick { padding: 14px; margin-block-start: 18px; }
+  html .hm-pick-tabs { grid-template-columns: 1fr 1fr; gap: 8px; }
+  html .hm-pick-tabs button { min-height: 52px; padding: 6px 10px; gap: 10px; }
+  html .hm-pick-tabs button i { width: 30px; height: 30px; }
+  html .hm-pick-tabs .pk-t b { font-size: .82rem; }
+}
+@media (max-width: 340px) { html .hm-pick-tabs button i { display: none; } }
+@media (min-width: 721px) and (max-height: 860px) { html .hm-pick-panel { display: none; } html .hm-pick-tabs { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); } }
+@media (max-width: 960px) { html .hm-pick-panel { display: none; } html .hm-pick-tabs { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); } } @media (max-width: 720px) { html .hm-pick-tabs { grid-template-columns: 1fr 1fr; } }
+
+/* ===== V7: footer = brand on one side, social icons on the other, one quiet line below ===== */
+html .ft-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px 24px; padding-block: clamp(18px, 3vw, 28px) 14px; }
+html .ft-bar .ft-logo { display: inline-flex; align-items: center; gap: 12px; }
+html .ft-bar .ft-name { display: grid; gap: 2px; }
+html .ft-bar .ft-name small { color: var(--fy-text-muted); font-size: .72rem; letter-spacing: .02em; }
+html .ft-bar .ft-social { display: flex; gap: 10px; justify-self: auto; }
+html .ft-bottom { padding-block: 0 clamp(14px, 2.5vw, 22px); }
+html .ft-bottom p { margin: 0; color: var(--fy-text-muted); font-size: var(--fy-text-sm); }
+@media (max-width: 720px) { html .ft { padding-bottom: calc(84px + env(safe-area-inset-bottom)); } html .ft-bar { padding-block: 16px 10px; } html .ft-bar .ft-social a { width: 40px; height: 40px; } }
+html .ft { padding-block-start: 0; }
+html .ft-bar { padding-block-start: clamp(22px, 3.5vw, 34px); flex-wrap: nowrap; }
+html .ft-bar .ft-social { flex-wrap: nowrap; min-width: 0; }
+@media (max-width: 720px) { html .ft-bar { gap: 10px; } html .ft-bar .ft-social { gap: 6px; } html .ft-bar .ft-social a { width: 38px; height: 38px; } html .ft-bar .ft-logo { min-width: 0; gap: 10px; } }
+@media (max-width: 340px) { html .ft-bar .ft-social a { width: 34px; height: 34px; } html .ft-bar .ft-name small { display: none; } }
+/* reserve the picker's height before js builds it (no layout shift) */
+html .hm-pick-tabs { min-height: 122px; align-content: start; }
+html .hm-pick-panel { min-height: 100px; }
+@media (max-width: 1100px) { html .hm-pick-tabs { min-height: 188px; } }
+@media (max-width: 960px) { html .hm-pick-panel { min-height: 0; } }
+@media (max-width: 720px) { html .hm-pick-tabs { min-height: 352px; } }
+@media (min-width: 721px) and (max-height: 860px) { html .hm-pick-panel { min-height: 0; } }
+@media (min-width: 961px) and (max-height: 860px) {
+  html .hm-pick { padding: 12px 16px 14px; }
+  html .hm-pick-label { margin-block-end: 8px; }
+  html .hm-pick-tabs { gap: 8px; min-height: 0; grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  html .hm-pick-tabs button { min-height: 46px; padding: 5px 10px; }
+  html .hm-pick-tabs button i { width: 28px; height: 28px; }
+  html .hm-pick-tabs .pk-t small { display: none; }
+  html .hm-hero h1 { font-size: clamp(2rem, 5.6vh, 3rem); }
+  html .hm-hero { padding-block-start: calc(var(--hm-nav) + 18px); }
+}

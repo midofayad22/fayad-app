@@ -21,7 +21,7 @@ const openMenu = async (p) => { await menu(p).click(); await p.waitForSelector("
 test("structure: three groups, expandable courses with real progress, every link resolves and has an icon", async () => {
   const { ctx, page } = await open("/about/about.html");
   await openMenu(page);
-  assert.equal(await page.locator(".nd-h").count(), 3);                       // main / account / platform
+  assert.equal(await page.locator(".nd-h").count(), 2);                       // guest: main / platform (the account group is for signed-in users only)
   assert.equal(await page.locator("#nd-courses-btn").getAttribute("aria-expanded"), "false");
   await page.click("#nd-courses-btn"); assert.equal(await page.locator("#nd-courses-btn").getAttribute("aria-expanded"), "true");
   assert.equal(await page.locator(".nd-course").count(), 11);
@@ -123,11 +123,11 @@ for (const [lang, dir] of [["ar", "rtl"], ["en", "ltr"]]) test(`navbar: balanced
   }
 });
 
-test("sidebar account area: guests get a quiet sign-in row (no CTA button); signed-in users get their profile row", async () => {
+test("sidebar account area: guests get Sign in + Create account and no account-only links; signed-in users get their profile row", async () => {
   const g = await open("/index.html", { lang: "en" }); await openMenu(g.page);
-  assert.equal(await g.page.locator(".nd-cta, .nd-foot").count(), 0); const row = g.page.locator(".nd-account a.nd-acct"); assert.equal(await row.getAttribute("href"), "/login.html"); assert.match(await row.innerText(), /Sign in/);
-  assert.equal(await g.page.locator(".nd-account .nd-acct-alt a").getAttribute("href"), "/login.html#signup"); assert.equal(await g.page.locator(".nd").count(), 1);
-  const bg = await row.evaluate((e) => getComputedStyle(e).backgroundColor); assert.match(bg, /rgba\(0, 0, 0, 0\)|transparent/, "sign-in row must not be a filled button");
+  assert.equal(await g.page.locator(".nd-account a.nd-cta-main").getAttribute("href"), "/login.html"); assert.match(await g.page.locator(".nd-account a.nd-cta-main").innerText(), /Sign in/);
+  assert.equal(await g.page.locator(".nd-account a.nd-cta-ghost").getAttribute("href"), "/login.html?mode=signup"); assert.equal(await g.page.locator(".nd").count(), 1);
+  assert.equal(await g.page.locator(".nd a[href=\"/profile.html\"]").count(), 0, "guests are not shown account-only links"); // profile/achievements/notifications are for signed-in users
   await g.ctx.close();
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 800 }, serviceWorkers: "block" });
   await ctx.addInitScript(() => { localStorage.setItem("fayad-language", "en"); localStorage.setItem("sb-vsrysitexadvmmikcmfs-auth-token", JSON.stringify({ user: { id: "u1", email: "sara@example.com", user_metadata: { full_name: "Sara" } }, expires_at: 9999999999 })); });

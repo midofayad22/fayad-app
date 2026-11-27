@@ -92,9 +92,9 @@ test("hero: a guest sees one visible primary action (sign up), Sign in and the t
   await r.ctx.close();
 });
 
-test("footer: brand block, two link groups and social links keep their real URLs", async () => {
+test("footer: brand on one side, social links (real URLs) on the other, no link columns", async () => {
   const { ctx, page } = await open({}, "en");
-  assert.equal(await page.locator(".ft-brand").count(), 1); assert.equal(await page.locator(".ft-col").count(), 2);
+  assert.equal(await page.locator(".ft-logo").count(), 1); assert.equal(await page.locator(".ft-col").count(), 0);
   const hrefs = await page.locator(".ft-social a").evaluateAll((l) => l.map((a) => a.href)); assert.ok(hrefs.length >= 3 && hrefs.every((h) => /^https:\/\//.test(h)), hrefs.join());
   assert.ok(hrefs.some((h) => h.includes("github.com/midofayad22")));
   await ctx.close();

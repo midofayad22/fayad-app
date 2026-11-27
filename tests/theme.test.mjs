@@ -54,7 +54,7 @@ test("theme and language toggles work, persist across reload and navigation, and
   const arLabel = await theme.getAttribute("aria-label");
 
   assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), "dark", "dark by default");
-  await theme.click();
+  await theme.click(); await page.waitForFunction(() => document.documentElement.dataset.theme === "light"); // the change is applied inside a view transition (async)
   assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), "light");
   await lang.click();
   assert.deepEqual(await page.evaluate(() => [document.documentElement.lang, document.documentElement.dir]), ["en", "ltr"]);
@@ -67,7 +67,7 @@ test("theme and language toggles work, persist across reload and navigation, and
 
   // keyboard operable
   await page.locator(".fy-btn-theme").focus(); await page.keyboard.press("Enter");
-  assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), "dark");
+  await page.waitForFunction(() => document.documentElement.dataset.theme === "dark");
   await ctx.close();
 });
 
