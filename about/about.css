@@ -49,11 +49,32 @@ html[dir="rtl"] .ab-note { border-radius: 10px 0 0 10px; }
 .ab-cta { padding-block: clamp(44px, 7vw, 88px); background: linear-gradient(160deg, #0f2a40, #0b1f31 60%, #0a3a3c 130%); color: var(--ink-text, #eaf2f7); }
 .ab-cta-in { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px; }
 .ab-cta h2 { margin: 0; color: #eaf2f7; }
+/* course table -> track cards (same table markup, kept for accessibility and the catalog tests) */
+.ab-table-wrap { border: 0; background: transparent; overflow: visible; }
+.ab-table, .ab-table tbody { display: block; min-width: 0; }
+.ab-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.ab-table tbody { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px; }
+.ab-table tbody tr { display: grid; gap: 6px; padding: 16px 18px; border: 1px solid var(--fy-border); border-inline-start: 4px solid var(--c, var(--fy-brand)); border-radius: var(--fy-radius); background: var(--fy-surface); }
+.ab-table tbody tr > * { display: block; padding: 0; border: 0 !important; }
+.ab-table tbody td:first-of-type::after { content: " " attr(data-unit); }
+.ab-table tbody tr:hover { transform: translateY(-2px); background: var(--fy-surface); }
+.ab-table tbody tr { transition: transform var(--fy-dur-fast), border-color var(--fy-dur-fast); }
+.ab-table tbody tr[data-course]:hover { border-color: var(--c, var(--fy-brand)); }
+.ab-table tbody tr[data-course="com"], .ab-table tbody tr[data-course="prg"] { --c: #d4a017; }
+.ab-table tbody tr[data-course="html"] { --c: #e8602c; } .ab-table tbody tr[data-course="css"] { --c: #3b82f6; } .ab-table tbody tr[data-course="js"], .ab-table tbody tr[data-course="ajs"] { --c: #d9b100; }
+.ab-table tbody tr[data-course="bs"] { --c: #8b5cf6; } .ab-table tbody tr[data-course="tw"] { --c: #14b8c4; } .ab-table tbody tr[data-course="react"] { --c: #38bdf8; } .ab-table tbody tr[data-course="vue"] { --c: #22a06b; } .ab-table tbody tr[data-course="angular"] { --c: #e0457b; }
+.ab-links { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.ab-links a { display: grid; gap: 4px; padding: 16px 20px; border: 1px solid var(--fy-border); border-radius: var(--fy-radius); background: var(--fy-surface); color: inherit; text-decoration: none; transition: transform var(--fy-dur-fast), border-color var(--fy-dur-fast); }
+.ab-links a:hover { transform: translateY(-2px); border-color: var(--fy-brand); }
+.ab-links a:focus-visible { outline: none; box-shadow: var(--fy-focus); }
+.ab-links b { font: 700 var(--fy-text-md) var(--fy-font-en); color: var(--fy-text); } .ab-links span { color: var(--fy-text-soft); }
 @media (max-width: 900px) {
   .ab-hero-grid, .ab-split { grid-template-columns: minmax(0, 1fr); }
   .ab-cards { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 560px) {
   .ab-facts > div { padding: 16px; }
-  .ab-cta-in .hm-cta { width: 100%; }
 }
+@media (max-width: 560px) { .ab-actions .hm-cta { width: auto; min-height: 48px; } .ab-hero { padding-block-end: 36px; } }
+.ab-table caption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+@media (max-width: 560px) { .ab-table tbody { grid-template-columns: 1fr 1fr; gap: 10px; } .ab-table tbody tr { padding: 12px 14px; } .ab-table tbody th { font-size: var(--fy-text-sm); } }

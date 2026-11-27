@@ -94,7 +94,8 @@
       "a.state.p2": "قيد العمل: تعميق شرح بعض الدروس وإضافة المزيد من التمارين التطبيقية وترجمة بقية الدروس.",
       "a.arch.1.d": "صفحات HTML وCSS وJavaScript بلا إطار ثقيل.", "a.arch.2.d": "كل المسارات تعمل بنفس المحرك، فتتشابه التجربة.", "a.arch.4.d": "شرح ثم مثال ثم تجربة ثم اختبار قصير.",
       "a.arch.5.t": "يعمل دون اتصال", "a.arch.5.d": "يمكن تثبيت الموقع كتطبيق، وتبقى الصفحات التي زرتها متاحة دون إنترنت.",
-      "a.cta.t": "ابدأ من حيث تناسبك"
+      "a.cta.t": "ابدأ من حيث تناسبك",
+      "a.mk.title": "من يقف وراء FAYBIT", "a.mk.p": "FAYBIT مشروع مستقل يطوّره عبد الحميد فياض. أعماله ومشاريعه الأخرى متاحة على الروابط التالية.", "a.mk.gh": "الشيفرة والمشاريع", "a.mk.in": "الخبرة والتواصل المهني"
     },
     en: {
       "menu.game": "Games", "ft.tag": "An independent platform for learning web development in Arabic and English.", "ft.learnH": "Learn", "ft.platH": "Platform", "ft.settings": "Settings", "menu.profile": "Profile", "menu.dashboard": "Progress dashboard", "f.about": "About", "f.rights": "© 2026 FAYBIT. A web development learning platform.", "ft.learn": "Courses",
@@ -113,7 +114,8 @@
       "a.state.p2": "In progress: deeper explanations for some lessons, more practice exercises and translating the remaining lessons.",
       "a.arch.1.d": "Plain HTML, CSS and JavaScript pages with no heavy framework.", "a.arch.2.d": "Every course runs on the same engine, so the experience stays consistent.", "a.arch.4.d": "Explanation, example, a try-it step, then a short quiz.",
       "a.arch.5.t": "Works offline", "a.arch.5.d": "Install the site as an app; pages you have visited stay available without internet.",
-      "a.cta.t": "Start where it suits you"
+      "a.cta.t": "Start where it suits you",
+      "a.mk.title": "Who builds FAYBIT", "a.mk.p": "FAYBIT is an independent project built by Abdullhamid Fayad. His other work and projects are linked here.", "a.mk.gh": "Code and projects", "a.mk.in": "Experience and professional contact"
     }
   });
   function facts() {
