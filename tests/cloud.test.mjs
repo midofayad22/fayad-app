@@ -21,6 +21,7 @@ async function open(signedIn) {
       rpc: async (name, args) => { window.__calls.push([name, args]); if (name === "get_leaderboard_v2") return { data: null, error: { message: "function not found (migration 0007 not applied)" } }; if (name === "get_leaderboard") return { data: [{ rank: 1, display_name: "<b>x</b>", points: 99, solved: 3 }], error: null }; return { data: [{ points: 1, already: false }], error: null }; },
     } };
   }, signedIn);
+  await ctx.route(/\/vendor\/supabase-js-/, (r) => r.abort()); // keep the injected mock client
   await ctx.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort());
   const page = await ctx.newPage(); await page.goto(base + "/play/index.html"); return { ctx, page };
 }

@@ -76,20 +76,21 @@ function build() {
   main.append(item("/play/index.html", "gamepad-2", T("games")), item("/dashboard.html", "layout-dashboard", T("dash")));
   body.append(main);
 
-  const acct = group(T("acct"));
-  acct.append(item("/profile.html", "user", T("profile")), item("/dashboard.html#achievements", "trophy", T("ach")));
-  { const nl = item("/settings/notifications.html", "bell", T("notif")); if (window.FAYAD?.unread) nl.append(el("span", "nd-badge", String(window.FAYAD.unread))); acct.append(nl); }
-  acct.append(item("/settings/index.html", "settings", T("settings")));
-  body.append(acct);
+  if (user) {
+    const acct = group(T("acct"));
+    acct.append(item("/profile.html", "user", T("profile")), item("/dashboard.html#achievements", "trophy", T("ach")));
+    { const nl = item("/settings/notifications.html", "bell", T("notif")); if (window.FAYAD?.unread) nl.append(el("span", "nd-badge", String(window.FAYAD.unread))); acct.append(nl); }
+    acct.append(item("/settings/index.html", "settings", T("settings")));
+    body.append(acct);
+  }
 
-  const plat = group(T("platform")); plat.classList.add("nd-sec-end"); plat.append(item("/about/about.html", "info", T("about"))); body.append(plat);
+  const plat = group(T("platform")); plat.classList.add("nd-sec-end"); if (!user) plat.append(item("/settings/index.html", "settings", T("settings"))); plat.append(item("/about/about.html", "info", T("about"))); body.append(plat);
 
   // account area (top of the drawer, under the header): a quiet row, not a call-to-action button
   const acctBox = el("div", "nd-account");
   if (user) { const av = el("span", "nd-av", (user.name || user.email || "?").trim()[0].toUpperCase()); av.setAttribute("aria-hidden", "true"); if (user.avatar) { const im = new Image(); im.alt = ""; im.referrerPolicy = "no-referrer"; im.onload = () => { av.textContent = ""; av.append(im); }; im.src = user.avatar; } const w = el("span", "nd-who"); w.append(el("b", "", user.name || user.email.split("@")[0]), el("small", "", user.email)); const a = el("a", "nd-acct"); a.href = "/profile.html"; a.append(av, w); a.insertAdjacentHTML("beforeend", icon(lang() === "en" ? "chevron-right" : "chevron-left", 16, "nd-acct-go")); acctBox.append(a);
     const so = el("button", "nd-signout", T("signout")); so.type = "button"; so.addEventListener("click", async () => { so.disabled = true; try { await window.FAYAD_AUTH?.client?.auth.signOut(); } catch { /* offline */ } try { Object.keys(localStorage).filter((k) => /^(sb-.*-auth-token|fayad-supabase-auth)$/.test(k) || k === "fayad-profile-v1").forEach((k) => localStorage.removeItem(k)); } catch { /* blocked */ } window.dispatchEvent(new CustomEvent("fayad-auth-changed", { detail: { event: "SIGNED_OUT", loggedIn: false, user: null, session: null } })); close(); }); acctBox.append(so); }
-  else { const a = el("a", "nd-acct"); a.href = "/login.html"; const av = el("span", "nd-av nd-av-guest"); av.setAttribute("aria-hidden", "true"); av.innerHTML = icon("user", 18); const w = el("span", "nd-who"); w.append(el("b", "", T("signin")), el("small", "", T("guestNote"))); a.append(av, w); a.insertAdjacentHTML("beforeend", icon(lang() === "en" ? "chevron-right" : "chevron-left", 16, "nd-acct-go"));
-    const alt = el("p", "nd-acct-alt"); const la = el("a", "", T("signup")); la.href = "/login.html#signup"; alt.append(el("span", "", T("newHere") + " "), la); acctBox.append(a, alt); }
+  else { const row = el("div", "nd-cta-row"); const si = el("a", "nd-cta nd-cta-main", T("signin")); si.href = "/login.html"; const su = el("a", "nd-cta nd-cta-ghost", T("signup")); su.href = "/login.html?mode=signup"; row.append(si, su); acctBox.append(el("p", "nd-guest-note", T("guestNote")), row); }
   panel.append(head, body, acctBox); wrap.append(back, panel); return wrap;
 }
 let cssReady = null;
