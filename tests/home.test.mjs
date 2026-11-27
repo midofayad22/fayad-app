@@ -287,3 +287,21 @@ test("practice list shows real per-game totals and distinct game identities", as
   assert.equal(await page.locator(".gt").count(), 5);
   await ctx.close();
 });
+
+test("track picker: first activation previews in place, second glides to the real card (no navigation); the card opens the track", async () => {
+  const { ctx, page } = await open();
+  await page.waitForSelector("#pickTabs button");
+  const url0 = page.url();
+  await page.click('#pickTabs button[data-id="css"]');
+  assert.equal(await page.locator(".hm-pick-name").innerText(), "CSS");
+  assert.equal(page.url(), url0, "first click must not navigate");
+  assert.equal(await page.evaluate(() => scrollY), 0, "first click must not scroll");
+  await page.click('#pickTabs button[data-id="css"]');
+  await page.waitForFunction(() => scrollY > 300);
+  await page.waitForSelector('.tk[data-course-card="css"].is-spot');
+  assert.equal(page.url(), url0, "second click glides, it does not navigate");
+  await page.click(".hm-pick-go").catch(() => {}); // the preview button does the same glide
+  const href = await page.getAttribute('.tk[data-course-card="css"]', "href");
+  assert.match(href, /css-learning/);
+  await ctx.close();
+});
