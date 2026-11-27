@@ -167,3 +167,10 @@ Checklist: [x] Adventure mechanics v2  [x] Zombie web-lab (supersedes the JS-onl
 - Games hub: per-game colour, glyph and header art.
 - Account isolation: device-owner guard for local progress (see AUTH-INTEGRITY-AUDIT.md V5 update).
 - Settings/profile/dashboard: reviewed; existing controls are all wired to real preferences/backend, no controls removed in this pass.
+
+## V6 — auth recovery + hero/About refinements
+- Auth: the Supabase SDK is vendored (`/vendor/supabase-js-2.119.2/`, CDN kept only as a fallback in `cloud.js`); `||=` (ES2021) removed from login-path modules; auth forms have a safe non-GET fallback. Real Supabase login/signup/recovery could **not** be run from the sandbox (supabase.co blocked); covered by tests using the real SDK against a stubbed endpoint.
+- Homepage: first viewport is one screen (100svh) on 320×568 … 1920×1080; "Explore tracks" link and the stats line removed; one dominant content-sized CTA ("ابدأ التعلم" / "Start learning") with a quiet secondary; short viewports use the chip row as the whole picker.
+- Settings: accent picker removed (light/dark + text size only).
+- About: course table presented as track cards (same markup), builder section with the real GitHub and LinkedIn links from the repo (no separate portfolio URL exists in the repo).
+- Not done in this pass: dedicated bottom bar on every phone page, leaderboard redesign, search overhaul, branded loader.
