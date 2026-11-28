@@ -1826,4 +1826,3 @@ html[lang="ar"] .explanation-card > h3 { letter-spacing: 0; text-transform: none
 .learning-navbar .learning-title .path-title { margin: 0; font-size: .95rem; font-weight: 650; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .learning-navbar .back-btn { display: none; }
 @media (max-width: 640px) { .learning-navbar { height: 58px; min-height: 58px; gap: 8px; } .learning-navbar .learning-logo::after { display: none; } .learning-navbar .learning-logo { padding: 0 6px; } .learning-navbar .learning-title { padding-inline-start: 10px; } .learning-navbar .learning-title .path-title { font-size: .86rem; } }
-.learning-navbar .course-mark { width: 32px; height: 32px; background: url(/assets/brand/logo-mark.svg) center / contain no-repeat; -webkit-mask: none; mask: none; }

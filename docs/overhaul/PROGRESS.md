@@ -174,3 +174,9 @@ Checklist: [x] Adventure mechanics v2  [x] Zombie web-lab (supersedes the JS-onl
 - Settings: accent picker removed (light/dark + text size only).
 - About: course table presented as track cards (same markup), builder section with the real GitHub and LinkedIn links from the repo (no separate portfolio URL exists in the repo).
 - Not done in this pass: dedicated bottom bar on every phone page, leaderboard redesign, search overhaul, branded loader.
+
+## V7/V8 — loader, picker, motion, sidebar, footer, About, unified learning navbar
+- Cinematic boot loader in `js/prefs.js` (logo letters form → ring tied to real readiness stages → iris reveal, optional synthesized chime, mute pref `fayad-boot-sound`; skipped in automation unless `?loader=1`).
+- Home: track picker preview → glide → enter flow; one-screen phone composition with swipe rail.
+- Slow celestial theme transition (sun→moon, stars, shooting star) and two-phase language swap; cross-document view transitions.
+- Sidebar roomier, guest CTAs vs account group; minimal footer (logo + social + "Learn. Build. Become."); About redesigned; learning pages share the site navbar style with brand-home logo.

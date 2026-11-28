@@ -670,3 +670,4 @@ html[data-auth="in"] .hm-next-note { display: none; }
   html.hero-back .hm-hero h1 { margin-block: 14px 16px; }
   html.hero-back .hm-next { margin-block-start: 6px; }
 }
+@media (min-width: 721px) { html .hm-hero-copy { align-self: start; } }

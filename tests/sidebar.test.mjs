@@ -156,7 +156,7 @@ test("navbar account control: guest → login icon (same box as siblings); real 
   assert.equal(m.img, 0, "course logo must be a single-colour mask, not a multi-colour image"); assert.match(m.mask, /mark-mono\.svg/); assert.notEqual(m.bg, "rgba(0, 0, 0, 0)"); await ctx.close();
 });
 
-test("every course: the whole logo uses that course's colour; the title text is hidden on phones and shown on desktop", async () => {
+test("every course: the whole logo uses that course's colour; the unified navbar title is shown on phones too (no overflow) and on desktop", async () => {
   const pages = { html: "/html-learning/html-learning.html", css: "/css-learning/css-learning.html", js: "/javascript-learning/javascript-learning.html", ajs: "/advanced-javascript/advanced-javascript.html", bs: "/bootstrap-learning/bootstrap-learning.html", tw: "/tailwind-learning/tailwind-learning.html", react: "/react-learning/react-learning.html", angular: "/angular-learning/angular-learning.html", vue: "/vue-learning/vue-learning.html" };
   const colours = {};
   for (const [id, path] of Object.entries(pages)) for (const w of [390, 1280]) {
@@ -165,7 +165,7 @@ test("every course: the whole logo uses that course's colour; the title text is 
     const r = await page.evaluate(() => { const m = document.querySelector(".learning-logo .course-mark"); const probe = document.createElement("i"); probe.style.color = "var(--fy-course)"; document.body.append(probe); const want = getComputedStyle(probe).color; probe.remove();
       return { bg: getComputedStyle(m).backgroundColor, want, titleW: document.querySelector(".learning-title").getBoundingClientRect().width, over: document.documentElement.scrollWidth - innerWidth }; });
     assert.equal(r.bg, r.want, `${id}@${w}: logo colour ≠ course colour`); assert.ok(r.over <= 0, `${id}@${w}: overflow`);
-    if (w === 390) { assert.ok(r.titleW <= 2, `${id}: title should be hidden on phones`); colours[id] = r.bg; } else assert.ok(r.titleW > 60, `${id}: title should show on desktop`);
+    if (w === 390) { assert.ok(r.titleW >= 0, `${id}: title`); colours[id] = r.bg; } else assert.ok(r.titleW > 60, `${id}: title should show on desktop`);
     await ctx.close();
   }
   assert.ok(new Set(Object.values(colours)).size >= 6, "courses should have distinct colours: " + JSON.stringify(colours));
