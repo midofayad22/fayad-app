@@ -83,12 +83,19 @@
               <a class="hm-link" href="/play/index.html"><span data-i18n="a.play">جرّب الألعاب</span></a>
             </div>
           </div>
-          <dl class="ab-facts rv" aria-label="FAYBIT">
-            <div><dt data-i18n="a.fact.tracks">مسارات</dt><dd data-fact="tracks">11</dd></div>
-            <div><dt data-i18n="a.fact.lessons">درسًا</dt><dd data-fact="lessons">292</dd></div>
-            <div><dt data-i18n="a.fact.games">ألعاب وتحديات</dt><dd>5</dd></div>
-            <div><dt data-i18n="a.fact.lang2">لغتان: عربي وإنجليزي</dt><dd>2</dd></div>
-          </dl>
+          <div class="hm-win ab-win rv" aria-hidden="true">
+            <div class="hm-win-bar"><i></i><i></i><i></i><span>index.html</span></div>
+            <div class="hm-win-body">
+              <pre class="hm-win-code" dir="ltr"><code><b>&lt;h1</b> <em>class</em>=<u>"title"</u><b>&gt;</b>
+  Hello, FAYBIT
+<b>&lt;/h1&gt;</b>
+<b>&lt;style&gt;</b>
+  .title { <em>color</em>: <u>teal</u>; }
+<b>&lt;/style&gt;</b></code></pre>
+              <div class="hm-win-out"><span class="hm-win-tag" data-i18n="a.win">معاينة حيّة</span><strong dir="ltr">Hello, FAYBIT</strong></div>
+            </div>
+            <ol class="hm-win-steps"><li><b>1</b><span data-i18n="a.s1">اقرأ الدرس</span></li><li><b>2</b><span data-i18n="a.s2">جرّب الكود</span></li><li><b>3</b><span data-i18n="a.s3">اختبر نفسك</span></li></ol>
+          </div>
         </div>
       </section>
 
@@ -144,19 +151,15 @@
         </div>
       </section>
 
-      <section class="ab-sec ab-sec-soft" id="state" aria-labelledby="stateTitle">
-        <div class="hm-wrap ab-split">
-          <header class="rv"><h2 id="stateTitle" data-i18n="a.state.title">تقدمك وحسابك</h2></header>
-          <div class="ab-prose rv">
-            <p data-i18n="a.state.p1">يُحفظ تقدمك على هذا الجهاز دون حساب، وعند تسجيل الدخول يرتبط بحسابك. الحساب اختياري ويضيف المزامنة فقط.</p>
-            <ul class="ab-cards">
-              <li><strong data-i18n="a.arch.1.t">موقع ثابت وسريع</strong><span data-i18n="a.arch.1.d">صفحات HTML وCSS وJavaScript بلا إطار ثقيل.</span></li>
-              <li><strong data-i18n="a.arch.2.t">محرك دروس مشترك</strong><span data-i18n="a.arch.2.d">كل المسارات تعمل بنفس المحرك، فتتشابه التجربة.</span></li>
-              <li><strong data-i18n="a.arch.5.t">يعمل دون اتصال</strong><span data-i18n="a.arch.5.d">يمكن تثبيت الموقع كتطبيق، وتبقى الصفحات التي زرتها متاحة دون إنترنت.</span></li>
-              <li><strong data-i18n="a.arch.4.t">تعلّم بالتطبيق</strong><span data-i18n="a.arch.4.d">شرح ثم مثال ثم تجربة ثم اختبار قصير.</span></li>
-            </ul>
-            <p class="ab-note" data-i18n="a.state.p2">قيد العمل: تعميق شرح بعض الدروس وإضافة المزيد من التمارين التطبيقية وترجمة بقية الدروس.</p>
-          </div>
+      <section class="ab-sec ab-sec-soft" id="why" aria-labelledby="whyTitle">
+        <div class="hm-wrap">
+          <header class="ab-head rv"><h2 id="whyTitle" data-i18n="a.why.title">ماذا ستجد هنا</h2></header>
+          <ul class="ab-why">
+            <li class="rv"><span class="ab-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 8-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg></span><strong data-i18n="a.why.1.t">تتعلم بالتطبيق</strong><span data-i18n="a.why.1.d">شرح قصير، مثال، تجربة في المحرر، ثم اختبار.</span></li>
+            <li class="rv"><span class="ab-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.9 5.6 3.9 9S14.6 18.4 12 21c-2.6-2.6-3.9-5.6-3.9-9S9.4 5.6 12 3z"/></svg></span><strong data-i18n="a.why.2.t">بلغتك</strong><span data-i18n="a.why.2.d">الواجهة والدروس بالعربية والإنجليزية.</span></li>
+            <li class="rv"><span class="ab-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span><strong data-i18n="a.why.3.t">تقدمك محفوظ</strong><span data-i18n="a.why.3.d">يُحفظ على جهازك، ومع حسابك يلحق بك أينما سجلت دخولك.</span></li>
+            <li class="rv"><span class="ab-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l1 5H8zM5 8h14v13H5z"/></svg></span><strong data-i18n="a.why.4.t">يعمل دون اتصال</strong><span data-i18n="a.why.4.d">ثبّته كتطبيق وتابع الصفحات التي زرتها دون إنترنت.</span></li>
+          </ul>
         </div>
       </section>
 

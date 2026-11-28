@@ -109,7 +109,7 @@
       "h.signin": "تسجيل الدخول",
       "pk.label": "اختر ما تريد تعلمه",
       "pk.s1": "اقرأ الدرس", "pk.s2": "جرّب الكود", "pk.s3": "اختبر نفسك",
-      "pk.open": "افتح المسار", "win.live": "معاينة حيّة", "pk.lessons": "دروس",
+      "pk.open": "افتح المسار", "pk.more": "عرض المسار", "pk.swipe": "اسحب", "win.live": "معاينة حيّة", "pk.lessons": "دروس",
       "bn.account": "حسابي",
 
       "bn.menu": "القائمة",
@@ -254,7 +254,7 @@
       "h.signin": "Sign in",
       "pk.label": "Pick what you want to learn",
       "pk.s1": "Read the lesson", "pk.s2": "Try the code", "pk.s3": "Test yourself",
-      "pk.open": "Open the course", "win.live": "Live preview", "pk.lessons": "lessons",
+      "pk.open": "Open the course", "pk.more": "View track", "pk.swipe": "Swipe", "win.live": "Live preview", "pk.lessons": "lessons",
       "bn.account": "Account",
 
       "bn.menu": "Menu",

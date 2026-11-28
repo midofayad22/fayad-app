@@ -1810,3 +1810,19 @@ html[lang="ar"] .explanation-card > h3 { letter-spacing: 0; text-transform: none
 #exampleExplanation a { color: var(--fy-course, var(--fy-brand)); text-underline-offset: 3px; }
 #exampleExplanation a:focus-visible { outline: 2px solid var(--fy-course, var(--fy-brand)); outline-offset: 2px; border-radius: 3px; }
 @media (max-width: 600px) { .explanation-card { padding: 16px 16px 8px; border-radius: 12px; } #exampleExplanation { font-size: .97rem; } }
+
+/* ===== V8: learning pages share the platform navbar look (brand left, track title as breadcrumb, shared controls) ===== */
+.learning-navbar { position: sticky; top: 0; z-index: 60; height: 64px; min-height: 64px; display: flex; align-items: center; gap: 14px; padding: 0 clamp(14px, 3vw, 32px); background: color-mix(in srgb, var(--fy-bg) 82%, transparent); -webkit-backdrop-filter: blur(16px) saturate(1.2); backdrop-filter: blur(16px) saturate(1.2); border-bottom: 1px solid var(--fy-border); }
+.learning-navbar .learning-logo { position: relative; display: inline-flex; align-items: center; gap: 10px; width: auto; height: 44px; padding: 0 12px 0 6px; border-radius: 14px; background: transparent !important; transition: background-color .25s ease, transform .25s ease; }
+.learning-navbar .learning-logo::after { content: "FAYBIT"; font: 800 1.02rem/1 var(--fy-font-en); letter-spacing: .16em; color: var(--fy-text); transition: color .25s ease, letter-spacing .35s cubic-bezier(.2,.8,.2,1); }
+.learning-navbar .learning-logo:hover { background: color-mix(in srgb, var(--fy-brand) 10%, transparent); }
+.learning-navbar .learning-logo:hover::after { color: var(--fy-brand); }
+.learning-navbar .learning-logo:active { transform: scale(.96); }
+.learning-navbar .learning-logo img, .learning-navbar .learning-logo .course-mark { transition: transform .45s cubic-bezier(.2,.8,.2,1); }
+.learning-navbar .learning-logo:hover img, .learning-navbar .learning-logo:hover .course-mark { transform: rotate(-8deg) scale(1.08); }
+.learning-navbar .learning-logo:focus-visible { outline: none; box-shadow: var(--fy-focus); }
+.learning-navbar .learning-title { flex: 1; min-width: 0; display: flex; align-items: center; padding-inline-start: 16px; margin: 0; border-inline-start: 1px solid var(--fy-border-strong, var(--fy-border)); }
+.learning-navbar .learning-title > span { display: none; }
+.learning-navbar .learning-title .path-title { margin: 0; font-size: .95rem; font-weight: 650; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.learning-navbar .back-btn { display: none; }
+@media (max-width: 640px) { .learning-navbar { height: 58px; min-height: 58px; gap: 8px; } .learning-navbar .learning-logo::after { display: none; } .learning-navbar .learning-logo { padding: 0 6px; } .learning-navbar .learning-title { padding-inline-start: 10px; } .learning-navbar .learning-title .path-title { font-size: .86rem; } }

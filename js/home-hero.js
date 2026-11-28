@@ -23,6 +23,22 @@
     });
   }
 
+  var spotTimer = 0;
+  function calm() { return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches; }
+  function centerTab(b) {
+    try { var r = tabsEl; if (r.scrollWidth > r.clientWidth + 4) { var x = b.offsetLeft - (r.clientWidth - b.offsetWidth) / 2; if (getComputedStyle(r).direction === "rtl") x = b.offsetLeft - (r.clientWidth - b.offsetWidth) / 2; r.scrollTo({ left: x, behavior: calm() ? "auto" : "smooth" }); } } catch (e) {}
+  }
+  // second activation: glide down to the real track card in the courses section and spotlight it (that card opens the track)
+  function goCourse(id) {
+    var card = document.querySelector('[data-course-card="' + id + '"]');
+    if (!card) return;
+    var inRail = !!card.closest(".tk-rail");
+    try { card.scrollIntoView({ behavior: calm() ? "auto" : "smooth", block: "center", inline: inRail ? "center" : "nearest" }); } catch (e) { card.scrollIntoView(); }
+    document.querySelectorAll(".tk.is-spot").forEach(function (n) { n.classList.remove("is-spot"); });
+    clearTimeout(spotTimer);
+    setTimeout(function () { card.classList.add("is-spot"); spotTimer = setTimeout(function () { card.classList.remove("is-spot"); }, 2400); }, calm() ? 0 : 450);
+  }
+
   function paintPanel(animate) {
     var d = tiles.filter(function (x) { return x.id === cur; })[0] || tiles[0];
     if (!d) return;
@@ -35,8 +51,9 @@
     h.querySelector(".hm-pick-meta").textContent = [d.lv, d.count].filter(Boolean).join(" · ");
     h.querySelector(".hm-pick-oc").textContent = d.oc;
     h.querySelector(".hm-pick-topics").textContent = d.topics;
-    var go = h.querySelector(".hm-pick-go"); go.href = d.href; go.textContent = t("pk.open") + " ";
-    go.insertAdjacentHTML("beforeend", '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>');
+    var go = h.querySelector(".hm-pick-go"); go.href = "#courses"; go.textContent = t("pk.more") + " ";
+    go.insertAdjacentHTML("beforeend", '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>');
+    h.addEventListener("click", function (e) { if (e.target.closest("a") && e.target.closest("a") !== go) return; e.preventDefault(); goCourse(d.id); });
     if (animate) h.classList.add("is-new");
     panel.appendChild(h);
     Array.prototype.forEach.call(tabsEl.children, function (b) {
@@ -50,7 +67,7 @@
       var b = document.createElement("button"); b.type = "button"; b.setAttribute("role", "tab"); b.setAttribute("data-id", d.id); b.setAttribute("data-course", d.id);
       b.innerHTML = '<i aria-hidden="true"></i><span class="pk-t"><b></b><small></small></span>';
       b.querySelector("i").textContent = d.glyph || d.name.slice(0, 2); b.querySelector("b").textContent = d.name; b.querySelector("small").textContent = d.count || d.lv || "";
-      b.addEventListener("click", function () { if (window.matchMedia("(max-width: 960px), (max-height: 860px)").matches) { location.href = d.href; return; } cur = d.id; paintPanel(true); }); // phones: the chip is a direct link, the details panel is hidden
+      b.addEventListener("click", function () { if (cur === d.id && b.getAttribute("aria-selected") === "true") { goCourse(d.id); return; } cur = d.id; paintPanel(true); centerTab(b); });
       b.addEventListener("keydown", function (e) {
         var k = e.key, i = tiles.indexOf(d), n = null, rtl = getComputedStyle(tabsEl).direction === "rtl";
         if (k === "ArrowRight") n = i + (rtl ? -1 : 1); else if (k === "ArrowLeft") n = i + (rtl ? 1 : -1); else if (k === "Home") n = 0; else if (k === "End") n = tiles.length - 1;
@@ -67,12 +84,22 @@
     pick.hidden = back || !tiles.length;
   }
 
+  function addHint() {
+    if (pick.querySelector(".hm-pick-hint")) return;
+    var lab = pick.querySelector(".hm-pick-label"); if (!lab) return;
+    var h = document.createElement("span"); h.className = "hm-pick-hint"; h.setAttribute("aria-hidden", "true");
+    h.innerHTML = '<span data-hint></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+    lab.insertAdjacentElement("afterend", h);
+    tabsEl.addEventListener("scroll", function () { pick.classList.toggle("is-scrolled", Math.abs(tabsEl.scrollLeft) > 8); }, { passive: true });
+  }
+  function hintText() { var e = pick.querySelector("[data-hint]"); if (e) e.textContent = t("pk.swipe"); }
+
   function init() {
     readTiles(); if (!tiles.length) return;
     if (!tiles.some(function (x) { return x.id === cur; })) cur = tiles[0].id;
-    paintTabs(); paintPanel(false); setView();
+    paintTabs(); paintPanel(false); setView(); addHint(); hintText();
   }
-  function refresh() { readTiles(); paintTabs(); paintPanel(false); setView(); }
+  function refresh() { readTiles(); paintTabs(); paintPanel(false); setView(); hintText(); }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
   window.addEventListener("fayad:langchange", function () { setTimeout(refresh, 60); });

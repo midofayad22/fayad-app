@@ -56,7 +56,7 @@ test("theme and language toggles work, persist across reload and navigation, and
   assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), "dark", "dark by default");
   await theme.click(); await page.waitForFunction(() => document.documentElement.dataset.theme === "light"); // the change is applied inside a view transition (async)
   assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), "light");
-  await lang.click();
+  await lang.click(); await page.waitForFunction(() => document.documentElement.lang === "en");
   assert.deepEqual(await page.evaluate(() => [document.documentElement.lang, document.documentElement.dir]), ["en", "ltr"]);
   assert.notEqual(await theme.getAttribute("aria-label"), arLabel, "labels follow the language");
 
@@ -85,7 +85,8 @@ test("CSS track switches to real English lesson content via the shared language 
   const page = await ctx.newPage(); await offline(page);
   await page.goto(base + "/css-learning/css-learning.html");
   const arTitle = await page.locator("#lessonTitle").textContent();
-  await page.locator(".fy-btn-lang").click();
+  await page.locator(".fy-btn-lang").click(); await page.waitForFunction(() => document.documentElement.lang === "en");
+  await page.waitForTimeout(400);
   const enTitle = await page.locator("#lessonTitle").textContent();
   assert.notEqual(enTitle, arTitle);
   assert.match(enTitle, /[A-Za-z]{3}/);

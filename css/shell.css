@@ -375,3 +375,23 @@ b, strong { font-weight: var(--fy-fw-strong); }
   body:not(.has-bn) .fy-auth { display: none; }
   body:not(.has-bn) .fy-btn-account.is-guest { display: inline-flex; }
 }
+
+/* theme icon: sun and moon stacked, morphing with the theme (all pages) */
+.th-ic { position: relative; display: block; width: 20px; height: 20px; }
+.th-ic svg { position: absolute; inset: 0; transition: transform .8s cubic-bezier(.2,.8,.2,1), opacity .55s ease; }
+.th-ic[data-t="dark"] .moon { opacity: 0; transform: rotate(110deg) scale(.3); } .th-ic[data-t="light"] .sun { opacity: 0; transform: rotate(-110deg) scale(.3); }
+.th-ic .tw { animation: fy-twinkle 2.4s ease-in-out infinite; } .th-ic .tw2 { animation-delay: 1.1s; }
+@keyframes fy-twinkle { 0%, 100% { opacity: .25; } 50% { opacity: 1; } }
+.fy-btn-theme:hover .th-ic .sun { transform: rotate(40deg) scale(1.1); } .fy-btn-theme:hover .th-ic[data-t="dark"] .sun { transform: rotate(40deg) scale(1.1); } .fy-btn-theme:hover .th-ic[data-t="light"] .moon { transform: rotate(-14deg) scale(1.1); }
+.fy-btn-theme:hover svg { transform: none; }
+
+/* ===== V8: page-to-page navigation — the navbar and bottom bar stay put, only the content eases out/in (no flash) ===== */
+@media (prefers-reduced-motion: no-preference) {
+  .navbar, .learning-navbar { view-transition-name: site-nav; }
+  .bn { view-transition-name: site-bn; }
+  ::view-transition-group(site-nav), ::view-transition-group(site-bn) { animation-duration: .3s; }
+  ::view-transition-old(root) { animation: fy-vt-out .26s ease both; }
+  ::view-transition-new(root) { animation: fy-vt-in .45s cubic-bezier(.2,.8,.2,1) .05s both; }
+  @keyframes fy-vt-out { to { opacity: 0; } }
+  @keyframes fy-vt-in { from { opacity: 0; transform: translateY(10px); } }
+}

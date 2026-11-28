@@ -88,7 +88,7 @@ test("hero: a guest sees one visible primary action (sign up), Sign in and the t
   await ctx.close();
   const r = await open({ "fayad-html-progress": JSON.stringify([1, 2, 3]) }, "en");
   assert.equal(await r.page.locator("html").evaluate((h) => h.classList.contains("hero-back")), true);
-  assert.equal(await r.page.locator("#heroCta").isVisible(), true); assert.equal(await r.page.locator("#heroSignup").isVisible(), false);
+  assert.equal(await r.page.locator("#nextGo").isVisible(), true, "one continue action: the card"); assert.equal(await r.page.locator("#heroCta").isVisible(), false, "no duplicate CTA"); assert.equal(await r.page.locator("#heroSignup").isVisible(), false);
   await r.ctx.close();
 });
 
@@ -156,6 +156,7 @@ test("language switch re-renders homepage text, numbers stay derived from the ca
   const { ctx, page } = await open({}, "ar");
   assert.equal((await page.locator("h1").innerText()).replace(/\s+/g, " "), "من أول سطر كود إلى تطبيق ويب حقيقي");
   await page.click(".fy-btn-lang");
+  await page.waitForFunction(() => document.documentElement.lang === "en"); // the swap happens after the content has eased out
   assert.equal((await page.locator("h1").innerText()).replace(/\s+/g, " "), "From your first line of code to a real web app");
   // the hero no longer carries statistics
   assert.equal(await page.locator("[data-stat]").count(), 0);
@@ -285,5 +286,23 @@ test("practice list shows real per-game totals and distinct game identities", as
   const t = await page.$$eval("[data-prog]", (els) => els.map((e) => e.querySelector(".gm-meta").textContent));
   assert.deepEqual(t, ["0 of 60 levels", "0 of 24 levels", "0 of 24 levels", "0 of 15 levels", "0 of 120 levels"]);
   assert.equal(await page.locator(".gt").count(), 5);
+  await ctx.close();
+});
+
+test("track picker: first activation previews in place, second glides to the real card (no navigation); the card opens the track", async () => {
+  const { ctx, page } = await open();
+  await page.waitForSelector("#pickTabs button");
+  const url0 = page.url();
+  await page.click('#pickTabs button[data-id="css"]');
+  assert.equal(await page.locator(".hm-pick-name").innerText(), "CSS");
+  assert.equal(page.url(), url0, "first click must not navigate");
+  assert.equal(await page.evaluate(() => scrollY), 0, "first click must not scroll");
+  await page.click('#pickTabs button[data-id="css"]');
+  await page.waitForFunction(() => scrollY > 300);
+  await page.waitForSelector('.tk[data-course-card="css"].is-spot');
+  assert.equal(page.url(), url0, "second click glides, it does not navigate");
+  await page.click(".hm-pick-go").catch(() => {}); // the preview button does the same glide
+  const href = await page.getAttribute('.tk[data-course-card="css"]', "href");
+  assert.match(href, /css-learning/);
   await ctx.close();
 });

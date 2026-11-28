@@ -573,3 +573,101 @@ html .hm-pick-panel { min-height: 100px; }
   html .hm-hero h1 { font-size: clamp(2rem, 5.6vh, 3rem); }
   html .hm-hero { padding-block-start: calc(var(--hm-nav) + 18px); }
 }
+
+/* ===== V8: picker = tiles + a preview strip (laptop) / swipe rail + compact preview (phone), all inside the first screen ===== */
+html .hm-pick-panel { display: block !important; min-height: 0; margin-block-start: 12px; }
+html .hm-pick-card { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "top oc go" "top topics go"; align-items: center; gap: 2px 20px; padding: 14px 18px; border-radius: 16px; border: 1px solid color-mix(in srgb, var(--fy-course, var(--fy-brand)) 45%, var(--fy-border)); background: color-mix(in srgb, var(--fy-course, var(--fy-brand)) 9%, var(--fy-surface-2)); cursor: pointer; transition: border-color .2s, background-color .2s, transform .2s; }
+html .hm-pick-card:hover { border-color: var(--fy-course, var(--fy-brand)); transform: translateY(-1px); }
+html .hm-pick-card.is-new { animation: hm-pick-in .38s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes hm-pick-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+html .hm-pick-top { grid-area: top; display: flex; align-items: center; gap: 12px; margin: 0; }
+html .hm-pick-oc { grid-area: oc; margin: 0; font-size: var(--fy-text-sm); color: var(--fy-text); line-height: 1.5; }
+html .hm-pick-topics { grid-area: topics; margin: 0; font-size: .78rem; color: var(--fy-text-muted); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+html .hm-pick-go { grid-area: go; display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 16px; border-radius: 999px; font-weight: 700; font-size: .88rem; white-space: nowrap; text-decoration: none; background: var(--fy-course, var(--fy-brand)); color: var(--fy-course-on, #fff); transition: transform .18s, filter .18s; }
+html .hm-pick-go:hover { filter: brightness(1.08); }
+html .hm-pick-go:active { transform: scale(.96); }
+html .hm-pick-go svg { width: 16px; height: 16px; transition: transform .2s; } html .hm-pick-go:hover svg { transform: translateY(2px); }
+html .hm-pick-hint { display: none; }
+/* the track card the preview points at */
+.tk.is-spot { animation: tk-spot 2.4s ease both; }
+@keyframes tk-spot { 0%, 100% { box-shadow: 0 0 0 0 transparent; } 20%, 70% { box-shadow: 0 0 0 3px var(--fy-course, var(--fy-brand)), 0 18px 40px -16px color-mix(in srgb, var(--fy-course, var(--fy-brand)) 55%, transparent); } }
+@media (min-width: 961px) { html .hm-pick-tabs { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; min-height: 0; } html .hm-pick-tabs button { min-height: 48px; } }
+@media (min-width: 961px) and (max-height: 860px) { html .hm-pick-card { padding: 10px 16px; } html .hm-pick-topics { display: none; } html .hm-pick-panel { margin-block-start: 8px; } }
+@media (max-width: 960px) and (min-width: 721px) { html .hm-pick-tabs { grid-template-columns: repeat(4, minmax(0, 1fr)); min-height: 0; } }
+@media (max-width: 720px) {
+  html .hm-hero { padding-block: calc(var(--hm-nav) + 8px) calc(76px + env(safe-area-inset-bottom)); min-height: 100svh; justify-content: space-between; }
+  html .hm-pick { margin-block-start: 14px; padding: 12px 0 12px 12px; border-radius: 18px; overflow: hidden; }
+  html[dir="rtl"] .hm-pick { padding: 12px 12px 12px 0; }
+  html .hm-pick-label { display: flex; align-items: center; justify-content: space-between; margin: 0 12px 10px 0; font-size: .8rem; }
+  html[dir="rtl"] .hm-pick-label { margin: 0 0 10px 12px; }
+  html .hm-pick-hint { display: inline-flex; align-items: center; gap: 6px; font-size: .72rem; color: var(--fy-brand); font-weight: 600; transition: opacity .3s; margin-inline-end: 12px; }
+  html .hm-pick-hint svg { width: 14px; height: 14px; animation: hm-nudge 1.6s ease-in-out infinite; } html[dir="rtl"] .hm-pick-hint svg { transform: scaleX(-1); animation-name: hm-nudge-rtl; }
+  @keyframes hm-nudge { 50% { transform: translateX(4px); } } @keyframes hm-nudge-rtl { 0%, 100% { transform: scaleX(-1) translateX(0); } 50% { transform: scaleX(-1) translateX(4px); } }
+  html .hm-pick.is-scrolled .hm-pick-hint { opacity: 0; }
+  html .hm-pick-tabs { display: flex; gap: 10px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; scrollbar-width: none; min-height: 0; padding-block: 2px 4px; padding-inline: 0 12px; -webkit-overflow-scrolling: touch; }
+  html .hm-pick-tabs::-webkit-scrollbar { display: none; }
+  html .hm-pick-tabs button { flex: 0 0 auto; width: 148px; min-height: 76px; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 8px; padding: 10px 12px; scroll-snap-align: start; scroll-margin-inline: 0; }
+  html .hm-pick-tabs button i { width: 30px; height: 30px; }
+  html .hm-pick-tabs .pk-t { width: 100%; } html .hm-pick-tabs .pk-t b { font-size: .84rem; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } html .hm-pick-tabs .pk-t small { display: block; }
+  html .hm-pick-panel { margin: 10px 12px 0 0; } html[dir="rtl"] .hm-pick-panel { margin: 10px 0 0 12px; }
+  html .hm-pick-card { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "top go" "oc oc"; gap: 8px 10px; padding: 12px; }
+  html .hm-pick-topics { display: none; }
+  html .hm-pick-oc { font-size: .8rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  html .hm-pick-go { min-height: 40px; padding: 0 14px; }
+}
+@media (max-width: 720px) and (max-height: 700px) { html .hm-kicker { display: none; } html .hm-hero h1 { font-size: clamp(1.7rem, 8vw, 2.1rem); } html .hm-lead { display: none; } html .hm-pick-tabs button { min-height: 64px; } html .hm-pick-oc { -webkit-line-clamp: 1; } }
+@media (prefers-reduced-motion: reduce) { .tk.is-spot, html .hm-pick-hint svg, html .hm-pick-card.is-new { animation: none; } .tk.is-spot { box-shadow: 0 0 0 3px var(--fy-course, var(--fy-brand)); } }
+/* V8b: readable names in the phone rail, tighter laptop fit */
+@media (max-width: 720px) {
+  html .hm-pick-tabs .pk-t b { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; line-height: 1.2; text-overflow: clip; overflow: hidden; unicode-bidi: plaintext; }
+  html .hm-pick-tabs button { min-height: 88px; }
+}
+@media (max-width: 720px) and (max-height: 700px) { html .hm-pick-tabs button { min-height: 72px; } html .hm-pick-tabs .pk-t small { display: none; } }
+@media (min-width: 961px) and (max-height: 860px) {
+  html .hm-hero h1 { font-size: clamp(1.9rem, 4.9vh, 2.7rem); line-height: 1.12; }
+  html .hm-lead { margin-block: 10px 14px; font-size: .98rem; line-height: 1.6; }
+  html .hm-kicker { margin-block-end: 6px; }
+  html .hm-pick { padding: 10px 14px 12px; }
+  html .hm-pick-label { margin-block-end: 6px; }
+  html .hm-pick-tabs button { min-height: 42px; padding-block: 4px; } html .hm-pick-tabs button i { width: 26px; height: 26px; }
+  html .hm-pick-tabs .pk-t small { display: none; }
+  html .hm-hero { padding-block-end: 14px; }
+}
+@media (max-width: 340px) { html .hm-pick-tabs button i { display: grid; width: 26px; height: 26px; } }
+@media (max-width: 720px) and (max-height: 620px) {
+  html .hm-hero { padding-block: calc(var(--hm-nav) + 4px) calc(68px + env(safe-area-inset-bottom)); }
+  html .hm-hero h1 { font-size: 1.65rem; }
+  html .hm-pick { margin-block-start: 8px; padding-block: 10px; }
+  html .hm-pick-label { margin-block-end: 6px; }
+  html .hm-pick-tabs button { min-height: 62px; padding: 8px 10px; gap: 6px; }
+  html .hm-pick-panel { margin-block-start: 8px; }
+  html .hm-pick-oc { display: none; }
+  html .hm-pick-card { padding: 10px 12px; }
+  html .hm-actions { gap: 0 10px; } html .hm-actions .hm-cta { min-height: 44px; }
+}
+@media (max-width: 720px) { html .hm-pick { position: relative; } html .hm-pick-hint { position: absolute; top: 12px; inset-inline-end: 14px; margin: 0; } html .hm-pick-label { display: block; } }
+
+/* V8c: footer logo hover gets room (underline no longer touches the tagline), smooth mark motion */
+html .ft-bar .ft-name { gap: 11px; padding-block-end: 2px; }
+html .ft-bar .ft-logo { padding: 8px 10px; margin: -8px -10px; border-radius: 14px; transition: background-color .25s ease; }
+html .ft-bar .ft-logo:hover { background: color-mix(in srgb, var(--fy-brand) 8%, transparent); }
+html .ft-bar .ft-logo .logo-text { position: relative; transition: transform .35s cubic-bezier(.2,.8,.2,1), color .25s; }
+html .ft-bar .ft-logo:hover .logo-text { letter-spacing: inherit; transform: translateY(-1px); color: var(--fy-brand); }
+html .ft-bar .ft-logo .logo-text::after { bottom: -8px; height: 2px; width: 0; right: auto; inset-inline-start: 0; transition: width .45s cubic-bezier(.2,.8,.2,1); }
+html .ft-bar .ft-logo:hover .logo-text::after { width: 100%; }
+html .ft-bar .ft-logo .logo-mark { transition: transform .45s cubic-bezier(.2,.8,.2,1); }
+html .ft-bar .ft-logo:hover .logo-mark { transform: rotate(-6deg) scale(1.06); }
+html .ft-bar .ft-social a { transition: transform .25s cubic-bezier(.2,.8,.2,1), background-color .25s, color .25s, border-color .25s, box-shadow .25s; }
+@media (min-width: 721px) { html .ft-bar { padding-block: 34px 18px; } html .ft-bottom { padding-block-end: 26px; } }
+
+/* V8d: signed-in hero = welcome + one continue card (no duplicate CTA, no guest note), always a complete screen */
+html.hero-back .hm-actions[data-for="user"] { display: none; }
+html[data-auth="in"] .hm-next-note { display: none; }
+@media (min-width: 721px) { html.hero-back .hm-hero { justify-content: center; } }
+@media (max-width: 720px) {
+  html.hero-back .hm-hero { justify-content: center; gap: 0; }
+  html.hero-back .hm-lead, html.hero-back .hm-kicker, html.hero-back .hm-seg-title, html.hero-back .hm-segs { display: none; }
+  html.hero-back .hm-hero h1 { margin-block: 14px 16px; }
+  html.hero-back .hm-next { margin-block-start: 6px; }
+}
+@media (min-width: 721px) { html .hm-hero-copy { align-self: start; } }
