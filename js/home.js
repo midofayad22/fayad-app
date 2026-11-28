@@ -589,6 +589,12 @@
 
   window.addEventListener("fayad:langchange", render);
   window.addEventListener("storage", renderWelcome);
+  /* The hero's live-code window greets the signed-in learner by (first) name: <h1>Hello, Ali</h1> in the code and in its preview. */
+  function renderHello() {
+    var u = window.FAYAD && window.FAYAD.user && window.FAYAD.user(), n = u && u.name ? String(u.name).trim().split(/\s+/)[0] : "";
+    document.querySelectorAll("[data-hello]").forEach(function (el) { el.textContent = n || "FAYBIT"; });
+  }
+  renderHello(); window.addEventListener("fayad-auth-changed", renderHello); window.addEventListener("fayad-profile-changed", renderHello); window.addEventListener("load", renderHello);
   window.addEventListener("fayad-auth-changed", renderWelcome); window.addEventListener("fayad-profile-changed", renderWelcome);
   // progress can change in another tab, or when returning via the back button
   window.addEventListener("storage", render);
