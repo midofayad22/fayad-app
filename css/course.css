@@ -1826,3 +1826,22 @@ html[lang="ar"] .explanation-card > h3 { letter-spacing: 0; text-transform: none
 .learning-navbar .learning-title .path-title { margin: 0; font-size: .95rem; font-weight: 650; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .learning-navbar .back-btn { display: none; }
 @media (max-width: 640px) { .learning-navbar { height: 58px; min-height: 58px; gap: 8px; } .learning-navbar .learning-logo::after { display: none; } .learning-navbar .learning-logo { padding: 0 6px; } .learning-navbar .learning-title { padding-inline-start: 10px; } .learning-navbar .learning-title .path-title { font-size: .86rem; } }
+
+/* V9: deep-dive cards, interview Q&A and reference links (content/_deep.js) */
+.deep-card .info-label, .iq-card .info-label, .refs-card .info-label { color: var(--fy-course, var(--fy-brand)); }
+.iq { border: 1px solid var(--fy-border); border-radius: 14px; background: color-mix(in srgb, var(--fy-surface-2, var(--fy-surface)) 70%, transparent); margin-top: 10px; overflow: hidden; transition: border-color .25s ease, background-color .25s ease, box-shadow .25s ease; }
+.iq[open] { border-color: color-mix(in srgb, var(--fy-course, var(--fy-brand)) 55%, var(--fy-border)); box-shadow: 0 14px 30px -24px var(--fy-course, var(--fy-brand)); }
+.iq > summary { list-style: none; cursor: pointer; display: flex; gap: 10px; align-items: flex-start; padding: 13px 15px; font-weight: 650; line-height: 1.55; }
+.iq > summary::-webkit-details-marker { display: none; }
+.iq > summary::after { content: "+"; margin-inline-start: auto; flex: none; color: var(--fy-muted); font-weight: 400; font-size: 1.3rem; line-height: 1.2; transition: transform .3s ease; }
+.iq[open] > summary::after { transform: rotate(45deg); }
+.iq > summary:hover { background: color-mix(in srgb, var(--fy-course, var(--fy-brand)) 8%, transparent); }
+.iq-lv { flex: none; font-size: .72rem; font-weight: 700; padding: 3px 9px; border-radius: 99px; margin-top: 2px; background: color-mix(in srgb, var(--fy-course, var(--fy-brand)) 18%, transparent); color: var(--fy-text); }
+.iq-mid .iq-lv { background: color-mix(in srgb, #f0b429 26%, transparent); } .iq-senior .iq-lv { background: color-mix(in srgb, #e5484d 24%, transparent); }
+.iq-a { padding: 2px 16px 16px; animation: iq-in .3s ease both; } .iq-a p { margin: 0 0 .7em; } .iq-a p:last-child { margin: 0; }
+@keyframes iq-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+.refs { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
+.refs a { display: flex; flex-direction: column; gap: 3px; padding: 11px 14px; border: 1px solid var(--fy-border); border-radius: 12px; text-decoration: none; color: var(--fy-text); transition: border-color .25s ease, transform .25s ease, background-color .25s ease; }
+.refs a:hover { border-color: var(--fy-course, var(--fy-brand)); transform: translateY(-2px); background: color-mix(in srgb, var(--fy-course, var(--fy-brand)) 7%, transparent); }
+.refs-src { font-size: .72rem; font-weight: 700; letter-spacing: .04em; color: var(--fy-course, var(--fy-brand)); } .refs-t { font-weight: 600; font-size: .92rem; }
+@media (prefers-reduced-motion: reduce) { .iq, .iq > summary::after, .refs a, .iq-a { transition: none; animation: none; } }

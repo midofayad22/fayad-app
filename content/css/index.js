@@ -2987,3 +2987,7 @@ input[type="text"] {
 import { applyExtraQuiz } from "../_quiz.js";
 import { EXTRA as QUIZ_EXTRA } from "./quiz-extra.js";
 applyExtraQuiz(lessons, QUIZ_EXTRA, "quiz");
+
+import { applyDeep } from "../_deep.js";
+import { DEEP } from "./dive.js";
+applyDeep(lessons, DEEP);
