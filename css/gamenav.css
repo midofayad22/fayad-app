@@ -57,3 +57,8 @@ html[dir="rtl"] .gnav-back > span:first-child { transform: scaleX(-1); }
   [data-screen="play"] .gnav .nav-actions { margin-inline-start: auto; }
 }
 @media (max-width: 400px) { .gnav .fy-controls { gap: 4px; } .gnav .fy-btn { min-width: 36px; height: 38px; } .gnav-tab { font-size: .78rem; } }
+
+/* V9: in-game bars keep their own palette, so the shared sign-in controls must read on it in both site themes; tabs never wrap */
+.gnav .fy-auth-in { color: var(--g-ink); background: var(--g-chip); border: 2px solid var(--g-line); }
+.gnav .fy-auth-in:hover { border-color: var(--g-accent); color: var(--g-ink); }
+.gnav-tab, .gnav-cta { white-space: nowrap; }

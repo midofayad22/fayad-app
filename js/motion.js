@@ -32,7 +32,7 @@
       var s = y > 8;
       if (nav) nav.classList.toggle("is-scrolled", s);
       root.classList.toggle("is-scrolled", s);
-      root.style.setProperty("--p", h > 0 ? Math.min(1, y / h).toFixed(4) : 0);
+      sp.style.setProperty("--p", h > 0 ? Math.min(1, y / h).toFixed(4) : 0); /* on the bar itself: a root custom property forces a whole-document style recalc every frame */
       ticking = false;
     });
   }

@@ -78,6 +78,9 @@ export async function leaderboard(limit = 20) {
   const c = client(); if (!c) return null;
   try {
     // v2 (migration 0007) adds avatar_url (only when the owner allows it) + is_me; until it is applied we fall back to the original function.
+    // v3 (migration 0012) ranks the whole XP ledger: games + lessons + assessments + finished tracks. Falls back to v2 (games only) until applied.
+    const v3 = await c.rpc("get_leaderboard_v3", { max_rows: limit });
+    if (!v3.error && Array.isArray(v3.data) && v3.data.every((r) => r && "display_name" in r)) return v3.data;
     const v2 = await c.rpc("get_leaderboard_v2", { max_rows: limit });
     if (!v2.error && Array.isArray(v2.data) && v2.data.every((r) => r && "display_name" in r)) return v2.data;
     const { data, error } = await c.rpc("get_leaderboard", { max_rows: limit }); return error ? null : data;

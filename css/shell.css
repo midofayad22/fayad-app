@@ -395,3 +395,9 @@ b, strong { font-weight: var(--fy-fw-strong); }
   @keyframes fy-vt-out { to { opacity: 0; } }
   @keyframes fy-vt-in { from { opacity: 0; transform: translateY(10px); } }
 }
+
+/* ===== V9: installed app (iOS "Add to Home Screen", status-bar-style black-translucent) =====
+   The page is drawn under the status bar, so (1) a solid strip in the page colour keeps scrolled content from showing behind the clock/battery,
+   and (2) every sticky top bar sticks BELOW the status bar instead of sliding under it. Browsers without a safe-area inset get 0px: no change. */
+body::before { content: ""; position: fixed; z-index: 2400; inset-block-start: 0; inset-inline: 0; height: env(safe-area-inset-top, 0px); background: var(--fy-bg); pointer-events: none; }
+html .ac-top, html .gnav, html .learning-navbar, html .fy-bar, html .sidebar[data-cn], html .st-top, html .zg-top, html .arena-top { top: env(safe-area-inset-top, 0px); inset-block-start: env(safe-area-inset-top, 0px); }

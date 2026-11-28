@@ -62,6 +62,10 @@ function pageHtml({ id, course, lang, lesson, i, ids, titles, alt, thin }) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="FAYBIT" />
     <meta name="fayad-content" content="${id}" />
     ${thin ? '<meta name="robots" content="noindex, follow" />\n    ' : ""}<title>${esc(title)}</title>
     <meta name="description" content="${esc(desc)}" />
@@ -126,6 +130,10 @@ function indexHtml({ id, course, lang, ids, titles, alt }) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="FAYBIT" />
     <meta name="fayad-content" content="${id}" />
     <title>${esc(title)}</title>
     <meta name="description" content="${esc(desc)}" />

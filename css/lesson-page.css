@@ -2,7 +2,7 @@
 body.lp { margin: 0; background: var(--fy-bg, #f8fafc); color: var(--fy-text, #0f172a); font-family: var(--fy-font-body, system-ui, sans-serif); line-height: 1.8; }
 .lp-skip { position: absolute; inset-inline-start: 8px; top: -48px; padding: 8px 14px; background: var(--fy-brand, #0d9488); color: #fff; border-radius: 8px; z-index: 10; }
 .lp-skip:focus { top: 8px; }
-.lp-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px max(16px, env(safe-area-inset-right)) 10px max(16px, env(safe-area-inset-left)); border-block-end: 1px solid var(--fy-border, #e2e8f0); background: var(--fy-surface, #fff); position: sticky; top: 0; z-index: 5; }
+.lp-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px max(16px, env(safe-area-inset-right)) 10px max(16px, env(safe-area-inset-left)); border-block-end: 1px solid var(--fy-border, #e2e8f0); background: var(--fy-surface, #fff); position: sticky; top: 0; z-index: 5; padding-block-start: calc(10px + env(safe-area-inset-top, 0px)); }
 .lp-brand { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; letter-spacing: .04em; color: inherit; text-decoration: none; }
 .lp-nav { display: flex; gap: 6px; }
 .lp-nav a { min-height: 44px; display: inline-flex; align-items: center; padding: 0 12px; border-radius: 10px; color: var(--fy-text-soft, #475569); text-decoration: none; }
